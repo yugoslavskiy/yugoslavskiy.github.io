@@ -5,11 +5,6 @@
 {% import 'macros/navigation.html' as navigation %}
 {% import 'macros/clean_output.html' as clean_output %}
 
-{% block innerleft %}
-<!--stop-indexing-for-search-->
-<div id="sidebars"></div>
-<!--start-indexing-for-search-->
-{% endblock %}
 
 {% block innerright %}
 {{ super () }}
@@ -56,38 +51,35 @@
             The information provided does not represent all possible techniques used in a Campaign but rather a subset
             that is available through open source reporting.
           </p>
-
+          <div class="row mb-4" style="background: #f8f9fa; padding: 15px; border-radius: 5px; border: 1px solid #dee2e6;">
+            <div class="col-md-12">
+              <label>Фильтр по странам:</label>
+              <div id="platformContainer" class="d-flex flex-wrap gap-3" style="background: white; padding: 10px; border: 1px solid #ced4da; border-radius: 4px;"></div>
+            </div>
+          </div>
           <h6 class="table-object-count">Campaigns: {{ parsed.campaigns_list_len }}</h6>
           <div class="tables-mobile">
-            <table class="table table-bordered table-alternate mt-2">
+            <table class="table table-striped">
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Name</th>
-                  <!-- <th scope="col">First Seen</th> -->
-                  <!-- <th scope="col">Last Seen</th> -->
-                  <!-- <th scope="col">Associated Campaigns</th> -->
+                  <th scope="col" id="col-id" style="cursor: pointer;">ID ↕</th>
+                  <th scope="col" id="col-name" style="cursor: pointer;">Name ↕</th>
+                  <th scope="col" id="col-year" style="cursor: pointer;">Year ↕</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
               <tbody>
                 {% for row in parsed.campaigns_table %}
-                <tr>
-                  <td>
-                    <a href="/campaigns/{{ row.id | upper }}"> {{ row.id | upper }} </a>
-                  </td>
-                  <td>
-                    <a href="/campaigns/{{ row.id | upper }}"> {{ row.name }} </a>
-                  </td>
-                  <!-- <td>{{row.first_seen}}</td> -->
-                  <!-- <td>{{row.last_seen}}</td> -->
-                  <!-- <td>{{ row.aliases_list|join(", ") }}</td> -->
-                  <td>
-                    {% if row.deprecated %}
-                    <font color="red">****Deprecation Warning****</font>
-                    {% endif %}
-                    {{ clean_output.stixToHTML(row.descr) }}
-                  </td>
+                <tr class="campaign-row" 
+                    data-id="{{ row.id | upper }}"
+                    data-name="{{ row.name | lower }}"
+                    data-search="{{ row.name | lower }} {{ row.descr | lower }}" 
+                    data-platforms="{{ row.platforms | lower if row.platforms else '' }}" 
+                    data-first="{{ row.first_seen }}">
+                  <td> <a href="/campaigns/{{ row.id | upper }}"> {{ row.id | upper }} </a> </td>
+                  <td> <a href="/campaigns/{{ row.id | upper }}"> {{ row.name }} </a> </td>
+                  <td class="year-cell">{{ row.first_seen.split('-')[0] if row.first_seen else '' }}</td>
+                  <td> {{ clean_output.stixToHTML(row.descr) }} </td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -98,11 +90,101 @@
     </div>
   </div>
 </div>
+<style>
+    /* Жестко глушим ограничения Бутстрапа для главного контейнера на этой странице */
+    .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+</style>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Находим колонку с контентом и меняем ее бутстрап-класс на 100% ширины
+    const breadcrumb = document.querySelector('.breadcrumb');
+    if (breadcrumb) {
+        const mainCol = breadcrumb.closest('[class*="col-"]');
+        if (mainCol) {
+            mainCol.className = 'col-12'; // Сносим col-md-9, ставим col-12
+        }
+    }
+
+    const rows = Array.from(document.querySelectorAll('.campaign-row'));
+    const tbody = document.querySelector('tbody');
+    const platformContainer = document.getElementById('platformContainer');
+
+    // 2. Горизонтальный скролл для мобилок
+    const table = document.querySelector('table');
+    if (table && !table.parentElement.classList.contains('table-responsive')) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-responsive';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+    }
+
+    // 3. Генерация чекбоксов стран
+    const platformSet = new Set();
+    rows.forEach(row => {
+        row.dataset.platforms.split(',').forEach(p => { if(p.trim()) platformSet.add(p.trim()) });
+    });
+
+    platformSet.forEach(plat => {
+        const labelName = plat.charAt(0).toUpperCase() + plat.slice(1);
+        const span = document.createElement('span');
+        span.style.marginRight = "15px";
+        span.innerHTML = `
+            <input class="plat-checkbox" type="checkbox" value="${plat.toLowerCase()}" id="plat-${plat}" checked>
+            <label for="plat-${plat}">${labelName}</label>
+        `;
+        platformContainer.appendChild(span);
+    });
+
+    // 4. Фильтрация
+    function applyFilters() {
+        const checkedPlatforms = Array.from(document.querySelectorAll('.plat-checkbox:checked')).map(cb => cb.value);
+        rows.forEach(row => {
+            const rowPlats = row.dataset.platforms.toLowerCase().split(',').map(p => p.trim());
+            const platMatch = row.dataset.platforms === "" || rowPlats.some(p => checkedPlatforms.includes(p));
+            row.style.display = platMatch ? '' : 'none';
+        });
+    }
+    platformContainer.addEventListener('change', applyFilters);
+
+    // 5. Сортировка
+    let currentSort = { col: null, asc: true };
+
+    function sortTable(columnKey, getValFn) {
+        const isAsc = currentSort.col === columnKey ? !currentSort.asc : true;
+        currentSort = { col: columnKey, asc: isAsc };
+
+        const sortedRows = rows.sort((a, b) => {
+            const valA = getValFn(a);
+            const valB = getValFn(b);
+            if (valA < valB) return isAsc ? -1 : 1;
+            if (valA > valB) return isAsc ? 1 : -1;
+            return 0;
+        });
+
+        sortedRows.forEach(row => tbody.appendChild(row));
+    }
+
+    document.getElementById('col-id').addEventListener('click', () => sortTable('id', r => r.dataset.id));
+    document.getElementById('col-name').addEventListener('click', () => sortTable('name', r => r.dataset.name));
+    document.getElementById('col-year').addEventListener('click', () => {
+        sortTable('year', r => {
+            const dateStr = r.dataset.first;
+            if (!dateStr) return -Infinity; // Пустые уходят в самый конец
+            const timestamp = Date.parse(dateStr);
+            return isNaN(timestamp) ? -Infinity : timestamp;
+        });
+    });
+});
+</script>
 {% endblock %}
 
 {% block scripts %}
 {{ super() }}
 <!--SCRIPTS-->
-<script src="/theme/scripts/sidebar-load-all.js"></script>
 {% endblock %}

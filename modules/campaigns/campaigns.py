@@ -191,6 +191,12 @@ def get_campaigns_table_data(campaign_list):
     # Now the table on the right, which is made up of campaign data
     for campaign in campaign_list:
         attack_id = util.buildhelpers.get_attack_id(campaign)
+
+        # Собираем платформы (страны) в строку для поиска
+        platforms = ""
+        if "x_mitre_platforms" in campaign:
+            platforms = ", ".join(campaign["x_mitre_platforms"])
+
         if attack_id:
             campaign_dates = util.buildhelpers.get_first_last_seen_dates(campaign)
             row = {
@@ -198,6 +204,7 @@ def get_campaigns_table_data(campaign_list):
                 "name": campaign["name"] if campaign.get("name") else attack_id,
                 "first_seen": campaign_dates["first_seen"] if campaign_dates.get("first_seen") else "",
                 "last_seen": campaign_dates["last_seen"] if campaign_dates.get("last_seen") else "",
+                "platforms": platforms,
             }
 
             if campaign.get("description"):
