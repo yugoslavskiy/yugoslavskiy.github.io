@@ -14,11 +14,11 @@ def get_menu():
         "url": "/techniques/",
         "external_link": False,
         "priority": techniques_config.priority,
-        "children": [
-            {"display_name": "Россия", "url": "/techniques/russia/", "external_link": False, "children": []},
+        "children": []
+            # {"display_name": "Россия", "url": "/techniques/russia/", "external_link": False, "children": []},
             # {"display_name": "Mobile", "url": "/techniques/mobile/", "external_link": False, "children": []},
             # {"display_name": "ICS", "url": "/techniques/ics/", "external_link": False, "children": []},
-        ],
+        # ],
     }
 
 

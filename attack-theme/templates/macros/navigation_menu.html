@@ -8,7 +8,8 @@
         <div class='collapse navbar-collapse' id='navbarCollapse'>
             <ul class='nav nav-tabs ml-auto'>
                 {% for element in menu %}
-                    {% if element.children %}
+                    {# Проверяем длину списка: если там 0 элементов, рисуем как обычную ссылку #}
+                    {% if element.children and element.children|length > 0 %}
                         <li class="nav-item dropdown">
                             {{has_child(element, loop.last)}}
                         </li>

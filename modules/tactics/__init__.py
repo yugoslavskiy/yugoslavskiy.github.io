@@ -14,11 +14,11 @@ def get_menu():
         "url": "/tactics/",
         "external_link": False,
         "priority": tactics_config.priority,
-        "children": [
-            {"display_name": "Россия", "url": "/tactics/russia/", "external_link": False, "children": []},
+        "children": []
+            # {"display_name": "Россия", "url": "/tactics/russia/", "external_link": False, "children": []},
             # {"display_name": "Mobile", "url": "/tactics/mobile/", "external_link": False, "children": []},
             # {"display_name": "ICS", "url": "/tactics/ics/", "external_link": False, "children": []},
-        ],
+        # ],
     }
 
 

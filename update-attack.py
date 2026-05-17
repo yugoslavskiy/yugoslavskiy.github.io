@@ -23,6 +23,7 @@ module_choices = [
     "tactics",
     "techniques",
     "campaigns",
+    "procedures",
     "assets",
     "datacomponents",
     "detectionstrategies",

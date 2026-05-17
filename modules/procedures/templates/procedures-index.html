@@ -1,0 +1,191 @@
+{% extends "general/two-column.html" %}
+{% set title = "Процедуры" %}
+{% set parsed = page.data | from_json %}
+{% set active_page = "procedures" -%}
+{% import 'macros/clean_output.html' as clean_output %}
+
+{% block innerright %}
+{{ super () }}
+<style>
+    .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+</style>
+
+<ol class="breadcrumb mt-4">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item">Процедуры</li>
+</ol>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Процедуры</h1>
+        <p>Сводная база конкретных действий, применяемых в рамках кампаний.</p>
+      </div>
+    </div>
+
+    <div class="row mb-4" style="background: #f8f9fa; padding: 15px; border-radius: 5px; border: 1px solid #dee2e6;">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" id="fSearch" class="form-control" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12">
+            <label>Фильтр по странам:</label>
+            <div id="platformContainer" class="d-flex flex-wrap" style="background: white; padding: 10px; border: 1px solid #ced4da; border-radius: 4px;">
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered mt-3">
+      <thead>
+        <tr>
+          <th scope="col" class="control-sort" data-sort="year" style="cursor:pointer; width: 10%;">
+              First Seen <span class="sort-icon">↕</span>
+          </th>
+          <th scope="col" style="width: 15%;">Кампания</th>
+          <th scope="col" style="width: 15%;">Актор</th>
+          <th scope="col" style="width: 15%;">Инструмент</th>
+          <th scope="col" style="width: 15%;">Техника</th>
+          <th scope="col" style="width: 30%;">Описание процедуры</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in parsed.procedures_table %}
+        {% set search_text = row.technique_name ~ ' ' ~ row.description %}
+        {% for c in row.campaigns %}{% set search_text = search_text ~ ' ' ~ c.name %}{% endfor %}
+        {% for g in row.groups %}{% set search_text = search_text ~ ' ' ~ g.name %}{% endfor %}
+        {% for t in row.tools %}{% set search_text = search_text ~ ' ' ~ t.name %}{% endfor %}
+
+        <tr class="procedure-row" 
+            data-search="{{ search_text | lower }}" 
+            data-platforms="{{ row.platforms | lower if row.platforms else '' }}"
+            data-date="{{ row.first_seen_raw }}">
+          
+          <td class="year-column">
+              {{ row.first_seen_display }}
+          </td>
+          
+          <td>
+            {% for camp in row.campaigns %}
+              <div class="mb-1">
+                <a href="/campaigns/{{ camp.id | upper }}">{{ camp.id | upper }}</a> 
+                {{ camp.name }}
+              </div>
+            {% endfor %}
+          </td>
+
+          <td>
+            {% for grp in row.groups %}
+              <div class="mb-1">
+                <a href="/groups/{{ grp.id | upper }}">{{ grp.id | upper }}</a><br>
+                {{ grp.name }}
+              </div>
+            {% endfor %}
+          </td>
+
+          <td>
+            {% for tool in row.tools %}
+              <div class="mb-1">
+                <a href="/software/{{ tool.id | upper }}">{{ tool.id | upper }}</a><br>
+                {{ tool.name }}
+              </div>
+            {% endfor %}
+          </td>
+
+          <td>
+            <a href="/techniques/{{ row.technique_id | upper }}">{{ row.technique_id | upper }}</a><br>
+            <strong>{{ row.technique_name }}</strong>
+          </td>
+
+          <td>{{ clean_output.stixToHTML(row.description) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Растягиваем колонку
+    const breadcrumb = document.querySelector('.breadcrumb');
+    if (breadcrumb) {
+        const mainCol = breadcrumb.closest('[class*="col-"]');
+        if (mainCol) mainCol.className = 'col-12';
+    }
+
+    const rows = Array.from(document.querySelectorAll('.procedure-row'));
+    const platformContainer = document.getElementById('platformContainer');
+    const iSearch = document.getElementById('fSearch');
+    const tableBody = document.querySelector('tbody');
+    const sortHeader = document.querySelector('.control-sort');
+
+    // 2. Горизонтальный скролл
+    const table = document.querySelector('table');
+    if (table && !table.parentElement.classList.contains('table-responsive')) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-responsive';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+    }
+
+    // 3. Чекбоксы стран
+    const platformSet = new Set();
+    rows.forEach(row => {
+        row.dataset.platforms.split(',').forEach(p => { if(p.trim()) platformSet.add(p.trim()) });
+    });
+
+    platformSet.forEach(plat => {
+        const span = document.createElement('span');
+        span.style.marginRight = "15px";
+        span.innerHTML = `<input class="plat-checkbox" type="checkbox" value="${plat.toLowerCase()}" id="plat-${plat}" checked>
+                          <label for="plat-${plat}">${plat.charAt(0).toUpperCase() + plat.slice(1)}</label>`;
+        platformContainer.appendChild(span);
+    });
+
+    // 4. Фильтрация
+    function applyFilters() {
+        const q = iSearch.value.toLowerCase();
+        const checkedPlatforms = Array.from(document.querySelectorAll('.plat-checkbox:checked')).map(cb => cb.value);
+        rows.forEach(row => {
+            const textMatch = !q || row.dataset.search.includes(q);
+            const rowPlats = row.dataset.platforms.toLowerCase().split(',').map(p => p.trim());
+            const platMatch = rowPlats.some(p => checkedPlatforms.includes(p));
+            row.style.display = (textMatch && platMatch) ? '' : 'none';
+        });
+    }
+
+    platformContainer.addEventListener('change', applyFilters);
+    iSearch.addEventListener('input', applyFilters);
+
+    // 5. Сортировка по дате (как в кампаниях)
+    let sortAsc = false;
+    if(sortHeader) {
+        sortHeader.addEventListener('click', () => {
+            const rowsArray = Array.from(document.querySelectorAll('.procedure-row'));
+            sortAsc = !sortAsc;
+            sortHeader.querySelector('.sort-icon').innerText = sortAsc ? '▲' : '▼';
+
+            rowsArray.sort((a, b) => {
+                const dA = a.dataset.date || "";
+                const dB = b.dataset.date || "";
+                if (dA === dB) return 0;
+                return sortAsc ? (dA > dB ? 1 : -1) : (dA < dB ? 1 : -1);
+            });
+
+            rowsArray.forEach(row => tableBody.appendChild(row));
+        });
+        // Авто-сортировка при загрузке (от новых к старым)
+        sortHeader.click();
+    }
+});
+</script>
+{% endblock %}
