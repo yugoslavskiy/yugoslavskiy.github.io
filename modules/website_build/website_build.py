@@ -28,15 +28,15 @@ def generate_website():
     if not os.path.isdir(site_config.resources_markdown_path):
         os.mkdir(site_config.resources_markdown_path)
 
-    util.buildhelpers.move_templates(
-        website_build_config.module_name, website_build_config.website_build_templates_path
-    )
+    # util.buildhelpers.move_templates(
+    #     website_build_config.module_name, website_build_config.website_build_templates_path
+    # )
     generate_javascript_settings()
     generate_base_html()
     generate_sidebar_html()
     generate_index_page()
     generate_static_pages()
-    generate_changelog_page()
+    #generate_changelog_page()
     store_pelican_settings()
     pelican_content()
     # this is nice to have if you want to run pelican manually later
@@ -211,18 +211,18 @@ def store_pelican_settings():
         json_f.write(json.dumps(site_config.staged_pelican))
 
 
-def generate_changelog_page():
-    """Responsible for compiling original changelog markdown into changelog markdown file for rendering on the HTML."""
-    logger.info("Generating Changelog page")
-    current_changelog = None
-    # Read local changelog
-    with open("CHANGELOG.md", "r", encoding="utf8") as f:
-        current_changelog = f.read()
+# def generate_changelog_page():
+#     """Responsible for compiling original changelog markdown into changelog markdown file for rendering on the HTML."""
+#     logger.info("Generating Changelog page")
+#     current_changelog = None
+#     # Read local changelog
+#     with open("CHANGELOG.md", "r", encoding="utf8") as f:
+#         current_changelog = f.read()
 
-    changelog_md = website_build_config.changelog_md + current_changelog
+#     changelog_md = website_build_config.changelog_md + current_changelog
 
-    with open(os.path.join(site_config.resources_markdown_path, "changelog.md"), "w", encoding="utf8") as md_file:
-        md_file.write(changelog_md)
+#     with open(os.path.join(site_config.resources_markdown_path, "changelog.md"), "w", encoding="utf8") as md_file:
+#         md_file.write(changelog_md)
 
 
 def pelican_content():

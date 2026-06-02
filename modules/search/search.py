@@ -8,7 +8,8 @@ import bleach
 from loguru import logger
 
 import modules
-from modules import site_config, versions
+from modules import site_config
+# from modules import site_config, versions
 
 types = ["software", "groups", "tactics", "techniques"]
 sub_types = ["russia"]
@@ -115,7 +116,7 @@ def generate_index():
             with open(search_file_path, mode="w", encoding="utf8") as search_file:
                 search_file.write(search_contents)
 
-    preserve_current_version()
+    #preserve_current_version()
 
 
 skiplines = ["breadcrumb-item", "nav-link"]
@@ -178,8 +179,8 @@ def clean(filepath):
     return out, skipindex, title
 
 
-def preserve_current_version():
-    """Preserve current version."""
-    # Check for intermodule dependency
-    if [key["module_name"] for key in modules.run_ptr if key["module_name"] == "versions"]:
-        versions.versions.deploy_current_version()
+# def preserve_current_version():
+#     """Preserve current version."""
+#     # Check for intermodule dependency
+#     if [key["module_name"] for key in modules.run_ptr if key["module_name"] == "versions"]:
+#         versions.versions.deploy_current_version()

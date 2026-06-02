@@ -1,5 +1,5 @@
 module_name = "Contribute"
-priority = 10
+priority = 11
 
 # Markdown path for contribute
 contribute_markdown_path = "content/pages/resources"

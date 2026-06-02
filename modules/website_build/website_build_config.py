@@ -24,7 +24,7 @@ website_version = pyproject_toml["tool"]["towncrier"]["version"]
 base_page_data = {
     "CONTENT_VERSION": site_config.attack_version,
     "WEBSITE_VERSION": website_version,
-    "CHANGELOG_LOCATION": "/resources/changelog.html",
+    # "CHANGELOG_LOCATION": "/resources/changelog.html",
     "LOGO_HEADER": "/theme/images/mitre_attack_logo.png",
     "LOGO_FOOTER": "/theme/images/mitrelogowhiteontrans.gif",
     "logo_landingpage": "/theme/images/ATT&CK_red.png",
@@ -68,7 +68,7 @@ js_dir_settings = Template('var base_url = "${web_directory}";\n')
 js_build_uuid = Template('var build_uuid = "${build_uuid}";\n')
 
 # Path for templates
-website_build_templates_path = "modules/website_build/templates/"
+# website_build_templates_path = "modules/website_build/templates/"
 
 # CHANGELOG md
-changelog_md = "Title: Changelog\nTemplate: website_build/changelog\nsave_as: resources/changelog.html\n\n"
+# changelog_md = "Title: Changelog\nTemplate: website_build/changelog\nsave_as: resources/changelog.html\n\n"

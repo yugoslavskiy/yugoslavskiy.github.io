@@ -10,14 +10,14 @@ load_dotenv()
 
 attack_version = ""
 
-# Read versions file for ATT&CK version
-with open("data/versions.json", "r", encoding="utf8") as f:
-    attack_version = json.load(f)["current"]["name"]
+# # Read versions file for ATT&CK version
+# with open("data/versions.json", "r", encoding="utf8") as f:
+#     attack_version = json.load(f)["current"]["name"]
 
-# ATT&CK version
-if attack_version.startswith("v"):
-    full_attack_version = attack_version
-    attack_version = attack_version[1:]
+# # ATT&CK version
+# if attack_version.startswith("v"):
+#     full_attack_version = attack_version
+#     attack_version = attack_version[1:]
 
 # Domains for stix objects
 STIX_LOCATION_ENTERPRISE = os.getenv(
