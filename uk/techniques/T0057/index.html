@@ -1,0 +1,982 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/techniques/T0057/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0057/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0057/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0057/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0057/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Експлуатація праці, техніка T0057 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/techniques/T0057/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Експлуатація праці, техніка T0057 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/techniques/">Техніки</a></li>
+  <li class="breadcrumb-item">Експлуатація праці</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Експлуатація праці
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агресори можуть примусово залучати місцеве населення до важких, небезпечних або неоплачуваних робіт в інтересах метрополії. Ця техніка слугує прямому отриманню вигоди завдяки використанню безоплатної або гранично дешевої робочої сили для реалізації державних мегапроєктів, воєнних чи промислових потреб колонізатора. Водночас ця практика застосовується для нейтралізації захисту: вилучення працездатного населення з економіки регіону та праця в умовах, пов'язаних із високою смертністю, фізично виснажують суспільство і знижують його демографічний потенціал.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0057
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Підтехніки:&nbsp;</span>
+                    Немає підтехнік
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактичні цілі, які досягаються застосуванням техніки або підтехніки">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/uk/tactics/TA0006">Отримання вигоди</a>,                        <a href="/uk/tactics/TA0004">Ослаблення захисту</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народи, проти яких застосовувалася техніка або підтехніка">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народи:&nbsp;</span>Нохчі (Чеченці), Українці
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контриб'ютори:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версія:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Створено:&nbsp;</span>21 квітня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>9 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/T0057" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реалізовані процедури</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="експлуатація праці призначена адміністрація примушувала корінне населення до безоплатної праці: історик е. н. кушева вказує, що кабардинський князь сунчалей янгличевич черкаський змушував підлеглих служилих окочан терського міста «вироби на нього всякі робити, ріллю орати і сіно косити»(citation: народы северного кавказа и их связи с россией (вторая половина xvi - 30-е годы xvii вв) 1963). сама метрополія роками не оплачувала військову службу корінного населення: у відписці терського воєводи петра петровича головіна астраханському воєводі івану микитовичу одоєвському зафіксовано, що вони «служать государеві цареві... всякі государеві терські... служби... а государевим грошовим і хлібним жалуванням не пожалувані десятий рік»(citation: кабардино-русские отношения в xvi-xviii вв. документы и материалы. том i 1957)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1614-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1614</div>
+<div><a href="/uk/campaigns/C1114">C1114</a> Позбавлення Нохчі суб'єктності та встановлення чужорідного управління (1614–1616)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Призначена адміністрація примушувала корінне населення до безоплатної праці: історик Е. Н. Кушева вказує, що кабардинський князь Сунчалей Янгличевич Черкаський змушував підлеглих служилих Окочан Терського міста «вироби на нього всякі робити, ріллю орати і сіно косити»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1963). Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв)."data-reference="Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв) 1963"><sup><a href="https://instituteofhistory.ru/media/library/publication/files/%D0%9A%D1%83%D1%88%D0%B5%D0%B2%D0%B0_%D0%95.%D0%9D._%D0%9D%D0%B0%D1%80%D0%BE%D0%B4%D1%8B_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B3%D0%BE_%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D0%B0_%D0%B8_%D0%B8%D1%85_%D1%81%D0%B2%D1%8F%D0%B7%D0%B8_%D1%81_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B5%D0%B9._%D0%9C%D0%BE%D1%81_TFA3pwz.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Сама метрополія роками не оплачувала військову службу корінного населення: у відписці терського воєводи Петра Петровича Головіна астраханському воєводі Івану Микитовичу Одоєвському зафіксовано, що вони «служать государеві цареві... всякі государеві терські... служби... а государевим грошовим і хлібним жалуванням не пожалувані десятий рік»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I."data-reference="Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I 1957"><sup><a href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці окупаційна адміністрація цілеспрямовано виснажувала корінне населення матеріально, змушуючи нести примусову службу власним коштом: у поданій цареві михайлу федоровичу чолобитній окоцький мурза кохостров бійтеміров та служилі окочани терського міста доповідали, що через невиплату жалування вони «стали безхлібні, від голоду і від усякої нужди вкрай загинули і заборгували, государю, великим боргом, і помираємо з жінками і з дітьми голодною смертю»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1617-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1617</div>
+<div><a href="/uk/campaigns/C1115">C1115</a> Економічна експлуатація та створення залежності Нохчі (1617–1622)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація цілеспрямовано виснажувала корінне населення матеріально, змушуючи нести примусову службу власним коштом: у поданій цареві Михайлу Федоровичу чолобитній окоцький мурза Кохостров Бійтеміров та служилі Окочани Терського міста доповідали, що через невиплату жалування вони «стали безхлібні, від голоду і від усякої нужди вкрай загинули і заборгували, государю, великим боргом, і помираємо з жінками і з дітьми голодною смертю»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці примусове використання козаків для будівництва імперської інфраструктури у важких умовах: «у зведенні фортифікацій довкола києво-печерського монастиря»(citation: иван мазепа и российская империя. история «предательства» 2011)(citation: мазепа 2007)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1695-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1695</div>
+<div><a href="/uk/campaigns/C0010">C0010</a> Азовські походи та будівництво фортець (1695–1700)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Примусове використання козаків для будівництва імперської інфраструктури у важких умовах: «у зведенні фортифікацій довкола Києво-Печерського монастиря»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці масове залучення населення до будівництва військових об'єктів в інтересах москви. цар офіційно дякував гетьманові та старшині за «усердне радіння (і чималопонесені труди) в робленні печерської фортифікації» й обіцяв за цю «службу і труди в робленні пом'янутої фортифікації» свою «превисоку милість»(citation: иван мазепа и российская империя. история «предательства» 2011)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1700-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1700</div>
+<div><a href="/uk/campaigns/C0011">C0011</a> Інтеграційні реформи Петра I та Північна війна (1700–1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Масове залучення населення до будівництва військових об'єктів в інтересах Москви. Цар офіційно дякував гетьманові та старшині за «усердне радіння (і чималопонесені труди) в робленні печерської фортифікації» й обіцяв за цю «службу і труди в робленні пом'янутої фортифікації» свою «превисоку милість»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці масова мобілізація козацьких полків на каторжні будівельні роботи: копання ладозького каналу «здійснювалося, гол. чин., руками укр. козаків», і там «від непосильної праці, голоду й важкого клімату гинули десятки тисяч осіб»(citation: енциклопедія історії україни: т. 6 2009). у 1721 році на канал було відправлено «10-тис. козац. корпус» на чолі з п. полуботком(citation: енциклопедія історії україни: т. 8 2011); роботи тривали й у 1721–23 роках(citation: енциклопедія історії україни: т. 9 2012)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1704-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1704</div>
+<div><a href="/uk/campaigns/C0017">C0017</a> Примусова праця на імперських будовах: Ладозький канал (1704–1725)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Масова мобілізація козацьких полків на каторжні будівельні роботи: копання Ладозького каналу «здійснювалося, гол. чин., руками укр. козаків», і там «від непосильної праці, голоду й важкого клімату гинули десятки тисяч осіб»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2009). Енциклопедія історії України: Т. 6."data-reference="Енциклопедія історії України: Т. 6 2009"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. У 1721 році на канал було відправлено «10-тис. козац. корпус» на чолі з П. Полуботком<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2011). Енциклопедія історії України: Т. 8."data-reference="Енциклопедія історії України: Т. 8 2011"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>; роботи тривали й у 1721–23 роках<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці переведення козаків на становище безправних військових поселенців (аракчеєвщина), що спровокувало повстання 1817 року: «поштовхом до нього став наказ про скасування бузького козацького війська і перетворення козаків на військ. поселенців… розправа з повсталими козаками була надзвичайно жорстокою, багатьох із них порубали шаблями, потопили в пд. бузі, засікли батогами»(citation: енциклопедія історії україни: т. 1 2003). актів було два, по різні боки повстання: іменний указ від 17 квітня 1817 року передав округ бузького війська «в безпосереднє військове управління» (псзрі, т. xxxiv, № 26.802) - він і став поштовхом; указ від 8 жовтня 1817 року (№ 27.081), уже після придушення, оформив ліквідацію: «назва бузького козачого війська знищується»(citation: полное собрание законов российской империи. собрание первое. том xxxiv (1817) 1830)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1817</div>
+<div><a href="/uk/campaigns/C0041">C0041</a> Запровадження військових поселень і ліквідація Задунайської Січі (1817–1828)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Переведення козаків на становище безправних військових поселенців (аракчеєвщина), що спровокувало повстання 1817 року: «Поштовхом до нього став наказ про скасування Бузького козацького війська і перетворення козаків на військ. поселенців… Розправа з повсталими козаками була надзвичайно жорстокою, багатьох із них порубали шаблями, потопили в Пд. Бузі, засікли батогами»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1."data-reference="Енциклопедія історії України: Т. 1 2003"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Актів було два, по різні боки повстання: іменний указ від 17 квітня 1817 року передав округ Бузького війська «в безпосереднє військове управління» (ПСЗРІ, т. XXXIV, № 26.802) - він і став поштовхом; указ від 8 жовтня 1817 року (№ 27.081), уже після придушення, оформив ліквідацію: «назва Бузького козачого війська знищується»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Российская империя (ПСЗРИ); №26802 от 17 апреля 1817 и №27081 от 8 октября 1817 (упразднение Бугского казачьего войска). (1830). Полное собрание законов Российской империи. Собрание первое. Том XXXIV (1817)."data-reference="Полное собрание законов Российской империи. Собрание первое. Том XXXIV (1817) 1830"><sup><a href="https://psz.ri.org.ru/I/XXXIV.pdf" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці регулярна армія російської імперії примушувала чеченські селища до постачань і робіт для будівництва фортеці. імперський генерал єрмолов у своїх «записках» свідчить: «наказано було селищам, від яких були в нас аманати, доставляти ліс на будівництво»; найближчі селища «не сміли виявити непослуху»(citation: записки а.п. ермолова. 1798-1826 гг. 1991)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1817</div>
+<div><a href="/uk/campaigns/C1021">C1021</a> Знищення присунженських селищ Нохчі та зведення фортеці Грозної на їхньому місці (1817–1818)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Регулярна армія Російської імперії примушувала чеченські селища до постачань і робіт для будівництва фортеці. Імперський генерал Єрмолов у своїх «Записках» свідчить: «наказано було селищам, від яких були в нас аманати, доставляти ліс на будівництво»; найближчі селища «не сміли виявити непослуху»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці російська імперія силоміць змушувала нохчі працювати на завойовника — прорубувати просіки через їхні власні ліси. імперський історик потто пише, що начальник лівого флангу греков «зібрав старшин навколишніх сіл і наказав їм негайно вислати робітників із сокирами для вирубки», і під загрозою розправи «змусив чеченців коритися», після чого зігнані жителі рубали просіку через свій ліс(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1820-03-06 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Березень 1820</div>
+<div><a href="/uk/campaigns/C1145">C1145</a> Нічний напад на аул Топлі, спалення Герменчука та примушення Нохчі до вирубування власних лісів (1820)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія силоміць змушувала Нохчі працювати на завойовника — прорубувати просіки через їхні власні ліси. Імперський історик Потто пише, що начальник лівого флангу Греков «зібрав старшин навколишніх сіл і наказав їм негайно вислати робітників із сокирами для вирубки», і під загрозою розправи «змусив Чеченців коритися», після чого зігнані жителі рубали просіку через свій ліс<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці російська імперія змушувала самих нохчі прорубувати військові просіки через їхні власні ліси. історик д. а. хожаєв пише, що під час насадження лінії завойовники «примушували підкорених горців до важких робіт із будівництва доріг і мостів», а тих, хто ухилявся, «нещадно штрафували, відбираючи худобу та майно»(citation: чеченцы в русско-кавказской войне 1998). імперський історик потто підтверджує, що просіки від амір-аджі-юрта до ойсунгура, істі-су та герзель-аула «через вузьку лісисту смугу… розробляли самі тубільці, під наглядом аксаївських князів»(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1821-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Березень 1821</div>
+<div><a href="/uk/campaigns/C1146">C1146</a> Придушення повстання Нохчі: розорення сіл і примусове вирубування лісів Грековим (1821-1822)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія змушувала самих Нохчі прорубувати військові просіки через їхні власні ліси. Історик Д. А. Хожаєв пише, що під час насадження лінії завойовники «примушували підкорених Горців до важких робіт із будівництва доріг і мостів», а тих, хто ухилявся, «нещадно штрафували, відбираючи худобу та майно»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Імперський історик Потто підтверджує, що просіки від Амір-Аджі-Юрта до Ойсунгура, Істі-Су та Герзель-Аула «через вузьку лісисту смугу… розробляли самі тубільці, під наглядом аксаївських князів»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці аманатсько-податна система пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), включала примусові роботи: війська змушували жителів захоплених аулів чечні рубати власний ліс за рознарядкою. імперський історик юров записав про грудневу експедицію 1839 року, що жителі аулів під тиском загону «рубали за нарядом ліс у гехі, на ур. валерик і між сс. шалі та м. атагою» (гехі, валерик, шалі, мала атага - чеченські селища й урочища; «за нарядом» - за примусовою розверсткою, накладеною військами поряд з податтю і видачею зброї)(citation: 1840, 1841 и 1842-й годы на кавказе 1886). ліс, який жителів змушували валити, був середовищем життя і укриттям чеченських товариств."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податна система Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), включала примусові роботи: війська змушували жителів захоплених аулів Чечні рубати власний ліс за рознарядкою. Імперський історик Юров записав про грудневу експедицію 1839 року, що жителі аулів під тиском загону «рубали за нарядом ліс у Гехі, на ур. Валерик і між сс. Шалі та М. Атагою» (Гехі, Валерик, Шалі, Мала Атага - чеченські селища й урочища; «за нарядом» - за примусовою розверсткою, накладеною військами поряд з податтю і видачею зброї)<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. Ліс, який жителів змушували валити, був середовищем життя і укриттям чеченських товариств.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці покірність, взята військами фезе в лютому 1837 року, одразу оберталася трудовою повинністю. рапорт розена військовому міністру чернишову від 4 березня 1837 записує: 21 лютого «жителі шести сусідніх аулів виявили покірність і вислали робітників для прорубки, разом з кумиками, дороги в лісах через качаликівські гори по мічику»(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881) - щойно підпорядковані громади імперія поставила рубати ліс під військову дорогу проти них же; повинність ішла в пакеті підпорядкування, як пізніше її закріплять типові «умови, що приписуються горцям, які підкоряються»."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1837-02-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 1837</div>
+<div><a href="/uk/campaigns/C1161">C1161</a> Примушення Чечні до присяги весняним туром Фезе: аманати з примушених до присяги громад, знищення аулів по Джалці, штраф худобою (лютий-квітень 1837)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Покірність, взята військами Фезе в лютому 1837 року, одразу оберталася трудовою повинністю. Рапорт Розена військовому міністру Чернишову від 4 березня 1837 записує: 21 лютого «жителі шести сусідніх аулів виявили покірність і вислали робітників для прорубки, разом з кумиками, дороги в лісах через Качаликівські гори по Мічику»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span> - щойно підпорядковані громади імперія поставила рубати ліс під військову дорогу проти них же; повинність ішла в пакеті підпорядкування, як пізніше її закріплять типові «Умови, що приписуються горцям, які підкоряються».</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці «умови, приписувані горцям, що підкоряються», видані генералом граббе, командувачем військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), 15 червня 1840 року, обклали чеченські аули трудовою повинністю. пункт 4 приписав: «у разі руху загону виділити людей для влаштування доріг і мостів, утримувати при приставі достатнє число людей для перевезення паперів або наказів з одного аулу в інший, давати кінних людей для конвоювання» (пристав - призначений імперією наглядач над аулами)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1838-11-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Листопад 1838</div>
+<div><a href="/uk/campaigns/C1164">C1164</a> Примушення Чечні до підкорення після розгрому Ахульго та придушення загального повстання 1840 року (1838-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>«Умови, приписувані горцям, що підкоряються», видані генералом Граббе, командувачем військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), 15 червня 1840 року, обклали чеченські аули трудовою повинністю. Пункт 4 приписав: «у разі руху загону виділити людей для влаштування доріг і мостів, утримувати при приставі достатнє число людей для перевезення паперів або наказів з одного аулу в інший, давати кінних людей для конвоювання» (пристав - призначений імперією наглядач над аулами)<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці наказ полковника лохвицького від 17 липня 1877 року по чеберлоївській дільниці зобов'язав покараних самих прорубати військам дорогу у свої гори: «усю дільницю зобов'язати тепер же в найкоротший строк зробити широку просіку від босоєвської гори до р. шаро-аргун на просторі понад 6-ть верст» (верста - трохи більше кілометра)(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1877</div>
+<div><a href="/uk/campaigns/C1172">C1172</a> «Косіть усе, бийте і вішайте нещадно»: придушення повстання 1877 року і страти в Грозному (1877-1878)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Наказ полковника Лохвицького від 17 липня 1877 року по Чеберлоївській дільниці зобов'язав покараних самих прорубати військам дорогу у свої гори: «усю дільницю зобов'язати тепер же в найкоротший строк зробити широку просіку від Босоєвської гори до р. Шаро-Аргун на просторі понад 6-ть верст» (верста - трохи більше кілометра)<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці використання дешевої робочої сили на шахтах і заводах в умовах найтяжчої експлуатації: «первинно більшість шахтарів становили сезонні робітники»(citation: енциклопедія історії україни: додатковий том 2021) – без прав, без осілості, на знос."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1890-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1890</div>
+<div><a href="/uk/campaigns/C0066">C0066</a> Промислова колонізація та ресурсна експлуатація Півдня (1890)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Використання дешевої робочої сили на шахтах і заводах в умовах найтяжчої експлуатації: «Первинно більшість шахтарів становили сезонні робітники»<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2021). Енциклопедія історії України: Додатковий том."data-reference="Енциклопедія історії України: Додатковий том 2021"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span> – без прав, без осілості, на знос.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці використання розкуркулених селян, відправлених до системи новостворюваного гулагу, як примусової безоплатної робочої сили на важких державних роботах(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1928-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1928</div>
+<div><a href="/uk/campaigns/C0077">C0077</a> Насильницька колективізація та розкуркулення (1928–1932)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Використання розкуркулених селян, відправлених до системи новостворюваного ГУЛАГу, як примусової безоплатної робочої сили на важких державних роботах<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці смертельно небезпечна експлуатація праці українських селян, масово засуджених за «законом про п'ять колосків» і засланих до виправно-трудових таборів у період голодомору(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1932-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1932</div>
+<div><a href="/uk/campaigns/C0078">C0078</a> Терор голодом: Голодомор (1932–1933)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Смертельно небезпечна експлуатація праці Українських селян, масово засуджених за «законом про п'ять колосків» і засланих до виправно-трудових таборів у період Голодомору<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці переміщення сотень тисяч людей до спецпоселень і таборів як система примусової праці: за неповні два роки «вивезено у віддалені регіони срср до 1 млн 250 тис. осіб (близько 10 % населення)»(citation: депортація (енциклопедія сучасної україни) 2007) – вислані скеровувалися на роботи у віддалені регіони без права виїзду."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1939-09-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1939</div>
+<div><a href="/uk/campaigns/C0081">C0081</a> Анексія та радянізація Західної України (1939–1941)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Переміщення сотень тисяч людей до спецпоселень і таборів як система примусової праці: за неповні два роки «вивезено у віддалені регіони СРСР до 1 млн 250 тис. осіб (близько 10 % населення)»<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="О. Г. Бажан, О. Й. Стасюк (ЕСУ). (2007). Депортація (Енциклопедія Сучасної України)."data-reference="Депортація (Енциклопедія Сучасної України) 2007"><sup><a href="https://esu.com.ua/article-26038" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span> – вислані скеровувалися на роботи у віддалені регіони без права виїзду.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці використання полонених учасників опору та депортованих як безплатної робочої сили: до завдань гулагу входило «використання їх як дешевої робочої сили і перекидання, в разі потреби, з місця на місце»(citation: енциклопедія історії україни: т. 2 2004); депортованих із західної україни направляли на спецпоселення та важкі роботи - лише влітку 1944 року «вивезено понад 17 000 осіб в красноярський край»(citation: депортація (енциклопедія сучасної україни) 2007)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1944-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1944</div>
+<div><a href="/uk/campaigns/C0084">C0084</a> Придушення опору УПА та операція «Вісла» (1944–1951)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Використання полонених учасників опору та депортованих як безплатної робочої сили: до завдань ГУЛАГу входило «використання їх як дешевої робочої сили і перекидання, в разі потреби, з місця на місце»<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2004). Енциклопедія історії України: Т. 2."data-reference="Енциклопедія історії України: Т. 2 2004"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span>; депортованих із Західної України направляли на спецпоселення та важкі роботи - лише влітку 1944 року «вивезено понад 17 000 осіб в Красноярський край»<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="О. Г. Бажан, О. Й. Стасюк (ЕСУ). (2007). Депортація (Енциклопедія Сучасної України)."data-reference="Депортація (Енциклопедія Сучасної України) 2007"><sup><a href="https://esu.com.ua/article-26038" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Українці",
+"russia/nokhchi": "Нохчі (Чеченці)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://instituteofhistory.ru/media/library/publication/files/%D0%9A%D1%83%D1%88%D0%B5%D0%B2%D0%B0_%D0%95.%D0%9D._%D0%9D%D0%B0%D1%80%D0%BE%D0%B4%D1%8B_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B3%D0%BE_%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D0%B0_%D0%B8_%D0%B8%D1%85_%D1%81%D0%B2%D1%8F%D0%B7%D0%B8_%D1%81_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B5%D0%B9._%D0%9C%D0%BE%D1%81_TFA3pwz.pdf" target="_blank">
+                        Кушева. Е. Н.. (1963). Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank">
+                        Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank">
+                        Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://loveread.ec/book-comments.php?book=69990" target="_blank">
+                        Татьяна Таирова-Яковлева. (2007). Мазепа.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2009). Енциклопедія історії України: Т. 6.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2011). Енциклопедія історії України: Т. 8.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="https://psz.ri.org.ru/I/XXXIV.pdf" target="_blank">
+                        Российская империя (ПСЗРИ); №26802 от 17 апреля 1817 и №27081 от 8 октября 1817 (упразднение Бугского казачьего войска). (1830). Полное собрание законов Российской империи. Собрание первое. Том XXXIV (1817).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank">
+                        Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="12.0">
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="https://loveread.ec/book-comments.php?book=75382" target="_blank">
+                        Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank">
+                        Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-18" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2021). Енциклопедія історії України: Додатковий том.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-19" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-19" href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank">
+                        Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-20" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-20" href="https://esu.com.ua/article-26038" target="_blank">
+                        О. Г. Бажан, О. Й. Стасюк (ЕСУ). (2007). Депортація (Енциклопедія Сучасної України).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-21" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-21" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2004). Енциклопедія історії України: Т. 2.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

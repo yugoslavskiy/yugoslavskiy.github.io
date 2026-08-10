@@ -1,0 +1,962 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/campaigns/C1165/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1165/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1165/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1165/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1165/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="«Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846), кампанія C1165 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/campaigns/C1165/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>«Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846), кампанія C1165 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/">Кампанії</a></li>
+  <li class="breadcrumb-item">«Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>«Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>У 1840-1846 роках імперія стискала Чечню з усіх боків разом: торговельною блокадою і заручництвом, таємною війною - замовними вбивствами, агентурою і підкупом, - каральними експедиціями і будівництвом Сунженської лінії фортець із виселенням жителів. Програму назвав генерал Головін, командир Окремого Кавказького корпусу (глава імперських військ і адміністрації на Кавказі), рапортом військовому міністру Чернишову від 24 лютого 1841 року: «стиснення таким чином з усіх боків Чечні поставить вождів цього багатолюдного племені в найневигідніше для них становище... Вельми правдоподібно, що чеченці, залишившись тривалий час у бездіяльності, стануть смирнішими»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Розрахунок політики історик Н. І. Покровський формулює за документами: «Голодна Чечня, за розрахунками царизму, мала здатися, щоб відновити торговельні відносини і добути хліб»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Військову силу імперія доповнила таємною: Чернишов таємним листом Головіну від 19 липня 1842 року назвав зразок - «Англійці вміли утвердити панування своє в Індії політичними засобами. Цим шляхом зберегли вони війська і виграли час у підкоренні краю. Чи не повинні й ми випробувати цю систему?»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Підсумок шести років підбив імперський офіцер Полторацький, учасник грудневої експедиції 1846 року: «площина Малої Чечні в трикутнику між фортецями Грозною, Воздвиженською і Закан-Юртом очищена цілком від жител і лісів»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1165
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>
+                    <span>Червень 1840</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>
+                    <span>Грудень 1846</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версія</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Створено:&nbsp;</span>24 липня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>24 липня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/C1165" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Шари Навігатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Шар russia-colonialism</h6>
+                    <a class="dropdown-item" href="/uk/campaigns/C1165/C1165-russia-colonialism-layer.json" download target="_blank">завантажити</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/uk/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fuk%2Fcampaigns%2FC1165%2FC1165-russia-colonialism-layer.json" target="_blank">відкрити <img width="10" src="/uk/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Актори</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/groups/G0009">G0009</a></td>
+                <td><a href="/uk/groups/G0009">Російська імперія</a></td>
+                <td>23</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Застосовані інструменти</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/software/S0010"> S0010 </a></td>
+                <td><a href="/uk/software/S0010"> Регулярна армія </a></td>
+                <td>23</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реалізовані процедури</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="економічна блокада у 1841-1846 роках імперія тримала чечню, що не підкорилася, в торговельній блокаді. 7 травня 1841 року генерал граббе, командувач військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), розіслав шістьом начальникам дільниць лінії припис «вжити найсуворіших заходів, щоб непокірним горцям не передавалося пороху, сірки, свинцю чи будь-яких інших припасів, а з нашого боку за виконанням цього мати неослабний і постійний нагляд»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). дію блокади визнала імперська записка «про політичний стан чечні» при рапорті генерала нейдгардта, глави імперських військ на кавказі, від 20 листопада 1843 року: чеченцям бракує тканин, заліза і солі, і «причину цього шукати треба в припиненні торговельних зв'язків з росіянами, а не в нестачі продовольчих засобів»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). історики я. з. ахмадов і е. х. хасмагомадов пишуть, що чеченські наїбства (області імамату, керовані намісниками імама - наїбами) стали його економічною базою: хліб та інша сільськогосподарська продукція чеченських селян дали «імамату можливість майже два десятиліття жити в умовах повної економічної блокади»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0108">T0108</a> Економічна блокада
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У 1841-1846 роках імперія тримала Чечню, що не підкорилася, в торговельній блокаді. 7 травня 1841 року генерал Граббе, командувач військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), розіслав шістьом начальникам дільниць лінії припис «вжити найсуворіших заходів, щоб непокірним горцям не передавалося пороху, сірки, свинцю чи будь-яких інших припасів, а з нашого боку за виконанням цього мати неослабний і постійний нагляд»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Дію блокади визнала імперська записка «Про політичний стан Чечні» при рапорті генерала Нейдгардта, глави імперських військ на Кавказі, від 20 листопада 1843 року: чеченцям бракує тканин, заліза і солі, і «причину цього шукати треба в припиненні торговельних зв'язків з росіянами, а не в нестачі продовольчих засобів»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть, що чеченські наїбства (області імамату, керовані намісниками імама - наїбами) стали його економічною базою: хліб та інша сільськогосподарська продукція чеченських селян дали «імамату можливість майже два десятиліття жити в умовах повної економічної блокади»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="економічний контроль дозволену торгівлю з чечнею імперія загнала під власний контроль - у казенні мінові двори (пункти обміну товарами під наглядом чиновників). історики я. з. ахмадов і е. х. хасмагомадов пишуть: «вільна торгівля росіян з горцями на прикордонній лінії, у тому числі і з чеченцями, була заборонена. усі торговельні операції мали проходити під контролем державних чиновників, які стежили за тим, щоб до горців - «за кордон», не потрапляли товари воєнного характеру. крім того, запроваджувалася низка обмежень на продаж заліза, солі, золота та інших товарів»(citation: история чечни в xix-xx веках 2005). мережа контрольованих пунктів розширювалася: у другій половині 1840-х років число мінових дворів доведено до 11 за 1846 рік горці привезли на всі мінові двори товару на 231 тисячу рублів(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0038">T0038</a> Економічний контроль
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Дозволену торгівлю з Чечнею імперія загнала під власний контроль - у казенні мінові двори (пункти обміну товарами під наглядом чиновників). Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: «Вільна торгівля росіян з горцями на прикордонній лінії, у тому числі і з чеченцями, була заборонена. Усі торговельні операції мали проходити під контролем державних чиновників, які стежили за тим, щоб до горців - «за кордон», не потрапляли товари воєнного характеру. Крім того, запроваджувалася низка обмежень на продаж заліза, солі, золота та інших товарів»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Мережа контрольованих пунктів розширювалася: у другій половині 1840-х років число мінових дворів доведено до 11 за 1846 рік горці привезли на всі мінові двори товару на 231 тисячу рублів<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова видача втікачів і повстанців імперія вимагала від чеченських громад видавати солдатів, які втекли до них з імперської армії, і призначила ціною видачі сіль. військовий міністр чернишов офіційним службовим листом (відношенням) від 6 вересня 1842 року передав генералу головіну, командиру окремого кавказького корпусу (главі імперських військ і адміністрації на кавказі), повеління імператора миколи i: щоб місцеве начальство «вимагало повернення військових чинів, що переховалися в горців, які виявили нам покірність», а від непідкорених громад «намагалося схиляти непокірних до видачі дезертирів за сіль»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). викуповувати втікачів грошима імператор заборонив прямо: платою за виданих людей ставав доступ до солі, яку імперія тримала під забороною."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0156">T0156</a> Примусова видача втікачів і повстанців
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Імперія вимагала від чеченських громад видавати солдатів, які втекли до них з імперської армії, і призначила ціною видачі сіль. Військовий міністр Чернишов офіційним службовим листом (відношенням) від 6 вересня 1842 року передав генералу Головіну, командиру Окремого Кавказького корпусу (главі імперських військ і адміністрації на Кавказі), повеління імператора Миколи I: щоб місцеве начальство «вимагало повернення військових чинів, що переховалися в горців, які виявили нам покірність», а від непідкорених громад «намагалося схиляти непокірних до видачі дезертирів за сіль»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Викуповувати втікачів грошима імператор заборонив прямо: платою за виданих людей ставав доступ до солі, яку імперія тримала під забороною.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="захоплення заручників заручників брали не в покарання за повстання, а за підозрою - до того, як аул щось зробив. 9 січня 1842 року начальник сунженської лінії рапортом генералу ольшевському, начальнику лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), доповів про розпорядження по кумицькій площині (рівнині на північний схід від чечні): «я предписал полк. фрейтагу... ежели будет подозрение, что которая либо деревня хочет бежать, то тотчас взять из нее большое число аманатов, с тем, чтобы сами жители их кормили» (аманат - людина, яку імперія забирала з громади як заручника; загроза розправи над узятим тримала рідних і весь аул у підпорядкуванні)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). той самий рапорт визнає, чим імперія тримає людей: «зима и аманаты удерживают их, в настоящее время от побега в чечню»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). заручників з вайнахських громад брала і цивільна адміністрація імперії в грузії - за самою лише звісткою про перехід до опору. 26 травня 1841 року грузино-імеретинський цивільний губернатор доповів брайку, керуючому цивільною частиною в закавказькому краї, що за звісткою про перехід кистинців (вайнахської громади на межі з грузією) на бік шаміля (імама, керівника опору горців дагестану і чечні російському завоюванню) губернський секретар ліммерман приписав повітовим засідателям (чиновникам повітового управління) «задержать здесь под благовидным предлогом всех кистин, зимовавших в тушетии и на алванском поле» (тушетія й алванське поле - гірська область і рівнина на північному сході грузії)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). затримували не учасників переходу, а тих, хто прийшов на зимівлю; привід для затримання сам документ називає «благовидным»."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0099">T0099</a> Захоплення заручників
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Заручників брали не в покарання за повстання, а за підозрою - до того, як аул щось зробив. 9 січня 1842 року начальник Сунженської лінії рапортом генералу Ольшевському, начальнику лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), доповів про розпорядження по Кумицькій площині (рівнині на північний схід від Чечні): «я предписал полк. Фрейтагу... ежели будет подозрение, что которая либо деревня хочет бежать, то тотчас взять из нее большое число аманатов, с тем, чтобы сами жители их кормили» (аманат - людина, яку імперія забирала з громади як заручника; загроза розправи над узятим тримала рідних і весь аул у підпорядкуванні)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Той самий рапорт визнає, чим імперія тримає людей: «Зима и аманаты удерживают их, в настоящее время от побега в Чечню»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Заручників з вайнахських громад брала і цивільна адміністрація імперії в Грузії - за самою лише звісткою про перехід до опору. 26 травня 1841 року грузино-імеретинський цивільний губернатор доповів Брайку, керуючому цивільною частиною в Закавказькому краї, що за звісткою про перехід кистинців (вайнахської громади на межі з Грузією) на бік Шаміля (імама, керівника опору горців Дагестану і Чечні російському завоюванню) губернський секретар Ліммерман приписав повітовим засідателям (чиновникам повітового управління) «задержать здесь под благовидным предлогом всех кистин, зимовавших в Тушетии и на Алванском поле» (Тушетія й Алванське поле - гірська область і рівнина на північному сході Грузії)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Затримували не учасників переходу, а тих, хто прийшов на зимівлю; привід для затримання сам документ називає «благовидным».</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції 29 січня 1841 року генерал головін, командир окремого кавказького корпусу (глава імперських військ і адміністрації на кавказі), приписав генералу граббе, командувачу військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), організувати вбивство ахверди-магоми, наїба шаміля в малій чечні (намісника імама, керівника опору горців дагестану і чечні російському завоюванню): «можна вважати, що за добру плату знайдуться люди, які зважаться на винищення ахверди-магоми. немає сумніву, що через знищення цього заповзятливого сподвижника шаміля ми позбулися б одного з найнебезпечніших його знарядь, і заспокоєння чечні було б тоді справою значно менш складною»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). головін виділив бюджет і виконавця: граббе надано «право вжити за вашими міркуваннями до двох тисяч рублів ср. з сум екстраординарних», а «виконання справи цієї найближче покласти на ген.-м. ольшевського», начальника лівого флангу лінії(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). смерть ахверди-магоми з цим замовленням не пов'язана: улітку 1843 року він загинув у бою біля селища шатілі на кордоні з грузією - історики я. з. ахмадов і е. х. хасмагомадов пишуть: «на вдоволення російського командування ахверди-магома загинув улітку 1843 р. у зіткненні під хевсурським селищем шатілі»(citation: история чечни в xix-xx веках 2005). учасників опору імперія віддала військовим судам з прискореною розправою. повеління імператора миколи i від 29 грудня 1843 року і 14 лютого 1844 року, передані військам 24 травня 1844 року, приписали: «офіцерів з горців, що брали участь у повстанні, так само кадіїв та інших головних призвідників віддати військовому суду за польовим кримінальним уложенням... вироки суду, після остаточного затвердження мною, невідкладно приводити у виконання» (кадій - мусульманський суддя)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). під військово-польовий суд за цією нормою йшли не солдати противника, а духовні та громадські лідери - «кадії та інші головні призвідники»."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0021">T0021</a> Нейтралізація опозиції
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>29 січня 1841 року генерал Головін, командир Окремого Кавказького корпусу (глава імперських військ і адміністрації на Кавказі), приписав генералу Граббе, командувачу військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), організувати вбивство Ахверди-Магоми, наїба Шаміля в Малій Чечні (намісника імама, керівника опору горців Дагестану і Чечні російському завоюванню): «можна вважати, що за добру плату знайдуться люди, які зважаться на винищення Ахверди-Магоми. Немає сумніву, що через знищення цього заповзятливого сподвижника Шаміля ми позбулися б одного з найнебезпечніших його знарядь, і заспокоєння Чечні було б тоді справою значно менш складною»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Головін виділив бюджет і виконавця: Граббе надано «право вжити за вашими міркуваннями до двох тисяч рублів ср. з сум екстраординарних», а «виконання справи цієї найближче покласти на ген.-м. Ольшевського», начальника лівого флангу лінії<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Смерть Ахверди-Магоми з цим замовленням не пов'язана: улітку 1843 року він загинув у бою біля селища Шатілі на кордоні з Грузією - історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: «На вдоволення російського командування Ахверди-Магома загинув улітку 1843 р. у зіткненні під хевсурським селищем Шатілі»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Учасників опору імперія віддала військовим судам з прискореною розправою. Повеління імператора Миколи I від 29 грудня 1843 року і 14 лютого 1844 року, передані військам 24 травня 1844 року, приписали: «Офіцерів з горців, що брали участь у повстанні, так само кадіїв та інших головних призвідників віддати військовому суду за польовим кримінальним уложенням... Вироки суду, після остаточного затвердження мною, невідкладно приводити у виконання» (кадій - мусульманський суддя)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Під військово-польовий суд за цією нормою йшли не солдати противника, а духовні та громадські лідери - «кадії та інші головні призвідники».</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="створення агентури впливу імперія тримала таємних агентів усередині адміністрації імамату шаміля (імама, керівника опору горців дагестану і чечні російському завоюванню). історик н. і. покровський пише за імперськими воєнними матеріалами: «ахверди-магома змінив начальника караулів між аргуном і сунжею, муллу-газі, що був таємним агентом царського уряду» (ахверди-магома - намісник імама в малій чечні; аргун і сунжа - річки в чечні)(citation: кавказские войны и имамат шамиля 2009). другий агент - старшина зааргунських громад: генерал завадовський, який тимчасово командував військами кавказької лінії (ланцюга імперських укріплень на землі нохчі), рапортом генералу нейдгардту, главі імперських військ на кавказі, від 24 лютого 1845 року передав донесення з лівого флангу про відомості, отримані «через нарочного, що прибув до нього від за-аргунського старшини, який має вагу в народі і перебуває з г.-л. гаксфортом у таємних зносинах»: агент повідомляв про скликання шамілем наради наїбів (намісників імама) у дарго, резиденції імама(citation: кавказские войны и имамат шамиля 2009). перебіжчиків імперія оформлювала в агентів і провідників на умовах угоди. генерал лабинцев, начальник сунженської лінії, рапортом воронцову, наміснику на кавказі, влітку 1846 року описав умови чеченця топі: «пообіцявши, якщо це буде виконано, не тільки бути лазутчиком у горах і вожаком для військ наших, але, своїм прикладом і переконанням діючи на нашу користь, схиляти інших до принесення покірності... я дозволив сім'ям топі... поселитися між переселенцями, що знаходяться біля укріплення»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). агент оплачувався не грошима, а правом сім'ї жити біля укріплення - під контролем тієї ж імперії."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0013">T0013</a> Створення агентури впливу
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Імперія тримала таємних агентів усередині адміністрації імамату Шаміля (імама, керівника опору горців Дагестану і Чечні російському завоюванню). Історик Н. І. Покровський пише за імперськими воєнними матеріалами: «Ахверди-Магома змінив начальника караулів між Аргуном і Сунжею, Муллу-Газі, що був таємним агентом царського уряду» (Ахверди-Магома - намісник імама в Малій Чечні; Аргун і Сунжа - річки в Чечні)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Другий агент - старшина зааргунських громад: генерал Завадовський, який тимчасово командував військами Кавказької лінії (ланцюга імперських укріплень на землі нохчі), рапортом генералу Нейдгардту, главі імперських військ на Кавказі, від 24 лютого 1845 року передав донесення з лівого флангу про відомості, отримані «через нарочного, що прибув до нього від за-Аргунського старшини, який має вагу в народі і перебуває з г.-л. Гаксфортом у таємних зносинах»: агент повідомляв про скликання Шамілем наради наїбів (намісників імама) у Дарго, резиденції імама<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Перебіжчиків імперія оформлювала в агентів і провідників на умовах угоди. Генерал Лабинцев, начальник Сунженської лінії, рапортом Воронцову, наміснику на Кавказі, влітку 1846 року описав умови чеченця Топі: «Пообіцявши, якщо це буде виконано, не тільки бути лазутчиком у горах і вожаком для військ наших, але, своїм прикладом і переконанням діючи на нашу користь, схиляти інших до принесення покірності... я дозволив сім'ям Топі... поселитися між переселенцями, що знаходяться біля укріплення»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Агент оплачувався не грошима, а правом сім'ї жити біля укріплення - під контролем тієї ж імперії.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="підкуп еліт підкуп горської верхівки імперія поставила на програмну основу. військовий міністр чернишов таємним листом генералу головіну, командиру окремого кавказького корпусу (главі імперських військ і адміністрації на кавказі), від 19 липня 1842 року запропонував перейняти досвід британської індії: «англійці вміли утвердити панування своє в індії політичними засобами... чи не повинні й ми випробувати цю систему?»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). головін листом-відповіддю від 28 серпня 1842 року склав список кандидатів на перекупівлю з оточення шаміля (імама, керівника опору горців дагестану і чечні російському завоюванню) і запросив фонд: «схиленням на наш бік деяких із вищезгаданих осіб багато послабив би союз мюридства... я вважаю за необхідне мати в розпорядженні головного тут начальства до 15 тис. червінців готової суми» (червінець - золота монета імперії; мюридство - в імперському лексиконі рух опору горців)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). 1 лютого 1844 року імператор микола i затвердив фонд з перевищенням запиту: офіційним службовим листом чернишова генералу нейдгардту, який змінив головіна на чолі імперських військ на кавказі, «про види ваші для таємних зносин з горцями» повелено «замість прошених вами на цей предмет 10 тисяч червінців асигнувати у відання ваше 15 тисяч червінців»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). до даргінської експедиції 1845 року (походу імперської армії на резиденцію шаміля аул дарго) історики я. з. ахмадов і е. х. хасмагомадов фіксують окремий фонд: «для підкупу впливових осіб з горців було виділено 45 тисяч рублів сріблом»(citation: история чечни в xix-xx веках 2005). на сунженській лінії, що будувалася (ланцюгу імперських козацьких станиць і укріплень на річці сунжі), імперія купувала лояльність окремих чеченських старшин. воронцов, намісник і головнокомандувач на кавказі, писав у рапорті літа 1846 року про старшину аулу натхой-кежу: «я звернув особливу мою увагу, щоб привернути алдумова на користь нашу. за понесені ж ним втрати і 4 товаришами його... я вважав би справедливим призначити винагороду»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0015">T0015</a> Підкуп еліт
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Підкуп горської верхівки імперія поставила на програмну основу. Військовий міністр Чернишов таємним листом генералу Головіну, командиру Окремого Кавказького корпусу (главі імперських військ і адміністрації на Кавказі), від 19 липня 1842 року запропонував перейняти досвід британської Індії: «Англійці вміли утвердити панування своє в Індії політичними засобами... Чи не повинні й ми випробувати цю систему?»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Головін листом-відповіддю від 28 серпня 1842 року склав список кандидатів на перекупівлю з оточення Шаміля (імама, керівника опору горців Дагестану і Чечні російському завоюванню) і запросив фонд: «Схиленням на наш бік деяких із вищезгаданих осіб багато послабив би союз мюридства... я вважаю за необхідне мати в розпорядженні головного тут начальства до 15 тис. червінців готової суми» (червінець - золота монета імперії; мюридство - в імперському лексиконі рух опору горців)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 1 лютого 1844 року імператор Микола I затвердив фонд з перевищенням запиту: офіційним службовим листом Чернишова генералу Нейдгардту, який змінив Головіна на чолі імперських військ на Кавказі, «про види ваші для таємних зносин з горцями» повелено «замість прошених вами на цей предмет 10 тисяч червінців асигнувати у відання ваше 15 тисяч червінців»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. До Даргінської експедиції 1845 року (походу імперської армії на резиденцію Шаміля аул Дарго) історики Я. З. Ахмадов і Е. Х. Хасмагомадов фіксують окремий фонд: «для підкупу впливових осіб з горців було виділено 45 тисяч рублів сріблом»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. На Сунженській лінії, що будувалася (ланцюгу імперських козацьких станиць і укріплень на річці Сунжі), імперія купувала лояльність окремих чеченських старшин. Воронцов, намісник і головнокомандувач на Кавказі, писав у рапорті літа 1846 року про старшину аулу Натхой-Кежу: «я звернув особливу мою увагу, щоб привернути Алдумова на користь нашу. За понесені ж ним втрати і 4 товаришами його... я вважав би справедливим призначити винагороду»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нав'язування власної картини реальності на початку 1844 року, після поразок імперської армії в 1843 році, генерал нейдгардт, глава імперських військ на кавказі, видав відозву до горців, що перевертає картину війни: загарбником у ній виставлено не імперського генерала, який привів війська, а шаміля (імама, керівника опору горців дагестану і чечні російському завоюванню). відозва малює шаміля людиною, «яка проповідує рівність і винищення всіх спадкових влад з єдиною метою заволодіти спадщинами ханів і беків» і яка «наповнила ваші аули ненависними муртозігатами... обтяжила вас тяжкими податками...» (муртазігати - кінні воїни постійного війська імамату)(citation: кавказские войны и имамат шамиля 2009). результат відозви історик н. і. покровський описав коротко: «но вопли не помогали» - воланням він називає самі ці імперські умовляння(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0007">T0007</a> Нав'язування власної картини реальності
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>На початку 1844 року, після поразок імперської армії в 1843 році, генерал Нейдгардт, глава імперських військ на Кавказі, видав відозву до горців, що перевертає картину війни: загарбником у ній виставлено не імперського генерала, який привів війська, а Шаміля (імама, керівника опору горців Дагестану і Чечні російському завоюванню). Відозва малює Шаміля людиною, «яка проповідує рівність і винищення всіх спадкових влад з єдиною метою заволодіти спадщинами ханів і беків» і яка «наповнила ваші аули ненависними муртозігатами... обтяжила вас тяжкими податками...» (муртазігати - кінні воїни постійного війська імамату)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Результат відозви історик Н. І. Покровський описав коротко: «Но вопли не помогали» - воланням він називає самі ці імперські умовляння<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="створення маріонеткових релігійних інститутів проти релігійного авторитету імамату (держави горців дагестану і чечні на чолі з імамом шамілем, керівником опору російському завоюванню) імперія виставляла лояльних їй ісламських кліриків. 13 березня 1845 року воронцов, намісник і головнокомандувач на кавказі, доповідною запискою імператору миколі i повідомив про відправлення до чечні кримського мусульманського судді (кадія): «каді ескер сеїд халіл ефенді прийшов до мене і оголосив намір і бажання його особисто сприяти праведній нашій справі в горах кавказьких умовляннями племен іменем самої віри магометанської... я дав йому на витрати... всього 400 руб. ср. і прогони на чотири коні до фортеці грозної, віднісши витрату цю на екстраординарну суму»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). службу імперія оплатила і нагородою: історики я. з. ахмадов і е. х. хасмагомадов пишуть - «у 1845 р. до фортеці грозної направлено кримськотатарського кадія кадіаскера сеїд-халіля ефенді, чиї зусилля були невдовзі відзначені високою нагородою - орденом святої анни iii ступеня»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0153">T0153</a> Створення маріонеткових релігійних інститутів
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Проти релігійного авторитету імамату (держави горців Дагестану і Чечні на чолі з імамом Шамілем, керівником опору російському завоюванню) імперія виставляла лояльних їй ісламських кліриків. 13 березня 1845 року Воронцов, намісник і головнокомандувач на Кавказі, доповідною запискою імператору Миколі I повідомив про відправлення до Чечні кримського мусульманського судді (кадія): «Каді Ескер Сеїд Халіл Ефенді прийшов до мене і оголосив намір і бажання його особисто сприяти праведній нашій справі в горах Кавказьких умовляннями племен іменем самої віри магометанської... я дав йому на витрати... всього 400 руб. ср. і прогони на чотири коні до фортеці Грозної, віднісши витрату цю на екстраординарну суму»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Службу імперія оплатила і нагородою: історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть - «У 1845 р. до фортеці Грозної направлено кримськотатарського кадія Кадіаскера Сеїд-Халіля Ефенді, чиї зусилля були невдовзі відзначені високою нагородою - орденом Святої Анни III ступеня»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="воєнна інтервенція тричі за 1842-1845 роки імперія кидала на чечню великі армії. 30 травня 1842 року генерал граббе, командувач військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), повів десятитисячний загін з фортеці герзель в ічкерію (гірську південно-східну чечню) - до дарго, резиденції шаміля (імама, керівника опору горців дагестану і чечні російському завоюванню); історик н. і. покровський: «у шестиденному бою в густих ічкеринських лісах граббе зазнав рішучої поразки»(citation: кавказские войны и имамат шамиля 2009); історики я. з. ахмадов і е. х. хасмагомадов рахують: «загальні втрати вбитими, пораненими і зниклими безвісти склали 66 офіцерів і понад 1700 нижніх чинів»(citation: история чечни в xix-xx веках 2005). 14 листопада 1843 року імператор микола i особисто призначив нові сили: «посилаю тобі на один рік 2 дивізії у складі 24 батальйонів... даю я тобі такі сили, яких кавказ і уві сні не бачив... ти повинен проникнути в гори, розгромити шаміля скрізь, де тобі протистане, все винищувати, що тобі буде противитися, але щадити все, що покорятиметься без бою» - і додав про підкуп: «сип гроші, намагаючись ними привернути на наш бік людей, які мають вплив на племена»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). улітку 1845 року воронцов, намісник і головнокомандувач на кавказі, за прямим розпорядженням миколи i повів армію на дарго: покровський рахує загін у 9500 осіб, історики я. з. ахмадов і е. х. хасмагомадов - «армію у 21 тисячу солдатів і офіцерів з 42 артилерійськими гарматами»(citation: кавказские войны и имамат шамиля 2009)(citation: история чечни в xix-xx веках 2005). похід скінчився катастрофою: «з 9500 осіб, що складали загін воронцова, вибуло з ладу 3510 осіб, серед яких було 3 генерали, 28 штаб-офіцерів і 158 обер-офіцерів»(citation: кавказские войны и имамат шамиля 2009). долю самого дарго джерела передають по-різному: за покровським, війська знайшли аул «очищеним і запаленим самими мюридами»; за записом гаджі-алі, супутника і хроніста шаміля, росіяни «після незначної перестрілки заволоділи» дарго, а йдучи спалили близько 700 своїх наметів; історик д. а. хожаєв пише, що селище спалили самі царські війська(citation: кавказские войны и имамат шамиля 2009)(citation: сказание очевидца о шамиле 1873)(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0019">T0019</a> Воєнна інтервенція
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Тричі за 1842-1845 роки імперія кидала на Чечню великі армії. 30 травня 1842 року генерал Граббе, командувач військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), повів десятитисячний загін з фортеці Герзель в Ічкерію (гірську південно-східну Чечню) - до Дарго, резиденції Шаміля (імама, керівника опору горців Дагестану і Чечні російському завоюванню); історик Н. І. Покровський: «У шестиденному бою в густих ічкеринських лісах Граббе зазнав рішучої поразки»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; історики Я. З. Ахмадов і Е. Х. Хасмагомадов рахують: «Загальні втрати вбитими, пораненими і зниклими безвісти склали 66 офіцерів і понад 1700 нижніх чинів»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. 14 листопада 1843 року імператор Микола I особисто призначив нові сили: «Посилаю тобі на один рік 2 дивізії у складі 24 батальйонів... даю я тобі такі сили, яких Кавказ і уві сні не бачив... Ти повинен проникнути в гори, розгромити Шаміля скрізь, де тобі протистане, все винищувати, що тобі буде противитися, але щадити все, що покорятиметься без бою» - і додав про підкуп: «Сип гроші, намагаючись ними привернути на наш бік людей, які мають вплив на племена»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Улітку 1845 року Воронцов, намісник і головнокомандувач на Кавказі, за прямим розпорядженням Миколи I повів армію на Дарго: Покровський рахує загін у 9500 осіб, історики Я. З. Ахмадов і Е. Х. Хасмагомадов - «армію у 21 тисячу солдатів і офіцерів з 42 артилерійськими гарматами»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Похід скінчився катастрофою: «З 9500 осіб, що складали загін Воронцова, вибуло з ладу 3510 осіб, серед яких було 3 генерали, 28 штаб-офіцерів і 158 обер-офіцерів»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Долю самого Дарго джерела передають по-різному: за Покровським, війська знайшли аул «очищеним і запаленим самими мюридами»; за записом Гаджі-Алі, супутника і хроніста Шаміля, росіяни «після незначної перестрілки заволоділи» Дарго, а йдучи спалили близько 700 своїх наметів; історик Д. А. Хожаєв пише, що селище спалили самі царські війська<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Гаджи-Али. (1873). Сказание очевидца о Шамиле."data-reference="Сказание очевидца о Шамиле 1873"><sup><a href="https://kp.rusneb.ru/item/material/skazanie-ochevidca-o-shamile" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span><span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="каральні експедиції у 1841-1846 роках каральні виходи імперських військ проти чечні йшли щороку. у червні 1841 року генерал граббе, командувач військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), увійшов в аух (чеченську область на північному сході): історик н. і. покровський пише - «6 червня він зайняв ярикса, 7 - кишень, який розорявся три дні»(citation: кавказские войны и имамат шамиля 2009). наприкінці вересня 1841 року загони граббе і підполковника нестерова пройшли верхів'я річки асси - похід, за покровським, «супроводжувався винищеннями аулів»(citation: кавказские войны и имамат шамиля 2009); з 15 по 30 жовтня експедиція граббе пройшла великою і малою чечнею (рівнинними східною та західною частинами чечні). мету цих походів покровський формулює так: «експедиціями залякати чеченців»(citation: кавказские войны и имамат шамиля 2009). навесні 1844 року набіги приписав генерал нейдгардт, глава імперських військ на кавказі: зібрати війська у фортеці грозній «для проведення короткочасних і раптових набігів у найближчі аули великої чечні» і діяти «не тільки для погрози, але й для покарання непокірних аулів» (припис начальнику назрановського загону від 5 квітня 1844 року)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). зачистку малої чечні (рівнинно-передгірної західної частини чечні) у грудні 1846 року вела спеціально призначена колона. імперський офіцер полторацький, учасник експедиції, записав наказ від 14 грудня 1846 року: «на завтрашній день... колона у складі трьох батальйонів [єгерського князя воронцова полку], восьми гармат і полку кавалерії під командою полковника меллер-закомельського призначалася йти палити ворожі аули»(citation: воспоминания 1895). завдання «йти палити» аули поставлене наказом як рутинне призначення на завтра."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0077">T0077</a> Каральні експедиції
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У 1841-1846 роках каральні виходи імперських військ проти Чечні йшли щороку. У червні 1841 року генерал Граббе, командувач військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), увійшов в Аух (чеченську область на північному сході): історик Н. І. Покровський пише - «6 червня він зайняв Ярикса, 7 - Кишень, який розорявся три дні»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Наприкінці вересня 1841 року загони Граббе і підполковника Нестерова пройшли верхів'я річки Асси - похід, за Покровським, «супроводжувався винищеннями аулів»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; з 15 по 30 жовтня експедиція Граббе пройшла Великою і Малою Чечнею (рівнинними східною та західною частинами Чечні). Мету цих походів Покровський формулює так: «експедиціями залякати чеченців»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Навесні 1844 року набіги приписав генерал Нейдгардт, глава імперських військ на Кавказі: зібрати війська у фортеці Грозній «для проведення короткочасних і раптових набігів у найближчі аули Великої Чечні» і діяти «не тільки для погрози, але й для покарання непокірних аулів» (припис начальнику Назрановського загону від 5 квітня 1844 року)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Зачистку Малої Чечні (рівнинно-передгірної західної частини Чечні) у грудні 1846 року вела спеціально призначена колона. Імперський офіцер Полторацький, учасник експедиції, записав наказ від 14 грудня 1846 року: «на завтрашній день... колона у складі трьох батальйонів [Єгерського князя Воронцова полку], восьми гармат і полку кавалерії під командою полковника Меллер-Закомельського призначалася йти палити ворожі аули»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Завдання «йти палити» аули поставлене наказом як рутинне призначення на завтра.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="терор генерал нейдгардт, глава імперських військ на кавказі, приписом начальнику назрановського загону від 5 квітня 1844 року прописав страх метою дій військ: «щоб одночасною появою і діями загонів з різних боків, на всьому протязі театрів повстання, поширити страх на все народонаселення, і, утримуючи чеченців у домах своїх, перешкоджати їм подати допомогу лезгінським племенам» (лезгінські племена - в імперському лексиконі горці дагестану)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). страх населення тут - не побічний ефект воєнних дій, а їхня заявлена мета, поставлена військам письмовим наказом."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0022">T0022</a> Терор
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Генерал Нейдгардт, глава імперських військ на Кавказі, приписом начальнику Назрановського загону від 5 квітня 1844 року прописав страх метою дій військ: «щоб одночасною появою і діями загонів з різних боків, на всьому протязі театрів повстання, поширити страх на все народонаселення, і, утримуючи чеченців у домах своїх, перешкоджати їм подати допомогу лезгінським племенам» (лезгінські племена - в імперському лексиконі горці Дагестану)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Страх населення тут - не побічний ефект воєнних дій, а їхня заявлена мета, поставлена військам письмовим наказом.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="катування та знущання у жовтневій експедиції 1841 року чечнею війська генерала граббе, командувача військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), закатували полоненого до смерті. історик н. і. покровський наводить епізод за рукописом очевидця - офіцера чайковського «кавказ у 1841 році»: обеззброєного полоненого чеченця, який відмовився йти, «волокли перехід на мотузці, прив'язаній до гармати. понівечений волоком кам'янистою дорогою, він помер наступного дня»; другого полоненого закололи багнетами(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0110">T0110</a> Катування та знущання
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У жовтневій експедиції 1841 року Чечнею війська генерала Граббе, командувача військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), закатували полоненого до смерті. Історик Н. І. Покровський наводить епізод за рукописом очевидця - офіцера Чайковського «Кавказ у 1841 році»: обеззброєного полоненого чеченця, який відмовився йти, «волокли перехід на мотузці, прив'язаній до гармати. Понівечений волоком кам'янистою дорогою, він помер наступного дня»; другого полоненого закололи багнетами<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальне знищення інфраструктури у 1841-1846 роках експедиції стирали чеченські селища десятками. ауховське селище кишень війська генерала граббе, командувача військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), знищували три дні: імперський історик юров записав - «до вечора селище та його сади не існували; з купи обгорілих руїн височіли тільки дві мечеті та дві саклі... пощаджені на прохання дукай-кадія» (сакля - дім горця; кадій - мусульманський суддя)(citation: 1840, 1841 и 1842-й годы на кавказе 1886). у поході на річку ассу наприкінці вересня 1841 року загін, за юровим, «взяв з бою і зруйнував 8 аулів» - серед них гапургой-юрт, адільгері-юрт, ша-юрт, - а «запаси кукурудзи та сіна спалено»(citation: 1840, 1841 и 1842-й годы на кавказе 1886). у жовтневій експедиції 15-30 жовтня 1841 року спалено пхан-кічу, шалажі, магома-ірзау, магома-юрт, терга-юрт, шуаїб-хутір та аули біля гойти; 16 жовтня знищено нурикой-юрт - юров називає його «найбагатолюдніший і найбагатший чеченський аул»(citation: 1840, 1841 и 1842-й годы на кавказе 1886). у грудні 1846 року війська випалили алдинські хутори та аули малої чечні (рівнинно-передгірної західної частини чечні). імперський офіцер полторацький, учасник експедиції, записав 15 грудня 1846 року: «за наказом начальника колони спалахнули всі саклі, що нас оточували» (сакля - дім горця)(citation: воспоминания 1895). підсумок зачистки він же підбив так: «мета експедиції в малій чечні була досягнута цілком... площина малої чечні в трикутнику між фортецями грозною, воздвиженською і закан-юртом очищена цілком від жител і лісів»(citation: воспоминания 1895)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0105">T0105</a> Тотальне знищення інфраструктури
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У 1841-1846 роках експедиції стирали чеченські селища десятками. Ауховське селище Кишень війська генерала Граббе, командувача військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), знищували три дні: імперський історик Юров записав - «до вечора селище та його сади не існували; з купи обгорілих руїн височіли тільки дві мечеті та дві саклі... пощаджені на прохання Дукай-кадія» (сакля - дім горця; кадій - мусульманський суддя)<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. У поході на річку Ассу наприкінці вересня 1841 року загін, за Юровим, «взяв з бою і зруйнував 8 аулів» - серед них Гапургой-Юрт, Адільгері-Юрт, Ша-Юрт, - а «запаси кукурудзи та сіна спалено»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. У жовтневій експедиції 15-30 жовтня 1841 року спалено Пхан-Кічу, Шалажі, Магома-Ірзау, Магома-Юрт, Терга-Юрт, Шуаїб-хутір та аули біля Гойти; 16 жовтня знищено Нурикой-Юрт - Юров називає його «найбагатолюдніший і найбагатший чеченський аул»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. У грудні 1846 року війська випалили Алдинські хутори та аули Малої Чечні (рівнинно-передгірної західної частини Чечні). Імперський офіцер Полторацький, учасник експедиції, записав 15 грудня 1846 року: «за наказом начальника колони спалахнули всі саклі, що нас оточували» (сакля - дім горця)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Підсумок зачистки він же підбив так: «Мета експедиції в Малій Чечні була досягнута цілком... площина Малої Чечні в трикутнику між фортецями Грозною, Воздвиженською і Закан-Юртом очищена цілком від жител і лісів»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="руйнування природного ландшафту узимку 1845-1846 років імперія перейшла від прокладання окремих просік до знищення чеченських лісів - середовища життя і захисту чеченських громад. історик н. і. покровський наводить імперський огляд капітана ніколаї: «з кінця 1845 року почалися зимові наші походи в малій чечні», - і описує акти: «з 4 по 24 грудня 1845 р. експедиційний загін генерала р. к. фрейтага рубав велику просіку через гойтинський ліс, один з найгустіших у малій чечні. просіка з'єднала річку гойту з урус-мартаном»; «у січні 1846 р., з 18 по 29, рубали вже з'єднані загони р. к. фрейтага і п. п. нестерова. цього разу об'єктом винищення був гехінський ліс, а просіка встановила сполучення між річками гехінкою і валериком»(citation: кавказские войны и имамат шамиля 2009). історики я. з. ахмадов і е. х. хасмагомадов фіксують ескалацію: «з початку 1846 р. війська перейшли від прокладання окремих просік до буквального винищення дрімучих чеченських лісів»(citation: история чечни в xix-xx веках 2005). мету сформулював воронцов, намісник на кавказі: зруйнувати вплив шаміля (імама, керівника опору горців дагестану і чечні російському завоюванню) і «відірвати від нього чеченців», без яких він нічого не значитиме(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0140">T0140</a> Руйнування природного ландшафту
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Узимку 1845-1846 років імперія перейшла від прокладання окремих просік до знищення чеченських лісів - середовища життя і захисту чеченських громад. Історик Н. І. Покровський наводить імперський огляд капітана Ніколаї: «З кінця 1845 року почалися зимові наші походи в Малій Чечні», - і описує акти: «з 4 по 24 грудня 1845 р. експедиційний загін генерала Р. К. Фрейтага рубав велику просіку через Гойтинський ліс, один з найгустіших у Малій Чечні. Просіка з'єднала річку Гойту з Урус-Мартаном»; «У січні 1846 р., з 18 по 29, рубали вже з'єднані загони Р. К. Фрейтага і П. П. Нестерова. Цього разу об'єктом винищення був Гехінський ліс, а просіка встановила сполучення між річками Гехінкою і Валериком»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов фіксують ескалацію: «з початку 1846 р. війська перейшли від прокладання окремих просік до буквального винищення дрімучих чеченських лісів»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Мету сформулював Воронцов, намісник на Кавказі: зруйнувати вплив Шаміля (імама, керівника опору горців Дагестану і Чечні російському завоюванню) і «відірвати від нього чеченців», без яких він нічого не значитиме<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець у 1841-1846 роках імперія забудувала чеченські рівнини ланцюгом укріплень. історик н. і. покровський пише про 1841 рік: «улітку та восени російське командування гарячково укріплює сунженську лінію: у липні - серпні будують укріплення закан юрт, а в серпні - жовтні - укріплення казах кічу»(citation: кавказские войны и имамат шамиля 2009); історики я. з. ахмадов і е. х. хасмагомадов фіксують функцію: «будівництво двох нових укріплень - казахкічу і закан-юртівського, дозволило повністю виключити пересування великих чеченських загонів за сунжу і ще більше ізолювало притереччя від решти чечні»(citation: история чечни в xix-xx веках 2005). у 1844 році - «будівництво воздвиженського укріплення восени 1844 р. на місці зруйнованого аулу чахкері (чахкар-атаги), біля початку аргунської ущелини»(citation: история чечни в xix-xx веках 2005); покровський називає призначення: «воздвиженське мало тепер стати базою для частих набігів на чеченські аули, для зимових рубок лісу в площинній чечні»(citation: кавказские войны и имамат шамиля 2009). у 1846 році на річці фортанзі збудовано форт ачхой. функцію ачхоя імперський рапорт назвав так: «влаштування укріплення на фортанзі, майже в серці малої чечні, серед рівнин-житниць, не може не мати впливу на підкорення її»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). вторгнення в аух (чеченську область на північному сході) у червні 1841 року війська генерала граббе, командувача військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), закріпили укріпленням на захопленій землі: 16-17 червня збудовано тимчасове укріплення в акташ-аусі. укріплення простояло одне літо: історик н. і. покровський пише - «21 вересня укріплення було зрито, загін відійшов»(citation: кавказские войны и имамат шамиля 2009). біля цього укріплення імперія збирала «вірні» їй ауховські сім'ї перед переселенням під владу кумицьких володарів."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0139">T0139</a> Зведення фортець
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У 1841-1846 роках імперія забудувала чеченські рівнини ланцюгом укріплень. Історик Н. І. Покровський пише про 1841 рік: «улітку та восени російське командування гарячково укріплює Сунженську лінію: у липні - серпні будують укріплення Закан Юрт, а в серпні - жовтні - укріплення Казах Кічу»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; історики Я. З. Ахмадов і Е. Х. Хасмагомадов фіксують функцію: «Будівництво двох нових укріплень - Казахкічу і Закан-Юртівського, дозволило повністю виключити пересування великих чеченських загонів за Сунжу і ще більше ізолювало Притереччя від решти Чечні»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. У 1844 році - «будівництво Воздвиженського укріплення восени 1844 р. на місці зруйнованого аулу Чахкері (Чахкар-Атаги), біля початку Аргунської ущелини»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; Покровський називає призначення: «Воздвиженське мало тепер стати базою для частих набігів на чеченські аули, для зимових рубок лісу в площинній Чечні»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. У 1846 році на річці Фортанзі збудовано форт Ачхой. Функцію Ачхоя імперський рапорт назвав так: «Влаштування укріплення на Фортанзі, майже в серці Малої Чечні, серед рівнин-житниць, не може не мати впливу на підкорення її»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Вторгнення в Аух (чеченську область на північному сході) у червні 1841 року війська генерала Граббе, командувача військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), закріпили укріпленням на захопленій землі: 16-17 червня збудовано тимчасове укріплення в Акташ-Аусі. Укріплення простояло одне літо: історик Н. І. Покровський пише - «21 вересня укріплення було зрито, загін відійшов»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Біля цього укріплення імперія збирала «вірні» їй ауховські сім'ї перед переселенням під владу кумицьких володарів.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="вилучення ресурсів після втечі жителів дванадцяти надтеречних сіл (чеченських селищ лівого берега терека) до повсталих у червні 1840 року імперія віддала їхнє майно козакам. «доповідь канцелярії з управління мирними горцями», складена не раніше липня 1841 року, перелічує села - старий наур, новий наур, емінгуловська, мурдарова, боян-юрт, качерман-юрт, нагай мірза-юрт, міжі-юрт, кожахи, калаузова, мамакай-юрт і гунешки - і фіксує режим: «хліб, що залишився у них на корені, дозволено було лінійним козакам... зібрати на свою користь, доми, що залишилися в місцях, розібрати і перевезти в станиці» (лінійні козаки - козацькі війська імперської прикордонної лінії)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). та ж доповідь фіксує розподіл здобичі: 800 баранів, відбитих підполковником бековичем-черкаським (з кабардинського володарського роду, на російській службі) при переслідуванні жителів-утікачів міжі-юрта і кожахів, «наказано було роздати як винагороду тим жителям означених двох сіл, які залишилися нам відданими»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). відібрану у вигнаних землю імперія передала козачому війську. історики я. з. ахмадов і е. х. хасмагомадов фіксують: «козакам було віддано в малій чечні «корінні» землі жителів карабулака і галашек» (мала чечня - рівнинно-передгірна західна частина чечні; галашки - вайнахська громада в долині асси)(citation: история чечни в xix-xx веках 2005). слово «корінні» - з самих імперських паперів: віддавалася не пустка, а земля, на якій люди жили поколіннями."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0052">T0052</a> Вилучення ресурсів
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Після втечі жителів дванадцяти надтеречних сіл (чеченських селищ лівого берега Терека) до повсталих у червні 1840 року імперія віддала їхнє майно козакам. «Доповідь канцелярії з управління мирними горцями», складена не раніше липня 1841 року, перелічує села - Старий Наур, Новий Наур, Емінгуловська, Мурдарова, Боян-Юрт, Качерман-Юрт, Нагай Мірза-Юрт, Міжі-Юрт, Кожахи, Калаузова, Мамакай-Юрт і Гунешки - і фіксує режим: «хліб, що залишився у них на корені, дозволено було лінійним козакам... зібрати на свою користь, доми, що залишилися в місцях, розібрати і перевезти в станиці» (лінійні козаки - козацькі війська імперської прикордонної лінії)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Та ж доповідь фіксує розподіл здобичі: 800 баранів, відбитих підполковником Бековичем-Черкаським (з кабардинського володарського роду, на російській службі) при переслідуванні жителів-утікачів Міжі-Юрта і Кожахів, «наказано було роздати як винагороду тим жителям означених двох сіл, які залишилися нам відданими»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Відібрану у вигнаних землю імперія передала козачому війську. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов фіксують: «козакам було віддано в Малій Чечні «корінні» землі жителів Карабулака і Галашек» (Мала Чечня - рівнинно-передгірна західна частина Чечні; Галашки - вайнахська громада в долині Асси)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Слово «корінні» - з самих імперських паперів: віддавалася не пустка, а земля, на якій люди жили поколіннями.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="депортація після розорення ауху (чеченської області на північному сході) влітку 1841 року імперія переселила лояльні їй ауховські сім'ї з їхньої землі. імперський історик юров записав: «до 21-го червня в сс. акташ і юрт-аух зібралося 180 сімейств; у заставу покірності вони доставили аманатами найпочесніших осіб і відправили свої стада на пасовище в салатау» (аманат - людина, яку імперія забирала з громади як заручника)(citation: 1840, 1841 и 1842-й годы на кавказе 1886). при відході військ у вересні сім'ї повели з рідної землі: історик н. і. покровський - «вірні царизму ауховці поселені в кумицьких аулах, де вони швидко потрапили під тяжку руку кумицьких князів»(citation: кавказские войны и имамат шамиля 2009). тиск на сім'ї був двостороннім: за юровим, ауховцям, що перейшли до імперії, загрожувала розправа імамату, «їм залишалося одне - міцно триматися за росіян»(citation: 1840, 1841 и 1842-й годы на кавказе 1886) - вибір між двома загрозами скінчився втратою дому і підпорядкуванням чужим володарям. створення сунженської лінії йшло через вигнання людей, що на ній жили. історики я. з. ахмадов і е. х. хасмагомадов пишуть: після рішення про створення лінії козачих станиць «почалося планомірне вигнання чеченців. у кінцевому підсумку найбільша громада малої чечні - карабулак - повністю позбулася своїх земель» (карабулаки - вайнахська громада між чечнею та інгушетією)(citation: история чечни в xix-xx веках 2005). зачистка грудня 1846 року видавлювала жителів з рівнини фізично: імперський офіцер полторацький, учасник експедиції, записав - «місцевість довкола алдинських хуторів усе пустіла: аули спалювалися, і їхні мешканці відтіснялися далі в ліси»(citation: воспоминания 1895)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0127">T0127</a> Депортація
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Після розорення Ауху (чеченської області на північному сході) влітку 1841 року імперія переселила лояльні їй ауховські сім'ї з їхньої землі. Імперський історик Юров записав: «До 21-го червня в сс. Акташ і Юрт-Аух зібралося 180 сімейств; у заставу покірності вони доставили аманатами найпочесніших осіб і відправили свої стада на пасовище в Салатау» (аманат - людина, яку імперія забирала з громади як заручника)<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. При відході військ у вересні сім'ї повели з рідної землі: історик Н. І. Покровський - «вірні царизму ауховці поселені в кумицьких аулах, де вони швидко потрапили під тяжку руку кумицьких князів»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Тиск на сім'ї був двостороннім: за Юровим, ауховцям, що перейшли до імперії, загрожувала розправа імамату, «їм залишалося одне - міцно триматися за росіян»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span> - вибір між двома загрозами скінчився втратою дому і підпорядкуванням чужим володарям. Створення Сунженської лінії йшло через вигнання людей, що на ній жили. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: після рішення про створення лінії козачих станиць «почалося планомірне вигнання чеченців. У кінцевому підсумку найбільша громада Малої Чечні - Карабулак - повністю позбулася своїх земель» (карабулаки - вайнахська громада між Чечнею та Інгушетією)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Зачистка грудня 1846 року видавлювала жителів з рівнини фізично: імперський офіцер Полторацький, учасник експедиції, записав - «місцевість довкола Алдинських хуторів усе пустіла: аули спалювалися, і їхні мешканці відтіснялися далі в ліси»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="обмеження географії розселення надтеречних чеченців (жителів лівого берега терека), що втекли до повсталих, імперія назавжди позбавила права повернутися додому. «доповідь канцелярії з управління мирними горцями» (не раніше липня 1841 року) фіксує розпорядження: «чеченцям-утікачам оголосити, що вони назавжди позбулися права селитися на місцях, які займали до втечі»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959); підполковнику бековичу-черкаському (з кабардинського володарського роду, на російській службі, приставленому до надтеречних аулів) «приписано було чеченців, що повертаються з утечі, без дозволу не приймати»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). доми дванадцяти сіл на той час були розібрані та вивезені в козачі станиці - повертатися не було куди і заборонено. програма завоювання чечні, затверджена імператором миколою i у 1843 році, прописала, де і як чеченцям дозволено жити. військовий міністр чернишов доповіддю імператору від 16 листопада 1843 року зафіксував волю миколи i: дозволити чеченцям зворотне поселення на правому березі сунжі біля імперських укріплень «не інакше як великими аулами, для пристосування їх до оборони дещо самостійно і зручнішого утримання жителів у покорі, маючи при тому на увазі згодом обернути їх у козаче сословіє. лівий же берег сунжі і простір до терека призначені для поселення козачих станиць і постачання їх землею»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). норма закріпила подвійне відчуження: жити біля своїх річок чеченцям дозволялося тільки великими аулами під гарматами укріплень, а лівобережжя сунжі до терека відписувалося козакам. уцілілих жителів малої чечні імперія зселяла на рівнину під гармати споруджуваних укріплень. воронцов, намісник і головнокомандувач на кавказі, рапортом літа 1846 року фіксував хід і заминку політики: «переселення жителів малої чечні на рівнину біля споруджуваного укріплення ще не має належного успіху»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). біля форту ачхой до серпня 1846 року вже жили переселенці - саме між ними дозволено було поселитися сім'ям чеченця топі, який обіцяв служити імперії таємним розвідником у горах і провідником для військ(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). вибір місця життя замінено призначенням: жити - біля укріплення, на виду гарнізону."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0142">T0142</a> Обмеження географії розселення
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Надтеречних чеченців (жителів лівого берега Терека), що втекли до повсталих, імперія назавжди позбавила права повернутися додому. «Доповідь канцелярії з управління мирними горцями» (не раніше липня 1841 року) фіксує розпорядження: «чеченцям-утікачам оголосити, що вони назавжди позбулися права селитися на місцях, які займали до втечі»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; підполковнику Бековичу-Черкаському (з кабардинського володарського роду, на російській службі, приставленому до надтеречних аулів) «приписано було чеченців, що повертаються з утечі, без дозволу не приймати»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Доми дванадцяти сіл на той час були розібрані та вивезені в козачі станиці - повертатися не було куди і заборонено. Програма завоювання Чечні, затверджена імператором Миколою I у 1843 році, прописала, де і як чеченцям дозволено жити. Військовий міністр Чернишов доповіддю імператору від 16 листопада 1843 року зафіксував волю Миколи I: дозволити чеченцям зворотне поселення на правому березі Сунжі біля імперських укріплень «не інакше як великими аулами, для пристосування їх до оборони дещо самостійно і зручнішого утримання жителів у покорі, маючи при тому на увазі згодом обернути їх у козаче сословіє. Лівий же берег Сунжі і простір до Терека призначені для поселення козачих станиць і постачання їх землею»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Норма закріпила подвійне відчуження: жити біля своїх річок чеченцям дозволялося тільки великими аулами під гарматами укріплень, а лівобережжя Сунжі до Терека відписувалося козакам. Уцілілих жителів Малої Чечні імперія зселяла на рівнину під гармати споруджуваних укріплень. Воронцов, намісник і головнокомандувач на Кавказі, рапортом літа 1846 року фіксував хід і заминку політики: «Переселення жителів Малої Чечні на рівнину біля споруджуваного укріплення ще не має належного успіху»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Біля форту Ачхой до серпня 1846 року вже жили переселенці - саме між ними дозволено було поселитися сім'ям чеченця Топі, який обіцяв служити імперії таємним розвідником у горах і провідником для військ<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Вибір місця життя замінено призначенням: жити - біля укріплення, на виду гарнізону.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="міграційне заміщення на місце вигнаних чеченців і карабулаків (вайнахської громади між чечнею та інгушетією) імперія селила козаків - станицями на місці аулів. історики я. з. ахмадов і е. х. хасмагомадов перелічують: «у 1845 р. на місці чеченського (карабулацького) аулу обарг-юрт було засновано станицю троїцьку, того ж року на місці чеченського аулу дібір-юрт з'являється станиця сунженська (слєпцовська)»; «на місці аулу енахішка (громада карабулак)... заснована станиця михайлівська (сучасна серноводська)»(citation: история чечни в xix-xx веках 2005). вони ж фіксують: «у 1845-46 рр. було утворено сунженську воєнну лінію, а в збудованих на землях карабулаків станицях поселено козаків 1-го сунженського полку»(citation: история чечни в xix-xx веках 2005). механіку заміщення ретроспективно сформулював полковник де-саже (1854), якого цитують ті ж історики: «кожен наступальний крок відрізав горцям безповоротно шматок їхньої рідної землі. так підкорені мала чечня і галашки. на всіх цих місцях поселені козаки, влаштовані укріплення зі штаб-квартирами полків...»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0117/001">T0117.001</a> Міграційне заміщення
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>На місце вигнаних чеченців і карабулаків (вайнахської громади між Чечнею та Інгушетією) імперія селила козаків - станицями на місці аулів. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов перелічують: «у 1845 р. на місці чеченського (карабулацького) аулу Обарг-Юрт було засновано станицю Троїцьку, того ж року на місці чеченського аулу Дібір-Юрт з'являється станиця Сунженська (Слєпцовська)»; «На місці аулу Енахішка (громада Карабулак)... заснована станиця Михайлівська (сучасна Серноводська)»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Вони ж фіксують: «У 1845-46 рр. було утворено Сунженську воєнну лінію, а в збудованих на землях карабулаків станицях поселено козаків 1-го Сунженського полку»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Механіку заміщення ретроспективно сформулював полковник Де-Саже (1854), якого цитують ті ж історики: «Кожен наступальний крок відрізав горцям безповоротно шматок їхньої рідної землі. Так підкорені Мала Чечня і Галашки. На всіх цих місцях поселені козаки, влаштовані укріплення зі штаб-квартирами полків...»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="підселення чиновників і військових у чеченські селища імперія ставила війська на постій. «журнал военных происшествий на левом фланге кавказской линии» за 23 травня - 6 червня 1846 року фіксує: після втечі більшості жителів аулу акбулат-юрт на тереку «для охранения оставшихся жителей акбулат-юрта и чтобы пользоваться прямым сообщением с кумыкской плоскостью через этот аул, ген.-м. козловский расположил там одну роту пехоты при одном орудии и устроил там пост из 25 конных кумык» (кумики - сусідній тюркський народ, з якого імперія набирала кінну варту)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). гарнізон в аулі - це нагляд зсередини: життя селища йшло під щоденним наглядом роти з гарматою."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0041">T0041</a> Підселення чиновників і військових
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У чеченські селища імперія ставила війська на постій. «Журнал военных происшествий на левом фланге Кавказской линии» за 23 травня - 6 червня 1846 року фіксує: після втечі більшості жителів аулу Акбулат-Юрт на Тереку «для охранения оставшихся жителей Акбулат-Юрта и чтобы пользоваться прямым сообщением с Кумыкской плоскостью через этот аул, ген.-м. Козловский расположил там одну роту пехоты при одном орудии и устроил там пост из 25 конных кумык» (кумики - сусідній тюркський народ, з якого імперія набирала кінну варту)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Гарнізон в аулі - це нагляд зсередини: життя селища йшло під щоденним наглядом роти з гарматою.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="мародерство з прорубаних просік і нових укріплень імперські загони налітали на чеченські аули, грабуючи та палячи їх. історик н. і. покровський описує практику 1846 року: «російські війська систематично вирубують ліси для проведення широких стратегічних доріг... і царські загони час від часу налітають на аули, грабують і палять їх»(citation: кавказские войны и имамат шамиля 2009). грабіж тут - не ексцес, а регулярний режим дій військ з лінії."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0164">T0164</a> Мародерство
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>З прорубаних просік і нових укріплень імперські загони налітали на чеченські аули, грабуючи та палячи їх. Історик Н. І. Покровський описує практику 1846 року: «російські війська систематично вирубують ліси для проведення широких стратегічних доріг... і царські загони час від часу налітають на аули, грабують і палять їх»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Грабіж тут - не ексцес, а регулярний режим дій військ з лінії.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нацьковування сусідніх народів проти чечні імперія мобілізувала інші завойовані нею народи кавказу. у складі армії воронцова, намісника на кавказі, в даргінському поході 1845 року історики я. з. ахмадов і е. х. хасмагомадов рахують «1 тисячу осіб грузинської міліції, 16 сотень козаків і горської міліції (кабардинської та осетинської)» (міліція - озброєні загони горців і грузинів на службі імперії)(citation: история чечни в xix-xx веках 2005). колонізовані народи імперія ставила в стрій проти сусідів - щоб кавказці воювали з кавказцями за імперське завоювання."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+                <div>
+                    <a href="/uk/techniques/T0152">T0152</a> Нацьковування сусідніх народів
+                </div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Проти Чечні імперія мобілізувала інші завойовані нею народи Кавказу. У складі армії Воронцова, намісника на Кавказі, в Даргінському поході 1845 року історики Я. З. Ахмадов і Е. Х. Хасмагомадов рахують «1 тисячу осіб грузинської міліції, 16 сотень козаків і горської міліції (кабардинської та осетинської)» (міліція - озброєні загони горців і грузинів на службі імперії)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Колонізовані народи імперія ставила в стрій проти сусідів - щоб кавказці воювали з кавказцями за імперське завоювання.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank">
+                        В. А. Полторацкий. (1895). Воспоминания.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="5.0">
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://kp.rusneb.ru/item/material/skazanie-ochevidca-o-shamile" target="_blank">
+                        Гаджи-Али. (1873). Сказание очевидца о Шамиле.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+<script src="/uk/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

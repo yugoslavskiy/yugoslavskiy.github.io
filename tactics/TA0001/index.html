@@ -1,0 +1,512 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/tactics/TA0001/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/tactics/TA0001/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/tactics/TA0001/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/tactics/TA0001/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/tactics/TA0001/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Легитимизация доминирования, тактика TA0001 - Россия | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/tactics/TA0001/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Легитимизация доминирования, тактика TA0001 - Россия | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/tactics/russia">Тактики</a></li>
+  <li class="breadcrumb-item"><a href="/tactics/russia">Россия</a></li>
+  <li class="breadcrumb-item">Легитимизация доминирования</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>
+          Легитимизация доминирования
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>Агрессор формирует идеологические, исторические и правовые обоснования своего «права» распоряжаться судьбой колонизируемого народа. Техники этой тактики работают до, во время и после захвата: навязывание образа отсталости, присвоение истории, религиозные и «цивилизаторские» оправдания создают картину мира, в которой господство выглядит естественным и даже благом. Успешная легитимизация снижает сопротивление – и самого народа, и внешних наблюдателей.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-data"><span class="h5 card-title">ID:</span> TA0001</div>
+                <div class="card-data"><span class="h5 card-title">Создано:&nbsp;</span>23 мая 2026</div>
+                <div class="card-data"><span class="h5 card-title">Изменено:&nbsp;</span>12 июля 2026</div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/TA0001" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="techniques">Техники</h2>
+        <h6 class="table-object-count">Техники: 13</h6>
+        <table class="table-techniques">
+        <thead>
+            <tr>
+                <td colspan="2">ID</td>
+                <td>Название</td>
+                <td>Описание</td>
+            </tr>
+        </thead>
+        <tbody>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0006"> T0006 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0006"> Дегуманизация </a>
+                    </td>
+                    <td>
+                                Агрессоры могут использовать пропагандистские практики для лишения представителей колонизируемого народа человеческих черт. Жертва целенаправленно маркируется уничижительными ярлыками (например, «нелюди», «боевики», «нацисты», «фашисты», «террористы»), что призвано снять психологические и моральные барьеры у оккупационных войск и легитимизировать любые зверства в глазах общества агрессора, приводя к полной утрате эмпатии.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0137"> T0137 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0137"> Дезинформация </a>
+                    </td>
+                    <td>
+                                Агрессоры могут осуществлять целенаправленное манипулирование информационным пространством и проводят вредоносные операции влияния (IO — Influence Operations, FIMI — Foreign Information Manipulation and Interference, FMI — Foreign Malign Influence). Эта техника применяется для скоординированного вброса ложных нарративов на международной арене, подрыва доверия к демократическим институтам и дестабилизации общества государства-жертвы. Информационное вмешательство призвано исказить восприятие реальности, скрыть факты агрессии и парализовать способность общества к скоординированному сопротивлению. Более подробно эти техники раскрываются в специализированном фреймворке: <a href="https://www.disarm.foundation/">DISARM Framework</a>.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0003"> T0003 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0003"> Культивирование логики превосходства </a>
+                    </td>
+                    <td>
+                                Агрессоры могут проводить системную идеологическую обработку собственного населения, формируя культ исключительности и мессианства. В рамках такой парадигмы культура колонизатора провозглашается высокой и несущей прогресс, в то время как культура колонизируемых народов целенаправленно маргинализируется, представляется отсталой, вторичной или вовсе не имеющей права на самостоятельное существование. Это служит базовым идеологическим оправданием для последующего доминирования.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0008"> T0008 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0008"> Лишение субъектности </a>
+                    </td>
+                    <td>
+                                Агрессоры могут целенаправленно отказывать коренному народу в праве на самостоятельное политическое, правовое и историческое существование. На идеологическом уровне это проявляется в трансляции нарративов о несамостоятельности колонизируемого общества, что служит легитимизации доминирования. На дипломатическом и административном уровне техника реализуется через одностороннее упразднение суверенитета, отмену или переписывание ранее заключенных международных договоров и перевод отношений из равноправных в формат прямого диктата, что обеспечивает институциональный захват управления и юридическое закрепление оккупации.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0158"> T0158 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0158"> Маркировка территории имперскими символами </a>
+                    </td>
+                    <td>
+                                Агрессоры могут закреплять захват земли материальными знаками собственной власти: крестами и закладными камнями в момент занятия территории, памятниками завоевателям, мемориальными досками и стелами, гербами, культовыми зданиями на местах чужих святынь. В отличие от переименования топонимов, которое действует в речи и на карте, знак занимает физическое место и снимается только руками. Он объявляет захват необратимым и отсчитывает историю места от прихода метрополии: постамент памятника Богдану Хмельницкому в Киеве (1888) нёс надпись «Богдану Хмельницкому единая неделимая Россия», а доски памятника Муравьёву-Амурскому в Хабаровске (1891) перечисляли лиц, «принявших активное участие в присоединении к России Приамурья».
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0001"> T0001 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0001"> Навязывание образа отсталости </a>
+                    </td>
+                    <td>
+                                Агрессоры могут системно транслировать нарратив о том, что культура, быт и социальное устройство коренного народа являются примитивными и неразвитыми. Конструирование образа отсталости служит легитимизации доминирования, позволяя оправдывать оккупацию и репрессии вымышленной необходимостью нести прогресс и «цивилизацию».
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0007"> T0007 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0007"> Навязывание своей картины реальности </a>
+                    </td>
+                    <td>
+                                Агрессоры могут использовать пропаганду и жесткую цензуру для подмены объективных фактов сфабрикованными нарративами. Внедрение искаженной оптики, при которой акты оккупации выдаются за спасение, а вина за страдания перекладывается на само местное население, обеспечивает идеологическую легитимизации доминирования.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0010"> T0010 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0010"> Непризнание самостоятельной идентичности </a>
+                    </td>
+                    <td>
+                                Агрессоры могут целенаправленно и системно транслировать нарратив о том, что коренной народ не является отдельной нацией, а представляет собой лишь региональную или заблудшую ветвь народа метрополии. Конструирование фальшивого мифа о едином корне позволяет агрессору объявить политическую независимость колонизируемого общества историческим недоразумением и оправдать любые насильственные действия как естественный процесс «воссоединения».
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0024"> T0024 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0024"> Оправдание через религию </a>
+                    </td>
+                    <td>
+                                Агрессоры могут использовать религиозную риторику и институты для идеологического обоснования экспансии. Захват территорий преподносится не как акт вооруженной агрессии, а как священная миссия по защите единоверцев, восстановлению канонической справедливости или исполнению божественного предназначения. Использование подобных нарративов позволяет колонизатору морально оправдать вторжение в глазах собственного общества, мобилизовать его на поддержку конфликта, а также замаскировать политическое поглощение под духовное объединение.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0004"> T0004 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0004"> Переписывание истории </a>
+                    </td>
+                    <td>
+                                Агрессоры могут инициировать создание и масштабное распространение искусственных исторических концепций, призванных обосновать их право на чужие территории. Конструирование нового исторического канона, в котором факты искажаются, а хронология событий подгоняется под интересы метрополии, позволяет агрессору легализовать оккупацию задним числом, убеждая как собственное, так и местное население в исторической неизбежности и законности поглощения.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0157"> T0157 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0157"> Принудительное публичное покаяние </a>
+                    </td>
+                    <td>
+                                Агрессоры могут требовать от колонизируемых публичного покаяния — ритуального самоуничижения с отречением от прежней лояльности, от сопротивления и его вождей, от веры или клятв — как условия прекращения насилия, освобождения или самого права жить на своей земле. Покаяние — не просто декларация: у него есть последствия. От исповеди зависит судьба человека — свобода, лагерь или расправа. Публично покаявшийся скомпрометирован перед своими и привязан к агрессору самим публичным актом. «Добровольные» покаяния агрессор предъявляет как доказательство собственной правоты и оправдание репрессивного характера колонизации. Российский колониализм практикует принуждение к покаянию на протяжении столетий: империя требовала от горцев Кавказа отречения от «пагубного учения» вождя сопротивления вместе с присягой на верность русскому царю; советские публичные покаяния и отречения от «врагов народа» в собственных семьях, как и сегодняшние принудительные видеоизвинения в Чечне, — прямое продолжение этой практики. После захвата Крыма практика принудительного покаяния, снимаемого на видео и распространяемого в социальных сетях, применяется к тем, кто сохраняет лояльность Украине или критикует оккупационные власти.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0005"> T0005 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0005"> Присвоение статуса жертвы агрессором </a>
+                    </td>
+                    <td>
+                                Агрессоры могут использовать пропагандистские инструменты для инверсии ролей, выставляя собственные наступательные действия как вынужденную меру самообороны. Заявляя о фиктивных угрозах со стороны местного населения или внешних сил, агрессор конструирует ложный нарратив, в котором он выступает исключительно защитником собственных интересов или безопасности. Это позволяет морально оправдать вторжение и переложить вину за эскалацию насилия на колонизируемое общество.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0160"> T0160 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0160"> Фиктивные суды </a>
+                    </td>
+                    <td>
+                                Агрессоры могут придавать расправе форму правосудия - создавать и использовать фиктивные суды: исход процесса предрешён, а защита отсутствует или бутафорская. Формы разные - чрезвычайные и военно-полевые суды с сутками на процесс, закрытые квазисудебные органы, выносящие приговоры заочно и списками, показательные процессы-спектакли для публики. Вынесение приговоров без «надлежащим образом учреждённого суда, предоставляющего судебные гарантии» - военное преступление (общая статья 3 Женевских конвенций; статья 8(2)(c)(iv) Римского статута, по которой Международный уголовный суд вынес первый обвинительный приговор в 2024 году).
+
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

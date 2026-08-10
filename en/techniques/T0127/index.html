@@ -1,0 +1,902 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/techniques/T0127/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0127/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0127/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0127/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0127/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Deportation, technique T0127 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/techniques/T0127/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Deportation, technique T0127 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in August 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/techniques/">Techniques</a></li>
+  <li class="breadcrumb-item">Deportation</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Deportation
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Aggressors may resort to the forcible mass expulsion of Indigenous peoples from their historical territories to remote regions. This practice physically neutralizes the potential for local guerrilla or political struggle and destroys the social structure of the people, freeing up lands for subsequent settlement by settlers loyal to the colonizer.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0127
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Sub-techniques:&nbsp;</span>
+                    No sub-techniques
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The tactical goals achieved by using the technique or sub-technique">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Tactics:</span>
+                        <a href="/en/tactics/TA0005">Persistence</a>,                        <a href="/en/tactics/TA0004">Defense Impairment</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The peoples against whom the technique or sub-technique was used">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Peoples:&nbsp;</span>Nokhchi (Chechens), Ukrainians
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Contributors:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Version:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Created:&nbsp;</span>21 April 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>9 August 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/T0127" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Procedures Carried Out</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="deportation the occupation administration of the russian empire forcibly resettled the subordinated indigenous population: historian ya. z. akhmadov records that "by 1724 the terek town had been razed, and all of its population, including the okotsk sloboda, populated by natives of chechnya... was transferred to the new fortress"(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1722-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">September 1722</div>
+<div><a href="/en/campaigns/C1130">C1130</a> Construction of the Holy Cross Fortress and Forced Resettlement (1722–1724)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The occupation administration of the Russian Empire forcibly resettled the subordinated Indigenous population: historian Ya. Z. Akhmadov records that "by 1724 the Terek town had been razed, and all of its population, including the Okotsk sloboda, populated by natives of Chechnya... was transferred to the new fortress"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation the regular army of the russian empire drove the population of the destroyed villages off their lands, which passed into the conqueror’s possession. historian d. a. khozhayev records that the inhabitants of the eight villages near groznaya were “driven off the lands”(citation: чеченцы в русско-кавказской войне 1998). imperial general yermolov wrote to emperor alexander i that if the population refused to submit, they would be offered “to withdraw and join the other brigands,” and then “all the lands will remain at our disposal”(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1817</div>
+<div><a href="/en/campaigns/C1021">C1021</a> Destruction of the Nokhchi Villages along the Sunzha and Erection of the Groznaya Fortress in Their Place (1817–1818)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The Regular Army of the Russian Empire drove the population of the destroyed villages off their lands, which passed into the conqueror’s possession. Historian D. A. Khozhayev records that the inhabitants of the eight villages near Groznaya were "driven off the lands"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Imperial general Yermolov wrote to Emperor Alexander I that if the population refused to submit, they would be offered "to withdraw and join the other brigands," and then "all the lands will remain at our disposal"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation after the devastation of aukh (the chechen region in the north-east) in summer 1841 the empire resettled the aukh families loyal to it away from their land. the imperial historian yurov recorded: "by 21 june 180 families had gathered in the villages of aktash and yurt-aukh; as a pledge of submission they delivered their most honoured men as amanats and sent their herds to pasture in salatau" (amanat - a person whom the empire took from a community as a hostage)(citation: 1840, 1841 и 1842-й годы на кавказе 1886). when the troops withdrew in september the families were led away from their native land: historian n. i. pokrovsky - "the aukhovites loyal to tsarism were settled in kumyk auls, where they quickly fell under the heavy hand of the kumyk princes"(citation: кавказские войны и имамат шамиля 2009). the pressure on the families was two-sided: according to yurov, the aukhovites who had gone over to the empire were threatened with reprisal by the imamate, "one thing remained to them - to hold fast to the russians"(citation: 1840, 1841 и 1842-й годы на кавказе 1886) - a choice between two threats that ended in the loss of their home and subjection to alien lords. the creation of the sunzha line went through the expulsion of the people living on it. historians ya. z. akhmadov and e. kh. khasmagomadov write: after the decision to create the line of cossack stanitsas "the systematic expulsion of the chechens began. in the end the largest community of lesser chechnya - karabulak - was deprived of its lands entirely" (the karabulaks - a vainakh community between chechnya and ingushetia)(citation: история чечни в xix-xx веках 2005). the sweep of december 1846 squeezed the inhabitants off the plain physically: the imperial officer poltoratsky, a participant of the expedition, recorded - "the country around the aldy hamlets kept emptying: the auls were burned, and their inhabitants were pushed further into the forests"(citation: воспоминания 1895)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>After the devastation of Aukh (the Chechen region in the north-east) in summer 1841 the empire resettled the Aukh families loyal to it away from their land. The imperial historian Yurov recorded: "By 21 June 180 families had gathered in the villages of Aktash and Yurt-Aukh; as a pledge of submission they delivered their most honoured men as amanats and sent their herds to pasture in Salatau" (amanat - a person whom the empire took from a community as a hostage)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. When the troops withdrew in September the families were led away from their native land: historian N. I. Pokrovsky - "the Aukhovites loyal to tsarism were settled in Kumyk auls, where they quickly fell under the heavy hand of the Kumyk princes"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The pressure on the families was two-sided: according to Yurov, the Aukhovites who had gone over to the empire were threatened with reprisal by the Imamate, "one thing remained to them - to hold fast to the Russians"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span> - a choice between two threats that ended in the loss of their home and subjection to alien lords. The creation of the Sunzha Line went through the expulsion of the people living on it. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: after the decision to create the line of Cossack stanitsas "the systematic expulsion of the Chechens began. In the end the largest community of Lesser Chechnya - Karabulak - was deprived of its lands entirely" (the Karabulaks - a Vainakh community between Chechnya and Ingushetia)<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The sweep of December 1846 squeezed the inhabitants off the plain physically: the imperial officer Poltoratsky, a participant of the expedition, recorded - "the country around the Aldy hamlets kept emptying: the auls were burned, and their inhabitants were pushed further into the forests"<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation the empire drove the population of the mountain gorges of lesser chechnya (the lowland-piedmont western part of chechnya) down to its fortifications. general sleptsov reported to general ilyinsky on 4 october 1850: "in two days, from 30 september to 2 october, the auls galgayevsky, eyshkaloysky, nachkhoysky and terloyev, scattered in hamlets, emptied. more than 150 families settled the space around zakan-yurt and kazakh-kichu" - next to the imperial fortifications(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). the report frames the resettlement as a request of the elders; the mechanism of coercion is named plainly by the same report - constraint by the future imperial settlements in the valley and the example of compatriots already resettled."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1847</div>
+<div><a href="/en/campaigns/C1166">C1166</a> "Death sentence" for Lesser Chechnya: the massacre of Duba's hamlet, forest clearings, fortresses, annihilation of the population and stanitsas on the sites of burned auls (1847-1851)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The empire drove the population of the mountain gorges of Lesser Chechnya (the lowland-piedmont western part of Chechnya) down to its fortifications. General Sleptsov reported to General Ilyinsky on 4 October 1850: "In two days, from 30 September to 2 October, the auls Galgayevsky, Eyshkaloysky, Nachkhoysky and Terloyev, scattered in hamlets, emptied. More than 150 families settled the space around Zakan-yurt and Kazakh-kichu" - next to the imperial fortifications<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. The report frames the resettlement as a request of the elders; the mechanism of coercion is named plainly by the same report - constraint by the future imperial settlements in the valley and the example of compatriots already resettled.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation burning and famine drove chechen families from their land under the empire's power - and the empire kept count of those carried off. on 23 march 1852 the column of general baklanov carried off the inhabitants of two auls: imperial historian volkonsky counts - "there were two hundred fifty-eight souls of both sexes and all ages: fifty-one families from mazlagash and sixteen families from gurdali"(citation: погром чечни (1852) 1880); the mechanics of the choice he conveyed in the words of contemporaries about the naibs - deputies of imam shamil: "the naibs pluck them, we pluck them and will go on plucking... they resolved to choose the lesser of two evils, i.e. to resettle to us"(citation: погром чечни (1852) 1880). after the destruction of khan-kala in december 1852, baryatinsky, who commanded the left flank of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), counted in a report of 10 february 1853: of roughly 500 inhabitants, 350 were brought to the groznaya fortress, "the total loss of the inhabitants must be put at around 100 people" - the fate of that hundred, by the report's own admission, "is not known with exactness"(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). in january 1854, after the devastation of the auls along the dzhalka, "418 families of chechens" were evicted(citation: акты собранные кавказскою археографическою комиссиею. том xi (1854-1856) 1888), and the order of general muravyov, commander-in-chief in the caucasus, of 19 july 1855 counts the result: "more than 1 thousand chechen families have resettled into our submissive auls"(citation: акты собранные кавказскою археографическою комиссиею. том xi (1854-1856) 1888). the plan for 1856 posed the choice bluntly: the chechens were "to choose one of two things - to submit, or to move out farther into the interior of the black mountains"(citation: акты собранные кавказскою археографическою комиссиею. том xi (1854-1856) 1888)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1852</div>
+<div><a href="/en/campaigns/C1167">C1167</a> "Neither plow nor sow": the pogrom of Chechnya, organized famine, the buying-up of elites and the institutions of subjugation (1852-1857)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Burning and famine drove Chechen families from their land under the empire's power - and the empire kept count of those carried off. On 23 March 1852 the column of General Baklanov carried off the inhabitants of two auls: imperial historian Volkonsky counts - "There were two hundred fifty-eight souls of both sexes and all ages: fifty-one families from Mazlagash and sixteen families from Gurdali"<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>; the mechanics of the choice he conveyed in the words of contemporaries about the naibs - deputies of Imam Shamil: "the naibs pluck them, we pluck them and will go on plucking... they resolved to choose the lesser of two evils, i.e. to resettle to us"<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. After the destruction of Khan-Kala in December 1852, Baryatinsky, who commanded the left flank of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), counted in a report of 10 February 1853: of roughly 500 inhabitants, 350 were brought to the Groznaya fortress, "the total loss of the inhabitants must be put at around 100 people" - the fate of that hundred, by the report's own admission, "is not known with exactness"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. In January 1854, after the devastation of the auls along the Dzhalka, "418 families of Chechens" were evicted<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856) 1888"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>, and the order of General Muravyov, commander-in-chief in the Caucasus, of 19 July 1855 counts the result: "more than 1 thousand Chechen families have resettled into our submissive auls"<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856) 1888"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. The plan for 1856 posed the choice bluntly: the Chechens were "to choose one of two things - to submit, or to move out farther into the interior of the Black Mountains"<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856) 1888"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation historian d. a. khozhayev writes of the springs of 1859: "all the subdued highlanders were immediately, under convoy of the tsarist troops, resettled onto the plain for surveillance"(citation: чеченцы в русско-кавказской войне 1998). to the plain, that is down to the lowland under surveillance, people were driven at once: in december 1857 up to 400 households that had come out of the auls being annihilated were sent under troop cover to umakhan-yurt(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). after the taking of vedeno general yevdokimov ordered his subordinate nostitz "to proceed with the resettlement of the chechens living between the khulkhulau and the gudermes": on 8 april 1859 "up to 300 families who lived in the nearest hamlets on the right bank of the khulkhulau at once appeared in the camp with their belongings and livestock"(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). resistance to the resettlement is recorded by the imperial documents themselves: naib (district governor under the imam) osman "several times attempted to pass by the detachment onto the plain and tried to obstruct the resettlement of the chechens"(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904); separately, according to the journal of military operations of no later than 9 april 1859, "the ichkerians, aukhovites and salatavians, having gathered in great numbers, wanted to obstruct the resettlement" of the inhabitants from the aksai(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). for the auls of the upper fortanga and assa, forced into capitulation in november 1858, the eviction was set with a deferral: "to remain in the places they occupy for another three months; with early spring they will move out onto the plain of lesser chechnya into the galash society"(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). benoy held out longest: historians ya. z. akhmadov and e. kh. khasmagomadov write that yevdokimov "in the autumn of 1859 and at the beginning of 1860 set about the inhabitants of the mountain society of benoy", part of whom "were dispersed among the surrounding auls and hamlets"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1857</div>
+<div><a href="/en/campaigns/C1168">C1168</a> Forest clearings and famine: Yevdokimov's conquest of Chechnya (1857-1859)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Historian D. A. Khozhayev writes of the springs of 1859: "All the subdued highlanders were immediately, under convoy of the tsarist troops, resettled onto the plain for surveillance"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. To the plain, that is down to the lowland under surveillance, people were driven at once: in December 1857 up to 400 households that had come out of the auls being annihilated were sent under troop cover to Umakhan-yurt<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. After the taking of Vedeno General Yevdokimov ordered his subordinate Nostitz "to proceed with the resettlement of the Chechens living between the Khulkhulau and the Gudermes": on 8 April 1859 "up to 300 families who lived in the nearest hamlets on the right bank of the Khulkhulau at once appeared in the camp with their belongings and livestock"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Resistance to the resettlement is recorded by the imperial documents themselves: naib (district governor under the imam) Osman "several times attempted to pass by the detachment onto the plain and tried to obstruct the resettlement of the Chechens"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>; separately, according to the journal of military operations of no later than 9 April 1859, "the Ichkerians, Aukhovites and Salatavians, having gathered in great numbers, wanted to obstruct the resettlement" of the inhabitants from the Aksai<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. For the auls of the upper Fortanga and Assa, forced into capitulation in November 1858, the eviction was set with a deferral: "to remain in the places they occupy for another three months; with early spring they will move out onto the plain of Lesser Chechnya into the Galash society"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Benoy held out longest: historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write that Yevdokimov "in the autumn of 1859 and at the beginning of 1860 set about the inhabitants of the mountain society of Benoy", part of whom "were dispersed among the surrounding auls and hamlets"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation in the summer of 1865 a fifth of the chechen people left chechnya - and almost half of those who left perished. the first families set out from vladikavkaz on 28 may 1865; the last crossed the border on 10 september(citation: мир чеченцев. xix век 2007); the historian d. a. khozhayev draws up the tally: "23,057 people (5 thousand families) of chechens, karabulaks and ingush leave their native land for turkey"(citation: чеченцы в русско-кавказской войне 1998); historians ya. z. akhmadov and e. kh. khasmagomadov reckon "up to 23 thousand chechens," of whom more than 4.5 thousand families were inhabitants of lesser chechnya and the ichkerinsky okrug, and in all in the 1860s "up to 20% of the total number of chechens" were expelled(citation: история чечни в xix-xx веках 2005). the dying began at once: the historian z. kh. ibragimova writes - "in the course of the resettlement about 40,000 highlanders of the terek oblast perished, which was slightly less than half of all those who had left"; according to the dispatches of the russian consul, in trebizond in 1864 some 180-250 people were dying each day, in samsun - 200(citation: мир чеченцев. xix век 2007). the lands allotted for settlement "were unfit for agriculture – stony and barren"(citation: мир чеченцев. xix век 2007); the colony of ras al-ayn, where mainly chechens had been settled, shrank by 1878 from 4-5 thousand families to 500(citation: мир чеченцев. xix век 2007). the muhajirs themselves - as those who left were called, from the arabic "muhajir," a migrant - wrote to the head of the terek oblast: "we have learned that mussa deceived us... a third of us have already perished as it is" (mussa is general kundukhov; they called him by his first name)(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1858-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1858</div>
+<div><a href="/en/campaigns/C1022">C1022</a> Muhajirism: the expulsion of Chechens to the Ottoman Empire, the ban on return, and population replacement (1858-1872)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0008">S0008</a> Government</div>            </div>
+            <div class="proc-desc">
+                        <p>In the summer of 1865 a fifth of the Chechen people left Chechnya - and almost half of those who left perished. The first families set out from Vladikavkaz on 28 May 1865; the last crossed the border on 10 September<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>; the historian D. A. Khozhayev draws up the tally: "23,057 people (5 thousand families) of Chechens, Karabulaks and Ingush leave their native land for Turkey"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov reckon "up to 23 thousand Chechens," of whom more than 4.5 thousand families were inhabitants of Lesser Chechnya and the Ichkerinsky okrug, and in all in the 1860s "up to 20% of the total number of Chechens" were expelled<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The dying began at once: the historian Z. Kh. Ibragimova writes - "In the course of the resettlement about 40,000 highlanders of the Terek oblast perished, which was slightly less than half of all those who had left"; according to the dispatches of the Russian consul, in Trebizond in 1864 some 180-250 people were dying each day, in Samsun - 200<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. The lands allotted for settlement "were unfit for agriculture – stony and barren"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>; the colony of Ras al-Ayn, where mainly Chechens had been settled, shrank by 1878 from 4-5 thousand families to 500<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. The muhajirs themselves - as those who left were called, from the Arabic "muhajir," a migrant - wrote to the head of the Terek oblast: "We have learned that Mussa deceived us... A third of us have already perished as it is" (Mussa is General Kundukhov; they called him by his first name)<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation the historians ya. z. akhmadov and e. kh. khasmagomadov reckon: "more than 1200 inhabitants of benoy, engenoy, dattykh, gendargen and other villages of ichkeria were forcibly resettled"(citation: история чечни в xix-xx веках 2005); the historian d. a. khozhayev details the mechanism of dispersal: the inhabitants of benoy "on 29 january 1861, numbering 1218 people, were deported and dispersed, 5—10 households at a time, among the lowland villages of chechnya assigned to them"(citation: чеченцы в русско-кавказской войне 1998). deportations went on in winter as well: the historian z. kh. ibragimova writes - "especially hard for the chechens was the resettlement undertaken in december 1860, during severe frosts. 120 highlander families, having no way to shelter in the forest in winter, were resettled onto the plain within 2 days, their dwellings devastated by the troops. over the winter of 1861, 1500 mountain chechens were deported to the chechen plain"(citation: мир чеченцев. xix век 2007). the akki mountain society was deported in its entirety in july 1860: according to an imperial report, "the mutinous akkins were dispersed among the galash people and other neighboring tribes; their dwellings were destroyed"(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1860</div>
+<div><a href="/en/campaigns/C1169">C1169</a> Suppression of the 1860-1861 uprisings, the execution of Baysangur, and the shooting of the zikrists near Shali (1860-1864)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov reckon: "more than 1200 inhabitants of Benoy, Engenoy, Dattykh, Gendargen and other villages of Ichkeria were forcibly resettled"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; the historian D. A. Khozhayev details the mechanism of dispersal: the inhabitants of Benoy "on 29 January 1861, numbering 1218 people, were deported and dispersed, 5—10 households at a time, among the lowland villages of Chechnya assigned to them"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Deportations went on in winter as well: the historian Z. Kh. Ibragimova writes - "Especially hard for the Chechens was the resettlement undertaken in December 1860, during severe frosts. 120 highlander families, having no way to shelter in the forest in winter, were resettled onto the plain within 2 days, their dwellings devastated by the troops. Over the winter of 1861, 1500 mountain Chechens were deported to the Chechen plain"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. The Akki mountain society was deported in its entirety in July 1860: according to an imperial report, "The mutinous Akkins were dispersed among the Galash people and other neighboring tribes; their dwellings were destroyed"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation "already in august 1877 the first 150 inhabitants of the villages of zandak and dattykh were deported; small parties of exiles were being sent off throughout the autumn"(citation: история чечни в xix-xx веках 2005). "in the spring of the following year, 1878, another 110 families were deported from the terek oblast, and 660 families from dagestan. most of the deportees died within the first months of exile. it is also known that over 500 chechens were sentenced to lifelong katorga labor"(citation: история чечни в xix-xx веках 2005). historian z. kh. ibragimova gives the count for a single governorate: "of the 1625 highlanders deported in 1878 to the novgorod governorate, 429 died within the first months (118 of them men, the rest - women) and 74 were declared hopelessly ill"(citation: мир чеченцев. xix век 2007). the conditions were described by journalist yu. poluyansky, who visited the exiles: "in cherepovets the highlanders are housed in a half-ruined, long-uninhabited hovel... of the fifty people, up to thirty have already died, mostly children, of consumption and typhoid fever... for subsistence the adults are allotted 6 kopecks a day, the children 3 kopecks"(citation: мир чеченцев. xix век 2007). within chechnya, mountain villages were being driven down onto the plain: "from the locality indicated, the villages of mekhkety, khatuni and tauzen have been deported almost to a man"(citation: история чечни в xix-xx веках 2005); the plan for the wholesale deportation of the salatavians, "up to 3000 souls," to the northern governorates was cut down to 200 people only for lack of escort troops(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>"Already in August 1877 the first 150 inhabitants of the villages of Zandak and Dattykh were deported; small parties of exiles were being sent off throughout the autumn"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. "In the spring of the following year, 1878, another 110 families were deported from the Terek oblast, and 660 families from Dagestan. Most of the deportees died within the first months of exile. It is also known that over 500 Chechens were sentenced to lifelong katorga labor"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Historian Z. Kh. Ibragimova gives the count for a single governorate: "of the 1625 highlanders deported in 1878 to the Novgorod governorate, 429 died within the first months (118 of them men, the rest - women) and 74 were declared hopelessly ill"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. The conditions were described by journalist Yu. Poluyansky, who visited the exiles: "In Cherepovets the highlanders are housed in a half-ruined, long-uninhabited hovel... Of the fifty people, up to thirty have already died, mostly children, of consumption and typhoid fever... For subsistence the adults are allotted 6 kopecks a day, the children 3 kopecks"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. Within Chechnya, mountain villages were being driven down onto the plain: "From the locality indicated, the villages of Mekhkety, Khatuni and Tauzen have been deported almost to a man"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; the plan for the wholesale deportation of the Salatavians, "up to 3000 souls," to the northern governorates was cut down to 200 people only for lack of escort troops<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation by 1913 the russian empire had arrested and exiled from the terek oblast thousands of people "on the charge of sheltering the abrek"(citation: история чечни в xix-xx веках 2005). "in the course of suppressing the actions in the mountainous part of chechnya, hundreds of peasants were exiled from the vedeno okrug alone. as a result a great number of families lost their main breadwinners and found themselves on the brink of destitution" - part of his takings zelimkhan spent on supporting the families of the exiled(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">October 1905</div>
+<div><a href="/en/campaigns/C1175">C1175</a> Collective punishment in the abrek era: fines, quartering of troops and exile for Zelimkhan (1905-1913)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>By 1913 the Russian Empire had arrested and exiled from the Terek oblast thousands of people "on the charge of sheltering the abrek"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. "In the course of suppressing the actions in the mountainous part of Chechnya, hundreds of peasants were exiled from the Vedeno okrug alone. As a result a great number of families lost their main breadwinners and found themselves on the brink of destitution" - part of his takings Zelimkhan spent on supporting the families of the exiled<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation the mass deportation of the civilian population of occupied galicia: "the greek catholic clergy suffered particular persecution. on september 18, 1914, metropolitan a. sheptytsky was arrested and taken away to russia. in all, thousands of galicians were removed as hostages (through kyiv alone about 12 thousand passed)"(citation: енциклопедія історії україни: т. 8 2011)."
+             data-platforms="Ukrainians"
+             data-groups="G0009"
+             data-tools="S0017"
+             data-date="1914-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">August 1914</div>
+<div><a href="/en/campaigns/C0070">C0070</a> World War I and the Occupation of Galicia (1914–1917)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>The mass deportation of the civilian population of occupied Galicia: "The Greek Catholic clergy suffered particular persecution. On September 18, 1914, Metropolitan A. Sheptytsky was arrested and taken away to Russia. In all, thousands of Galicians were removed as hostages (through Kyiv alone about 12 thousand passed)"<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2011). Енциклопедія історії України: Т. 8."data-reference="Енциклопедія історії України: Т. 8 2011"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation mass deportation of hundreds of thousands of ukrainian peasants ("kulaks") and their family members to siberia and remote northern regions of the ussr(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Ukrainians"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1928-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1928</div>
+<div><a href="/en/campaigns/C0077">C0077</a> Forced Collectivization and Dekulakization (1928–1932)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>Mass deportation of hundreds of thousands of Ukrainian peasants ("kulaks") and their family members to Siberia and remote northern regions of the USSR<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation mass forced resettlement by quota: "under the resolutions of the council of people's commissars of december 5, 1939 and march 2, 1940, subject to administrative resettlement were the employees of the former state institutions, courts, police, army, merchants, polish settlers, landowners, owners of plants and factories, and their families"; in total "up to 1,250,000 people were removed to remote regions of the ussr"(citation: депортація (енциклопедія сучасної україни) 2007). the waves were separate: the osadniks were deported under the ussr sovnarkom resolution of december 5, 1939, no. 2010-558ss - its text remains in the closed archive of the president of the russian federation (fond 93), while the mechanics of the operation are known from the nkvd instruction approved on december 29, 1939(citation: инструкция нквд ссср о порядке переселения польских осадников из западных областей усср и бсср (утв. пост. снк ссср № 2122-617сс) 1939); the families of officers, policemen and prison guards were deported under the resolution of march 2, 1940, no. 289-127ss(citation: постановление снк союза сср с инструкцией нквд о выселении из западных областей усср и бсср (по пост. от 2 марта 1940 г. № 289-127сс) 1940)."
+             data-platforms="Ukrainians"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1939-09-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">September 1939</div>
+<div><a href="/en/campaigns/C0081">C0081</a> Annexation and Sovietization of Western Ukraine (1939–1941)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>Mass forced resettlement by quota: "under the resolutions of the Council of People's Commissars of December 5, 1939 and March 2, 1940, subject to administrative resettlement were the employees of the former state institutions, courts, police, army, merchants, Polish settlers, landowners, owners of plants and factories, and their families"; in total "up to 1,250,000 people were removed to remote regions of the USSR"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="О. Г. Бажан, О. Й. Стасюк (ЕСУ). (2007). Депортація (Енциклопедія Сучасної України)."data-reference="Депортація (Енциклопедія Сучасної України) 2007"><sup><a href="https://esu.com.ua/article-26038" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. The waves were separate: the osadniks were deported under the USSR Sovnarkom resolution of December 5, 1939, no. 2010-558ss - its text remains in the closed Archive of the President of the Russian Federation (fond 93), while the mechanics of the operation are known from the NKVD Instruction approved on December 29, 1939<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="НКВД СССР, Л. Берия; утв. СНК СССР 29 декабря 1939. (1939). Инструкция НКВД СССР о порядке переселения польских осадников из западных областей УССР и БССР (утв. пост. СНК СССР № 2122-617сс)."data-reference="Инструкция НКВД СССР о порядке переселения польских осадников из западных областей УССР и БССР (утв. пост. СНК СССР № 2122-617сс) 1939"><sup><a href="https://ru.wikisource.org/wiki/%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F_%D0%9D%D0%9A%D0%92%D0%94_%D0%A1%D0%A1%D0%A1%D0%A0_%22%D0%9E_%D0%BF%D0%BE%D1%80%D1%8F%D0%B4%D0%BA%D0%B5_%D0%BF%D0%B5%D1%80%D0%B5%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F_%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D1%85_%D0%BE%D1%81%D0%B0%D0%B4%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2_%D0%B8%D0%B7_%D0%B7%D0%B0%D0%BF%D0%B0%D0%B4%D0%BD%D1%8B%D1%85_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%B9_%D0%A3%D0%A1%D0%A1%D0%A0_%D0%B8_%D0%91%D0%A1%D0%A1%D0%A0%22" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>; the families of officers, policemen and prison guards were deported under the resolution of March 2, 1940, no. 289-127ss<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="СНК СССР, В. Молотов, 10 апреля 1940. (1940). Постановление СНК Союза ССР с Инструкцией НКВД о выселении из западных областей УССР и БССР (по пост. от 2 марта 1940 г. № 289-127сс)."data-reference="Постановление СНК Союза ССР с Инструкцией НКВД о выселении из западных областей УССР и БССР (по пост. от 2 марта 1940 г. № 289-127сс) 1940"><sup><a href="http://www.katyn-books.ru/archive/1940_2000/doc/36doc.html" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation the forcible removal of insurgents' families to siberia and the deportation of the ukrainians of zakerzonnia: the removal of "bandit accomplices" with their entire families began at once - already in the summer of 1944 "more than 17,000 people were carried off to krasnoyarsk krai"(citation: депортація (енциклопедія сучасної україни) 2007); in all, in 1944–52, 203,662 people were removed to special settlements, among them "representatives of the families of members of the organization of ukrainian nationalists and soldiers of the ukrainian insurgent army and their sympathizers — 182,543 people"(citation: депортація (енциклопедія сучасної україни) 2007). operation "vistula" was carried out in order to "deprive it of socio-economic and moral-psychological support from the local ukrainian population," and ended in the scattering of the community: the authorities rid themselves of the ukrainian population, "dispersing about 150 thousand people"(citation: енциклопедія історії україни: т. 1 2003)."
+             data-platforms="Ukrainians"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1944-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1944</div>
+<div><a href="/en/campaigns/C0084">C0084</a> Suppression of UPA Resistance and Operation "Vistula" (1944–1951)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>The forcible removal of insurgents' families to Siberia and the deportation of the Ukrainians of Zakerzonnia: the removal of "bandit accomplices" with their entire families began at once - already in the summer of 1944 "more than 17,000 people were carried off to Krasnoyarsk Krai"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="О. Г. Бажан, О. Й. Стасюк (ЕСУ). (2007). Депортація (Енциклопедія Сучасної України)."data-reference="Депортація (Енциклопедія Сучасної України) 2007"><sup><a href="https://esu.com.ua/article-26038" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>; in all, in 1944–52, 203,662 people were removed to special settlements, among them "representatives of the families of members of the Organization of Ukrainian Nationalists and soldiers of the Ukrainian Insurgent Army and their sympathizers — 182,543 people"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="О. Г. Бажан, О. Й. Стасюк (ЕСУ). (2007). Депортація (Енциклопедія Сучасної України)."data-reference="Депортація (Енциклопедія Сучасної України) 2007"><sup><a href="https://esu.com.ua/article-26038" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Operation "Vistula" was carried out in order to "deprive it of socio-economic and moral-psychological support from the local Ukrainian population," and ended in the scattering of the community: the authorities rid themselves of the Ukrainian population, "dispersing about 150 thousand people"<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1."data-reference="Енциклопедія історії України: Т. 1 2003"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Ukrainians",
+"russia/nokhchi": "Nokhchi (Chechens)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank">
+                        Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank">
+                        В. А. Полторацкий. (1895). Воспоминания.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1880). Погром Чечни (1852).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="11.0">
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank">
+                        Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2011). Енциклопедія історії України: Т. 8.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank">
+                        Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="https://esu.com.ua/article-26038" target="_blank">
+                        О. Г. Бажан, О. Й. Стасюк (ЕСУ). (2007). Депортація (Енциклопедія Сучасної України).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="https://ru.wikisource.org/wiki/%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F_%D0%9D%D0%9A%D0%92%D0%94_%D0%A1%D0%A1%D0%A1%D0%A0_%22%D0%9E_%D0%BF%D0%BE%D1%80%D1%8F%D0%B4%D0%BA%D0%B5_%D0%BF%D0%B5%D1%80%D0%B5%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F_%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D1%85_%D0%BE%D1%81%D0%B0%D0%B4%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2_%D0%B8%D0%B7_%D0%B7%D0%B0%D0%BF%D0%B0%D0%B4%D0%BD%D1%8B%D1%85_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%B9_%D0%A3%D0%A1%D0%A1%D0%A0_%D0%B8_%D0%91%D0%A1%D0%A1%D0%A0%22" target="_blank">
+                        НКВД СССР, Л. Берия; утв. СНК СССР 29 декабря 1939. (1939). Инструкция НКВД СССР о порядке переселения польских осадников из западных областей УССР и БССР (утв. пост. СНК СССР № 2122-617сс).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-18" href="http://www.katyn-books.ru/archive/1940_2000/doc/36doc.html" target="_blank">
+                        СНК СССР, В. Молотов, 10 апреля 1940. (1940). Постановление СНК Союза ССР с Инструкцией НКВД о выселении из западных областей УССР и БССР (по пост. от 2 марта 1940 г. № 289-127сс).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-19" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-19" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1060 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/techniques/T0104/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0104/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0104/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0104/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0104/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Массовые убийства гражданских, техника T0104 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/techniques/T0104/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Массовые убийства гражданских, техника T0104 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/techniques/">Техники</a></li>
+  <li class="breadcrumb-item">Массовые убийства гражданских</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Массовые убийства гражданских
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агрессоры могут осуществлять масштабные и целенаправленные расправы над безоружным мирным населением. Эта форма радикального террора применяется для физического устранения сопротивления (нейтрализации защиты) и быстрого силового захвата управления территорией через создание атмосферы тотального страха и паралич воли к обороне.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0104
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Подтехники:&nbsp;</span>
+                    Нет подтехник
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактические цели, которые достигаются применением техники или подтехники">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/tactics/TA0003">Захват управления</a>,                        <a href="/tactics/TA0004">Ослабление защиты</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народы, против которых применялась техника или подтехника">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народы:&nbsp;</span>Нохчи (Чеченцы), Украинцы
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контрибьюторы:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версия:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Создано:&nbsp;</span>21 апреля 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>9 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/T0104" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реализованные процедуры</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских карательные отряды физически истребляли местное население: в челобитной царю михаилу федоровичу кабардинский князь сунчалей янглычевич черкасский отчитывался, что в поселениях они «иных многих лю[дей] побили»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1617-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1617</div>
+<div><a href="/campaigns/C1120">C1120</a> Карательный поход и разорение горных обществ нохчи (1617–1618)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Карательные отряды физически истребляли местное население: в челобитной царю Михаилу Федоровичу кабардинский князь Сунчалей Янглычевич Черкасский отчитывался, что в поселениях они «иных многих лю[дей] побили»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских регулярная армия московского царства физически истребляла жителей, отказывающихся подчиниться оккупации: историк я. з. ахмадов констатирует, что в 1708 году «на терек были отправлены военные команды, физически уничтожавшие население, проявлявшее малейшее неповиновение»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1708-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1708</div>
+<div><a href="/campaigns/C1126">C1126</a> Подавление восстания Мурата Кучукова и террор против коренного населения (1708)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Регулярная армия Московского Царства физически истребляла жителей, отказывающихся подчиниться оккупации: историк Я. З. Ахмадов констатирует, что в 1708 году «на Терек были отправлены военные команды, физически уничтожавшие население, проявлявшее малейшее неповиновение»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских российская империя при штурме нохчийского аула истребляла его жителей без различия пола и возраста. историк д. а. хожаев пишет, что «озверевшие каратели не щадили ни женщин, ни детей», а врываясь в дома, «вырезали всех без пощады»(citation: чеченцы в русско-кавказской войне 1998). сам организатор, генерал ермолов, в своих «записках» признаёт счёт: «все, бывшие с оружием, истреблены, и число оных не менее могло быть четырёхсот человек», а «гораздо большее число вырезано было или в домах погибло от действия артиллерии и пожара»(citation: записки а.п. ермолова. 1798-1826 гг. 1991). имперский историк потто подтверждает, что аул взяли, лишь когда «истреблены были поголовно все его защитники», а вырезанных и погибших в пожаре было вдвое больше ста сорока уцелевших(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1819-07-18 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1819</div>
+<div><a href="/campaigns/C1143">C1143</a> Показательное уничтожение аула Дади-юрт и возведение крепости Внезапной для вытеснения нохчи с кумыкской плоскости (1819)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя при штурме нохчийского аула истребляла его жителей без различия пола и возраста. Историк Д. А. Хожаев пишет, что «озверевшие каратели не щадили ни женщин, ни детей», а врываясь в дома, «вырезали всех без пощады»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Сам организатор, генерал Ермолов, в своих «Записках» признаёт счёт: «все, бывшие с оружием, истреблены, и число оных не менее могло быть четырёхсот человек», а «гораздо большее число вырезано было или в домах погибло от действия артиллерии и пожара»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Имперский историк Потто подтверждает, что аул взяли, лишь когда «истреблены были поголовно все его защитники», а вырезанных и погибших в пожаре было вдвое больше ста сорока уцелевших<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских имперский историк потто описывает, как в ночь на 6 марта 1820 года гребенский казачий полк «без сопротивления ворвался в аул [топли], погруженный еще в глубокий сон», казаки «кинулись по саклям с кинжалами», и «часть жителей была перерезана прежде, чем успела подняться с постелей»(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1820-03-06 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Март 1820</div>
+<div><a href="/campaigns/C1145">C1145</a> Ночное нападение на аул Топли, сожжение Герменчука и принуждение нохчи к рубке своих лесов (1820)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Имперский историк Потто описывает, как в ночь на 6 марта 1820 года гребенский казачий полк «без сопротивления ворвался в аул [Топли], погруженный еще в глубокий сон», казаки «кинулись по саклям с кинжалами», и «часть жителей была перерезана прежде, чем успела подняться с постелей»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских российская империя истребляла безоружных людей, ею же созванных под предлогом разбирательства. историк д. а. хожаев пишет, что после того как генерал греков попытался «нанести оскорбление действием» чеченцу мулле учару-хаджи из села майртуп и был им убит, «после команды лисаневича „коли! началось массовое истребление солдатами всех безоружных горцев, бывших в укреплении»(citation: чеченцы в русско-кавказской войне 1998). имперский историк потто подтверждает, что оба генерала «пали от руки фанатика»(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007).""
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1825-07-18 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1825</div>
+<div><a href="/campaigns/C1147">C1147</a> Массовое убийство старшин, созванных на показательную экзекуцию в Герзель-ауле (1825)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя истребляла безоружных людей, ею же созванных под предлогом разбирательства. Историк Д. А. Хожаев пишет, что после того как генерал Греков попытался «нанести оскорбление действием» чеченцу мулле Учару-хаджи из села Майртуп и был им убит, «после команды Лисаневича „Коли! началось массовое истребление солдатами всех безоружных горцев, бывших в укреплении»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Имперский историк Потто подтверждает, что оба генерала «пали от руки фанатика»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>."</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских на рассвете 10 января 1827 казаки отряда генерала лаптева, начальника левого фланга кавказской линии, ворвавшись в селение узени-юрт, рубили безоружных жителей, бегущих за аргун. имперский историк потто фиксировал: казаки, «едва успевшие настигнуть хвост бежавших, схватили только трёх женщин да убили и ранили человек пятнадцать»(citation: кавказская война. в 5 томах. том 5. время паскевича, или бунт чечни 2006). убитые и раненые - настигнутые в бегстве невооружённые люди. вооружённое сопротивление, как писал тот же потто, завязали позже лишь те жители, что успели укрыться в лесу."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1826-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1826</div>
+<div><a href="/campaigns/C1149">C1149</a> Уничтожение аула беженцев Узени-Юрт, вымогание заложников с Гельдигена и захват жителей Самашек на жатве (1826-1827)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>На рассвете 10 января 1827 казаки отряда генерала Лаптева, начальника левого фланга Кавказской линии, ворвавшись в селение Узени-Юрт, рубили безоружных жителей, бегущих за Аргун. Имперский историк Потто фиксировал: казаки, «едва успевшие настигнуть хвост бежавших, схватили только трёх женщин да убили и ранили человек пятнадцать»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Потто В.. (2006). Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни."data-reference="Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни 2006"><sup><a href="https://loveread.ec/book-comments.php?book=75379" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Убитые и раненые - настигнутые в бегстве невооружённые люди. Вооружённое сопротивление, как писал тот же Потто, завязали позже лишь те жители, что успели укрыться в лесу.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских на рассвете 19 декабря 1830 казаки отряда генерала вельяминова, ворвавшись в спящее село дзулгай-юрт, рубили застигнутых жителей. имперский историк потто фиксировал: «взято было в плен тридцать девять человек да человек двенадцать изрублено. остальные, укрывшись в лесу, завязали перестрелку»(citation: кавказская война. в 5 томах. том 5. время паскевича, или бунт чечни 2006). изрубленные - жители, настигнутые при внезапном ночном захвате села; вооружённое сопротивление завязали позже лишь те, кто успел добежать до леса."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1830-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Сентябрь 1830</div>
+<div><a href="/campaigns/C1152">C1152</a> Выжигание плоскостной Чечни экспедицией Вельяминова: снос сёл от Сунжи до Маиртупа, захват семьи Астемира, коллективные взыскания с чеченских сёл, рубка бегущих жителей Дзулгай-Юрта и истребление зимних запасов (1830-1831)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>На рассвете 19 декабря 1830 казаки отряда генерала Вельяминова, ворвавшись в спящее село Дзулгай-Юрт, рубили застигнутых жителей. Имперский историк Потто фиксировал: «взято было в плен тридцать девять человек да человек двенадцать изрублено. Остальные, укрывшись в лесу, завязали перестрелку»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Потто В.. (2006). Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни."data-reference="Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни 2006"><sup><a href="https://loveread.ec/book-comments.php?book=75379" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Изрубленные - жители, настигнутые при внезапном ночном захвате села; вооружённое сопротивление завязали позже лишь те, кто успел добежать до леса.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских 28 декабря 1836 при внезапном окружении кишкерой-юрта войска пулло убивали жителей, пытавшихся спастись, и семьи в домах: «искавшие спасения в бегстве, были пойманы или истреблены», «жители, запершись в домах с семействами, выбиваемы были штыками», двоих выкурили дымом «от брошенной в трубы соломы»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). при занятии деревни найдено 76 тел убитых(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). часть жителей вела вооружённую оборону, и среди 76 убитых есть павшие с оружием; техника фиксируется по убийству бегущих и запертых в домах семей."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-12-27 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Декабрь 1836</div>
+<div><a href="/campaigns/C1158">C1158</a> Истребление жителей Кишкерой-Юрта отрядом Пулло: 76 убитых, 40 пленных, сожжение села с запасами (декабрь 1836)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>28 декабря 1836 при внезапном окружении Кишкерой-Юрта войска Пулло убивали жителей, пытавшихся спастись, и семьи в домах: «искавшие спасения в бегстве, были пойманы или истреблены», «жители, запершись в домах с семействами, выбиваемы были штыками», двоих выкурили дымом «от брошенной в трубы соломы»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. При занятии деревни найдено 76 тел убитых<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Часть жителей вела вооружённую оборону, и среди 76 убитых есть павшие с оружием; техника фиксируется по убийству бегущих и запертых в домах семей.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских при истреблении малой чечни экспедицией фезе в январе 1837 года войска убивали жителей, не оказывавших вооружённого сопротивления. журнал экспедиции, представленный розеном военному министру чернышеву 11 февраля 1837, записывает: окружённый в ночь на 24 января шалаж-юрт взят «без выстрела, положив на месте 14 душ»(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881) - убийства в селе, которое не давало вооружённого отпора. 25 января фезе, по тому же журналу, отправил колонны «для открытия и уничтожения народонаселения в густых лесах вверх по обоим берегам р. шалажи» - распоряжение об уничтожении населения прямым текстом(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). у урус-мартана после бегства жителей, записывает журнал, «убитых тел неприятельских осталось на месте 23»(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). итоговое число убитых по эпизодам в журнале не сведено; часть павших вела вооружённую оборону - техника фиксируется по убийствам в селе, взятом без выстрела, и по приказу об уничтожении населения."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1837-01-23 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1837</div>
+<div><a href="/campaigns/C1160">C1160</a> Истребление Малой Чечни экспедицией Фезе: 92 пленных, более тысячи сожжённых саклей (январь 1837)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>При истреблении Малой Чечни экспедицией Фезе в январе 1837 года войска убивали жителей, не оказывавших вооружённого сопротивления. Журнал экспедиции, представленный Розеном военному министру Чернышеву 11 февраля 1837, записывает: окружённый в ночь на 24 января Шалаж-юрт взят «без выстрела, положив на месте 14 душ»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span> - убийства в селе, которое не давало вооружённого отпора. 25 января Фезе, по тому же журналу, отправил колонны «для открытия и уничтожения народонаселения в густых лесах вверх по обоим берегам р. Шалажи» - распоряжение об уничтожении населения прямым текстом<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. У Урус-Мартана после бегства жителей, записывает журнал, «убитых тел неприятельских осталось на месте 23»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Итоговое число убитых по эпизодам в журнале не сведено; часть павших вела вооружённую оборону - техника фиксируется по убийствам в селе, взятом без выстрела, и по приказу об уничтожении населения.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских удары по малой чечне (равнинно-предгорной западной части чечни) 1847-1851 годов сопровождались истреблением безоружных жителей, задокументированным самими исполнителями. 6 марта 1847 года отряд, ведомый подкупленным проводником, на рассвете ворвался в спящий хутор наиба дубы (наместника имама шамиля, руководителя сопротивления горцев российскому завоеванию); имперский офицер полторацкий, участник штурма, записал: «большинство, застигнутое врасплох полунагими, стар и млад, женщины, дети и грудные младенцы, утонули в своей крови от остро наточенных штыков, никого не помиловавших, не пощадивших»(citation: воспоминания 1895). 15 июня 1851 года в ущелье реки гехи, по историку н. и. покровскому, отряд генерала слепцова «истребил ряд хуторов и аулов. не успевшие уйти жители были вырезаны»(citation: кавказские войны и имамат шамиля 2009); собственный рапорт слепцова от 20 июня 1851 года формулирует мягче - «рѣшившіеся защищаться были убиты, или весьма немногіе пощажены и взяты въ плѣнъ»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). 15 сентября 1851 года у переправы через реку сунжу резню сдающихся признал сам командир. барятинский, командовавший на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), рапортом генералу завадовскому от 18 сентября 1851 года описал, как чеченцы, признавшие власть империи («мирные»), и казаки рубили бегущих: «мирные чеченцы и козаки наши, преслѣдуя ихъ по узкимъ тропинкамъ, рубили безпощадно. никто не думалъ защищаться... я самъ и офицеры мои старались удерживать убійства, но это почти было невозможно»; убитых он считает «болѣе 200 тѣлъ»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). 16 ноября 1851 года генерал козловский рапортом от 21 ноября 1851 года отчитался об истреблении аула дахин-ирзау: «я рѣшился истребить этотъ аулъ, что и исполнено мною, на разсвѣтѣ 16-го ноября, съ полнымъ успѣхомъ» - убитых более 40, раненых более 100(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Удары по Малой Чечне (равнинно-предгорной западной части Чечни) 1847-1851 годов сопровождались истреблением безоружных жителей, задокументированным самими исполнителями. 6 марта 1847 года отряд, ведомый подкупленным проводником, на рассвете ворвался в спящий хутор наиба Дубы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию); имперский офицер Полторацкий, участник штурма, записал: «большинство, застигнутое врасплох полунагими, стар и млад, женщины, дети и грудные младенцы, утонули в своей крови от остро наточенных штыков, никого не помиловавших, не пощадивших»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. 15 июня 1851 года в ущелье реки Гехи, по историку Н. И. Покровскому, отряд генерала Слепцова «истребил ряд хуторов и аулов. Не успевшие уйти жители были вырезаны»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>; собственный рапорт Слепцова от 20 июня 1851 года формулирует мягче - «рѣшившіеся защищаться были убиты, или весьма немногіе пощажены и взяты въ плѣнъ»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. 15 сентября 1851 года у переправы через реку Сунжу резню сдающихся признал сам командир. Барятинский, командовавший на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), рапортом генералу Завадовскому от 18 сентября 1851 года описал, как чеченцы, признавшие власть империи («мирные»), и казаки рубили бегущих: «Мирные Чеченцы и козаки наши, преслѣдуя ихъ по узкимъ тропинкамъ, рубили безпощадно. Никто не думалъ защищаться... Я самъ и офицеры мои старались удерживать убійства, но это почти было невозможно»; убитых он считает «болѣе 200 тѣлъ»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. 16 ноября 1851 года генерал Козловский рапортом от 21 ноября 1851 года отчитался об истреблении аула Дахин-Ирзау: «я рѣшился истребить этотъ аулъ, что и исполнено мною, на разсвѣтѣ 16-го ноября, съ полнымъ успѣхомъ» - убитых более 40, раненых более 100<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских в погроме чечни 1852 года жертвы среди жителей шли на сотни. 18 января 1852 года на реке гойте действовал отряд барятинского, командовавшего на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи): имперский историк волконский, участник похода, подвёл итог дня - «мы в этот день... уничтожили до двух тысяч дворов»; счёт по людям он записал так: «пленных захвачено всего лишь десять человек - и тех едва успели вырвать силою из-под кинжалов казаков. независимо от горцев, павших собственно в битве, число жертв, погибших в аулах на гойте, простирается до двухсот человек»(citation: погром чечни (1852) 1880). о набеге на аул гурдали 11 августа 1852 года источники расходятся: историк н. и. покровский передаёт рапорт барятинского от 21 августа 1852 года - «вырезал все его население, кроме 52 человек, взятых в плен»(citation: кавказские войны и имамат шамиля 2009); волконский же, описавший тот же день, утверждает, что аул не пал, отряд отступил с тяжёлыми потерями, и сожалеет: «если бы мы действительно разорили, сожгли гурдали, перебили бы все его население... дело вышло бы и существеннее, и полезнее»(citation: погром чечни (1852) 1880) - рапорт барятинского и рассказ волконского описывают один и тот же день взаимоисключающим образом. истребление людей было и заявленным планом: воронцов, наместник и главнокомандующий на кавказе, письмом императору от 1-20 марта 1854 года сформулировал задачу минувшей зимы - «окончательное покореніе и истребленіе остающихся немирныхъ по окрестностямъ на плоскости»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885) («немирные» - в имперском лексиконе не подчинившиеся империи)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В погроме Чечни 1852 года жертвы среди жителей шли на сотни. 18 января 1852 года на реке Гойте действовал отряд Барятинского, командовавшего на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи): имперский историк Волконский, участник похода, подвёл итог дня - «мы в этот день... уничтожили до двух тысяч дворов»; счёт по людям он записал так: «Пленных захвачено всего лишь десять человек - и тех едва успели вырвать силою из-под кинжалов казаков. Независимо от горцев, павших собственно в битве, число жертв, погибших в аулах на Гойте, простирается до двухсот человек»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. О набеге на аул Гурдали 11 августа 1852 года источники расходятся: историк Н. И. Покровский передаёт рапорт Барятинского от 21 августа 1852 года - «вырезал все его население, кроме 52 человек, взятых в плен»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>; Волконский же, описавший тот же день, утверждает, что аул не пал, отряд отступил с тяжёлыми потерями, и сожалеет: «Если бы мы действительно разорили, сожгли Гурдали, перебили бы все его население... дело вышло бы и существеннее, и полезнее»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span> - рапорт Барятинского и рассказ Волконского описывают один и тот же день взаимоисключающим образом. Истребление людей было и заявленным планом: Воронцов, наместник и главнокомандующий на Кавказе, письмом императору от 1-20 марта 1854 года сформулировал задачу минувшей зимы - «окончательное покореніе и истребленіе остающихся немирныхъ по окрестностямъ на плоскости»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span> («немирные» - в имперском лексиконе не подчинившиеся империи).</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских историки я. з. ахмадов и э. х. хасмагомадов пишут о командах «охотников»: «милиционеры имели приказ убивать не только скрывающихся абреков, но и любого жителя, направлявшегося из своего селения в лес. в качестве вознаграждения за каждого убитого или пойманного в лесу человека власти выплачивали 25 рублей» (абрек - имперский ярлык горца вне закона)(citation: история чечни в xix-xx веках 2005); за руководителей назначены отдельные суммы - «за алибека-хаджи - несколько тысяч рублей»(citation: история чечни в xix-xx веках 2005). пленных полагалось убивать при попытке их отбить - и это исполнялось: «при нападении повстанцев на отряд, сопровождавший в веденскую крепость 135 арестованных жителей селения мехкеты, солдатами было убито до 20 мехкетинцев»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут о командах «охотников»: «милиционеры имели приказ убивать не только скрывающихся абреков, но и любого жителя, направлявшегося из своего селения в лес. В качестве вознаграждения за каждого убитого или пойманного в лесу человека власти выплачивали 25 рублей» (абрек - имперский ярлык горца вне закона)<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>; за руководителей назначены отдельные суммы - «за Алибека-хаджи - несколько тысяч рублей»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Пленных полагалось убивать при попытке их отбить - и это исполнялось: «при нападении повстанцев на отряд, сопровождавший в Веденскую крепость 135 арестованных жителей селения Мехкеты, солдатами было убито до 20 мехкетинцев»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских массовые еврейские погромы при попустительстве и соучастии полиции: в октябре 1905 года «зарегистрировано более 600 погромов и более 800 убитых»(citation: енциклопедія історії україни: т. 8 2011). в одессе «полицейские нижних чинов и солдаты не мешали погромщикам, а во многих случаях сами участвовали в грабежах и убийствах»(citation: the pogrom of 1905 in odessa 1992), а командующий войсками округа заявил полицейским: «все мы в душе сочувствуем погрому»(citation: the pogrom of 1905 in odessa 1992)."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0024"
+             data-date="1905-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1905</div>
+<div><a href="/campaigns/C0068">C0068</a> Черносотенный террор и погромы (1905–1907)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0024">S0024</a> Полицейский аппарат</div>            </div>
+            <div class="proc-desc">
+                        <p>Массовые еврейские погромы при попустительстве и соучастии полиции: в октябре 1905 года «зарегистрировано более 600 погромов и более 800 убитых»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2011). Енциклопедія історії України: Т. 8."data-reference="Енциклопедія історії України: Т. 8 2011"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. В Одессе «полицейские нижних чинов и солдаты не мешали погромщикам, а во многих случаях сами участвовали в грабежах и убийствах»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Robert Weinberg. (1992). The Pogrom of 1905 in Odessa."data-reference="The Pogrom of 1905 in Odessa 1992"><sup><a href="https://faculty.history.umd.edu/BCooperman/NewCity/Pogrom1905.html" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>, а командующий войсками округа заявил полицейским: «все мы в душе сочувствуем погрому»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Robert Weinberg. (1992). The Pogrom of 1905 in Odessa."data-reference="The Pogrom of 1905 in Odessa 1992"><sup><a href="https://faculty.history.umd.edu/BCooperman/NewCity/Pogrom1905.html" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских 10 октября 1905 года на грозненском рынке войска российской империи стреляли не по погромщикам, а по чеченцам, которых громили вооружённые запасные: историки я. з. ахмадов и э. х. хасмагомадов пишут, что солдаты ширванского полка во главе с полковником поповым применили оружие, «...расстреливая прятавшихся чеченцев, разыскивая их по чердакам и подвалам, в то время как запасные и хулиганы громили и грабили на глазах у начальства магазины»; по подсчёту историков, в ходе погрома пострадало 27 чеченцев, из которых 17 были убиты(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Октябрь 1905</div>
+<div><a href="/campaigns/C1175">C1175</a> Коллективные наказания эпохи абречества: штрафы, постой войск и высылки за Зелимхана (1905-1913)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>10 октября 1905 года на грозненском рынке войска Российской империи стреляли не по погромщикам, а по чеченцам, которых громили вооружённые запасные: историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут, что солдаты Ширванского полка во главе с полковником Поповым применили оружие, «...расстреливая прятавшихся чеченцев, разыскивая их по чердакам и подвалам, в то время как запасные и хулиганы громили и грабили на глазах у начальства магазины»; по подсчёту историков, в ходе погрома пострадало 27 чеченцев, из которых 17 были убиты<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских муравьевская резня в феврале 1918 года после взятия киева красными войсками: энциклопедия истории украины характеризует муравьева как «инициатора массовых расстрелов в городе», а позднее он сам был арестован по обвинению «в „потворстве массовым расстрелам, грабежам, приведшим к падению советской власти в украине“»(citation: енциклопедія історії україни: т. 7 2010). грушевский о командующем походом: «главный комендант, бывший жандарм муравьёв, ещё в феврале хвалился расстрелами украинцев и разорением их добра»(citation: ілюстрована історія україни 1921)."
+             data-platforms="Украинцы"
+             data-groups="G0013"
+             data-tools="S0010"
+             data-date="1917-12-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Декабрь 1917</div>
+<div><a href="/campaigns/C0072">C0072</a> Создание марионеточного правительства и маскировка интервенции (декабрь 1917 – начало 1918)</div><div><a href="/groups/G0013">G0013</a> Советская Россия (РСФСР)</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Муравьевская резня в феврале 1918 года после взятия Киева красными войсками: Энциклопедия истории Украины характеризует Муравьева как «инициатора массовых расстрелов в городе», а позднее он сам был арестован по обвинению «в „потворстве массовым расстрелам, грабежам, приведшим к падению советской власти в Украине"»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2010). Енциклопедія історії України: Т. 7."data-reference="Енциклопедія історії України: Т. 7 2010"><sup><a href="http://www.history.org.ua/?termin=Natsionalni_rajony" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Грушевский о командующем походом: «главный комендант, бывший жандарм Муравьёв, ещё в феврале хвалился расстрелами украинцев и разорением их добра»<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України."data-reference="Ілюстрована історія України 1921"><sup><a href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских масштабные расстрелы безоружного мирного населения и участников подавленных крестьянских восстаний карательными отрядами для физического устранения очагов сопротивления(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Украинцы"
+             data-groups="G0013"
+             data-tools="S0017"
+             data-date="1919-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1919</div>
+<div><a href="/campaigns/C0074">C0074</a> Второе вооруженное вторжение и ресурсное истощение (1919)</div><div><a href="/groups/G0013">G0013</a> Советская Россия (РСФСР)</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Масштабные расстрелы безоружного мирного населения и участников подавленных крестьянских восстаний карательными отрядами для физического устранения очагов сопротивления<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских трагедия под базаром в ноябре 1921 года: расстрел большевиками 359 пленных воинов унр, отказавшихся перейти на сторону красных, как символ финала организованного сопротивления(citation: україна й українці в постімперську добу (1917—1939) 2021)."
+             data-platforms="Украинцы"
+             data-groups="G0013"
+             data-tools="S0010"
+             data-date="1919-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1919</div>
+<div><a href="/campaigns/C0075">C0075</a> Институциональное поглощение через «военно-политический союз» (1919–1921)</div><div><a href="/groups/G0013">G0013</a> Советская Россия (РСФСР)</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Трагедия под Базаром в ноябре 1921 года: расстрел большевиками 359 пленных воинов УНР, отказавшихся перейти на сторону красных, как символ финала организованного сопротивления<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Єфіменко Г. Г., Кульчицький С. В., Пиріг Р. Я., Скальський В. В., Якубова Л. Д.. (2021). Україна й українці в постімперську добу (1917—1939)."data-reference="Україна й українці в постімперську добу (1917—1939) 2021"><sup><a href="http://resource.history.org.ua/item/0016476" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских осознанное доведение миллионов украинских крестьян до голодной смерти как прямой результат государственной политики москвы(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Украинцы"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1932-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Август 1932</div>
+<div><a href="/campaigns/C0078">C0078</a> Террор голодом: Голодомор (1932–1933)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Осознанное доведение миллионов украинских крестьян до голодной смерти как прямой результат государственной политики Москвы<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских внесудебные убийства гражданских в ходе подавления повстанческого движения: президиум цк кпсс в постановлении «о политическом и хозяйственном состоянии западных областей украинской сср» от 26 мая 1953 года сам признал: «с 1944 по 1952 гг. в западных областях украины подверглось разным видам репрессии до 500 тысяч человек, в том числе арестовано более 134 тыс. человек, убито более 153 тыс. человек, выслано навечно из пределов усср более 203 тыс. человек»(citation: постановление президиума цк кпсс «о политическом и хозяйственном состоянии западных областей украинской сср» 1953)(citation: енциклопедія історії україни: т. 2 2004) – убитых власть не делила на повстанцев и гражданских, а уже 2 июля 1953 года, после ареста берии, само постановление отменили как способствующее «активизации буржуазно-националистических элементов»(citation: постановление президиума цк кпсс «о политическом и хозяйственном состоянии западных областей украинской сср» 1953). террор вели и переодетые «спецгруппы» мгб, действовавшие под видом упа: военный прокурор войск мвд украинского округа кошарский в докладной хрущёву (15 февраля 1949) приводил «примеры избиений, изнасилований, грабежей населения» агентами-боевиками и констатировал: «действия т. н. спецгрупп мгб носят ярко выраженный бандитский антисоветский характер и, разумеется, не могут быть оправданы никакими оперативными соображениями»(citation: енциклопедія історії україни: т. 8 2011)."
+             data-platforms="Украинцы"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1944-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1944</div>
+<div><a href="/campaigns/C0084">C0084</a> Подавление сопротивления УПА и операция «Висла» (1944–1951)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Внесудебные убийства гражданских в ходе подавления повстанческого движения: Президиум ЦК КПСС в постановлении «О политическом и хозяйственном состоянии западных областей Украинской ССР» от 26 мая 1953 года сам признал: «С 1944 по 1952 гг. в западных областях Украины подверглось разным видам репрессии до 500 тысяч человек, в том числе арестовано более 134 тыс. человек, убито более 153 тыс. человек, выслано навечно из пределов УССР более 203 тыс. человек»<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Президиум ЦК КПСС, 26 мая 1953. (1953). Постановление Президиума ЦК КПСС «О политическом и хозяйственном состоянии западных областей Украинской ССР»."data-reference="Постановление Президиума ЦК КПСС «О политическом и хозяйственном состоянии западных областей Украинской ССР» 1953"><sup><a href="https://istmat.org/node/26479" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span><span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2004). Енциклопедія історії України: Т. 2."data-reference="Енциклопедія історії України: Т. 2 2004"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span> – убитых власть не делила на повстанцев и гражданских, а уже 2 июля 1953 года, после ареста Берии, само постановление отменили как способствующее «активизации буржуазно-националистических элементов»<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Президиум ЦК КПСС, 26 мая 1953. (1953). Постановление Президиума ЦК КПСС «О политическом и хозяйственном состоянии западных областей Украинской ССР»."data-reference="Постановление Президиума ЦК КПСС «О политическом и хозяйственном состоянии западных областей Украинской ССР» 1953"><sup><a href="https://istmat.org/node/26479" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. Террор вели и переодетые «спецгруппы» МГБ, действовавшие под видом УПА: военный прокурор войск МВД Украинского округа Кошарский в докладной Хрущёву (15 февраля 1949) приводил «примеры избиений, изнасилований, грабежей населения» агентами-боевиками и констатировал: «действия т. н. спецгрупп МГБ носят ярко выраженный бандитский антисоветский характер и, разумеется, не могут быть оправданы никакими оперативными соображениями»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2011). Енциклопедія історії України: Т. 8."data-reference="Енциклопедія історії України: Т. 8 2011"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских массовые убийства заключенных при силовом подавлении восстаний. в норильске «было убито около 100 человек и ранено более 200»(citation: норильский завет 2013); в кенгире «во время подавления восстания погибло и было ранено около 700 заключённых»(citation: 70 років жорстокого придушення кенгірського повстання 2024)."
+             data-platforms="Украинцы"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1953-05-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Май 1953</div>
+<div><a href="/campaigns/C0086">C0086</a> Подавление восстаний в ГУЛАГе (1953–1954)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Массовые убийства заключенных при силовом подавлении восстаний. В Норильске «было убито около 100 человек и ранено более 200»<span onclick=scrollToRef('scite-22') id="scite-ref-22-a" class="scite-citeref-number" title="Алексей Тарасов («Историческая правда»). (2013). Норильский завет."data-reference="Норильский завет 2013"><sup><a href="https://web.archive.org/web/20130223025712/http%3A//www.istpravda.ru/digest/2278/" target="_blank" data-hasqtip="21" aria-describedby="qtip-21">[22]</a></sup></span>; в Кенгире «Во время подавления восстания погибло и было ранено около 700 заключённых»<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Національний музей Голодомору-геноциду. (2024). 70 років жорстокого придушення Кенгірського повстання."data-reference="70 років жорстокого придушення Кенгірського повстання 2024"><sup><a href="https://holodomormuseum.org.ua/news/26-chervnia-70-rokiv-zhorstokoho-prydushennia-kenhirskoho-povstannia/" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских целенаправленное уничтожение мирных жителей на оккупированных территориях: комиссия оон установила «широко распространённую практику суммарных казней в районах, которые контролировали вооружённые силы российской федерации, в 17 населённых пунктах черниговской, харьковской, киевской и сумской областей, с наибольшим числом в киевской области, включая город бучу», подтвердив «казнь 65 мужчин, 2 женщин и 14-летнего мальчика»; «более чем в половине расследованных казней свидетели в последний раз видели жертв под стражей вооружённых сил российской федерации»(citation: report of the independent international commission of inquiry on ukraine (a/hrc/52/62) 2023)."
+             data-platforms="Украинцы"
+             data-groups="G0011"
+             data-tools="S0010"
+             data-date="2022-02-24 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 2022</div>
+<div><a href="/campaigns/C0103">C0103</a> Полномасштабное вторжение (с 24 февраля 2022)</div><div><a href="/groups/G0011">G0011</a> Российская Федерация</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Целенаправленное уничтожение мирных жителей на оккупированных территориях: комиссия ООН установила «широко распространённую практику суммарных казней в районах, которые контролировали вооружённые силы Российской Федерации, в 17 населённых пунктах Черниговской, Харьковской, Киевской и Сумской областей, с наибольшим числом в Киевской области, включая город Бучу», подтвердив «казнь 65 мужчин, 2 женщин и 14-летнего мальчика»; «более чем в половине расследованных казней свидетели в последний раз видели жертв под стражей вооружённых сил Российской Федерации»<span onclick=scrollToRef('scite-24') id="scite-ref-24-a" class="scite-citeref-number" title="Незалежна міжнародна комісія ООН з розслідування. (2023). Report of the Independent International Commission of Inquiry on Ukraine (A/HRC/52/62)."data-reference="Report of the Independent International Commission of Inquiry on Ukraine (A/HRC/52/62) 2023"><sup><a href="https://documents.un.org/api/symbol/access?s=A%2FHRC%2F52%2F62&l=en&t=pdf" target="_blank" data-hasqtip="23" aria-describedby="qtip-23">[24]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Украинцы",
+"russia/nokhchi": "Нохчи (Чеченцы)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank">
+                        Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank">
+                        Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://loveread.ec/book-comments.php?book=75382" target="_blank">
+                        Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://loveread.ec/book-comments.php?book=75379" target="_blank">
+                        Потто В.. (2006). Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank">
+                        В. А. Полторацкий. (1895). Воспоминания.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1880). Погром Чечни (1852).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="13.0">
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2011). Енциклопедія історії України: Т. 8.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://faculty.history.umd.edu/BCooperman/NewCity/Pogrom1905.html" target="_blank">
+                        Robert Weinberg. (1992). The Pogrom of 1905 in Odessa.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="http://www.history.org.ua/?termin=Natsionalni_rajony" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2010). Енциклопедія історії України: Т. 7.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank">
+                        Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-18" href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank">
+                        Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-19" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-19" href="http://resource.history.org.ua/item/0016476" target="_blank">
+                        Єфіменко Г. Г., Кульчицький С. В., Пиріг Р. Я., Скальський В. В., Якубова Л. Д.. (2021). Україна й українці в постімперську добу (1917—1939).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-20" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-20" href="https://istmat.org/node/26479" target="_blank">
+                        Президиум ЦК КПСС, 26 мая 1953. (1953). Постановление Президиума ЦК КПСС «О политическом и хозяйственном состоянии западных областей Украинской ССР».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-21" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-21" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2004). Енциклопедія історії України: Т. 2.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-22" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-22" href="https://web.archive.org/web/20130223025712/http%3A//www.istpravda.ru/digest/2278/" target="_blank">
+                        Алексей Тарасов («Историческая правда»). (2013). Норильский завет.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-23" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-23" href="https://holodomormuseum.org.ua/news/26-chervnia-70-rokiv-zhorstokoho-prydushennia-kenhirskoho-povstannia/" target="_blank">
+                        Національний музей Голодомору-геноциду. (2024). 70 років жорстокого придушення Кенгірського повстання.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-24" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-24" href="https://documents.un.org/api/symbol/access?s=A%2FHRC%2F52%2F62&l=en&t=pdf" target="_blank">
+                        Незалежна міжнародна комісія ООН з розслідування. (2023). Report of the Independent International Commission of Inquiry on Ukraine (A/HRC/52/62).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

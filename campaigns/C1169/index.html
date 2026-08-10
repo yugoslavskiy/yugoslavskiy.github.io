@@ -1,0 +1,688 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1169/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1169/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1169/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1169/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1169/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864), кампания C1169 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1169/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864), кампания C1169 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>Двадцать пять лет чеченцы и дагестанцы держали против империи собственное государство - имамат, созданный имамом Шамилём: с шариатскими судами, налогами, армией и наместниками-наибами в округах. В 1859 году имамат пал: в апреле войска взяли его столицу Ведено, в августе у дагестанского аула Гуниб сдался сам Шамиль. Его увезли в Россию под надзор: местом жительства император Александр II определил Калугу, где имаму с семьёй дали особняк и двадцать тысяч рублей годового содержания - такой плен источники называют «почётным». Больше десяти лет спустя ему разрешили паломничество в Мекку (хадж); в 1871 году он умер в Медине (Аравийский полуостров, ныне Саудовская Аравия) и похоронен там<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Мухаммадом Тахиром аль-Карахи. (1941). Блеск дагестанских шашек в некоторых шамилевских битвах."data-reference="Блеск дагестанских шашек в некоторых шамилевских битвах 1941"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/Arabojaz_ist/Karachi_I/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. После этого Чечню удерживали силой. В 1860-1861 годах в Ичкерии и Аргунском округе поднялись восстания - их подавили экспедициями с уничтожением аулов и выселением жителей, а тех, кто их возглавлял, казнили или отправили в ссылку - во внутренние губернии России, в Сибирь и в крепости: Байсангура Беноевского повесили по приговору военно-полевого суда, наиба Атаби-муллу Атаева и Уму Дуева развезли по разным губерниям, шейха Кунта-Хаджи - бессрочно в Устюжну Новгородской губернии, его брата - в Выборгскую крепость, рядовых последователей - на крепостные работы с поселением в Сибири. В январе 1864 года у села Шали войска расстреляли безоружное шествие последователей шейха Кунта-Хаджи - мусульманского проповедника, учившего, что Бога надо поминать вслух, хором, с пением и кружением по кругу. Такое поминание называется зикр, отсюда имперское прозвище его последователей - зикристы. Что двигало восставшими, записала сама имперская сторона: полковник Белик доносил начальнику Терской области в конце мая 1860 года о вернувшихся на пепелище беноевцах - они «убедительно просили дозволения поселиться на старых своих местах, - в противном случае они все поклялись умереть, но не подчиниться»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Программу периода зафиксировал начальник Главного штаба Кавказской армии Карцов (в других источниках - Карцев) секретным меморандумом 1864 года: «единственно верное средство обеспечить длительную покорность чеченцев - организовать их массовое переселение частью в Турцию, частью на равнину, подальше от гор»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Итог расправы у Шали историк Д. А. Хожаев формулирует так: «царские власти спровоцировали горцев на выступление и устроили побоище, расстреляв из пушек толпы мюридов-зикристов, с одними кинжалами и пустыми ножнами двинувшихся на каре солдат»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span> - мюриды это ученики шейха.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1169
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Июнь 1860</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Февраль 1864</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>3 августа 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>4 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1169" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1169/C1169-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1169%2FC1169-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0009">G0009</a></td>
+                <td><a href="/groups/G0009">Российская Империя</a></td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0010"> S0010 </a></td>
+                <td><a href="/software/S0010"> Регулярная армия </a></td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td><a href="/software/S0012"> S0012 </a></td>
+                <td><a href="/software/S0012"> Оккупационные и подконтрольные администрации </a></td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="карательные экспедиции в начале июня 1860 года в беной, куда самовольно вернулись выселенные семьи во главе с байсангуром беноевским, главой этого общества при имаме шамиле (руководителе сопротивления горцев российскому завоеванию), введены войска, казаки и милиция(citation: история чечни в xix-xx веках 2005). 28 сентября 1860 года войска взяли беной штурмом: историки я. з. ахмадов и э. х. хасмагомадов пишут - «отчаянное сопротивление... было быстро подавлено огнем артиллерии»; историк з. х. ибрагимова датирует занятие аула 26 сентября и добавляет: «ответные репрессии были направлены на всё население восставших округов»(citation: история чечни в xix-xx веках 2005)(citation: мир чеченцев. xix век 2007). в декабре 1860 - январе 1861 года по ичкерии прошла операция генерала кундухова - десять пехотных батальонов, четыре сотни казаков и семь сотен чеченской милиции: «для преследования восставших широко применялись «летучие» отряды, а основная масса войск была задействована в «прочесывании» местности»(citation: история чечни в xix-xx веках 2005). с весны до глубокой осени 1861 года, по историку з. х. ибрагимовой, «на территории чечни, от реки ассы до аула гехи, оперировала военно-карательная экспедиция... силой оружия выселявшая чеченцев в предгорья и на плоскость»(citation: мир чеченцев. xix век 2007). осенью 1861 года три отряда принудили к сдаче последних руководителей восстания - имперский рапорт от 22 декабря 1861 года подводит итог: «настойчивыя дѣйствія нашихъ войскъ въ суровую зиму прошлаго года... принудили ичкеринцевъ изъявить безусловную покорность»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1860</div>
+                <div>
+                    <a href="/techniques/T0077">T0077</a> Карательные экспедиции
+                </div>
+<div><a href="/campaigns/C1169">C1169</a> Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В начале июня 1860 года в Беной, куда самовольно вернулись выселенные семьи во главе с Байсангуром Беноевским, главой этого общества при имаме Шамиле (руководителе сопротивления горцев российскому завоеванию), введены войска, казаки и милиция<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 28 сентября 1860 года войска взяли Беной штурмом: историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут - «отчаянное сопротивление... было быстро подавлено огнем артиллерии»; историк З. Х. Ибрагимова датирует занятие аула 26 сентября и добавляет: «Ответные репрессии были направлены на всё население восставших округов»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. В декабре 1860 - январе 1861 года по Ичкерии прошла операция генерала Кундухова - десять пехотных батальонов, четыре сотни казаков и семь сотен чеченской милиции: «для преследования восставших широко применялись «летучие» отряды, а основная масса войск была задействована в «прочесывании» местности»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. С весны до глубокой осени 1861 года, по историку З. Х. Ибрагимовой, «на территории Чечни, от реки Ассы до аула Гехи, оперировала военно-карательная экспедиция... силой оружия выселявшая чеченцев в предгорья и на плоскость»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Осенью 1861 года три отряда принудили к сдаче последних руководителей восстания - имперский рапорт от 22 декабря 1861 года подводит итог: «Настойчивыя дѣйствія нашихъ войскъ въ суровую зиму прошлаго года... принудили Ичкеринцевъ изъявить безусловную покорность»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальное уничтожение инфраструктуры в июне 1860 года войска разорили покинутый жителями аул джумсой: по рапорту командующего войсками терской области наместнику от июля 1860 года, он «разоренъ до основанія и истреблена часть посѣвовъ»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). итог операции кундухова зимой 1860-1861 годов подведён его собственным докладом, который приводит историк з. х. ибрагимова: «все постройки, как в аулах, так и хуторах, сожжены до основания... сено не только в аулах, но даже на самых вершинах гор истреблено огнём, чему жители сами удивлялись, увидев, что в неприступных трущобах и на высотах сено горело»; генерал баженов доложил 29 ноября 1860 года: «нынче с термоевцами окончил. все аулы уничтожены. в эзи и места нельзя узнать, как хорошо разобрали»(citation: мир чеченцев. xix век 2007). всего, по историкам я. з. ахмадову и э. х. хасмагомадову, «разрушенными оказались 15 селений и множество горных хуторов»(citation: история чечни в xix-xx веках 2005); историк д. а. хожаев пишет: «около 15 аулов, причастных к нему [восстанию], уничтожено... беной вновь был сожжен»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1860</div>
+                <div>
+                    <a href="/techniques/T0105">T0105</a> Тотальное уничтожение инфраструктуры
+                </div>
+<div><a href="/campaigns/C1169">C1169</a> Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В июне 1860 года войска разорили покинутый жителями аул Джумсой: по рапорту командующего войсками Терской области наместнику от июля 1860 года, он «разоренъ до основанія и истреблена часть посѣвовъ»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Итог операции Кундухова зимой 1860-1861 годов подведён его собственным докладом, который приводит историк З. Х. Ибрагимова: «Все постройки, как в аулах, так и хуторах, сожжены до основания... сено не только в аулах, но даже на самых вершинах гор истреблено огнём, чему жители сами удивлялись, увидев, что в неприступных трущобах и на высотах сено горело»; генерал Баженов доложил 29 ноября 1860 года: «Нынче с термоевцами окончил. Все аулы уничтожены. В Эзи и места нельзя узнать, как хорошо разобрали»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Всего, по историкам Я. З. Ахмадову и Э. Х. Хасмагомадову, «разрушенными оказались 15 селений и множество горных хуторов»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; историк Д. А. Хожаев пишет: «около 15 аулов, причастных к нему [восстанию], уничтожено... Беной вновь был сожжен»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="депортация историки я. з. ахмадов и э. х. хасмагомадов считают: «более 1200 жителей беноя, энгеноя, даттыха, гендаргена и других селений ичкерии насильственно переселены»(citation: история чечни в xix-xx веках 2005); историк д. а. хожаев уточняет механизм рассеяния: жители беноя «29 января 1861 года в числе 1218 человек были высланы и расселены по 5—10 дворов в указанные им плоскостные селения чечни»(citation: чеченцы в русско-кавказской войне 1998). выселяли и зимой: историк з. х. ибрагимова пишет - «особенно тяжёлым для чеченцев было переселение, предпринятое в декабре 1860 года, во время сильных морозов. 120 семей горцев, не имевших возможности укрыться в лесу зимой, были переселены в течение 2-х дней на плоскость, их жилища разорены войсками. в течение зимы 1861 года на чеченскую равнину было выселено 1500 горных чеченцев»(citation: мир чеченцев. xix век 2007). аккинское горное общество в июле 1860 года выселено целиком: по имперскому рапорту, «мятежные акинцы разселены были между галашевцами и другими сосѣдними племенами; жилища ихъ были уничтожены»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1860</div>
+                <div>
+                    <a href="/techniques/T0127">T0127</a> Депортация
+                </div>
+<div><a href="/campaigns/C1169">C1169</a> Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историки Я. З. Ахмадов и Э. Х. Хасмагомадов считают: «более 1200 жителей Беноя, Энгеноя, Даттыха, Гендаргена и других селений Ичкерии насильственно переселены»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; историк Д. А. Хожаев уточняет механизм рассеяния: жители Беноя «29 января 1861 года в числе 1218 человек были высланы и расселены по 5—10 дворов в указанные им плоскостные селения Чечни»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Выселяли и зимой: историк З. Х. Ибрагимова пишет - «Особенно тяжёлым для чеченцев было переселение, предпринятое в декабре 1860 года, во время сильных морозов. 120 семей горцев, не имевших возможности укрыться в лесу зимой, были переселены в течение 2-х дней на плоскость, их жилища разорены войсками. В течение зимы 1861 года на Чеченскую равнину было выселено 1500 горных чеченцев»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Аккинское горное общество в июле 1860 года выселено целиком: по имперскому рапорту, «Мятежные Акинцы разселены были между Галашевцами и другими сосѣдними племенами; жилища ихъ были уничтожены»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="изъятие ресурсов рапорт командующего кавказской армией военному министру от 6 августа 1860 года фиксирует о выселенных аккинцах: «земля, занимаемая ими, объявлена казенною, и такимъ образомъ дѣло съ акинцами рѣшено окончательно»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). историки я. з. ахмадов и э. х. хасмагомадов подтверждают: жители аккинского общества «в течение июля были расселены в галашевском и других соседних обществах. при этом земля аккинского общества были объявлены «казенными»»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1860</div>
+                <div>
+                    <a href="/techniques/T0052">T0052</a> Изъятие ресурсов
+                </div>
+<div><a href="/campaigns/C1169">C1169</a> Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Рапорт командующего Кавказской армией военному министру от 6 августа 1860 года фиксирует о выселенных аккинцах: «земля, занимаемая ими, объявлена казенною, и такимъ образомъ дѣло съ Акинцами рѣшено окончательно»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов подтверждают: жители Аккинского общества «в течение июля были расселены в Галашевском и других соседних обществах. При этом земля Аккинского общества были объявлены «казенными»»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтрализация оппозиции байсангура беноевского войска взяли в плен 17 февраля 1861 года: генерал кемпферт рапортовал военному министру 28 февраля - «...несмотря на отчаянное сопротивление, взяли в плен байсунгура и четырех его сподвижников... захвачены также семейства байсунгура и султан-мурада — всего 14 человек»(citation: чеченцы в русско-кавказской войне 1998). в марте 1861 года военно-полевой суд в хасав-юрте приговорил его к повешению; историк з. х. ибрагимова передаёт чеченскую устную традицию о казни: никто из стоявших у виселицы не согласился стать палачом, и «только после того, как распоряжавшиеся проведением казни офицеры предложили денежное вознаграждение добровольному палачу, эту роль взял на себя один из стоявших в толпе дагестанцев»(citation: мир чеченцев. xix век 2007); семья и сыновья байсангура сосланы в сибирь(citation: чеченцы в русско-кавказской войне 1998). сдавшихся руководителей восстания - наиба малой чечни атаби-муллу атаева, которого имперские бумаги зовут атабаем (14 ноября 1861 года), и уму дуева (14 декабря 1861 года) император александр ii повелел сослать во внутренние губернии - раздельно: «уму... отправить на жительство въ дальнія отъ кавказа губерніи... но съ условіемъ, чтобы онъ не находился въ одномъ городѣ съ атабаемъ»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). шейха кунта-хаджи, мусульманского проповедника, учившего поминать бога вслух, хором, с пением и кружением по кругу (такое поминание называется зикр, отсюда имперское прозвище его последователей - зикристы), за которым с начала 1862 года был учреждён постоянный полицейский надзор, арестовали 3 января 1864 года в сержень-юрте по распоряжению наместника. требование его последователей было одно: «главное требование зикристов, как и прежде, состояло в немедленном освобождении арестованных и прекращении новых арестов. в этом случае кунта-хаджинцы обещали вновь повиноваться властям»(citation: история чечни в xix-xx веках 2005). начальник чеченского округа генерал туманов требования отклонил и добивался выдачи тех, кто ареста избежал; 18 января 1864 года у шали дело кончилось расстрелом. огнестрельное оружие пришедшие оставили сознательно - решение идти только с холодным приписывают мачик-мулле, объявившему, что явившийся ему кунта-хаджи наполнит винтовки солдат водой(citation: история чечни в xix-xx веках 2005). историки я. з. ахмадов и э. х. хасмагомадов пишут: «кунта-хаджинцы двинулись на плотные каре регулярных войск лишь с шашками и кинжалами в руках. туманов позволил им атаковать, после чего отдал приказ открыть ружейный и орудийный огонь»; убитых они считают «свыше 150»(citation: история чечни в xix-xx веках 2005). историк з. х. ибрагимова даёт счёт по месту побоища: «на месте столкновения осталось 164 убитых. в числе заколотых штыками оказалось 5 женских трупов»; потери отряда - 8 убитых и 33 раненых(citation: мир чеченцев. xix век 2007). по этому делу сослано 18 человек - сам шейх бессрочно в устюжне новгородской губернии, его брат мовсар - в выборгскую крепость, векили, доверенные люди шейха, - в смоленскую губернию, девять рядовых зикристов - на крепостные работы с дальнейшим поселением в сибири(citation: история чечни в xix-xx веках 2005)(citation: мир чеченцев. xix век 2007). в архивной ведомости поднадзорных новгородской губернии за 1865 год шейх записан строкой: «чеченец ших-кунты. возраст 35 лет. сослан за распространение фантастического учения «зикра»... получает в месяц 1 руб. 80 коп.»(citation: мир чеченцев. xix век 2007). прожив в ссылке чуть более двух лет, кунта-хаджи умер от голодного истощения(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1860</div>
+                <div>
+                    <a href="/techniques/T0021">T0021</a> Нейтрализация оппозиции
+                </div>
+<div><a href="/campaigns/C1169">C1169</a> Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Байсангура Беноевского войска взяли в плен 17 февраля 1861 года: генерал Кемпферт рапортовал военному министру 28 февраля - «...Несмотря на отчаянное сопротивление, взяли в плен Байсунгура и четырех его сподвижников... захвачены также семейства Байсунгура и Султан-Мурада — всего 14 человек»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В марте 1861 года военно-полевой суд в Хасав-Юрте приговорил его к повешению; историк З. Х. Ибрагимова передаёт чеченскую устную традицию о казни: никто из стоявших у виселицы не согласился стать палачом, и «только после того, как распоряжавшиеся проведением казни офицеры предложили денежное вознаграждение добровольному палачу, эту роль взял на себя один из стоявших в толпе дагестанцев»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; семья и сыновья Байсангура сосланы в Сибирь<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Сдавшихся руководителей восстания - наиба Малой Чечни Атаби-муллу Атаева, которого имперские бумаги зовут Атабаем (14 ноября 1861 года), и Уму Дуева (14 декабря 1861 года) император Александр II повелел сослать во внутренние губернии - раздельно: «Уму... отправить на жительство въ дальнія отъ Кавказа губерніи... но съ условіемъ, чтобы онъ не находился въ одномъ городѣ съ Атабаемъ»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Шейха Кунта-Хаджи, мусульманского проповедника, учившего поминать Бога вслух, хором, с пением и кружением по кругу (такое поминание называется зикр, отсюда имперское прозвище его последователей - зикристы), за которым с начала 1862 года был учреждён постоянный полицейский надзор, арестовали 3 января 1864 года в Сержень-Юрте по распоряжению наместника. Требование его последователей было одно: «Главное требование зикристов, как и прежде, состояло в немедленном освобождении арестованных и прекращении новых арестов. В этом случае кунта-хаджинцы обещали вновь повиноваться властям»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Начальник Чеченского округа генерал Туманов требования отклонил и добивался выдачи тех, кто ареста избежал; 18 января 1864 года у Шали дело кончилось расстрелом. Огнестрельное оружие пришедшие оставили сознательно - решение идти только с холодным приписывают Мачик-мулле, объявившему, что явившийся ему Кунта-Хаджи наполнит винтовки солдат водой<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «кунта-хаджинцы двинулись на плотные каре регулярных войск лишь с шашками и кинжалами в руках. Туманов позволил им атаковать, после чего отдал приказ открыть ружейный и орудийный огонь»; убитых они считают «свыше 150»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Историк З. Х. Ибрагимова даёт счёт по месту побоища: «На месте столкновения осталось 164 убитых. В числе заколотых штыками оказалось 5 женских трупов»; потери отряда - 8 убитых и 33 раненых<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. По этому делу сослано 18 человек - сам шейх бессрочно в Устюжне Новгородской губернии, его брат Мовсар - в Выборгскую крепость, векили, доверенные люди шейха, - в Смоленскую губернию, девять рядовых зикристов - на крепостные работы с дальнейшим поселением в Сибири<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. В архивной ведомости поднадзорных Новгородской губернии за 1865 год шейх записан строкой: «Чеченец Ших-Кунты. Возраст 35 лет. Сослан за распространение фантастического учения «зикра»... Получает в месяц 1 руб. 80 коп.»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Прожив в ссылке чуть более двух лет, Кунта-Хаджи умер от голодного истощения<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="принудительная выдача беглых и повстанцев после расстрела у шали империя потребовала от чеченских обществ выдать уцелевших. 26 января 1864 года лорис-меликов, начальник терской области, собрал в крепости грозной наибов и «почетных» жителей: историк з. х. ибрагимова пишет - он «объявил собравшимся чеченцам, что они обязаны выдать всех зикристов [последователей шейха кунта-хаджи]. был назначен последний срок - 1 февраля, после чего начальник области пригрозил начать военные действия. он также запретил исполнение зикристских обрядов»(citation: мир чеченцев. xix век 2007). историки я. з. ахмадов и э. х. хасмагомадов приводят требование дословно: «...способствовать восстановлению порядка, нарушенного зикристами...», и фиксируют запрет «громкого» зикра, за соблюдением которого должны были следить духовенство и сельские старшины(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1860</div>
+                <div>
+                    <a href="/techniques/T0156">T0156</a> Принудительная выдача беглых и повстанцев
+                </div>
+<div><a href="/campaigns/C1169">C1169</a> Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>После расстрела у Шали империя потребовала от чеченских обществ выдать уцелевших. 26 января 1864 года Лорис-Меликов, начальник Терской области, собрал в крепости Грозной наибов и «почетных» жителей: историк З. Х. Ибрагимова пишет - он «объявил собравшимся чеченцам, что они обязаны выдать всех зикристов [последователей шейха Кунта-Хаджи]. Был назначен последний срок - 1 февраля, после чего начальник области пригрозил начать военные действия. Он также запретил исполнение зикристских обрядов»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов приводят требование дословно: «...способствовать восстановлению порядка, нарушенного зикристами...», и фиксируют запрет «громкого» зикра, за соблюдением которого должны были следить духовенство и сельские старшины<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="захват заложников в разорённом джумсое в июне 1860 года войска пощадили тех, кто выдал заложников: «оставлены не тронутыми тѣ дома и пашни, хозяева которыхъ явились на свои мѣста и выдали аманатовъ» (аманат - человек, которого империя забирала из общины как заложника, чтобы держать её в повиновении угрозой расправы над взятым)(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). после шалинского расстрела, по историку з. х. ибрагимовой, «семьи не пойманных зикристов взяли под стражу и выслали в екатериноград. в связи с этим один зикрист сам сдался, чтобы освободили его семью» - екатериноград здесь не кубанский екатеринодар, а станица екатериноградская на тереке, ныне в кабардино-балкарии; аулы чечни «были связаны взаимной порукой», со списками ответчиков перед правительством(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1860</div>
+                <div>
+                    <a href="/techniques/T0099">T0099</a> Захват заложников
+                </div>
+<div><a href="/campaigns/C1169">C1169</a> Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В разорённом Джумсое в июне 1860 года войска пощадили тех, кто выдал заложников: «оставлены не тронутыми тѣ дома и пашни, хозяева которыхъ явились на свои мѣста и выдали аманатовъ» (аманат - человек, которого империя забирала из общины как заложника, чтобы держать её в повиновении угрозой расправы над взятым)<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. После шалинского расстрела, по историку З. Х. Ибрагимовой, «Семьи не пойманных зикристов взяли под стражу и выслали в Екатериноград. В связи с этим один зикрист сам сдался, чтобы освободили его семью» - Екатериноград здесь не кубанский Екатеринодар, а станица Екатериноградская на Тереке, ныне в Кабардино-Балкарии; аулы Чечни «были связаны взаимной порукой», со списками ответчиков перед правительством<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="выращивание коллаборационистской элиты в операции кундухова зимой 1860-1861 годов шли «7 сотен чеченской милиции» полковника чермоева(citation: история чечни в xix-xx веках 2005); атаби-мулла атаев, наиб малой чечни (в имперских документах - атабай), в ноябре 1861 года сдался, по документу, «командиру чеченского конно-иррегулярного дивизиона вагапу адуеву» - адуеву, служившему империи в её чине(citation: история чечни в xix-xx веках 2005). против шейха кунта-хаджи власть мобилизовала лояльное духовенство: историки я. з. ахмадов и э. х. хасмагомадов пишут - «были предприняты меры к тому, чтобы склонить наиболее видных представителей чеченского мусульманского духовенства открыто выступить против кунта-хаджи и проповедуемого им учения»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1860</div>
+                <div>
+                    <a href="/techniques/T0154">T0154</a> Выращивание коллаборационистской элиты
+                </div>
+<div><a href="/campaigns/C1169">C1169</a> Подавление восстаний 1860-1861 годов, казнь Байсангура и расстрел зикристов у Шали (1860-1864)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>В операции Кундухова зимой 1860-1861 годов шли «7 сотен чеченской милиции» полковника Чермоева<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; Атаби-мулла Атаев, наиб Малой Чечни (в имперских документах - Атабай), в ноябре 1861 года сдался, по документу, «командиру Чеченского конно-иррегулярного дивизиона Вагапу Адуеву» - Адуеву, служившему империи в её чине<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Против шейха Кунта-Хаджи власть мобилизовала лояльное духовенство: историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут - «были предприняты меры к тому, чтобы склонить наиболее видных представителей чеченского мусульманского духовенства открыто выступить против Кунта-Хаджи и проповедуемого им учения»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/Arabojaz_ist/Karachi_I/text1.htm" target="_blank">
+                        Мухаммадом Тахиром аль-Карахи. (1941). Блеск дагестанских шашек в некоторых шамилевских битвах.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

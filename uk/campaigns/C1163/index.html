@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/campaigns/C1163/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1163/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1163/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1163/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1163/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840), кампанія C1163 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/campaigns/C1163/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840), кампанія C1163 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/">Кампанії</a></li>
+  <li class="breadcrumb-item">Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>З вересня 1836 року по лютий 1840 року Пулло, командувач Сунженської лінії, а потім лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), вибудував у захоплених імперією аулах Чечні систему примусу із семи зчеплених інститутів: заручники-аманати з найшанованіших родин, подать по рублю сріблом із саклі (дому), призначені імперією наглядачі-пристави, заборона продавати хліб «немирним» (аулам, що не підкорилися імперії) і пасти їхню худобу на рівнині, вилучення зброї, примусова рубка лісу і просіки на 165 верст, кари «за ступенем провини» - аж до знищення самих поселень. Здаючи командування, Пулло підбив підсумок у доповідній записці 1840 року: «погрожуючи всім непокірним товариствам і винищенням їхнього майна, я навів на них такий страх, привів їх у такий стан, що одні за одними почали підкорятися»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Система закінчилася повстанням. Гаджі-Алі, супутник і хроніст Шаміля (Шаміль - імам, керівник спротиву горців Дагестану і Чечні російському завоюванню), записав: «У міру того, як посилювалися утиски генерала Пулло над чеченцями, збільшувалися й прохання останніх до Шаміля, щоб він прийшов звільнити їх»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Гаджи-Али. (1873). Сказание очевидца о Шамиле."data-reference="Сказание очевидца о Шамиле 1873"><sup><a href="https://kp.rusneb.ru/item/material/skazanie-ochevidca-o-shamile" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Імперський історик Юров визнав і причину, і винуватця: «ми самі посприяли Шамілю, як тільки могли б це зробити справжні його друзі»; «Чутки про справжні причини повстання Чечні дійшли до відома Государя Імператора», після чого генерал Граббе, командувач військ Кавказької лінії і начальник Пулло, визнав за необхідне «негайно усунути, під пристойним приводом, генерал-майора Пулло від управління лівим флангом»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. У лютому 1840 року площинна Чечня піднялася і закликала Шаміля - система впала разом із кар'єрою її будівничого.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1163
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>
+                    <span>Вересень 1836</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>
+                    <span>Лютий 1840</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версія</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Створено:&nbsp;</span>23 липня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>23 липня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/C1163" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Шари Навігатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Шар russia-colonialism</h6>
+                    <a class="dropdown-item" href="/uk/campaigns/C1163/C1163-russia-colonialism-layer.json" download target="_blank">завантажити</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/uk/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fuk%2Fcampaigns%2FC1163%2FC1163-russia-colonialism-layer.json" target="_blank">відкрити <img width="10" src="/uk/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Актори</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/groups/G0009">G0009</a></td>
+                <td><a href="/uk/groups/G0009">Російська імперія</a></td>
+                <td>13</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Застосовані інструменти</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/software/S0010"> S0010 </a></td>
+                <td><a href="/uk/software/S0010"> Регулярна армія </a></td>
+                <td>13</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реалізовані процедури</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="захоплення заручників у 1836-1840 роках пулло, командувач сунженської лінії, а потім лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), зробив захоплення заручників несучим інститутом аманатсько-податної системи в захоплених імперією аулах чечні. аманат - людина, яку імперія забирала з родини чи громади як заручника; загроза розправи над взятим тримала рідних і весь аул у підпорядкуванні. у доповідній записці 1840 року пулло описав метод: «аманатів брав я не без розбору, як то робилося раніше, а від найбільш шанованих або найменш надійних родин, і цим засобом неодноразово багато аулів, що замишляли повстання, були утримані в покорі» - і масштаб інституту: «на утримання аманатів витрачалося щорічно до 20 тис. руб...»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). захоплення йшло хвилями в міру просування військ: імперський історик юров записав про грудень 1839 року, що під тиском загону навіть селища, які замикали вхід до аргунського міжгір'я, «змирилися, видали аманатів» - війська забирали людей як «знак покірності»(citation: 1840, 1841 и 1842-й годы на кавказе 1886). умови утримання заручників юров описав так: «з арештантами і навіть аманатами поводилися нелюдськи, тримаючи їх у сирій ямі, де вони нерідко хворіли»(citation: 1840, 1841 и 1842-й годы на кавказе 1886). у тій самій доповідній записці пулло вимагав зробити заручництво безстроковим: аманатів за провини поручителів «слід неодмінно відповідно до їхнього віку переводити в кантоністи або арештантські роти, заміняючи місця вибулих іншими аманатами» - дітей-заручників віддавати в кантоністи (військовий стан, куди імперія примусово зараховувала малолітніх), дорослих - в арештантські роти (примусові роботи під військовим конвоєм); у доповідній записці 1840 року це зафіксовано як план(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0099">T0099</a> Захоплення заручників
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У 1836-1840 роках Пулло, командувач Сунженської лінії, а потім лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), зробив захоплення заручників несучим інститутом аманатсько-податної системи в захоплених імперією аулах Чечні. Аманат - людина, яку імперія забирала з родини чи громади як заручника; загроза розправи над взятим тримала рідних і весь аул у підпорядкуванні. У доповідній записці 1840 року Пулло описав метод: «Аманатів брав я не без розбору, як то робилося раніше, а від найбільш шанованих або найменш надійних родин, і цим засобом неодноразово багато аулів, що замишляли повстання, були утримані в покорі» - і масштаб інституту: «на утримання аманатів витрачалося щорічно до 20 тис. руб...»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Захоплення йшло хвилями в міру просування військ: імперський історик Юров записав про грудень 1839 року, що під тиском загону навіть селища, які замикали вхід до Аргунського міжгір'я, «змирилися, видали аманатів» - війська забирали людей як «знак покірності»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Умови утримання заручників Юров описав так: «з арештантами і навіть аманатами поводилися нелюдськи, тримаючи їх у сирій ямі, де вони нерідко хворіли»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. У тій самій доповідній записці Пулло вимагав зробити заручництво безстроковим: аманатів за провини поручителів «слід неодмінно відповідно до їхнього віку переводити в кантоністи або арештантські роти, заміняючи місця вибулих іншими аманатами» - дітей-заручників віддавати в кантоністи (військовий стан, куди імперія примусово зараховувала малолітніх), дорослих - в арештантські роти (примусові роботи під військовим конвоєм); у доповідній записці 1840 року це зафіксовано як план<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="встановлення нової системи управління імперія поставила над захопленими аулами чечні призначених наглядачів - приставів. військовий міністр імперії чернишов офіційним службовим листом (відношенням) від 15 січня 1839 року передав генералу головіну, командиру окремого кавказького корпусу - голові імперських військ і адміністрації на кавказі, волю імператора миколи i: у товариствах, що підпорядкувалися добровільно, «начальство над ними доручати відданим нам тубільцям, членам тих самих товариств», а товариства, «які будуть підкорювані силою зброї», - «доручати тимчасово в начальство російським військовим чиновникам»(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884). запровадженням приставів у чечні займався пулло, командувач лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі): імперський історик юров пише, що пулло «було приписано - для оселення наших приставів, підтримання на перших порах їхнього престижу... здійснити взимку з 1839-го на 1840-й рік рух у чечню, на мічик і до качкаликівців», а самі пристави «були обрані переважно, якщо не виключно, з міліціонерів» - з горської міліції, озброєних загонів горців на службі імперії(citation: 1840, 1841 и 1842-й годы на кавказе 1886). історик д. а. хожаєв пише: «призначений 30 листопада командиром окремого кавказького корпусу... головін за вказівкою царя починає вводити на окупованій території російське управління»(citation: чеченцы в русско-кавказской войне 1998). режим нагляду описав генерал граббе, командувач військ кавказької лінії і начальник пулло, рапортом військовому міністру чернишову від 23 березня 1840 року: «коли пристави наші вступили в управління ввіреними їм племенами, суворий їхній нагляд припинив постійні зносини мирних аулів з непокірними»(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884). насадження маріонеткових релігійних авторитетів йшло тією самою директивою (кампанія c1159)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0036">T0036</a> Встановлення нової системи управління
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Імперія поставила над захопленими аулами Чечні призначених наглядачів - приставів. Військовий міністр імперії Чернишов офіційним службовим листом (відношенням) від 15 січня 1839 року передав генералу Головіну, командиру Окремого Кавказького корпусу - голові імперських військ і адміністрації на Кавказі, волю імператора Миколи I: у товариствах, що підпорядкувалися добровільно, «начальство над ними доручати відданим нам тубільцям, членам тих самих товариств», а товариства, «які будуть підкорювані силою зброї», - «доручати тимчасово в начальство Російським військовим чиновникам»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Запровадженням приставів у Чечні займався Пулло, командувач лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі): імперський історик Юров пише, що Пулло «було приписано - для оселення наших приставів, підтримання на перших порах їхнього престижу... здійснити взимку з 1839-го на 1840-й рік рух у Чечню, на Мічик і до качкаликівців», а самі пристави «були обрані переважно, якщо не виключно, з міліціонерів» - з горської міліції, озброєних загонів горців на службі імперії<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Історик Д. А. Хожаєв пише: «Призначений 30 листопада командиром Окремого Кавказького корпусу... Головін за вказівкою царя починає вводити на окупованій території російське управління»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Режим нагляду описав генерал Граббе, командувач військ Кавказької лінії і начальник Пулло, рапортом військовому міністру Чернишову від 23 березня 1840 року: «Коли пристави наші вступили в управління ввіреними їм племенами, суворий їхній нагляд припинив постійні зносини мирних аулів з непокірними»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Насадження маріонеткових релігійних авторитетів йшло тією самою директивою (кампанія C1159).</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="оподаткування аманатсько-податна система пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), обклала захоплені імперією аули чечні податтю. пулло в доповідній записці 1840 року: «у міру підкорення горських товариств кожне видавало аманатів, платило подать по рублю срібл. із саклі, видавало всіх наявних у нього російських полонених» (сакля - дім горця: подать бралася з кожного дому; аманати - заручники, яких імперія забирала в аулів для контролю над ними)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). відомість горським народам 1840 року, опублікована у збірнику документів «движение горцев северо-восточного кавказа в 20-50 гг. xix века» разом з доповідною запискою пулло, прямо називає подать покаранням: качкаликівці, мічиковські чеченці й ауховці (чеченські товариства східної чечні) «платять подать, якою обкладені в покарання за неодноразові повстання», а чеченці, що живуть за рікою сунжею, «в покарання за повстання, обкладені податтю»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). гроші вичавлювалися справно: генерал граббе, командувач військ кавказької лінії і начальник пулло, рапортом військовому міністру імперії чернишову від 23 березня 1840 року назвав справну сплату податей ознакою «спокою», що настав, - рапорт перелічує «справну сплату податей і повинностей» за лічені тижні до повстання(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884). мухаммед-тахір аль-карахі, хроніст шаміля (шаміль - імам, керівник спротиву горців дагестану і чечні російському завоюванню), назвав цей побір - по рублю з кожного дому і по рушниці з кожних десяти домів - причиною, з якої чеченці кликали шаміля."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0056">T0056</a> Оподаткування
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податна система Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), обклала захоплені імперією аули Чечні податтю. Пулло в доповідній записці 1840 року: «У міру підкорення горських товариств кожне видавало аманатів, платило подать по рублю срібл. із саклі, видавало всіх наявних у нього російських полонених» (сакля - дім горця: подать бралася з кожного дому; аманати - заручники, яких імперія забирала в аулів для контролю над ними)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Відомість горським народам 1840 року, опублікована у збірнику документів «Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века» разом з доповідною запискою Пулло, прямо називає подать покаранням: качкаликівці, мічиковські чеченці й ауховці (чеченські товариства східної Чечні) «платять подать, якою обкладені в покарання за неодноразові повстання», а чеченці, що живуть за рікою Сунжею, «в покарання за повстання, обкладені податтю»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Гроші вичавлювалися справно: генерал Граббе, командувач військ Кавказької лінії і начальник Пулло, рапортом військовому міністру імперії Чернишову від 23 березня 1840 року назвав справну сплату податей ознакою «спокою», що настав, - рапорт перелічує «справну сплату податей і повинностей» за лічені тижні до повстання<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Мухаммед-Тахір аль-Карахі, хроніст Шаміля (Шаміль - імам, керівник спротиву горців Дагестану і Чечні російському завоюванню), назвав цей побір - по рублю з кожного дому і по рушниці з кожних десяти домів - причиною, з якої чеченці кликали Шаміля.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="економічна блокада частиною аманатсько-податної системи пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), був режим економічної блокади аулів чечні, що не підпорядкувалися. пулло в доповідній записці 1840 року: призначені імперією наглядачі над аулами (пристави) і війська «припинили зносини покірних з непокірними і забороняли першим продавати хліб немирним і пасти їхню худобу на своїх полях» («немирні» - в імперському лексиконі аули, що не підпорядкувалися імперії)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). дозволена торгівля була загнана під контроль: «у кизлярі і на деяких інших пунктах відкрилися торжища» - обмін йшов тільки в пунктах, контрольованих імперією(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). дію блокади визнали її ж автори: генерал граббе, командувач військ кавказької лінії і начальник пулло, рапортом військовому міністру імперії чернишову від 23 березня 1840 року писав, що гірські аули «не могли вже мати хліборобства і пасовищ на рівнині», що «посилило ще бідування жителів нагірної чечні»; частина жителів думала підпорядкуватися «для відвернення голоду», інші вирішили «позбутися російського іга»(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884). у складеному 1840 року плані завоювання горців лівого флангу («припущення... до підкорення племен») граббе сформулював механізм дії блокади: нагляд приставів «непокірним... загрожував голодом. шаміль скористався цим настроєм умів» (шаміль - імам, керівник спротиву горців дагестану і чечні російському завоюванню)(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0108">T0108</a> Економічна блокада
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Частиною аманатсько-податної системи Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), був режим економічної блокади аулів Чечні, що не підпорядкувалися. Пулло в доповідній записці 1840 року: призначені імперією наглядачі над аулами (пристави) і війська «припинили зносини покірних з непокірними і забороняли першим продавати хліб немирним і пасти їхню худобу на своїх полях» («немирні» - в імперському лексиконі аули, що не підпорядкувалися імперії)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Дозволена торгівля була загнана під контроль: «У Кизлярі і на деяких інших пунктах відкрилися торжища» - обмін йшов тільки в пунктах, контрольованих імперією<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Дію блокади визнали її ж автори: генерал Граббе, командувач військ Кавказької лінії і начальник Пулло, рапортом військовому міністру імперії Чернишову від 23 березня 1840 року писав, що гірські аули «не могли вже мати хліборобства і пасовищ на рівнині», що «посилило ще бідування жителів нагірної Чечні»; частина жителів думала підпорядкуватися «для відвернення голоду», інші вирішили «позбутися Російського іга»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. У складеному 1840 року плані завоювання горців лівого флангу («Припущення... до підкорення племен») Граббе сформулював механізм дії блокади: нагляд приставів «непокірним... загрожував голодом. Шаміль скористався цим настроєм умів» (Шаміль - імам, керівник спротиву горців Дагестану і Чечні російському завоюванню)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="адміністративна корупція та здирництво призначені імперією наглядачі над аулами (пристави) в аманатсько-податній системі пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), систематично грабували жителів захоплених аулів чечні під виглядом зборів. імперський історик юров описав механізм - пристави жили з поборів, оскільки «не всі пристави отримували жалування»: у чеченців «під приводом стягнення податей і штрафів відбиралася найкраща зброя та інші цілком нешкідливі, але цінні речі повсякденного вжитку; траплялося, що ні в чому не винних людей арештовували за намовою простих і часто неблагонамірених перекладачів... під час же експедицій допускалися примусові збори»(citation: 1840, 1841 и 1842-й годы на кавказе 1886). імперія знала і не слухала: історики я. з. ахмадов і е. х. хасмагомадов пишуть за архівними документами, що двоє чеченських старшин привезли кабардинському князю бековичу-черкаському, який служив імперії і був впливовим на річці терек, «прохання, складене від багатьох чеченців, у якому вони скаржаться на утиски і несправедливості генерал-майора пулло» - князь відмовився прохання прийняти(citation: история чечни в xix-xx веках 2005); за юровим, чеченці «приготували було на нього прохання, але не наважилися пустити його в хід з остраху, що генерал цей, як і раніше, залишиться їхнім начальником»(citation: 1840, 1841 и 1842-й годы на кавказе 1886). імперський огляд «край у політичному і військовому відношеннях», направлений військовим міністром імперії чернишовим генералу нейдгарту, який невдовзі очолив імперські війська на кавказі, 2 квітня 1842 року, підбив підсумок: «користуючись зловживаннями, поборами і обуренням, що виникло від відібрання зброї, шаміль мало-помалу збурив усю чечню» (шаміль - імам, керівник спротиву горців дагестану і чечні російському завоюванню)(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0146">T0146</a> Адміністративна корупція та здирництво
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Призначені імперією наглядачі над аулами (пристави) в аманатсько-податній системі Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), систематично грабували жителів захоплених аулів Чечні під виглядом зборів. Імперський історик Юров описав механізм - пристави жили з поборів, оскільки «не всі пристави отримували жалування»: у чеченців «під приводом стягнення податей і штрафів відбиралася найкраща зброя та інші цілком нешкідливі, але цінні речі повсякденного вжитку; траплялося, що ні в чому не винних людей арештовували за намовою простих і часто неблагонамірених перекладачів... під час же експедицій допускалися примусові збори»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Імперія знала і не слухала: історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть за архівними документами, що двоє чеченських старшин привезли кабардинському князю Бековичу-Черкаському, який служив імперії і був впливовим на річці Терек, «прохання, складене від багатьох чеченців, у якому вони скаржаться на утиски і несправедливості генерал-майора Пулло» - князь відмовився прохання прийняти<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>; за Юровим, чеченці «приготували було на нього прохання, але не наважилися пустити його в хід з остраху, що генерал цей, як і раніше, залишиться їхнім начальником»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Імперський огляд «Край у політичному і військовому відношеннях», направлений військовим міністром імперії Чернишовим генералу Нейдгарту, який невдовзі очолив імперські війська на Кавказі, 2 квітня 1842 року, підбив підсумок: «користуючись зловживаннями, поборами і обуренням, що виникло від відібрання зброї, Шаміль мало-помалу збурив усю Чечню» (Шаміль - імам, керівник спротиву горців Дагестану і Чечні російському завоюванню)<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="експлуатація праці аманатсько-податна система пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), включала примусові роботи: війська змушували жителів захоплених аулів чечні рубати власний ліс за рознарядкою. імперський історик юров записав про грудневу експедицію 1839 року, що жителі аулів під тиском загону «рубали за нарядом ліс у гехі, на ур. валерик і між сс. шалі та м. атагою» (гехі, валерик, шалі, мала атага - чеченські селища й урочища; «за нарядом» - за примусовою розверсткою, накладеною військами поряд з податтю і видачею зброї)(citation: 1840, 1841 и 1842-й годы на кавказе 1886). ліс, який жителів змушували валити, був середовищем життя і укриттям чеченських товариств."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0057">T0057</a> Експлуатація праці
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податна система Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), включала примусові роботи: війська змушували жителів захоплених аулів Чечні рубати власний ліс за рознарядкою. Імперський історик Юров записав про грудневу експедицію 1839 року, що жителі аулів під тиском загону «рубали за нарядом ліс у Гехі, на ур. Валерик і між сс. Шалі та М. Атагою» (Гехі, Валерик, Шалі, Мала Атага - чеченські селища й урочища; «за нарядом» - за примусовою розверсткою, накладеною військами поряд з податтю і видачею зброї)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Ліс, який жителів змушували валити, був середовищем життя і укриттям чеченських товариств.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="руйнування природного ландшафту у рамках аманатсько-податної системи пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), війська знищували чеченські ліси - середовище життя і захист чеченських товариств. пулло в доповідній записці 1840 року відзвітував: «розчистили всі ліси на відстані рушничного пострілу по обидва боки дороги, у напрямку від фортеці грозної через мартан, ачхой і курчалі до військово-грузинської дороги, а в інший бік через герменчук, гельдиген і по мічику в нагірну чечню, всього на протязі 165 верст» (перелічені чеченські селища і ріки від фортеці грозної до гірської чечні; верста - трохи більше кілометра)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). чеченський письменник абузар айдаміров фіксує продовження просіки (вирубаної в лісі смуги для проходу військ) від фортеці грозної до селища шалі в 1837 році(citation: хронология истории чечено-ингушетии 1991)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0140">T0140</a> Руйнування природного ландшафту
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У рамках аманатсько-податної системи Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), війська знищували чеченські ліси - середовище життя і захист чеченських товариств. Пулло в доповідній записці 1840 року відзвітував: «розчистили всі ліси на відстані рушничного пострілу по обидва боки дороги, у напрямку від фортеці Грозної через Мартан, Ачхой і Курчалі до Військово-Грузинської дороги, а в інший бік через Герменчук, Гельдиген і по Мічику в нагірну Чечню, всього на протязі 165 верст» (перелічені чеченські селища і ріки від фортеці Грозної до гірської Чечні; верста - трохи більше кілометра)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Чеченський письменник Абузар Айдаміров фіксує продовження просіки (вирубаної в лісі смуги для проходу військ) від фортеці Грозної до селища Шалі в 1837 році<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="А. А. Айдамиров. (1991). Хронология истории Чечено-Ингушетии."data-reference="Хронология истории Чечено-Ингушетии 1991"><sup><a href="https://www.prlib.ru/item/1968825" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець аманатсько-податну систему пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), закріплювали нові укріплення на чеченській землі. чеченський письменник абузар айдаміров фіксує закладення укріплення умахан-юрт на річці сунжі в 1837 році(citation: хронология истории чечено-ингушетии 1991). план генерала головіна, командира окремого кавказького корпусу (голови імперських військ на кавказі), на 1840 рік приписував «звести укріплення біля черкея і поблизу старого аксая (при герзель-аулі)» - герзель-аул стоїть на межі чечні і кумицької рівнини; будівництво йшло всю зиму: імперський історик юров пише, що в березні 1840 року пулло особисто перебував «у герзель-аулі для приведення його в кращий оборонний стан», і укріплення «вдалося закінчити з гріхом пополам»(citation: 1840, 1841 и 1842-й годы на кавказе 1886)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0139">T0139</a> Зведення фортець
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податну систему Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), закріплювали нові укріплення на чеченській землі. Чеченський письменник Абузар Айдаміров фіксує закладення укріплення Умахан-Юрт на річці Сунжі в 1837 році<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="А. А. Айдамиров. (1991). Хронология истории Чечено-Ингушетии."data-reference="Хронология истории Чечено-Ингушетии 1991"><sup><a href="https://www.prlib.ru/item/1968825" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. План генерала Головіна, командира Окремого Кавказького корпусу (голови імперських військ на Кавказі), на 1840 рік приписував «звести укріплення біля Черкея і поблизу старого Аксая (при Герзель-аулі)» - Герзель-аул стоїть на межі Чечні і Кумицької рівнини; будівництво йшло всю зиму: імперський історик Юров пише, що в березні 1840 року Пулло особисто перебував «у Герзель-аулі для приведення його в кращий оборонний стан», і укріплення «вдалося закінчити з гріхом пополам»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="терор методом аманатсько-податної системи пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), був навмисно наведений страх. пулло в доповідній записці 1840 року описав це прямо: «погрожуючи всім непокірним товариствам і винищенням їхнього майна, я навів на них такий страх, привів їх у такий стан, що одні за одними почали підкорятися. з 1834 року по 1840 рік аули мічиковців, ауховців і салатавців, що відклалися, великої і малої чечні і ніколи не підкорені селища ічкеринців і гумбетовців визнали владу російського уряду» (перелічені горські товариства чечні і сусіднього дагестану)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). страх був не побічним ефектом, а заявленим інструментом: підпорядкування товариств пулло ставить собі в заслугу як прямий результат погроз винищення."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0022">T0022</a> Терор
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Методом аманатсько-податної системи Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), був навмисно наведений страх. Пулло в доповідній записці 1840 року описав це прямо: «погрожуючи всім непокірним товариствам і винищенням їхнього майна, я навів на них такий страх, привів їх у такий стан, що одні за одними почали підкорятися. З 1834 року по 1840 рік аули мічиковців, ауховців і салатавців, що відклалися, Великої і Малої Чечні і ніколи не підкорені селища ічкеринців і гумбетовців визнали владу російського уряду» (перелічені горські товариства Чечні і сусіднього Дагестану)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Страх був не побічним ефектом, а заявленим інструментом: підпорядкування товариств Пулло ставить собі в заслугу як прямий результат погроз винищення.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="каральні експедиції аманатсько-податна система пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), трималася на каральних виходах військ проти захоплених аулів чечні. пулло в доповідній записці 1840 року описав практику: «з'являвся я несподівано перед враженим населенням найвіддаленіших аулів і за ступенем провини селища або винищував його, або задовольнявся накладенням пені, стягненням аманатів і арештом найбільш винних осіб» (пеня - грошовий штраф; аманати - заручники, яких імперія забирала в аулів; «винищення» селища в імперському лексиконі - знищення будівель і майна, не жителів); аули, запідозрені у зв'язках зі спротивом, «були негайно карані пенями, арештом неблагонамірених людей, а в крайніх випадках навіть винищенням аулів»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). кара - адміністративна рутина системи: знищення поселення стоїть в одному ряду з пенями й арештами як ступінь покарання."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0077">T0077</a> Каральні експедиції
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податна система Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), трималася на каральних виходах військ проти захоплених аулів Чечні. Пулло в доповідній записці 1840 року описав практику: «з'являвся я несподівано перед враженим населенням найвіддаленіших аулів і за ступенем провини селища або винищував його, або задовольнявся накладенням пені, стягненням аманатів і арештом найбільш винних осіб» (пеня - грошовий штраф; аманати - заручники, яких імперія забирала в аулів; «винищення» селища в імперському лексиконі - знищення будівель і майна, не жителів); аули, запідозрені у зв'язках зі спротивом, «були негайно карані пенями, арештом неблагонамірених людей, а в крайніх випадках навіть винищенням аулів»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Кара - адміністративна рутина системи: знищення поселення стоїть в одному ряду з пенями й арештами як ступінь покарання.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="вирощування колабораціоністської еліти аманатсько-податна система пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), створила всередині чеченського суспільства привілейований шар із владою над співвітчизниками. посади призначених імперією наглядачів над аулами (приставів) імперія роздавала самим чеченцям: імперський історик юров пише, що пристави «були обрані переважно, якщо не виключно, з міліціонерів» - з горської міліції, озброєних загонів горців на службі імперії(citation: 1840, 1841 и 1842-й годы на кавказе 1886). історик н. і. покровський показав механіку розколу: посада пристава не оплачувалася, тому обійняти її могли «тільки деякі представники сильних родин», і вони «користувалися слушною нагодою, щоб ужити свою владу для подальшого накопичення»; «створюючи в чечні місцеву, за національністю чеченську, адміністрацію, царизм сподівався створити водночас і таку необхідну йому чеченську «аристократію»»(citation: кавказские войны и имамат шамиля 2009). імперія дала частині суспільства владу і привілеї над рештою і прив'язала цей шар до себе, а не до народу: роздача посад «сильним родинам» задокументована; розрахунок на вирощування лояльної «аристократії» сформульований істориком н. і. покровським."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0154">T0154</a> Вирощування колабораціоністської еліти
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податна система Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), створила всередині чеченського суспільства привілейований шар із владою над співвітчизниками. Посади призначених імперією наглядачів над аулами (приставів) імперія роздавала самим чеченцям: імперський історик Юров пише, що пристави «були обрані переважно, якщо не виключно, з міліціонерів» - з горської міліції, озброєних загонів горців на службі імперії<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Історик Н. І. Покровський показав механіку розколу: посада пристава не оплачувалася, тому обійняти її могли «тільки деякі представники сильних родин», і вони «користувалися слушною нагодою, щоб ужити свою владу для подальшого накопичення»; «створюючи в Чечні місцеву, за національністю чеченську, адміністрацію, царизм сподівався створити водночас і таку необхідну йому чеченську «аристократію»»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Імперія дала частині суспільства владу і привілеї над рештою і прив'язала цей шар до себе, а не до народу: роздача посад «сильним родинам» задокументована; розрахунок на вирощування лояльної «аристократії» сформульований істориком Н. І. Покровським.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове роззброєння аманатсько-податна система пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), включала систематичне вилучення зброї в жителів захоплених аулів чечні. пулло в доповідній записці 1840 року назвав це власною програмою: «владу приставів було зміцнено і тоді ж покладено початок системі роззброєння горців, стягненням з усіх аулів по одній рушниці з 10 сакель. всього було зібрано понад 1900 рушниць, обставина важлива як за кількістю зібраної зброї, так і особливо тому, що горцям вперше було навіяно думку, що уряд має право позбавляти зброї тих, хто вжив її на зло» (сакля - дім горця; пристав - призначений імперією наглядач над аулами; цифра 1900 - самозвіт пулло; історики я. з. ахмадов і е. х. хасмагомадов налічують за архівами близько півтори тисячі)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). історик д. а. хожаєв пише: «експедиції генерала пулло в грудні 1839 року і січні 1840-го для підтримання російського управління і роззброєння чеченських площинних аулів, що почалося, коли пулло зажадав видати по одній рушниці з кожних десяти домів, викликали обурення в широких верствах чеченського народу»(citation: чеченцы в русско-кавказской войне 1998). історики я. з. ахмадов і е. х. хасмагомадов називають роззброєння спусковим гачком повстання: «страх, що слідом за роззброєнням влада запровадить у чечні загальноросійські кріпосницькі порядки, ганебні для людей благородного стану, якими вважали себе практично всі чеченці, змусив горців узятися за зброю»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0155">T0155</a> Примусове роззброєння
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податна система Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), включала систематичне вилучення зброї в жителів захоплених аулів Чечні. Пулло в доповідній записці 1840 року назвав це власною програмою: «владу приставів було зміцнено і тоді ж покладено початок системі роззброєння горців, стягненням з усіх аулів по одній рушниці з 10 сакель. Всього було зібрано понад 1900 рушниць, обставина важлива як за кількістю зібраної зброї, так і особливо тому, що горцям вперше було навіяно думку, що уряд має право позбавляти зброї тих, хто вжив її на зло» (сакля - дім горця; пристав - призначений імперією наглядач над аулами; цифра 1900 - самозвіт Пулло; історики Я. З. Ахмадов і Е. Х. Хасмагомадов налічують за архівами близько півтори тисячі)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Історик Д. А. Хожаєв пише: «Експедиції генерала Пулло в грудні 1839 року і січні 1840-го для підтримання російського управління і роззброєння чеченських площинних аулів, що почалося, коли Пулло зажадав видати по одній рушниці з кожних десяти домів, викликали обурення в широких верствах чеченського народу»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов називають роззброєння спусковим гачком повстання: «Страх, що слідом за роззброєнням влада запровадить у Чечні загальноросійські кріпосницькі порядки, ганебні для людей благородного стану, якими вважали себе практично всі чеченці, змусив горців узятися за зброю»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства аманатсько-податна система пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), оформляла підпорядкування чеченських товариств як «покірність» із зобов'язаннями перед імперією. відомість горським народам 1840 року, опублікована у збірнику документів «движение горцев северо-восточного кавказа в 20-50 гг. xix века», фіксує підсумок по товариству ако (акінці - чеченське товариство у верхів'ях річки гехі): «виявили покірність у 1839 році, видали аманатів і зобов'язалися платити подать по руб. сріблом з дому» (аманати - заручники, яких імперія забирала в аулів для контролю над ними)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). оформлення йшло під системою страху, яку пулло описав у доповідній записці 1840 року: «погрожуючи всім непокірним товариствам і винищенням їхнього майна, я навів на них такий страх... що одні за одними почали підкорятися»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+                <div>
+                    <a href="/uk/techniques/T0147">T0147</a> Примусове оформлення підданства
+                </div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податна система Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), оформляла підпорядкування чеченських товариств як «покірність» із зобов'язаннями перед імперією. Відомість горським народам 1840 року, опублікована у збірнику документів «Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века», фіксує підсумок по товариству Ако (акінці - чеченське товариство у верхів'ях річки Гехі): «Виявили покірність у 1839 році, видали аманатів і зобов'язалися платити подать по руб. сріблом з дому» (аманати - заручники, яких імперія забирала в аулів для контролю над ними)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Оформлення йшло під системою страху, яку Пулло описав у доповідній записці 1840 року: «погрожуючи всім непокірним товариствам і винищенням їхнього майна, я навів на них такий страх... що одні за одними почали підкорятися»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://kp.rusneb.ru/item/material/skazanie-ochevidca-o-shamile" target="_blank">
+                        Гаджи-Али. (1873). Сказание очевидца о Шамиле.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="5.0">
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://www.prlib.ru/item/1968825" target="_blank">
+                        А. А. Айдамиров. (1991). Хронология истории Чечено-Ингушетии.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+<script src="/uk/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

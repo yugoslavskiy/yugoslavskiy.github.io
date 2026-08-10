@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/techniques/T0147/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0147/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0147/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0147/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0147/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Forced Registration of Subjecthood, technique T0147 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/techniques/T0147/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Forced Registration of Subjecthood, technique T0147 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in August 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/techniques/">Techniques</a></li>
+  <li class="breadcrumb-item">Forced Registration of Subjecthood</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Forced Registration of Subjecthood
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Aggressors force the leaders of colonized societies to formally codify their subordinate status in law. This process takes place under economic or military pressure, and the terms of the pre-drafted treaties are not open to negotiation<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Michael Khodarkovsky. (1999). Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800."data-reference="Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800 1999"><sup><a href="https://www.journals.uchicago.edu/doi/pdfplus/10.1086/235251" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. To ensure legitimacy in the eyes of the local population, the colonizer often demands that an oath of allegiance be sworn according to the religious customs of the subjugated peoples themselves<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Michael Khodarkovsky. (2002). Russia's Steppe Frontier: The Making of a Colonial Empire 1500-1800."data-reference="Russia's Steppe Frontier: The Making of a Colonial Empire 1500-1800 2002"><sup><a href="https://dokumen.pub/russias-steppe-frontier-the-making-of-a-colonial-empire-1500-1800-9780253339898.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. A historical example of this practice is the shert — an oath of allegiance whose legal codification was often accompanied by the surrender of hostages from among relatives or the local nobility<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Википедия. (2024). Шерть - Википедия."data-reference="Шерть - Википедия 2024"><sup><a href="https://ru.wikipedia.org/w/index.php?title=%D0%A8%D0%B5%D1%80%D1%82%D1%8C&oldid=142267485" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span><span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Michael Khodarkovsky. (1999). Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800."data-reference="Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800 1999"><sup><a href="https://www.journals.uchicago.edu/doi/pdfplus/10.1086/235251" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. In some cases, citizenship of the metropole is a necessary condition for freedom of movement, for the ability to go to court, or for not being expelled on the grounds of illegal presence in territory annexed by the colonizer<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Диана Курышко, Нина Назарова. (2025). «Как любил Украину, так и буду любить, а российский паспорт взял, чтобы жить». Как устроена принудительная паспортизация."data-reference="«Как любил Украину, так и буду любить, а российский паспорт взял, чтобы жить». Как устроена принудительная паспортизация 2025"><sup><a href="https://www.bbc.com/russian/articles/c20pgklmxp3o" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0147
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Sub-techniques:&nbsp;</span>
+                    No sub-techniques
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The tactical goals achieved by using the technique or sub-technique">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Tactics:</span>
+                        <a href="/en/tactics/TA0003">Seizure of Governance</a>,                        <a href="/en/tactics/TA0005">Persistence</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The peoples against whom the technique or sub-technique was used">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Peoples:&nbsp;</span>Nokhchi (Chechens), Ukrainians
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Contributors:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Version:&nbsp;</span>1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Created:&nbsp;</span>10 June 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>10 June 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/T0147" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Procedures Carried Out</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood under direct military threat, the mountain communities were forced to capitulate: in a petition to tsar mikhail fyodorovich, the kabardian prince sunchaley yanglychevich cherkassky reported that the mountaineers «brought their guilt... petitioned humbly and gave... the shert (oath of allegiance)»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1617-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1617</div>
+<div><a href="/en/campaigns/C1120">C1120</a> Punitive campaign and the devastation of the Nokhchi mountain communities (1617–1618)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>Under direct military threat, the mountain communities were forced to capitulate: in a petition to Tsar Mikhail Fyodorovich, the Kabardian prince Sunchaley Yanglychevich Cherkassky reported that the mountaineers «brought their guilt... petitioned humbly and gave... the shert (oath of allegiance)»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the occupation administration demanded that the nokhchi mountain communities (the shibutians) legally formalize their subordinate status: a report from the terek voivodes ivan andreyevich dashkov and bogdan gerasimovich priklonsky to the posolsky prikaz records information about «the oath given by the shibutians lavarsan yazyev and zatyshka lavarsanov on behalf of 20 households in 1627»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997), with a direct injunction that they «not fall away from the sovereign and remain under the sovereign's hand in outright bondage (kholopstvo)»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1626-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1626</div>
+<div><a href="/en/campaigns/C1116">C1116</a> Use of the Nokhchi in Military Expeditions, Intervention, and Imposition of Yasak (1626–1628)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The occupation administration demanded that the Nokhchi mountain communities (the Shibutians) legally formalize their subordinate status: a report from the Terek voivodes Ivan Andreyevich Dashkov and Bogdan Gerasimovich Priklonsky to the Posolsky Prikaz records information about «the oath given by the Shibutians Lavarsan Yazyev and Zatyshka Lavarsanov on behalf of 20 households in 1627»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, with a direct injunction that they «not fall away from the sovereign and remain under the sovereign's hand in outright bondage (kholopstvo)»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the occupation administration forced the mountain societies of the nokhchi into legal subordination: in 1647, under pressure from the terek voivodes, the shibutians «placed themselves under thy sovereign high hand in direct servitude... and swore the shert oath on the quran»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997), while the michkiz people «with all the michkiz land placed themselves in servitude under thy sovereign high hand... and swore the shert on the quran»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1645-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1645</div>
+<div><a href="/en/campaigns/C1107">C1107</a> Bribery of Elites, Coercion into Subjecthood, and the Taking of Amanats (1645–1658)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The occupation administration forced the mountain societies of the Nokhchi into legal subordination: in 1647, under pressure from the Terek voivodes, the Shibutians «placed themselves under thy sovereign high hand in direct servitude... and swore the shert oath on the Quran»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, while the Michkiz people «with all the Michkiz land placed themselves in servitude under thy sovereign high hand... and swore the shert on the Quran»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the occupation administration made attempts to force the independent societies of the nokhchi (the shibutians) into legal subordination: an extract for the report of the posolsky prikaz to tsar alexei mikhailovich of 1660 states that the terek voivodes melenty kvashnin and his associates sent a military emissary to the highlanders and ordered him «to bring them to the oath»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997); however, the attempt proved unsuccessful, and he «did not br[in]g the inhabitants of the shibut land to the oath»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1658-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1658</div>
+<div><a href="/en/campaigns/C1119">C1119</a> Comprehensive Reconnaissance of Territories and an Attempt to Coerce into Subjecthood (1658–1660)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The occupation administration made attempts to force the independent societies of the Nokhchi (the Shibutians) into legal subordination: an extract for the report of the Posolsky Prikaz to Tsar Alexei Mikhailovich of 1660 states that the Terek voivodes Melenty Kvashnin and his associates sent a military emissary to the Highlanders and ordered him «to bring them to the oath»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; however, the attempt proved unsuccessful, and he «did not br[in]g the inhabitants of the Shibut land to the oath»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the central authorities of the tsardom of muscovy used an appointed ruler for the legal subordination of the region: in 1676 the posolsky prikaz sent an instruction to the kabardian prince kaspulat mutsalovich cherkassky on the necessity of arriving at the terek town «to administer the oath of the population of the north caucasus to tsars ivan and peter alekseevich»(citation: кабардино-русские отношения в xvi-xviii вв. документы и материалы. том i 1957)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1661-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1661</div>
+<div><a href="/en/campaigns/C1122">C1122</a> Establishment of Alien Governance and the Mobilization of the Nokhchi for the Crimean Campaigns (1661–1676)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The central authorities of the Tsardom of Muscovy used an appointed ruler for the legal subordination of the region: in 1676 the Posolsky Prikaz sent an instruction to the Kabardian prince Kaspulat Mutsalovich Cherkassky on the necessity of arriving at the Terek town «to administer the oath of the population of the North Caucasus to Tsars Ivan and Peter Alekseevich»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I."data-reference="Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I 1957"><sup><a href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the diplomatic apparatus of the tsardom of muscovy expanded the legal subordination of nokhchi territories: the historian ya. z. akhmadov records that in 1696 the metropole formalized «the expression of russia's protection over the braguny principality in chechnya»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0009"
+             data-date="1691-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1691</div>
+<div><a href="/en/campaigns/C1124">C1124</a> Punitive Raids and the Economic Strangulation of the Nokhchi (1691–1700)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0009">S0009</a> Diplomacy</div>            </div>
+            <div class="proc-desc">
+                        <p>The diplomatic apparatus of the Tsardom of Muscovy expanded the legal subordination of Nokhchi territories: the historian Ya. Z. Akhmadov records that in 1696 the metropole formalized «the expression of Russia's protection over the Braguny principality in Chechnya»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the diplomatic apparatus of the russian empire expanded the legal subjugation of the nokhchi territories under threat of military annihilation: historian ya. z. akhmadov states that having suffered defeat in 1722, the local princes took an oath of allegiance, "'including in it for the first time also their chechens'"(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0009"
+             data-date="1722-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1722</div>
+<div><a href="/en/campaigns/C1129">C1129</a> Suppression of the Uprising, Military Intervention, and Forced Formalization of Subjecthood (1722)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0009">S0009</a> Diplomacy</div>            </div>
+            <div class="proc-desc">
+                        <p>The diplomatic apparatus of the Russian Empire expanded the legal subjugation of the Nokhchi territories under threat of military annihilation: historian Ya. Z. Akhmadov states that having suffered defeat in 1722, the local princes took an oath of allegiance, "'including in it for the first time also their Chechens'"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the return of the zaporozhian sich under the empire's authority on the crown's terms: "for tactical reasons, in the course of preparations for the next turkish war, anna amnestied the zaporozhians and allowed them to return to the old sich grounds (1734) and found the new sich"(citation: енциклопедія історії україни: т. 1 2003) – the amnesty formalized the cossacks' passage under russian authority with an obligation of military service."
+             data-platforms="Ukrainians"
+             data-groups="G0009"
+             data-tools="S0009"
+             data-date="1734-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1734</div>
+<div><a href="/en/campaigns/C0029">C0029</a> The Governing Council of the Hetman Government and the Lubny Treaty (1734–1750)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0009">S0009</a> Diplomacy</div>            </div>
+            <div class="proc-desc">
+                        <p>The return of the Zaporozhian Sich under the empire's authority on the crown's terms: "For tactical reasons, in the course of preparations for the next Turkish war, Anna amnestied the Zaporozhians and allowed them to return to the old Sich grounds (1734) and found the New Sich"<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1."data-reference="Енциклопедія історії України: Т. 1 2003"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span> – the amnesty formalized the Cossacks' passage under Russian authority with an obligation of military service.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the occupation administration of the russian empire imposed on the indigenous population the legal codification of subordinate status, exploiting their economic need and presenting the oath as a rigid ultimatum: historian ya. z. akhmadov states that in 1747, in response to the highlanders' requests for resettlement, «official consent of the imperial court was given («to admit and assign») on the condition that the highlanders take an oath of russian subjecthood»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019), while to those absent «officers were sent «to administer the oath»»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019); similarly in 1748, when the mountain communities petitioned for subjecthood so that «traveling with merchandise to the town of kizlyar... under protection would be free»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019), the administration «agreed to this proposal on the condition of the mandatory resettlement of the «chebutlins» from the mountains to the lower reaches of the sunzha»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1741-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1741</div>
+<div><a href="/en/campaigns/C1135">C1135</a> Expansion of the Bribery System and Coercion of Highland Societies into Subjecthood (1741–1748)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The occupation administration of the Russian Empire imposed on the Indigenous population the legal codification of subordinate status, exploiting their economic need and presenting the oath as a rigid ultimatum: historian Ya. Z. Akhmadov states that in 1747, in response to the highlanders' requests for resettlement, «official consent of the imperial court was given («to admit and assign») on the condition that the highlanders take an oath of Russian subjecthood»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>, while to those absent «officers were sent «to administer the oath»»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>; similarly in 1748, when the mountain communities petitioned for subjecthood so that «traveling with merchandise to the town of Kizlyar... under protection would be free»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>, the administration «agreed to this proposal on the condition of the mandatory resettlement of the «Chebutlins» from the mountains to the lower reaches of the Sunzha»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the russian empire compelled the nokhchi communities by force of arms to swear an oath of subjecthood. after the devastation of the villages, the commander of the caucasus line, general bulgakov, presented the chechen people with a resolution by which the elders declared: “we submit ourselves with the whole chechen people… into eternal loyal subjecthood… in witness whereof we give an oath according to our custom on the holy quran,” and for any violation the people subjected itself “to the strictest punishment and to the devastation of our dwellings without resistance”; the commander-in-chief in the caucasus, general gudovich, reported that the chechens had been “completely subdued by force of arms and brought to an oath of eternal fidelity of subjecthood”(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1807</div>
+<div><a href="/en/campaigns/C1140">C1140</a> Bulgakov's Punitive Expedition: Devastation of Chechen Villages and Coercion into Allegiance (1807)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The Russian Empire compelled the Nokhchi communities by force of arms to swear an oath of subjecthood. After the devastation of the villages, the commander of the Caucasus Line, General Bulgakov, presented the Chechen people with a resolution by which the elders declared: "we submit ourselves with the whole Chechen people… into eternal loyal subjecthood… in witness whereof we give an oath according to our custom on the Holy Quran," and for any violation the people subjected itself "to the strictest punishment and to the devastation of our dwellings without resistance"; the commander-in-chief in the Caucasus, General Gudovich, reported that the Chechens had been "completely subdued by force of arms and brought to an oath of eternal fidelity of subjecthood"<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the regular army of the russian empire, having moved troops onto the sunzha and occupied chechen land, demanded that the elders of chechen villages renew their oath of submission under threat of reprisal as against “open enemies.” imperial general yermolov testifies in his “notes” that in may 1818 “the elders of almost all the principal chechen villages were summoned to me,” to the military camp, and he demanded “that henceforth such [depredations] no longer be committed, and in confirmation they must renew their old oath of submission and return the captives held by them”(citation: записки а.п. ермолова. 1798-1826 гг. 1991). the demand went unfulfilled: the elders “promised nothing”(citation: записки а.п. ермолова. 1798-1826 гг. 1991)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1817</div>
+<div><a href="/en/campaigns/C1021">C1021</a> Destruction of the Nokhchi Villages along the Sunzha and Erection of the Groznaya Fortress in Their Place (1817–1818)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The Regular Army of the Russian Empire, having moved troops onto the Sunzha and occupied Chechen land, demanded that the elders of Chechen villages renew their oath of submission under threat of reprisal as against "open enemies." Imperial general Yermolov testifies in his "Notes" that in May 1818 "the elders of almost all the principal Chechen villages were summoned to me," to the military camp, and he demanded "that henceforth such [depredations] no longer be committed, and in confirmation they must renew their old oath of submission and return the captives held by them"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. The demand went unfulfilled: the elders "promised nothing"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood on march 6, 1829, in tarki, beibulat taimiev and 120 elders of chechnya were forced to take an oath of allegiance through the shamkhal of tarki. the historian d. a. khozhaev recorded the coerced nature of this step: the elders "tried to avoid subordination to the tsarist superintendents, to avert from chechnya the threat of constant raids"(citation: чеченцы в русско-кавказской войне 1998). the chechens themselves, in a petition to paskevich in april 1829, documented the backdrop against which the submission was being signed: the imperial command "arrested, took captive, hanged and exiled to siberia and to other places many of those who, being obedient, served the great sovereign"(citation: акты собранные кавказскою археографическою комиссиею. том vii (1827-1831) 1878). emanuel, commander of the troops on the caucasian line, in a report to paskevich of may 15, 1829, made the recognition of submission conditional: it "will be recognized as well-intentioned only when they unconditionally take the oath and hand over amanats"(citation: акты собранные кавказскою археографическою комиссиею. том vii (1827-1831) 1878). holding beibulat in tiflis, paskevich sealed the subjecthood with the "regulation on the submission of the chechens to russia" and the statute of august 2, 1829(citation: чеченцы в русско-кавказской войне 1998)(citation: акты собранные кавказскою археографическою комиссиею. том vii (1827-1831) 1878)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1828-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1828</div>
+<div><a href="/en/campaigns/C1150">C1150</a> Deception and Forcible Detention of Beibulat Taimiev by Paskevich, Splitting Chechnya into Factions, and Coercion into an Oath of Allegiance (1828-1829)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>On March 6, 1829, in Tarki, Beibulat Taimiev and 120 elders of Chechnya were forced to take an oath of allegiance through the Shamkhal of Tarki. The historian D. A. Khozhaev recorded the coerced nature of this step: the elders "tried to avoid subordination to the tsarist superintendents, to avert from Chechnya the threat of constant raids"<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. The Chechens themselves, in a petition to Paskevich in April 1829, documented the backdrop against which the submission was being signed: the imperial command "arrested, took captive, hanged and exiled to Siberia and to other places many of those who, being obedient, served the great Sovereign"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831) 1878"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. Emanuel, commander of the troops on the Caucasian Line, in a report to Paskevich of May 15, 1829, made the recognition of submission conditional: it "will be recognized as well-intentioned only when they unconditionally take the oath and hand over amanats"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831) 1878"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. Holding Beibulat in Tiflis, Paskevich sealed the subjecthood with the "Regulation on the Submission of the Chechens to Russia" and the statute of August 2, 1829<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span><span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831) 1878"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood on 27 august 1836, colonel pullo accepted at the groznaya fortress the forced "submission" of the aul of zandak on the yaman-su river, devastated by his detachment on 23 august 1836 (campaign c1156). the subordination was engineered by the devastation itself: in a report to general petrov dated 27 august 1836, pullo admitted: "being certain that the inhabitants of zandak, following the common custom of the chechens, would ask for submission after punishment, and considering such submission useful for the government, i did not order the village burned"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the same report recorded the state in which the village went to its subordination: the devastation "brought both the inhabitants of the village and all those living in its vicinity into fear and despondency"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the elders sent "a plea to be accepted into submission to the russian government", and subjecthood was formalized on terms dictated by the empire: loyalty, a complete break with tashu-hadji, the leader of the chechen resistance, a ban on assemblies, the handover of russian captives in exchange for the inhabitants of zandak seized during the devastation, and the established tribute(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). rozen recorded the fact and the date of the formalization in a dispatch to the minister of war: "on 27 august the zandak elders appeared before the commander of the sunzha line declaring their submission, which was accepted from them in the established order"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-08-27 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">August 1836</div>
+<div><a href="/en/campaigns/C1157">C1157</a> Coercion of Devastated Zandak into Subordination and Tribute by Colonel Pullo (1836)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>On 27 August 1836, Colonel Pullo accepted at the Groznaya fortress the forced "submission" of the aul of Zandak on the Yaman-su river, devastated by his detachment on 23 August 1836 (campaign C1156). The subordination was engineered by the devastation itself: in a report to General Petrov dated 27 August 1836, Pullo admitted: "Being certain that the inhabitants of Zandak, following the common custom of the Chechens, would ask for submission after punishment, and considering such submission useful for the government, I did not order the village burned"<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. The same report recorded the state in which the village went to its subordination: the devastation "brought both the inhabitants of the village and all those living in its vicinity into fear and despondency"<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. The elders sent "a plea to be accepted into submission to the Russian government", and subjecthood was formalized on terms dictated by the empire: loyalty, a complete break with Tashu-Hadji, the leader of the Chechen resistance, a ban on assemblies, the handover of Russian captives in exchange for the inhabitants of Zandak seized during the devastation, and the established tribute<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Rozen recorded the fact and the date of the formalization in a dispatch to the Minister of War: "On 27 August the Zandak elders appeared before the commander of the Sunzha Line declaring their submission, which was accepted from them in the established order"<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the amanat-and-tribute system of pullo, commander of the left flank of the caucasus line (a chain of imperial fortifications on the land of the nokhchi), formalized the subordination of chechen communities as "submission" with obligations to the empire. the 1840 register of the highland peoples, published in the documentary collection «движение горцев северо-восточного кавказа в 20-50 гг. xix века», records the outcome for the ako community (the akintsy - a chechen community in the upper reaches of the gekhi river): "declared submission in 1839, handed over amanats and pledged to pay a tribute of one silver ruble per house" (amanats - hostages whom the empire took away from the auls to control them)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the formalization proceeded under the system of fear that pullo described in a memorandum of 1840: "by threatening all the unsubmissive communities with the annihilation of their property, i instilled in them such fear... that one after another they began to submit"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">September 1836</div>
+<div><a href="/en/campaigns/C1163">C1163</a> The amanat-and-tribute system of colonel Pullo in the seized auls of Chechnya (1836-1840)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The amanat-and-tribute system of Pullo, commander of the left flank of the Caucasus Line (a chain of imperial fortifications on the land of the Nokhchi), formalized the subordination of Chechen communities as "submission" with obligations to the empire. The 1840 register of the highland peoples, published in the documentary collection «Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века», records the outcome for the Ako community (the Akintsy - a Chechen community in the upper reaches of the Gekhi river): "Declared submission in 1839, handed over amanats and pledged to pay a tribute of one silver ruble per house" (amanats - hostages whom the empire took away from the auls to control them)<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. The formalization proceeded under the system of fear that Pullo described in a memorandum of 1840: "by threatening all the unsubmissive communities with the annihilation of their property, I instilled in them such fear... that one after another they began to submit"<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood on 26 january 1837, on the fourth day of the annihilation of lesser chechnya by feze's expedition - two days after the taking of neighboring shalazh-yurt with 14 killed - the troops, entering the aul of achkhoy, took from it an oath "of submission" and 6 amanats (amanat - a person whom the empire took from a community as a guarantee of subordination)(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). the frame is spelled out by the expedition journal itself, presented by rozen to minister of war chernyshev on 11 february 1837: "the troops are proceeding to them not to punish them, but properly to confirm them in submission"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881) - subordination secured under military pressure and framed by the empire as a voluntary act of those who had submitted."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1837-01-23 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1837</div>
+<div><a href="/en/campaigns/C1160">C1160</a> Annihilation of Lesser Chechnya by Feze's Expedition: 92 Captives, More Than a Thousand Saklias Burned (January 1837)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>On 26 January 1837, on the fourth day of the annihilation of Lesser Chechnya by Feze's expedition - two days after the taking of neighboring Shalazh-yurt with 14 killed - the troops, entering the aul of Achkhoy, took from it an oath "of submission" and 6 amanats (amanat - a person whom the empire took from a community as a guarantee of subordination)<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. The frame is spelled out by the expedition journal itself, presented by Rozen to Minister of War Chernyshev on 11 February 1837: "the troops are proceeding to them not to punish them, but properly to confirm them in submission"<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span> - subordination secured under military pressure and framed by the empire as a voluntary act of those who had submitted.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood in february-march 1837, feze's troops, annihilating the auls of those who evaded, took oaths to the empire from the chechen communities one after another - rozen's reports to minister of war chernyshev count them by date: on 6 february shali ("brought an oath of submission to our government and presented amanats as its pledge"), on 8 february germenchuk ("the oath of subjecthood was renewed"), on 15 february geldigen ("brought an oath of allegiance and handed over amanats chosen from the best families"), on 21 february six auls of the michik, on 25 february the auls along the yaman-su from balan-su to biletli and on the aksai(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). by 24 february, according to the report of 11 march, feze "brought to submission the chechens dwelling along the michik river"; at the end of march, at the camp at ustar-khan, the troops took an oath from the elders of the goyta forest and the martan gorge - they "brought an oath of allegiance to the sovereign emperor and presented amanats as security for their submission"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). an oath taken under the guns of troops that had just annihilated the neighboring auls fixed subordination as a legal fact (amanat - a person whom the empire took from a community as a guarantee of subordination)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1837-02-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">February 1837</div>
+<div><a href="/en/campaigns/C1161">C1161</a> Coercion of Chechnya into Oaths by Feze's Spring Tour: Amanats from Communities Coerced into the Oath, Destruction of Auls along the Dzhalka, a Livestock Fine (February-April 1837)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In February-March 1837, Feze's troops, annihilating the auls of those who evaded, took oaths to the empire from the Chechen communities one after another - Rozen's reports to Minister of War Chernyshev count them by date: on 6 February Shali ("brought an oath of submission to our government and presented amanats as its pledge"), on 8 February Germenchuk ("the oath of subjecthood was renewed"), on 15 February Geldigen ("brought an oath of allegiance and handed over amanats chosen from the best families"), on 21 February six auls of the Michik, on 25 February the auls along the Yaman-su from Balan-su to Biletli and on the Aksai<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. By 24 February, according to the report of 11 March, Feze "brought to submission the Chechens dwelling along the Michik river"; at the end of March, at the camp at Ustar-khan, the troops took an oath from the elders of the Goyta forest and the Martan gorge - they "brought an oath of allegiance to the Sovereign Emperor and presented amanats as security for their submission"<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. An oath taken under the guns of troops that had just annihilated the neighboring auls fixed subordination as a legal fact (amanat - a person whom the empire took from a community as a guarantee of subordination).</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood the empire registered the subordination of the chechen communities as "submission" (the imperial formula of subjecthood). after the invasion of ichkeria (mountainous south-eastern chechnya) in may 1839 by general grabbe, commander of the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), the imperial survey of 1840 recorded: "the ichkerians, in consequence of gen. grabbe's expedition against them in 1839, declared their submission, but such is hardly consolidated" - the doubt about the firmness of the "submission" belongs to the imperial document itself(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). after the suppression of the uprising grabbe on 14 june 1840 issued a proclamation to the insurgents: "come to your senses and save yourselves now by sincere repentance and immediate submission. otherwise our troops will pass everywhere...", and on 15 june - the twelve points of the "conditions prescribed to submitting highlanders", whose second point is the oath: "to take an oath of submission to the russian emperor, and to present the oath sheets through the elders to the russian authorities" (elders - the heads of aul communities)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1838-11-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">November 1838</div>
+<div><a href="/en/campaigns/C1164">C1164</a> Forcing Chechnya into submission after the fall of Akhulgo and suppression of the general uprising of 1840 (1838-1840)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The empire registered the subordination of the Chechen communities as "submission" (the imperial formula of subjecthood). After the invasion of Ichkeria (mountainous south-eastern Chechnya) in May 1839 by general Grabbe, commander of the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), the imperial survey of 1840 recorded: "The Ichkerians, in consequence of gen. Grabbe's expedition against them in 1839, declared their submission, but such is hardly consolidated" - the doubt about the firmness of the "submission" belongs to the imperial document itself<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. After the suppression of the uprising Grabbe on 14 June 1840 issued a proclamation to the insurgents: "Come to your senses and save yourselves now by sincere repentance and immediate submission. Otherwise our troops will pass everywhere...", and on 15 June - the twelve points of the "Conditions prescribed to submitting highlanders", whose second point is the oath: "To take an oath of submission to the Russian emperor, and to present the oath sheets through the elders to the Russian authorities" (elders - the heads of aul communities)<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood on 7 december 1857, according to the journal of general yevdokimov, who commanded the chechen detachment, "deputies appeared from the entire population of the khulkhulau valley with an offer to bring submission and to resettle within our bounds" - the entry is cited by historian n. i. pokrovsky(citation: кавказские войны и имамат шамиля 2009). "in april 1858 the goyta people surrender, followed by the gekhi people. by mid-april the russian command can definitively declare the conquest of lesser chechnya completed"(citation: кавказские войны и имамат шамиля 2009). "in august 1858 the shatoy people laid down their arms"(citation: чеченцы в русско-кавказской войне 1998) - the same journal of yevdokimov dates this to 7 august and explains the cause: "as soon as the shatoy people saw that the tavlintsy were abandoning them and that we intended to entrench ourselves firmly in the territory we had occupied, they at once sent deputies to me with an offer of submission and a request for permission to settle at the sites of their former auls"(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904); "on 5 april the cheberloy people expelled the naib and submitted", while "on 12 april the aukh chechens acknowledged their powerlessness before the russian army"(citation: чеченцы в русско-кавказской войне 1998). capitulation was also formalized by paper bearing promises: in january 1859, during the advance on vedeno, a proclamation by commander-in-chief baryatinsky to the chechen people was circulated - the full text is given by historian d. a. khozhayev: "the russian government grants you complete freedom to practice forever the faith of your fathers", "you will never be called up as soldiers and will not be turned into cossacks", "you are granted an exemption for three years... upon expiry of this term you will have to contribute three rubles per household for the upkeep of your popular administrations", "the governors set over you will rule according to sharia and adat" (sharia - islamic law; adat - customary law of the highlanders)(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1857</div>
+<div><a href="/en/campaigns/C1168">C1168</a> Forest clearings and famine: Yevdokimov's conquest of Chechnya (1857-1859)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>On 7 December 1857, according to the journal of General Yevdokimov, who commanded the Chechen Detachment, "deputies appeared from the entire population of the Khulkhulau valley with an offer to bring submission and to resettle within our bounds" - the entry is cited by historian N. I. Pokrovsky<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. "In April 1858 the Goyta people surrender, followed by the Gekhi people. By mid-April the Russian command can definitively declare the conquest of Lesser Chechnya completed"<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. "In August 1858 the Shatoy people laid down their arms"<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span> - the same journal of Yevdokimov dates this to 7 August and explains the cause: "As soon as the Shatoy people saw that the Tavlintsy were abandoning them and that we intended to entrench ourselves firmly in the territory we had occupied, they at once sent deputies to me with an offer of submission and a request for permission to settle at the sites of their former auls"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>; "on 5 April the Cheberloy people expelled the naib and submitted", while "on 12 April the Aukh Chechens acknowledged their powerlessness before the Russian army"<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Capitulation was also formalized by paper bearing promises: in January 1859, during the advance on Vedeno, a proclamation by commander-in-chief Baryatinsky to the Chechen people was circulated - the full text is given by historian D. A. Khozhayev: "the Russian government grants you complete freedom to practice forever the faith of your fathers", "you will never be called up as soldiers and will not be turned into Cossacks", "you are granted an exemption for three years... upon expiry of this term you will have to contribute three rubles per household for the upkeep of your popular administrations", "the governors set over you will rule according to sharia and adat" (sharia - Islamic law; adat - customary law of the highlanders)<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced registration of subjecthood on 19 february 1919 general lyakhov, at a congress of chechnya's representatives in aldy, announced the demands of the volunteer army, including mobilization: "these demands were put forward in the form of an ultimatum and were not subject to discussion," write historians ya. z. akhmadov and e. kh. khasmagomadov, and the congress left the ultimatum without an answer(citation: история чечни в xix-xx веках 2005). in april 1919 the command put forward a new ultimatum: "the complete submission of the chechens to the appointed ruler of chechnya, the handing over of all red army men, bolsheviks and abreks, as well as of all the valuables carried off into chechnya by the red army... the return of the pilfered materials from the railway and the organization of deliveries of provisions and fodder for the army"; for failure to fulfill a separate demand - to immediately return a group of cossacks captured in the vicinity of the village - the army took tsatsan-yurt by storm(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0014"
+             data-tools="S0010"
+             data-date="1919-02-19 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">February 1919</div>
+<div><a href="/en/campaigns/C1174">C1174</a> Denikin's terror in Chechnya: destroyed auls and 15 thousand dead (1919)</div><div><a href="/en/groups/G0014">G0014</a> White Movement (AFSR)</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>On 19 February 1919 General Lyakhov, at a congress of Chechnya's representatives in Aldy, announced the demands of the Volunteer Army, including mobilization: "These demands were put forward in the form of an ultimatum and were not subject to discussion," write historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov, and the congress left the ultimatum without an answer<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>. In April 1919 the command put forward a new ultimatum: "the complete submission of the Chechens to the appointed ruler of Chechnya, the handing over of all Red Army men, Bolsheviks and abreks, as well as of all the valuables carried off into Chechnya by the Red Army... the return of the pilfered materials from the railway and the organization of deliveries of provisions and fodder for the army"; for failure to fulfill a separate demand - to immediately return a group of Cossacks captured in the vicinity of the village - the army took Tsatsan-Yurt by storm<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Ukrainians",
+"russia/nokhchi": "Nokhchi (Chechens)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://www.journals.uchicago.edu/doi/pdfplus/10.1086/235251" target="_blank">
+                        Michael Khodarkovsky. (1999). Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://dokumen.pub/russias-steppe-frontier-the-making-of-a-colonial-empire-1500-1800-9780253339898.html" target="_blank">
+                        Michael Khodarkovsky. (2002). Russia's Steppe Frontier: The Making of a Colonial Empire 1500-1800.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://ru.wikipedia.org/w/index.php?title=%D0%A8%D0%B5%D1%80%D1%82%D1%8C&oldid=142267485" target="_blank">
+                        Википедия. (2024). Шерть - Википедия.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.bbc.com/russian/articles/c20pgklmxp3o" target="_blank">
+                        Диана Курышко, Нина Назарова. (2025). «Как любил Украину, так и буду любить, а российский паспорт взял, чтобы жить». Как устроена принудительная паспортизация.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank">
+                        Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank">
+                        Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="10.0">
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank">
+                        Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

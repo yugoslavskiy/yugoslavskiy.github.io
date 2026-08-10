@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/resources/contribute/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/resources/contribute/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/resources/contribute/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/resources/contribute/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/resources/contribute/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Внести вклад | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/resources/contribute/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Внести вклад | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link active" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<div id="sidebars"></div>
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+    <li class="breadcrumb-item">Ресурсы</li>
+    <li class="breadcrumb-item">Внести вклад</li>
+</ol>
+<div class="container-fluid pb-3">
+    <h1>Внести вклад</h1>
+    <p class="text-justify">DECOLONIAL.IST – некоммерческий проект, созданный группой энтузиастов. Ниже – то, в чём нам сейчас действительно нужна помощь. По любому из пунктов пишите на <a href='mailto:contact@decolonial.ist'>contact@decolonial.ist</a>.</p>
+
+    <h2 class="pt-3">Перевод на чеченский</h2>
+    <p class="text-justify">Нам нужен переводчик на чеченский язык (нохчийн мотт): мы готовим чеченскую версию сайта, и без носителя языка её не сделать. Если вы владеете чеченским или знаете того, кто готов помочь с переводом – напишите нам: <a href='mailto:contact@decolonial.ist'>contact@decolonial.ist</a>.</p>
+
+    <h2 class="pt-3">Литература и источники</h2>
+    <p class="text-justify">Для работы над доменом колонизации Нохчи (Чеченцев) нам нужны научные издания, до которых сложно добраться. Сейчас мы ищем:</p><ul><li>Ибрагимов М. М. (рук. авт. коллектива). «История Чечни с древнейших времён до наших дней»: в 2 томах. Грозный: ГУП «Книжное издательство», 2006–2008. ISBN 978-5-98896-103-1 (т. 1), 978-5-98896-101-7 (т. 2). Достаточно любого из томов</li><li>Закс А. Б. «Ташев-Хаджи – сподвижник Шамиля». Грозный: Книга, 1992</li><li>Кавтарадзе А. Г. «Генерал А. П. Ермолов». Тула: Приокское книжное издательство, 1977 (серия «Наши славные земляки»). <a href='https://books.google.com/books?id=8HPNAAAAMAAJ' target='_blank' rel='noopener'>Google Books: 8HPNAAAAMAAJ</a></li><li>«Жизнь национальностей» (издание Наркомнаца). Москва, 1922, № 10(139) и № 16 - статьи Инала Бутаева «Грозненская нефть и Чечня» (№ 10, с. 6) и Н. Костерина «Политическое состояние Горской Республики» (№ 16, с. 9). <a href='https://rusneb.ru/catalog/000200_000018_RU_NLR_INFOCOMM31_1000026373/' target='_blank' rel='noopener'>Запись в НЭБ</a></li><li>«Борьба за Советскую власть в Чечено-Ингушетии (1917–1920 гг.): сборник документов и материалов». Грозный, 1958</li><li>Чентиева М. Д. «История чечено-ингушской письменности» (под ред. Х. Д. Ошаева). Грозный: Чечено-Ингушское книжное издательство, 1958. <a href='https://neb-chr.ru/books/1405/details' target='_blank' rel='noopener'>НЭБ ЧР: 1405</a></li></ul><p class="text-justify">Если у вас есть эти книги в электронном или бумажном виде, либо вы готовы помочь с их покупкой – напишите нам: <a href='mailto:contact@decolonial.ist'>contact@decolonial.ist</a>.</p>
+
+    <h2 class="pt-3">Экспертное ревью</h2>
+    <p class="text-justify">Нам нужно ревью украинского домена профессиональным историком – специалистом по истории Украины и российской колониальной политике: проверка фактов, формулировок и полноты охвата. В дальнейшем такое же ревью понадобится домену колонизации Нохчи (Чеченцев), который сейчас в разработке.</p><p class="text-justify">В наших планах – разработка истории колонизации других народов, пострадавших от российской агрессии, и мы ищем историков, готовых включиться в эту работу. Если вы историк или можете познакомить нас с профильным специалистом – напишите нам: <a href='mailto:contact@decolonial.ist'>contact@decolonial.ist</a>.</p>
+
+    <h2 class="pt-3">Финансовая поддержка</h2>
+    <p class="text-justify">Нам нужны средства на оплату труда экспертов и IT-разработку. Поддержать нас можно любым удобным способом:</p>
+    <ul>
+        <li>
+            <b>Банка Monobank:</b>
+                <a href="https://send.monobank.ua/jar/6gfYnkCDso" target="_blank" rel="noopener">https://send.monobank.ua/jar/6gfYnkCDso</a>
+        </li>
+        <li>
+            <b>PayPal:</b>
+                paypal@decolonial.ist
+        </li>
+        <li>
+            <b>USDT (TRC-20, TRON):</b>
+            <code style="word-break: break-all; color: var(--c-link, #4f7cac);">TGdEm7mQC7y3TJ27aFAi5FN9TEijAuApZ5</code>
+        </li>
+        <li>
+            <b>Bitcoin (BTC):</b>
+            <code style="word-break: break-all; color: var(--c-link, #4f7cac);">bc1q4jq3arkyk2am7ahw9mzhlx8lkh66hx6ks68t5u</code>
+        </li>
+    </ul>
+
+    <h2 class="pt-3">Контрибьюторы</h2>
+    <p class="text-justify">Люди, чей вклад вошёл в DECOLONIAL.IST. Вклад в отдельные техники, кампании, акторов и инструменты отмечен и на страницах самих сущностей. Подпись – имя, псевдоним или анонимность – выбираете вы сами; написание согласуется с вами до публикации, в том числе для других языков сайта.</p>
+    <div class="row">
+        <div class="col-md-6">
+            <ul>
+                <li>Палий Светодар</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul>
+                <li>Сидлецкая Полина</li>
+            </ul>
+        </div>
+    </div>
+    <p>Спасибо всем, кто внёс вклад в DECOLONIAL.IST!</p>
+</div>
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

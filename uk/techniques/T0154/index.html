@@ -1,0 +1,592 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/techniques/T0154/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0154/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0154/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0154/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0154/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Вирощування колабораціоністської еліти, техніка T0154 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/techniques/T0154/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Вирощування колабораціоністської еліти, техніка T0154 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/techniques/">Техніки</a></li>
+  <li class="breadcrumb-item">Вирощування колабораціоністської еліти</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Вирощування колабораціоністської еліти
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агресори можуть вирощувати всередині колонізованого суспільства шар колабораціоністів, наділяючи його владою і привілеями над співвітчизниками: посадами, жалуванням, землею, відзнаками і захистом агресора. Шар створюється, а не купується: агресор засновує посади і «традиційні» власті там, де їх не було, сам призначає виконавців і прив'язує їх привілеями до себе, а не до власного народу. Суспільство розколюється на посередників агресора і керованих ними; повсякденний примус виконується руками самих колонізованих, а відповідають вони тільки перед агресором. У дослідженнях колоніалізму механізм описано точно: історик Рональд Робінсон показав, що колонізатор міг «виготовити малу сучасну еліту колаборантів і поставити її в підпорядковану владу»; дослідник колоніалізму Махмуд Мамдані назвав таку конструкцію «децентралізованим деспотизмом» - призначені колонізатором «традиційні» начальники отримують необмежену владу над своїми, відповідаючи тільки перед колонізатором.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0154
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Підтехніки:&nbsp;</span>
+                    Немає підтехнік
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактичні цілі, які досягаються застосуванням техніки або підтехніки">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/uk/tactics/TA0003">Захоплення управління</a>,                        <a href="/uk/tactics/TA0005">Закріплення</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народи, проти яких застосовувалася техніка або підтехніка">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народ:&nbsp;</span>Нохчі (Чеченці)
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контриб'ютори:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версія:&nbsp;</span>1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Створено:&nbsp;</span>23 липня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>23 липня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/T0154" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реалізовані процедури</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="вирощування колабораціоністської еліти аманатсько-податна система пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), створила всередині чеченського суспільства привілейований шар із владою над співвітчизниками. посади призначених імперією наглядачів над аулами (приставів) імперія роздавала самим чеченцям: імперський історик юров пише, що пристави «були обрані переважно, якщо не виключно, з міліціонерів» - з горської міліції, озброєних загонів горців на службі імперії(citation: 1840, 1841 и 1842-й годы на кавказе 1886). історик н. і. покровський показав механіку розколу: посада пристава не оплачувалася, тому обійняти її могли «тільки деякі представники сильних родин», і вони «користувалися слушною нагодою, щоб ужити свою владу для подальшого накопичення»; «створюючи в чечні місцеву, за національністю чеченську, адміністрацію, царизм сподівався створити водночас і таку необхідну йому чеченську «аристократію»»(citation: кавказские войны и имамат шамиля 2009). імперія дала частині суспільства владу і привілеї над рештою і прив'язала цей шар до себе, а не до народу: роздача посад «сильним родинам» задокументована; розрахунок на вирощування лояльної «аристократії» сформульований істориком н. і. покровським."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податна система Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), створила всередині чеченського суспільства привілейований шар із владою над співвітчизниками. Посади призначених імперією наглядачів над аулами (приставів) імперія роздавала самим чеченцям: імперський історик Юров пише, що пристави «були обрані переважно, якщо не виключно, з міліціонерів» - з горської міліції, озброєних загонів горців на службі імперії<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Історик Н. І. Покровський показав механіку розколу: посада пристава не оплачувалася, тому обійняти її могли «тільки деякі представники сильних родин», і вони «користувалися слушною нагодою, щоб ужити свою владу для подальшого накопичення»; «створюючи в Чечні місцеву, за національністю чеченську, адміністрацію, царизм сподівався створити водночас і таку необхідну йому чеченську «аристократію»»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Імперія дала частині суспільства владу і привілеї над рештою і прив'язала цей шар до себе, а не до народу: роздача посад «сильним родинам» задокументована; розрахунок на вирощування лояльної «аристократії» сформульований істориком Н. І. Покровським.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="вирощування колабораціоністської еліти у листопаді 1858 року генерал євдокимов, за власним журналом, «знайшов вигіднішим ужити в діло мирне тубільне населення»: наїб (управитель округу при імамі) саїб-дулла з понад двома тисячами озброєних чеченців примусив до здачі аули верхів'їв фортанги й асси, які «видали саїб-дуллі 27 чол. російських полонених і аманатів із найкращих фамілій» (аманат - людина, яку імперія забирала з громади як заручника)(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). колишніх наїбів імамату влада берегла для майбутньої служби: полковник бєлік, за рапортом євдокимова від 8 вересня 1858 року, який цитує історик м. і. покровський, «наводив порядок і встановлював перші начала управління в товариствах, що знову покоряються; жертви, переслідувані народом, шукали в нього притулку»(citation: кавказские войны и имамат шамиля 2009). 4 липня 1859 року, за істориком д. а. хожаєвим, чеченські старшини прийшли до головнокомандувача кавказької армії барятинського: «чеченська депутація почесних осіб, серед яких були колишні наїби талхіг, ескі, еділ, дуба, умалат, з'явилася у фортецю грозну до князя барятинського» - це талхіг шалінський, наїб великої чечні й начальник артилерії імамату, і дуба вашендароєвський, наїб малої чечні; наїби, що перейшли, «отримали царські чини, нагороди і були призначені наїбами тих самих дільниць, де колись вони служили шамілю»(citation: чеченцы в русско-кавказской войне 1998). 19 серпня 1859 року головнокомандувач барятинський дав «попередню згоду на відведення земель у чечні і на кумицькій площині» підпоручикові асханову, підполковникові чермоєву і пензулаєву(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). підсумок підбив історик м. і. покровський: «головами царської адміністрації в чечні і дагестані після 1859 р. виступають особи, добре знайомі нам як наїби шаміля»(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1857</div>
+<div><a href="/uk/campaigns/C1168">C1168</a> Просіки і голод: завоювання Чечні Євдокимовим (1857-1859)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У листопаді 1858 року генерал Євдокимов, за власним журналом, «знайшов вигіднішим ужити в діло мирне тубільне населення»: наїб (управитель округу при імамі) Саїб-Дулла з понад двома тисячами озброєних чеченців примусив до здачі аули верхів'їв Фортанги й Асси, які «видали Саїб-Дуллі 27 чол. російських полонених і аманатів із найкращих фамілій» (аманат - людина, яку імперія забирала з громади як заручника)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Колишніх наїбів імамату влада берегла для майбутньої служби: полковник Бєлік, за рапортом Євдокимова від 8 вересня 1858 року, який цитує історик М. І. Покровський, «наводив порядок і встановлював перші начала управління в товариствах, що знову покоряються; жертви, переслідувані народом, шукали в нього притулку»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 4 липня 1859 року, за істориком Д. А. Хожаєвим, чеченські старшини прийшли до головнокомандувача Кавказької армії Барятинського: «чеченська депутація почесних осіб, серед яких були колишні наїби Талхіг, Ескі, Еділ, Дуба, Умалат, з'явилася у фортецю Грозну до князя Барятинського» - це Талхіг Шалінський, наїб Великої Чечні й начальник артилерії імамату, і Дуба Вашендароєвський, наїб Малої Чечні; наїби, що перейшли, «отримали царські чини, нагороди і були призначені наїбами тих самих дільниць, де колись вони служили Шамілю»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. 19 серпня 1859 року головнокомандувач Барятинський дав «попередню згоду на відведення земель у Чечні і на Кумицькій площині» підпоручикові Асханову, підполковникові Чермоєву і Пензулаєву<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Підсумок підбив історик М. І. Покровський: «головами царської адміністрації в Чечні і Дагестані після 1859 р. виступають особи, добре знайомі нам як наїби Шаміля»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="вирощування колабораціоністської еліти в операції кундухова взимку 1860-1861 років ішли «7 сотень чеченської міліції» полковника чермоєва(citation: история чечни в xix-xx веках 2005); атабі-мулла атаєв, наїб малої чечні (в імперських документах - атабай), у листопаді 1861 року здався, за документом, «командирові чеченського кінно-іррегулярного дивізіону вагапу адуєву» - адуєву, який служив імперії в її чині(citation: история чечни в xix-xx веках 2005). проти шейха кунта-хаджі влада мобілізувала лояльне духовенство: історики я. з. ахмадов і е. х. хасмагомадов пишуть - «було вжито заходів, щоб схилити найпомітніших представників чеченського мусульманського духовенства відкрито виступити проти кунта-хаджі та вчення, яке він проповідував»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1860</div>
+<div><a href="/uk/campaigns/C1169">C1169</a> Придушення повстань 1860-1861 років, страта Байсангура і розстріл зікристів біля Шалі (1860-1864)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>В операції Кундухова взимку 1860-1861 років ішли «7 сотень чеченської міліції» полковника Чермоєва<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>; Атабі-мулла Атаєв, наїб Малої Чечні (в імперських документах - Атабай), у листопаді 1861 року здався, за документом, «командирові Чеченського кінно-іррегулярного дивізіону Вагапу Адуєву» - Адуєву, який служив імперії в її чині<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Проти шейха Кунта-Хаджі влада мобілізувала лояльне духовенство: історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть - «було вжито заходів, щоб схилити найпомітніших представників чеченського мусульманського духовенства відкрито виступити проти Кунта-Хаджі та вчення, яке він проповідував»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Українці",
+"russia/nokhchi": "Нохчі (Чеченці)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

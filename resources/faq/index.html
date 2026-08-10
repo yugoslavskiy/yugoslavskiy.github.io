@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/resources/faq/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/resources/faq/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/resources/faq/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/resources/faq/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/resources/faq/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Вопросы и ответы | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/resources/faq/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Вопросы и ответы | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link active" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<div id="sidebars"></div>
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+<!--stopindex-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+    <li class="breadcrumb-item">Ресурсы</li>
+    <li class="breadcrumb-item">Вопросы и ответы</li>
+</ol>
+
+<div class="faq container-fluid pb-3">
+    <div class="getting-started">
+        <h1>Вопросы и ответы</h1>
+
+        <div class="card card-filter jump-to-section">
+            <div class="card-body">
+                <ul>
+                    <li>
+                        <a href="#general-faq">Общее</a>
+                    </li>
+                    <li>
+                        <a href="#kb-faq">База знаний</a>
+                    </li>
+                    <li>
+                        <a href="#taxonomy-faq">Классификация</a>
+                    </li>
+                    <li>
+                        <a href="#forwho-faq">Для кого предназначен проект</a>
+                    </li>
+                    <li>
+                        <a href="#limitations-faq">Ограничения</a>
+                    </li>
+                    <li>
+                        <a href="#authors-faq">Происхождение</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="getting-started-content">
+            <div class="anchor" id="general-faq"></div>
+                <div class="faq-section">
+                    <h2>Общее</h2>
+                        <div class="faq-question">
+                            <h5><strong>Что такое DECOLONIAL.IST?</strong></h5>
+                            <p>DECOLONIAL.IST – это база знаний о российском колониализме и <a href='https://ru.wikipedia.org/wiki/Таксономия'>система классификации</a> колониальных действий, созданная для изучения колониальной политики и документирования опыта народов, подвергавшихся российской агрессии.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>Зачем был создан DECOLONIAL.IST?</strong></h5>
+                            <p>Исторический опыт колонизированных народов всегда фрагментирован, поскольку колонизаторы делают все, чтобы переписать историю в свою пользу. Архивные материалы, свидетельства, научные исследования и коллективная память существуют разрозненно и редко рассматриваются как части единого процесса. В результате многие события воспринимаются как отдельные исторические эпизоды, а не как проявления устойчивых закономерностей.<br><br>DECOLONIAL.IST создан для объединения этих материалов в единую систему - структурированную классификацию, позволяющую выявлять повторяющиеся механизмы и прослеживать историческую преемственность колониальных практик.<br><br>Проект демонстрирует, что методы колониального управления, применявшиеся российским государством в различные исторические периоды, не являются случайным набором независимых событий, а образуют повторяющуюся систему.<br><br>DECOLONIAL.IST позволяет исследовать эти закономерности на протяжении последних пяти столетий, анализировать современные формы их проявления, рассматривать колониальные процессы как длительное историческое явление и сравнивать практики российской колонизации с другими колониальными проектами.<br><br>Проект выступает не только архивом исторических материалов, но и инструментом политического действия. Он позволяет выявлять современные проявления (нео)колониальных практик, деконструировать имперские нарративы и формировать системные подходы к противодействию им.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>На чем основана методология DECOLONIAL.IST?</strong></h5>
+                            <p>DECOLONIAL.IST опирается на методологию, структуру и инструментарий <a href='https://attack.mitre.org/'>MITRE ATT&CK</a> – отраслевого стандарта для изучения угроз и классификации вредоносных действий в сфере кибербезопасности.<br><br>Подход заключается в изучении противника, а именно - его действий: Тактик, Техник и Процедур. Это позволяет перейти от общих слов к конкретике, увидеть систему в разрозненных исторических событиях.<br><br>В результате вместо перечисления фактов мы получаем структурированный каталог паттернов поведения колонизаторов, с которым можно предметно работать, выявлять закономерности и выстраивать стратегию противодействия.</p>
+                        </div>
+                </div>
+            <div class="anchor" id="kb-faq"></div>
+                <div class="faq-section">
+                    <h2>База знаний</h2>
+                        <div class="faq-question">
+                            <h5><strong>Что в себя включает база знаний?</strong></h5>
+                            <p>В настоящее время база содержит материалы по колониальным практикам, применявшимся Россией против:<ul><li>Украинского народа: 17-21 век</li><li>народа Нохчи (Чеченцев): 16-19 век (раздел в процессе разработки)</li></ul>В дальнейшем проект будет расширяться и дополняться материалами по народам Северной и Восточной Европы, Кавказа, Центральной Азии, Сибири, Арктики и других регионов, подвергавшихся российской колониальной политике.<br><br>Если вы принадлежите к народам перечисленных регионов, являетесь историком, исследователем или просто разделяете цели проекта и хотите внести свой вклад, мы приглашаем вас присоединиться к разработке, предложить свою экспертизу или любую иную <a href='/resources/contribute/'>посильную помощь</a>.</p>
+                        </div>
+                </div>
+            <div class="anchor" id="taxonomy-faq"></div>
+                <div class="faq-section">
+                    <h2>Классификация</h2>
+                        <div class="faq-question">
+                            <h5><strong>Что такое "тактика"?</strong></h5>
+                            <p>Тактики раскрывают мотивацию колонизатора, отвечая на вопрос «что необходимо сделать сейчас?» в рамках общего колониального проекта. Тактической целью может стать, например, укрепление позиций колонизатора на той или иной территории (тактика <a href='/tactics/TA0005/'>закрепления</a>) или создание впечатления законности и естественности колониального устройства (тактика <a href='/tactics/TA0001/'>легитимизации доминирования</a>). Для достижения тактических целей применяются <b>техники</b>.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>Что такое "техника"?</strong></h5>
+                            <p>Техники отвечают на вопрос «как?» - описывают конкретные методы, с помощью которых колонизатор достигает своих тактических целей. Например, агрессор зачастую прибегает к <a href='/techniques/T0044/'>уничтожению локальных систем знаний</a> и <a href='/techniques/T0036/'>установлению новой системы управления</a> для того, чтобы <a href='/tactics/TA0005/'>закрепиться</a> на захваченной территории.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>Что такое "подтехника"?</strong></h5>
+                            <p>Подтехника - это более конкретное, низкоуровневое описание действия колонизатора. Например, агрессор может <a href='/techniques/T0113/001/'>законодательно запретить родной язык</a> коренного народа для того чтобы <a href='/tactics/TA0005/'>закрепиться</a> на захваченной территории.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>Что такое "процедура"?</strong></h5>
+                            <p>Процедура - это исторический пример использования техники или подтехники колонизатором, в ходе определенной кампании, направленной против определенного народа. Они перечислены на странице <a href='/procedures/'>Процедуры</a> с возможностью фильтрации по народам, пострадавшим от российской агрессии.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>В чем разница между подтехникой и процедурой?</strong></h5>
+                            <p>Подтехники используются для классификации действий, а процедуры используются для описания реализации техник в реальных исторических событиях.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>Что такое "актор"?</strong></h5>
+                            <p>Актор - это историческое воплощение организатора колониального захвата, например, российского государства в формах <a href='/groups/G0008/'>Московского царства</a>, <a href='/groups/G0009/'>Российской империи</a>, <a href='/groups/G0010/'>СССР</a> и <a href='/groups/G0011/'>РФ</a>.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>Что такое "инструмент"?</strong></h5>
+                            <p>Инструмент - это конкретный колониальный институт, используемый для реализации тактических целей агрессора, например, <a href='/software/S0011/'>Московский патриархат</a>, <a href='/software/S0010/'>Регулярная армия</a> или <a href='/software/S0017/'>Тайная полиция и Спецслужбы</a>.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>Что такое "кампания"?</strong></h5>
+                            <p>Кампания объединяет в себе конкретного актора, инструменты и техники, которые он применял против конкретного коренного народа в определенный исторический период. Они перечислены на странице <a href='/campaigns/'>Кампании</a> с возможностью фильтрации по народам, пострадавшим от российской агрессии.</p>
+                        </div>
+                </div>
+            <div class="anchor" id="forwho-faq"></div>
+                <div class="faq-section">
+                    <h2>Для кого предназначен проект</h2>
+                        <div class="faq-question">
+                            <h5><strong>Кому может быть полезен проект?</strong></h5>
+                            <p>Материалы проекта могут использоваться:<ul><li>исследователями и историками;</li><li>журналистами;</li><li>правозащитниками;</li><li>активистами и деколониальными движениями;</li><li>образовательными инициативами;</li><li>политическими и общественными организациями.</li></ul></p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>Для чего может быть использован проект?</strong></h5>
+                            <p>Проект может использоваться для:<ul><li>документирования колониального опыта;</li><li>сравнительного анализа исторических процессов;</li><li>деконструкции имперских нарративов;</li><li>выявления современных (нео)колониальных практик;</li><li>формирования общественных и политических стратегий противодействия.</li></ul></p>
+                        </div>
+                </div>
+            <div class="anchor" id="limitations-faq"></div>
+                <div class="faq-section">
+                    <h2>Ограничения</h2>
+                        <div class="faq-question">
+                            <h5><strong>Насколько достоверными являются сведения, на которых основана база знаний?</strong></h5>
+                            <p>Одна из главных проблем колониализма, в первую очередь - российского, в том, что он стремится переписать историю в свою пользу, уничтожая свидетельства своих преступлений, зачастую вместе со свидетелями. Мы опираемся на разнообразные источники, в числе которых - исторические документы, свидетельства очевидцев, результаты исследований специалистов, фото- и видеоматериалы.<br><br>Если Вы заметите информацию, которая, по Вашему мнению, является неполной и недостоверной, сообщите нам – напишите на почту <a href='mailto:contact@decolonial.ist'>contact@decolonial.ist</a>, и мы рассмотрим Ваши поправки.</p>
+                        </div>
+                        <div class="faq-question">
+                            <h5><strong>Насколько полно описаны исторические события?</strong></h5>
+                            <p>DECOLONIAL.IST не рассматривается как завершенная или исчерпывающая система. Это скорее информационный фундамент, структура организации информации, которая поможет дальнейшему развитию дискурса. Проект развивается по мере появления новых исследований, архивных материалов и исторических свидетельств.<br><br>Представленные материалы будут дополняться, уточняться и пересматриваться. Мы не претендуем ни на абсолютную полноту описания всех аспектов российского колониализма, ни на полную объективность. Исчерпывающее описание невозможно в том числе и потому, что российский колониализм - это, к сожалению, не только история, но и современность.<br><br>Полная объективность невозможна по той причине, что любое знание ситуативно, получено и сформулировано в определенное историческое время и определенными людьми. Однако мы стремимся охватить как можно больше важных аспектов российского колониализма и предоставить информацию в такой форме, которая позволит ее проверить и рассмотреть с разных точек зрения. Мы не скрываем своей позиции - но и не навязываем ее Вам.</p>
+                        </div>
+                </div>
+            <div class="anchor" id="authors-faq"></div>
+                <div class="faq-section">
+                    <h2>Происхождение</h2>
+                        <div class="faq-question">
+                            <h5><strong>Кто разработал DECOLONIAL.IST?</strong></h5>
+                            <p>Первый прототип DECOLONIAL.IST был разработан весной 2026 года слушателем курса <a href='https://decolonisation-ru.com/'>«РОССИЯ И ДЕКОЛОНИЗАЦИЯ»</a> как попытка применить структурный подход к исследованию колониальных процессов, их исторической преемственности и сравнительного анализа. Изначальная идея заключалась в том, чтобы найти способ упорядочить разрозненные исторические материалы и представить их как части более широкой системы взаимосвязанных процессов.<br><br>После презентации первого прототипа проект начал развиваться как коллективная инициатива исследователь_ниц, активист_ок и участников деколониального движения. К работе стали подключаться специалисты из различных областей, включая исследователей, историков и представителей колонизированных народов, чья аналитика и опыт становятся частью базы знаний.<br><br>DECOLONIAL.IST – это коллективный проект, который развивается по мере появления новых материалов и участников.</p>
+                        </div>
+                </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

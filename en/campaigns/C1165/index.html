@@ -1,0 +1,962 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/campaigns/C1165/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1165/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1165/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1165/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1165/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content=""Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846), campaign C1165 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/campaigns/C1165/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>"Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846), campaign C1165 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in August 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/campaigns/">Campaigns</a></li>
+  <li class="breadcrumb-item">"Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>"Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>In 1840-1846 the empire constricted Chechnya from all sides at once: by trade blockade and hostage-taking, by secret war - contract killings, agents and bribery, - by punitive expeditions and by building the Sunzha Line of fortresses with the eviction of the inhabitants. The programme was named by general Golovin, commander of the Separate Caucasus Corps (head of the empire's troops and administration in the Caucasus), in a report to Minister of War Chernyshev of 24 February 1841: ""the constriction of Chechnya in this way from all sides will place the chiefs of this populous tribe in the most disadvantageous position for them... It is quite probable that the Chechens, having remained inactive for a long time, will become tamer""<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Historian N. I. Pokrovsky formulates the policy's calculation from the documents: ""Starving Chechnya, by tsarism's reckoning, was to surrender in order to restore trade relations and obtain grain""<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The empire supplemented armed force with secrecy: in a secret letter to Golovin of 19 July 1842 Chernyshev named the model - ""The English knew how to establish their dominion in India by political means. By this path they spared their troops and gained time in the subjugation of the country. Should not we too try this system?""<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The result of the six years was summed up by the imperial officer Poltoratsky, a participant in the December 1846 expedition: ""the plain of Lesser Chechnya in the triangle between the fortresses of Groznaya, Vozdvizhenskaya and Zakan-Yurt has been cleared completely of dwellings and forests""<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1165
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Start:&nbsp;</span>
+                    <span>June 1840</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">End:&nbsp;</span>
+                    <span>December 1846</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Contributors</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Version</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Created:&nbsp;</span>24 July 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>24 July 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/C1165" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Navigator Layers</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Layer russia-colonialism</h6>
+                    <a class="dropdown-item" href="/en/campaigns/C1165/C1165-russia-colonialism-layer.json" download target="_blank">download</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/en/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fen%2Fcampaigns%2FC1165%2FC1165-russia-colonialism-layer.json" target="_blank">open <img width="10" src="/en/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Actors</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Procedures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/en/groups/G0009">G0009</a></td>
+                <td><a href="/en/groups/G0009">Russian Empire</a></td>
+                <td>23</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Instruments Applied</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Procedures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/en/software/S0010"> S0010 </a></td>
+                <td><a href="/en/software/S0010"> Regular Army </a></td>
+                <td>23</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Procedures Carried Out</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="economic blockade in 1841-1846 the empire held chechnya, which had not submitted, under a trade blockade. on 7 may 1841 general grabbe, commander of the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), sent to six sector commanders of the line an instruction "to take the strictest measures so that no gunpowder, sulphur, lead or any other supplies be passed to the unsubmissive highlanders, and on our side to keep unflagging and constant watch over the execution of this"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the blockade's effect was admitted by the imperial memorandum "on the political condition of chechnya" attached to the report of general neidhardt, head of the empire's troops in the caucasus, of 20 november 1843: the chechens lack cloth, iron and salt, and "the cause of this must be sought in the cessation of trade ties with the russians, and not in a shortage of means of subsistence"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the historians ya. z. akhmadov and e. kh. khasmagomadov write that the chechen naibstvos (districts of the imamate governed by the imam's deputies, the naibs) became its economic base: the grain and other farm produce of chechen peasants gave "the imamate the possibility of living for almost two decades under conditions of a complete economic blockade"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0108">T0108</a> Economic Blockade
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In 1841-1846 the empire held Chechnya, which had not submitted, under a trade blockade. On 7 May 1841 general Grabbe, commander of the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), sent to six sector commanders of the line an instruction "to take the strictest measures so that no gunpowder, sulphur, lead or any other supplies be passed to the unsubmissive highlanders, and on our side to keep unflagging and constant watch over the execution of this"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The blockade's effect was admitted by the imperial memorandum "On the political condition of Chechnya" attached to the report of general Neidhardt, head of the empire's troops in the Caucasus, of 20 November 1843: the Chechens lack cloth, iron and salt, and "the cause of this must be sought in the cessation of trade ties with the Russians, and not in a shortage of means of subsistence"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write that the Chechen naibstvos (districts of the imamate governed by the imam's deputies, the naibs) became its economic base: the grain and other farm produce of Chechen peasants gave "the imamate the possibility of living for almost two decades under conditions of a complete economic blockade"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="economic control the trade with chechnya that remained permitted, the empire drove under its own control - into state barter yards (exchange points supervised by officials). historians ya. z. akhmadov and e. kh. khasmagomadov write: "free trade of russians with the highlanders on the border line, including with the chechens, was forbidden. all trade operations had to pass under the control of state officials, who saw to it that goods of military character did not reach the highlanders - 'beyond the border'. in addition, a number of restrictions were introduced on the sale of iron, salt, gold and other goods"(citation: история чечни в xix-xx веках 2005). the network of controlled points expanded: in the second half of the 1840s the number of barter yards was brought to 11; in 1846 barter points were opened in the cossack stanitsas of chervlennaya and mozdokskaya; over 1846 the highlanders brought goods worth 231 thousand rubles to all the barter yards(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0038">T0038</a> Economic Control
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The trade with Chechnya that remained permitted, the empire drove under its own control - into state barter yards (exchange points supervised by officials). Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "Free trade of Russians with the highlanders on the border line, including with the Chechens, was forbidden. All trade operations had to pass under the control of state officials, who saw to it that goods of military character did not reach the highlanders - 'beyond the border'. In addition, a number of restrictions were introduced on the sale of iron, salt, gold and other goods"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The network of controlled points expanded: in the second half of the 1840s the number of barter yards was brought to 11; in 1846 barter points were opened in the Cossack stanitsas of Chervlennaya and Mozdokskaya; over 1846 the highlanders brought goods worth 231 thousand rubles to all the barter yards<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="forced surrender of fugitives and rebels the empire demanded that chechen communities hand over soldiers who had fled to them from the imperial army, and set salt as the price of that surrender. minister of war chernyshev, in an official service letter (otnoshenie) of 6 september 1842, conveyed to general golovin, commander of the separate caucasus corps (head of the imperial troops and administration in the caucasus), the order of emperor nicholas i: the local command was to ""demand the return of the servicemen who had hidden among the highlanders who had declared their submission to us"", and from the communities that had not submitted to obtain the surrender through need - ""to endeavour to induce the unsubmitted to hand over deserters in exchange for salt""(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the emperor expressly forbade ransoming the fugitives with money: the payment for the people handed over was access to the salt the empire kept under embargo."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0156">T0156</a> Forced Surrender of Fugitives and Rebels
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The empire demanded that Chechen communities hand over soldiers who had fled to them from the imperial army, and set salt as the price of that surrender. Minister of War Chernyshev, in an official service letter (otnoshenie) of 6 September 1842, conveyed to general Golovin, commander of the Separate Caucasus Corps (head of the imperial troops and administration in the Caucasus), the order of emperor Nicholas I: the local command was to ""demand the return of the servicemen who had hidden among the highlanders who had declared their submission to us"", and from the communities that had not submitted to obtain the surrender through need - ""to endeavour to induce the unsubmitted to hand over deserters in exchange for salt""<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The emperor expressly forbade ransoming the fugitives with money: the payment for the people handed over was access to the salt the empire kept under embargo.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="hostage-taking hostages were taken not as punishment for a rising but on suspicion - before an aul had done anything. on 9 january 1842 the commander of the sunzha line, in a report to general olshevsky, commander of the left flank of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), described his order for the kumyk plain (the lowland to the north-east of chechnya): ""i instructed colonel freitag... if there is a suspicion that some village wants to flee, then at once to take from it a large number of amanats, so that the inhabitants themselves should feed them"" (an amanat is a person whom the empire took from a community as a hostage; the threat of reprisal against the one taken held the family and the whole aul in submission)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the same report admits what the empire holds the people with: ""winter and the amanats restrain them, at the present time, from fleeing to chechnya""(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). hostages from vainakh communities were also taken by the empire's civil administration in georgia - on the mere news of a defection to the resistance. on 26 may 1841 the civil governor of georgia-imereti reported to brayko, administrator of the civil department of the transcaucasian region, that on news of the defection of the kistins (a vainakh community on the border with georgia) to the side of shamil (the imam, leader of the resistance of the highlanders of dagestan and chechnya to the russian conquest), provincial secretary limmerman instructed the district assessors (officials of the district administration) ""to detain here, under a plausible pretext, all the kistins who wintered in tusheti and on the alvani field"" (tusheti and the alvani field are a mountain region and a plain in north-eastern georgia)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). those detained were not the ones who had defected but those who had come for the winter; the pretext for the detention is called ""plausible"" by the document itself."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0099">T0099</a> Hostage-Taking
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Hostages were taken not as punishment for a rising but on suspicion - before an aul had done anything. On 9 January 1842 the commander of the Sunzha Line, in a report to general Olshevsky, commander of the left flank of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), described his order for the Kumyk plain (the lowland to the north-east of Chechnya): ""I instructed Colonel Freitag... if there is a suspicion that some village wants to flee, then at once to take from it a large number of amanats, so that the inhabitants themselves should feed them"" (an amanat is a person whom the empire took from a community as a hostage; the threat of reprisal against the one taken held the family and the whole aul in submission)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The same report admits what the empire holds the people with: ""Winter and the amanats restrain them, at the present time, from fleeing to Chechnya""<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Hostages from Vainakh communities were also taken by the empire's civil administration in Georgia - on the mere news of a defection to the resistance. On 26 May 1841 the civil governor of Georgia-Imereti reported to Brayko, administrator of the civil department of the Transcaucasian region, that on news of the defection of the Kistins (a Vainakh community on the border with Georgia) to the side of Shamil (the imam, leader of the resistance of the highlanders of Dagestan and Chechnya to the Russian conquest), provincial secretary Limmerman instructed the district assessors (officials of the district administration) ""to detain here, under a plausible pretext, all the Kistins who wintered in Tusheti and on the Alvani field"" (Tusheti and the Alvani field are a mountain region and a plain in north-eastern Georgia)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Those detained were not the ones who had defected but those who had come for the winter; the pretext for the detention is called ""plausible"" by the document itself.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="neutralization of the opposition on 29 january 1841 general golovin, commander of the separate caucasus corps (head of the empire's troops and administration in the caucasus), instructed general grabbe, commander of the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), to organise the assassination of akhverdy-magoma, shamil's naib in lesser chechnya (the deputy of the imam, leader of the resistance of the highlanders of dagestan and chechnya to the russian conquest): "it may be supposed that for good pay men will be found who will resolve on the destruction of akhverdy-magoma. there is no doubt that through the elimination of this enterprising associate of shamil we would rid ourselves of one of his most dangerous instruments, and the pacification of chechnya would then be a far less difficult matter"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). golovin allotted a budget and an executor: grabbe was granted "the right to employ at your discretion up to two thousand rubles in silver from the extraordinary sums", and "the execution of this affair is most fittingly to be laid upon maj.-gen. olshevsky", commander of the left flank of the line(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the death of akhverdy-magoma is not connected with this order: in the summer of 1843 he died in a fight near the village of shatili on the border with georgia - historians ya. z. akhmadov and e. kh. khasmagomadov write: "to the satisfaction of the russian command, akhverdy-magoma perished in the summer of 1843 in a clash near the khevsur village of shatili"(citation: история чечни в xix-xx веках 2005). participants of the resistance the empire handed over to military courts with expedited punishment. the commands of emperor nicholas i of 29 december 1843 and 14 february 1844, conveyed to the troops on 24 may 1844, prescribed: "officers from among the highlanders who took part in the revolt, as well as qadis and other chief instigators, are to be handed over to a military court under the field criminal code... the sentences of the court, upon final confirmation by me, are to be carried out without delay" (qadi - a muslim judge)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). under this norm it was not enemy soldiers who went before the field court-martial, but spiritual and communal leaders - "qadis and other chief instigators"."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0021">T0021</a> Neutralization of the Opposition
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>On 29 January 1841 general Golovin, commander of the Separate Caucasus Corps (head of the empire's troops and administration in the Caucasus), instructed general Grabbe, commander of the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), to organise the assassination of Akhverdy-Magoma, Shamil's naib in Lesser Chechnya (the deputy of the imam, leader of the resistance of the highlanders of Dagestan and Chechnya to the Russian conquest): "it may be supposed that for good pay men will be found who will resolve on the destruction of Akhverdy-Magoma. There is no doubt that through the elimination of this enterprising associate of Shamil we would rid ourselves of one of his most dangerous instruments, and the pacification of Chechnya would then be a far less difficult matter"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Golovin allotted a budget and an executor: Grabbe was granted "the right to employ at your discretion up to two thousand rubles in silver from the extraordinary sums", and "the execution of this affair is most fittingly to be laid upon maj.-gen. Olshevsky", commander of the left flank of the line<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The death of Akhverdy-Magoma is not connected with this order: in the summer of 1843 he died in a fight near the village of Shatili on the border with Georgia - historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "To the satisfaction of the Russian command, Akhverdy-Magoma perished in the summer of 1843 in a clash near the Khevsur village of Shatili"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Participants of the resistance the empire handed over to military courts with expedited punishment. The commands of emperor Nicholas I of 29 December 1843 and 14 February 1844, conveyed to the troops on 24 May 1844, prescribed: "Officers from among the highlanders who took part in the revolt, as well as qadis and other chief instigators, are to be handed over to a military court under the field criminal code... The sentences of the court, upon final confirmation by me, are to be carried out without delay" (qadi - a Muslim judge)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Under this norm it was not enemy soldiers who went before the field court-martial, but spiritual and communal leaders - "qadis and other chief instigators".</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="creation of agents of influence the empire kept secret agents inside the administration of the imamate of shamil (the imam, leader of the resistance of the highlanders of dagestan and chechnya to the russian conquest). historian n. i. pokrovsky writes from imperial military materials: "akhverdy-magoma replaced the chief of the guard posts between the argun and the sunzha, mulla-gazi, who had been a secret agent of the tsarist government" (akhverdy-magoma - the deputy of the imam in lesser chechnya; the argun and the sunzha - rivers in chechnya)(citation: кавказские войны и имамат шамиля 2009). the second agent was an elder of the trans-argun communities: general zavadovsky, temporarily commanding the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), in a report to general neidhardt, head of the empire's troops in the caucasus, of 24 february 1845, forwarded a dispatch from the left flank about information received "through a messenger who came to him from the trans-argun elder, a man of weight among the people who is in secret communication with lt.-gen. gaksfort": the agent reported that shamil was convening a council of naibs (the imam's deputies) in dargo, the imam's residence(citation: кавказские войны и имамат шамиля 2009). defectors the empire formalised into agents and guides on the terms of a bargain. general labyntsev, commander of the sunzha line, in a report to vorontsov, viceroy in the caucasus, in summer 1846 described the terms of the chechen topi: "having promised, should this be carried into effect, not only to be a scout in the mountains and a guide for our troops, but, acting in our favour by his example and persuasion, to incline others to the offering of submission... i permitted the families of topi... to settle among the resettlers located by the fortification"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the agent was paid not in money but with his family's right to live by the fortification - under the control of the same empire."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0013">T0013</a> Creation of Agents of Influence
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The empire kept secret agents inside the administration of the Imamate of Shamil (the imam, leader of the resistance of the highlanders of Dagestan and Chechnya to the Russian conquest). Historian N. I. Pokrovsky writes from imperial military materials: "Akhverdy-Magoma replaced the chief of the guard posts between the Argun and the Sunzha, Mulla-Gazi, who had been a secret agent of the tsarist government" (Akhverdy-Magoma - the deputy of the imam in Lesser Chechnya; the Argun and the Sunzha - rivers in Chechnya)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The second agent was an elder of the trans-Argun communities: general Zavadovsky, temporarily commanding the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), in a report to general Neidhardt, head of the empire's troops in the Caucasus, of 24 February 1845, forwarded a dispatch from the left flank about information received "through a messenger who came to him from the trans-Argun elder, a man of weight among the people who is in secret communication with lt.-gen. Gaksfort": the agent reported that Shamil was convening a council of naibs (the imam's deputies) in Dargo, the imam's residence<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Defectors the empire formalised into agents and guides on the terms of a bargain. General Labyntsev, commander of the Sunzha Line, in a report to Vorontsov, viceroy in the Caucasus, in summer 1846 described the terms of the Chechen Topi: "Having promised, should this be carried into effect, not only to be a scout in the mountains and a guide for our troops, but, acting in our favour by his example and persuasion, to incline others to the offering of submission... I permitted the families of Topi... to settle among the resettlers located by the fortification"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The agent was paid not in money but with his family's right to live by the fortification - under the control of the same empire.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="bribery of elites the bribery of the highland elite the empire put on a programmatic footing. war minister chernyshev, in a secret letter to general golovin, commander of the separate caucasus corps (head of the empire's troops and administration in the caucasus), of 19 july 1842, proposed adopting the experience of british india: "the english knew how to establish their dominion in india by political means... should not we too try this system?"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). golovin, in a reply of 28 august 1842, drew up a list of candidates for buying over from the circle of shamil (the imam, leader of the resistance of the highlanders of dagestan and chechnya to the russian conquest) and requested a fund: "by inclining to our side some of the above-mentioned persons, one would greatly weaken the union of muridism... i consider it necessary for the chief authority here to have at its disposal up to 15 thousand chervonets in ready money" (chervonets - a gold coin of the empire; muridism - in the imperial lexicon, the highlanders' resistance movement)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). on 1 february 1844 emperor nicholas i approved the fund above the request: by an official service letter of chernyshev to general neidhardt, who had replaced golovin at the head of the empire's troops in the caucasus, "concerning your designs for secret dealings with the highlanders" it was commanded "instead of the 10 thousand chervonets you requested for this purpose, to assign to your charge 15 thousand chervonets"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). for the dargo expedition of 1845 (the imperial army's march on shamil's residence, the aul of dargo) historians ya. z. akhmadov and e. kh. khasmagomadov record a separate fund: "for the bribery of influential persons from among the highlanders, 45 thousand rubles in silver were allocated"(citation: история чечни в xix-xx веках 2005). on the sunzha line under construction (the chain of imperial cossack stanitsas and fortifications on the sunzha river) the empire bought the loyalty of individual chechen elders. vorontsov, viceroy and commander-in-chief in the caucasus, wrote in a report of summer 1846 about the elder of the aul of natkhoy-kezhu: "i turned my particular attention to attracting aldumov to our side. for the losses borne by him and his 4 comrades... i would consider it just to assign a reward"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0015">T0015</a> Bribery of Elites
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The bribery of the highland elite the empire put on a programmatic footing. War minister Chernyshev, in a secret letter to general Golovin, commander of the Separate Caucasus Corps (head of the empire's troops and administration in the Caucasus), of 19 July 1842, proposed adopting the experience of British India: "The English knew how to establish their dominion in India by political means... Should not we too try this system?"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Golovin, in a reply of 28 August 1842, drew up a list of candidates for buying over from the circle of Shamil (the imam, leader of the resistance of the highlanders of Dagestan and Chechnya to the Russian conquest) and requested a fund: "By inclining to our side some of the above-mentioned persons, one would greatly weaken the union of muridism... I consider it necessary for the chief authority here to have at its disposal up to 15 thousand chervonets in ready money" (chervonets - a gold coin of the empire; muridism - in the imperial lexicon, the highlanders' resistance movement)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 1 February 1844 emperor Nicholas I approved the fund above the request: by an official service letter of Chernyshev to general Neidhardt, who had replaced Golovin at the head of the empire's troops in the Caucasus, "concerning your designs for secret dealings with the highlanders" it was commanded "instead of the 10 thousand chervonets you requested for this purpose, to assign to your charge 15 thousand chervonets"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. For the Dargo expedition of 1845 (the imperial army's march on Shamil's residence, the aul of Dargo) historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov record a separate fund: "for the bribery of influential persons from among the highlanders, 45 thousand rubles in silver were allocated"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. On the Sunzha Line under construction (the chain of imperial Cossack stanitsas and fortifications on the Sunzha river) the empire bought the loyalty of individual Chechen elders. Vorontsov, viceroy and commander-in-chief in the Caucasus, wrote in a report of summer 1846 about the elder of the aul of Natkhoy-Kezhu: "I turned my particular attention to attracting Aldumov to our side. For the losses borne by him and his 4 comrades... I would consider it just to assign a reward"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="imposition of its own picture of reality at the beginning of 1844, after the defeats of the imperial army in 1843, general neidhardt, head of the empire's troops in the caucasus, issued a proclamation to the highlanders that inverted the picture of the war: the invader in it is not the imperial general who brought the troops, but shamil (the imam, leader of the resistance of the highlanders of dagestan and chechnya to the russian conquest). the proclamation paints shamil as a man "who preaches equality and the extermination of all hereditary authorities with the sole aim of seizing the inheritances of the khans and beks" and who "has filled your auls with hated murtazigats... has burdened you with heavy taxes..." (murtazigats - mounted warriors of the imamate's standing army)(citation: кавказские войны и имамат шамиля 2009). the result of the proclamation historian n. i. pokrovsky described briefly: "but the wails did not help" - by wails he means these imperial exhortations themselves(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0007">T0007</a> Imposition of Its Own Picture of Reality
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>At the beginning of 1844, after the defeats of the imperial army in 1843, general Neidhardt, head of the empire's troops in the Caucasus, issued a proclamation to the highlanders that inverted the picture of the war: the invader in it is not the imperial general who brought the troops, but Shamil (the imam, leader of the resistance of the highlanders of Dagestan and Chechnya to the Russian conquest). The proclamation paints Shamil as a man "who preaches equality and the extermination of all hereditary authorities with the sole aim of seizing the inheritances of the khans and beks" and who "has filled your auls with hated murtazigats... has burdened you with heavy taxes..." (murtazigats - mounted warriors of the Imamate's standing army)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The result of the proclamation historian N. I. Pokrovsky described briefly: "But the wails did not help" - by wails he means these imperial exhortations themselves<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="creation of puppet religious institutions against the religious authority of the imamate (the state of the highlanders of dagestan and chechnya headed by imam shamil, leader of the resistance to the russian conquest) the empire fielded islamic clerics loyal to itself. on 13 march 1845 vorontsov, viceroy and commander-in-chief in the caucasus, in a memorandum to emperor nicholas i reported the dispatch of a crimean muslim judge (qadi) to chechnya: "qadi esker seid halil efendi came to me and declared his intention and wish personally to assist our righteous cause in the caucasus mountains by admonishing the tribes in the name of the mohammedan faith itself... i gave him for expenses... 400 rubles in silver in all and post-horses for four horses to the groznaya fortress, charging this expense to the extraordinary sum"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the empire paid for the service with a decoration as well: historians ya. z. akhmadov and e. kh. khasmagomadov write - "in 1845 the crimean tatar qadi qadiasker seid-halil efendi was sent to the groznaya fortress; his efforts were soon marked by a high decoration - the order of st anna, third class"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0153">T0153</a> Creation of Puppet Religious Institutions
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Against the religious authority of the Imamate (the state of the highlanders of Dagestan and Chechnya headed by imam Shamil, leader of the resistance to the Russian conquest) the empire fielded Islamic clerics loyal to itself. On 13 March 1845 Vorontsov, viceroy and commander-in-chief in the Caucasus, in a memorandum to emperor Nicholas I reported the dispatch of a Crimean Muslim judge (qadi) to Chechnya: "Qadi Esker Seid Halil Efendi came to me and declared his intention and wish personally to assist our righteous cause in the Caucasus mountains by admonishing the tribes in the name of the Mohammedan faith itself... I gave him for expenses... 400 rubles in silver in all and post-horses for four horses to the Groznaya fortress, charging this expense to the extraordinary sum"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The empire paid for the service with a decoration as well: historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write - "In 1845 the Crimean Tatar qadi Qadiasker Seid-Halil Efendi was sent to the Groznaya fortress; his efforts were soon marked by a high decoration - the Order of St Anna, third class"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="military intervention three times in 1842-1845 the empire threw large armies at chechnya. on 30 may 1842 general grabbe, commander of the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), led a ten-thousand-strong detachment from the gerzel fortress into ichkeria (mountainous south-eastern chechnya) - towards dargo, the residence of shamil (the imam, leader of the resistance of the highlanders of dagestan and chechnya to the russian conquest); historian n. i. pokrovsky: "in a six-day battle in the dense ichkerian forests grabbe suffered a decisive defeat"(citation: кавказские войны и имамат шамиля 2009); the historians ya. z. akhmadov and e. kh. khasmagomadov count: "the total losses in killed, wounded and missing came to 66 officers and over 1700 lower ranks"(citation: история чечни в xix-xx веках 2005). on 14 november 1843 emperor nicholas i personally assigned new forces: "i am sending you for one year 2 divisions of 24 battalions... i give you such forces as the caucasus has not seen even in a dream... you must penetrate into the mountains, rout shamil wherever he stands against you, annihilate everything that resists you, but spare everything that submits without a fight" - and added, on bribery: "scatter money, trying to attract to our side people who have influence over the tribes"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). in summer 1845 vorontsov, viceroy and commander-in-chief in the caucasus, on the direct order of nicholas i led an army against dargo: pokrovsky counts the detachment at 9500 men, historians ya. z. akhmadov and e. kh. khasmagomadov - "an army of 21 thousand soldiers and officers with 42 artillery pieces"(citation: кавказские войны и имамат шамиля 2009)(citation: история чечни в xix-xx веках 2005). the march ended in catastrophe: "of the 9500 men who made up vorontsov's detachment, 3510 men were put out of action, among them 3 generals, 28 staff officers and 158 line officers"(citation: кавказские войны и имамат шамиля 2009). the fate of dargo itself the sources convey differently: according to pokrovsky, the troops found the aul "cleared and set alight by the murids themselves"; by the record of gadzhi-ali, shamil's companion and chronicler, the russians "after an insignificant skirmish took possession" of dargo, and burned about 700 of their own tents as they left; historian d. a. khozhayev writes that the village was burned by the tsarist troops themselves(citation: кавказские войны и имамат шамиля 2009)(citation: сказание очевидца о шамиле 1873)(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0019">T0019</a> Military Intervention
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Three times in 1842-1845 the empire threw large armies at Chechnya. On 30 May 1842 general Grabbe, commander of the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), led a ten-thousand-strong detachment from the Gerzel fortress into Ichkeria (mountainous south-eastern Chechnya) - towards Dargo, the residence of Shamil (the imam, leader of the resistance of the highlanders of Dagestan and Chechnya to the Russian conquest); historian N. I. Pokrovsky: "In a six-day battle in the dense Ichkerian forests Grabbe suffered a decisive defeat"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; the historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov count: "The total losses in killed, wounded and missing came to 66 officers and over 1700 lower ranks"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. On 14 November 1843 emperor Nicholas I personally assigned new forces: "I am sending you for one year 2 divisions of 24 battalions... I give you such forces as the Caucasus has not seen even in a dream... You must penetrate into the mountains, rout Shamil wherever he stands against you, annihilate everything that resists you, but spare everything that submits without a fight" - and added, on bribery: "Scatter money, trying to attract to our side people who have influence over the tribes"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. In summer 1845 Vorontsov, viceroy and commander-in-chief in the Caucasus, on the direct order of Nicholas I led an army against Dargo: Pokrovsky counts the detachment at 9500 men, historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov - "an army of 21 thousand soldiers and officers with 42 artillery pieces"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The march ended in catastrophe: "Of the 9500 men who made up Vorontsov's detachment, 3510 men were put out of action, among them 3 generals, 28 staff officers and 158 line officers"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The fate of Dargo itself the sources convey differently: according to Pokrovsky, the troops found the aul "cleared and set alight by the murids themselves"; by the record of Gadzhi-Ali, Shamil's companion and chronicler, the Russians "after an insignificant skirmish took possession" of Dargo, and burned about 700 of their own tents as they left; historian D. A. Khozhayev writes that the village was burned by the tsarist troops themselves<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Гаджи-Али. (1873). Сказание очевидца о Шамиле."data-reference="Сказание очевидца о Шамиле 1873"><sup><a href="https://kp.rusneb.ru/item/material/skazanie-ochevidca-o-shamile" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span><span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="punitive expeditions in 1841-1846 punitive marches of imperial troops against chechnya went on yearly. in june 1841 general grabbe, commander of the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), entered aukh (the chechen region in the north-east): historian n. i. pokrovsky writes - "on 6 june he occupied yaryksu, on the 7th - kishen, which was being devastated for three days"(citation: кавказские войны и имамат шамиля 2009). at the end of september 1841 the detachments of grabbe and lieutenant colonel nesterov passed through the upper reaches of the assa river - a march which, according to pokrovsky, "was accompanied by annihilations of auls"(citation: кавказские войны и имамат шамиля 2009); from 15 to 30 october grabbe's expedition passed through greater and lesser chechnya (the lowland eastern and western parts of chechnya). pokrovsky states the goal of these marches: "to intimidate the chechens by expeditions"(citation: кавказские войны и имамат шамиля 2009). in spring 1844 raids were ordered by general neidhardt, head of the empire's troops in the caucasus: to gather troops in the groznaya fortress "for the conduct of brief and sudden raids into the nearest auls of greater chechnya" and to act "not only for menacing, but also for the punishment of unsubmissive auls" (instruction to the commander of the nazran detachment of 5 april 1844)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the sweeping of lesser chechnya (the lowland-piedmont western part of chechnya) in december 1846 was carried out by a specially assigned column. the imperial officer poltoratsky, a participant of the expedition, recorded the order of 14 december 1846: "for tomorrow... a column of three battalions [of the jaeger prince vorontsov regiment], eight guns and a cavalry regiment under the command of colonel meller-zakomelsky was assigned to go and burn the enemy auls"(citation: воспоминания 1895). the task "to go and burn" auls was set by order as a routine assignment for the next day."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0077">T0077</a> Punitive Expeditions
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In 1841-1846 punitive marches of imperial troops against Chechnya went on yearly. In June 1841 general Grabbe, commander of the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), entered Aukh (the Chechen region in the north-east): historian N. I. Pokrovsky writes - "on 6 June he occupied Yaryksu, on the 7th - Kishen, which was being devastated for three days"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. At the end of September 1841 the detachments of Grabbe and lieutenant colonel Nesterov passed through the upper reaches of the Assa river - a march which, according to Pokrovsky, "was accompanied by annihilations of auls"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; from 15 to 30 October Grabbe's expedition passed through Greater and Lesser Chechnya (the lowland eastern and western parts of Chechnya). Pokrovsky states the goal of these marches: "to intimidate the Chechens by expeditions"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. In spring 1844 raids were ordered by general Neidhardt, head of the empire's troops in the Caucasus: to gather troops in the Groznaya fortress "for the conduct of brief and sudden raids into the nearest auls of Greater Chechnya" and to act "not only for menacing, but also for the punishment of unsubmissive auls" (instruction to the commander of the Nazran detachment of 5 April 1844)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The sweeping of Lesser Chechnya (the lowland-piedmont western part of Chechnya) in December 1846 was carried out by a specially assigned column. The imperial officer Poltoratsky, a participant of the expedition, recorded the order of 14 December 1846: "for tomorrow... a column of three battalions [of the Jaeger Prince Vorontsov regiment], eight guns and a cavalry regiment under the command of colonel Meller-Zakomelsky was assigned to go and burn the enemy auls"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The task "to go and burn" auls was set by order as a routine assignment for the next day.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror general neidhardt, head of the imperial troops in the caucasus, in an instruction to the commander of the nazran detachment of 5 april 1844 prescribed fear as the goal of the troops' actions: "by the simultaneous appearance and actions of detachments from different sides, along the whole extent of the theatres of revolt, to spread fear over the entire population, and, keeping the chechens in their homes, to prevent them from giving help to the lezgin tribes" (lezgin tribes - in the imperial lexicon, the highlanders of dagestan)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the population's fear here is not a side effect of military operations but their declared goal, set for the troops by written order."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0022">T0022</a> Terror
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>General Neidhardt, head of the imperial troops in the Caucasus, in an instruction to the commander of the Nazran detachment of 5 April 1844 prescribed fear as the goal of the troops' actions: "by the simultaneous appearance and actions of detachments from different sides, along the whole extent of the theatres of revolt, to spread fear over the entire population, and, keeping the Chechens in their homes, to prevent them from giving help to the Lezgin tribes" (Lezgin tribes - in the imperial lexicon, the highlanders of Dagestan)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The population's fear here is not a side effect of military operations but their declared goal, set for the troops by written order.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="torture and abuse in the october 1841 expedition through chechnya the troops of general grabbe, commander of the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), tortured a captive to death. historian n. i. pokrovsky cites the episode from the manuscript of an eyewitness - officer chaikovsky, "the caucasus in 1841": a disarmed chechen captive who refused to walk "was dragged for a whole march on a rope tied to a cannon. mangled by being dragged along the stony road, he died the next day"; a second captive was bayoneted(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0110">T0110</a> Torture and Abuse
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In the October 1841 expedition through Chechnya the troops of general Grabbe, commander of the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), tortured a captive to death. Historian N. I. Pokrovsky cites the episode from the manuscript of an eyewitness - officer Chaikovsky, "The Caucasus in 1841": a disarmed Chechen captive who refused to walk "was dragged for a whole march on a rope tied to a cannon. Mangled by being dragged along the stony road, he died the next day"; a second captive was bayoneted<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="total destruction of infrastructure in 1841-1846 expeditions wiped out chechen settlements by the dozen. the aukh village of kishen the troops of general grabbe, commander of the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), destroyed over three days: the imperial historian yurov recorded - "by evening the village and its orchards existed no more; out of the heap of charred ruins rose only two mosques and two saklias... spared at the request of dukai-qadi" (saklia - a highlander's house; qadi - a muslim judge)(citation: 1840, 1841 и 1842-й годы на кавказе 1886). in the march to the assa river at the end of september 1841 the detachment, according to yurov, "took by fighting and destroyed 8 auls" - among them gapurgoy-yurt, adilgeri-yurt, sha-yurt - and "the stores of maize and hay were burned"(citation: 1840, 1841 и 1842-й годы на кавказе 1886). in the october expedition of 15-30 october 1841 phan-kichu, shalazhi, magoma-irzau, magoma-yurt, terga-yurt, shuaib-khutor and the auls near goyta were burned; on 16 october nurikoy-yurt was destroyed - yurov calls it "the most populous and richest chechen aul"(citation: 1840, 1841 и 1842-й годы на кавказе 1886). in december 1846 the troops burned out the aldy hamlets and the auls of lesser chechnya (the lowland-piedmont western part of chechnya). the imperial officer poltoratsky, a participant of the expedition, recorded on 15 december 1846: "at the order of the column's commander all the saklias around us burst into flame" (saklia - a highlander's house)(citation: воспоминания 1895). the result of the sweep he summed up thus: "the goal of the expedition in lesser chechnya was achieved in full... the plain of lesser chechnya in the triangle between the fortresses of groznaya, vozdvizhenskaya and zakan-yurt has been cleared completely of dwellings and forests"(citation: воспоминания 1895)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0105">T0105</a> Total Destruction of Infrastructure
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In 1841-1846 expeditions wiped out Chechen settlements by the dozen. The Aukh village of Kishen the troops of general Grabbe, commander of the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), destroyed over three days: the imperial historian Yurov recorded - "by evening the village and its orchards existed no more; out of the heap of charred ruins rose only two mosques and two saklias... spared at the request of Dukai-qadi" (saklia - a highlander's house; qadi - a Muslim judge)<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. In the march to the Assa river at the end of September 1841 the detachment, according to Yurov, "took by fighting and destroyed 8 auls" - among them Gapurgoy-Yurt, Adilgeri-Yurt, Sha-Yurt - and "the stores of maize and hay were burned"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. In the October expedition of 15-30 October 1841 Phan-Kichu, Shalazhi, Magoma-Irzau, Magoma-Yurt, Terga-Yurt, Shuaib-khutor and the auls near Goyta were burned; on 16 October Nurikoy-Yurt was destroyed - Yurov calls it "the most populous and richest Chechen aul"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. In December 1846 the troops burned out the Aldy hamlets and the auls of Lesser Chechnya (the lowland-piedmont western part of Chechnya). The imperial officer Poltoratsky, a participant of the expedition, recorded on 15 December 1846: "at the order of the column's commander all the saklias around us burst into flame" (saklia - a highlander's house)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The result of the sweep he summed up thus: "The goal of the expedition in Lesser Chechnya was achieved in full... the plain of Lesser Chechnya in the triangle between the fortresses of Groznaya, Vozdvizhenskaya and Zakan-Yurt has been cleared completely of dwellings and forests"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="destruction of the natural landscape in the winter of 1845-1846 the empire moved from cutting individual clearings to the destruction of the chechen forests - the living environment and protection of the chechen communities. historian n. i. pokrovsky cites the imperial survey by captain nikolai: "from the end of 1845 our winter marches in lesser chechnya began", - and describes the acts: "from 4 to 24 december 1845 the expeditionary detachment of general r. k. freitag cut a great clearing through the goyta forest, one of the densest in lesser chechnya. the clearing connected the river goyta with urus-martan"; "in january 1846, from the 18th to the 29th, the joined detachments of r. k. freitag and p. p. nesterov were already cutting. this time the object of annihilation was the gekhi forest, and the clearing established communication between the rivers gekhinka and valerik"(citation: кавказские войны и имамат шамиля 2009). historians ya. z. akhmadov and e. kh. khasmagomadov record the escalation: "from the beginning of 1846 the troops passed from the cutting of individual clearings to the literal annihilation of the dense chechen forests"(citation: история чечни в xix-xx веках 2005). the goal was formulated by vorontsov, viceroy in the caucasus: to destroy the influence of shamil (the imam, leader of the resistance of the highlanders of dagestan and chechnya to the russian conquest) and to "tear the chechens away from him", without whom he would mean nothing(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0140">T0140</a> Destruction of the Natural Landscape
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In the winter of 1845-1846 the empire moved from cutting individual clearings to the destruction of the Chechen forests - the living environment and protection of the Chechen communities. Historian N. I. Pokrovsky cites the imperial survey by captain Nikolai: "From the end of 1845 our winter marches in Lesser Chechnya began", - and describes the acts: "from 4 to 24 December 1845 the expeditionary detachment of general R. K. Freitag cut a great clearing through the Goyta forest, one of the densest in Lesser Chechnya. The clearing connected the river Goyta with Urus-Martan"; "In January 1846, from the 18th to the 29th, the joined detachments of R. K. Freitag and P. P. Nesterov were already cutting. This time the object of annihilation was the Gekhi forest, and the clearing established communication between the rivers Gekhinka and Valerik"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov record the escalation: "from the beginning of 1846 the troops passed from the cutting of individual clearings to the literal annihilation of the dense Chechen forests"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The goal was formulated by Vorontsov, viceroy in the Caucasus: to destroy the influence of Shamil (the imam, leader of the resistance of the highlanders of Dagestan and Chechnya to the Russian conquest) and to "tear the Chechens away from him", without whom he would mean nothing<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="construction of fortresses in 1841-1846 the empire built up the chechen plains with a chain of fortifications. historian n. i. pokrovsky writes of 1841: "in summer and autumn the russian command feverishly strengthens the sunzha line: in july - august they build the fortification of zakan yurt, and in august - october - the fortification of kazakh kichu"(citation: кавказские войны и имамат шамиля 2009); historians ya. z. akhmadov and e. kh. khasmagomadov record the function: "the construction of the two new fortifications - kazakhkichu and zakan-yurt - made it possible to exclude entirely the movement of large chechen detachments beyond the sunzha and still further isolated the terek country from the rest of chechnya"(citation: история чечни в xix-xx веках 2005). in 1844 - "the construction of the vozdvizhenskoye fortification in autumn 1844 on the site of the destroyed aul of chakhkeri (chakhkar-atagi), at the mouth of the argun gorge"(citation: история чечни в xix-xx веках 2005); pokrovsky names its purpose: "vozdvizhenskoye was now to become the base for frequent raids on chechen auls, for winter fellings of the forest in lowland chechnya"(citation: кавказские войны и имамат шамиля 2009). in 1846 the fort of achkhoy was built on the fortanga river. an imperial report named the function of achkhoy: "the building of a fortification on the fortanga, almost in the heart of lesser chechnya, amid its granary plains, cannot fail to have influence on its subjugation"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the invasion of aukh (the chechen region in the north-east) in june 1841 the troops of general grabbe, commander of the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), secured with a fortification on the seized land: on 16-17 june a temporary fortification was built at aktash-aukh. the fortification stood for one summer: historian n. i. pokrovsky writes - "on 21 september the fortification was razed, the detachment withdrew"(citation: кавказские войны и имамат шамиля 2009). at this fortification the empire gathered the "loyal" aukh families before their resettlement under the rule of the kumyk lords."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0139">T0139</a> Construction of Fortresses
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In 1841-1846 the empire built up the Chechen plains with a chain of fortifications. Historian N. I. Pokrovsky writes of 1841: "in summer and autumn the Russian command feverishly strengthens the Sunzha Line: in July - August they build the fortification of Zakan Yurt, and in August - October - the fortification of Kazakh Kichu"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov record the function: "The construction of the two new fortifications - Kazakhkichu and Zakan-Yurt - made it possible to exclude entirely the movement of large Chechen detachments beyond the Sunzha and still further isolated the Terek country from the rest of Chechnya"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. In 1844 - "the construction of the Vozdvizhenskoye fortification in autumn 1844 on the site of the destroyed aul of Chakhkeri (Chakhkar-Atagi), at the mouth of the Argun gorge"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; Pokrovsky names its purpose: "Vozdvizhenskoye was now to become the base for frequent raids on Chechen auls, for winter fellings of the forest in lowland Chechnya"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. In 1846 the fort of Achkhoy was built on the Fortanga river. An imperial report named the function of Achkhoy: "The building of a fortification on the Fortanga, almost in the heart of Lesser Chechnya, amid its granary plains, cannot fail to have influence on its subjugation"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The invasion of Aukh (the Chechen region in the north-east) in June 1841 the troops of general Grabbe, commander of the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), secured with a fortification on the seized land: on 16-17 June a temporary fortification was built at Aktash-Aukh. The fortification stood for one summer: historian N. I. Pokrovsky writes - "on 21 September the fortification was razed, the detachment withdrew"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. At this fortification the empire gathered the "loyal" Aukh families before their resettlement under the rule of the Kumyk lords.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="expropriation of resources after the inhabitants of twelve terek-side villages (chechen settlements of the left bank of the terek) fled to the insurgents in june 1840, the empire gave their property to the cossacks. the "report of the chancellery for the administration of peaceable highlanders", drawn up not earlier than july 1841, lists the villages - stary naur, novy naur, emingulovskaya, murdarova, boyan-yurt, kacherman-yurt, nagai mirza-yurt, mizhi-yurt, kozhakhi, kalauzova, mamakai-yurt and guneshki - and records the regime: "the grain left standing in their fields the line cossacks were permitted... to gather for their own benefit, the houses remaining in the localities to be dismantled and carried off to the stanitsas" (line cossacks - the cossack troops of the empire's border line)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the same report records the division of spoils: 800 rams seized by lieutenant-colonel bekovich-cherkassky (of a kabardian ruling family, in russian service) while pursuing the fleeing inhabitants of mizhi-yurt and kozhakhi "were ordered to be distributed as a reward to those inhabitants of the said two villages who remained devoted to us"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the land taken from the expelled the empire handed over to the cossack host. historians ya. z. akhmadov and e. kh. khasmagomadov record: "to the cossacks were given in lesser chechnya the 'ancestral' lands of the inhabitants of karabulak and galashki" (lesser chechnya - the lowland-piedmont western part of chechnya; galashki - a vainakh community in the valley of the assa)(citation: история чечни в xix-xx веках 2005). the word "ancestral" comes from the imperial papers themselves: what was being given away was not wasteland but land on which people had lived for generations."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0052">T0052</a> Expropriation of Resources
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>After the inhabitants of twelve Terek-side villages (Chechen settlements of the left bank of the Terek) fled to the insurgents in June 1840, the empire gave their property to the Cossacks. The "Report of the chancellery for the administration of peaceable highlanders", drawn up not earlier than July 1841, lists the villages - Stary Naur, Novy Naur, Emingulovskaya, Murdarova, Boyan-Yurt, Kacherman-Yurt, Nagai Mirza-Yurt, Mizhi-Yurt, Kozhakhi, Kalauzova, Mamakai-Yurt and Guneshki - and records the regime: "the grain left standing in their fields the line Cossacks were permitted... to gather for their own benefit, the houses remaining in the localities to be dismantled and carried off to the stanitsas" (line Cossacks - the Cossack troops of the empire's border line)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The same report records the division of spoils: 800 rams seized by lieutenant-colonel Bekovich-Cherkassky (of a Kabardian ruling family, in Russian service) while pursuing the fleeing inhabitants of Mizhi-Yurt and Kozhakhi "were ordered to be distributed as a reward to those inhabitants of the said two villages who remained devoted to us"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The land taken from the expelled the empire handed over to the Cossack host. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov record: "to the Cossacks were given in Lesser Chechnya the 'ancestral' lands of the inhabitants of Karabulak and Galashki" (Lesser Chechnya - the lowland-piedmont western part of Chechnya; Galashki - a Vainakh community in the valley of the Assa)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The word "ancestral" comes from the imperial papers themselves: what was being given away was not wasteland but land on which people had lived for generations.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation after the devastation of aukh (the chechen region in the north-east) in summer 1841 the empire resettled the aukh families loyal to it away from their land. the imperial historian yurov recorded: "by 21 june 180 families had gathered in the villages of aktash and yurt-aukh; as a pledge of submission they delivered their most honoured men as amanats and sent their herds to pasture in salatau" (amanat - a person whom the empire took from a community as a hostage)(citation: 1840, 1841 и 1842-й годы на кавказе 1886). when the troops withdrew in september the families were led away from their native land: historian n. i. pokrovsky - "the aukhovites loyal to tsarism were settled in kumyk auls, where they quickly fell under the heavy hand of the kumyk princes"(citation: кавказские войны и имамат шамиля 2009). the pressure on the families was two-sided: according to yurov, the aukhovites who had gone over to the empire were threatened with reprisal by the imamate, "one thing remained to them - to hold fast to the russians"(citation: 1840, 1841 и 1842-й годы на кавказе 1886) - a choice between two threats that ended in the loss of their home and subjection to alien lords. the creation of the sunzha line went through the expulsion of the people living on it. historians ya. z. akhmadov and e. kh. khasmagomadov write: after the decision to create the line of cossack stanitsas "the systematic expulsion of the chechens began. in the end the largest community of lesser chechnya - karabulak - was deprived of its lands entirely" (the karabulaks - a vainakh community between chechnya and ingushetia)(citation: история чечни в xix-xx веках 2005). the sweep of december 1846 squeezed the inhabitants off the plain physically: the imperial officer poltoratsky, a participant of the expedition, recorded - "the country around the aldy hamlets kept emptying: the auls were burned, and their inhabitants were pushed further into the forests"(citation: воспоминания 1895)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0127">T0127</a> Deportation
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>After the devastation of Aukh (the Chechen region in the north-east) in summer 1841 the empire resettled the Aukh families loyal to it away from their land. The imperial historian Yurov recorded: "By 21 June 180 families had gathered in the villages of Aktash and Yurt-Aukh; as a pledge of submission they delivered their most honoured men as amanats and sent their herds to pasture in Salatau" (amanat - a person whom the empire took from a community as a hostage)<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. When the troops withdrew in September the families were led away from their native land: historian N. I. Pokrovsky - "the Aukhovites loyal to tsarism were settled in Kumyk auls, where they quickly fell under the heavy hand of the Kumyk princes"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The pressure on the families was two-sided: according to Yurov, the Aukhovites who had gone over to the empire were threatened with reprisal by the Imamate, "one thing remained to them - to hold fast to the Russians"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span> - a choice between two threats that ended in the loss of their home and subjection to alien lords. The creation of the Sunzha Line went through the expulsion of the people living on it. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: after the decision to create the line of Cossack stanitsas "the systematic expulsion of the Chechens began. In the end the largest community of Lesser Chechnya - Karabulak - was deprived of its lands entirely" (the Karabulaks - a Vainakh community between Chechnya and Ingushetia)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The sweep of December 1846 squeezed the inhabitants off the plain physically: the imperial officer Poltoratsky, a participant of the expedition, recorded - "the country around the Aldy hamlets kept emptying: the auls were burned, and their inhabitants were pushed further into the forests"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="restriction of settlement geography the terek-side chechens (inhabitants of the left bank of the terek) who had fled to the insurgents the empire deprived forever of the right to return home. the "report of the chancellery for the administration of peaceable highlanders" (not earlier than july 1841) records the directive: "to announce to the fugitive chechens that they have forever lost the right to settle in the places they occupied before their flight"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959); lieutenant-colonel bekovich-cherkassky (of a kabardian ruling family, in russian service, set over the terek-side auls) "was instructed not to receive chechens returning from flight without permission"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). by that time the houses of the twelve villages had been dismantled and carried off to the cossack stanitsas - there was nowhere to return to, and returning was forbidden. the programme for the conquest of chechnya approved by emperor nicholas i in 1843 prescribed where and how the chechens were permitted to live. war minister chernyshev, in a report to the emperor of 16 november 1843, recorded the will of nicholas i: to permit the chechens to resettle on the right bank of the sunzha near the imperial fortifications "not otherwise than in large auls, to adapt them somewhat independently for defence and for the more convenient keeping of the inhabitants in obedience, bearing in mind also in course of time to turn them into the cossack estate. the left bank of the sunzha and the expanse up to the terek are designated for the establishment of cossack stanitsas and their supply with land"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the norm fixed a double dispossession: the chechens were allowed to live by their own rivers only in large auls under the guns of the fortifications, while the left bank of the sunzha up to the terek was signed over to the cossacks. the surviving inhabitants of lesser chechnya the empire resettled onto the plain under the guns of the fortifications being built. vorontsov, viceroy and commander-in-chief in the caucasus, in a report of summer 1846 recorded the course and the hitch of the policy: "the resettlement of the inhabitants of lesser chechnya onto the plain near the fortification under construction does not yet have proper success"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). by august 1846 resettlers were already living by fort achkhoy - it was among them that the families of the chechen topi, who had promised to serve the empire as a secret scout in the mountains and a guide for its troops, were permitted to settle(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the choice of where to live was replaced by assignment: to live by the fortification, in view of the garrison."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0142">T0142</a> Restriction of Settlement Geography
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The Terek-side Chechens (inhabitants of the left bank of the Terek) who had fled to the insurgents the empire deprived forever of the right to return home. The "Report of the chancellery for the administration of peaceable highlanders" (not earlier than July 1841) records the directive: "to announce to the fugitive Chechens that they have forever lost the right to settle in the places they occupied before their flight"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; lieutenant-colonel Bekovich-Cherkassky (of a Kabardian ruling family, in Russian service, set over the Terek-side auls) "was instructed not to receive Chechens returning from flight without permission"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. By that time the houses of the twelve villages had been dismantled and carried off to the Cossack stanitsas - there was nowhere to return to, and returning was forbidden. The programme for the conquest of Chechnya approved by emperor Nicholas I in 1843 prescribed where and how the Chechens were permitted to live. War minister Chernyshev, in a report to the emperor of 16 November 1843, recorded the will of Nicholas I: to permit the Chechens to resettle on the right bank of the Sunzha near the imperial fortifications "not otherwise than in large auls, to adapt them somewhat independently for defence and for the more convenient keeping of the inhabitants in obedience, bearing in mind also in course of time to turn them into the Cossack estate. The left bank of the Sunzha and the expanse up to the Terek are designated for the establishment of Cossack stanitsas and their supply with land"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The norm fixed a double dispossession: the Chechens were allowed to live by their own rivers only in large auls under the guns of the fortifications, while the left bank of the Sunzha up to the Terek was signed over to the Cossacks. The surviving inhabitants of Lesser Chechnya the empire resettled onto the plain under the guns of the fortifications being built. Vorontsov, viceroy and commander-in-chief in the Caucasus, in a report of summer 1846 recorded the course and the hitch of the policy: "The resettlement of the inhabitants of Lesser Chechnya onto the plain near the fortification under construction does not yet have proper success"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. By August 1846 resettlers were already living by fort Achkhoy - it was among them that the families of the Chechen Topi, who had promised to serve the empire as a secret scout in the mountains and a guide for its troops, were permitted to settle<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The choice of where to live was replaced by assignment: to live by the fortification, in view of the garrison.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="migratory replacement in the place of the expelled chechens and karabulaks (a vainakh community between chechnya and ingushetia) the empire settled cossacks - stanitsas on the sites of auls. historians ya. z. akhmadov and e. kh. khasmagomadov list them one by one: "in 1845, on the site of the chechen (karabulak) aul of obarg-yurt, the stanitsa of troitskaya was established; in the same year, on the site of the chechen aul of dibir-yurt, appears the stanitsa of sunzhenskaya (sleptsovskaya)"; "on the site of the aul of enakhishka (karabulak community)... the stanitsa of mikhailovskaya (present-day sernovodskaya) was founded"(citation: история чечни в xix-xx веках 2005). they also record: "in 1845-46 the sunzha military line was formed, and in the stanitsas built on karabulak lands the cossacks of the 1st sunzha regiment were settled"(citation: история чечни в xix-xx веках 2005). the mechanics of the replacement were formulated in retrospect by colonel de-sazhe (1854), quoted by the same historians: "every step of the advance cut off from the highlanders irrevocably a piece of their native land. thus were lesser chechnya and galashki subjugated. on all these places cossacks have been settled, fortifications built with the regiments' headquarters..."(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0117/001">T0117.001</a> Migratory Replacement
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In the place of the expelled Chechens and Karabulaks (a Vainakh community between Chechnya and Ingushetia) the empire settled Cossacks - stanitsas on the sites of auls. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov list them one by one: "in 1845, on the site of the Chechen (Karabulak) aul of Obarg-Yurt, the stanitsa of Troitskaya was established; in the same year, on the site of the Chechen aul of Dibir-Yurt, appears the stanitsa of Sunzhenskaya (Sleptsovskaya)"; "On the site of the aul of Enakhishka (Karabulak community)... the stanitsa of Mikhailovskaya (present-day Sernovodskaya) was founded"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. They also record: "In 1845-46 the Sunzha military line was formed, and in the stanitsas built on Karabulak lands the Cossacks of the 1st Sunzha regiment were settled"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The mechanics of the replacement were formulated in retrospect by colonel De-Sazhe (1854), quoted by the same historians: "Every step of the advance cut off from the highlanders irrevocably a piece of their native land. Thus were Lesser Chechnya and Galashki subjugated. On all these places Cossacks have been settled, fortifications built with the regiments' headquarters..."<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="implantation of officials and military personnel in chechen villages the empire quartered its troops. the "journal of military events on the left flank of the caucasus line" for 23 may - 6 june 1846 records: after most inhabitants of the aul of akbulat-yurt on the terek had fled, ""for the protection of the remaining inhabitants of akbulat-yurt and in order to use the direct communication with the kumyk plain through this aul, maj.-gen. kozlovsky stationed there one company of infantry with one gun and set up there a post of 25 mounted kumyks"" (the kumyks - a neighbouring turkic people from whom the empire recruited mounted guards)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). a garrison in the aul is surveillance from within: the village's life went on under the daily watch of a company with a gun."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0041">T0041</a> Implantation of Officials and Military Personnel
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In Chechen villages the empire quartered its troops. The "Journal of military events on the left flank of the Caucasus Line" for 23 May - 6 June 1846 records: after most inhabitants of the aul of Akbulat-Yurt on the Terek had fled, ""for the protection of the remaining inhabitants of Akbulat-Yurt and in order to use the direct communication with the Kumyk plain through this aul, maj.-gen. Kozlovsky stationed there one company of infantry with one gun and set up there a post of 25 mounted Kumyks"" (the Kumyks - a neighbouring Turkic people from whom the empire recruited mounted guards)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. A garrison in the aul is surveillance from within: the village's life went on under the daily watch of a company with a gun.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage from the cut clearings and the new fortifications imperial detachments swooped on the chechen auls, plundering and burning them. historian n. i. pokrovsky describes the practice of 1846: "russian troops systematically fell the forests to run wide strategic roads... and the tsarist detachments from time to time swoop on the auls, plunder and burn them"(citation: кавказские войны и имамат шамиля 2009). the plunder here is not an excess but the regular mode of operations of the troops from the line."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0164">T0164</a> Pillage
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>From the cut clearings and the new fortifications imperial detachments swooped on the Chechen auls, plundering and burning them. Historian N. I. Pokrovsky describes the practice of 1846: "Russian troops systematically fell the forests to run wide strategic roads... and the tsarist detachments from time to time swoop on the auls, plunder and burn them"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The plunder here is not an excess but the regular mode of operations of the troops from the line.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pitting neighboring peoples against each other against chechnya the empire mobilised the other peoples of the caucasus it had conquered. in the army of vorontsov, viceroy in the caucasus, in the dargo march of 1845 historians ya. z. akhmadov and e. kh. khasmagomadov count "1 thousand men of the georgian militia, 16 sotnias of cossacks and highland militia (kabardian and ossetian)" (militia - armed detachments of highlanders and georgians in the empire's service)(citation: история чечни в xix-xx веках 2005). the colonised peoples the empire put into the ranks against their neighbours - so that caucasians would fight caucasians for the imperial conquest."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+                <div>
+                    <a href="/en/techniques/T0152">T0152</a> Pitting Neighboring Peoples Against Each Other
+                </div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Against Chechnya the empire mobilised the other peoples of the Caucasus it had conquered. In the army of Vorontsov, viceroy in the Caucasus, in the Dargo march of 1845 historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov count "1 thousand men of the Georgian militia, 16 sotnias of Cossacks and highland militia (Kabardian and Ossetian)" (militia - armed detachments of highlanders and Georgians in the empire's service)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The colonised peoples the empire put into the ranks against their neighbours - so that Caucasians would fight Caucasians for the imperial conquest.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank">
+                        В. А. Полторацкий. (1895). Воспоминания.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="5.0">
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://kp.rusneb.ru/item/material/skazanie-ochevidca-o-shamile" target="_blank">
+                        Гаджи-Али. (1873). Сказание очевидца о Шамиле.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+<script src="/en/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

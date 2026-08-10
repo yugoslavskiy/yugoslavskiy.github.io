@@ -1,0 +1,642 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1140/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1140/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1140/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1140/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1140/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807), кампания C1140 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1140/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807), кампания C1140 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>В феврале — апреле 1807 года Российская империя предприняла карательный поход вглубь Большой Чечни под началом командующего Кавказской линией генерала Булгакова, разоряя селения нохчи и принуждая их к подданству. Историк Д. А. Хожаев пишет о войсках генерала Булгакова как о «пришедших с огнём и мечом на чеченскую землю»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Замысел главнокомандующего на Кавказе генерала Гудовича состоял в том, чтобы ударить внезапно, пока жители не укрыли семьи в горах: «застали-б и вы их всех в расплох, скот и семейства их не могли-бы ещё быть ими укрыты в горах, а потому наказание их и совершенный успех в деле были вернее и удобнее»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Командующий Кавказской линией генерал Булгаков штурмом прорвал укреплённое Ханкальское ущелье и предавал селения огню; генерал Ивелич доносил, что Большая Чеченская Атага «предана огню», а её жители подчинились, «которых селения их истреблены огнём»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Недовольный тем, что вместо внезапной расправы вышла кровопролитная война, генерал Гудович в предписании от 20 марта 1807 года отказался принять штурм Ханкалы «на свой счёт» и подчеркнул карательный, а не военный характер порученного: «вы посланы не для того, чтобы вести войну с Чеченскими народами, но наказать их и привести в совершенную покорность»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. По итогам похода командующий Кавказской линией генерал Булгаков докладывал, что чеченцы силою оружия «доведены до такого состояния, что долго будут чувствовать нанесённый им удар, и, конечно, не скоро придут в силу»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1140
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Январь 1807</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Декабрь 1807</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>26 июня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>9 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1140" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1140/C1140-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1140%2FC1140-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0009">G0009</a></td>
+                <td><a href="/groups/G0009">Российская Империя</a></td>
+                <td>7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0010"> S0010 </a></td>
+                <td><a href="/software/S0010"> Регулярная армия </a></td>
+                <td>7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="военная интервенция российская империя вводила войска на земли нохчи, чтобы силой проникнуть вглубь большой чечни и сломить сопротивление её обществ. историк д. а. хожаев описывает войска генерала булгакова как «пришедших с огнём и мечом на чеченскую землю», а ханкальское сражение 1807 года — как кровопролитное(citation: чеченцы в русско-кавказской войне 1998). в феврале 1807 года три отряда под общим началом командующего кавказской линией генерала булгакова переправились за терек; 13 февраля войска штурмом прорвали ханкальское ущелье, которое жители укрепили завалами, рвами и засеками. командующий кавказской линией генерал булгаков доносил, что вошёл «для примерного наказания» обществ нохчи, что жители, собравшись числом около 10,000, «решась погибнуть, нежели чрез ущелье пропустить российское войско»; при штурме ущелья, из оборонявшихся чеченцев, по его рапорту, «около 1,000 убитых тех на месте»(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869). имперский историк потто признаёт, что после булгаковского штурма ханкальского ущелья попытки русских проникнуть вглубь чечни «больше уже не возобновлялись»(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1807</div>
+                <div>
+                    <a href="/techniques/T0019">T0019</a> Военная интервенция
+                </div>
+<div><a href="/campaigns/C1140">C1140</a> Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя вводила войска на земли нохчи, чтобы силой проникнуть вглубь Большой Чечни и сломить сопротивление её обществ. Историк Д. А. Хожаев описывает войска генерала Булгакова как «пришедших с огнём и мечом на чеченскую землю», а Ханкальское сражение 1807 года — как кровопролитное<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. В феврале 1807 года три отряда под общим началом командующего Кавказской линией генерала Булгакова переправились за Терек; 13 февраля войска штурмом прорвали Ханкальское ущелье, которое жители укрепили завалами, рвами и засеками. Командующий Кавказской линией генерал Булгаков доносил, что вошёл «для примерного наказания» обществ нохчи, что жители, собравшись числом около 10,000, «решась погибнуть, нежели чрез ущелье пропустить Российское войско»; при штурме ущелья, из оборонявшихся чеченцев, по его рапорту, «около 1,000 убитых тех на месте»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Имперский историк Потто признаёт, что после булгаковского штурма Ханкальского ущелья попытки русских проникнуть вглубь Чечни «больше уже не возобновлялись»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="карательные экспедиции российская империя направила войска на земли нохчи для принуждения к подчинению. замысел главнокомандующего на кавказе генерала гудовича состоял в ударе по незащищенным: застать жителей прежде, чем «скот и семейства их… укрыты в горах», ибо «тогда… наказание их и совершенный успех в деле были вернее и удобнее». когда командующий кавказской линией генерал булгаков, задержавшись на экспедиции в дагестане, дал жителям время укрепить ханкальское ущелье и взял его кровопролитным штурмом, генерал гудович в предписании от 20 марта 1807 года отказался принять это «на свой счет» и подчеркнул, что посылал не на войну: «вы посланы не для того, чтобы вести войну с чеченскими народами, но наказать их и привести в совершенную покорность». итогом похода командующий кавказской линией генерал булгаков считал то, что чеченцы силою оружия «доведены до такого состояния, что долго будут чувствовать нанесенный им удар, и, конечно, не скоро придут в силу»(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1807</div>
+                <div>
+                    <a href="/techniques/T0077">T0077</a> Карательные экспедиции
+                </div>
+<div><a href="/campaigns/C1140">C1140</a> Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя направила войска на земли нохчи для принуждения к подчинению. Замысел главнокомандующего на Кавказе генерала Гудовича состоял в ударе по незащищенным: застать жителей прежде, чем «скот и семейства их… укрыты в горах», ибо «тогда… наказание их и совершенный успех в деле были вернее и удобнее». Когда командующий Кавказской линией генерал Булгаков, задержавшись на экспедиции в Дагестане, дал жителям время укрепить Ханкальское ущелье и взял его кровопролитным штурмом, генерал Гудович в предписании от 20 марта 1807 года отказался принять это «на свой счет» и подчеркнул, что посылал не на войну: «вы посланы не для того, чтобы вести войну с Чеченскими народами, но наказать их и привести в совершенную покорность». Итогом похода командующий Кавказской линией генерал Булгаков считал то, что чеченцы силою оружия «доведены до такого состояния, что долго будут чувствовать нанесенный им удар, и, конечно, не скоро придут в силу»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальное уничтожение инфраструктуры российская империя сжигала селения нохчи, лишая жителей крова и средств к существованию. генерал ивелич доносил, что село большая чеченская атага «предана огню» отрядом командующего кавказской линией генерала булгакова, а оставшиеся жители согласились на подданство, «которых селения их истреблены огнем»(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1807</div>
+                <div>
+                    <a href="/techniques/T0105">T0105</a> Тотальное уничтожение инфраструктуры
+                </div>
+<div><a href="/campaigns/C1140">C1140</a> Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя сжигала селения нохчи, лишая жителей крова и средств к существованию. Генерал Ивелич доносил, что село Большая Чеченская Атага «предана огню» отрядом командующего Кавказской линией генерала Булгакова, а оставшиеся жители согласились на подданство, «которых селения их истреблены огнем»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="принудительное оформление подданства российская империя силой оружия принуждала общества нохчи к присяге на подданство. после разорения селений командующий кавказской линией генерал булгаков предъявил чеченскому народу постановление, по которому старшины «повергаем себя со всем народом чеченским… в вечное верноподданство… в чем и даем присягу по нашему обычаю на святом коране», а за нарушение народ подвергал себя «строжайшему наказанию и в жилищах наших разорению без сопротивления»; главнокомандующий на кавказе генерал гудович докладывал, что чеченцы «совершенно покорены силою оружия и приведены к присяге на вечную верность подданства»(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1807</div>
+                <div>
+                    <a href="/techniques/T0147">T0147</a> Принудительное оформление подданства
+                </div>
+<div><a href="/campaigns/C1140">C1140</a> Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя силой оружия принуждала общества нохчи к присяге на подданство. После разорения селений командующий Кавказской линией генерал Булгаков предъявил чеченскому народу постановление, по которому старшины «повергаем себя со всем народом Чеченским… в вечное верноподданство… в чем и даем присягу по нашему обычаю на святом Коране», а за нарушение народ подвергал себя «строжайшему наказанию и в жилищах наших разорению без сопротивления»; главнокомандующий на Кавказе генерал Гудович докладывал, что чеченцы «совершенно покорены силою оружия и приведены к присяге на вечную верность подданства»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="захват заложников российская империя удерживала заложников из числа жителей нохчи как гарантию подчинения. по постановлению, предъявленному командующим кавказской линией генералом булгаковым, чеченские старшины обязывались «даем первейших из нас аманатами по выбору российского в здешнем краю начальника»; селения большой атаги, малой атаги и гехи «дали 3-х аманатов из лучших семейств», которых главнокомандующий на кавказе генерал гудович предписал «отправить в кизляр… иметь над ними надзор и выдавать на содержание их каждому в месяц по 10 р.»(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1807</div>
+                <div>
+                    <a href="/techniques/T0099">T0099</a> Захват заложников
+                </div>
+<div><a href="/campaigns/C1140">C1140</a> Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя удерживала заложников из числа жителей нохчи как гарантию подчинения. По постановлению, предъявленному командующим Кавказской линией генералом Булгаковым, чеченские старшины обязывались «даем первейших из нас аманатами по выбору Российского в здешнем краю начальника»; селения Большой Атаги, Малой Атаги и Гехи «дали 3-х аманатов из лучших семейств», которых главнокомандующий на Кавказе генерал Гудович предписал «отправить в Кизляр… иметь над ними надзор и выдавать на содержание их каждому в месяц по 10 р.»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит российская империя покупала лояльность старшин нохчи, чтобы их руками привести не подчинившиеся селения к подданству. главнокомандующий на кавказе генерал гудович поручил андреевскому старшине хаджи-реджебу склонять деревни «в покорность и подданство», а чеченскому узденю бик-булату назначил жалованье — «уговорил чеченского узденя бик-булата… которому сказал я… в год по 300 р. с. жалованья»; на привлечение остальных деревень выделялось «для приведения в верноподданство денег серебром около 3,000 р.»(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869). тот же подкуп со стороны нохчи фиксирует историк д. а. хожаев: через посредника хаджи-реджеба именем главнокомандующего на кавказе генерала гудовича был уговорен сам глава чеченского сопротивления бейбулат таймиев, учинивший «на верность подданству россии присягу», а хаджи-реджеб просил у генералов еще 3000 рублей серебром «для приведения в верноподданство остальных немирных чеченских деревень»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1807</div>
+                <div>
+                    <a href="/techniques/T0015">T0015</a> Подкуп элит
+                </div>
+<div><a href="/campaigns/C1140">C1140</a> Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя покупала лояльность старшин нохчи, чтобы их руками привести не подчинившиеся селения к подданству. Главнокомандующий на Кавказе генерал Гудович поручил андреевскому старшине Хаджи-Реджебу склонять деревни «в покорность и подданство», а чеченскому узденю Бик-Булату назначил жалованье — «уговорил Чеченского узденя Бик-булата… которому сказал я… в год по 300 р. с. жалованья»; на привлечение остальных деревень выделялось «для приведения в верноподданство денег серебром около 3,000 р.»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Тот же подкуп со стороны нохчи фиксирует историк Д. А. Хожаев: через посредника Хаджи-Реджеба именем главнокомандующего на Кавказе генерала Гудовича был уговорен сам глава чеченского сопротивления Бейбулат Таймиев, учинивший «на верность подданству России присягу», а Хаджи-Реджеб просил у генералов еще 3000 рублей серебром «для приведения в верноподданство остальных немирных чеченских деревень»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="стравливание соседних народов российская империя натравливала соседние коренные народы друг на друга, чтобы их взаимная вражда ослабляла сопротивление каждого и не давала им объединиться. для похода 1807 года на чеченцев главнокомандующий на кавказе генерал гудович принуждал кабардинцев выступить против нохчи: за неявку «из званий узденей и бегаулей назначенных» был положен штраф «по 50 р. с. и 2 быками». генерал дельпоццо доносил, что «склонил кабардинцев к выступлению в поход и содействию вместе с нашими войсками к наказанию чеченцев», и хотя «уговорить их было весьма трудно», собрал свыше 3,500 человек, которые «чрез р. терек переправились и прибыли… на р. сунжу» против чеченских и карабулакских селений; сами кабардинцы при этом отказывались идти прямо «против чеченцев», как единоверцев, соглашаясь действовать лишь «против одних карабулаков». цель такого натравливания генерал гудович формулировал прямо — «сии два народа поссорить между собою и привесть во вражду друг против друга, чем самым современем их ослабить»(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1807</div>
+                <div>
+                    <a href="/techniques/T0152">T0152</a> Стравливание соседних народов
+                </div>
+<div><a href="/campaigns/C1140">C1140</a> Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя натравливала соседние коренные народы друг на друга, чтобы их взаимная вражда ослабляла сопротивление каждого и не давала им объединиться. Для похода 1807 года на чеченцев главнокомандующий на Кавказе генерал Гудович принуждал кабардинцев выступить против нохчи: за неявку «из званий узденей и бегаулей назначенных» был положен штраф «по 50 р. с. и 2 быками». Генерал Дельпоццо доносил, что «склонил Кабардинцев к выступлению в поход и содействию вместе с нашими войсками к наказанию Чеченцев», и хотя «уговорить их было весьма трудно», собрал свыше 3,500 человек, которые «чрез р. Терек переправились и прибыли… на р. Сунжу» против чеченских и карабулакских селений; сами кабардинцы при этом отказывались идти прямо «против Чеченцев», как единоверцев, соглашаясь действовать лишь «против одних Карабулаков». Цель такого натравливания генерал Гудович формулировал прямо — «сии два народа поссорить между собою и привесть во вражду друг против друга, чем самым современем их ослабить»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="3.0">
+                                
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://loveread.ec/book-comments.php?book=75382" target="_blank">
+                        Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

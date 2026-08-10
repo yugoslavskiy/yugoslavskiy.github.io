@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/techniques/T0032/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0032/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0032/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0032/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0032/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Правовая сегрегация населения, техника T0032 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/techniques/T0032/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Правовая сегрегация населения, техника T0032 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/techniques/">Техники</a></li>
+  <li class="breadcrumb-item">Правовая сегрегация населения</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Правовая сегрегация населения
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агрессоры могут на законодательном уровне вводить дискриминационные нормы, ограничивающие базовые права коренного народа по сравнению с представителями метрополии. Эта техника применяется для институционального закрепления контроля. Создание искусственных барьеров в доступе к образованию, государственным должностям, владению имуществом или свободе передвижения (включая создание зон искусственной оседлости) позволяет колонизатору маргинализировать местное население и зафиксировать его подчиненный статус в выстраиваемой социальной иерархии.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0032
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Подтехники:&nbsp;</span>
+                    Нет подтехник
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактические цели, которые достигаются применением техники или подтехники">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактика:</span>
+                        <a href="/tactics/TA0005">Закрепление</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народы, против которых применялась техника или подтехника">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народы:&nbsp;</span>Нохчи (Чеченцы), Украинцы
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контрибьюторы:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версия:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Создано:&nbsp;</span>21 апреля 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>9 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/T0032" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реализованные процедуры</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения юридическое закрепощение украинских крестьян указом екатерины ii от 3 мая 1783 года, лишившее их права на свободное перемещение: «для известного и верного получения казённых доходов в наместничествах киевском, черниговском и новгород-северском и отвращения всяких побегов… каждому из поселян остаться в своем месте и звании, где он по нынешней последней ревизии написан»(citation: указ екатерины ii о податях 1783)."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0024"
+             data-date="1781-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1781</div>
+<div><a href="/campaigns/C0034">C0034</a> Административный демонтаж и закрепощение Левобережья (1781–1786)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0024">S0024</a> Полицейский аппарат</div>            </div>
+            <div class="proc-desc">
+                        <p>Юридическое закрепощение украинских крестьян указом Екатерины II от 3 мая 1783 года, лишившее их права на свободное перемещение: «Для известного и верного получения казённых доходов в наместничествах Киевском, Черниговском и Новгород-Северском и отвращения всяких побегов… каждому из поселян остаться в своем месте и звании, где он по нынешней последней ревизии написан»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Екатерина II (ПСЗРИ, т. XXI, № 15724, 3 мая 1783). (1783). Указ Екатерины II о податях."data-reference="Указ Екатерины II о податях 1783"><sup><a href="https://psz.ri.org.ru/I/XXI.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения введение территориальной дискриминации: указом 1791 года право еврейского населения на мещанское и купеческое состояние было ограничено определенными наместничествами – екатеринославским и таврическим(citation: указ о правах гражданства евреев 1791) – правовая основа будущей черты оседлости, ограничившей зону проживания и экономической деятельности колонизированными губерниями."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0024"
+             data-date="1791-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1791</div>
+<div><a href="/campaigns/C0036">C0036</a> Учреждение «Черты оседлости» (1791)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0024">S0024</a> Полицейский аппарат</div>            </div>
+            <div class="proc-desc">
+                        <p>Введение территориальной дискриминации: указом 1791 года право еврейского населения на мещанское и купеческое состояние было ограничено определенными наместничествами – Екатеринославским и Таврическим<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Екатерина II (ПСЗРИ, т. XXIII, № 17006, 23 декабря 1791). (1791). Указ о правах гражданства евреев."data-reference="Указ о правах гражданства евреев 1791"><sup><a href="https://psz.ri.org.ru/I/XXIII.pdf" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> – правовая основа будущей черты оседлости, ограничившей зону проживания и экономической деятельности колонизированными губерниями.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения российская империя приказами по терской области от 15 августа 1890 года и марта 1897 года запретила чеченским сельским обществам «входить ни в какие соглашения с горнопромышленниками» без разрешения правительства - «виновных, в лице сельских должностных лиц привлекали к ответственности и в судах возбуждали иски по уничтожению заключённых договоров»(citation: мир чеченцев. xix век 2007). основание запрета формулирует историк з. х. ибрагимова: «аульные общества были лишены права сдавать в аренду нефтеносные участки - земля им предоставлялась не на правах собственности, а только в пользование с правом поверхностной разработки, недра её считались достоянием казны»(citation: мир чеченцев. xix век 2007). когда министерство земледелия утвердило правила, позволявшие крестьянским общинам самим сдавать землю под разработку недр, начальник терской области генерал каханов в 1894 году «категорически возражал против распространения на чеченские земли» этих правил - и требовал, чтобы даже при признании прав общин приговор о сдаче земли утверждался начальником участка, а треть доходов шла «в уплату подымной подати надлежащих обществ»(citation: история чечни в xix-xx веках 2005). для казаков действовала обратная норма: с 1891 года при отходе недр в казну станицам полагалась замена земли или вознаграждение - «у чеченских обществ запасных земельных наделов государством предусмотрено не было. тем более речь не шла о материальном поощрении»(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1845-02-16 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1845</div>
+<div><a href="/campaigns/C1173">C1173</a> Колониальная нефть: изъятие грозненских недр и рента казачьего войска (1845-1917)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя приказами по Терской области от 15 августа 1890 года и марта 1897 года запретила чеченским сельским обществам «входить ни в какие соглашения с горнопромышленниками» без разрешения правительства - «Виновных, в лице сельских должностных лиц привлекали к ответственности и в судах возбуждали иски по уничтожению заключённых договоров»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Основание запрета формулирует историк З. Х. Ибрагимова: «Аульные общества были лишены права сдавать в аренду нефтеносные участки - земля им предоставлялась не на правах собственности, а только в пользование с правом поверхностной разработки, недра её считались достоянием казны»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Когда министерство земледелия утвердило правила, позволявшие крестьянским общинам самим сдавать землю под разработку недр, начальник Терской области генерал Каханов в 1894 году «категорически возражал против распространения на чеченские земли» этих правил - и требовал, чтобы даже при признании прав общин приговор о сдаче земли утверждался начальником участка, а треть доходов шла «в уплату подымной подати надлежащих обществ»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Для казаков действовала обратная норма: с 1891 года при отходе недр в казну станицам полагалась замена земли или вознаграждение - «У чеченских обществ запасных земельных наделов государством предусмотрено не было. Тем более речь не шла о материальном поощрении»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения с 1882 года «особо важные» дела, где обвиняемыми были горцы, передавались военно-полевому суду; в 1893 году с разрешения императора значительная часть уголовных дел горцев изъята из общегражданских судов - в чьё ведение перешли эти дела, источник не уточняет(citation: царское прошлое чеченцев. власть и общество 2009). наказывать можно было и без суда: начальник области арестовывал горцев до одного месяца по личному усмотрению, на аульные общества налагал взыскания за укрывательство(citation: царское прошлое чеченцев. власть и общество 2009); 19 ноября 1893 года на терскую область распространены правила административной высылки в восточную сибирь по обвинению или подозрению в краже лошадей и скота(citation: царское прошлое чеченцев. власть и общество 2009), а по историкам я. з. ахмадову и э. х. хасмагомадову решение об административной ссылке сроком до пяти лет принимал командующий кавказской армией, и местом ссылки служил остров чечень на каспии(citation: история чечни в xix-xx веках 2005). «временное положение о мерах по удержанию туземного населения терской области от хищничества» 1894 года — проект его представил на утверждение начальник терской области генерал каханов — по историку з. х. ибрагимовой, узаконило круговую поруку сельского общества за совершённые преступления(citation: царское прошлое чеченцев. власть и общество 2009); историки я. з. ахмадов и э. х. хасмагомадов фиксируют механику: горские селения платили за угнанный скот, «если следы угнанного скота оказывались потерянными вблизи данного селения», причём «совершенно игнорировалась возможность того, что похитители могли быть и не горцами»(citation: история чечни в xix-xx веках 2005). коренным жителям запрещалось занимать должности пристава и начальника округа и быть мировыми судьями(citation: царское прошлое чеченцев. власть и общество 2009); положение 1888 года об управлении терской и кубанской областями установило, словами историка з. х. ибрагимовой, «узко-кастовое военно-казачье управление, без участия в нём не только представителей горских народов, но и не казачьего элемента... горцы ставились вне действия общих законов»(citation: царское прошлое чеченцев. власть и общество 2009). в 1890-х годах администрация отдельным распоряжением запретила казакам куначество с горцами (куначество - побратимство, институт дружбы домами)(citation: царское прошлое чеченцев. власть и общество 2009). разделяли и по службе: «политическая неблагонадёжность» кавказских мусульман заставила власть отказаться от формирования из них строевых частей, и с 1886 года по распоряжению военного министра новобранцы из терской области распределялись только в войска, стоявшие на кавказе(citation: царское прошлое чеченцев. власть и общество 2009). земства в области не вводились вовсе; внесённое в 1914 году в государственную думу предложение о земских учреждениях в терской области до революции принято не было(citation: царское прошлое чеченцев. власть и общество 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1858</div>
+<div><a href="/campaigns/C1170">C1170</a> «Военно-народное управление»: колониальный режим Терской области (1858-1917)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>С 1882 года «особо важные» дела, где обвиняемыми были горцы, передавались военно-полевому суду; в 1893 году с разрешения императора значительная часть уголовных дел горцев изъята из общегражданских судов - в чьё ведение перешли эти дела, источник не уточняет<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Наказывать можно было и без суда: начальник области арестовывал горцев до одного месяца по личному усмотрению, на аульные общества налагал взыскания за укрывательство<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; 19 ноября 1893 года на Терскую область распространены правила административной высылки в Восточную Сибирь по обвинению или подозрению в краже лошадей и скота<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, а по историкам Я. З. Ахмадову и Э. Х. Хасмагомадову решение об административной ссылке сроком до пяти лет принимал командующий Кавказской армией, и местом ссылки служил остров Чечень на Каспии<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. «Временное положение о мерах по удержанию туземного населения Терской области от хищничества» 1894 года — проект его представил на утверждение начальник Терской области генерал Каханов — по историку З. Х. Ибрагимовой, узаконило круговую поруку сельского общества за совершённые преступления<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; историки Я. З. Ахмадов и Э. Х. Хасмагомадов фиксируют механику: горские селения платили за угнанный скот, «если следы угнанного скота оказывались потерянными вблизи данного селения», причём «совершенно игнорировалась возможность того, что похитители могли быть и не горцами»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Коренным жителям запрещалось занимать должности пристава и начальника округа и быть мировыми судьями<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; положение 1888 года об управлении Терской и Кубанской областями установило, словами историка З. Х. Ибрагимовой, «узко-кастовое военно-казачье управление, без участия в нём не только представителей горских народов, но и не казачьего элемента... горцы ставились вне действия общих законов»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. В 1890-х годах администрация отдельным распоряжением запретила казакам куначество с горцами (куначество - побратимство, институт дружбы домами)<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Разделяли и по службе: «политическая неблагонадёжность» кавказских мусульман заставила власть отказаться от формирования из них строевых частей, и с 1886 года по распоряжению военного министра новобранцы из Терской области распределялись только в войска, стоявшие на Кавказе<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Земства в области не вводились вовсе; внесённое в 1914 году в Государственную думу предложение о земских учреждениях в Терской области до революции принято не было<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения норма надела была расписана по сословию и происхождению: «казакам отводится по 30 десятин (десятина - чуть больше гектара) на душу, а туземцам не более 2-5 десятин»(citation: мир чеченцев. xix век 2007); разрыв закрепляли и общие правила наделения: по счёту газеты «казачий вестник» за 1884 год, на который опирается историк з. х. ибрагимова, русские жители кавказского края получали «по 24–30 десятин на душу земельного надела, тогда как туземцы по 12–18 десятин на дым, в среднем насчитывавший 5 мужчин» (дым - двор, домохозяйство)(citation: мир чеченцев. xix век 2007). в 1886 году в грозненском округе «на многодетную чеченскую семью... в среднем приходилось 11 десятин земли, в то время как среднестатистическая казачья семья владела более чем 92 десятинами»(citation: история чечни в xix-xx веках 2005). приказом наместника №418 от 1863 года «право покупать у местного населения земельные участки получили русские офицеры и чиновники областной администрации»(citation: мир чеченцев. xix век 2007) - рядовой чеченец покупателем той же категории земли быть не мог; правила 1 марта 1902 года учредили скупку частновладельческих земель «для надобностей кавказских казачьих войск, на средства их капиталов»(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1860-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1860</div>
+<div><a href="/campaigns/C1171">C1171</a> Земельное ограбление: колониальный передел земли, малоземелье и казачья колонизация Терской области (1860-1917)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Норма надела была расписана по сословию и происхождению: «казакам отводится по 30 десятин (десятина - чуть больше гектара) на душу, а туземцам не более 2-5 десятин»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; разрыв закрепляли и общие правила наделения: по счёту газеты «Казачий вестник» за 1884 год, на который опирается историк З. Х. Ибрагимова, русские жители Кавказского края получали «по 24–30 десятин на душу земельного надела, тогда как туземцы по 12–18 десятин на дым, в среднем насчитывавший 5 мужчин» (дым - двор, домохозяйство)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В 1886 году в Грозненском округе «на многодетную чеченскую семью... в среднем приходилось 11 десятин земли, в то время как среднестатистическая казачья семья владела более чем 92 десятинами»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Приказом наместника №418 от 1863 года «право покупать у местного населения земельные участки получили русские офицеры и чиновники областной администрации»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span> - рядовой чеченец покупателем той же категории земли быть не мог; правила 1 марта 1902 года учредили скупку частновладельческих земель «для надобностей Кавказских казачьих войск, на средства их капиталов»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения российская империя 24 октября 1905 года ввела военное положение «в грозненском, веденском и хасав-юртовском округах терской области, т. е. во всей чечне», а 23 декабря распространила его на всю область(citation: история чечни в xix-xx веках 2005). запрет оружия «относился исключительно к горцам и иногородним и не распространялся на казаков. более того... наместник кавказа распорядился бесплатно раздать казакам терской области 10 тысяч однозарядных винтовок-берданок и миллион патронов»(citation: история чечни в xix-xx веках 2005). 22 июня 1909 года военное положение отменено - но «в терской области одновременно вводилось «состояние усиленной охраны»», распоряжения которого «фактически свели на «нет» демократические права и свободы, «дарованные» императорским указом от 17 октября 1905 г.»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Октябрь 1905</div>
+<div><a href="/campaigns/C1175">C1175</a> Коллективные наказания эпохи абречества: штрафы, постой войск и высылки за Зелимхана (1905-1913)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя 24 октября 1905 года ввела военное положение «в Грозненском, Веденском и Хасав-Юртовском округах Терской области, т. е. во всей Чечне», а 23 декабря распространила его на всю область<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Запрет оружия «относился исключительно к горцам и иногородним и не распространялся на казаков. Более того... наместник Кавказа распорядился бесплатно раздать казакам Терской области 10 тысяч однозарядных винтовок-берданок и миллион патронов»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. 22 июня 1909 года военное положение отменено - но «в Терской области одновременно вводилось «состояние усиленной охраны»», распоряжения которого «фактически свели на «нет» демократические права и свободы, «дарованные» императорским указом от 17 октября 1905 г.»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения официальное зачисление коренного населения в чужаки: столыпин предписал губернаторам отказывать в регистрации «каких бы то ни было инородческих обществ, в том числе украинских и еврейских, независимо от преследуемых ими целей»(citation: столыпинский циркуляр 1910)."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1906-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1906</div>
+<div><a href="/campaigns/C0050">C0050</a> Уничтожение украинских обществ и сегрегация (1906–1910)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Официальное зачисление коренного населения в чужаки: Столыпин предписал губернаторам отказывать в регистрации «каких бы то ни было инородческих обществ, в том числе украинских и еврейских, независимо от преследуемых ими целей»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="П. А. Столыпин, председатель Совета министров РИ (20.01.1910). (1910). Столыпинский циркуляр."data-reference="Столыпинский циркуляр 1910"><sup><a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%BE%D0%BB%D1%8B%D0%BF%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%86%D0%B8%D1%80%D0%BA%D1%83%D0%BB%D1%8F%D1%80" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения российская империя 13 августа 1914 года перевела терскую область на положение «чрезвычайной охраны» - имперский режим, отдававший жителей под внесудебные полномочия администрации, - а затем администрация области издала приказ «об охране спокойствия на предприятиях», по которому судьбу «нарушителей спокойствия» решали военные суды(citation: история чечни в xix-xx веках 2005). как это работало, видно по стачке мая 1916 года на грозненских промыслах: администрация ввела на промыслы вооружённых казаков, те арестовали 13 рабочих, и, как замечают историки я. з. ахмадов и э. х. хасмагомадов, «все арестованные оказались мусульманами»(citation: история чечни в xix-xx веках 2005). ещё девятерых рабочих полиция арестовала в первый день стачки - за то, что они подали тревожные заводские гудки(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1914-08-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Август 1914</div>
+<div><a href="/campaigns/C1189">C1189</a> Первая мировая война в Чечне: вывоз «ненадежного элемента» в «Дикую дивизию», чрезвычайная охрана и мобилизация бастующих (1914-1917)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя 13 августа 1914 года перевела Терскую область на положение «чрезвычайной охраны» - имперский режим, отдававший жителей под внесудебные полномочия администрации, - а затем администрация области издала приказ «об охране спокойствия на предприятиях», по которому судьбу «нарушителей спокойствия» решали военные суды<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Как это работало, видно по стачке мая 1916 года на грозненских промыслах: администрация ввела на промыслы вооружённых казаков, те арестовали 13 рабочих, и, как замечают историки Я. З. Ахмадов и Э. Х. Хасмагомадов, «все арестованные оказались мусульманами»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Ещё девятерых рабочих полиция арестовала в первый день стачки - за то, что они подали тревожные заводские гудки<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Украинцы",
+"russia/nokhchi": "Нохчи (Чеченцы)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://psz.ri.org.ru/I/XXI.pdf" target="_blank">
+                        Екатерина II (ПСЗРИ, т. XXI, № 15724, 3 мая 1783). (1783). Указ Екатерины II о податях.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://psz.ri.org.ru/I/XXIII.pdf" target="_blank">
+                        Екатерина II (ПСЗРИ, т. XXIII, № 17006, 23 декабря 1791). (1791). Указ о правах гражданства евреев.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank">
+                        Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%BE%D0%BB%D1%8B%D0%BF%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%86%D0%B8%D1%80%D0%BA%D1%83%D0%BB%D1%8F%D1%80" target="_blank">
+                        П. А. Столыпин, председатель Совета министров РИ (20.01.1910). (1910). Столыпинский циркуляр.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

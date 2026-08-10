@@ -1,0 +1,959 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/tactics/TA0004/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/tactics/TA0004/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/tactics/TA0004/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/tactics/TA0004/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/tactics/TA0004/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Defense Impairment, tactic TA0004 - Russia | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/tactics/TA0004/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Defense Impairment, tactic TA0004 - Russia | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in August 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/tactics/russia">Tactics</a></li>
+  <li class="breadcrumb-item"><a href="/en/tactics/russia">Russia</a></li>
+  <li class="breadcrumb-item">Defense Impairment</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>
+          Defense Impairment
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>Undermining the collective capacity to resist: physical destruction and deportation of elites, disarmament, repression of the opposition, dismantling of autonomous institutions – the army, the church, self-government, education. The instruments of collective defense and self-organization are eroded.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-data"><span class="h5 card-title">ID:</span> TA0004</div>
+                <div class="card-data"><span class="h5 card-title">Created:&nbsp;</span>23 May 2026</div>
+                <div class="card-data"><span class="h5 card-title">Last Modified:&nbsp;</span>12 July 2026</div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/TA0004" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="techniques">Techniques</h2>
+        <h6 class="table-object-count">Techniques: 47</h6>
+        <table class="table-techniques">
+        <thead>
+            <tr>
+                <td colspan="2">ID</td>
+                <td>Name</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0053"> T0053 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0053"> Abduction of People </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out covert or overt violent abductions of political leaders, civic activists, journalists, and ordinary members of the Indigenous people. In the active phase of a conflict, this technique serves the operational neutralization of defenses by physically eliminating potential organizers of resistance. In the long term, enforced disappearances are used to consolidate the occupation regime, as they create an atmosphere of unpredictable terror and paralyze the society's will to mount systematic protest.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0121"> T0121 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0121"> Artificial Famine </a>
+                    </td>
+                    <td>
+                                Aggressors may artificially create conditions of mass famine through the forcible seizure of food, the destruction of agricultural infrastructure, and the blocking of escape routes. This form of indiscriminate terror physically exterminates the population, suppressing ongoing revolts, while simultaneously clearing the demographic landscape of the colonized territories.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0101"> T0101 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0101"> Censorship </a>
+                    </td>
+                    <td>
+                                Aggressors may impose strict control over all forms of public expression, book printing, and mass media. Banning the publication of literature without the sanction of appointed censors, filtering information, and repressing independent authors allow the colonizer to monopolize the information space. This prevents the spread of dissent and ensures that the aggressor's state ideology is imposed on the colonized society without alternative.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0159"> T0159 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0159"> Collective Punishment </a>
+                    </td>
+                    <td>
+                                Aggressors may apply collective punishment: for the actions of individuals, reprisals fall on the entire community - villages and districts are subjected to monetary levies, troops are quartered at the residents' expense, families and relatives are exiled, dwellings are demolished, hostages are taken. The prohibition is entrenched in every key codification of the law of war: Article 50 of the Hague Regulations on the Laws and Customs of War on Land (1899, 1907) forbids general penalties imposed on the population for the acts of individuals; Article 33 of the Fourth Geneva Convention (1949) expressly prohibits "collective penalties and likewise all measures of intimidation or of terrorism"; Additional Protocol II to the Geneva Conventions (1977) extends the prohibition to non-international armed conflicts, and the ICRC study of customary international humanitarian law (2005, Rule 103) records it for conflicts of any kind.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0139"> T0139 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0139"> Construction of Fortresses </a>
+                    </td>
+                    <td>
+                                Aggressors may build fortresses, ostrogs (stockaded forts), and chains of defensive lines (military lines) on the territories of Indigenous peoples. This infrastructure physically cuts the local population off from vital resources (for example, lowland pastures), blocks communications, and serves as a protected staging ground for the permanent stationing of occupation troops and the subsequent resettlement of colonists from the metropole.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0141"> T0141 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0141"> Creation of Economic Hopelessness </a>
+                    </td>
+                    <td>
+                                Aggressors may deliberately create and maintain unbearable socio-economic conditions (acute land shortage, crushing obligations, destitution) in the historical territories of an Indigenous people. This is done to force the population to flee physical and social ruin. As a result, the people 'voluntarily-compulsorily' join the colonizer's militarized structures (for example, the Cossack host or the regular army) or migrate en masse to dangerous imperial frontiers to settle them. This technique allows the empire to accomplish its military and colonization objectives by proxy, disguising state coercion as the victims' own 'free economic choice.'
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0127"> T0127 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0127"> Deportation </a>
+                    </td>
+                    <td>
+                                Aggressors may resort to the forcible mass expulsion of Indigenous peoples from their historical territories to remote regions. This practice physically neutralizes the potential for local guerrilla or political struggle and destroys the social structure of the people, freeing up lands for subsequent settlement by settlers loyal to the colonizer.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0123"> T0123 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0123"> Deprivation of Drinking Water </a>
+                    </td>
+                    <td>
+                                Aggressors may deliberately destroy water supply infrastructure (water utilities, pumping stations, dams) or physically block access to natural sources. Disabling this critical life-support system is used to create catastrophic sanitary and epidemiological conditions and to break the population's capacity for defense.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0124"> T0124 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0124"> Deprivation of Electricity and Heating </a>
+                    </td>
+                    <td>
+                                Aggressors may systematically destroy energy infrastructure facilities, thermal power plants, and power transmission lines to create conditions incompatible with normal life. Mass deprivation of basic necessities serves as a form of collective punishment aimed at physically and psychologically breaking the society's will to resist.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0163"> T0163 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0163"> Desecration of the Dead </a>
+                    </td>
+                    <td>
+                                Aggressors may mock the bodies of the dead - put them on display, carry them around as trophies, refuse families the remains and a place of burial. This is an act aimed at the living: the body is turned into a message to the community, one of intimidation and humiliation. Desecration of bodies is prohibited as an outrage upon personal dignity (Rome Statute, Article 8(2)(b)(xxi); customary Rule 113 of the ICRC study), and the duty to return the remains to the families is fixed by Rule 114.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0026"> T0026 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0026"> Destruction of Local Media </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out the physical destruction of editorial offices, the seizure or demolition of television and radio broadcasting centers, as well as targeted repression against independent journalists in occupied territories. Blocking channels of rapid public alert and eliminating objective sources of information prevents the colonized society from coordinating defensive actions and leaves it vulnerable to the colonizer's massive information-psychological operations.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0140"> T0140 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0140"> Destruction of the Natural Landscape </a>
+                    </td>
+                    <td>
+                                Aggressors may deliberately alter or destroy the natural landscape of the target region (for example, by carrying out large-scale felling of centuries-old forests or destroying natural barriers). This is done to deprive the Indigenous people of natural cover, to prevent mobile guerrilla warfare, to seize resources needed for survival (firewood, building materials), and to completely destroy the traditional physical space.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0137"> T0137 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0137"> Disinformation </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out targeted manipulation of the information space and conduct malign influence operations (IO — Influence Operations, FIMI — Foreign Information Manipulation and Interference, FMI — Foreign Malign Influence). This technique is used for the coordinated injection of false narratives on the international stage, undermining trust in democratic institutions, and destabilizing the society of the victim state. Information interference is intended to distort the perception of reality, conceal the facts of aggression, and paralyze society's capacity for coordinated resistance. These techniques are covered in more detail in a specialized framework: <a href="https://www.disarm.foundation/">DISARM Framework</a>.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0108"> T0108 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0108"> Economic Blockade </a>
+                    </td>
+                    <td>
+                                Aggressors may impose financial and trade restrictions, block bank transfers, and halt the operation of the Indigenous people's enterprises. This technique is used for preparation for seizure and neutralization of defenses. The artificial strangulation of the economy deprives the colonized society of the resources needed for self-sufficiency and defense, provoking an internal crisis and weakening institutions before the start of an open intervention or in the course of an active conflict.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0027"> T0027 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0027"> Expulsion of Foreign Missions </a>
+                    </td>
+                    <td>
+                                Aggressors may forcibly remove independent international observers, human rights defenders, foreign diplomats, and journalists from the conflict territory. The expulsion of international missions makes it possible to create a dense information blockade, conceal the scale of crimes, and suppress any attempts at external oversight, depriving the victim of international protection.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0120"> T0120 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0120"> Extermination Based on Identity </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out the targeted physical extermination of people solely on the basis of their national, cultural, or political affiliation. Mass repressions, extrajudicial executions of the intelligentsia, and systematic terror pursue a dual goal: to immediately suppress active resistance and to preemptively eliminate the social base capable of preserving and transmitting the national code into the future.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0118"> T0118 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0118"> Extermination on a Territorial Basis </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out the physical extermination of a population not on the basis of the victims' political views or ethnicity, but totally — solely by virtue of their presence in a given territory. To wipe pockets of resistance off the face of the earth, carpet bombing of residential areas, deliberate mass shootings of residents, and other methods may be employed.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0028"> T0028 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0028"> False Compromise / Entrapment </a>
+                    </td>
+                    <td>
+                                Aggressors may initiate sham peace negotiations, offer security guarantees, or declare humanitarian corridors solely for the purpose of deceiving the opponent. The use of diplomatic ruses and false promises allows the colonizer to lull the vigilance of the Indigenous people, compel them to lay down arms, abandon fortified positions, or move into open terrain, after which the agreements are treacherously violated and the resistance forces are subjected to destruction or capture.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0023"> T0023 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0023"> Filtration Camp System </a>
+                    </td>
+                    <td>
+                                Aggressors may create a network of official or shadow temporary detention facilities for the mass screening, interrogation, and sorting of civilians. Isolating a significant part of the local population in closed zones not regulated by law allows the colonizer to identify and physically eliminate potential participants in resistance, as well as to carry out total psychological terror against the colonized society.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0155"> T0155 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0155"> Forced Disarmament </a>
+                    </td>
+                    <td>
+                                Aggressors may systematically confiscate weapons from the colonized population in order to break its capacity for self-defense and revolt. The confiscation is formalized through per-household quotas (for example, one gun from every ten houses) and disguised as a fiscal measure ("in lieu of tribute") or as a "pledge of submission", but the goal is neither revenue nor loot: a disarmed society is left defenseless before the aggressor's troops and the collaborators the aggressor has cultivated, and every new demand can then be imposed without resistance. Disarmament also prepares deeper forms of subjugation - enserfment, conscription, resettlement - which cannot be forced upon an armed society. For societies in which weapons are part of the dignity and status of a free person, their seizure is also a social punishment.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0049"> T0049 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0049"> Forced Mobilization </a>
+                    </td>
+                    <td>
+                                Aggressors may forcibly conscript members of the Indigenous people into their own armed forces to take part in combat operations (including against their own compatriots). This technique is used to extract benefits by exploiting the local population as a free human resource. At the same time, it serves the purposes of neutralizing defenses: by sending men to distant fronts, the colonizer deliberately depletes the region's demographic and military potential, depriving the society of its capacity for self-defense.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0157"> T0157 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0157"> Forced Public Repentance </a>
+                    </td>
+                    <td>
+                                Aggressors may demand public repentance from the colonized — a ritual of self-abasement involving the renunciation of former loyalties, of the resistance and its leaders, of faith or oaths — as a condition for ending violence, for release, or for the very right to live on one's own land. Repentance is not a mere declaration: it carries consequences. A person's fate hangs on their confession — freedom, prison, or execution. One who has publicly repented is compromised in the eyes of their own people and bound to the aggressor by the public act itself. The aggressor holds up these "voluntary" repentances as proof of its own righteousness and as justification for the repressive character of colonization. Russian colonialism has practiced coerced repentance for centuries: the empire demanded that the highlanders of the Caucasus renounce the "pernicious teaching" of the resistance leader and swear an oath of allegiance to the Russian tsar; Soviet public confessions and denunciations of "enemies of the people" within one's own family, like today's forced video apologies in Chechnya, are a direct continuation of this practice. Since the seizure of Crimea, the practice of forced public repentance — filmed and circulated on social media — has been applied to those who remain loyal to Ukraine or criticize the occupation authorities.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0156"> T0156 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0156"> Forced Surrender of Fugitives and Rebels </a>
+                    </td>
+                    <td>
+                                Aggressors may impose on subjugated communities the obligation to refuse shelter to members of the resistance and to hand over everyone who has escaped the aggressor's power - rebels, runaway soldiers and bondsmen, prisoners. The obligation is formalized in a decree or a treaty and rests on collective liability: the whole settlement answers for harboring or for failure to inform - with fines, confiscations, devastation. In this way the aggressor destroys the very function of uncontrolled space - mountains, forests, free borderlands - as a refuge beyond its power: political scientist and anthropologist James C. Scott showed that such zones of refuge (he explicitly names the Caucasus among them) are formed by people deliberately fleeing state exactions, and political theorist Neil Roberts described flight from bondage itself as a practice of freedom - the forced surrender of fugitives strikes precisely at it. With the hands of the subjugated themselves, the aggressor turns every settlement that has yielded into a barrier against those still resisting.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0099"> T0099 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0099"> Hostage-Taking </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out the forcible capture and detention of civilians or non-combatants. These actions are used for the operational neutralization of defenses (blackmailing resistance forces, shielding troops). At the consolidation stage, this technique may become institutionalized as a system of taking members of the elites and high-ranking figures (the "amanat" system), whose detention serves as the state's guarantee of the local population's loyalty and of the prevention of anti-colonial revolts.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0165"> T0165 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0165"> Indiscriminate Attacks </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out indiscriminate attacks on places where people live: strike a town or village as a single target, bring down on residential areas blows directed at no specific military objective, use weapons that cannot be aimed or whose effects cannot be limited - from area bombardment to cluster and thermobaric munitions. Additional Protocol I prohibits attacks "which are not directed at a specific military objective" and methods or means "which cannot be directed at a specific military objective" or "the effects of which cannot be limited" (Article 51; customary Rules 11-13 of the ICRC study); the Hague Regulations already forbade "the attack or bombardment, by whatever means, of towns, villages, dwellings, or buildings which are undefended" (Article 25), and the Rome Statute criminalizes attacks on undefended settlements and knowingly disproportionate strikes (Articles 8(2)(b)(v) and 8(2)(b)(iv)).
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0025"> T0025 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0025"> Information Isolation </a>
+                    </td>
+                    <td>
+                                Aggressors may block communication channels, independent media, and access to external sources of information. Creating an information vacuum ensures the neutralization of defenses by depriving the society of the ability to coordinate resistance, and also allows the aggressor to conceal the scale of the war crimes being committed.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0057"> T0057 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0057"> Labor Exploitation </a>
+                    </td>
+                    <td>
+                                Aggressors may forcibly conscript the local population into heavy, dangerous, or unpaid labor in the interests of the metropole. This technique serves the direct extraction of benefits through the use of free or extremely cheap labor for the implementation of the colonizer's state megaprojects and military or industrial needs. At the same time, this practice is used for the neutralization of defenses: the removal of the able-bodied population from the region's economy and labor under conditions associated with high mortality physically exhaust the society and reduce its demographic potential.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0128"> T0128 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0128"> Liquidation of National Civic Organizations </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out the forced dissolution, prohibition, and criminalization of the activities of independent educational, cultural, scientific, and charitable societies of the indigenous people. In the acute phase, this technique is used to neutralize defenses, depriving society of legal structures for horizontal self-organization. In the long term, it serves to consolidate control, since the liquidation of national civic institutions makes the legal development of national culture and the formation of independent elites impossible.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0104"> T0104 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0104"> Mass Killings of Civilians </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out large-scale, targeted massacres of unarmed civilians. This form of radical terror is used to physically eliminate resistance (neutralization of defenses) and to achieve a rapid forcible seizure of governance over a territory by creating an atmosphere of total fear and paralyzing the will to defend.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0122"> T0122 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0122"> Medical and Humanitarian Blockade </a>
+                    </td>
+                    <td>
+                                Aggressors may deliberately block civilians' access to medical services, medicines, and humanitarian aid, as well as attack hospitals and obstruct the work of rescue missions. This maximizes losses among civilians and the wounded, depleting the resources of the colonized society and suppressing its capacity for resistance.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0021"> T0021 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0021"> Neutralization of the Opposition </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out the systematic physical or political elimination of leaders, intelligentsia, and members of local elites who oppose colonization. Through mass arrests, extrajudicial executions, exile, and fabricated criminal cases, the colonizer liquidates the political leadership of an Indigenous people, paralyzing its capacity for coordination, organized struggle, and systemic resistance.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0138"> T0138 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0138"> Nuclear Blackmail </a>
+                    </td>
+                    <td>
+                                Aggressors use the threat of nuclear weapons or create risks of a radiation disaster (through the military seizure of nuclear power plants). This is done to intimidate the international community, deter external assistance, and coerce the victim state into capitulation.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0164"> T0164 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0164"> Pillage </a>
+                    </td>
+                    <td>
+                                Aggressors may loot: appropriate residents' property during assaults, sweep operations and searches, divide the "spoils" between soldiers and commanders, carry off livestock, household goods and valuables. Pillage is not limited to combat: on occupied territory it is any appropriation of residents' property - by soldiers or by representatives of the aggressor's administration - for private or institutional benefit without the owner's consent. The Hague Regulations forbid giving up a locality to pillage "even when taken by assault" (Article 28) and "formally forbid" pillage on occupied territory (Article 47); pillaging a town or place is a war crime (Rome Statute, Article 8(2)(b)(xvi)), and both organized seizure of property and acts of individuals for private gain qualify as pillage (ICTY, Celebici case, 1998).
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0152"> T0152 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0152"> Pitting Neighboring Peoples Against Each Other </a>
+                    </td>
+                    <td>
+                                The metropole deliberately sows and sustains enmity between neighboring Indigenous peoples so that they weaken one another and do not unite against it. Instead of confronting a united resistance, the colonizer divides it: it sets one people against another, arms and rewards the loyal against the defiant, and converts the shared hostility toward the empire into mutual discord among those being subjugated. The mechanism relies on already existing or artificially inflamed differences — clan-based, territorial, confessional — and entrenches them as a permanent line of division, depriving Indigenous peoples of the ability to act together. The metropole meanwhile preserves its own troops, shifting part of the suppression onto the incited side and presenting itself as an arbiter.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0148"> T0148 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0148"> Predatory Raids </a>
+                    </td>
+                    <td>
+                                Aggressors may organize armed attacks on the settlements of an Indigenous people for the purpose of looting, seizing material valuables, driving off livestock, and taking civilians captive. This practice depletes the demographic and economic potential of the colonized society, deprives people of the resources needed for survival, and creates a zone of constant physical threat around the metropole's installations.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0077"> T0077 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0077"> Punitive Expeditions </a>
+                    </td>
+                    <td>
+                                Aggressors may conduct targeted armed raids against the local population of settlements that offer resistance. During punitive expeditions, mass arrests, destruction of residential infrastructure, and demonstrative terror are carried out, which serves the immediate neutralization of defenses by physically suppressing pockets of resistance and intimidating the society.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0135"> T0135 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0135"> Punitive Psychiatry </a>
+                    </td>
+                    <td>
+                                Aggressors may use the state psychiatric care system for political purposes to persecute, indefinitely isolate, and torture dissenters. Those who disagree with the regime (dissidents, human rights defenders, civic activists) have false diagnoses fabricated against them (for example, the nonexistent "sluggish schizophrenia"), after which they are forcibly confined to closed institutions. This technique allows the colonizer or a totalitarian system to neutralize resistance without formal judicial proceedings, subjecting victims to destructive medication regimes and stigmatizing opposition activity as a manifestation of insanity.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0162"> T0162 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0162"> Reprisals against Persons Hors de Combat </a>
+                    </td>
+                    <td>
+                                Aggressors may deal reprisals to those who can no longer fight - persons hors de combat: issue orders that no quarter be given, kill those who surrender and those taken prisoner. International humanitarian law protects persons hors de combat unconditionally: attacking them is prohibited by customary Rule 47 of the ICRC study, and the individual crimes are set out in the Hague Regulations (Article 23), the Geneva Conventions (Common Article 3; Article 130 of the Third Convention) and the Rome Statute (Articles 8(2)(b)(vi) and 8(2)(b)(xii)).
+
+                    </td>
+                </tr>
+                    <tr class="sub technique">
+                        <td></td>
+                        <td>
+                            <a href="/en/techniques/T0162/001"> .001 </a>
+                        </td>
+                        <td>
+                            <a href="/en/techniques/T0162/001"> Denial of Quarter </a>
+                        </td>
+                        <td>
+                                    Aggressors may declare in advance that no quarter will be given: the order to take no prisoners turns every engagement into extermination. The prohibition is explicit: "it is especially forbidden... to declare that no quarter will be given" (Hague Regulations, Article 23(d)); "declaring that no quarter will be given" is a war crime (Rome Statute, Article 8(2)(b)(xii); customary Rule 46 of the ICRC study).
+
+                        </td>
+                    </tr>   
+                    <tr class="sub technique">
+                        <td></td>
+                        <td>
+                            <a href="/en/techniques/T0162/002"> .002 </a>
+                        </td>
+                        <td>
+                            <a href="/en/techniques/T0162/002"> Killing of Those Who Surrender </a>
+                        </td>
+                        <td>
+                                    Aggressors may kill those who lay down their arms and surrender. This is prohibited by Article 23(c) of the Hague Regulations - "to kill or wound an enemy who, having laid down his arms... has surrendered" - and by the Rome Statute (Article 8(2)(b)(vi)).
+
+                        </td>
+                    </tr>   
+                    <tr class="sub technique">
+                        <td></td>
+                        <td>
+                            <a href="/en/techniques/T0162/003"> .003 </a>
+                        </td>
+                        <td>
+                            <a href="/en/techniques/T0162/003"> Killing of Prisoners </a>
+                        </td>
+                        <td>
+                                    Aggressors may kill prisoners and detainees - people already in their power: without trial, by lists, "while attempting to escape". The wilful killing of a prisoner of war is a "grave breach" of the Third Geneva Convention (Article 130); the killing of any detainee outside combat is prohibited by Common Article 3 of the Geneva Conventions.
+
+                        </td>
+                    </tr>   
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0142"> T0142 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0142"> Restriction of Settlement Geography </a>
+                    </td>
+                    <td>
+                                Colonial authorities often impose legal or administrative bans on settling in places of traditional residence or on resettlement. This practice is used to prevent the Indigenous population from accessing resources important to the colonizers, e.g., rivers; to force the Indigenous population into emigration due to the absence of economic and social prospects and the high cost of housing; to create conditions for the migration of groups preferred by the empire to the new territories; and, finally, to reduce the capacity for organized resistance.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0161"> T0161 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0161"> Sexualized Violence </a>
+                    </td>
+                    <td>
+                                Aggressors may use sexualized violence as a weapon: rape during punitive operations and sweep operations, sexual torture of detainees, the treatment of captive women as spoils. Such violence targets more than the victim - it terrorizes and humiliates the entire community. Rape, sexual slavery and any other form of sexual violence is a war crime and a crime against humanity (Articles 7(1)(g) and 8(2)(b)(xxii) of the Rome Statute; Article 27 of the Fourth Geneva Convention).
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0160"> T0160 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0160"> Sham Trials </a>
+                    </td>
+                    <td>
+                                Aggressors may give reprisal the form of justice by creating and using sham trials: the outcome is predetermined and the defense is absent or ornamental. The forms vary - extraordinary and field courts-martial with a day allotted to a case, closed quasi-judicial bodies passing sentences in absentia and by lists, and show trials staged for the public. Passing sentences without "a regularly constituted court affording all the judicial guarantees" is a war crime (Common Article 3 of the Geneva Conventions; Article 8(2)(c)(iv) of the Rome Statute, under which the International Criminal Court delivered its first conviction in 2024).
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0022"> T0022 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0022"> Terror </a>
+                    </td>
+                    <td>
+                                Aggressors may use systemic, demonstrative, and large-scale violence against the local population. This form of radical pressure is used to neutralize defenses in the active phase of a conflict and for the subsequent consolidation of the occupation regime. Carrying out mass extrajudicial executions, public reprisals, and torture is aimed at the total psychological breaking of the colonized society's will, the physical suppression of resistance, and coercion into unconditional submission.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0110"> T0110 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0110"> Torture and Abuse </a>
+                    </td>
+                    <td>
+                                Aggressors may apply systematic physical and psychological violence against detained members of the local population, prisoners of war, and political activists. The use of brutal interrogations, beatings, and the creation of torturous conditions of detention serves not only the purposes of inquiry but also the total psychological breaking of the society's will, paralyzing its capacity for organized resistance.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0105"> T0105 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0105"> Total Destruction of Infrastructure </a>
+                    </td>
+                    <td>
+                                Aggressors may carry out the deliberate, massive destruction of residential districts, industrial facilities, and life-support systems in the course of combat operations. The use of heavy weaponry to wipe entire settlements off the face of the earth deprives the Indigenous people of the ability to organize a defense and physically forces them to abandon or surrender the territory.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0107"> T0107 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0107"> Transport Blockade </a>
+                    </td>
+                    <td>
+                                Aggressors may deliberately cut off air, rail, sea, and road connections with the target region. The physical isolation of the territory from the outside world allows the colonizer to paralyze the logistics of the Indigenous people, interrupt deliveries of vitally important goods, and deprive the society of the ability to receive external aid or coordinate its actions with allies.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0134"> T0134 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0134"> Use as Cannon Fodder </a>
+                    </td>
+                    <td>
+                                Aggressors may use unarmed, untrained, or deliberately poorly equipped members of the colonized people (civilians or forcibly mobilized persons) for frontal assaults. This technique is used to directly and physically deplete the enemy's ammunition, reveal its concealed firing positions, and clear minefields with human bodies. Unlike the use of a "human shield" (T0111), where people serve as passive cover to protect the aggressor's troops, here the colonized population is actively used as free, single-use expendable material ("cannon fodder") to preserve the personnel reserve of the metropole's troops.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/en/techniques/T0111"> T0111 </a>
+                    </td>
+                    <td>
+                        <a href="/en/techniques/T0111"> Use of People as “Human Shields” </a>
+                    </td>
+                    <td>
+                                Aggressors may forcibly use civilians, including women, children, and medical personnel, as physical cover for their military equipment and personnel. Placing unarmed members of the local population in front of advancing or retreating troops deprives the defending side of the ability to return fire due to the threat of mass death of its own fellow citizens, thereby paralyzing the resistance of the colonized society.
+
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

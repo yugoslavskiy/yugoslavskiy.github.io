@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/techniques/T0013/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0013/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0013/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0013/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0013/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Создание агентуры влияния, техника T0013 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/techniques/T0013/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Создание агентуры влияния, техника T0013 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/techniques/">Техники</a></li>
+  <li class="breadcrumb-item">Создание агентуры влияния</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Создание агентуры влияния
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агрессоры могут целенаправленно вербовать, подкупать или идеологически мотивировать рядовых представителей местного населения, маргинализированные группы и криминальные элементы для создания скрытой сети лояльных исполнителей на целевой территории. Формирование подконтрольной агентуры, включающей провокаторов, уличных боевиков, информаторов и диверсантов, позволяет колонизатору организовывать искусственные массовые беспорядки, осуществлять физическое давление на гражданских активистов, собирать разведывательные данные и дестабилизировать общественно-политическую обстановку внутри колонизируемого общества перед началом открытой интервенции.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0013
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Подтехники:&nbsp;</span>
+                    Нет подтехник
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактические цели, которые достигаются применением техники или подтехники">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактика:</span>
+                        <a href="/tactics/TA0002">Подготовка к захвату</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народы, против которых применялась техника или подтехника">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народы:&nbsp;</span>Нохчи (Чеченцы), Украинцы
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контрибьюторы:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версия:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Создано:&nbsp;</span>21 апреля 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>9 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/T0013" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реализованные процедуры</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="создание агентуры влияния в 1836 году командование российского кавказского корпуса направило в крепость грозную нанятого и оплачиваемого казной проповедника тадж ад-дина мустафина для подрыва влияния ташу-хаджи (шейх, в 1834-1836 годах имам чечни, духовный и военный руководитель чеченского сопротивления) - духовный трек параллельно военным карам против принимавших ташу-хаджи сёл (кампания c1158). цель сформулирована в источнике: «с целью подорвать духовное влияние» ташу-хаджи «и снизить действенность проповеди газавата» (газават - война горцев за независимость от российского завоевания)(citation: история чечни в xix-xx веках 2005). агент «успел было совершить поездку в равнинные общества дагестана», когда ташу-хаджи письмом «под страхом смерти запретил ему появляться на чеченской территории»(citation: история чечни в xix-xx веках 2005); ответ приводит историк покровский: «предписываю вам, чтобы вы без дозволения нашего не разъезжали бы в сих странах, и если вы не глупы, то должны удалиться, прежде чем вам будет нанесен вред»(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Сентябрь 1836</div>
+<div><a href="/campaigns/C1159">C1159</a> Неудачная попытка религиозного подчинения горцев империи через наём проповедника Тадж ад-Дина Мустафина (1836-1841)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В 1836 году командование российского Кавказского корпуса направило в крепость Грозную нанятого и оплачиваемого казной проповедника Тадж ад-Дина Мустафина для подрыва влияния Ташу-Хаджи (шейх, в 1834-1836 годах имам Чечни, духовный и военный руководитель чеченского сопротивления) - духовный трек параллельно военным карам против принимавших Ташу-Хаджи сёл (кампания C1158). Цель сформулирована в источнике: «с целью подорвать духовное влияние» Ташу-Хаджи «и снизить действенность проповеди газавата» (газават - война горцев за независимость от российского завоевания)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Агент «успел было совершить поездку в равнинные общества Дагестана», когда Ташу-Хаджи письмом «под страхом смерти запретил ему появляться на чеченской территории»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; ответ приводит историк Покровский: «предписываю вам, чтобы вы без дозволения нашего не разъезжали бы в сих странах, и если вы не глупы, то должны удалиться, прежде чем вам будет нанесен вред»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="создание агентуры влияния империя держала тайных агентов внутри администрации имамата шамиля (имама, руководителя сопротивления горцев дагестана и чечни российскому завоеванию). историк н. и. покровский пишет по имперским военным материалам: «ахверды-магома сменил начальника караулов между аргуном и сунжей, муллу-гази, бывшего тайным агентом царского правительства» (ахверды-магома - наместник имама в малой чечне; аргун и сунжа - реки в чечне)(citation: кавказские войны и имамат шамиля 2009). второй агент - старшина зааргунских обществ: генерал завадовский, временно командовавший войсками кавказской линии (цепи имперских укреплений на земле нохчи), рапортом генералу нейдгардту, главе имперских войск на кавказе, от 24 февраля 1845 года передал донесение с левого фланга о сведениях, полученных «через прибывшего к нему нарочного от за-аргунского старшины, имеющего вес в народе и находящегося с г.-л. гаксфортом в тайном сношении»: агент сообщал о созыве шамилём совещания наибов (наместников имама) в дарго, резиденции имама(citation: кавказские войны и имамат шамиля 2009). перебежчиков империя оформляла в агентов и проводников на условиях сделки. генерал лабынцев, начальник сунженской линии, рапортом воронцову, наместнику на кавказе, летом 1846 года описал условия чеченца топи: «обещав, если это приведется в исполнение, не только быть лазутчиком в горах и вожаком для войск наших, но, своим примером и убеждением действуя в нашу пользу, склонять других к принесению покорности... я позволил семействам топи... поселиться между находящимися возле укрепления переселенцами»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). агент оплачивался не деньгами, а правом семьи жить у укрепления - под контролем той же империи."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1840</div>
+<div><a href="/campaigns/C1165">C1165</a> «Стеснение Чечни со всех сторон»: блокада, тайная война, карательные экспедиции и Сунженская линия (1840-1846)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Империя держала тайных агентов внутри администрации имамата Шамиля (имама, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию). Историк Н. И. Покровский пишет по имперским военным материалам: «Ахверды-Магома сменил начальника караулов между Аргуном и Сунжей, Муллу-Гази, бывшего тайным агентом царского правительства» (Ахверды-Магома - наместник имама в Малой Чечне; Аргун и Сунжа - реки в Чечне)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Второй агент - старшина зааргунских обществ: генерал Завадовский, временно командовавший войсками Кавказской линии (цепи имперских укреплений на земле нохчи), рапортом генералу Нейдгардту, главе имперских войск на Кавказе, от 24 февраля 1845 года передал донесение с левого фланга о сведениях, полученных «через прибывшего к нему нарочного от за-Аргунского старшины, имеющего вес в народе и находящегося с г.-л. Гаксфортом в тайном сношении»: агент сообщал о созыве Шамилём совещания наибов (наместников имама) в Дарго, резиденции имама<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Перебежчиков империя оформляла в агентов и проводников на условиях сделки. Генерал Лабынцев, начальник Сунженской линии, рапортом Воронцову, наместнику на Кавказе, летом 1846 года описал условия чеченца Топи: «Обещав, если это приведется в исполнение, не только быть лазутчиком в горах и вожаком для войск наших, но, своим примером и убеждением действуя в нашу пользу, склонять других к принесению покорности... я позволил семействам Топи... поселиться между находящимися возле укрепления переселенцами»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Агент оплачивался не деньгами, а правом семьи жить у укрепления - под контролем той же империи.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="создание агентуры влияния перекупленные наибы вели для империи разведку и участвовали в планировании походов. имперский историк волконский пишет о бате шамурзаеве, перешедшем к империи наибе шамиля (наместнике имама, руководителя сопротивления горцев дагестана и чечни российскому завоеванию): бата «имел повсюду своих агентов, сообщавших ему обо всех движениях шамиля», а зимняя экспедиция 1852 года «была предпринята и ведена князем барятинским» по указаниям баты; «начальник отряда не скрывал, что успешным взятием аулов он много обязан и бате»(citation: погром чечни (1852) 1880). барятинский, командовавший на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), письмом воронцову, наместнику на кавказе, от 4 июня 1852 года подтверждал: «бата мне передал много интересного относительно секретных происков шамиля у осетин»(citation: кавказские войны и имамат шамиля 2009). в июле 1856 года к империи перебежал юсуф-хаджи сафаров, бывший советник имамата, и письменно предложил свои знания барятинскому: «знаю многое о шамиле и его войсках... надеюсь быть полезным русскому правительству и ручаюсь уничтожить все сделанное мною у шамиля, потому что хозяин дома лучше знает, что в нем делается»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Перекупленные наибы вели для империи разведку и участвовали в планировании походов. Имперский историк Волконский пишет о Бате Шамурзаеве, перешедшем к империи наибе Шамиля (наместнике имама, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию): Бата «имел повсюду своих агентов, сообщавших ему обо всех движениях Шамиля», а зимняя экспедиция 1852 года «была предпринята и ведена князем Барятинским» по указаниям Баты; «Начальник отряда не скрывал, что успешным взятием аулов он много обязан и Бате»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Барятинский, командовавший на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), письмом Воронцову, наместнику на Кавказе, от 4 июня 1852 года подтверждал: «Бата мне передал много интересного относительно секретных происков Шамиля у осетин»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. В июле 1856 года к империи перебежал Юсуф-Хаджи Сафаров, бывший советник имамата, и письменно предложил свои знания Барятинскому: «Знаю многое о Шамиле и его войсках... надеюсь быть полезным русскому правительству и ручаюсь уничтожить все сделанное мною у Шамиля, потому что хозяин дома лучше знает, что в нем делается»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="создание агентуры влияния историки я. з. ахмадов и э. х. хасмагомадов пишут: «3 октября к генералу смекалову... пришел некий житель беноя по имени бий-султан. в обмен на полное прощение и разрешение собрать остатки своего имущества бий-султан вызвался стать проводником к последнему укрепленному пункту алибек-хаджи. благодаря этой неожиданной помощи симсирские хутора были быстро захвачены»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «3 октября к генералу Смекалову... пришел некий житель Беноя по имени Бий-Султан. В обмен на полное прощение и разрешение собрать остатки своего имущества Бий-Султан вызвался стать проводником к последнему укрепленному пункту Алибек-хаджи. Благодаря этой неожиданной помощи симсирские хутора были быстро захвачены»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="создание агентуры влияния применение грубой силы партийным активом против активистов руха: при попытке рухивцев установить крест на могиле расстрелянных под базаром «активистов в село не впустили» «с помощью кагэбистов и провокаций о „бандеровских“ намерениях руховцев», одних участников «вытащили из машины, избили, а флаги изорвали в клочья», а роль «протестующих селян» играли переодетые: «на самом деле это были компартактивисты из ближних районов»(citation: брав участь у спробі вшанувати героїв базару (malyn.media) 2023). политзаключенный василь овсиенко попал в больницу: «отколотили меня коммунисты под базаром 17 ноября»(citation: інтерв'ю василя овсієнка (музей дисидентського руху) 2011)."
+             data-platforms="Украинцы"
+             data-groups="G0010"
+             data-tools="S0012"
+             data-date="1989-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Сентябрь 1989</div>
+<div><a href="/campaigns/C0091">C0091</a> Торможение демократических реформ и противодействие Народному Руху (1989–1990)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Применение грубой силы партийным активом против активистов Руха: при попытке рухивцев установить крест на могиле расстрелянных под Базаром «активистов в село не впустили» «с помощью кагэбистов и провокаций о „бандеровских" намерениях руховцев», одних участников «вытащили из машины, избили, а флаги изорвали в клочья», а роль «протестующих селян» играли переодетые: «на самом деле это были компартактивисты из ближних районов»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="MALYN.MEDIA. (2023). Брав участь у спробі вшанувати Героїв Базару (MALYN.MEDIA)."data-reference="Брав участь у спробі вшанувати Героїв Базару (MALYN.MEDIA) 2023"><sup><a href="https://malyn.media/novyny/podii/brav-uchast-u-trahichnomu-vshanuvanni-heroiv-bazaru-pomer-dysydent-i-politv-iazen-vasyl-ovsiienko/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Политзаключенный Василь Овсиенко попал в больницу: «отколотили меня коммунисты под Базаром 17 ноября»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Василь Овсієнко / Харківська правозахисна група. (2011). Інтерв'ю Василя Овсієнка (Музей дисидентського руху)."data-reference="Інтерв'ю Василя Овсієнка (Музей дисидентського руху) 2011"><sup><a href="https://museum.khpg.org/1321393033" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Украинцы",
+"russia/nokhchi": "Нохчи (Чеченцы)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1880). Погром Чечни (1852).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://malyn.media/novyny/podii/brav-uchast-u-trahichnomu-vshanuvanni-heroiv-bazaru-pomer-dysydent-i-politv-iazen-vasyl-ovsiienko/" target="_blank">
+                        MALYN.MEDIA. (2023). Брав участь у спробі вшанувати Героїв Базару (MALYN.MEDIA).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://museum.khpg.org/1321393033" target="_blank">
+                        Василь Овсієнко / Харківська правозахисна група. (2011). Інтерв'ю Василя Овсієнка (Музей дисидентського руху).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

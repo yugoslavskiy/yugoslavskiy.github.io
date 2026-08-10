@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/campaigns/C1170/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1170/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1170/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1170/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1170/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="«Військово-народне управління»: колоніальний режим Терської області (1858-1917), кампанія C1170 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/campaigns/C1170/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>«Військово-народне управління»: колоніальний режим Терської області (1858-1917), кампанія C1170 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/">Кампанії</a></li>
+  <li class="breadcrumb-item">«Військово-народне управління»: колоніальний режим Терської області (1858-1917)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>«Військово-народне управління»: колоніальний режим Терської області (1858-1917)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>У 1858-1917 роках завойована Чечня жила під режимом, який імперія сама назвала «військово-народним управлінням»: адміністративна влада над народом - у руках офіцерів діючої армії. Ім'я системі дав Барятинський, намісник на Кавказі, - історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: «Створювану ним систему управління горцями А. І. Барятинський назвав «військово-народною» і вважав її тимчасовою», і додають про зміст імені: «Сучасники, не соромлячись, називали цю систему управління «військовою»»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Визначення системі дав пізніший намісник Воронцов-Дашков: вона «заснована на зосередженні адміністративної влади в руках окремих офіцерів, під вищим керівництвом головнокомандувача Кавказької армії та на наданні населенню у внутрішніх справах порядкувати за своїми адатами» (адати - звичаєве право горців)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Необхідність режиму імперський генерал Чернявський пояснював так: «для цих диких народів подібні пільги ще передчасні... Тут потрібна сила, що повеліває, приборкує і управляє»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Історик Д. А. Хожаєв пише про запроваджений порядок: «У неспокійній Терській області було встановлено «військово-народний» режим, що був по суті режимом надзвичайного стану»; підсумок війни він формулює окремо: «У краї було встановлено колоніальний «військово-народний» режим»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1170
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>
+                    <span>Квітень 1858</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>
+                    <span>Березень 1917</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версія</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Створено:&nbsp;</span>3 серпня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>3 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/C1170" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Шари Навігатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Шар russia-colonialism</h6>
+                    <a class="dropdown-item" href="/uk/campaigns/C1170/C1170-russia-colonialism-layer.json" download target="_blank">завантажити</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/uk/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fuk%2Fcampaigns%2FC1170%2FC1170-russia-colonialism-layer.json" target="_blank">відкрити <img width="10" src="/uk/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Актори</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/groups/G0009">G0009</a></td>
+                <td><a href="/uk/groups/G0009">Російська імперія</a></td>
+                <td>13</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Застосовані інструменти</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/software/S0012"> S0012 </a></td>
+                <td><a href="/uk/software/S0012"> Окупаційні та підконтрольні адміністрації </a></td>
+                <td>11</td>
+              </tr>
+              <tr>
+                <td><a href="/uk/software/S0010"> S0010 </a></td>
+                <td><a href="/uk/software/S0010"> Регулярна армія </a></td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реалізовані процедури</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="встановлення нової системи управління 1 квітня 1858 року «положення про управління кавказькою армією» створило при головному штабі особливе відділення у справах горських народів - історик з. х. ібрагімова називає це «першим законодавчим затвердженням системи «військово-народного управління», що фактично склалася в міру завоювання краю»(citation: царское прошлое чеченцев. власть и общество 2009). у 1859 році, «у зв'язку з реформою місцевої адміністрації та введенням у дію положення про головне управління намісника кавказького», держконтроль був «позбавлений можливості стежити за діяльністю місцевої влади»: у складі головного управління намісника заснували особливий контрольний департамент, підзвітний не центральному відомству, а самому начальникові головного управління(citation: царское прошлое чеченцев. власть и общество 2009). 16 січня 1860 року імператор олександр ii затвердив положення, яким ліве крило кавказької лінії (ланцюга імперських укріплень на землі нохчі) перейменовано на терську область(citation: царское прошлое чеченцев. власть и общество 2009). 24 травня 1860 року барятинський, намісник на кавказі, наказав створити при головному штабі кавказької армії «канцелярію з управління кавказькими горцями» - пізніше вона називалася «кавказьке горське управління», потім «кавказьке військово-народне управління»(citation: царское прошлое чеченцев. власть и общество 2009). 25 грудня 1860 року затверджено «тимчасові штати військово-народного управління терської області»: область поділено на шість округів - кабардинський, владикавказький, чеченський, кумицький, ічкеринський і аргунський(citation: царское прошлое чеченцев. власть и общество 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0036">T0036</a> Встановлення нової системи управління
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>1 квітня 1858 року «Положення про управління Кавказькою Армією» створило при Головному штабі особливе відділення у справах горських народів - історик З. Х. Ібрагімова називає це «першим законодавчим затвердженням системи «військово-народного управління», що фактично склалася в міру завоювання краю»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. У 1859 році, «у зв'язку з реформою місцевої адміністрації та введенням у дію Положення про Головне управління намісника Кавказького», Держконтроль був «позбавлений можливості стежити за діяльністю місцевої влади»: у складі Головного управління намісника заснували особливий контрольний департамент, підзвітний не центральному відомству, а самому начальникові Головного управління<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 16 січня 1860 року імператор Олександр II затвердив положення, яким Ліве крило Кавказької лінії (ланцюга імперських укріплень на землі нохчі) перейменовано на Терську область<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 24 травня 1860 року Барятинський, намісник на Кавказі, наказав створити при Головному штабі Кавказької армії «Канцелярію з управління кавказькими горцями» - пізніше вона називалася «Кавказьке горське управління», потім «Кавказьке військово-народне управління»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 25 грудня 1860 року затверджено «тимчасові штати військово-народного управління Терської області»: область поділено на шість округів - Кабардинський, Владикавказький, Чеченський, Кумицький, Ічкеринський і Аргунський<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="встановлення чужорідного управління історики я. з. ахмадов і е. х. хасмагомадов пишуть: «у 1867 р. начальником середнього військового відділу було призначено генерал-майора князя туманова, а з восьми начальників горських округів шестеро були полковниками і двоє - майорами»(citation: история чечни в xix-xx веках 2005). начальник терської області з'єднував в одних руках цивільну, військову та козачу владу і щодо горців міг, за тими ж істориками, «за своєю волею застосувати... зброю і підняти проти них підпорядковані йому війська та козаків, віддавати горців військовому суду і в адміністративному порядку висилати з області «небажані елементи»»(citation: история чечни в xix-xx веках 2005). з вересня 1866 року намісник отримав право заміщувати горців на посадах приставів (призначених імперією наглядачів) прийшлими офіцерами - історик з. х. ібрагімова фіксує підсумок: горці в системі управління терської області довгий час не могли піднятися вище посади сільських старшин(citation: царское прошлое чеченцев. власть и общество 2009). самих старшин влада добирала і приводила до присяги на «беззаперечне виконання... всіх доручень і вимог адміністрації»; вибору населенню не залишали - «місцеве начальство не вважало за можливе надати навіть право вибору аульних старшин, оскільки «не знаходило достатніх ручательств, щоб це не потягло за собою важливих незручностей у справі управління горцями»»(citation: царское прошлое чеченцев. власть и общество 2009). судову систему вінчали ті самі офіцери: у 1862 році створено обласний головний народний суд, усі члени якого призначалися начальником області, а в 1870 році - окружні «горські словесні суди» під головуванням офіцерів адміністрації; історики я. з. ахмадов і е. х. хасмагомадов роблять висновок: «таким чином, створена для горців терської області судова система не тільки не виводилася з-під контролю військової влади, але, навпаки, прямо їй підпорядковувалася»(citation: история чечни в xix-xx веках 2005). положенням 1895 року про сільські громади право сходу передано обмеженому числу «виборних», причому окружний начальник міг позбавити «виборного» посади і розпустити весь сільський збір(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0151">T0151</a> Встановлення чужорідного управління
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: «у 1867 р. начальником Середнього військового відділу було призначено генерал-майора князя Туманова, а з восьми начальників горських округів шестеро були полковниками і двоє - майорами»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Начальник Терської області з'єднував в одних руках цивільну, військову та козачу владу і щодо горців міг, за тими ж істориками, «за своєю волею застосувати... зброю і підняти проти них підпорядковані йому війська та козаків, віддавати горців військовому суду і в адміністративному порядку висилати з області «небажані елементи»»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. З вересня 1866 року намісник отримав право заміщувати горців на посадах приставів (призначених імперією наглядачів) прийшлими офіцерами - історик З. Х. Ібрагімова фіксує підсумок: горці в системі управління Терської області довгий час не могли піднятися вище посади сільських старшин<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Самих старшин влада добирала і приводила до присяги на «беззаперечне виконання... всіх доручень і вимог адміністрації»; вибору населенню не залишали - «Місцеве начальство не вважало за можливе надати навіть право вибору аульних старшин, оскільки «не знаходило достатніх ручательств, щоб це не потягло за собою важливих незручностей у справі управління горцями»»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Судову систему вінчали ті самі офіцери: у 1862 році створено обласний Головний народний суд, усі члени якого призначалися начальником області, а в 1870 році - окружні «Горські словесні суди» під головуванням офіцерів адміністрації; історики Я. З. Ахмадов і Е. Х. Хасмагомадов роблять висновок: «Таким чином, створена для горців Терської області судова система не тільки не виводилася з-під контролю військової влади, але, навпаки, прямо їй підпорядковувалася»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Положенням 1895 року про сільські громади право сходу передано обмеженому числу «виборних», причому окружний начальник міг позбавити «виборного» посади і розпустити весь сільський збір<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="адміністративно-територіальний поділ область ділили заново в 1862, 1869, 1888 і 1899 роках(citation: царское прошлое чеченцев. власть и общество 2009). з 1 травня 1888 року веденський і аргунський округи влито до грозненського - за формулою, яку наводить історик з. х. ібрагімова, «щоб убезпечити козацтво від «розкладницького» впливу горців»(citation: царское прошлое чеченцев. власть и общество 2009). чеченські селища на правому березі терека, які передбачалося передати кізлярському і п'ятигорському відділам, виділили в окрему дільницю і тимчасово залишили у віданні начальника грозненського округу; горські округи ділилися на дільниці, а козачі відділи - за ознаками комплектування військових частин, на сотні й полки(citation: царское прошлое чеченцев. власть и общество 2009). з 1 січня 1899 року область перекроїли ще раз: чотири відділи - п'ятигорський, моздокський, кізлярський, сунженський - і чотири округи: владикавказький, хасав-юртовський, нальчицький, грозненський(citation: царское прошлое чеченцев. власть и общество 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0030">T0030</a> Адміністративно-територіальний поділ
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Область ділили заново в 1862, 1869, 1888 і 1899 роках<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. З 1 травня 1888 року Веденський і Аргунський округи влито до Грозненського - за формулою, яку наводить історик З. Х. Ібрагімова, «щоб убезпечити козацтво від «розкладницького» впливу горців»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Чеченські селища на правому березі Терека, які передбачалося передати Кізлярському і П'ятигорському відділам, виділили в окрему дільницю і тимчасово залишили у віданні начальника Грозненського округу; горські округи ділилися на дільниці, а козачі відділи - за ознаками комплектування військових частин, на сотні й полки<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. З 1 січня 1899 року область перекроїли ще раз: чотири відділи - П'ятигорський, Моздокський, Кізлярський, Сунженський - і чотири округи: Владикавказький, Хасав-Юртовський, Нальчицький, Грозненський<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="стирання та перейменування топонімів фортеця грозна, закладена генералом єрмоловим на сунжі 10 червня 1818 року(citation: мир чеченцев. xix век 2007), у 1870 році стала містом грозним(citation: история чечни в xix-xx веках 2005). 21 березня 1888 року указом імператора олександра iii з назв округів терської області стерто імена народів: чеченський округ перейменовано на грозненський, інгуський - на назрановський, кабардинський - на нальчицький, кумицький - на хасав-юртовський, військово-осетинський - на владикавказький(citation: царское прошлое чеченцев. власть и общество 2009). округи, названі за народами, що в них живуть, отримали імена імперських фортець і слобід - карта управління перестала називати народи на ім'я."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0043">T0043</a> Стирання та перейменування топонімів
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Фортеця Грозна, закладена генералом Єрмоловим на Сунжі 10 червня 1818 року<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>, у 1870 році стала містом Грозним<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 21 березня 1888 року указом імператора Олександра III з назв округів Терської області стерто імена народів: Чеченський округ перейменовано на Грозненський, Інгуський - на Назрановський, Кабардинський - на Нальчицький, Кумицький - на Хасав-Юртовський, Військово-Осетинський - на Владикавказький<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Округи, названі за народами, що в них живуть, отримали імена імперських фортець і слобід - карта управління перестала називати народи на ім'я.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правова сегрегація населення з 1882 року «особливо важливі» справи, де обвинуваченими були горці, передавалися військово-польовому суду; у 1893 році з дозволу імператора значну частину кримінальних справ горців вилучено із загальноцивільних судів - у чиє відання перейшли ці справи, джерело не уточнює(citation: царское прошлое чеченцев. власть и общество 2009). карати можна було й без суду: начальник області арештовував горців до одного місяця на власний розсуд, на аульні громади накладав стягнення за переховування(citation: царское прошлое чеченцев. власть и общество 2009); 19 листопада 1893 року на терську область поширено правила адміністративного вислання до східного сибіру за обвинуваченням або підозрою в крадіжці коней і худоби(citation: царское прошлое чеченцев. власть и общество 2009), а за істориками я. з. ахмадовим і е. х. хасмагомадовим рішення про адміністративне заслання строком до п'яти років ухвалював командувач кавказької армії, і місцем заслання слугував острів чечень на каспії(citation: история чечни в xix-xx веках 2005). «тимчасове положення про заходи з утримання тубільного населення терської області від хижацтва» 1894 року - проєкт його подав на затвердження начальник терської області генерал каханов - за істориком з. х. ібрагімовою, узаконило кругову поруку сільської громади за скоєні злочини(citation: царское прошлое чеченцев. власть и общество 2009); історики я. з. ахмадов і е. х. хасмагомадов фіксують механіку: горські селища платили за викрадену худобу, «якщо сліди викраденої худоби виявлялися загубленими поблизу даного селища», причому «цілком ігнорувалася можливість того, що викрадачі могли бути й не горцями»(citation: история чечни в xix-xx веках 2005). корінним жителям заборонялося обіймати посади пристава і начальника округу та бути мировими суддями(citation: царское прошлое чеченцев. власть и общество 2009); положення 1888 року про управління терською і кубанською областями встановило, словами історика з. х. ібрагімової, «вузько-кастове військово-козаче управління, без участі в ньому не тільки представників горських народів, а й некозачого елементу... горці ставилися поза дією загальних законів»(citation: царское прошлое чеченцев. власть и общество 2009). у 1890-х роках адміністрація окремим розпорядженням заборонила козакам кунацтво з горцями (кунацтво - побратимство, інститут дружби домами)(citation: царское прошлое чеченцев. власть и общество 2009). розділяли й за службою: «політична неблагонадійність» кавказьких мусульман змусила владу відмовитися від формування з них стройових частин, і з 1886 року за розпорядженням військового міністра новобранці з терської області розподілялися лише у війська, що стояли на кавказі(citation: царское прошлое чеченцев. власть и общество 2009). земства в області не запроваджувалися зовсім; внесена 1914 року до державної думи пропозиція про земські установи в терській області до революції ухвалена не була(citation: царское прошлое чеченцев. власть и общество 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0032">T0032</a> Правова сегрегація населення
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>З 1882 року «особливо важливі» справи, де обвинуваченими були горці, передавалися військово-польовому суду; у 1893 році з дозволу імператора значну частину кримінальних справ горців вилучено із загальноцивільних судів - у чиє відання перейшли ці справи, джерело не уточнює<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Карати можна було й без суду: начальник області арештовував горців до одного місяця на власний розсуд, на аульні громади накладав стягнення за переховування<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; 19 листопада 1893 року на Терську область поширено правила адміністративного вислання до Східного Сибіру за обвинуваченням або підозрою в крадіжці коней і худоби<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, а за істориками Я. З. Ахмадовим і Е. Х. Хасмагомадовим рішення про адміністративне заслання строком до п'яти років ухвалював командувач Кавказької армії, і місцем заслання слугував острів Чечень на Каспії<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. «Тимчасове положення про заходи з утримання тубільного населення Терської області від хижацтва» 1894 року - проєкт його подав на затвердження начальник Терської області генерал Каханов - за істориком З. Х. Ібрагімовою, узаконило кругову поруку сільської громади за скоєні злочини<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; історики Я. З. Ахмадов і Е. Х. Хасмагомадов фіксують механіку: горські селища платили за викрадену худобу, «якщо сліди викраденої худоби виявлялися загубленими поблизу даного селища», причому «цілком ігнорувалася можливість того, що викрадачі могли бути й не горцями»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Корінним жителям заборонялося обіймати посади пристава і начальника округу та бути мировими суддями<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; положення 1888 року про управління Терською і Кубанською областями встановило, словами історика З. Х. Ібрагімової, «вузько-кастове військово-козаче управління, без участі в ньому не тільки представників горських народів, а й некозачого елементу... горці ставилися поза дією загальних законів»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. У 1890-х роках адміністрація окремим розпорядженням заборонила козакам кунацтво з горцями (кунацтво - побратимство, інститут дружби домами)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Розділяли й за службою: «політична неблагонадійність» кавказьких мусульман змусила владу відмовитися від формування з них стройових частин, і з 1886 року за розпорядженням військового міністра новобранці з Терської області розподілялися лише у війська, що стояли на Кавказі<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Земства в області не запроваджувалися зовсім; внесена 1914 року до Державної думи пропозиція про земські установи в Терській області до революції ухвалена не була<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова паспортизація «положення про види на проживання» 1894 року закріпило станову нерівність: дворяни, чиновники та купці отримували безстрокові паспортні книжки, приписані до сільських громад горці - книжки на п'ять років або короткострокові паспорти й білети на відлучку(citation: царское прошлое чеченцев. власть и общество 2009). дію режиму історик з. х. ібрагімова формулює за матеріалами області: «терські горці, у разі появи своєї за кубанню або в інших частинах російської імперії без паспортів, вважалися бродягами і зловмисниками і як такі каралися»; вона ж пише: «паспортна система слугувала для адміністрації терської області улюбленим засобом утиску навіть добре їй відомих осіб»(citation: царское прошлое чеченцев. власть и общество 2009). усередині області діяв режим відлучок: дозвіл відлучитися до місяця давав сільський старшина, на більший строк - начальник округу; самовільна відлучка каралася штрафом, арештом або громадськими роботами, а переселитися з однієї громади до іншої горець не міг без згоди двох сільських громад - тієї, яку залишав, і тієї, куди переходив(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0035">T0035</a> Примусова паспортизація
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>«Положення про види на проживання» 1894 року закріпило станову нерівність: дворяни, чиновники та купці отримували безстрокові паспортні книжки, приписані до сільських громад горці - книжки на п'ять років або короткострокові паспорти й білети на відлучку<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Дію режиму історик З. Х. Ібрагімова формулює за матеріалами області: «Терські горці, у разі появи своєї за Кубанню або в інших частинах Російської імперії без паспортів, вважалися бродягами і зловмисниками і як такі каралися»; вона ж пише: «Паспортна система слугувала для адміністрації Терської області улюбленим засобом утиску навіть добре їй відомих осіб»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Усередині області діяв режим відлучок: дозвіл відлучитися до місяця давав сільський старшина, на більший строк - начальник округу; самовільна відлучка каралася штрафом, арештом або громадськими роботами, а переселитися з однієї громади до іншої горець не міг без згоди двох сільських громад - тієї, яку залишав, і тієї, куди переходив<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="обмеження географії розселення ще 1880 року указом намісника зі слободи шатой вислано всіх горців - «внаслідок зменшення росіян у слободі» - із забороною надалі селитися(citation: царское прошлое чеченцев. власть и общество 2009). 14 травня 1893 року почалося виселення горців з міст і слобідок області; заборони знімалися поетапно десятиліттями: для грозного - 18 березня 1901 року, для слободи воздвиженської - 27 лютого 1906 року, для ведена і шатоя - лише 10 травня 1916 року(citation: царское прошлое чеченцев. власть и общество 2009). скасування начальник області обґрунтовував не правами виселених - він клопотав про скасування закону 14 травня 1893 року як «такого, що слугує гальмом обрусінню племен»(citation: царское прошлое чеченцев. власть и общество 2009). наказом від 26 серпня 1898 року начальник гарнізону укріплення шатой заборонив вхід до укріплення без білета - населення трьох дільниць залишилося без доступу до поштово-телеграфної контори, ощадної каси та аптеки(citation: царское прошлое чеченцев. власть и общество 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0142">T0142</a> Обмеження географії розселення
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Ще 1880 року указом намісника зі слободи Шатой вислано всіх горців - «внаслідок зменшення росіян у слободі» - із забороною надалі селитися<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 14 травня 1893 року почалося виселення горців з міст і слобідок області; заборони знімалися поетапно десятиліттями: для Грозного - 18 березня 1901 року, для слободи Воздвиженської - 27 лютого 1906 року, для Ведена і Шатоя - лише 10 травня 1916 року<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Скасування начальник області обґрунтовував не правами виселених - він клопотав про скасування закону 14 травня 1893 року як «такого, що слугує гальмом обрусінню племен»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Наказом від 26 серпня 1898 року начальник гарнізону укріплення Шатой заборонив вхід до укріплення без білета - населення трьох дільниць залишилося без доступу до поштово-телеграфної контори, ощадної каси та аптеки<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове роззброєння 17 серпня 1884 року затверджено «обов'язкову постанову про продаж, зберігання і носіння бойової вогнепальної зброї в кавказькому краї»: бойові рушниці - лише за дозвільними свідоцтвами поліції, продаж і купівлю зброї армійського зразка заборонено(citation: царское прошлое чеченцев. власть и общество 2009). 1 липня 1899 року постанову посилено: колишні свідоцтва анульовано, вимагалося щорічне переоформлення, зброю без свідоцтва вилучали і продавали в дохід казни(citation: царское прошлое чеченцев. власть и общество 2009). у 1892 році за розпорядженням начальника терської області конфісковували всю зброю, з якою горці з'являлися в російських населених пунктах, включно з привезеною на продаж; з 1893 року владі дозволено обшуки зброї в домах(citation: царское прошлое чеченцев. власть и общество 2009). історики я. з. ахмадов і е. х. хасмагомадов фіксують контраст: міліціонери-горці на імперській службі носили зброю постійно, «на відміну від простих горців, які не могли озброєними з'являтися за межами своїх селищ»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0155">T0155</a> Примусове роззброєння
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>17 серпня 1884 року затверджено «Обов'язкову постанову про продаж, зберігання і носіння бойової вогнепальної зброї в Кавказькому краї»: бойові рушниці - лише за дозвільними свідоцтвами поліції, продаж і купівлю зброї армійського зразка заборонено<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 1 липня 1899 року постанову посилено: колишні свідоцтва анульовано, вимагалося щорічне переоформлення, зброю без свідоцтва вилучали і продавали в дохід казни<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. У 1892 році за розпорядженням начальника Терської області конфісковували всю зброю, з якою горці з'являлися в російських населених пунктах, включно з привезеною на продаж; з 1893 року владі дозволено обшуки зброї в домах<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов фіксують контраст: міліціонери-горці на імперській службі носили зброю постійно, «на відміну від простих горців, які не могли озброєними з'являтися за межами своїх селищ»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="оподаткування історик з. х. ібрагімова пише: адміністративний апарат у чечні та інгушетії з 1860-х років «утримувався в основному на кошти, що збиралися з народу»(citation: царское прошлое чеченцев. власть и общество 2009). у військову повинність горців імперія не вірила - і обклала їх натомість грошима: законами 2 і 9 червня 1887 року для мусульман терської області запроваджено грошовий збір замість військової служби, розміром «не перевищував 22 копійок з «диму»»(citation: царское прошлое чеченцев. власть и общество 2009) («дим» - окремий двір, домогосподарство)(citation: царское прошлое чеченцев. власть и общество 2009); історики я. з. ахмадов і е. х. хасмагомадов підтверджують: «у 1887 р. російський уряд запровадив для них спеціальний грошовий збір»(citation: история чечни в xix-xx веках 2005). далі збори тільки зростали: «з 1887 по 1905 рр. сума податків зросла з 228,1 до 678,8 тис. рублів, тобто збільшилася за ці роки майже втричі», а подимна подать - податок з кожного двору - «в терській області сягнула в 90-х рр. до 70 коп. за десятину, а в цей час у внутрішніх губерніях країни вона була не більше 17 коп., або вчетверо менша»(citation: царское прошлое чеченцев. власть и общество 2009). понад збір сільські громади несли повинності: утримання старшини і правління, доріг, канав і караулів(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0056">T0056</a> Оподаткування
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Історик З. Х. Ібрагімова пише: адміністративний апарат у Чечні та Інгушетії з 1860-х років «утримувався в основному на кошти, що збиралися з народу»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. У військову повинність горців імперія не вірила - і обклала їх натомість грошима: законами 2 і 9 червня 1887 року для мусульман Терської області запроваджено грошовий збір замість військової служби, розміром «не перевищував 22 копійок з «диму»»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> («дим» - окремий двір, домогосподарство)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; історики Я. З. Ахмадов і Е. Х. Хасмагомадов підтверджують: «у 1887 р. російський уряд запровадив для них спеціальний грошовий збір»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Далі збори тільки зростали: «З 1887 по 1905 рр. сума податків зросла з 228,1 до 678,8 тис. рублів, тобто збільшилася за ці роки майже втричі», а подимна подать - податок з кожного двору - «в Терській області сягнула в 90-х рр. до 70 коп. за десятину, а в цей час у внутрішніх губерніях країни вона була не більше 17 коп., або вчетверо менша»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Понад збір сільські громади несли повинності: утримання старшини і правління, доріг, канав і караулів<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="адміністративна корупція та здирництво історики я. з. ахмадов і е. х. хасмагомадов пишуть: штрафні суми витрачалися на утримання засланців і секретної агентури, а часом покривали розтрати чиновників - у 1893 році начальник надтеречної дільниці поручик томашевський розтратив понад 300 рублів, зібраних із чеченських селищ(citation: история чечни в xix-xx веках 2005). характер влади визнав зсередини полковник бєлік, призначений 1860 року першим начальником чеченського округу; пізніше він писав: у чечні «панує здебільшого не закон, а свавілля, часто засноване на недобросовісності начальника, і тим самим ми лише сіємо в народі недовіру до себе, навіть ненависть»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0146">T0146</a> Адміністративна корупція та здирництво
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: штрафні суми витрачалися на утримання засланців і секретної агентури, а часом покривали розтрати чиновників - у 1893 році начальник Надтеречної дільниці поручик Томашевський розтратив понад 300 рублів, зібраних із чеченських селищ<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Характер влади визнав зсередини полковник Бєлік, призначений 1860 року першим начальником Чеченського округу; пізніше він писав: у Чечні «панує здебільшого не закон, а свавілля, часто засноване на недобросовісності начальника, і тим самим ми лише сіємо в народі недовіру до себе, навіть ненависть»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маркування території імперськими символами 15 березня 1873 року затверджено герб терської області: «у чорному щиті, срібна хвиляста перев'язь управо. імператорський штандарт на золотому древку. щит увінчаний давньою царською короною і оточений золотим дубовим листям, з'єднаним александрівською стрічкою»(citation: царское прошлое чеченцев. власть и общество 2009). сенс знака історик з. х. ібрагімова читає так: срібна перев'язь - це терек, який довго був кордоном, а тепер «обидва його береги були об'єднані імператорським штандартом, і терек став повністю російським - такий основний сенс цього герба»(citation: царское прошлое чеченцев. власть и общество 2009). проєкт герба міста грозного виконав б. в. кене, чиновник герольдії: на лазуровому щиті срібна гора між двома золотими морськими ліліями, а в правій вільній частині - герб терської області(citation: царское прошлое чеченцев. власть и общество 2009), тож міський знак ніс на собі імперський символ області. землю мітили й фігурою завойовника. першим пам'ятником єрмолову в грозному слугувала «дбайливо збережена землянка, в якій він жив під час заснування фортеці грозної»(citation: царское прошлое чеченцев. власть и общество 2009), а пізніше біля землянки став бронзовий бюст генерала. що означав цей знак, ібрагімова формулює так: бюст нагадував про найтрагічніші роки завоювання кавказу і був символом драматичної долі горських народів, а пам'ятник генералові, що «з варварською жорстокістю винищував цілі народи в ім'я завоювання кавказу», став для чеченців «свого роду «більмом на оці»»(citation: царское прошлое чеченцев. власть и общество 2009). знак пережив імперію: за радянської влади пам'ятник «із завидною періодичністю підривали ночами і так само ночами відновлювали»(citation: царское прошлое чеченцев. власть и общество 2009)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0158">T0158</a> Маркування території імперськими символами
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>15 березня 1873 року затверджено герб Терської області: «У чорному щиті, срібна хвиляста перев'язь управо. Імператорський штандарт на золотому древку. Щит увінчаний давньою Царською Короною і оточений золотим дубовим листям, з'єднаним Александрівською стрічкою»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Сенс знака історик З. Х. Ібрагімова читає так: срібна перев'язь - це Терек, який довго був кордоном, а тепер «обидва його береги були об'єднані Імператорським штандартом, і Терек став повністю російським - такий основний сенс цього герба»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Проєкт герба міста Грозного виконав Б. В. Кене, чиновник герольдії: на лазуровому щиті срібна гора між двома золотими морськими ліліями, а в правій вільній частині - герб Терської області<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, тож міський знак ніс на собі імперський символ області. Землю мітили й фігурою завойовника. Першим пам'ятником Єрмолову в Грозному слугувала «дбайливо збережена землянка, в якій він жив під час заснування фортеці Грозної»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, а пізніше біля землянки став бронзовий бюст генерала. Що означав цей знак, Ібрагімова формулює так: бюст нагадував про найтрагічніші роки завоювання Кавказу і був символом драматичної долі горських народів, а пам'ятник генералові, що «з варварською жорстокістю винищував цілі народи в ім'я завоювання Кавказу», став для чеченців «свого роду «більмом на оці»»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Знак пережив імперію: за радянської влади пам'ятник «із завидною періодичністю підривали ночами і так само ночами відновлювали»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="терор на початку xx століття терська влада почала залучати військові команди та козачі підрозділи до масових обшуків у горських аулах - формально для вилучення зброї та «затримання втікачів»(citation: история чечни в xix-xx веках 2005). історики я. з. ахмадов і е. х. хасмагомадов пишуть, на що це перетворювалося: повальні обшуки в горських селищах «як правило, супроводжувалися грабежами та іншими незаконними діями солдатів і козаків, що всіляко заохочувалося терським начальством, яке постійно шукало привід для застосування жорсткіших заходів щодо горців»(citation: история чечни в xix-xx веках 2005). наскільки буквально працювало це заохочення, видно з листопада 1902 року: під час обшуку, влаштованого козаками на базарі селища шаамі-юрт, почалися масові заворушення, отаман станиці самашкінської гріднєв заборонив своїм застосовувати вогнепальну зброю, і зіткнення обійшлося без кровопролиття - після чого начальник терської області усунув гріднєва з посади, а козакам, що брали участь у заворушеннях, висловив невдоволення за їхню «пасивність»(citation: история чечни в xix-xx веках 2005). санкція на це йшла з самого верху: коли начальник терської області доповів, що зіткнення між чеченцями та козаками приносять матеріальні збитки і людські жертви і що ці групи населення слід розвести, микола ii відповів, що «саме це сусідство і підтримує в козаках їхнє старе дідівське молодецтво, а тому вживати заходів до пом'якшення обстановки немає жодної потреби»(citation: мир чеченцев. xix век 2007). кровопролиття в чеченських селищах було для влади не витратою, а робочим станом краю."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0022">T0022</a> Терор
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>На початку XX століття терська влада почала залучати військові команди та козачі підрозділи до масових обшуків у горських аулах - формально для вилучення зброї та «затримання втікачів»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть, на що це перетворювалося: повальні обшуки в горських селищах «як правило, супроводжувалися грабежами та іншими незаконними діями солдатів і козаків, що всіляко заохочувалося терським начальством, яке постійно шукало привід для застосування жорсткіших заходів щодо горців»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Наскільки буквально працювало це заохочення, видно з листопада 1902 року: під час обшуку, влаштованого козаками на базарі селища Шаамі-Юрт, почалися масові заворушення, отаман станиці Самашкінської Гріднєв заборонив своїм застосовувати вогнепальну зброю, і зіткнення обійшлося без кровопролиття - після чого начальник Терської області усунув Гріднєва з посади, а козакам, що брали участь у заворушеннях, висловив невдоволення за їхню «пасивність»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Санкція на це йшла з самого верху: коли начальник Терської області доповів, що зіткнення між чеченцями та козаками приносять матеріальні збитки і людські жертви і що ці групи населення слід розвести, Микола II відповів, що «саме це сусідство і підтримує в козаках їхнє старе дідівське молодецтво, а тому вживати заходів до пом'якшення обстановки немає жодної потреби»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Кровопролиття в чеченських селищах було для влади не витратою, а робочим станом краю.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="мародерство військові команди та козацькі підрозділи, залучені на початку xx століття до повальних обшуків у гірських аулах, грабували жителів при заохоченні влади: історики я. з. ахмадов і е. х. хасмагомадов пишуть, що обшуки «як правило, супроводжувалися грабежами та іншими незаконними діями солдатів і козаків, що всіляко заохочувалося терським начальством»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0164">T0164</a> Мародерство
+                </div>
+<div><a href="/uk/campaigns/C1170">C1170</a> «Військово-народне управління»: колоніальний режим Терської області (1858-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Військові команди та козацькі підрозділи, залучені на початку XX століття до повальних обшуків у гірських аулах, грабували жителів при заохоченні влади: історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть, що обшуки «як правило, супроводжувалися грабежами та іншими незаконними діями солдатів і козаків, що всіляко заохочувалося терським начальством»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank">
+                        Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="3.0">
+                                
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+<script src="/uk/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

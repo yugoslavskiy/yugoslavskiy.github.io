@@ -1,0 +1,1330 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/techniques/T0021/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0021/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0021/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0021/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0021/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Нейтралізація опозиції, техніка T0021 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/techniques/T0021/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Нейтралізація опозиції, техніка T0021 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/techniques/">Техніки</a></li>
+  <li class="breadcrumb-item">Нейтралізація опозиції</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Нейтралізація опозиції
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агресори можуть здійснювати системне фізичне чи політичне усунення лідерів, інтелігенції та представників місцевих еліт, які виступають проти колонізації. Через масові арешти, позасудові страти, заслання та фабрикацію кримінальних справ колонізатор ліквідує політичне керівництво корінного народу, паралізуючи його здатність до координації, організованої боротьби та системного опору.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0021
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Підтехніки:&nbsp;</span>
+                    Немає підтехнік
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактичні цілі, які досягаються застосуванням техніки або підтехніки">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактика:</span>
+                        <a href="/uk/tactics/TA0004">Ослаблення захисту</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народи, проти яких застосовувалася техніка або підтехніка">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народи:&nbsp;</span>Нохчі (Чеченці), Українці
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контриб'ютори:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версія:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Створено:&nbsp;</span>21 квітня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>9 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/T0021" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реалізовані процедури</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції призначена окупаційна адміністрація застосовувала незаконні арешти для придушення опору корінного населення: у поданій цареві михайлу федоровичу чолобитній служилих окочан терського міста зазначалося, що кабардинський князь сунчалей янгличевич черкаський «велить нас у тюрму саджати і кнутом бити без твого государевого відома і без вини»(citation: кабардино-русские отношения в xvi-xviii вв. документы и материалы. том i 1957)(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1614-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1614</div>
+<div><a href="/uk/campaigns/C1114">C1114</a> Позбавлення Нохчі суб'єктності та встановлення чужорідного управління (1614–1616)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Призначена окупаційна адміністрація застосовувала незаконні арешти для придушення опору корінного населення: у поданій цареві Михайлу Федоровичу чолобитній служилих Окочан Терського міста зазначалося, що кабардинський князь Сунчалей Янгличевич Черкаський «велить нас у тюрму саджати і кнутом бити без твого государевого відома і без вини»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I."data-reference="Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I 1957"><sup><a href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції уряд московського царства полонив і фізично знищив лідера опору: історик я. з. ахмадов констатує, що цар «особисто вирішував долю керівників повстанців»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019), внаслідок чого ватажок мурат кучуков, «який пораненим потрапив у полон, був повішений»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0008"
+             data-date="1708-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1708</div>
+<div><a href="/uk/campaigns/C1126">C1126</a> Придушення повстання Мурата Кучукова і терор проти корінного населення (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Уряд Московського царства полонив і фізично знищив лідера опору: історик Я. З. Ахмадов констатує, що цар «особисто вирішував долю керівників повстанців»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, внаслідок чого ватажок Мурат Кучуков, «який пораненим потрапив у полон, був повішений»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції знищення політичного керівництва, що підтримало гетьмана: за мазепою пішла «вся (!) генеральна старшина», а з лівобережних полковників залишилися вірними цареві лише четверо(citation: иван мазепа и российская империя. история «предательства» 2011). слідство над старшиною велося з царської ставки, де «перебуваючи в лебедині й сумах, петро і меншиков у січні 1709 року» керували розправою(citation: иван мазепа и российская империя. история «предательства» 2011). церковне покарання оформили за прямим розпорядженням царя - листом від 31 жовтня 1708 року (№ 2795) петро i приписав митрополитові стефану яворському: «звольте оного за таке його діло публічно в соборній церкві прокляттю віддати...»(citation: иван мазепа и российская империя. история «предательства» 2011)(citation: письма и бумаги императора петра великого. т. viii, вып. 1 (июль-декабрь 1708 г.) 1948)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0017"
+             data-date="1708-11-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Листопад 1708</div>
+<div><a href="/uk/campaigns/C0013">C0013</a> Лебединські страти (1708–1709)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Знищення політичного керівництва, що підтримало гетьмана: за Мазепою пішла «вся (!) генеральна старшина», а з лівобережних полковників залишилися вірними цареві лише четверо<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Слідство над старшиною велося з царської ставки, де «перебуваючи в Лебедині й Сумах, Петро і Меншиков у січні 1709 року» керували розправою<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Церковне покарання оформили за прямим розпорядженням царя - листом від 31 жовтня 1708 року (№ 2795) Петро I приписав митрополитові Стефану Яворському: «звольте оного за таке його діло публічно в соборній церкві прокляттю віддати...»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Петр I; ред. И.Н. Андреев (М.-Л.: Изд-во АН СССР). (1948). Письма и бумаги императора Петра Великого. Т. VIII, вып. 1 (июль-декабрь 1708 г.)."data-reference="Письма и бумаги императора Петра Великого. Т. VIII, вып. 1 (июль-декабрь 1708 г.) 1948"><sup><a href="https://resource.history.org.ua/cgi-bin/eiu/history.exe?C21COM=2&I21DBN=ELIB&P21DBN=ELIB&Image_file_name=book%2F0014325.pdf&IMAGE_FILE_DOWNLOAD=0" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції арешт наказного гетьмана та старшини в петербурзі за чолобитні на захист автономних прав. петро готував показову розправу: «петро i планував провести показовий процес над п.полуботком і його однодумцями, звинуватити їх у „державній зраді“ та ліквідувати українську автономію. для цієї мети було створено спеціальний ґенеральний суд»(citation: смерть п. полуботка в петербурзі 2015). план зірвала лише смерть в'язня: гетьман «помер 21 грудня 1724 р. (за ст. ст.) від пневмонії»(citation: смерть п. полуботка в петербурзі 2015)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0017"
+             data-date="1722-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1722</div>
+<div><a href="/uk/campaigns/C0018">C0018</a> Справа Павла Полуботка (1723)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Арешт наказного гетьмана та старшини в Петербурзі за чолобитні на захист автономних прав. Петро готував показову розправу: «Петро I планував провести показовий процес над П.Полуботком і його однодумцями, звинуватити їх у „державній зраді" та ліквідувати українську автономію. Для цієї мети було створено спеціальний Ґенеральний суд»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Д. О. Сєров, Т. Г. Таїрова-Яковлева (УІЖ, 2015, № 6). (2015). Смерть П. Полуботка в Петербурзі."data-reference="Смерть П. Полуботка в Петербурзі 2015"><sup><a href="https://history.org.ua/LiberUA/journal_2015_6/journal_2015_6.pdf" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. План зірвала лише смерть в'язня: гетьман «помер 21 грудня 1724 р. (за ст. ст.) від пневмонії»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Д. О. Сєров, Т. Г. Таїрова-Яковлева (УІЖ, 2015, № 6). (2015). Смерть П. Полуботка в Петербурзі."data-reference="Смерть П. Полуботка в Петербурзі 2015"><sup><a href="https://history.org.ua/LiberUA/journal_2015_6/journal_2015_6.pdf" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції арешт і заслання вищого керівництва січі: «в лип. 1775, після зруйнування нової січі, за розпорядженням імп. катерини ii к[алнишевського] було заарештовано і відправлено до в'язниці соловецького монастиря»(citation: енциклопедія історії україни: т. 4 2007). калнишевський провів в ув'язненні понад 25 років; формально звільнений 1801 року, він помер у монастирі."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0017"
+             data-date="1775-05-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Травень 1775</div>
+<div><a href="/uk/campaigns/C0033">C0033</a> Військова ліквідація Запорозької Січі (1775)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Арешт і заслання вищого керівництва Січі: «В лип. 1775, після зруйнування Нової Січі, за розпорядженням імп. Катерини II К[алнишевського] було заарештовано і відправлено до в'язниці Соловецького монастиря»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2007). Енциклопедія історії України: Т. 4."data-reference="Енциклопедія історії України: Т. 4 2007"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Калнишевський провів в ув'язненні понад 25 років; формально звільнений 1801 року, він помер у монастирі.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції багаторічна силова кампанія проти селянського руху на поділлі: «1833—39 діяло спец. слідство в справі к. та його спільників — «галузинецька комісія»… за час її діяльності за обвинуваченням або за підозрою у зв'язках із к. проходило бл. 20 тис. осіб»(citation: енциклопедія історії україни: т. 4 2007)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1813-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1813</div>
+<div><a href="/uk/campaigns/C0058">C0058</a> Придушення гайдамацького повстання Устима Кармалюка (до 1835)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Багаторічна силова кампанія проти селянського руху на Поділлі: «1833—39 діяло спец. слідство в справі К. та його спільників — «Галузинецька комісія»… За час її діяльності за обвинуваченням або за підозрою у зв'язках із К. проходило бл. 20 тис. осіб»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2007). Енциклопедія історії України: Т. 4."data-reference="Енциклопедія історії України: Т. 4 2007"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції перехід отамана залишив козаків, що зосталися за дунаєм, під ударом порти й поклав край останній козацькій вольниці: задунайська січ «існувала з останньої чв. 18 ст. по 1828»(citation: енциклопедія історії україни: т. 3 2005)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0009"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1817</div>
+<div><a href="/uk/campaigns/C0041">C0041</a> Запровадження військових поселень і ліквідація Задунайської Січі (1817–1828)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0009">S0009</a> Дипломатія</div>            </div>
+            <div class="proc-desc">
+                        <p>Перехід отамана залишив козаків, що зосталися за Дунаєм, під ударом Порти й поклав край останній козацькій вольниці: Задунайська Січ «існувала з останньої чв. 18 ст. по 1828»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2005). Енциклопедія історії України: Т. 3."data-reference="Енциклопедія історії України: Т. 3 2005"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції російська імперія усувала керівний прошарок опору, заманивши його під приводом розгляду. історик д. а. хожаєв пише, що під виглядом «показової екзекуції» до герзель-аульського укріплення були викликані «318 осіб із шанованих людей аксаївських (кумицьких і чеченських) селищ» — старшини та шановані люди громад, яких генерал лисаневич, «викликаючи по черзі зібраних», після вбивства генералів скомандував винищити: «після команди лисаневича „коли!" почалося масове винищення солдатами всіх беззбройних горців, які були в укріпленні»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1825-07-18 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Липень 1825</div>
+<div><a href="/uk/campaigns/C1147">C1147</a> Масове вбивство старшин, скликаних на показову екзекуцію в Герзель-аулі (1825)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія усувала керівний прошарок опору, заманивши його під приводом розгляду. Історик Д. А. Хожаєв пише, що під виглядом «показової екзекуції» до Герзель-аульського укріплення були викликані «318 осіб із шанованих людей аксаївських (кумицьких і чеченських) селищ» — старшини та шановані люди громад, яких генерал Лисаневич, «викликаючи по черзі зібраних», після вбивства генералів скомандував винищити: «після команди Лисаневича „Коли!" почалося масове винищення солдатами всіх беззбройних горців, які були в укріпленні»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції навесні 1829 року головнокомандувач паскевич знешкодив керівний прошарок чеченського опору, виманивши бейбулата таймієва та 60 старшин його партії до тифліса під приводом переговорів і утримавши їх силою. історик д. а. хожаєв писав: «приїхавши до тифліса, бейбулат дізнається, що паскевич перебуває в діючих військах. зрозумівши, що його обдурили, він намагається негайно повернутися до чечні, але його силою затримують у тифлісі»(citation: чеченцы в русско-кавказской войне 1998). паскевич визнав обман власним пером у приписі емануелю від 2 серпня 1829 року: «я одразу вирішив викликати до себе під виглядом пояснень старшин їхніх та відомого вам старшину бей-булата, аби, відволікши їх сюди, позбавити плем'я це можливості у разі невдоволення вчинити що-небудь вороже»(citation: акты собранные кавказскою археографическою комиссиею. том vii (1827-1831) 1878)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1828-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1828</div>
+<div><a href="/uk/campaigns/C1150">C1150</a> Обман і силове утримання Бейбулата Таймієва Паскевичем, розкол Чечні на партії та примус до присяги (1828-1829)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Навесні 1829 року головнокомандувач Паскевич знешкодив керівний прошарок чеченського опору, виманивши Бейбулата Таймієва та 60 старшин його партії до Тифліса під приводом переговорів і утримавши їх силою. Історик Д. А. Хожаєв писав: «Приїхавши до Тифліса, Бейбулат дізнається, що Паскевич перебуває в діючих військах. Зрозумівши, що його обдурили, він намагається негайно повернутися до Чечні, але його силою затримують у Тифлісі»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Паскевич визнав обман власним пером у приписі Емануелю від 2 серпня 1829 року: «я одразу вирішив викликати до себе під виглядом пояснень старшин їхніх та відомого вам старшину Бей-Булата, аби, відволікши їх сюди, позбавити плем'я це можливості у разі невдоволення вчинити що-небудь вороже»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831) 1878"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції 14 липня 1831 біля укріплення ташкічу із засідки було вбито лідера чеченського опору бейбулата таймієва — керівника повстання 1825–1826 років, усунутого після того, як відкриту репресію командування визнало надто небезпечною. історик д. а. хожаєв писав: «царське командування кілька разів мало намір розправитися з бейбулатом, але побоювалося відкрито репресувати його... почалася підготовка вбивства бейбулата, яке невдовзі й було скоєно»(citation: чеченцы в русско-кавказской войне 1998). убивця — князь салі, який перебував на імперській службі, — покараний не був, хоча інші випадки кровної помсти жорстоко переслідувалися; головнокомандувач паскевич відписав, що бейбулат «був до кінця зрадником, тому й карати вбивцю не слід»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1831-07-14 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Липень 1831</div>
+<div><a href="/uk/campaigns/C1153">C1153</a> Вбивство лідера чеченського опору Бейбулата Таймієва, підготовлене імперським командуванням (1831)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>14 липня 1831 біля укріплення Ташкічу із засідки було вбито лідера чеченського опору Бейбулата Таймієва — керівника повстання 1825–1826 років, усунутого після того, як відкриту репресію командування визнало надто небезпечною. Історик Д. А. Хожаєв писав: «Царське командування кілька разів мало намір розправитися з Бейбулатом, але побоювалося відкрито репресувати його... Почалася підготовка вбивства Бейбулата, яке невдовзі й було скоєно»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Убивця — князь Салі, який перебував на імперській службі, — покараний не був, хоча інші випадки кровної помсти жорстоко переслідувалися; головнокомандувач Паскевич відписав, що Бейбулат «був до кінця зрадником, тому й карати вбивцю не слід»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції у 1838-1840 роках імперія усувала керівників чеченського опору замовними вбивствами та арештами. генерал головін, командир окремого кавказького корпусу (глава імперських військ і адміністрації на кавказі), таємним приписом від 17 листопада 1838 року замовив генералу пулло, який командував лівим флангом кавказької лінії (ланцюга імперських укріплень на землі нохчі), вбивство шаміля (шаміль - імам, керівник опору горців дагестану і чечні російському завоюванню): «з відданих нам горців, без сумніву, знайдуться відважні люди, які, за добру грошову винагороду, візьмуться доставити голову бунтівника. доручаю вам випробувати цей захід, таємно запропонувавши вбити шаміля... обіцяючи в нагороду до 1.000 червінців» (червінець - золота монета імперії)(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884). восени 1839 року, після розгрому ахульго (гірської резиденції шаміля в дагестані), уллу-бей ерпелінський - горець на імперській службі, поставлений приставом (призначеним імперією наглядачем) над громадою койсубу, - двічі посилав отруйників до шаміля в чеченське селище ведено: хроніст шаміля мухаммед-тахір аль-карахі записав, що «уллубій послав з отрутою племінника шаміля-ібрахіма, сина бартіхана, з двома товаришами... коли останній перебував у селищі ведено чеченського вілаята» (вілаят - адміністративна область імамату)(citation: блеск дагестанских шашек в некоторых шамилевских битвах 1941). у зимові експедиції грудня 1839 - січня 1840 років війська пулло вилучали з аулів людей, оголошених імперією поза законом: історики я. з. ахмадов і е. х. хасмагомадов пишуть - «у грудні 1839 р. генерал-майор пулло пройшов 28 селищ без жодного пострілу, зібрав з чеченців 4 тисячі рублів сріблом, конфіскував 455 рушниць і захопив 97 абреків» (абрек - імперський ярлик горця, оголошеного поза законом)(citation: история чечни в xix-xx веках 2005); у січневому поході по мічику війська забрали ще 30 людей(citation: 1840, 1841 и 1842-й годы на кавказе 1886)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1838-11-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Листопад 1838</div>
+<div><a href="/uk/campaigns/C1164">C1164</a> Примушення Чечні до підкорення після розгрому Ахульго та придушення загального повстання 1840 року (1838-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У 1838-1840 роках імперія усувала керівників чеченського опору замовними вбивствами та арештами. Генерал Головін, командир Окремого Кавказького корпусу (глава імперських військ і адміністрації на Кавказі), таємним приписом від 17 листопада 1838 року замовив генералу Пулло, який командував лівим флангом Кавказької лінії (ланцюга імперських укріплень на землі нохчі), вбивство Шаміля (Шаміль - імам, керівник опору горців Дагестану і Чечні російському завоюванню): «З відданих нам горців, без сумніву, знайдуться відважні люди, які, за добру грошову винагороду, візьмуться доставити голову бунтівника. Доручаю вам випробувати цей захід, таємно запропонувавши вбити Шаміля... обіцяючи в нагороду до 1.000 червінців» (червінець - золота монета імперії)<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Восени 1839 року, після розгрому Ахульго (гірської резиденції Шаміля в Дагестані), Уллу-бей Ерпелінський - горець на імперській службі, поставлений приставом (призначеним імперією наглядачем) над громадою Койсубу, - двічі посилав отруйників до Шаміля в чеченське селище Ведено: хроніст Шаміля Мухаммед-Тахір аль-Карахі записав, що «Уллубій послав з отрутою племінника Шаміля-Ібрахіма, сина Бартіхана, з двома товаришами... коли останній перебував у селищі Ведено Чеченського вілаята» (вілаят - адміністративна область Імамату)<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Мухаммадом Тахиром аль-Карахи. (1941). Блеск дагестанских шашек в некоторых шамилевских битвах."data-reference="Блеск дагестанских шашек в некоторых шамилевских битвах 1941"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/Arabojaz_ist/Karachi_I/text1.htm" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. У зимові експедиції грудня 1839 - січня 1840 років війська Пулло вилучали з аулів людей, оголошених імперією поза законом: історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть - «У грудні 1839 р. генерал-майор Пулло пройшов 28 селищ без жодного пострілу, зібрав з чеченців 4 тисячі рублів сріблом, конфіскував 455 рушниць і захопив 97 абреків» (абрек - імперський ярлик горця, оголошеного поза законом)<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>; у січневому поході по Мічику війська забрали ще 30 людей<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції 29 січня 1841 року генерал головін, командир окремого кавказького корпусу (глава імперських військ і адміністрації на кавказі), приписав генералу граббе, командувачу військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), організувати вбивство ахверди-магоми, наїба шаміля в малій чечні (намісника імама, керівника опору горців дагестану і чечні російському завоюванню): «можна вважати, що за добру плату знайдуться люди, які зважаться на винищення ахверди-магоми. немає сумніву, що через знищення цього заповзятливого сподвижника шаміля ми позбулися б одного з найнебезпечніших його знарядь, і заспокоєння чечні було б тоді справою значно менш складною»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). головін виділив бюджет і виконавця: граббе надано «право вжити за вашими міркуваннями до двох тисяч рублів ср. з сум екстраординарних», а «виконання справи цієї найближче покласти на ген.-м. ольшевського», начальника лівого флангу лінії(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). смерть ахверди-магоми з цим замовленням не пов'язана: улітку 1843 року він загинув у бою біля селища шатілі на кордоні з грузією - історики я. з. ахмадов і е. х. хасмагомадов пишуть: «на вдоволення російського командування ахверди-магома загинув улітку 1843 р. у зіткненні під хевсурським селищем шатілі»(citation: история чечни в xix-xx веках 2005). учасників опору імперія віддала військовим судам з прискореною розправою. повеління імператора миколи i від 29 грудня 1843 року і 14 лютого 1844 року, передані військам 24 травня 1844 року, приписали: «офіцерів з горців, що брали участь у повстанні, так само кадіїв та інших головних призвідників віддати військовому суду за польовим кримінальним уложенням... вироки суду, після остаточного затвердження мною, невідкладно приводити у виконання» (кадій - мусульманський суддя)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). під військово-польовий суд за цією нормою йшли не солдати противника, а духовні та громадські лідери - «кадії та інші головні призвідники»."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>29 січня 1841 року генерал Головін, командир Окремого Кавказького корпусу (глава імперських військ і адміністрації на Кавказі), приписав генералу Граббе, командувачу військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), організувати вбивство Ахверди-Магоми, наїба Шаміля в Малій Чечні (намісника імама, керівника опору горців Дагестану і Чечні російському завоюванню): «можна вважати, що за добру плату знайдуться люди, які зважаться на винищення Ахверди-Магоми. Немає сумніву, що через знищення цього заповзятливого сподвижника Шаміля ми позбулися б одного з найнебезпечніших його знарядь, і заспокоєння Чечні було б тоді справою значно менш складною»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. Головін виділив бюджет і виконавця: Граббе надано «право вжити за вашими міркуваннями до двох тисяч рублів ср. з сум екстраординарних», а «виконання справи цієї найближче покласти на ген.-м. Ольшевського», начальника лівого флангу лінії<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. Смерть Ахверди-Магоми з цим замовленням не пов'язана: улітку 1843 року він загинув у бою біля селища Шатілі на кордоні з Грузією - історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: «На вдоволення російського командування Ахверди-Магома загинув улітку 1843 р. у зіткненні під хевсурським селищем Шатілі»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Учасників опору імперія віддала військовим судам з прискореною розправою. Повеління імператора Миколи I від 29 грудня 1843 року і 14 лютого 1844 року, передані військам 24 травня 1844 року, приписали: «Офіцерів з горців, що брали участь у повстанні, так само кадіїв та інших головних призвідників віддати військовому суду за польовим кримінальним уложенням... Вироки суду, після остаточного затвердження мною, невідкладно приводити у виконання» (кадій - мусульманський суддя)<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. Під військово-польовий суд за цією нормою йшли не солдати противника, а духовні та громадські лідери - «кадії та інші головні призвідники».</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції арешти, допити – жандарми «вдавалися до брутального тиску» і «застосовували витончені методи психологічної обробки»(citation: енциклопедія історії україни: т. 4 2007) та розправа над лідерами: вироки оформила доповідь шефа жандармів орлова імператорові від 26 травня 1847 року з резолюцією миколи i «виконати»(citation: кирило-мефодіївське товариство: у 3 т. 1990). шевченка було віддано в солдати «зі встановленням над поетом «найсуворішого нагляду із забороною писати й малювати»»(citation: труды и дни кобзаря 1996)(citation: кирило-мефодіївське товариство: у 3 т. 1990). грушевський: брацтво «було захоплено серед самого ще свого творення» за доносом студента; «найтяжша кара впала на шевченка: його віддано в салдати і вислано в закаспійську пустиню, заборонивши писати й малювати», а «на українську мисль, на українське слово пішли нагінки і заборони, перед тим не бувалі… самі такі слова як україна, малоросія, гетьманщина вважали ся злочинними»(citation: ілюстрована історія україни 1921). співзасновник братства микола гулак «був ув'язнений у шліссельбурзькій фортеці (1847—50), згодом засланий до м. перм… під суворий нагляд поліції (1850—59)»(citation: енциклопедія історії україни: т. 2 2004)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0017"
+             data-date="1847-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1847</div>
+<div><a href="/uk/campaigns/C0060">C0060</a> Розгром Кирило-Мефодіївського товариства (1847)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Арешти, допити – жандарми «вдавалися до брутального тиску» і «застосовували витончені методи психологічної обробки»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2007). Енциклопедія історії України: Т. 4."data-reference="Енциклопедія історії України: Т. 4 2007"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span> та розправа над лідерами: вироки оформила доповідь шефа жандармів Орлова імператорові від 26 травня 1847 року з резолюцією Миколи I «Виконати»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Ін-т історії України АН УРСР; Наукова думка, Київ (Т.1 — доклад гр.А.Ф.Орлова Миколі I від 26.05.1847 з вироками, с.62-70; Т.2 — окремий запис рішення у справі Шевченка від 30.05.1847, с.329). (1990). Кирило-Мефодіївське товариство: У 3 т.."data-reference="Кирило-Мефодіївське товариство: У 3 т. 1990"><sup><a href="http://litopys.org.ua/rizne/kmt03.htm" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Шевченка було віддано в солдати «зі встановленням над поетом «найсуворішого нагляду із забороною писати й малювати»»<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Пётр Жур. (1996). Труды и дни Кобзаря."data-reference="Труды и дни Кобзаря 1996"><sup><a href="http://litopys.org.ua/" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span><span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Ін-т історії України АН УРСР; Наукова думка, Київ (Т.1 — доклад гр.А.Ф.Орлова Миколі I від 26.05.1847 з вироками, с.62-70; Т.2 — окремий запис рішення у справі Шевченка від 30.05.1847, с.329). (1990). Кирило-Мефодіївське товариство: У 3 т.."data-reference="Кирило-Мефодіївське товариство: У 3 т. 1990"><sup><a href="http://litopys.org.ua/rizne/kmt03.htm" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Грушевський: брацтво «було захоплено серед самого ще свого творення» за доносом студента; «Найтяжша кара впала на Шевченка: його віддано в салдати і вислано в закаспійську пустиню, заборонивши писати й малювати», а «на українську мисль, на українське слово пішли нагінки і заборони, перед тим не бувалі… самі такі слова як Україна, Малоросія, Гетьманщина вважали ся злочинними»<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України."data-reference="Ілюстрована історія України 1921"><sup><a href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>. Співзасновник братства Микола Гулак «був ув'язнений у Шліссельбурзькій фортеці (1847—50), згодом засланий до м. Перм… під суворий нагляд поліції (1850—59)»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2004). Енциклопедія історії України: Т. 2."data-reference="Енциклопедія історії України: Т. 2 2004"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції байсангура беноєвського війська взяли в полон 17 лютого 1861 року: генерал кемпферт рапортував військовому міністрові 28 лютого - «...попри відчайдушний опір, узяли в полон байсунгура і чотирьох його сподвижників... захоплено також родини байсунгура і султан-мурада — усього 14 осіб»(citation: чеченцы в русско-кавказской войне 1998). у березні 1861 року військово-польовий суд у хасав-юрті засудив його до повішення; історик з. х. ібрагімова передає чеченську усну традицію про страту: ніхто з тих, хто стояв біля шибениці, не погодився стати катом, і «лише після того, як офіцери, що розпоряджалися проведенням страти, запропонували грошову винагороду добровільному катові, цю роль узяв на себе один із дагестанців, які стояли в натовпі»(citation: мир чеченцев. xix век 2007); родину і синів байсангура заслано до сибіру(citation: чеченцы в русско-кавказской войне 1998). керівників повстання, що здалися, - наїба малої чечні атабі-муллу атаєва, якого імперські папери звуть атабаєм (14 листопада 1861 року), і уму дуєва (14 грудня 1861 року) - імператор олександр ii звелів заслати у внутрішні губернії - окремо: «уму... відправити на проживання в далекі від кавказу губернії... але з умовою, щоб він не перебував в одному місті з атабаєм»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). шейха кунта-хаджі, мусульманського проповідника, який учив поминати бога вголос, хором, зі співом і кружлянням по колу (таке поминання називається зікр, звідси імперське прізвисько його послідовників - зікристи), за яким із початку 1862 року був установлений постійний поліцейський нагляд, заарештували 3 січня 1864 року в сержень-юрті за розпорядженням намісника. вимога його послідовників була одна: «головна вимога зікристів, як і раніше, полягала в негайному звільненні заарештованих і припиненні нових арештів. у такому разі кунта-хаджинці обіцяли знову коритися владі»(citation: история чечни в xix-xx веках 2005). начальник чеченського округу генерал туманов вимоги відхилив і домагався видачі тих, хто арешту уникнув; 18 січня 1864 року біля шалі справа скінчилася розстрілом. вогнепальну зброю ті, що прийшли, залишили свідомо - рішення йти лише з холодною зброєю приписують мачик-муллі, який оголосив, що кунта-хаджі, який йому явився, наповнить гвинтівки солдатів водою(citation: история чечни в xix-xx веках 2005). історики я. з. ахмадов і е. х. хасмагомадов пишуть: «кунта-хаджинці рушили на щільні каре регулярних військ лише з шашками й кинджалами в руках. туманов дозволив їм атакувати, після чого віддав наказ відкрити рушничний і гарматний вогонь»; убитих вони рахують «понад 150»(citation: история чечни в xix-xx веках 2005). історик з. х. ібрагімова дає лік за місцем побоїща: «на місці зіткнення залишилося 164 убитих. серед заколотих багнетами виявилося 5 жіночих трупів»; втрати загону - 8 убитих і 33 поранених(citation: мир чеченцев. xix век 2007). у цій справі заслано 18 осіб - самого шейха безстроково в устюжну новгородської губернії, його брата мовсара - у виборзьку фортецю, векілів, довірених людей шейха, - у смоленську губернію, дев'ятьох рядових зікристів - на фортечні роботи з подальшим поселенням у сибіру(citation: история чечни в xix-xx веках 2005)(citation: мир чеченцев. xix век 2007). в архівній відомості піднаглядних новгородської губернії за 1865 рік шейх записаний рядком: «чеченець ших-кунти. вік 35 років. засланий за поширення фантастичного вчення «зікру»... отримує на місяць 1 руб. 80 коп.»(citation: мир чеченцев. xix век 2007). проживши на засланні трохи більше двох років, кунта-хаджі помер від голодного виснаження(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1860-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1860</div>
+<div><a href="/uk/campaigns/C1169">C1169</a> Придушення повстань 1860-1861 років, страта Байсангура і розстріл зікристів біля Шалі (1860-1864)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Байсангура Беноєвського війська взяли в полон 17 лютого 1861 року: генерал Кемпферт рапортував військовому міністрові 28 лютого - «...Попри відчайдушний опір, узяли в полон Байсунгура і чотирьох його сподвижників... захоплено також родини Байсунгура і Султан-Мурада — усього 14 осіб»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. У березні 1861 року військово-польовий суд у Хасав-Юрті засудив його до повішення; історик З. Х. Ібрагімова передає чеченську усну традицію про страту: ніхто з тих, хто стояв біля шибениці, не погодився стати катом, і «лише після того, як офіцери, що розпоряджалися проведенням страти, запропонували грошову винагороду добровільному катові, цю роль узяв на себе один із дагестанців, які стояли в натовпі»<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>; родину і синів Байсангура заслано до Сибіру<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Керівників повстання, що здалися, - наїба Малої Чечні Атабі-муллу Атаєва, якого імперські папери звуть Атабаєм (14 листопада 1861 року), і Уму Дуєва (14 грудня 1861 року) - імператор Олександр II звелів заслати у внутрішні губернії - окремо: «Уму... відправити на проживання в далекі від Кавказу губернії... але з умовою, щоб він не перебував в одному місті з Атабаєм»<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span>. Шейха Кунта-Хаджі, мусульманського проповідника, який учив поминати Бога вголос, хором, зі співом і кружлянням по колу (таке поминання називається зікр, звідси імперське прізвисько його послідовників - зікристи), за яким із початку 1862 року був установлений постійний поліцейський нагляд, заарештували 3 січня 1864 року в Сержень-Юрті за розпорядженням намісника. Вимога його послідовників була одна: «Головна вимога зікристів, як і раніше, полягала в негайному звільненні заарештованих і припиненні нових арештів. У такому разі кунта-хаджинці обіцяли знову коритися владі»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Начальник Чеченського округу генерал Туманов вимоги відхилив і домагався видачі тих, хто арешту уникнув; 18 січня 1864 року біля Шалі справа скінчилася розстрілом. Вогнепальну зброю ті, що прийшли, залишили свідомо - рішення йти лише з холодною зброєю приписують Мачик-муллі, який оголосив, що Кунта-Хаджі, який йому явився, наповнить гвинтівки солдатів водою<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: «кунта-хаджинці рушили на щільні каре регулярних військ лише з шашками й кинджалами в руках. Туманов дозволив їм атакувати, після чого віддав наказ відкрити рушничний і гарматний вогонь»; убитих вони рахують «понад 150»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Історик З. Х. Ібрагімова дає лік за місцем побоїща: «На місці зіткнення залишилося 164 убитих. Серед заколотих багнетами виявилося 5 жіночих трупів»; втрати загону - 8 убитих і 33 поранених<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. У цій справі заслано 18 осіб - самого шейха безстроково в Устюжну Новгородської губернії, його брата Мовсара - у Виборзьку фортецю, векілів, довірених людей шейха, - у Смоленську губернію, дев'ятьох рядових зікристів - на фортечні роботи з подальшим поселенням у Сибіру<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span><span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. В архівній відомості піднаглядних Новгородської губернії за 1865 рік шейх записаний рядком: «Чеченець Ших-Кунти. Вік 35 років. Засланий за поширення фантастичного вчення «зікру»... Отримує на місяць 1 руб. 80 коп.»<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. Проживши на засланні трохи більше двох років, Кунта-Хаджі помер від голодного виснаження<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції військово-польовий суд засідав у грозному 4-6 березня 1878 року: «із 17 підсудних 11 було засуджено до смертної кари, зокрема алібек-хаджі, ума дуєв, один із його синів і дада залмаєв»(citation: история чечни в xix-xx веках 2005); історик з. х. ібрагімова рахує 18 підсудних і 13 засуджених, решту - до 20 років каторги(citation: мир чеченцев. xix век 2007). історик д. а. хожаєв пише: «9 березня 1878 року о 6 годині ранку в місті грозному на ярмарковій площі їх було повішено й зарито в спільній ямі» - і подає поіменний список одинадцятьох(citation: чеченцы в русско-кавказской войне 1998); ахмадов і хасмагомадов додають: страта пройшла «при гробовому мовчанні та явному співчутті зібраних городян до страчуваних»(citation: история чечни в xix-xx веках 2005). учасник придушення, присутній на страті, визнав: «мене вразив спокій, з яким ці люди помирали»(citation: мир чеченцев. xix век 2007). тіла, зариті владою у спільній ямі, чеченці вночі таємно перепоховали за мусульманським обрядом - історик д. а. хожаєв передає переказ про кладовище біля самашок, історик з. х. ібрагімова - про гай тиртова під грозним(citation: чеченцы в русско-кавказской войне 1998)(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1877</div>
+<div><a href="/uk/campaigns/C1172">C1172</a> «Косіть усе, бийте і вішайте нещадно»: придушення повстання 1877 року і страти в Грозному (1877-1878)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Військово-польовий суд засідав у Грозному 4-6 березня 1878 року: «Із 17 підсудних 11 було засуджено до смертної кари, зокрема Алібек-Хаджі, Ума Дуєв, один із його синів і Дада Залмаєв»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>; історик З. Х. Ібрагімова рахує 18 підсудних і 13 засуджених, решту - до 20 років каторги<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. Історик Д. А. Хожаєв пише: «9 березня 1878 року о 6 годині ранку в місті Грозному на ярмарковій площі їх було повішено й зарито в спільній ямі» - і подає поіменний список одинадцятьох<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>; Ахмадов і Хасмагомадов додають: страта пройшла «при гробовому мовчанні та явному співчутті зібраних городян до страчуваних»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Учасник придушення, присутній на страті, визнав: «Мене вразив спокій, з яким ці люди помирали»<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. Тіла, зариті владою у спільній ямі, чеченці вночі таємно перепоховали за мусульманським обрядом - історик Д. А. Хожаєв передає переказ про кладовище біля Самашок, історик З. Х. Ібрагімова - про гай Тиртова під Грозним<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span><span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції у січні 1908 року начальник терської області секретним циркуляром приписав «установити секретний нагляд за діяльністю мусульманського духовенства, «...а так само за появою емісарів із туреччини»»(citation: история чечни в xix-xx веках 2005). у 1911 році «російська влада пішла на безпрецедентний крок - у 1911 р. з терської області вислано в адміністративному порядку одразу вісім шейхів, як кадирійського, так і накшбандійського тарикатів (шейх - духовний наставник, тарикат - релігійне братство учнів навколо такого наставника)... головний покровитель зелімхана - баматгірі-хаджі мітаєв, а також інгуський шейх батал-хаджі белхороєв, померли на засланні»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0017"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>У січні 1908 року начальник Терської області секретним циркуляром приписав «установити секретний нагляд за діяльністю мусульманського духовенства, «...а так само за появою емісарів із Туреччини»»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. У 1911 році «російська влада пішла на безпрецедентний крок - у 1911 р. з Терської області вислано в адміністративному порядку одразу вісім шейхів, як кадирійського, так і накшбандійського тарикатів (шейх - духовний наставник, тарикат - релігійне братство учнів навколо такого наставника)... Головний покровитель Зелімхана - Баматгірі-хаджі Мітаєв, а також інгуський шейх Батал-хаджі Белхороєв, померли на засланні»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції зачистка українських інституцій та переслідування лідерів руху. грушевський був «11 груд. 1914 заарештований жандармерією у києві й звинувачений в австрофільстві та причетності до створення легіону українських січових стрільців. відправлений на заслання до симбірська»(citation: енциклопедія історії україни: т. 2 2004), потім переведений до казані із забороною викладання та позбавлений професорського звання."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1914-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1914</div>
+<div><a href="/uk/campaigns/C0070">C0070</a> Перша світова війна та окупація Галичини (1914–1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Зачистка українських інституцій та переслідування лідерів руху. Грушевський був «11 груд. 1914 заарештований жандармерією у Києві й звинувачений в австрофільстві та причетності до створення Легіону Українських січових стрільців. Відправлений на заслання до Симбірська»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2004). Енциклопедія історії України: Т. 2."data-reference="Енциклопедія історії України: Т. 2 2004"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>, потім переведений до Казані із забороною викладання та позбавлений професорського звання.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції російська імперія з початком світової війни в 1914 році вивезла з чечні на фронт тих, кого вважала небезпечними. чеченський письменник х. д. ошаєв, уродженець слободи воздвиженської і свідок подій, писав: «як і після 1905 року, намісництво на кавказі, під час війни, вирішило вивести з чечні весь ненадійний елемент, що не мав застосування своїм рукам і міг завдати царській адміністрації багато клопоту «у хвилину життя скрутну». ті, хто переховувався від влади і виявив бажання йти на війну, амністувалися»(citation: очерк начала революционного движения в чечне 1928). для цього імперія в 1914 році створила кавказьку кінну дивізію, прозвану «дикою», - шість національних полків з горців по чотири кінні сотні: чеченський, дагестанський, інгуський, кабардинський, татарський і черкеський(citation: история чечни в xix-xx веках 2005). цю ж мету пізніше назвав генерал денікін, який у громадянську війну очолив добровольчу армію, що зайняла чечню в 1919 році (кампанія c1174): «чи не прагнення до вилучення з території кавказу найбільш неспокійних елементів було винятковою причиною цього формування»(citation: история чечни в xix-xx веках 2005). тих, хто залишився, імперія тримала під посиленими гарнізонами - х. д. ошаєв писав: «під час війни гарнізони укріплень ведено, шатой, воздвиженської були збільшені, сотні возів продовольства, зброї та бойового спорядження в перші ж дні війни переповнили склади цих укріплень»(citation: очерк начала революционного движения в чечне 1928). у серпні 1916 року солдати осетинського пішого дивізіону, які проходили підготовку у фортеці воздвиженській, відмовилися виконувати накази і відтягували відправлення на фронт; військове командування перекинуло з грозного піхотний батальйон, і 26 серпня той розстріляв виступ - історики я. з. ахмадов і е. х. хасмагомадов пишуть: «загинуло 16 і дістали поранення понад 30 солдатів дивізіону»; частина втікачів сховалася в чеченських аулах і будинках(citation: история чечни в xix-xx веках 2005)(citation: хронология истории чечено-ингушетии 1991). за підбурювання імперська адміністрація заарештувала двох жителів старих атагів - мурду хамідова і джабраїла толгаєва; ті ж історики пишуть: «обидва були засуджені до смертної кари й уникли її лише завдяки лютневій революції 1917 р.»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1914-08-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1914</div>
+<div><a href="/uk/campaigns/C1189">C1189</a> Перша світова війна в Чечні: вивіз «ненадійного елементу» в «Дику дивізію», надзвичайна охорона і мобілізація страйкарів (1914-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія з початком світової війни в 1914 році вивезла з Чечні на фронт тих, кого вважала небезпечними. Чеченський письменник Х. Д. Ошаєв, уродженець слободи Воздвиженської і свідок подій, писав: «Як і після 1905 року, намісництво на Кавказі, під час війни, вирішило вивести з Чечні весь ненадійний елемент, що не мав застосування своїм рукам і міг завдати царській адміністрації багато клопоту «у хвилину життя скрутну». Ті, хто переховувався від влади і виявив бажання йти на війну, амністувалися»<span onclick=scrollToRef('scite-22') id="scite-ref-22-a" class="scite-citeref-number" title="Ошаев Х. Д. (изд. Чеченского общества «Долой неграмотность», Грозный). (1928). Очерк начала революционного движения в Чечне."data-reference="Очерк начала революционного движения в Чечне 1928"><sup><a href="https://litmir.club/bd/?b=947954" target="_blank" data-hasqtip="21" aria-describedby="qtip-21">[22]</a></sup></span>. Для цього імперія в 1914 році створила Кавказьку кінну дивізію, прозвану «Дикою», - шість національних полків з горців по чотири кінні сотні: Чеченський, Дагестанський, Інгуський, Кабардинський, Татарський і Черкеський<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Цю ж мету пізніше назвав генерал Денікін, який у Громадянську війну очолив Добровольчу армію, що зайняла Чечню в 1919 році (кампанія C1174): «Чи не прагнення до вилучення з території Кавказу найбільш неспокійних елементів було винятковою причиною цього формування»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Тих, хто залишився, імперія тримала під посиленими гарнізонами - Х. Д. Ошаєв писав: «Під час війни гарнізони укріплень Ведено, Шатой, Воздвиженської були збільшені, сотні возів продовольства, зброї та бойового спорядження в перші ж дні війни переповнили склади цих укріплень»<span onclick=scrollToRef('scite-22') id="scite-ref-22-a" class="scite-citeref-number" title="Ошаев Х. Д. (изд. Чеченского общества «Долой неграмотность», Грозный). (1928). Очерк начала революционного движения в Чечне."data-reference="Очерк начала революционного движения в Чечне 1928"><sup><a href="https://litmir.club/bd/?b=947954" target="_blank" data-hasqtip="21" aria-describedby="qtip-21">[22]</a></sup></span>. У серпні 1916 року солдати Осетинського пішого дивізіону, які проходили підготовку у фортеці Воздвиженській, відмовилися виконувати накази і відтягували відправлення на фронт; військове командування перекинуло з Грозного піхотний батальйон, і 26 серпня той розстріляв виступ - історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: «загинуло 16 і дістали поранення понад 30 солдатів дивізіону»; частина втікачів сховалася в чеченських аулах і будинках<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span><span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="А. А. Айдамиров. (1991). Хронология истории Чечено-Ингушетии."data-reference="Хронология истории Чечено-Ингушетии 1991"><sup><a href="https://www.prlib.ru/item/1968825" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>. За підбурювання імперська адміністрація заарештувала двох жителів Старих Атагів - Мурду Хамідова і Джабраїла Толгаєва; ті ж історики пишуть: «Обидва були засуджені до смертної кари й уникли її лише завдяки Лютневій революції 1917 р.»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції примус до саморозпуску легальних українських партій (зокрема боротьбистів навесні 1920 року) та їх поглинання кп(б)у шляхом політичного шантажу і підкупу їхніх лідерів посадами(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Українці"
+             data-groups="G0013"
+             data-tools="S0008"
+             data-date="1919-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1919</div>
+<div><a href="/uk/campaigns/C0075">C0075</a> Інституційне поглинання через «військово-політичний союз» (1919–1921)</div><div><a href="/uk/groups/G0013">G0013</a> Радянська Росія (РРФСР)</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Примус до саморозпуску легальних українських партій (зокрема боротьбистів навесні 1920 року) та їх поглинання КП(б)У шляхом політичного шантажу і підкупу їхніх лідерів посадами<span onclick=scrollToRef('scite-24') id="scite-ref-24-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="23" aria-describedby="qtip-23">[24]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції за шейхом алі мітаєвим, членом чеченського ревкому, гпу встановило «ретельне спостереження», а навесні 1924 року «ухвалило рішення «про вилучення» з чечні а. мітаєва. офіційні домовленості з ним були віроломно порушені, він був раптово заарештований, вивезений у ростов-на-дону і, після недовгого слідства, розстріляний»(citation: история чечни в xix-xx веках 2005); історик є. ф. жупікова датує арешт 19 квітня 1924 року і наводить формулу звинувачення гпу - «за його зв'язок з контрреволюційними організаціями»(citation: повстанческое движение на северном кавказе в 1920-1925 годах 2013). характер розправи та її виконавців історики називають своїми іменами: «убивство чекістами а. мітаєва», - пишуть я. з. ахмадов і е. х. хасмагомадов(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0013"
+             data-tools="S0017"
+             data-date="1920-04-03 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1920</div>
+<div><a href="/uk/campaigns/C1176">C1176</a> Радянізація Чечні: ревкоми замість Рад, каральні операції та розстріли ЧК (1920-1924)</div><div><a href="/uk/groups/G0013">G0013</a> Радянська Росія (РРФСР)</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>За шейхом Алі Мітаєвим, членом Чеченського ревкому, ГПУ встановило «ретельне спостереження», а навесні 1924 року «ухвалило рішення «про вилучення» з Чечні А. Мітаєва. Офіційні домовленості з ним були віроломно порушені, він був раптово заарештований, вивезений у Ростов-на-Дону і, після недовгого слідства, розстріляний»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>; історик Є. Ф. Жупікова датує арешт 19 квітня 1924 року і наводить формулу звинувачення ГПУ - «за його зв'язок з контрреволюційними організаціями»<span onclick=scrollToRef('scite-25') id="scite-ref-25-a" class="scite-citeref-number" title="Жупикова Е. Ф.. (2013). Повстанческое движение на Северном Кавказе в 1920-1925 годах."data-reference="Повстанческое движение на Северном Кавказе в 1920-1925 годах 2013"><sup><a href="http://www.ainros.ru/ainst/t1/jupikova.pdf" target="_blank" data-hasqtip="24" aria-describedby="qtip-24">[25]</a></sup></span>. Характер розправи та її виконавців історики називають своїми іменами: «Убивство чекістами А. Мітаєва», - пишуть Я. З. Ахмадов і Е. Х. Хасмагомадов<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції масові арешти селян під час кампанії розкуркулення: згідно з директивами 1930 року, окрім депортацій, десятки тисяч людей відправляли безпосередньо до концентраційних таборів для ізоляції(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1928-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1928</div>
+<div><a href="/uk/campaigns/C0077">C0077</a> Насильницька колективізація та розкуркулення (1928–1932)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Масові арешти селян під час кампанії розкуркулення: згідно з директивами 1930 року, окрім депортацій, десятки тисяч людей відправляли безпосередньо до концентраційних таборів для ізоляції<span onclick=scrollToRef('scite-24') id="scite-ref-24-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="23" aria-describedby="qtip-23">[24]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції фізичне знищення та ізоляція української інтелігенції, письменників, науковців, а також партійної опозиції (націонал-комуністів) у ході цілеспрямованих репресій. фабрикація справ (зокрема справи «унц») і доведення до смерті представників національної еліти, включно з істориком м. грушевським, письменником м. хвильовим та наркомом м. скрипником(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1933-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1933</div>
+<div><a href="/uk/campaigns/C0079">C0079</a> Культурний терор і «Розстріляне відродження» (1933–1938)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Фізичне знищення та ізоляція Української інтелігенції, письменників, науковців, а також партійної опозиції (націонал-комуністів) у ході цілеспрямованих репресій. Фабрикація справ (зокрема справи «УНЦ») і доведення до смерті представників національної еліти, включно з істориком М. Грушевським, письменником М. Хвильовим та наркомом М. Скрипником<span onclick=scrollToRef('scite-24') id="scite-ref-24-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="23" aria-describedby="qtip-23">[24]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції нейтралізація політично активного шару через масові арешти: одразу після «народних зборів» відбулися «арешти провідних діячів української інтелігенції, за здалегідь підготованими списками, складеними у радянському консульстві»(citation: радянський період 1939—1941 рр. (тюрма на лонцького) 2013); «всього в 1939—1941 рр. органами нквд було заарештовано 21 982 поляки, 23 163 українців, 13 160 євреїв»(citation: радянський період 1939—1941 рр. (тюрма на лонцького) 2013), а заарештованих чекали розстріл, тюрма або табори гулагу: «загалом протягом 1939—1941 рр. було розстріляно та ув'язнено від 16 тис. до 35 тис. членів оун»(citation: радянський період 1939—1941 рр. (тюрма на лонцького) 2013)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1939-09-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1939</div>
+<div><a href="/uk/campaigns/C0081">C0081</a> Анексія та радянізація Західної України (1939–1941)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Нейтралізація політично активного шару через масові арешти: одразу після «Народних зборів» відбулися «арешти провідних діячів української інтелігенції, за здалегідь підготованими списками, складеними у радянському консульстві»<span onclick=scrollToRef('scite-26') id="scite-ref-26-a" class="scite-citeref-number" title="Національний музей-меморіал жертв окупаційних режимів «Тюрма на Лонцького». (2013). Радянський період 1939—1941 рр. (Тюрма на Лонцького)."data-reference="Радянський період 1939—1941 рр. (Тюрма на Лонцького) 2013"><sup><a href="https://lonckoho.lviv.ua/istoriya/istoriya-vyaznytsi/radyanskyj-period-1939-1941-rr" target="_blank" data-hasqtip="25" aria-describedby="qtip-25">[26]</a></sup></span>; «всього в 1939—1941 рр. органами НКВД було заарештовано 21 982 поляки, 23 163 українців, 13 160 євреїв»<span onclick=scrollToRef('scite-26') id="scite-ref-26-a" class="scite-citeref-number" title="Національний музей-меморіал жертв окупаційних режимів «Тюрма на Лонцького». (2013). Радянський період 1939—1941 рр. (Тюрма на Лонцького)."data-reference="Радянський період 1939—1941 рр. (Тюрма на Лонцького) 2013"><sup><a href="https://lonckoho.lviv.ua/istoriya/istoriya-vyaznytsi/radyanskyj-period-1939-1941-rr" target="_blank" data-hasqtip="25" aria-describedby="qtip-25">[26]</a></sup></span>, а заарештованих чекали розстріл, тюрма або табори ГУЛАГу: «Загалом протягом 1939—1941 рр. було розстріляно та ув'язнено від 16 тис. до 35 тис. членів ОУН»<span onclick=scrollToRef('scite-26') id="scite-ref-26-a" class="scite-citeref-number" title="Національний музей-меморіал жертв окупаційних режимів «Тюрма на Лонцького». (2013). Радянський період 1939—1941 рр. (Тюрма на Лонцького)."data-reference="Радянський період 1939—1941 рр. (Тюрма на Лонцького) 2013"><sup><a href="https://lonckoho.lviv.ua/istoriya/istoriya-vyaznytsi/radyanskyj-period-1939-1941-rr" target="_blank" data-hasqtip="25" aria-describedby="qtip-25">[26]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції масові арешти бійців упа, членів оун і запідозрених у допомозі їм із подальшим відправленням до таборів гулагу, на який режим покладав «ізоляція „ненадійних елементів“» як одне з ключових завдань(citation: енциклопедія історії україни: т. 2 2004). під час акції «вісла» для цивільних, запідозрених у сприянні підпіллю, передбачалося «запровадження військ.-польових судів і концтаборів, зокрема у явожно»(citation: енциклопедія історії україни: т. 1 2003). до 1951 року українці стали другим народом гулагу: за відомчою статистикою, «національний склад ув'язнених гулагу (станом на 1 січня 1951 р.)» налічував 506 221 українця з приблизно 2,5 млн ув'язнених - близько 20%(citation: гулаг (историко-социологический аспект) (земсков) 1991)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1944-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1944</div>
+<div><a href="/uk/campaigns/C0084">C0084</a> Придушення опору УПА та операція «Вісла» (1944–1951)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Масові арешти бійців УПА, членів ОУН і запідозрених у допомозі їм із подальшим відправленням до таборів ГУЛАГу, на який режим покладав «ізоляція „ненадійних елементів"» як одне з ключових завдань<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2004). Енциклопедія історії України: Т. 2."data-reference="Енциклопедія історії України: Т. 2 2004"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. Під час акції «Вісла» для цивільних, запідозрених у сприянні підпіллю, передбачалося «запровадження військ.-польових судів і концтаборів, зокрема у Явожно»<span onclick=scrollToRef('scite-27') id="scite-ref-27-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1."data-reference="Енциклопедія історії України: Т. 1 2003"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="26" aria-describedby="qtip-26">[27]</a></sup></span>. До 1951 року українці стали другим народом ГУЛАГу: за відомчою статистикою, «Національний склад ув'язнених ГУЛАГу (станом на 1 січня 1951 р.)» налічував 506 221 українця з приблизно 2,5 млн ув'язнених - близько 20%<span onclick=scrollToRef('scite-28') id="scite-ref-28-a" class="scite-citeref-number" title="В. Н. Земсков («Социологические исследования», 1991, №6-7). (1991). ГУЛАГ (историко-социологический аспект) (Земсков)."data-reference="ГУЛАГ (историко-социологический аспект) (Земсков) 1991"><sup><a href="https://scepsis.net/library/id_937.html" target="_blank" data-hasqtip="27" aria-describedby="qtip-27">[28]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції сфабриковані репресії проти діячів української та єврейської інтелігенції: у справі єврейського антифашистського комітету «18 лип. 1952 військ. колегія верховного суду срср винесла смертний вирок 13 особам, у т. ч. 5 вихідцям з україни, відомим єврейс. письменникам і поетам д.бергельсону, д.гофштейну, л.квітко, п.маркішу, і.феферу. 12 серп. 1952 всі вони були страчені»(citation: енциклопедія історії україни: т. 3 2005)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1946-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1946</div>
+<div><a href="/uk/campaigns/C0085">C0085</a> Повоєнний ідеологічний терор («Жданівщина») (1946–1953)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Сфабриковані репресії проти діячів української та єврейської інтелігенції: у справі Єврейського антифашистського комітету «18 лип. 1952 Військ. колегія Верховного Суду СРСР винесла смертний вирок 13 особам, у т. ч. 5 вихідцям з України, відомим єврейс. письменникам і поетам Д.Бергельсону, Д.Гофштейну, Л.Квітко, П.Маркішу, І.Феферу. 12 серп. 1952 всі вони були страчені»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2005). Енциклопедія історії України: Т. 3."data-reference="Енциклопедія історії України: Т. 3 2005"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції цілеспрямовані арешти нової української інтелігенції, дисидентів та учасників протестів (зокрема після прем'єри «тіней забутих предків») для придушення зароджуваного опору(citation: диссидентское движение в украине (1954 – 1987) 2026)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1965-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1965</div>
+<div><a href="/uk/campaigns/C0088">C0088</a> Перша хвиля репресій проти «шістдесятників» (1965–1968)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Цілеспрямовані арешти нової української інтелігенції, дисидентів та учасників протестів (зокрема після прем'єри «Тіней забутих предків») для придушення зароджуваного опору<span onclick=scrollToRef('scite-29') id="scite-ref-29-a" class="scite-citeref-number" title="Евгений Захаров, Харьковская правозащитная группа. (2026). ДИССИДЕНТСКОЕ ДВИЖЕНИЕ В УКРАИНЕ (1954 – 1987)."data-reference="ДИССИДЕНТСКОЕ ДВИЖЕНИЕ В УКРАИНЕ (1954 – 1987) 2026"><sup><a href="https://museum.khpg.org/ru/1628664422" target="_blank" data-hasqtip="28" aria-describedby="qtip-28">[29]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції масові арешти членів української гельсінської групи та фабрикація кримінальних справ: василь стус «12 січня 1972 заарештований разом з ін. укр. літераторами-правозахисниками: і.світличним, є.сверстюком, ігорем та іриною калинцями», а після вступу до гельсінської групи в жовтні 1979 року був «14 травня 1980 заарештований вдруге» і засуджений на 10 років ув'язнення та 5 років заслання(citation: енциклопедія історії україни: т. 9 2012). він «помер у карцері табору особливого режиму вс-389/36» і був похований «в безіменній могилі під № 9 на табірному кладовищі»(citation: енциклопедія історії україни: т. 9 2012)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1972-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1972</div>
+<div><a href="/uk/campaigns/C0089">C0089</a> «Генеральний погром» правозахисників і каральна психіатрія (1972–1985)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Масові арешти членів Української Гельсінської групи та фабрикація кримінальних справ: Василь Стус «12 січня 1972 заарештований разом з ін. укр. літераторами-правозахисниками: І.Світличним, Є.Сверстюком, Ігорем та Іриною Калинцями», а після вступу до Гельсінської групи в жовтні 1979 року був «14 травня 1980 заарештований вдруге» і засуджений на 10 років ув'язнення та 5 років заслання<span onclick=scrollToRef('scite-30') id="scite-ref-30-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="29" aria-describedby="qtip-29">[30]</a></sup></span>. Він «помер у карцері табору особливого режиму ВС-389/36» і був похований «в безіменній могилі під № 9 на табірному кладовищі»<span onclick=scrollToRef('scite-30') id="scite-ref-30-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="29" aria-describedby="qtip-29">[30]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції силова нейтралізація активістів руху руками силових структур і партійного активу: розгони пам'ятних акцій з побиттями («витягнули з машини, побили») за участю кдб і міліції(citation: брав участь у спробі вшанувати героїв базару (malyn.media) 2023), госпіталізація побитого політв'язня василя овсієнка(citation: інтерв'ю василя овсієнка (музей дисидентського руху) 2011), смерть рухівця євгена меленівського - «після „бесіди“ в обласному управлінні мвс помер по дорозі додому євген меленівський»(citation: національний прапор над житомиром: історія та боротьба за нього (український тиждень) 2010), а пізніше - демонстративна незацікавленість правоохоронців у розкритті злочинів проти функціонерів руху: вони «демонстративно виявляли незацікавленість в розкритті злочину»(citation: михайло бойчишин — голова секретаріату нру (український погляд) 2024)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0024"
+             data-date="1989-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1989</div>
+<div><a href="/uk/campaigns/C0091">C0091</a> Гальмування демократичних реформ і протидія Народному Руху (1989–1990)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0024">S0024</a> Поліцейський апарат</div>            </div>
+            <div class="proc-desc">
+                        <p>Силова нейтралізація активістів руху руками силових структур і партійного активу: розгони пам'ятних акцій з побиттями («витягнули з машини, побили») за участю КДБ і міліції<span onclick=scrollToRef('scite-31') id="scite-ref-31-a" class="scite-citeref-number" title="MALYN.MEDIA. (2023). Брав участь у спробі вшанувати Героїв Базару (MALYN.MEDIA)."data-reference="Брав участь у спробі вшанувати Героїв Базару (MALYN.MEDIA) 2023"><sup><a href="https://malyn.media/novyny/podii/brav-uchast-u-trahichnomu-vshanuvanni-heroiv-bazaru-pomer-dysydent-i-politv-iazen-vasyl-ovsiienko/" target="_blank" data-hasqtip="30" aria-describedby="qtip-30">[31]</a></sup></span>, госпіталізація побитого політв'язня Василя Овсієнка<span onclick=scrollToRef('scite-32') id="scite-ref-32-a" class="scite-citeref-number" title="Василь Овсієнко / Харківська правозахисна група. (2011). Інтерв'ю Василя Овсієнка (Музей дисидентського руху)."data-reference="Інтерв'ю Василя Овсієнка (Музей дисидентського руху) 2011"><sup><a href="https://museum.khpg.org/1321393033" target="_blank" data-hasqtip="31" aria-describedby="qtip-31">[32]</a></sup></span>, смерть рухівця Євгена Меленівського - «після „бесіди" в обласному управлінні МВС помер по дорозі додому Євген Меленівський»<span onclick=scrollToRef('scite-33') id="scite-ref-33-a" class="scite-citeref-number" title="Віталій Мельничук (Український тиждень, 19.08.2010). (2010). Національний прапор над Житомиром: історія та боротьба за нього (Український тиждень)."data-reference="Національний прапор над Житомиром: історія та боротьба за нього (Український тиждень) 2010"><sup><a href="https://tyzhden.ua/natsionalnyj-prapor-nad-zhytomyrom-istoriia-ta-borotba-za-noho/" target="_blank" data-hasqtip="32" aria-describedby="qtip-32">[33]</a></sup></span>, а пізніше - демонстративна незацікавленість правоохоронців у розкритті злочинів проти функціонерів Руху: вони «демонстративно виявляли незацікавленість в розкритті злочину»<span onclick=scrollToRef('scite-34') id="scite-ref-34-a" class="scite-citeref-number" title="Зенон Боровець, Український погляд. (2024). Михайло Бойчишин — голова Секретаріату НРУ (Український погляд)."data-reference="Михайло Бойчишин — голова Секретаріату НРУ (Український погляд) 2024"><sup><a href="https://ukrpohliad.org/blogs/myhajlo-bojchyshyn-golova-sekretariatu-nru-vbytyj-u-nezalezhnij-ukrayini-za-te-shho-buv-ukrayintsem-30-rokiv-tomu.html" target="_blank" data-hasqtip="33" aria-describedby="qtip-33">[34]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції спроба фізичного усунення лідера демократичної опозиції в. ющенка в розпал передвиборчої кампанії через отруєння діоксином: наприкінці грудня 2004 року «пацієнт надійшов з отруєнням тхдд; рівні в сироватці його крові (108000 пг/г ліпідної маси) більш ніж у 50 000 разів перевищували показники звичайного населення»(citation: tcdd poisoning in victor yushchenko (the lancet) 2009). отруєння призвело до тяжкого спотворення обличчя кандидата."
+             data-platforms="Українці"
+             data-groups="G0011"
+             data-tools="S0017"
+             data-date="2004-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 2004</div>
+<div><a href="/uk/campaigns/C0096">C0096</a> Втручання у вибори та протидія «Помаранчевій революції» (2004)</div><div><a href="/uk/groups/G0011">G0011</a> Російська Федерація</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Спроба фізичного усунення лідера демократичної опозиції В. Ющенка в розпал передвиборчої кампанії через отруєння діоксином: наприкінці грудня 2004 року «пацієнт надійшов з отруєнням ТХДД; рівні в сироватці його крові (108000 пг/г ліпідної маси) більш ніж у 50 000 разів перевищували показники звичайного населення»<span onclick=scrollToRef('scite-35') id="scite-ref-35-a" class="scite-citeref-number" title="O. Sorg, M. Zennegg, P. Schmid та ін.. (2009). TCDD poisoning in Victor Yushchenko (The Lancet)."data-reference="TCDD poisoning in Victor Yushchenko (The Lancet) 2009"><sup><a href="https://pubmed.ncbi.nlm.nih.gov/19660807/" target="_blank" data-hasqtip="34" aria-describedby="qtip-34">[35]</a></sup></span>. Отруєння призвело до тяжкого спотворення обличчя кандидата.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції фізичне усунення легітимних представників місцевої влади, які чинили опір окупації: «понівечене тіло володимира рибака, члена партії „батьківщина“ і депутата міської ради горлівки (донецька область), було знайдено біля села райгородок», причому «рибака викрали 17 квітня проросійські сили після проукраїнського зібрання в горлівці. потім його катували та вбили»(citation: ukraine: the forgotten victims (fidh) 2014)."
+             data-platforms="Українці"
+             data-groups="G0011"
+             data-tools="S0012"
+             data-date="2014-04-12 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 2014</div>
+<div><a href="/uk/campaigns/C0101">C0101</a> Продовження російсько-української війни: Збройна агресія на Донбасі (2014–2015)</div><div><a href="/uk/groups/G0011">G0011</a> Російська Федерація</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Фізичне усунення легітимних представників місцевої влади, які чинили опір окупації: «понівечене тіло Володимира Рибака, члена партії „Батьківщина" і депутата міської ради Горлівки (Донецька область), було знайдено біля села Райгородок», причому «Рибака викрали 17 квітня проросійські сили після проукраїнського зібрання в Горлівці. Потім його катували та вбили»<span onclick=scrollToRef('scite-36') id="scite-ref-36-a" class="scite-citeref-number" title="FIDH. (2014). Ukraine: The Forgotten Victims (FIDH)."data-reference="Ukraine: The Forgotten Victims (FIDH) 2014"><sup><a href="https://www.fidh.org/IMG/pdf/ukraine-the_forgotten_victims.pdf" target="_blank" data-hasqtip="35" aria-describedby="qtip-35">[36]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Українці",
+"russia/nokhchi": "Нохчі (Чеченці)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank">
+                        Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank">
+                        Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank">
+                        Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://resource.history.org.ua/cgi-bin/eiu/history.exe?C21COM=2&I21DBN=ELIB&P21DBN=ELIB&Image_file_name=book%2F0014325.pdf&IMAGE_FILE_DOWNLOAD=0" target="_blank">
+                        Петр I; ред. И.Н. Андреев (М.-Л.: Изд-во АН СССР). (1948). Письма и бумаги императора Петра Великого. Т. VIII, вып. 1 (июль-декабрь 1708 г.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://history.org.ua/LiberUA/journal_2015_6/journal_2015_6.pdf" target="_blank">
+                        Д. О. Сєров, Т. Г. Таїрова-Яковлева (УІЖ, 2015, № 6). (2015). Смерть П. Полуботка в Петербурзі.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2007). Енциклопедія історії України: Т. 4.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2005). Енциклопедія історії України: Т. 3.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/Arabojaz_ist/Karachi_I/text1.htm" target="_blank">
+                        Мухаммадом Тахиром аль-Карахи. (1941). Блеск дагестанских шашек в некоторых шамилевских битвах.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="http://litopys.org.ua/rizne/kmt03.htm" target="_blank">
+                        Ін-т історії України АН УРСР; Наукова думка, Київ (Т.1 — доклад гр.А.Ф.Орлова Миколі I від 26.05.1847 з вироками, с.62-70; Т.2 — окремий запис рішення у справі Шевченка від 30.05.1847, с.329). (1990). Кирило-Мефодіївське товариство: У 3 т..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="http://litopys.org.ua/" target="_blank">
+                        Пётр Жур. (1996). Труды и дни Кобзаря.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-18" href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank">
+                        Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="19.0">
+                                
+        <li>
+            <span  id="scite-19" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-19" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2004). Енциклопедія історії України: Т. 2.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-20" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-20" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-21" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-21" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-22" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-22" href="https://litmir.club/bd/?b=947954" target="_blank">
+                        Ошаев Х. Д. (изд. Чеченского общества «Долой неграмотность», Грозный). (1928). Очерк начала революционного движения в Чечне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-23" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-23" href="https://www.prlib.ru/item/1968825" target="_blank">
+                        А. А. Айдамиров. (1991). Хронология истории Чечено-Ингушетии.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-24" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-24" href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank">
+                        Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-25" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-25" href="http://www.ainros.ru/ainst/t1/jupikova.pdf" target="_blank">
+                        Жупикова Е. Ф.. (2013). Повстанческое движение на Северном Кавказе в 1920-1925 годах.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-26" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-26" href="https://lonckoho.lviv.ua/istoriya/istoriya-vyaznytsi/radyanskyj-period-1939-1941-rr" target="_blank">
+                        Національний музей-меморіал жертв окупаційних режимів «Тюрма на Лонцького». (2013). Радянський період 1939—1941 рр. (Тюрма на Лонцького).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-27" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-27" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-28" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-28" href="https://scepsis.net/library/id_937.html" target="_blank">
+                        В. Н. Земсков («Социологические исследования», 1991, №6-7). (1991). ГУЛАГ (историко-социологический аспект) (Земсков).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-29" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-29" href="https://museum.khpg.org/ru/1628664422" target="_blank">
+                        Евгений Захаров, Харьковская правозащитная группа. (2026). ДИССИДЕНТСКОЕ ДВИЖЕНИЕ В УКРАИНЕ (1954 – 1987).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-30" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-30" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-31" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-31" href="https://malyn.media/novyny/podii/brav-uchast-u-trahichnomu-vshanuvanni-heroiv-bazaru-pomer-dysydent-i-politv-iazen-vasyl-ovsiienko/" target="_blank">
+                        MALYN.MEDIA. (2023). Брав участь у спробі вшанувати Героїв Базару (MALYN.MEDIA).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-32" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-32" href="https://museum.khpg.org/1321393033" target="_blank">
+                        Василь Овсієнко / Харківська правозахисна група. (2011). Інтерв'ю Василя Овсієнка (Музей дисидентського руху).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-33" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-33" href="https://tyzhden.ua/natsionalnyj-prapor-nad-zhytomyrom-istoriia-ta-borotba-za-noho/" target="_blank">
+                        Віталій Мельничук (Український тиждень, 19.08.2010). (2010). Національний прапор над Житомиром: історія та боротьба за нього (Український тиждень).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-34" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-34" href="https://ukrpohliad.org/blogs/myhajlo-bojchyshyn-golova-sekretariatu-nru-vbytyj-u-nezalezhnij-ukrayini-za-te-shho-buv-ukrayintsem-30-rokiv-tomu.html" target="_blank">
+                        Зенон Боровець, Український погляд. (2024). Михайло Бойчишин — голова Секретаріату НРУ (Український погляд).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-35" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-35" href="https://pubmed.ncbi.nlm.nih.gov/19660807/" target="_blank">
+                        O. Sorg, M. Zennegg, P. Schmid та ін.. (2009). TCDD poisoning in Victor Yushchenko (The Lancet).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-36" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-36" href="https://www.fidh.org/IMG/pdf/ukraine-the_forgotten_victims.pdf" target="_blank">
+                        FIDH. (2014). Ukraine: The Forgotten Victims (FIDH).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

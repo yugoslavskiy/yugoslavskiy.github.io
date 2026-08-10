@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/campaigns/C0012/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C0012/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C0012/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C0012/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C0012/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Перехід Мазепи на бік Швеції та Батуринська різанина (1708), кампанія C0012 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/campaigns/C0012/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Перехід Мазепи на бік Швеції та Батуринська різанина (1708), кампанія C0012 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/">Кампанії</a></li>
+  <li class="breadcrumb-item">Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>У відповідь на спробу автономії розірвати васалітет регулярне московське військо знищило гетьманську столицю Батурин. Петро наказав: «а Батурин на знак зрадникам (позаяк боронилися) іншим на приклад спалити весь»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Розправа супроводжувалася терором проти мирного населення: «Функ перебив понад тисячу людей у маленькому містечку Тереї (Терейській слободі) і спалив це містечко»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Евгений Тарле (М.: АН СССР, 1959). (1959). Сочинения в 12 томах. Том 10."data-reference="Сочинения в 12 томах. Том 10 1959"><sup><a href="https://imwerden.de/publ-12028" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, а загалом «у батуринській трагедії загинуло близько 15 тисяч українців, у тому числі всі жінки й діти»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Паралельно з різаниною йшла пропаганда: «Розіслано царські листи між народ, де представлювано, що Мазепа передав ся до Шведів на те, аби Україну віддати під Польшу, завести на Україні унїю, а благочестиву віру викорінити; що був він богоодступник, тайний католик»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України."data-reference="Ілюстрована історія України 1921"><sup><a href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C0012
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>
+                    <span>Жовтень 1708</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>
+                    <span>Листопад 1708</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версія</span>: 1.2
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Створено:&nbsp;</span>24 квітня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>9 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/C0012" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Шари Навігатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Шар russia-colonialism</h6>
+                    <a class="dropdown-item" href="/uk/campaigns/C0012/C0012-russia-colonialism-layer.json" download target="_blank">завантажити</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/uk/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fuk%2Fcampaigns%2FC0012%2FC0012-russia-colonialism-layer.json" target="_blank">відкрити <img width="10" src="/uk/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Актори</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/groups/G0008">G0008</a></td>
+                <td><a href="/uk/groups/G0008">Московське царство</a></td>
+                <td>9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Застосовані інструменти</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/software/S0010"> S0010 </a></td>
+                <td><a href="/uk/software/S0010"> Регулярна армія </a></td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td><a href="/uk/software/S0011"> S0011 </a></td>
+                <td><a href="/uk/software/S0011"> Московський патріархат </a></td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td><a href="/uk/software/S0008"> S0008 </a></td>
+                <td><a href="/uk/software/S0008"> Уряд </a></td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реалізовані процедури</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="каральні експедиції кидок регулярної армії для фізичного знищення столиці гетьманщини, яка не скорилася: «вранці 2 листопада російські війська увірвалися в батурин. після двогодинного бою рештки гарнізону були перебиті разом з усім цивільним населенням»(citation: мазепа 2007)(citation: иван мазепа и российская империя. история «предательства» 2011). місто було розграбовано і спалено за прямим розпорядженням петра - лист меншикову від 5 листопада 1708 року: «а батурин - на знак зрадникам (позаяк боронилися), іншим на приклад - спалити ввесь»(citation: письма и бумаги императора петра великого. т. viii, вып. 1 (июль-декабрь 1708 г.) 1948)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1708</div>
+                <div>
+                    <a href="/uk/techniques/T0077">T0077</a> Каральні експедиції
+                </div>
+<div><a href="/uk/campaigns/C0012">C0012</a> Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Кидок регулярної армії для фізичного знищення столиці Гетьманщини, яка не скорилася: «Вранці 2 листопада російські війська увірвалися в Батурин. Після двогодинного бою рештки гарнізону були перебиті разом з усім цивільним населенням»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Місто було розграбовано і спалено за прямим розпорядженням Петра - лист Меншикову від 5 листопада 1708 року: «а Батурин - на знак зрадникам (позаяк боронилися), іншим на приклад - спалити ввесь»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Петр I; ред. И.Н. Андреев (М.-Л.: Изд-во АН СССР). (1948). Письма и бумаги императора Петра Великого. Т. VIII, вып. 1 (июль-декабрь 1708 г.)."data-reference="Письма и бумаги императора Петра Великого. Т. VIII, вып. 1 (июль-декабрь 1708 г.) 1948"><sup><a href="https://resource.history.org.ua/cgi-bin/eiu/history.exe?C21COM=2&I21DBN=ELIB&P21DBN=ELIB&Image_file_name=book%2F0014325.pdf&IMAGE_FILE_DOWNLOAD=0" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="винищення за територіальною ознакою тотальна різанина мирного населення: «функ перебив понад тисячу людей у маленькому містечку тереї (терейській слободі) і спалив це містечко, спалив також дригалів (недригайлове)… і звелів перебити всіх, хто трапився, щоб вселити жах іншим»(citation: сочинения в 12 томах. том 10 1959). «загалом у батуринській трагедії загинуло близько 15 тисяч українців, у тому числі всі жінки й діти»(citation: мазепа 2007)(citation: иван мазепа и российская империя. история «предательства» 2011)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1708</div>
+                <div>
+                    <a href="/uk/techniques/T0118">T0118</a> Винищення за територіальною ознакою
+                </div>
+<div><a href="/uk/campaigns/C0012">C0012</a> Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Тотальна різанина мирного населення: «Функ перебив понад тисячу людей у маленькому містечку Тереї (Терейській слободі) і спалив це містечко, спалив також Дригалів (Недригайлове)… і звелів перебити всіх, хто трапився, щоб вселити жах іншим»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Евгений Тарле (М.: АН СССР, 1959). (1959). Сочинения в 12 томах. Том 10."data-reference="Сочинения в 12 томах. Том 10 1959"><sup><a href="https://imwerden.de/publ-12028" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. «Загалом у батуринській трагедії загинуло близько 15 тисяч українців, у тому числі всі жінки й діти»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="терор показове знищення міста як акт залякування для решти країни. петро i особисто віддав наказ: «а батурин на знак зрадникам (позаяк боронилися) іншим на приклад спалити весь»(citation: мазепа 2007)(citation: иван мазепа и российская империя. история «предательства» 2011). грушевський: московське військо, здобувши батурин «через зраду одного чоловіка», «страшно росправило ся з людністю: людей порізало, місто зруйновало до решти, начальників віддало на страшні муки»(citation: ілюстрована історія україни 1921)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1708</div>
+                <div>
+                    <a href="/uk/techniques/T0022">T0022</a> Терор
+                </div>
+<div><a href="/uk/campaigns/C0012">C0012</a> Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Показове знищення міста як акт залякування для решти країни. Петро I особисто віддав наказ: «а Батурин на знак зрадникам (позаяк боронилися) іншим на приклад спалити весь»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Грушевський: московське військо, здобувши Батурин «через зраду одного чоловіка», «страшно росправило ся з людністю: людей порізало, місто зруйновало до решти, начальників віддало на страшні муки»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України."data-reference="Ілюстрована історія України 1921"><sup><a href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="знищення історичної пам'яті кампанія зі стирання імені лідера опору (damnatio memoriae): «два століття ім'я і діла мазепи вимазувалися… збивали його герби на збудованих ним храмах, замазували його ім'я на книгах»(citation: мазепа 2007)(citation: иван мазепа и российская империя. история «предательства» 2011)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0008"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1708</div>
+                <div>
+                    <a href="/uk/techniques/T0045">T0045</a> Знищення історичної пам'яті
+                </div>
+<div><a href="/uk/campaigns/C0012">C0012</a> Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Кампанія зі стирання імені лідера опору (damnatio memoriae): «Два століття ім'я і діла Мазепи вимазувалися… Збивали його герби на збудованих ним храмах, замазували його ім'я на книгах»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="виправдання через релігію використання підконтрольної церкви для легітимізації розправи політичною анафемою. вселенський патріархат ніколи її не визнавав: «анафема була накладена на івана мазепу з політичних причин і не мала богословського чи канонічного обґрунтування»(citation: російська анафема мазепи є неканонічною 2018)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0011"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1708</div>
+                <div>
+                    <a href="/uk/techniques/T0024">T0024</a> Виправдання через релігію
+                </div>
+<div><a href="/uk/campaigns/C0012">C0012</a> Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0011">S0011</a> Московський патріархат</div>            </div>
+            <div class="proc-desc">
+                        <p>Використання підконтрольної церкви для легітимізації розправи політичною анафемою. Вселенський патріархат ніколи її не визнавав: «анафема була накладена на Івана Мазепу з політичних причин і не мала богословського чи канонічного обґрунтування»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Громадське радіо (архієпископ Іов (Геча), Вселенський патріархат). (2018). Російська анафема Мазепи є неканонічною."data-reference="Російська анафема Мазепи є неканонічною 2018"><sup><a href="https://hromadske.radio/news/2018/09/17/rosiyska-anafema-mazepy-ye-nekanonichnoyu-predstavnyk-vselenskogo-patriarhatu" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="вилучення ресурсів масштабне розграбування державних арсеналів і скарбниці під час карального рейду на столицю автономії: «меншиков встиг вивезти частину артилерії»(citation: мазепа 2007)(citation: иван мазепа и российская империя. история «предательства» 2011), решту гармат було підірвано, а місто спалено."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1708</div>
+                <div>
+                    <a href="/uk/techniques/T0052">T0052</a> Вилучення ресурсів
+                </div>
+<div><a href="/uk/campaigns/C0012">C0012</a> Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Масштабне розграбування державних арсеналів і скарбниці під час карального рейду на столицю автономії: «Меншиков встиг вивезти частину артилерії»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>, решту гармат було підірвано, а місто спалено.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="крадіжка культурних цінностей цілеспрямоване вивезення інтелектуальної та історичної спадщини. імперські війська не просто мародерствували — вони вилучали унікальні документи: «меншиков встиг вивезти... гетьманський архів, бібліотеку мазепи»(citation: мазепа 2007)(citation: иван мазепа и российская империя. история «предательства» 2011)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1708</div>
+                <div>
+                    <a href="/uk/techniques/T0112">T0112</a> Крадіжка культурних цінностей
+                </div>
+<div><a href="/uk/campaigns/C0012">C0012</a> Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Цілеспрямоване вивезення інтелектуальної та історичної спадщини. Імперські війська не просто мародерствували — вони вилучали унікальні документи: «Меншиков встиг вивезти... гетьманський архів, бібліотеку Мазепи»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маріонетковий уряд встановлення повністю підконтрольного москві уряду після знищення столиці: вибори нового гетьмана відбулися в присутності петра одразу після страти батуринських старшин – «за умов, що склалися, старшина просто затвердила представленого петром скоропадського»(citation: мазепа 2007). механіку залежності фіксує грушевський: «гетьманську резіденцію перенесено з батурина до глухова, під саму московську границю і поставлено два московські полки залогою, щоб ті резіденти могли зараз арештувати гетьмана і старшину», і «кождий на україні розумів, що сила не в гетьмані, а в тих резідентах»(citation: ілюстрована історія україни 1921)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1708</div>
+                <div>
+                    <a href="/uk/techniques/T0037">T0037</a> Маріонетковий уряд
+                </div>
+<div><a href="/uk/campaigns/C0012">C0012</a> Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Встановлення повністю підконтрольного Москві уряду після знищення столиці: вибори нового гетьмана відбулися в присутності Петра одразу після страти батуринських старшин – «За умов, що склалися, старшина просто затвердила представленого Петром Скоропадського»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Механіку залежності фіксує Грушевський: «Гетьманську резіденцію перенесено з Батурина до Глухова, під саму московську границю і поставлено два московські полки залогою, щоб ті резіденти могли зараз арештувати гетьмана і старшину», і «кождий на Україні розумів, що сила не в гетьмані, а в тих резідентах»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України."data-reference="Ілюстрована історія України 1921"><sup><a href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="імітація народного волевиявлення оформлення окупаційного режиму через фіктивні процедури. залякану різаниною старшину змусили проголосувати за угодного метрополії кандидата: «після закінчення цього дійства відбулася страта захоплених у батурині старшин, а потім формальні вибори нового гетьмана. за умов, що склалися, старшина просто затвердила представленого петром скоропадського»(citation: мазепа 2007)(citation: иван мазепа и российская империя. история «предательства» 2011)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1708</div>
+                <div>
+                    <a href="/uk/techniques/T0109">T0109</a> Імітація народного волевиявлення
+                </div>
+<div><a href="/uk/campaigns/C0012">C0012</a> Перехід Мазепи на бік Швеції та Батуринська різанина (1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Оформлення окупаційного режиму через фіктивні процедури. Залякану різаниною старшину змусили проголосувати за угодного метрополії кандидата: «Після закінчення цього дійства відбулася страта захоплених у Батурині старшин, а потім формальні вибори нового гетьмана. За умов, що склалися, старшина просто затвердила представленого Петром Скоропадського»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://loveread.ec/book-comments.php?book=69990" target="_blank">
+                        Татьяна Таирова-Яковлева. (2007). Мазепа.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://imwerden.de/publ-12028" target="_blank">
+                        Евгений Тарле (М.: АН СССР, 1959). (1959). Сочинения в 12 томах. Том 10.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank">
+                        Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank">
+                        Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://resource.history.org.ua/cgi-bin/eiu/history.exe?C21COM=2&I21DBN=ELIB&P21DBN=ELIB&Image_file_name=book%2F0014325.pdf&IMAGE_FILE_DOWNLOAD=0" target="_blank">
+                        Петр I; ред. И.Н. Андреев (М.-Л.: Изд-во АН СССР). (1948). Письма и бумаги императора Петра Великого. Т. VIII, вып. 1 (июль-декабрь 1708 г.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://hromadske.radio/news/2018/09/17/rosiyska-anafema-mazepy-ye-nekanonichnoyu-predstavnyk-vselenskogo-patriarhatu" target="_blank">
+                        Громадське радіо (архієпископ Іов (Геча), Вселенський патріархат). (2018). Російська анафема Мазепи є неканонічною.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+<script src="/uk/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

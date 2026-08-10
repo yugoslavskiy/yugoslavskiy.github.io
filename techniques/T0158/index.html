@@ -1,0 +1,1036 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/techniques/T0158/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0158/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0158/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0158/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0158/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Маркировка территории имперскими символами, техника T0158 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/techniques/T0158/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Маркировка территории имперскими символами, техника T0158 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/techniques/">Техники</a></li>
+  <li class="breadcrumb-item">Маркировка территории имперскими символами</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Маркировка территории имперскими символами
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агрессоры могут закреплять захват земли материальными знаками собственной власти: крестами и закладными камнями в момент занятия территории, памятниками завоевателям, мемориальными досками и стелами, гербами, культовыми зданиями на местах чужих святынь. В отличие от переименования топонимов, которое действует в речи и на карте, знак занимает физическое место и снимается только руками. Он объявляет захват необратимым и отсчитывает историю места от прихода метрополии: постамент памятника Богдану Хмельницкому в Киеве (1888) нёс надпись «Богдану Хмельницкому единая неделимая Россия», а доски памятника Муравьёву-Амурскому в Хабаровске (1891) перечисляли лиц, «принявших активное участие в присоединении к России Приамурья».</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0158
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Подтехники:&nbsp;</span>
+                    Нет подтехник
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактические цели, которые достигаются применением техники или подтехники">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/tactics/TA0005">Закрепление</a>,                        <a href="/tactics/TA0001">Легитимизация доминирования</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народы, против которых применялась техника или подтехника">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народы:&nbsp;</span>Нохчи (Чеченцы), Украинцы
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контрибьюторы:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версия:&nbsp;</span>1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Создано:&nbsp;</span>1 августа 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>1 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/T0158" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реализованные процедуры</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="маркировка территории имперскими символами российская империя в 1804-1811 годах поставила в центре полтавы чугунный монумент славы в память своей победы над армией карла xii 27 июня 1709 года - деньгами самого города и по проекту, присланному из петербурга. именным указом сенату от 11 сентября 1804 года «об оставлении бывших во владении города полтавы деревень в казенном ведомстве и об отпуске собираемого с оных дохода в ведение тамошнего генерал-губернатора для сооружения в полтаве монумента в память 27 июня 1709 года» городские доходы были обращены на монумент: «общество граждан полтавских, чрез поданное к генерал-губернатору князю куракину прошение, все сии доходы назначило к построению в полтаве монумента в память незабвенного для россии дня, 27 июня 1709 года, то и повелеваем: как ныне следующие в выдачу, так и впредь собираемые в пользу сего города доходы отпускать в ведение тамошнего генерал-губернатора, доколе начатый монумент совершенно будет окончен»(citation: полное собрание законов российской империи, собрание 1-е, том xxviii (1804-1805) 1830). вторым актом, именным рескриптом малороссийскому генерал-губернатору от 9 мая 1805 года «об устроении монумента, в воспоминание победы, одержанной под полтавою императором петром великим», император прислал готовый проект и распорядился строить: «препровождаю к вам при сем планы монументу сему, здесь составленные, поручая вам... приступить к устроению его на месте, за исключением бронзовых украшений, к нему принадлежащих, кои особенно здесь будут сделаны и доставлены к своему назначению»(citation: полное собрание законов российской империи, собрание 1-е, том xxviii (1804-1805) 1830). то есть платит полтава, а решает, как будет выглядеть знак на её земле, петербург - вплоть до бронзы, которую отливают там же и присылают готовой. монумент заложили 27 июня 1804 года, чугунную колонну поставили в мае 1809-го под руководством инженера луганского завода москвина, а весь ансамбль открыли 27 июня 1811 года, к очередной годовщине битвы(citation: записки о полтаве и её памятниках 1902)(citation: паспорт пам'ятки. монумент слави [1990 р.] 1990). на медальоне верхнего квадрата пьедестала, в кольце-змее между двумя колчанами, стояло «июня 27 дня 1709 года», на противоположной стороне - «окончен в 1809 году»(citation: записки о полтаве и её памятниках 1902): дата чужой победы сделана датой самого места. обе надписи вместе с бронзовыми барельефами исчезли в 1901 году - дореволюционный свод фиксирует это глухо: «надпись эта и предыдущая уничтожены в 1901 году и тогда же, неизвестно кем, взяты окружавшие их бронзовые барельефы»(citation: записки о полтаве и её памятниках 1902); восстановили их только при капитальном ремонте 1953 года(citation: паспорт пам'ятки. монумент слави [1990 р.] 1990). монумент стоит в полтаве до сих пор: на август 2026 года он числится памятником национального значения под охранным номером 160010-н(citation: перелік об'єктів культурної спадщини полтавської міської територіальної громади (категорія «національного значення») 2025), украинский институт национальной памяти письмом от 29 июля 2024 года рекомендовал его демонтировать(citation: лист уінп №2075/2.2-08-24 щодо монумента слави у м. полтава 2024), но решение по памятникам национального значения принимает правительство, и в перечне таких решений по состоянию на 20 мая 2026 года монумента нет(citation: рішення мінкульту щодо переміщення чи зняття статусу пам'яток в рамках декомунізації, дерусифікації та деколонізації (станом на 20.05.2026) 2026)."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1801-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1801</div>
+<div><a href="/campaigns/C0038">C0038</a> Создание Малороссийского генерал-губернаторства (1801–1811)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя в 1804-1811 годах поставила в центре Полтавы чугунный Монумент Славы в память своей победы над армией Карла XII 27 июня 1709 года - деньгами самого города и по проекту, присланному из Петербурга. Именным указом Сенату от 11 сентября 1804 года «Об оставлении бывших во владении города Полтавы деревень в казенном ведомстве и об отпуске собираемого с оных дохода в ведение тамошнего Генерал-Губернатора для сооружения в Полтаве монумента в память 27 июня 1709 года» городские доходы были обращены на монумент: «общество граждан Полтавских, чрез поданное к Генерал-Губернатору Князю Куракину прошение, все сии доходы назначило к построению в Полтаве монумента в память незабвенного для России дня, 27 июня 1709 года, то и повелеваем: как ныне следующие в выдачу, так и впредь собираемые в пользу сего города доходы отпускать в ведение тамошнего Генерал-Губернатора, доколе начатый монумент совершенно будет окончен»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Собственная Е.И.В. канцелярия (изд.). (1830). Полное собрание законов Российской империи, Собрание 1-е, том XXVIII (1804-1805)."data-reference="Полное собрание законов Российской империи, Собрание 1-е, том XXVIII (1804-1805) 1830"><sup><a href="https://psz.ri.org.ru/I/XXVIII.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Вторым актом, именным рескриптом малороссийскому генерал-губернатору от 9 мая 1805 года «Об устроении монумента, в воспоминание победы, одержанной под Полтавою Императором Петром Великим», император прислал готовый проект и распорядился строить: «препровождаю к вам при сем планы монументу сему, здесь составленные, поручая вам... приступить к устроению его на месте, за исключением бронзовых украшений, к нему принадлежащих, кои особенно здесь будут сделаны и доставлены к своему назначению»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Собственная Е.И.В. канцелярия (изд.). (1830). Полное собрание законов Российской империи, Собрание 1-е, том XXVIII (1804-1805)."data-reference="Полное собрание законов Российской империи, Собрание 1-е, том XXVIII (1804-1805) 1830"><sup><a href="https://psz.ri.org.ru/I/XXVIII.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. То есть платит Полтава, а решает, как будет выглядеть знак на её земле, Петербург - вплоть до бронзы, которую отливают там же и присылают готовой. Монумент заложили 27 июня 1804 года, чугунную колонну поставили в мае 1809-го под руководством инженера Луганского завода Москвина, а весь ансамбль открыли 27 июня 1811 года, к очередной годовщине битвы<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="В. Е. Бучневич (цит. Голиков, «Деяния Петра Великого», изд. 2-е, т. XI, с. 234). (1902). Записки о Полтаве и её памятниках."data-reference="Записки о Полтаве и её памятниках 1902"><sup><a href="http://histpol.pl.ua/ru/kultura/nekropoli?id=847" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Служба охорони пам'яток (складання). (1990). Паспорт пам'ятки. Монумент Слави [1990 р.]."data-reference="Паспорт пам'ятки. Монумент Слави [1990 р.] 1990"><sup><a href="https://www.pslava.info/Poltava_KruglaPloscha_1990PasportnaInformacija%2C127299.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. На медальоне верхнего квадрата пьедестала, в кольце-змее между двумя колчанами, стояло «Июня 27 дня 1709 года», на противоположной стороне - «Окончен в 1809 году»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="В. Е. Бучневич (цит. Голиков, «Деяния Петра Великого», изд. 2-е, т. XI, с. 234). (1902). Записки о Полтаве и её памятниках."data-reference="Записки о Полтаве и её памятниках 1902"><sup><a href="http://histpol.pl.ua/ru/kultura/nekropoli?id=847" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>: дата чужой победы сделана датой самого места. Обе надписи вместе с бронзовыми барельефами исчезли в 1901 году - дореволюционный свод фиксирует это глухо: «Надпись эта и предыдущая уничтожены в 1901 году и тогда же, неизвестно кем, взяты окружавшие их бронзовые барельефы»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="В. Е. Бучневич (цит. Голиков, «Деяния Петра Великого», изд. 2-е, т. XI, с. 234). (1902). Записки о Полтаве и её памятниках."data-reference="Записки о Полтаве и её памятниках 1902"><sup><a href="http://histpol.pl.ua/ru/kultura/nekropoli?id=847" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; восстановили их только при капитальном ремонте 1953 года<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Служба охорони пам'яток (складання). (1990). Паспорт пам'ятки. Монумент Слави [1990 р.]."data-reference="Паспорт пам'ятки. Монумент Слави [1990 р.] 1990"><sup><a href="https://www.pslava.info/Poltava_KruglaPloscha_1990PasportnaInformacija%2C127299.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Монумент стоит в Полтаве до сих пор: на август 2026 года он числится памятником национального значения под охранным номером 160010-Н<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Полтавська міська рада. (2025). Перелік об'єктів культурної спадщини Полтавської міської територіальної громади (категорія «Національного значення»)."data-reference="Перелік об'єктів культурної спадщини Полтавської міської територіальної громади (категорія «Національного значення») 2025"><sup><a href="https://www.rada-poltava.gov.ua/ua/cultural-heritage" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>, Украинский институт национальной памяти письмом от 29 июля 2024 года рекомендовал его демонтировать<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Тиліщак В. (Український інститут національної пам'яті). (2024). Лист УІНП №2075/2.2-08-24 щодо Монумента Слави у м. Полтава."data-reference="Лист УІНП №2075/2.2-08-24 щодо Монумента Слави у м. Полтава 2024"><sup><a href="https://poltava.to/project/8967/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, но решение по памятникам национального значения принимает правительство, и в перечне таких решений по состоянию на 20 мая 2026 года монумента нет<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Міністерство культури та стратегічних комунікацій України. (2026). Рішення Мінкульту щодо переміщення чи зняття статусу пам'яток в рамках декомунізації, дерусифікації та деколонізації (станом на 20.05.2026)."data-reference="Рішення Мінкульту щодо переміщення чи зняття статусу пам'яток в рамках декомунізації, дерусифікації та деколонізації (станом на 20.05.2026) 2026"><sup><a href="https://mincult.gov.ua/wp-content/uploads/2026/05/2026.05.20-perelik-po-dekomunizacziyi.pdf" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маркировка территории имперскими символами 15 марта 1873 года утверждён герб терской области: «в черном щите, серебряная волнообразная перевязь вправо. императорский штандарт на золотом древке. щит увенчан древней царской короной и окружен золотыми дубовыми листьями, соединенными александровской лентой»(citation: царское прошлое чеченцев. власть и общество 2009). смысл знака историк з. х. ибрагимова читает так: серебряная перевязь - это терек, который долго был границей, а теперь «оба его берега были объединены императорским штандартом, и терек стал полностью российским - таков основной смысл этого герба»(citation: царское прошлое чеченцев. власть и общество 2009). проект герба города грозного выполнил б. в. кёне, чиновник герольдии: на лазоревом щите серебряная гора между двумя золотыми морскими лилиями, а в правой вольной части - герб терской области(citation: царское прошлое чеченцев. власть и общество 2009), так что городской знак нёс на себе имперский символ области. землю метили и фигурой завоевателя. первым памятником ермолову в грозном служила «заботливо сохраняемая землянка, в которой он жил при основании крепости грозной»(citation: царское прошлое чеченцев. власть и общество 2009), а позже у землянки встал бронзовый бюст генерала. что значил этот знак, ибрагимова формулирует так: бюст напоминал о самых трагических годах завоевания кавказа и был символом драматической судьбы горских народов, а памятник генералу, «с варварской жестокостью истреблявшим целые народы во имя завоевания кавказа», стал для чеченцев «своего рода «бельмом на глазу»»(citation: царское прошлое чеченцев. власть и общество 2009). знак пережил империю: при советской власти памятник «с завидной периодичностью взрывали по ночам и так же по ночам восстанавливали»(citation: царское прошлое чеченцев. власть и общество 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1858</div>
+<div><a href="/campaigns/C1170">C1170</a> «Военно-народное управление»: колониальный режим Терской области (1858-1917)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>15 марта 1873 года утверждён герб Терской области: «В черном щите, серебряная волнообразная перевязь вправо. Императорский штандарт на золотом древке. Щит увенчан древней Царской Короной и окружен золотыми дубовыми листьями, соединенными Александровской лентой»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Смысл знака историк З. Х. Ибрагимова читает так: серебряная перевязь - это Терек, который долго был границей, а теперь «оба его берега были объединены Императорским штандартом, и Терек стал полностью российским - таков основной смысл этого герба»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Проект герба города Грозного выполнил Б. В. Кёне, чиновник герольдии: на лазоревом щите серебряная гора между двумя золотыми морскими лилиями, а в правой вольной части - герб Терской области<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>, так что городской знак нёс на себе имперский символ области. Землю метили и фигурой завоевателя. Первым памятником Ермолову в Грозном служила «заботливо сохраняемая землянка, в которой он жил при основании крепости Грозной»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>, а позже у землянки встал бронзовый бюст генерала. Что значил этот знак, Ибрагимова формулирует так: бюст напоминал о самых трагических годах завоевания Кавказа и был символом драматической судьбы горских народов, а памятник генералу, «с варварской жестокостью истреблявшим целые народы во имя завоевания Кавказа», стал для чеченцев «своего рода «бельмом на глазу»»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Знак пережил империю: при советской власти памятник «с завидной периодичностью взрывали по ночам и так же по ночам восстанавливали»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маркировка территории имперскими символами российская империя 11 июля 1888 года открыла на софийской площади киева памятник богдану хмельницкому - знак «единения» с москвой: на левой стороне постамента стояли даты «1654-1888», отсчитывавшие историю города от переяславской рады(citation: пам'ятник богдану хмельницькому в києві 2026). комитет по сооружению возглавлял михаил юзефович(citation: пам'ятник богдану хмельницькому в києві 2026) - чиновник киевского учебного округа, автор записки, легшей в основу эмского указа 1876 года(citation: 1876 - підписано емський указ 2026). совещание, созванное по этой записке и заседавшее с участием юзефовича, постановило «не допускать ввоза в пределы империи, без особого на то разрешения главного управления по делам печати, каких бы то ни было книг и брошюр, издаваемых за границею на малорусском наречии», а «печатание и издание в империи оригинальных произведений и переводов на том же наречии воспретить, за исключением лишь: а) исторических документов и памятников и б) произведений изящной словесности» - причём последние допускались только в русском правописании и по рукописи, просмотренной цензурой(citation: українська ідентичність і мовне питання в російській імперії 2013). по декрету совнаркома усср от 7 мая 1919 года о снесении с площадей и улиц памятников, поставленных царям и царским прихвостням, с постамента сбили две надписи из трёх; оставшуюся распорядился снять председатель киевского губисполкома гринько - об этом 6 февраля 1925 года записал в дневнике академик ефремов, - и в итоге боковые плиты заменили на пустые, а на лицевом камне выбили «богдан хмельницький 1888»(citation: пам'ятник богдану хмельницькому в києві 2026)."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1888-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1888</div>
+<div><a href="/campaigns/C0065">C0065</a> Памятник Богдану Хмельницкому (1888)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя 11 июля 1888 года открыла на Софийской площади Киева памятник Богдану Хмельницкому - знак «единения» с Москвой: на левой стороне постамента стояли даты «1654-1888», отсчитывавшие историю города от Переяславской рады<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Національний музей історії України. (2026). Пам'ятник Богдану Хмельницькому в Києві."data-reference="Пам'ятник Богдану Хмельницькому в Києві 2026"><sup><a href="https://old.nmiu.org/tsoho-dnia/2772-pamiatnyk-bohdanu-khmelnytskomu-v-kyievi" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Комитет по сооружению возглавлял Михаил Юзефович<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Національний музей історії України. (2026). Пам'ятник Богдану Хмельницькому в Києві."data-reference="Пам'ятник Богдану Хмельницькому в Києві 2026"><sup><a href="https://old.nmiu.org/tsoho-dnia/2772-pamiatnyk-bohdanu-khmelnytskomu-v-kyievi" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span> - чиновник киевского учебного округа, автор записки, легшей в основу Эмского указа 1876 года<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Український інститут національної пам'яті. (2026). 1876 - підписано Емський указ."data-reference="1876 - підписано Емський указ 2026"><sup><a href="https://uinp.gov.ua/istorychnyy-kalendar/traven/30/1876-emskyy-ukaz" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Совещание, созванное по этой записке и заседавшее с участием Юзефовича, постановило «не допускать ввоза в пределы империи, без особого на то разрешения Главного управления по делам печати, каких бы то ни было книг и брошюр, издаваемых за границею на малорусском наречии», а «печатание и издание в империи оригинальных произведений и переводов на том же наречии воспретить, за исключением лишь: а) исторических документов и памятников и б) произведений изящной словесности» - причём последние допускались только в русском правописании и по рукописи, просмотренной цензурой<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Відп. ред. Г. Боряк; упоряд. Г. Боряк, В. Баран, Л. Гісцова, Л. Демченко, О. Музичук, П. Найденко, В. Шандра; НАН України, Ін-т історії України; Укрдержархів, ЦДІАК України. (2013). Українська ідентичність і мовне питання в Російській імперії."data-reference="Українська ідентичність і мовне питання в Російській імперії 2013"><sup><a href="https://archive.org/details/ukrainska2013" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. По декрету Совнаркома УССР от 7 мая 1919 года о снесении с площадей и улиц памятников, поставленных царям и царским прихвостням, с постамента сбили две надписи из трёх; оставшуюся распорядился снять председатель Киевского губисполкома Гринько - об этом 6 февраля 1925 года записал в дневнике академик Ефремов, - и в итоге боковые плиты заменили на пустые, а на лицевом камне выбили «Богдан Хмельницький 1888»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Національний музей історії України. (2026). Пам'ятник Богдану Хмельницькому в Києві."data-reference="Пам'ятник Богдану Хмельницькому в Києві 2026"><sup><a href="https://old.nmiu.org/tsoho-dnia/2772-pamiatnyk-bohdanu-khmelnytskomu-v-kyievi" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маркировка территории имперскими символами российская империя в 1911 году поставила в киеве памятник княгине ольге - на месте, которое город двумя годами раньше отвёл под памятник шевченко. в мае 1909 года киевская дума отвела под памятник тарасу шевченко сквер на михайловской площади(citation: «исторический путь» у києві 1926). попечитель киевского учебного округа зилов написал генерал-губернатору трепову конфиденциально, что против «русского правительственного заведения» ставить шевченко не следует и «необходимо было бы соорудить памятник одному из деятелей русской истории»(citation: «исторический путь» у києві 1926). из этого письма выросла программа «исторического пути»: 7 апреля 1910 года секретарь киевского отдела императорского русского военно-исторического общества полковник стелецкий подал записку с очередью из восьми монументов - княгиня ольга, олег, ярослав, владимир, владимир мономах, святослав, «доисторический киев» и летописец нестор(citation: «исторический путь» у києві 1926). 15 марта 1911 года дума, при 68 гласных из 72, отдала обществу площадку между софийским собором и михайловским монастырём - 46 голосов против 22 - и тем же заседанием отменила собственное решение 1909 года, перенеся место будущего шевченко на перекрёсток караваевской: 41 против 24(citation: «исторический путь» у києві 1926). сначала дума отклонила бетонный проект как недостаточно «художественно-монументальный», а через месяц разрешила поставить лишь временную модель(citation: «исторический путь» у києві 1926) - то есть на отобранное место согласились поставить времянку, лишь бы оно было занято. памятник открыли 4 сентября 1911 года: княгиня ольга в центре, слева апостол андрей, указывающий на киевские горы, справа сидящие кирилл и мефодий(citation: памятник святой ользі 2026)(citation: київський відділ імператорського російського воєнно-історичного товариства 2007). лепили модель скульпторы иван кавалеридзе и пётр сниткин, архитектором был валериан рыков, руководил проектом скульптор фёдор балавенский(citation: каталог-довідник пам'яток історії та культури україни: м. київ 2007); историк игорь гирич отмечает парадокс - автором имперского монумента оказался «один из „украиноманов“, будущий выдающийся скульптор и кинорежиссёр, а тогда начинающий художник иван кавалеридзе»(citation: монументальна пропаганда часів російської імперії 2019). на постаменте было отлито: «дар государя императора городу киеву. лето от р. х. 1911» - десять тысяч рублей на памятник и вправду дал царский кабинет, ещё тысячу внёс киевский купец могилевский(citation: памятник святой ользі 2026)(citation: «исторический путь» у києві 1926). ниже, на постаменте самой княгини, стояло: «сия первая вниде в царство небесное от руси, сию бо хвалят рустие сынове яко начальницу»(citation: памятник святой ользі 2026) - крещение руси записывалось в имперскую родословную прямо на камне. в 1919 году статую сбросили с постамента и закопали расколотой надвое под самим памятником, в марте 1923 года сняли остальные фигуры, а в марте 1926 года коммунальный отдел киева распорядился убрать бетон окончательно(citation: памятник святой ользі 2026)(citation: «исторический путь» у києві 1926). в 1996 году статую отрыли из-под клумбы и памятник воссоздали по старым эскизам, на этот раз в мраморе(citation: каталог-довідник пам'яток історії та культури україни: м. київ 2007)."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1909-05-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Май 1909</div>
+<div><a href="/campaigns/C0109">C0109</a> «Исторический путь» (1909–1911)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя в 1911 году поставила в Киеве памятник княгине Ольге - на месте, которое город двумя годами раньше отвёл под памятник Шевченко. В мае 1909 года киевская дума отвела под памятник Тарасу Шевченко сквер на Михайловской площади<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Щітківський Іван, у зб. «Київ та його околиця в історії і пам'ятках». (1926). «Исторический путь» у Києві."data-reference="«Исторический путь» у Києві 1926"><sup><a href="https://dlib.kiev.ua/files/original/92e41c9499f40b50696c7dcb66518c88.pdf" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Попечитель киевского учебного округа Зилов написал генерал-губернатору Трепову конфиденциально, что против «русского правительственного заведения» ставить Шевченко не следует и «необходимо было бы соорудить памятник одному из деятелей русской истории»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Щітківський Іван, у зб. «Київ та його околиця в історії і пам'ятках». (1926). «Исторический путь» у Києві."data-reference="«Исторический путь» у Києві 1926"><sup><a href="https://dlib.kiev.ua/files/original/92e41c9499f40b50696c7dcb66518c88.pdf" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Из этого письма выросла программа «исторического пути»: 7 апреля 1910 года секретарь киевского отдела Императорского русского военно-исторического общества полковник Стелецкий подал записку с очередью из восьми монументов - княгиня Ольга, Олег, Ярослав, Владимир, Владимир Мономах, Святослав, «доисторический Киев» и летописец Нестор<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Щітківський Іван, у зб. «Київ та його околиця в історії і пам'ятках». (1926). «Исторический путь» у Києві."data-reference="«Исторический путь» у Києві 1926"><sup><a href="https://dlib.kiev.ua/files/original/92e41c9499f40b50696c7dcb66518c88.pdf" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. 15 марта 1911 года дума, при 68 гласных из 72, отдала обществу площадку между Софийским собором и Михайловским монастырём - 46 голосов против 22 - и тем же заседанием отменила собственное решение 1909 года, перенеся место будущего Шевченко на перекрёсток Караваевской: 41 против 24<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Щітківський Іван, у зб. «Київ та його околиця в історії і пам'ятках». (1926). «Исторический путь» у Києві."data-reference="«Исторический путь» у Києві 1926"><sup><a href="https://dlib.kiev.ua/files/original/92e41c9499f40b50696c7dcb66518c88.pdf" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Сначала дума отклонила бетонный проект как недостаточно «художественно-монументальный», а через месяц разрешила поставить лишь временную модель<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Щітківський Іван, у зб. «Київ та його околиця в історії і пам'ятках». (1926). «Исторический путь» у Києві."data-reference="«Исторический путь» у Києві 1926"><sup><a href="https://dlib.kiev.ua/files/original/92e41c9499f40b50696c7dcb66518c88.pdf" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span> - то есть на отобранное место согласились поставить времянку, лишь бы оно было занято. Памятник открыли 4 сентября 1911 года: княгиня Ольга в центре, слева апостол Андрей, указывающий на киевские горы, справа сидящие Кирилл и Мефодий<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="OldKyiv (Сайт історії Києва). (2026). Памятник Святой Ользі."data-reference="Памятник Святой Ользі 2026"><sup><a href="http://www.oldkyiv.org.ua/data/st_olga_mnmnt.php" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span><span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Федорова Л. Д., Енциклопедія історії України, т. 4. (2007). Київський відділ Імператорського російського воєнно-історичного товариства."data-reference="Київський відділ Імператорського російського воєнно-історичного товариства 2007"><sup><a href="https://www.history.org.ua/?termin=Kyivsky_viddil_Voenno_ist_tov_tva" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Лепили модель скульпторы Иван Кавалеридзе и Пётр Сниткин, архитектором был Валериан Рыков, руководил проектом скульптор Фёдор Балавенский<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Горбик В. О. та ін. (Ін-т історії України НАН України). (2007). Каталог-довідник пам'яток історії та культури України: м. Київ."data-reference="Каталог-довідник пам'яток історії та культури України: м. Київ 2007"><sup><a href="https://history.org.ua/LiberUA/kiev_katalog/3.pdf" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>; историк Игорь Гирич отмечает парадокс - автором имперского монумента оказался «один из „украиноманов", будущий выдающийся скульптор и кинорежиссёр, а тогда начинающий художник Иван Кавалеридзе»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Гирич І. Б., розділ праці «„Історичний шлях" у київських монументах». (2019). Монументальна пропаганда часів Російської імперії."data-reference="Монументальна пропаганда часів Російської імперії 2019"><sup><a href="https://www.i-hyrych.name/Kyiv/HistPath/RussianEmpire.html" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. На постаменте было отлито: «Дар Государя Императора городу Киеву. Лето от Р. Х. 1911» - десять тысяч рублей на памятник и вправду дал царский кабинет, ещё тысячу внёс киевский купец Могилевский<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="OldKyiv (Сайт історії Києва). (2026). Памятник Святой Ользі."data-reference="Памятник Святой Ользі 2026"><sup><a href="http://www.oldkyiv.org.ua/data/st_olga_mnmnt.php" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span><span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Щітківський Іван, у зб. «Київ та його околиця в історії і пам'ятках». (1926). «Исторический путь» у Києві."data-reference="«Исторический путь» у Києві 1926"><sup><a href="https://dlib.kiev.ua/files/original/92e41c9499f40b50696c7dcb66518c88.pdf" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Ниже, на постаменте самой княгини, стояло: «Сия первая вниде в Царство Небесное от Руси, сию бо хвалят рустие сынове яко начальницу»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="OldKyiv (Сайт історії Києва). (2026). Памятник Святой Ользі."data-reference="Памятник Святой Ользі 2026"><sup><a href="http://www.oldkyiv.org.ua/data/st_olga_mnmnt.php" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span> - крещение Руси записывалось в имперскую родословную прямо на камне. В 1919 году статую сбросили с постамента и закопали расколотой надвое под самим памятником, в марте 1923 года сняли остальные фигуры, а в марте 1926 года коммунальный отдел Киева распорядился убрать бетон окончательно<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="OldKyiv (Сайт історії Києва). (2026). Памятник Святой Ользі."data-reference="Памятник Святой Ользі 2026"><sup><a href="http://www.oldkyiv.org.ua/data/st_olga_mnmnt.php" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span><span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Щітківський Іван, у зб. «Київ та його околиця в історії і пам'ятках». (1926). «Исторический путь» у Києві."data-reference="«Исторический путь» у Києві 1926"><sup><a href="https://dlib.kiev.ua/files/original/92e41c9499f40b50696c7dcb66518c88.pdf" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. В 1996 году статую отрыли из-под клумбы и памятник воссоздали по старым эскизам, на этот раз в мраморе<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Горбик В. О. та ін. (Ін-т історії України НАН України). (2007). Каталог-довідник пам'яток історії та культури України: м. Київ."data-reference="Каталог-довідник пам'яток історії та культури України: м. Київ 2007"><sup><a href="https://history.org.ua/LiberUA/kiev_katalog/3.pdf" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маркировка территории имперскими символами российская империя поставила в киеве крупнейший во всей империи памятник александру ii. благодарность на пьедестале высказывала не украина и не киев, а «юго-западный край» - так империя официально называла украинские земли к западу от днепра(citation: інститут генерал-губернаторства у правобережній україні 2015). памятник работы итальянского скульптора ксименеса открыли 30 августа 1911 года на царской площади, между входом в купеческий сад и зданием купеческого собрания; открытие приурочили к пятидесятилетию отмены крепостного права и провели в присутствии императора николая ii, болгарского царя фердинанда и премьер-министра столыпина, которого через два дня, вечером 1 сентября, смертельно ранили в киевском театре(citation: скільки пам'ятнику стояти? 2004). деньги на памятник собирали всероссийской подпиской, 200 тысяч рублей(citation: памятник царю-освободителю императору александру ii 2026). центральный пьедестал нёс герб империи, двуглавого орла, и надпись «царю-освободителю благодарный юго-западный край. 1911 год», на нижнем пьедестале стоял барельеф с крестьянами, благодарящими за отмену крепостного права(citation: памятник царю-освободителю императору александру ii 2026). край составляли киевская, волынская и подольская губернии(citation: інститут генерал-губернаторства у правобережній україні 2015), которые после подавления польского восстания 1830-1831 годов свели в киевское генерал-губернаторство (1832-1914), и задача его, по энциклопедии истории украины, состояла «в ликвидации политических, социоэтнических и культурных отличий края и усилении русификации его элиты - шляхты»(citation: енциклопедія історії україни: т. 6 2009). памятник встал в ряд: киевский николай i (1896), александр iii (1909), александр ii (1911), столыпин (1912) - историк игорь гирич называет это предреволюционным памятниковым бумом и добавляет, что сооружением памятника княгине ольге и планировавшимися следующими монументами занимался киевский отдел императорского русского военно-исторического общества, на девять десятых состоявший из офицеров киевского военного округа, а его секретарь полковник стелецкий запиской генерал-губернатору от 7 апреля 1910 года расписывал очередь будущих скульптур - от ольги и олега до нестора-летописца(citation: монументальна пропаганда часів російської імперії 2019). итог тех же лет гирич подводит так: украинцы заявили за это время один памятник, шевченко, и поставить его им не дали, а их противники успели поставить «по меньшей мере полдесятка монументов, утверждавших русскость и отрицавших украинскую национальную идею»(citation: монументальна пропаганда часів російської імперії 2019)."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1911-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1911</div>
+<div><a href="/campaigns/C0110">C0110</a> Памятник Александру II в Киеве (1911)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя поставила в Киеве крупнейший во всей империи памятник Александру II. Благодарность на пьедестале высказывала не Украина и не Киев, а «Юго-Западный край» - так империя официально называла украинские земли к западу от Днепра<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Грукач В. О., дисертація канд. юрид. наук, Переяслав-Хмельницький ДПУ ім. Г. Сковороди. (2015). Інститут генерал-губернаторства у Правобережній Україні."data-reference="Інститут генерал-губернаторства у Правобережній Україні 2015"><sup><a href="https://elar.naiau.kiev.ua/jspui/bitstream/123456789/1267/1/grukach_dis.pdf" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Памятник работы итальянского скульптора Ксименеса открыли 30 августа 1911 года на Царской площади, между входом в Купеческий сад и зданием Купеческого собрания; открытие приурочили к пятидесятилетию отмены крепостного права и провели в присутствии императора Николая II, болгарского царя Фердинанда и премьер-министра Столыпина, которого через два дня, вечером 1 сентября, смертельно ранили в киевском театре<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Валерій Дружбинський, «Дзеркало тижня», 06 лютого 2004. (2004). Скільки пам'ятнику стояти?."data-reference="Скільки пам'ятнику стояти? 2004"><sup><a href="https://zn.ua/ukr/ART/skilki_pamyatniku_stoyati.html" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>. Деньги на памятник собирали всероссийской подпиской, 200 тысяч рублей<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Фототипия из серии «Виды Кіева» по фотографии Гудшона и Губчевского; электронная копия Президентской библиотеки, оригинал — Национальная парламентская библиотека Украины. (2026). Памятник царю-освободителю императору Александру II."data-reference="Памятник царю-освободителю императору Александру II 2026"><sup><a href="https://www.prlib.ru/item/436361" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>. Центральный пьедестал нёс герб империи, двуглавого орла, и надпись «Царю-освободителю благодарный Юго-Западный край. 1911 год», на нижнем пьедестале стоял барельеф с крестьянами, благодарящими за отмену крепостного права<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Фототипия из серии «Виды Кіева» по фотографии Гудшона и Губчевского; электронная копия Президентской библиотеки, оригинал — Национальная парламентская библиотека Украины. (2026). Памятник царю-освободителю императору Александру II."data-reference="Памятник царю-освободителю императору Александру II 2026"><sup><a href="https://www.prlib.ru/item/436361" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>. Край составляли Киевская, Волынская и Подольская губернии<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Грукач В. О., дисертація канд. юрид. наук, Переяслав-Хмельницький ДПУ ім. Г. Сковороди. (2015). Інститут генерал-губернаторства у Правобережній Україні."data-reference="Інститут генерал-губернаторства у Правобережній Україні 2015"><sup><a href="https://elar.naiau.kiev.ua/jspui/bitstream/123456789/1267/1/grukach_dis.pdf" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>, которые после подавления польского восстания 1830-1831 годов свели в Киевское генерал-губернаторство (1832-1914), и задача его, по Энциклопедии истории Украины, состояла «в ликвидации политических, социоэтнических и культурных отличий края и усилении русификации его элиты - шляхты»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2009). Енциклопедія історії України: Т. 6."data-reference="Енциклопедія історії України: Т. 6 2009"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. Памятник встал в ряд: киевский Николай I (1896), Александр III (1909), Александр II (1911), Столыпин (1912) - историк Игорь Гирич называет это предреволюционным памятниковым бумом и добавляет, что сооружением памятника княгине Ольге и планировавшимися следующими монументами занимался киевский отдел Императорского русского военно-исторического общества, на девять десятых состоявший из офицеров Киевского военного округа, а его секретарь полковник Стелецкий запиской генерал-губернатору от 7 апреля 1910 года расписывал очередь будущих скульптур - от Ольги и Олега до Нестора-летописца<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Гирич І. Б., розділ праці «„Історичний шлях" у київських монументах». (2019). Монументальна пропаганда часів Російської імперії."data-reference="Монументальна пропаганда часів Російської імперії 2019"><sup><a href="https://www.i-hyrych.name/Kyiv/HistPath/RussianEmpire.html" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. Итог тех же лет Гирич подводит так: украинцы заявили за это время один памятник, Шевченко, и поставить его им не дали, а их противники успели поставить «по меньшей мере полдесятка монументов, утверждавших русскость и отрицавших украинскую национальную идею»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Гирич І. Б., розділ праці «„Історичний шлях" у київських монументах». (2019). Монументальна пропаганда часів Російської імперії."data-reference="Монументальна пропаганда часів Російської імперії 2019"><sup><a href="https://www.i-hyrych.name/Kyiv/HistPath/RussianEmpire.html" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маркировка территории имперскими символами знак нового порядка ставится в первые же недели: советские войска заняли львов 22 сентября 1939 года(citation: «радянізація» львова: вересень 1939 - червень 1941 рр. 2026), а уже в октябре в центре города, на островке посреди нынешнего проспекта свободы, вырос монумент сталинской конституции - огромная вертикальная композиция из колонн, перевитых красными знамёнами, на деревянном каркасе, с пятью скульптурными группами (красноармеец, рабочий, мать с ребёнком, студентка и старый гуцул с мальчиком) и надписями на украинском, польском и еврейском языках, символизировавшими «дружбу народов» по статьям сталинской конституции(citation: zapomniany pomnik 2012)(citation: view on the monument to the soviet constitution, lviv 1940 (reesources) 2026). у знака есть названные авторы: скульптор сергей литвиненко и киевский художник михаил дмитренко, прибывший во львов в 1939 году в «десанте» советских художников, чьей задачей было насаждение соцреализма; возможно, авторы лишь приспособили к месту проект, изготовленный в москве, а исполняли его скульпторы евгений дзындра и андрей коверко(citation: zapomniany pomnik 2012). монумент простоял до 30 июня 1941 года и исчез с приходом немцев(citation: zapomniany pomnik 2012)."
+             data-platforms="Украинцы"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1939-09-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Сентябрь 1939</div>
+<div><a href="/campaigns/C0081">C0081</a> Аннексия и советизация Западной Украины (1939–1941)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Знак нового порядка ставится в первые же недели: советские войска заняли Львов 22 сентября 1939 года<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="О. Луцький, публікація на map.lviv.ua. (2026). «Радянізація» Львова: вересень 1939 - червень 1941 рр.."data-reference="«Радянізація» Львова: вересень 1939 - червень 1941 рр. 2026"><sup><a href="https://map.lviv.ua/statti/luckij2.html" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>, а уже в октябре в центре города, на островке посреди нынешнего проспекта Свободы, вырос монумент Сталинской конституции - огромная вертикальная композиция из колонн, перевитых красными знамёнами, на деревянном каркасе, с пятью скульптурными группами (красноармеец, рабочий, мать с ребёнком, студентка и старый гуцул с мальчиком) и надписями на украинском, польском и еврейском языках, символизировавшими «дружбу народов» по статьям сталинской конституции<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Kurier Galicyjski — стаття про львівський пам'ятник Сталінській конституції. (2012). Zapomniany pomnik."data-reference="Zapomniany pomnik 2012"><sup><a href="https://kuriergalicyjski.com/zapomniany-pomnik/" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span><span onclick=scrollToRef('scite-22') id="scite-ref-22-a" class="scite-citeref-number" title="Центр міської історії Центрально-Східної Європи, освітня платформа REESOURCES; дослідження і коментар Ірини Котлобулатової. (2026). View on the Monument to the Soviet Constitution, Lviv 1940 (REESOURCES)."data-reference="View on the Monument to the Soviet Constitution, Lviv 1940 (REESOURCES) 2026"><sup><a href="https://edu.lvivcenter.org/en/images/view-on-the-monument-to-the-soviet-constitution/" target="_blank" data-hasqtip="21" aria-describedby="qtip-21">[22]</a></sup></span>. У знака есть названные авторы: скульптор Сергей Литвиненко и киевский художник Михаил Дмитренко, прибывший во Львов в 1939 году в «десанте» советских художников, чьей задачей было насаждение соцреализма; возможно, авторы лишь приспособили к месту проект, изготовленный в Москве, а исполняли его скульпторы Евгений Дзындра и Андрей Коверко<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Kurier Galicyjski — стаття про львівський пам'ятник Сталінській конституції. (2012). Zapomniany pomnik."data-reference="Zapomniany pomnik 2012"><sup><a href="https://kuriergalicyjski.com/zapomniany-pomnik/" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span>. Монумент простоял до 30 июня 1941 года и исчез с приходом немцев<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Kurier Galicyjski — стаття про львівський пам'ятник Сталінській конституції. (2012). Zapomniany pomnik."data-reference="Zapomniany pomnik 2012"><sup><a href="https://kuriergalicyjski.com/zapomniany-pomnik/" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маркировка территории имперскими символами юбилей закрепили материальным знаком в переяславе на киевщине, на той самой площади, где в 1654 году проходила рада. знак встал в ходе юбилейной перестройки города, которую заказала республиканская власть: «в связи с подготовкой к празднованию 300-летия воссоединения украины с россией» совет министров усср выделил 20 миллионов рублей на реконструкцию переяслав-хмельницкого, план перестройки разработали под руководством архитектора владимира заболотного, и в мае 1954 года «на площади, где проходила историческая переяславская рада (ныне площадь воссоединения), установлен обелиск с мемориальной доской»(citation: історія міст і сіл української рср. київська область 1971). на доске под рельефом богдана хмельницкого отлит текст: «на этой площади 8 (18) января 1654 года состоялась переяславская рада, которая, выражая волю украинского народа, единогласно приняла историческое решение о воссоединении украины с россией»(citation: пам'ятний знак на честь 300-річчя переяславської ради, обеліск на площі переяславської ради 2014). знак не просто отмечал место: он объявлял решение единогласным и выражающим волю народа, закрепляя эту версию в бронзе на самой площади, где всё происходило."
+             data-platforms="Украинцы"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1954-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1954</div>
+<div><a href="/campaigns/C0087">C0087</a> Идеологическая кампания «300-летие воссоединения» и передача Крыма (1954)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Юбилей закрепили материальным знаком в Переяславе на Киевщине, на той самой площади, где в 1654 году проходила рада. Знак встал в ходе юбилейной перестройки города, которую заказала республиканская власть: «в связи с подготовкой к празднованию 300-летия воссоединения Украины с Россией» Совет Министров УССР выделил 20 миллионов рублей на реконструкцию Переяслав-Хмельницкого, план перестройки разработали под руководством архитектора Владимира Заболотного, и в мае 1954 года «на площади, где проходила историческая Переяславская рада (ныне площадь Воссоединения), установлен обелиск с мемориальной доской»<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Редкол.: П. Т. Тронько (голова) та ін., АН УРСР. (1971). Історія міст і сіл Української РСР. Київська область."data-reference="Історія міст і сіл Української РСР. Київська область 1971"><sup><a href="https://ukrssr.com.ua/kiyivska/perhmelnitskiy/pereyaslav-hmelnitskiy-pereyaslav-hmelnitskiy-rayon-kiyivska-oblast-prodovzhennya" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>. На доске под рельефом Богдана Хмельницкого отлит текст: «На этой площади 8 (18) января 1654 года состоялась Переяславская рада, которая, выражая волю украинского народа, единогласно приняла историческое решение о воссоединении Украины с Россией»<span onclick=scrollToRef('scite-24') id="scite-ref-24-a" class="scite-citeref-number" title="Фотофіксація меморіальної дошки; Вікісховище, автор Волтарс, CC BY-SA 4.0, знімок 14.08.2014. (2014). Пам'ятний знак на честь 300-річчя Переяславської Ради, обеліск на площі Переяславської Ради."data-reference="Пам'ятний знак на честь 300-річчя Переяславської Ради, обеліск на площі Переяславської Ради 2014"><sup><a href="https://commons.wikimedia.org/wiki/File%3A%D0%9F%D0%B0%D0%BC%27%D1%8F%D1%82%D0%BD%D0%B8%D0%B9_%D0%B7%D0%BD%D0%B0%D0%BA_%D0%BD%D0%B0_%D1%87%D0%B5%D1%81%D1%82%D1%8C_300-%D1%80%D1%96%D1%87%D1%87%D1%8F_%D0%9F%D0%B5%D1%80%D0%B5%D1%8F%D1%81%D0%BB%D0%B0%D0%B2%D1%81%D1%8C%D0%BA%D0%BE%D1%97_%D0%A0%D0%B0%D0%B4%D0%B8%2C_%D0%BE%D0%B1%D0%B5%D0%BB%D1%96%D1%81%D0%BA_%D0%BD%D0%B0_%D0%BF%D0%BB%D0%BE%D1%89%D1%96_%D0%9F%D0%B5%D1%80%D0%B5%D1%8F%D1%81%D0%BB%D0%B0%D0%B2%D1%81%D1%8C%D0%BA%D0%BE%D1%97_%D0%A0%D0%B0%D0%B4%D0%B8.jpg" target="_blank" data-hasqtip="23" aria-describedby="qtip-23">[24]</a></sup></span>. Знак не просто отмечал место: он объявлял решение единогласным и выражающим волю народа, закрепляя эту версию в бронзе на самой площади, где всё происходило.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маркировка территории имперскими символами материальный знак «слияния наций» поставлен в переяславе на киевщине, городе переяславской рады: «8 октября 1961 года на площади б. хмельницкого открыт величественный монумент в честь 300-летия воссоединения украины с россией»(citation: історія міст і сіл української рср. київська область 1971). открывала знак сама власть: по киножурналу «радянська україна» № 49, на митинге открытия выступали первый секретарь киевского обкома кпу пётр шелест и секретарь московского обкома партии панкратов - метрополия говорила на открытии собственным голосом(citation: радянська україна. кіножурнал № 49 1961). композицию составляли две женские фигуры, изображавшие украину и россию, и три барельефа с медальонами «факел 1654; серп и молот в лучах солнца 1917, орден победы 1945 г.»(citation: куди подінуть пам'ятник «возз'єднання» у переяславі 2022). назначение знака записано в его же охранном паспорте: «монумент является символом вечной, нерушимой дружбы и несокрушимого монолитного единства братских народов - украинского и русского…»(citation: геть від москви чи навіки разом? що робити з пам'ятниками, які виконують роль ідеологічної отрути 2020). через четыре года после открытия знак взяли под государственную охрану постановлением совета министров усср от 21 июля 1965 года № 711 «об утверждении списка памятников искусства, истории и археологии украинской сср»(citation: про затвердження списку пам'яток мистецтва, історії та археології української рср 1965)(citation: наказ міністерства культури і туризму україни № 58/0/16-10 2010). на постаменте стояла надпись «навеки вместе - навеки с русским народом»; в начале декабря 2021 года её сняли неизвестные(citation: у столиці демонтують скульптуру-символ возз'єднання україни з росією. а що в переяславі? 2022), а монумент демонтировали 7 июля 2022-го - по приказу министерства культуры, исключившему памятник, охранный № 5894-ко, из реестра «в связи с утратой предмета охраны»(citation: наказ міністерства культури та інформаційної політики україни № 223 2022)."
+             data-platforms="Украинцы"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1958-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1958</div>
+<div><a href="/campaigns/C0053">C0053</a> Создание единого «советского народа» (1958–1970)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Материальный знак «слияния наций» поставлен в Переяславе на Киевщине, городе Переяславской рады: «8 октября 1961 года на площади Б. Хмельницкого открыт величественный монумент в честь 300-летия воссоединения Украины с Россией»<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Редкол.: П. Т. Тронько (голова) та ін., АН УРСР. (1971). Історія міст і сіл Української РСР. Київська область."data-reference="Історія міст і сіл Української РСР. Київська область 1971"><sup><a href="https://ukrssr.com.ua/kiyivska/perhmelnitskiy/pereyaslav-hmelnitskiy-pereyaslav-hmelnitskiy-rayon-kiyivska-oblast-prodovzhennya" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>. Открывала знак сама власть: по киножурналу «Радянська Україна» № 49, на митинге открытия выступали первый секретарь Киевского обкома КПУ Пётр Шелест и секретарь Московского обкома партии Панкратов - метрополия говорила на открытии собственным голосом<span onclick=scrollToRef('scite-25') id="scite-ref-25-a" class="scite-citeref-number" title="Укркінохроніка, жовтень 1961; ЦДАЕА (кол. ЦДКФФА ім. Г. С. Пшеничного), од. обл. № 2348, анотація в електронному каталозі. (1961). Радянська Україна. Кіножурнал № 49."data-reference="Радянська Україна. Кіножурнал № 49 1961"><sup><a href="https://avd.archives.gov.ua/files/kino-doc.php?od_obl=2348" target="_blank" data-hasqtip="24" aria-describedby="qtip-24">[25]</a></sup></span>. Композицию составляли две женские фигуры, изображавшие Украину и Россию, и три барельефа с медальонами «факел 1654; серп и молот в лучах солнца 1917, орден Победы 1945 г.»<span onclick=scrollToRef('scite-26') id="scite-ref-26-a" class="scite-citeref-number" title="Переяслав.City. (2022). Куди подінуть пам'ятник «возз'єднання» у Переяславі."data-reference="Куди подінуть пам'ятник «возз'єднання» у Переяславі 2022"><sup><a href="https://pereiaslav.city/articles/223408/kudi-podinut-pamyatnik-vozzednannya-u-pereyaslavi" target="_blank" data-hasqtip="25" aria-describedby="qtip-25">[26]</a></sup></span>. Назначение знака записано в его же охранном паспорте: «Монумент является символом вечной, нерушимой дружбы и несокрушимого монолитного единства братских народов - украинского и русского…»<span onclick=scrollToRef('scite-27') id="scite-ref-27-a" class="scite-citeref-number" title="О. Ігнатенко, М. Товкайло (Переяслав.City). (2020). Геть від Москви чи навіки разом? Що робити з пам'ятниками, які виконують роль ідеологічної отрути."data-reference="Геть від Москви чи навіки разом? Що робити з пам'ятниками, які виконують роль ідеологічної отрути 2020"><sup><a href="https://pereiaslav.city/blogs/70141/get-vid-moskvi-chi-naviki-razom-scho-robiti-z-pamyatnikami-yaki-vikonuyut-rol-ideologichnoi-otruti" target="_blank" data-hasqtip="26" aria-describedby="qtip-26">[27]</a></sup></span>. Через четыре года после открытия знак взяли под государственную охрану постановлением Совета Министров УССР от 21 июля 1965 года № 711 «Об утверждении списка памятников искусства, истории и археологии Украинской ССР»<span onclick=scrollToRef('scite-28') id="scite-ref-28-a" class="scite-citeref-number" title="Рада Міністрів УРСР, постанова від 21.07.1965 № 711. (1965). Про затвердження списку пам'яток мистецтва, історії та археології Української РСР."data-reference="Про затвердження списку пам'яток мистецтва, історії та археології Української РСР 1965"><sup><a href="https://zakon.rada.gov.ua/laws/show/711-65-%D0%BF" target="_blank" data-hasqtip="27" aria-describedby="qtip-27">[28]</a></sup></span><span onclick=scrollToRef('scite-29') id="scite-ref-29-a" class="scite-citeref-number" title="Міністерство культури і туризму України, 03.02.2010, додаток 10. (2010). Наказ Міністерства культури і туризму України № 58/0/16-10."data-reference="Наказ Міністерства культури і туризму України № 58/0/16-10 2010"><sup><a href="https://wlm.org.ua/docs/mku/2010/58-0-16-10.pdf" target="_blank" data-hasqtip="28" aria-describedby="qtip-28">[29]</a></sup></span>. На постаменте стояла надпись «Навеки вместе - навеки с русским народом»; в начале декабря 2021 года её сняли неизвестные<span onclick=scrollToRef('scite-30') id="scite-ref-30-a" class="scite-citeref-number" title="Інформатор Переяслав, 25.04.2022. (2022). У столиці демонтують скульптуру-символ возз'єднання України з росією. А що в Переяславі?."data-reference="У столиці демонтують скульптуру-символ возз'єднання України з росією. А що в Переяславі? 2022"><sup><a href="https://ps.informator.ua/2022/04/25/u-stolyczi-demontuyut-skulpturu-symvol-vozzyednannya-ukrayiny-z-rosiyeyu-a-shho-v-pereyaslavi/" target="_blank" data-hasqtip="29" aria-describedby="qtip-29">[30]</a></sup></span>, а монумент демонтировали 7 июля 2022-го - по приказу Министерства культуры, исключившему памятник, охранный № 5894-Ко, из реестра «в связи с утратой предмета охраны»<span onclick=scrollToRef('scite-31') id="scite-ref-31-a" class="scite-citeref-number" title="Міністерство культури та інформаційної політики України, 28.06.2022. (2022). Наказ Міністерства культури та інформаційної політики України № 223."data-reference="Наказ Міністерства культури та інформаційної політики України № 223 2022"><sup><a href="https://mincult.gov.ua/files/pdf/223_%D0%B2%D1%96%D0%B4_28.06.22_%D0%9F%D0%B5%D1%80%D0%B5%D1%8F%D1%81%D0%BB%D0%B0%D0%B2.pdf" target="_blank" data-hasqtip="30" aria-describedby="qtip-30">[31]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маркировка территории имперскими символами российские оккупационные администрации с апреля 2022 года метили захваченные территории имперскими знаками - в камне и в бумаге. в херсонской области до вторжения было демонтировано более 110 памятников ленину и практически ни одного не осталось; после оккупации захватчики поставили десять новых: первый в геническе в апреле 2022 года - первый памятник ленину на территории украины после 2014 года, - а в конце того же месяца монумент вернули на постамент у горсовета в новой каховке(citation: ідеологія в бронзі: навіщо росія «засіває» окуповану херсонщину своїми монументами 2026). в мариуполе 5 мая 2022 года открыли памятник женщине с красным флагом, а церемонию опубликовал в своём телеграм-канале секретарь генсовета «единой россии» андрей турчак; площади воинов-освободителей, названной в честь освобождавших город от нацистов, оккупанты вернули советское имя «площадь ленинского комсомола»(citation: у маріуполі окупанти встановили пам'ятник «бабці з червоною ганчіркою» 2022). параллельно оккупационная администрация обклеивала территорию баннерами: в херсоне и новой каховке висели русскоязычные щиты «россия здесь навсегда!», «херсон - навеки с россией», «херсон - русский город», и для них купили за двадцать центов на фотостоке снимок украинского фотографа анны пасичник - её сын ярослав с подругой в вышиванках на рапсовом поле киевщины, - дорисовав за спинами детей российский флаг(citation: украинка обнаружила свою фотографию с детьми в вышиванках на билборде в поддержку аннексии херсона 2022). в балаклее на харьковщине оккупанты заклеили городской баннер: сначала повесили поверх «україна і росія "едины"», затем плакат с триколором и надписью «мы с россией один народ!». 10 сентября 2022 года украинские военные сорвали триколор - а под ним открылись строки шевченко, простоявшие под оккупацией всё это время: «борітеся - поборете! вам бог помагає! за вас правда, за вас слава, і воля святая!»(citation: «борітеся - поборете»: історія плаката з рядками шевченка, який росіяни заклеїли під час окупації балаклії 2023). знаки продержались до деоккупации: 11 ноября 2022 года плакат «россия здесь навсегда» в освобождённой белозерке херсонской области сорвали местные жители - видео опубликовал телеграм-канал «николаевский ванек»(citation: в освобожденной белозерке херсонской области срывают плакаты «россия здесь навсегда» 2022)."
+             data-platforms="Украинцы"
+             data-groups="G0011"
+             data-tools="S0012"
+             data-date="2022-02-24 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 2022</div>
+<div><a href="/campaigns/C0103">C0103</a> Полномасштабное вторжение (с 24 февраля 2022)</div><div><a href="/groups/G0011">G0011</a> Российская Федерация</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Российские оккупационные администрации с апреля 2022 года метили захваченные территории имперскими знаками - в камне и в бумаге. В Херсонской области до вторжения было демонтировано более 110 памятников Ленину и практически ни одного не осталось; после оккупации захватчики поставили десять новых: первый в Геническе в апреле 2022 года - первый памятник Ленину на территории Украины после 2014 года, - а в конце того же месяца монумент вернули на постамент у горсовета в Новой Каховке<span onclick=scrollToRef('scite-32') id="scite-ref-32-a" class="scite-citeref-number" title="Нижні Сірогози.City. (2026). Ідеологія в бронзі: навіщо Росія «засіває» окуповану Херсонщину своїми монументами."data-reference="Ідеологія в бронзі: навіщо Росія «засіває» окуповану Херсонщину своїми монументами 2026"><sup><a href="https://nsirogozy.city/blogs/461303/ideologiya-v-bronzi-navischo-rosiya-zasivaye-okupovanu-hersonschinu-svoimi-monumentami" target="_blank" data-hasqtip="31" aria-describedby="qtip-31">[32]</a></sup></span>. В Мариуполе 5 мая 2022 года открыли памятник женщине с красным флагом, а церемонию опубликовал в своём телеграм-канале секретарь генсовета «Единой России» Андрей Турчак; площади Воинов-Освободителей, названной в честь освобождавших город от нацистов, оккупанты вернули советское имя «площадь Ленинского комсомола»<span onclick=scrollToRef('scite-33') id="scite-ref-33-a" class="scite-citeref-number" title="0629.com.ua, 5 травня 2022. (2022). У Маріуполі окупанти встановили пам'ятник «бабці з червоною ганчіркою»."data-reference="У Маріуполі окупанти встановили пам'ятник «бабці з червоною ганчіркою» 2022"><sup><a href="https://www.0629.com.ua/news/3383296/propagandistska-isteria-rosii-u-mariupoli-okupanti-vstanovili-pamatnik-babci-z-cervonou-gancirkou-foto" target="_blank" data-hasqtip="32" aria-describedby="qtip-32">[33]</a></sup></span>. Параллельно оккупационная администрация обклеивала территорию баннерами: в Херсоне и Новой Каховке висели русскоязычные щиты «Россия здесь навсегда!», «Херсон - навеки с Россией», «Херсон - русский город», и для них купили за двадцать центов на фотостоке снимок украинского фотографа Анны Пасичник - её сын Ярослав с подругой в вышиванках на рапсовом поле Киевщины, - дорисовав за спинами детей российский флаг<span onclick=scrollToRef('scite-34') id="scite-ref-34-a" class="scite-citeref-number" title="Анастасия Платонова, Святослав Хоменко; BBC News Русская служба, 26 августа 2022. (2022). Украинка обнаружила свою фотографию с детьми в вышиванках на билборде в поддержку аннексии Херсона."data-reference="Украинка обнаружила свою фотографию с детьми в вышиванках на билборде в поддержку аннексии Херсона 2022"><sup><a href="https://www.bbc.com/russian/features-62687256" target="_blank" data-hasqtip="33" aria-describedby="qtip-33">[34]</a></sup></span>. В Балаклее на Харьковщине оккупанты заклеили городской баннер: сначала повесили поверх «Україна і Росія "едины"», затем плакат с триколором и надписью «Мы с Россией один народ!». 10 сентября 2022 года украинские военные сорвали триколор - а под ним открылись строки Шевченко, простоявшие под оккупацией всё это время: «Борітеся - поборете! Вам Бог помагає! За вас правда, за вас слава, і воля святая!»<span onclick=scrollToRef('scite-35') id="scite-ref-35-a" class="scite-citeref-number" title="Суспільне Харків. (2023). «Борітеся - поборете»: історія плаката з рядками Шевченка, який росіяни заклеїли під час окупації Балаклії."data-reference="«Борітеся - поборете»: історія плаката з рядками Шевченка, який росіяни заклеїли під час окупації Балаклії 2023"><sup><a href="https://suspilne.media/kharkiv/409254-boritesa-poborete-istoria-plakata-z-radkami-sevcenka-akogo-rosiani-zakleili-pid-cas-okupacii-balaklii/" target="_blank" data-hasqtip="34" aria-describedby="qtip-34">[35]</a></sup></span>. Знаки продержались до деоккупации: 11 ноября 2022 года плакат «Россия здесь навсегда» в освобождённой Белозерке Херсонской области сорвали местные жители - видео опубликовал телеграм-канал «Николаевский Ванек»<span onclick=scrollToRef('scite-36') id="scite-ref-36-a" class="scite-citeref-number" title="Фокус (focus.ua), 11.11.2022, 14:05; відео з телеграм-каналу «Николаевский Ванек». (2022). В освобожденной Белозерке Херсонской области срывают плакаты «Россия здесь навсегда»."data-reference="В освобожденной Белозерке Херсонской области срывают плакаты «Россия здесь навсегда» 2022"><sup><a href="https://focus.ua/voennye-novosti/536675-v-deokkupirovannoy-chasti-hersonskoy-oblasti-sryvayut-plakaty-rossiya-zdes-navsegda-video" target="_blank" data-hasqtip="35" aria-describedby="qtip-35">[36]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Украинцы",
+"russia/nokhchi": "Нохчи (Чеченцы)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://psz.ri.org.ru/I/XXVIII.pdf" target="_blank">
+                        Собственная Е.И.В. канцелярия (изд.). (1830). Полное собрание законов Российской империи, Собрание 1-е, том XXVIII (1804-1805).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="http://histpol.pl.ua/ru/kultura/nekropoli?id=847" target="_blank">
+                        В. Е. Бучневич (цит. Голиков, «Деяния Петра Великого», изд. 2-е, т. XI, с. 234). (1902). Записки о Полтаве и её памятниках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://www.pslava.info/Poltava_KruglaPloscha_1990PasportnaInformacija%2C127299.html" target="_blank">
+                        Служба охорони пам'яток (складання). (1990). Паспорт пам'ятки. Монумент Слави [1990 р.].
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.rada-poltava.gov.ua/ua/cultural-heritage" target="_blank">
+                        Полтавська міська рада. (2025). Перелік об'єктів культурної спадщини Полтавської міської територіальної громади (категорія «Національного значення»).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://poltava.to/project/8967/" target="_blank">
+                        Тиліщак В. (Український інститут національної пам'яті). (2024). Лист УІНП №2075/2.2-08-24 щодо Монумента Слави у м. Полтава.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://mincult.gov.ua/wp-content/uploads/2026/05/2026.05.20-perelik-po-dekomunizacziyi.pdf" target="_blank">
+                        Міністерство культури та стратегічних комунікацій України. (2026). Рішення Мінкульту щодо переміщення чи зняття статусу пам'яток в рамках декомунізації, дерусифікації та деколонізації (станом на 20.05.2026).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank">
+                        Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://old.nmiu.org/tsoho-dnia/2772-pamiatnyk-bohdanu-khmelnytskomu-v-kyievi" target="_blank">
+                        Національний музей історії України. (2026). Пам'ятник Богдану Хмельницькому в Києві.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="https://uinp.gov.ua/istorychnyy-kalendar/traven/30/1876-emskyy-ukaz" target="_blank">
+                        Український інститут національної пам'яті. (2026). 1876 - підписано Емський указ.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="https://archive.org/details/ukrainska2013" target="_blank">
+                        Відп. ред. Г. Боряк; упоряд. Г. Боряк, В. Баран, Л. Гісцова, Л. Демченко, О. Музичук, П. Найденко, В. Шандра; НАН України, Ін-т історії України; Укрдержархів, ЦДІАК України. (2013). Українська ідентичність і мовне питання в Російській імперії.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://dlib.kiev.ua/files/original/92e41c9499f40b50696c7dcb66518c88.pdf" target="_blank">
+                        Щітківський Іван, у зб. «Київ та його околиця в історії і пам'ятках». (1926). «Исторический путь» у Києві.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="http://www.oldkyiv.org.ua/data/st_olga_mnmnt.php" target="_blank">
+                        OldKyiv (Сайт історії Києва). (2026). Памятник Святой Ользі.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://www.history.org.ua/?termin=Kyivsky_viddil_Voenno_ist_tov_tva" target="_blank">
+                        Федорова Л. Д., Енциклопедія історії України, т. 4. (2007). Київський відділ Імператорського російського воєнно-історичного товариства.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://history.org.ua/LiberUA/kiev_katalog/3.pdf" target="_blank">
+                        Горбик В. О. та ін. (Ін-т історії України НАН України). (2007). Каталог-довідник пам'яток історії та культури України: м. Київ.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://www.i-hyrych.name/Kyiv/HistPath/RussianEmpire.html" target="_blank">
+                        Гирич І. Б., розділ праці «„Історичний шлях“ у київських монументах». (2019). Монументальна пропаганда часів Російської імперії.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="https://elar.naiau.kiev.ua/jspui/bitstream/123456789/1267/1/grukach_dis.pdf" target="_blank">
+                        Грукач В. О., дисертація канд. юрид. наук, Переяслав-Хмельницький ДПУ ім. Г. Сковороди. (2015). Інститут генерал-губернаторства у Правобережній Україні.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="https://zn.ua/ukr/ART/skilki_pamyatniku_stoyati.html" target="_blank">
+                        Валерій Дружбинський, «Дзеркало тижня», 06 лютого 2004. (2004). Скільки пам'ятнику стояти?.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-18" href="https://www.prlib.ru/item/436361" target="_blank">
+                        Фототипия из серии «Виды Кіева» по фотографии Гудшона и Губчевского; электронная копия Президентской библиотеки, оригинал — Национальная парламентская библиотека Украины. (2026). Памятник царю-освободителю императору Александру II.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="19.0">
+                                
+        <li>
+            <span  id="scite-19" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-19" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2009). Енциклопедія історії України: Т. 6.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-20" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-20" href="https://map.lviv.ua/statti/luckij2.html" target="_blank">
+                        О. Луцький, публікація на map.lviv.ua. (2026). «Радянізація» Львова: вересень 1939 - червень 1941 рр..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-21" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-21" href="https://kuriergalicyjski.com/zapomniany-pomnik/" target="_blank">
+                        Kurier Galicyjski — стаття про львівський пам'ятник Сталінській конституції. (2012). Zapomniany pomnik.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-22" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-22" href="https://edu.lvivcenter.org/en/images/view-on-the-monument-to-the-soviet-constitution/" target="_blank">
+                        Центр міської історії Центрально-Східної Європи, освітня платформа REESOURCES; дослідження і коментар Ірини Котлобулатової. (2026). View on the Monument to the Soviet Constitution, Lviv 1940 (REESOURCES).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-23" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-23" href="https://ukrssr.com.ua/kiyivska/perhmelnitskiy/pereyaslav-hmelnitskiy-pereyaslav-hmelnitskiy-rayon-kiyivska-oblast-prodovzhennya" target="_blank">
+                        Редкол.: П. Т. Тронько (голова) та ін., АН УРСР. (1971). Історія міст і сіл Української РСР. Київська область.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-24" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-24" href="https://commons.wikimedia.org/wiki/File%3A%D0%9F%D0%B0%D0%BC%27%D1%8F%D1%82%D0%BD%D0%B8%D0%B9_%D0%B7%D0%BD%D0%B0%D0%BA_%D0%BD%D0%B0_%D1%87%D0%B5%D1%81%D1%82%D1%8C_300-%D1%80%D1%96%D1%87%D1%87%D1%8F_%D0%9F%D0%B5%D1%80%D0%B5%D1%8F%D1%81%D0%BB%D0%B0%D0%B2%D1%81%D1%8C%D0%BA%D0%BE%D1%97_%D0%A0%D0%B0%D0%B4%D0%B8%2C_%D0%BE%D0%B1%D0%B5%D0%BB%D1%96%D1%81%D0%BA_%D0%BD%D0%B0_%D0%BF%D0%BB%D0%BE%D1%89%D1%96_%D0%9F%D0%B5%D1%80%D0%B5%D1%8F%D1%81%D0%BB%D0%B0%D0%B2%D1%81%D1%8C%D0%BA%D0%BE%D1%97_%D0%A0%D0%B0%D0%B4%D0%B8.jpg" target="_blank">
+                        Фотофіксація меморіальної дошки; Вікісховище, автор Волтарс, CC BY-SA 4.0, знімок 14.08.2014. (2014). Пам'ятний знак на честь 300-річчя Переяславської Ради, обеліск на площі Переяславської Ради.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-25" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-25" href="https://avd.archives.gov.ua/files/kino-doc.php?od_obl=2348" target="_blank">
+                        Укркінохроніка, жовтень 1961; ЦДАЕА (кол. ЦДКФФА ім. Г. С. Пшеничного), од. обл. № 2348, анотація в електронному каталозі. (1961). Радянська Україна. Кіножурнал № 49.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-26" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-26" href="https://pereiaslav.city/articles/223408/kudi-podinut-pamyatnik-vozzednannya-u-pereyaslavi" target="_blank">
+                        Переяслав.City. (2022). Куди подінуть пам'ятник «возз'єднання» у Переяславі.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-27" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-27" href="https://pereiaslav.city/blogs/70141/get-vid-moskvi-chi-naviki-razom-scho-robiti-z-pamyatnikami-yaki-vikonuyut-rol-ideologichnoi-otruti" target="_blank">
+                        О. Ігнатенко, М. Товкайло (Переяслав.City). (2020). Геть від Москви чи навіки разом? Що робити з пам'ятниками, які виконують роль ідеологічної отрути.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-28" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-28" href="https://zakon.rada.gov.ua/laws/show/711-65-%D0%BF" target="_blank">
+                        Рада Міністрів УРСР, постанова від 21.07.1965 № 711. (1965). Про затвердження списку пам'яток мистецтва, історії та археології Української РСР.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-29" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-29" href="https://wlm.org.ua/docs/mku/2010/58-0-16-10.pdf" target="_blank">
+                        Міністерство культури і туризму України, 03.02.2010, додаток 10. (2010). Наказ Міністерства культури і туризму України № 58/0/16-10.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-30" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-30" href="https://ps.informator.ua/2022/04/25/u-stolyczi-demontuyut-skulpturu-symvol-vozzyednannya-ukrayiny-z-rosiyeyu-a-shho-v-pereyaslavi/" target="_blank">
+                        Інформатор Переяслав, 25.04.2022. (2022). У столиці демонтують скульптуру-символ возз'єднання України з росією. А що в Переяславі?.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-31" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-31" href="https://mincult.gov.ua/files/pdf/223_%D0%B2%D1%96%D0%B4_28.06.22_%D0%9F%D0%B5%D1%80%D0%B5%D1%8F%D1%81%D0%BB%D0%B0%D0%B2.pdf" target="_blank">
+                        Міністерство культури та інформаційної політики України, 28.06.2022. (2022). Наказ Міністерства культури та інформаційної політики України № 223.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-32" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-32" href="https://nsirogozy.city/blogs/461303/ideologiya-v-bronzi-navischo-rosiya-zasivaye-okupovanu-hersonschinu-svoimi-monumentami" target="_blank">
+                        Нижні Сірогози.City. (2026). Ідеологія в бронзі: навіщо Росія «засіває» окуповану Херсонщину своїми монументами.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-33" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-33" href="https://www.0629.com.ua/news/3383296/propagandistska-isteria-rosii-u-mariupoli-okupanti-vstanovili-pamatnik-babci-z-cervonou-gancirkou-foto" target="_blank">
+                        0629.com.ua, 5 травня 2022. (2022). У Маріуполі окупанти встановили пам'ятник «бабці з червоною ганчіркою».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-34" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-34" href="https://www.bbc.com/russian/features-62687256" target="_blank">
+                        Анастасия Платонова, Святослав Хоменко; BBC News Русская служба, 26 августа 2022. (2022). Украинка обнаружила свою фотографию с детьми в вышиванках на билборде в поддержку аннексии Херсона.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-35" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-35" href="https://suspilne.media/kharkiv/409254-boritesa-poborete-istoria-plakata-z-radkami-sevcenka-akogo-rosiani-zakleili-pid-cas-okupacii-balaklii/" target="_blank">
+                        Суспільне Харків. (2023). «Борітеся - поборете»: історія плаката з рядками Шевченка, який росіяни заклеїли під час окупації Балаклії.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-36" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-36" href="https://focus.ua/voennye-novosti/536675-v-deokkupirovannoy-chasti-hersonskoy-oblasti-sryvayut-plakaty-rossiya-zdes-navsegda-video" target="_blank">
+                        Фокус (focus.ua), 11.11.2022, 14:05; відео з телеграм-каналу «Николаевский Ванек». (2022). В освобожденной Белозерке Херсонской области срывают плакаты «Россия здесь навсегда».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

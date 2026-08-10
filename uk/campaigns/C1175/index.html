@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/campaigns/C1175/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1175/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1175/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1175/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1175/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913), кампанія C1175 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/campaigns/C1175/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913), кампанія C1175 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/">Кампанії</a></li>
+  <li class="breadcrumb-item">Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>У 1905-1913 роках Російська імперія розправлялася з цілими чеченськими селами: штрафувала їх, ставила війська на постій коштом самих жителів, висилала родичів і сотні сімей, зносила хутори. Приводів було два - революція 1905 року і абрек Зелімхан. На початок XX століття минуло сорок років після кінця Кавказької війни, але, як пишуть історики Я. З. Ахмадов і Е. Х. Хасмагомадов, «управління Чечнею здійснювалося заходами, характерними для стану воєнного положення», у краї зберігався «військово-окупаційний режим», і обмежувальні заходи тільки посилювалися<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. На це тло лягла перша російська революція 1905-1907 років: 24 жовтня 1905 року воєнне положення введено в усій Чечні, з січня 1906 року запрацювали військово-польові суди<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Другим приводом стало абрецтво - імперським словом «абрек» називали горця, оголошеного поза законом, який пішов у гори зі зброєю. Найвідомішим із них був Зелімхан із села Харачой: у 1901 році, за його власними словами, він був сімейною людиною із заможної родини з млином і пасікою, але після сварки двох фамілій через сватання влада заарештувала його разом зі старим батьком і родичами; Зелімхан утік із грозненської тюрми і до самої загибелі в 1913 році був для адміністрації головним ворогом у краї<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Відповідала влада не йому, а всім - до того ж діяла заборона зброї, яка «стосувалася виключно горців та іногородніх і не поширювалася на козаків»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Проти окремих селищ і цілих аульних дільниць, фіксують ті самі історики, «широко практикувалися колективні покарання»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Такі розправи були беззаконними і за мірками самої імперії: стаття 50 Гаазького положення про закони і звичаї сухопутної війни - конвенції, підписаної і ратифікованої Російською імперією, - забороняла накладати «загальне стягнення, грошове або інше... на все населення за ті діяння одиничних осіб, у яких не може бути вбачена солідарна відповідальність населення»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Гаагская мирная конференция (18.10.1907). (1907). Конвенция о законах и обычаях сухопутной войны."data-reference="Конвенция о законах и обычаях сухопутной войны 1907"><sup><a href="https://ru.wikisource.org/wiki/%D0%9A%D0%BE%D0%BD%D0%B2%D0%B5%D0%BD%D1%86%D0%B8%D1%8F_%D0%BE_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD%D0%B0%D1%85_%D0%B8_%D0%BE%D0%B1%D1%8B%D1%87%D0%B0%D1%8F%D1%85_%D1%81%D1%83%D1%85%D0%BE%D0%BF%D1%83%D1%82%D0%BD%D0%BE%D0%B9_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%281907%29" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. А військова директива кінця 1907 року приписувала в разі повстання діяти, «розсіюючи банди до повного знищення, а так само стираючи з лиця землі селища, що їх переховували, пам'ятаючи, що такий спосіб не тільки буде дієвішим, а й гуманнішим»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Підсумок сформулював чеченський революціонер Асланбек Шеріпов: «Влада тероризувала мирне населення, а абреки тероризували цю владу...»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1175
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>
+                    <span>Жовтень 1905</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>
+                    <span>Грудень 1913</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версія</span>: 1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Створено:&nbsp;</span>6 серпня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>9 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/C1175" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Шари Навігатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Шар russia-colonialism</h6>
+                    <a class="dropdown-item" href="/uk/campaigns/C1175/C1175-russia-colonialism-layer.json" download target="_blank">завантажити</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/uk/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fuk%2Fcampaigns%2FC1175%2FC1175-russia-colonialism-layer.json" target="_blank">відкрити <img width="10" src="/uk/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Актори</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/groups/G0009">G0009</a></td>
+                <td><a href="/uk/groups/G0009">Російська імперія</a></td>
+                <td>11</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Застосовані інструменти</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/software/S0012"> S0012 </a></td>
+                <td><a href="/uk/software/S0012"> Окупаційні та підконтрольні адміністрації </a></td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td><a href="/uk/software/S0010"> S0010 </a></td>
+                <td><a href="/uk/software/S0010"> Регулярна армія </a></td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td><a href="/uk/software/S0017"> S0017 </a></td>
+                <td><a href="/uk/software/S0017"> Таємна поліція та Спецслужби </a></td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реалізовані процедури</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="масові вбивства цивільних 10 жовтня 1905 року на грозненському ринку війська російської імперії стріляли не по погромниках, а по чеченцях, яких громили озброєні запасні: історики я. з. ахмадов і е. х. хасмагомадов пишуть, що солдати ширванського полку на чолі з полковником поповим застосували зброю, «...розстрілюючи чеченців, які ховалися, розшукуючи їх по горищах і підвалах, у той час як запасні та хулігани громили і грабували на очах у начальства магазини»; за підрахунком істориків, у ході погрому постраждало 27 чеченців, з яких 17 було вбито(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0104">T0104</a> Масові вбивства цивільних
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>10 жовтня 1905 року на грозненському ринку війська Російської імперії стріляли не по погромниках, а по чеченцях, яких громили озброєні запасні: історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть, що солдати Ширванського полку на чолі з полковником Поповим застосували зброю, «...розстрілюючи чеченців, які ховалися, розшукуючи їх по горищах і підвалах, у той час як запасні та хулігани громили і грабували на очах у начальства магазини»; за підрахунком істориків, у ході погрому постраждало 27 чеченців, з яких 17 було вбито<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="терор військова директива російської імперії кінця 1907 року приписувала командувачу бригади, що стояла в грозненському і веденському округах, у разі повстання «...діяти з повною енергією, розсіюючи банди до повного знищення, а так само стираючи з лиця землі селища, що їх переховували, пам'ятаючи, що такий спосіб не тільки буде дієвішим, а й гуманнішим»(citation: история чечни в xix-xx веках 2005). приписане виконували. у серпні 1908 року «екзекуції» з масовими обшуками зазнало селище цацан-юрт, з жителів якого стягнули «контрибуцію» за нездану зброю - 7 тисяч рублів(citation: история чечни в xix-xx веках 2005). у 1911 році у веденському і грозненському округах знесли всі хутори, побудовані «самовільно», а з чеченського населення обох округів стягнули 100 тисяч рублів на користь постраждалих «...під час нападу зграї зелімхана»(citation: история чечни в xix-xx веках 2005). людей з оточення абрека вбивали і вішали: повішено саламбека гороводжиєва, у березні 1911 року в старих атагах убито аюба томаєва(citation: история чечни в xix-xx веках 2005). переслідували і за слово: «найсуворішим чином була заборонена будь-яка пропаганда, що підриває авторитет уряду і місцевої влади», порушнику загрожувало до трьох років тюрми або штраф до 3 тисяч рублів(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0022">T0022</a> Терор
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Військова директива Російської імперії кінця 1907 року приписувала командувачу бригади, що стояла в Грозненському і Веденському округах, у разі повстання «...діяти з повною енергією, розсіюючи банди до повного знищення, а так само стираючи з лиця землі селища, що їх переховували, пам'ятаючи, що такий спосіб не тільки буде дієвішим, а й гуманнішим»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Приписане виконували. У серпні 1908 року «екзекуції» з масовими обшуками зазнало селище Цацан-Юрт, з жителів якого стягнули «контрибуцію» за нездану зброю - 7 тисяч рублів<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. У 1911 році у Веденському і Грозненському округах знесли всі хутори, побудовані «самовільно», а з чеченського населення обох округів стягнули 100 тисяч рублів на користь постраждалих «...під час нападу зграї Зелімхана»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Людей з оточення абрека вбивали і вішали: повішено Саламбека Гороводжиєва, у березні 1911 року в Старих Атагах убито Аюба Томаєва<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Переслідували і за слово: «Найсуворішим чином була заборонена будь-яка пропаганда, що підриває авторитет уряду і місцевої влади», порушнику загрожувало до трьох років тюрми або штраф до 3 тисяч рублів<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="каральні експедиції наприкінці 1906 року каральний загін російської імперії з артилерією і козаками відновлював владу у веденському окрузі: «селища ніжалой, нохч-келой, хой і макажой, жителі яких уперто відмовлялися підкорятися, були піддані артилерійському обстрілу»; зазначалося, що в результаті каральної експедиції «...більша частина населення веденського округу, охоплена панікою, втекла в гори, де терпить голод і холод»; заарештовано кілька сотень людей, більшість засуджено і заслано(citation: история чечни в xix-xx веках 2005). у серпні 1908 року «екзекуції» з масовими обшуками зазнало селище цацан-юрт(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0077">T0077</a> Каральні експедиції
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Наприкінці 1906 року каральний загін Російської імперії з артилерією і козаками відновлював владу у Веденському окрузі: «селища Ніжалой, Нохч-Келой, Хой і Макажой, жителі яких уперто відмовлялися підкорятися, були піддані артилерійському обстрілу»; зазначалося, що в результаті каральної експедиції «...більша частина населення Веденського округу, охоплена панікою, втекла в гори, де терпить голод і холод»; заарештовано кілька сотень людей, більшість засуджено і заслано<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. У серпні 1908 року «екзекуції» з масовими обшуками зазнало селище Цацан-Юрт<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="колективні покарання за підсумками «червленських нарад» 1905-1906 років російська імперія встановила механізм кругової грошової відповідальності: штрафи з винних, «а в разі їхньої матеріальної неспроможності - штрафні санкції переходили на сільську громаду, до якої належав винний»(citation: история чечни в xix-xx веках 2005). старі атаги за переховування земляка-абрека оштрафовано двічі - на 3, потім на 6 тисяч рублів; їм же приписано у триденний строк здати «100 гвинтівок, дві тисячі патронів і 500 кинджалів», видати абреків томаєва і хорсієва, які переховувалися в селі, і «зібрати кошти на обладнання сільської поліцейської дільниці телефонним зв'язком»(citation: история чечни в xix-xx веках 2005). цацан-юрт у 1908 році виплатив «контрибуцію» за нездану зброю - 7 тисяч рублів(citation: история чечни в xix-xx веках 2005). у 1911 році наказом намісника з усього чеченського населення грозненського і веденського округів «стягнуто 100 тисяч рублів» у відшкодування постраждалим «...під час нападу зграї зелімхана»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0159">T0159</a> Колективні покарання
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>За підсумками «червленських нарад» 1905-1906 років Російська імперія встановила механізм кругової грошової відповідальності: штрафи з винних, «а в разі їхньої матеріальної неспроможності - штрафні санкції переходили на сільську громаду, до якої належав винний»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Старі Атаги за переховування земляка-абрека оштрафовано двічі - на 3, потім на 6 тисяч рублів; їм же приписано у триденний строк здати «100 гвинтівок, дві тисячі патронів і 500 кинджалів», видати абреків Томаєва і Хорсієва, які переховувалися в селі, і «зібрати кошти на обладнання сільської поліцейської дільниці телефонним зв'язком»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Цацан-Юрт у 1908 році виплатив «контрибуцію» за нездану зброю - 7 тисяч рублів<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. У 1911 році наказом намісника з усього чеченського населення Грозненського і Веденського округів «стягнуто 100 тисяч рублів» у відшкодування постраждалим «...під час нападу зграї Зелімхана»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="підселення чиновників і військових російська імперія в 1911 році призначила в зоні дій зелімхана «урядових старшин» і поставила війська на утримання самих жителів: «у селища харачой, дишне-ведено, мехкети, завірхі, хаттуні, ешелхотой, елістанджі, таузень, істі-су, майртуп, хой, іхарой, рігахой, макажой, автури і варандинські хутори направлено на постій військові команди»(citation: история чечни в xix-xx веках 2005). історики я. з. ахмадов і е. х. хасмагомадов пишуть про цю практику: «широко практикувалося направлення в чеченські селища військових підрозділів, утримання яких тяжким тягарем лягало на місцевих жителів»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0041">T0041</a> Підселення чиновників і військових
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія в 1911 році призначила в зоні дій Зелімхана «урядових старшин» і поставила війська на утримання самих жителів: «У селища Харачой, Дишне-Ведено, Мехкети, Завірхі, Хаттуні, Ешелхотой, Елістанджі, Таузень, Істі-Су, Майртуп, Хой, Іхарой, Рігахой, Макажой, Автури і Варандинські хутори направлено на постій військові команди»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть про цю практику: «широко практикувалося направлення в чеченські селища військових підрозділів, утримання яких тяжким тягарем лягало на місцевих жителів»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальне знищення інфраструктури російська імперія в 1911 році знесла чеченські хутори двох округів: «було розпочато насильницьке знесення всіх «самовільно» побудованих (а інших тут не було) хуторів у веденському і грозненському округах»(citation: история чечни в xix-xx веках 2005); чеченські хутори «неодноразово зносилися, зокрема й під приводом «покарання» за переховування абреків»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0105">T0105</a> Тотальне знищення інфраструктури
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія в 1911 році знесла чеченські хутори двох округів: «Було розпочато насильницьке знесення всіх «самовільно» побудованих (а інших тут не було) хуторів у Веденському і Грозненському округах»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; чеченські хутори «неодноразово зносилися, зокрема й під приводом «покарання» за переховування абреків»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="захоплення заручників у 1906 році начальник веденського округу підполковник добровольський, як пишуть історики я. з. ахмадов і е. х. хасмагомадов, «не знайшов нічого розумнішого, ніж дати команду в харачої хапати жінок-родичок абрека зелімхана»(citation: история чечни в xix-xx веках 2005). «восени 1910 р. схоплено і вислано сім'ю зелімхана», а в листопаді 1911 року «вислано 24 родичів зелімхана разом із сім'ями, після того як вони не виконали вимогу видати або вбити зелімхана» - за донесенням влади, ці люди ще й «...агітували серед іншого населення хорочоя, що робити цього не слід»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0099">T0099</a> Захоплення заручників
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>У 1906 році начальник Веденського округу підполковник Добровольський, як пишуть історики Я. З. Ахмадов і Е. Х. Хасмагомадов, «не знайшов нічого розумнішого, ніж дати команду в Харачої хапати жінок-родичок абрека Зелімхана»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. «Восени 1910 р. схоплено і вислано сім'ю Зелімхана», а в листопаді 1911 року «вислано 24 родичів Зелімхана разом із сім'ями, після того як вони не виконали вимогу видати або вбити Зелімхана» - за донесенням влади, ці люди ще й «...агітували серед іншого населення Хорочоя, що робити цього не слід»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="депортація російська імперія до 1913 року заарештувала і вислала з терської області тисячі людей «за звинуваченням у переховуванні абрека»(citation: история чечни в xix-xx веках 2005). «у ході придушення виступів у гірській частині чечні були вислані сотні селян з одного лише веденського округу. у результаті велика кількість сімей позбулися головних годувальників і опинилися на межі злиднів» - частину здобичі зелімхан витрачав на підтримку сімей висланих(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0127">T0127</a> Депортація
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія до 1913 року заарештувала і вислала з Терської області тисячі людей «за звинуваченням у переховуванні абрека»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. «У ході придушення виступів у гірській частині Чечні були вислані сотні селян з одного лише Веденського округу. У результаті велика кількість сімей позбулися головних годувальників і опинилися на межі злиднів» - частину здобичі Зелімхан витрачав на підтримку сімей висланих<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правова сегрегація населення російська імперія 24 жовтня 1905 року ввела воєнне положення «у грозненському, веденському і хасав-юртівському округах терської області, тобто в усій чечні», а 23 грудня поширила його на всю область(citation: история чечни в xix-xx веках 2005). заборона зброї «стосувалася виключно горців та іногородніх і не поширювалася на козаків. ба більше... намісник кавказу розпорядився безплатно роздати козакам терської області 10 тисяч однозарядних гвинтівок-берданок і мільйон патронів»(citation: история чечни в xix-xx веках 2005). 22 червня 1909 року воєнне положення скасовано - але «в терській області одночасно вводився «стан посиленої охорони»», розпорядження якого «фактично звели на «ніщо» демократичні права і свободи, «даровані» імператорським указом від 17 жовтня 1905 р.»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0032">T0032</a> Правова сегрегація населення
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія 24 жовтня 1905 року ввела воєнне положення «у Грозненському, Веденському і Хасав-Юртівському округах Терської області, тобто в усій Чечні», а 23 грудня поширила його на всю область<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Заборона зброї «стосувалася виключно горців та іногородніх і не поширювалася на козаків. Ба більше... намісник Кавказу розпорядився безплатно роздати козакам Терської області 10 тисяч однозарядних гвинтівок-берданок і мільйон патронів»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 22 червня 1909 року воєнне положення скасовано - але «в Терській області одночасно вводився «стан посиленої охорони»», розпорядження якого «фактично звели на «ніщо» демократичні права і свободи, «даровані» імператорським указом від 17 жовтня 1905 р.»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтралізація опозиції у січні 1908 року начальник терської області секретним циркуляром приписав «установити секретний нагляд за діяльністю мусульманського духовенства, «...а так само за появою емісарів із туреччини»»(citation: история чечни в xix-xx веках 2005). у 1911 році «російська влада пішла на безпрецедентний крок - у 1911 р. з терської області вислано в адміністративному порядку одразу вісім шейхів, як кадирійського, так і накшбандійського тарикатів (шейх - духовний наставник, тарикат - релігійне братство учнів навколо такого наставника)... головний покровитель зелімхана - баматгірі-хаджі мітаєв, а також інгуський шейх батал-хаджі белхороєв, померли на засланні»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0017"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0021">T0021</a> Нейтралізація опозиції
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>У січні 1908 року начальник Терської області секретним циркуляром приписав «установити секретний нагляд за діяльністю мусульманського духовенства, «...а так само за появою емісарів із Туреччини»»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. У 1911 році «російська влада пішла на безпрецедентний крок - у 1911 р. з Терської області вислано в адміністративному порядку одразу вісім шейхів, як кадирійського, так і накшбандійського тарикатів (шейх - духовний наставник, тарикат - релігійне братство учнів навколо такого наставника)... Головний покровитель Зелімхана - Баматгірі-хаджі Мітаєв, а також інгуський шейх Батал-хаджі Белхороєв, померли на засланні»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="фіктивні суди російська імперія з 10 січня 1906 року ввела в терській області військово-польові суди - їм передавалися «...особи, які вчинили вбивство, розбій, грабіж і напад на вартового або військовий караул, а також збройний опір владі і напад на чинів військ і поліції і на всіх взагалі посадових осіб...»; за час роботи цих судів, до 19 квітня 1907 року, на кавказі до смертної кари засуджено 195 осіб, ще 47 - до каторги(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Жовтень 1905</div>
+                <div>
+                    <a href="/uk/techniques/T0160">T0160</a> Фіктивні суди
+                </div>
+<div><a href="/uk/campaigns/C1175">C1175</a> Колективні покарання епохи абрецтва: штрафи, постій військ і висилки за Зелімхана (1905-1913)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія з 10 січня 1906 року ввела в Терській області військово-польові суди - їм передавалися «...особи, які вчинили вбивство, розбій, грабіж і напад на вартового або військовий караул, а також збройний опір владі і напад на чинів військ і поліції і на всіх взагалі посадових осіб...»; за час роботи цих судів, до 19 квітня 1907 року, на Кавказі до смертної кари засуджено 195 осіб, ще 47 - до каторги<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="2.0">
+                                
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://ru.wikisource.org/wiki/%D0%9A%D0%BE%D0%BD%D0%B2%D0%B5%D0%BD%D1%86%D0%B8%D1%8F_%D0%BE_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD%D0%B0%D1%85_%D0%B8_%D0%BE%D0%B1%D1%8B%D1%87%D0%B0%D1%8F%D1%85_%D1%81%D1%83%D1%85%D0%BE%D0%BF%D1%83%D1%82%D0%BD%D0%BE%D0%B9_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%281907%29" target="_blank">
+                        Гаагская мирная конференция (18.10.1907). (1907). Конвенция о законах и обычаях сухопутной войны.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+<script src="/uk/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

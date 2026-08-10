@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/campaigns/C0100/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C0100/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C0100/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C0100/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C0100/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014), кампанія C0100 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/campaigns/C0100/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014), кампанія C0100 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/">Кампанії</a></li>
+  <li class="breadcrumb-item">Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>Приховане воєнне вторгнення та окупація Криму, початок збройної агресії РФ проти України: захоплення адміністративних будівель військовими без розпізнавальних знаків, призначення підконтрольного прем'єра та фіктивний референдум, який Генасамблея ООН визнала таким, що не має сили: «референдум, проведений в Автономній Республіці Крим та місті Севастополі 16 березня 2014 року, не маючи законної сили, не може бути основою для будь-якої зміни статусу»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="UN General Assembly. (2014). Territorial integrity of Ukraine (A/RES/68/262)."data-reference="Territorial integrity of Ukraine (A/RES/68/262) 2014"><sup><a href="https://digitallibrary.un.org/record/767883/files/A_RES_68_262-EN.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Юридичне оформлення захоплення завершилося в Москві законом від 21 березня 2014 року<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Президент РФ, 21 марта 2014. (2014). Федеральный закон № 36-ФЗ о ратификации договора с Республикой Крым."data-reference="Федеральный закон № 36-ФЗ о ратификации договора с Республикой Крым 2014"><sup><a href="https://ru.wikisource.org/wiki/%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_21.03.2014_%E2%84%96_36-%D0%A4%D0%97" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C0100
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>
+                    <span>Лютий 2014</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>
+                    <span>Березень 2014</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версія</span>: 1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Створено:&nbsp;</span>27 квітня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>1 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/C0100" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Шари Навігатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Шар russia-colonialism</h6>
+                    <a class="dropdown-item" href="/uk/campaigns/C0100/C0100-russia-colonialism-layer.json" download target="_blank">завантажити</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/uk/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fuk%2Fcampaigns%2FC0100%2FC0100-russia-colonialism-layer.json" target="_blank">відкрити <img width="10" src="/uk/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Актори</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/groups/G0011">G0011</a></td>
+                <td><a href="/uk/groups/G0011">Російська Федерація</a></td>
+                <td>6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Застосовані інструменти</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/software/S0017"> S0017 </a></td>
+                <td><a href="/uk/software/S0017"> Таємна поліція та Спецслужби </a></td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td><a href="/uk/software/S0012"> S0012 </a></td>
+                <td><a href="/uk/software/S0012"> Окупаційні та підконтрольні адміністрації </a></td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td><a href="/uk/software/S0021"> S0021 </a></td>
+                <td><a href="/uk/software/S0021"> Пропаганда </a></td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td><a href="/uk/software/S0010"> S0010 </a></td>
+                <td><a href="/uk/software/S0010"> Регулярна армія </a></td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td><a href="/uk/software/S0008"> S0008 </a></td>
+                <td><a href="/uk/software/S0008"> Уряд </a></td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реалізовані процедури</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="воєнна інтервенція використання регулярних військ без розпізнавальних знаків для встановлення контролю над півостровом. через рік це визнав в. путін на «прямій лінії» 17 квітня 2014 року: «за спиною сил самооборони криму, звичайно, стали наші військовослужбовці. вони діяли дуже коректно, але… рішуче і професійно»(citation: прямая линия с владимиром путиным 2014). українські гарнізони на півострові було блоковано й роззброєно, що путін визнав сам: «і те, як було роззброєно українські частини - це все було зроблено настільки стрімко, що складалося враження, що це неймовірно довго готувалося»(citation: прямая линия с владимиром путиным 2014)."
+             data-platforms="Українці"
+             data-groups="G0011"
+             data-tools="S0010"
+             data-date="2014-02-20 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 2014</div>
+                <div>
+                    <a href="/uk/techniques/T0019">T0019</a> Воєнна інтервенція
+                </div>
+<div><a href="/uk/campaigns/C0100">C0100</a> Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014)</div><div><a href="/uk/groups/G0011">G0011</a> Російська Федерація</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Використання регулярних військ без розпізнавальних знаків для встановлення контролю над півостровом. Через рік це визнав В. Путін на «прямій лінії» 17 квітня 2014 року: «за спиною сил самооборони Криму, звичайно, стали наші військовослужбовці. Вони діяли дуже коректно, але… рішуче і професійно»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Президент РФ, официальная стенограмма 17.04.2014. (2014). Прямая линия с Владимиром Путиным."data-reference="Прямая линия с Владимиром Путиным 2014"><sup><a href="http://www.kremlin.ru/events/president/transcripts/20796/work" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Українські гарнізони на півострові було блоковано й роззброєно, що Путін визнав сам: «і те, як було роззброєно українські частини - це все було зроблено настільки стрімко, що складалося враження, що це неймовірно довго готувалося»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Президент РФ, официальная стенограмма 17.04.2014. (2014). Прямая линия с Владимиром Путиным."data-reference="Прямая линия с Владимиром Путиным 2014"><sup><a href="http://www.kremlin.ru/events/president/transcripts/20796/work" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="дезінформація офіційне заперечення участі російських військ під час операції – і пізніше визнання путіна («пряма лінія» 17 квітня 2014), що заперечення було брехнею: «за спиною сил самооборони криму, звичайно, стали наші військовослужбовці»(citation: прямая линия с владимиром путиным 2014). у тому ж ефірі співрозмовниця вітала його з тим, що він «честно сказал, что «зелені чоловічки» – это мирные наши военные»(citation: прямая линия с владимиром путиным 2014)."
+             data-platforms="Українці"
+             data-groups="G0011"
+             data-tools="S0021"
+             data-date="2014-02-20 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 2014</div>
+                <div>
+                    <a href="/uk/techniques/T0137">T0137</a> Дезінформація
+                </div>
+<div><a href="/uk/campaigns/C0100">C0100</a> Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014)</div><div><a href="/uk/groups/G0011">G0011</a> Російська Федерація</div><div><a href="/uk/software/S0021">S0021</a> Пропаганда</div>            </div>
+            <div class="proc-desc">
+                        <p>Офіційне заперечення участі російських військ під час операції – і пізніше визнання Путіна («пряма лінія» 17 квітня 2014), що заперечення було брехнею: «за спиною сил самооборони Криму, звичайно, стали наші військовослужбовці»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Президент РФ, официальная стенограмма 17.04.2014. (2014). Прямая линия с Владимиром Путиным."data-reference="Прямая линия с Владимиром Путиным 2014"><sup><a href="http://www.kremlin.ru/events/president/transcripts/20796/work" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. У тому ж ефірі співрозмовниця вітала його з тим, що він «честно сказал, что «зелені чоловічки» – это мирные наши военные»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Президент РФ, официальная стенограмма 17.04.2014. (2014). Прямая линия с Владимиром Путиным."data-reference="Прямая линия с Владимиром Путиным 2014"><sup><a href="http://www.kremlin.ru/events/president/transcripts/20796/work" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="маріонетковий уряд приведення до влади підконтрольної адміністрації під прикриттям військових: рішення кримського парламенту ухвалювалися в умовах, коли «за спиною сил самооборони криму, звичайно, стали наші військовослужбовці»(citation: прямая линия с владимиром путиным 2014). га оон визнала подальший референдум таким, що не має сили, і підтвердила, що він «не був санкціонований україною»(citation: territorial integrity of ukraine (a/res/68/262) 2014). увкпл зафіксувало й саму сцену «обрання»: у ніч проти 27 лютого «озброєні групи без розпізнавальних знаків захопили будівлі місцевого уряду та парламенту», а «27 лютого члени парламенту криму, у присутності озброєних людей, відправили у відставку місцевий уряд та обрали сергія аксьонова главою криму»(citation: situation of human rights in the temporarily occupied autonomous republic of crimea and the city of sevastopol (ohchr) 2017)."
+             data-platforms="Українці"
+             data-groups="G0011"
+             data-tools="S0017"
+             data-date="2014-02-20 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 2014</div>
+                <div>
+                    <a href="/uk/techniques/T0037">T0037</a> Маріонетковий уряд
+                </div>
+<div><a href="/uk/campaigns/C0100">C0100</a> Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014)</div><div><a href="/uk/groups/G0011">G0011</a> Російська Федерація</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Приведення до влади підконтрольної адміністрації під прикриттям військових: рішення кримського парламенту ухвалювалися в умовах, коли «за спиною сил самооборони Криму, звичайно, стали наші військовослужбовці»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Президент РФ, официальная стенограмма 17.04.2014. (2014). Прямая линия с Владимиром Путиным."data-reference="Прямая линия с Владимиром Путиным 2014"><sup><a href="http://www.kremlin.ru/events/president/transcripts/20796/work" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. ГА ООН визнала подальший референдум таким, що не має сили, і підтвердила, що він «не був санкціонований Україною»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="UN General Assembly. (2014). Territorial integrity of Ukraine (A/RES/68/262)."data-reference="Territorial integrity of Ukraine (A/RES/68/262) 2014"><sup><a href="https://digitallibrary.un.org/record/767883/files/A_RES_68_262-EN.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. УВКПЛ зафіксувало й саму сцену «обрання»: у ніч проти 27 лютого «озброєні групи без розпізнавальних знаків захопили будівлі місцевого уряду та парламенту», а «27 лютого члени парламенту Криму, у присутності озброєних людей, відправили у відставку місцевий уряд та обрали Сергія Аксьонова главою Криму»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="УВКПЧ ООН, 25 September 2017. (2017). Situation of human rights in the temporarily occupied Autonomous Republic of Crimea and the city of Sevastopol (OHCHR)."data-reference="Situation of human rights in the temporarily occupied Autonomous Republic of Crimea and the city of Sevastopol (OHCHR) 2017"><sup><a href="https://www.ohchr.org/sites/default/files/Documents/Countries/UA/Crimea2014_2017_EN.pdf" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="імітація народного волевиявлення створення видимості масової проросійської мобілізації на півострові: за «силами самооборони», від імені яких велася операція, стояли російські військові, що путін визнав 17 квітня 2014 року: «за спиною сил самооборони криму, звичайно, стали наші військовослужбовці»(citation: прямая линия с владимиром путиным 2014). мітингова та «добровольча» масовка забезпечувала картинку народного пориву, юридичне значення якої оон відкинула(citation: territorial integrity of ukraine (a/res/68/262) 2014)."
+             data-platforms="Українці"
+             data-groups="G0011"
+             data-tools="S0017"
+             data-date="2014-02-20 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 2014</div>
+                <div>
+                    <a href="/uk/techniques/T0109">T0109</a> Імітація народного волевиявлення
+                </div>
+<div><a href="/uk/campaigns/C0100">C0100</a> Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014)</div><div><a href="/uk/groups/G0011">G0011</a> Російська Федерація</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Створення видимості масової проросійської мобілізації на півострові: за «силами самооборони», від імені яких велася операція, стояли російські військові, що Путін визнав 17 квітня 2014 року: «за спиною сил самооборони Криму, звичайно, стали наші військовослужбовці»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Президент РФ, официальная стенограмма 17.04.2014. (2014). Прямая линия с Владимиром Путиным."data-reference="Прямая линия с Владимиром Путиным 2014"><sup><a href="http://www.kremlin.ru/events/president/transcripts/20796/work" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Мітингова та «добровольча» масовка забезпечувала картинку народного пориву, юридичне значення якої ООН відкинула<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="UN General Assembly. (2014). Territorial integrity of Ukraine (A/RES/68/262)."data-reference="Territorial integrity of Ukraine (A/RES/68/262) 2014"><sup><a href="https://digitallibrary.un.org/record/767883/files/A_RES_68_262-EN.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="імітація народного волевиявлення фіктивний референдум 16 березня 2014 року в умовах воєнної окупації: га оон зазначила, що він «не був санкціонований україною», і постановила, що він, «не маючи законної сили, не може бути основою для будь-якої зміни статусу автономної республіки крим чи міста севастополя»(citation: territorial integrity of ukraine (a/res/68/262) 2014)."
+             data-platforms="Українці"
+             data-groups="G0011"
+             data-tools="S0012"
+             data-date="2014-02-20 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 2014</div>
+                <div>
+                    <a href="/uk/techniques/T0109">T0109</a> Імітація народного волевиявлення
+                </div>
+<div><a href="/uk/campaigns/C0100">C0100</a> Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014)</div><div><a href="/uk/groups/G0011">G0011</a> Російська Федерація</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Фіктивний референдум 16 березня 2014 року в умовах воєнної окупації: ГА ООН зазначила, що він «не був санкціонований Україною», і постановила, що він, «не маючи законної сили, не може бути основою для будь-якої зміни статусу Автономної Республіки Крим чи міста Севастополя»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="UN General Assembly. (2014). Territorial integrity of Ukraine (A/RES/68/262)."data-reference="Territorial integrity of Ukraine (A/RES/68/262) 2014"><sup><a href="https://digitallibrary.un.org/record/767883/files/A_RES_68_262-EN.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="анексія територій юридичне оформлення відторгнення території: договір про «прийняття» підписано 18 березня 2014 року, а закон про його ратифікацію «прийнятий державною думою 20 березня 2014 року. схвалений радою федерації 21 березня 2014 року»(citation: федеральный закон № 36-фз о ратификации договора с республикой крым 2014)."
+             data-platforms="Українці"
+             data-groups="G0011"
+             data-tools="S0008"
+             data-date="2014-02-20 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 2014</div>
+                <div>
+                    <a href="/uk/techniques/T0017">T0017</a> Анексія територій
+                </div>
+<div><a href="/uk/campaigns/C0100">C0100</a> Початок російсько-української війни: Збройне вторгнення та окупація Криму (2014)</div><div><a href="/uk/groups/G0011">G0011</a> Російська Федерація</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Юридичне оформлення відторгнення території: договір про «прийняття» підписано 18 березня 2014 року, а закон про його ратифікацію «Прийнятий Державною Думою 20 березня 2014 року. Схвалений Радою Федерації 21 березня 2014 року»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Президент РФ, 21 марта 2014. (2014). Федеральный закон № 36-ФЗ о ратификации договора с Республикой Крым."data-reference="Федеральный закон № 36-ФЗ о ратификации договора с Республикой Крым 2014"><sup><a href="https://ru.wikisource.org/wiki/%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_21.03.2014_%E2%84%96_36-%D0%A4%D0%97" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://digitallibrary.un.org/record/767883/files/A_RES_68_262-EN.pdf" target="_blank">
+                        UN General Assembly. (2014). Territorial integrity of Ukraine (A/RES/68/262).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://ru.wikisource.org/wiki/%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_21.03.2014_%E2%84%96_36-%D0%A4%D0%97" target="_blank">
+                        Президент РФ, 21 марта 2014. (2014). Федеральный закон № 36-ФЗ о ратификации договора с Республикой Крым.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="3.0">
+                                
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="http://www.kremlin.ru/events/president/transcripts/20796/work" target="_blank">
+                        Президент РФ, официальная стенограмма 17.04.2014. (2014). Прямая линия с Владимиром Путиным.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.ohchr.org/sites/default/files/Documents/Countries/UA/Crimea2014_2017_EN.pdf" target="_blank">
+                        УВКПЧ ООН, 25 September 2017. (2017). Situation of human rights in the temporarily occupied Autonomous Republic of Crimea and the city of Sevastopol (OHCHR).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+<script src="/uk/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,678 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/campaigns/C1022/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1022/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1022/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1022/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1022/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872), кампанія C1022 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/campaigns/C1022/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872), кампанія C1022 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/">Кампанії</a></li>
+  <li class="breadcrumb-item">Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>У 1858-1872 роках імперія виштовхнула чеченців до Османської імперії й тримала дорогу назад закритою. Мухаджирство - від арабського «мухаджир», переселенець, що йде заради віри: так називали тих, хто пішов, і це ж ім'я закріпилося за всією хвилею виселення. Влітку 1865 року з Чечні пішли понад 23 тисячі людей, п'ята частина чеченського народу; йшли хвилями, які імперська канцелярія рахувала «партіями» - їх набралося 28; операцією керував колишній начальник Чеченського округу генерал Кундухов, якому імперська влада доручила виселення<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Чеченське виселення було частиною загальної операції: за офіційними даними, за 1858-1865 роки з Північного Кавказу виселено 493 194 особи, з них 443 082 - представники адигських племен і абхази<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Болохина Н. И.. (2010). Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию."data-reference="Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию 2010"><sup><a href="https://cyberleninka.ru/article/n/politika-tsarizma-po-pereseleniyu-gortsev-severo-vostochnogo-kavkaza-v-turtsiyu-vtoraya-polovina-hih-nachalo-hh-veka" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. На заході Кавказу знаряддям була війна, на сході - економічне задушення і таємна агітація. Мету сформульовано в листуванні командування Кавказької армії про закінчення війни на Західному Кавказі: «...питання про час закінчення війни, за теперішніх обставин, зводиться до того – за скільки часу ми встигнемо відправити до Туреччини вороже нам населення»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Начальник штабу Кавказького корпусу Мілютін визнав характер політики письмово ще 1857 року: «обов'язки перед людським родом вимагають, щоб ми завчасно вжили заходів для забезпечення існування навіть і ворожих нам племен, яких з державної потреби витісняємо з їхніх земель»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Чеченська народна пісня зберегла рахунок винуватців: «Мусульманський цар кличе нас до себе, / Цар російський – лишитися просить! / Без вогню і вітру Чечня запалала: / Вогнем був Алхасов Муса, / Вихором подув Османов Садулла... / Ось він, день страшного суду!»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Обидва названі по-чеченськи, і обидва - організатори виселення: Алхасов Муса - це той самий генерал Кундухов, а Османов Садулла - його помічник, наїб Малої Чечні (наїб - поставлений владою управитель округу). Історик Д. А. Хожаєв ставить виселення в один ряд із депортацією 1944 року: «Геноцид проти чеченського народу було здійснено в XIX столітті, під час Кавказької війни і після неї, під час виселення до Туреччини»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1022
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>
+                    <span>Січень 1858</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>
+                    <span>Грудень 1872</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версія</span>: 1.2
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Створено:&nbsp;</span>12 травня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>3 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/C1022" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Шари Навігатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Шар russia-colonialism</h6>
+                    <a class="dropdown-item" href="/uk/campaigns/C1022/C1022-russia-colonialism-layer.json" download target="_blank">завантажити</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/uk/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fuk%2Fcampaigns%2FC1022%2FC1022-russia-colonialism-layer.json" target="_blank">відкрити <img width="10" src="/uk/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Актори</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/groups/G0009">G0009</a></td>
+                <td><a href="/uk/groups/G0009">Російська імперія</a></td>
+                <td>7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Застосовані інструменти</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/software/S0008"> S0008 </a></td>
+                <td><a href="/uk/software/S0008"> Уряд </a></td>
+                <td>7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реалізовані процедури</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="депортація влітку 1865 року чечню покинула п'ята частина чеченського народу - і майже половина тих, хто пішов, загинула. перші родини вийшли з владикавказа 28 травня 1865 року, останні перетнули кордон 10 вересня(citation: мир чеченцев. xix век 2007); історик д. а. хожаєв підбиває рахунок: «до туреччини йдуть з рідної землі 23057 осіб (5 тисяч родин) чеченців, карабулаків та інгушів»(citation: чеченцы в русско-кавказской войне 1998); історики я. з. ахмадов і е. х. хасмагомадов рахують «до 23 тисяч чеченців», з них понад 4,5 тисячі родин - жителі малої чечні та ічкеринського округу, а загалом у 1860-ті роки виселено «до 20% від загального числа чеченців»(citation: история чечни в xix-xx веках 2005). загибель почалася одразу: історик з. х. ібрагімова пише - «у ході переселення загинуло близько 40000 горців терської області, що становило трохи менше половини всього складу тих, хто виселився»; за донесеннями російського консула, в трапезунді 1864 року помирало 180-250 осіб на день, у самсуні - 200(citation: мир чеченцев. xix век 2007). землі для поселення «були непридатні для землеробства – кам'янисті та безплідні»(citation: мир чеченцев. xix век 2007); колонія рас-ель-айн, де поселили переважно чеченців, скоротилася до 1878 року з 4-5 тисяч родин до 500(citation: мир чеченцев. xix век 2007). самі мухаджири - так називали тих, хто пішов, від арабського «мухаджир», переселенець - писали начальникові терської області: «ми дізналися, що мусса нас обманув... з нас і так загинула вже одна третина» (мусса - це генерал кундухов, вони звали його на ім'я)(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1858-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0127">T0127</a> Депортація
+                </div>
+<div><a href="/uk/campaigns/C1022">C1022</a> Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Влітку 1865 року Чечню покинула п'ята частина чеченського народу - і майже половина тих, хто пішов, загинула. Перші родини вийшли з Владикавказа 28 травня 1865 року, останні перетнули кордон 10 вересня<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; історик Д. А. Хожаєв підбиває рахунок: «до Туреччини йдуть з рідної землі 23057 осіб (5 тисяч родин) чеченців, карабулаків та інгушів»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; історики Я. З. Ахмадов і Е. Х. Хасмагомадов рахують «до 23 тисяч чеченців», з них понад 4,5 тисячі родин - жителі Малої Чечні та Ічкеринського округу, а загалом у 1860-ті роки виселено «до 20% від загального числа чеченців»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Загибель почалася одразу: історик З. Х. Ібрагімова пише - «У ході переселення загинуло близько 40000 горців Терської області, що становило трохи менше половини всього складу тих, хто виселився»; за донесеннями російського консула, в Трапезунді 1864 року помирало 180-250 осіб на день, у Самсуні - 200<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Землі для поселення «були непридатні для землеробства – кам'янисті та безплідні»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; колонія Рас-ель-Айн, де поселили переважно чеченців, скоротилася до 1878 року з 4-5 тисяч родин до 500<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Самі мухаджири - так називали тих, хто пішов, від арабського «мухаджир», переселенець - писали начальникові Терської області: «Ми дізналися, що Мусса нас обманув... З нас і так загинула вже одна третина» (Мусса - це генерал Кундухов, вони звали його на ім'я)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="міграційне заміщення начальник терської області генерал лорис-меліков виклав план: «...чеченське населення необхідно було збити в одне місце... населення це, з одного боку відрізане від гір новими станицями... не насмілилося б більше загрожувати нам повстанням і не уникало найпильнішого нагляду»(citation: история чечни в xix-xx веках 2005). землю тих, хто пішов, забирала скарбниця: «багато аулів зовсім спорожніли, недоглянуті землі заросли бур'яном. ці землі конфісковувалися на користь скарбниці»(citation: мир чеченцев. xix век 2007), і відводилися вони «російським офіцерам, місцевій знаті і, головним чином, козачим військам»(citation: мир чеченцев. xix век 2007). заміщення йшло станицями: лише за 1861-1865 роки на спорожнілих землях північного кавказу утворено 81 козачу станицю(citation: политика царизма по переселению горцев северо-восточного кавказа в турцию 2010). у чечні це видно покроково: 1868 року розселення чеченців прямо підпорядкували розміщенню сунженських козачих полків - був варіант залишити жителів на правому березі сунжі, «але на ці землі претендувало козаче військо, тому чеченців переселили на лівий берег тереку і сунжі, а їхні землі зайняли 1-й і 2-й сунженські полки»(citation: мир чеченцев. xix век 2007). з 1863 по 1885 рік у терській області засновано 112 селищ, переважно за рахунок російських поселенців, а терське козацьке військо займало третину площі області, становлячи п'яту частину її жителів(citation: мир чеченцев. xix век 2007). різницю видно по наділах: козача родина отримувала в середньому від 57 до 90 десятин (десятина - трохи більше гектара)(citation: царское прошлое чеченцев. власть и общество 2009), тоді як у чеченських аулах на родину припадало «0,5 – 10 десятин... тобто не більше 2 десятин на душу»(citation: политика царизма по переселению горцев северо-восточного кавказа в турцию 2010)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1858-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0117/001">T0117.001</a> Міграційне заміщення
+                </div>
+<div><a href="/uk/campaigns/C1022">C1022</a> Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Начальник Терської області генерал Лорис-Меліков виклав план: «...чеченське населення необхідно було збити в одне місце... Населення це, з одного боку відрізане від гір новими станицями... не насмілилося б більше загрожувати нам повстанням і не уникало найпильнішого нагляду»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Землю тих, хто пішов, забирала скарбниця: «багато аулів зовсім спорожніли, недоглянуті землі заросли бур'яном. Ці землі конфісковувалися на користь скарбниці»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>, і відводилися вони «російським офіцерам, місцевій знаті і, головним чином, козачим військам»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Заміщення йшло станицями: лише за 1861-1865 роки на спорожнілих землях Північного Кавказу утворено 81 козачу станицю<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Болохина Н. И.. (2010). Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию."data-reference="Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию 2010"><sup><a href="https://cyberleninka.ru/article/n/politika-tsarizma-po-pereseleniyu-gortsev-severo-vostochnogo-kavkaza-v-turtsiyu-vtoraya-polovina-hih-nachalo-hh-veka" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. У Чечні це видно покроково: 1868 року розселення чеченців прямо підпорядкували розміщенню Сунженських козачих полків - був варіант залишити жителів на правому березі Сунжі, «але на ці землі претендувало козаче військо, тому чеченців переселили на лівий берег Тереку і Сунжі, а їхні землі зайняли 1-й і 2-й Сунженські полки»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. З 1863 по 1885 рік у Терській області засновано 112 селищ, переважно за рахунок російських поселенців, а Терське козацьке військо займало третину площі області, становлячи п'яту частину її жителів<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Різницю видно по наділах: козача родина отримувала в середньому від 57 до 90 десятин (десятина - трохи більше гектара)<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, тоді як у чеченських аулах на родину припадало «0,5 – 10 десятин... тобто не більше 2 десятин на душу»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Болохина Н. И.. (2010). Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию."data-reference="Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию 2010"><sup><a href="https://cyberleninka.ru/article/n/politika-tsarizma-po-pereseleniyu-gortsev-severo-vostochnogo-kavkaza-v-turtsiyu-vtoraya-polovina-hih-nachalo-hh-veka" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="створення економічної безвиході історики я. з. ахмадов і е. х. хасмагомадов пишуть: «головним же засобом для вигнання горців стало позбавлення їх основного джерела існування – землі. передача великих земель на рівнинах під козачі станиці залишала без засобів до існування тисячі горців»(citation: история чечни в xix-xx веках 2005). імперська статистика фіксувала підсумок: «на кожну родину в аулах припадає 0,5 – 10 десятин... за такої тісноти не тільки розвиток господарств, а навіть існування народу не може вважатися забезпеченим» (десятина - трохи більше гектара)(citation: политика царизма по переселению горцев северо-восточного кавказа в турцию 2010). при цьому власні виконавці операції доносили протилежне. начальник аргунського округу майор а. іпполітов писав начальникові терської області генералові лорис-мелікову: «я можу позитивно сказати вашій світлості, що про добровільне переселення до туреччини народ навіть не думає; на загальному зборі вони оголосили мені, що підуть лише тоді, коли вся чечня поголовно піде, або ж тоді, коли їм накажуть іти»(citation: мир чеченцев. xix век 2007). полковник беллік 25 березня 1865 року доносив тому ж лорис-мелікову слова чеченця: «не підемо ми до туреччини і не пустимо тих, хто збирається туди; в туреччині чекає нас смерть, чекає вона нас і тут, але тут вона приємніша, бо тут наша батьківщина і тут лежать батьки наші, побиті росіянами»(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1858-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0141">T0141</a> Створення економічної безвиході
+                </div>
+<div><a href="/uk/campaigns/C1022">C1022</a> Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: «Головним же засобом для вигнання горців стало позбавлення їх основного джерела існування – землі. Передача великих земель на рівнинах під козачі станиці залишала без засобів до існування тисячі горців»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Імперська статистика фіксувала підсумок: «на кожну родину в аулах припадає 0,5 – 10 десятин... За такої тісноти не тільки розвиток господарств, а навіть існування народу не може вважатися забезпеченим» (десятина - трохи більше гектара)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Болохина Н. И.. (2010). Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию."data-reference="Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию 2010"><sup><a href="https://cyberleninka.ru/article/n/politika-tsarizma-po-pereseleniyu-gortsev-severo-vostochnogo-kavkaza-v-turtsiyu-vtoraya-polovina-hih-nachalo-hh-veka" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. При цьому власні виконавці операції доносили протилежне. Начальник Аргунського округу майор А. Іпполітов писав начальникові Терської області генералові Лорис-Мелікову: «Я можу позитивно сказати Вашій Світлості, що про добровільне переселення до Туреччини народ навіть не думає; на загальному зборі вони оголосили мені, що підуть лише тоді, коли вся Чечня поголовно піде, або ж тоді, коли їм накажуть іти»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Полковник Беллік 25 березня 1865 року доносив тому ж Лорис-Мелікову слова чеченця: «не підемо ми до Туреччини і не пустимо тих, хто збирається туди; в Туреччині чекає нас смерть, чекає вона нас і тут, але тут вона приємніша, бо тут наша батьківщина і тут лежать батьки наші, побиті росіянами»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="дегуманізація намісник на кавказі й головнокомандувач кавказької армії барятинський - про чеченців, що бажали піти: «...це, мабуть, і непогано, що піде вся ця сволота, яка нам лише тягарем. не зупиняйте, нехай ідуть до мекки чи куди хочуть. а вже я постараюся подати государеві цю справу в належному вигляді...» - імператорові справу подали як «добровільний рух самих чеченців»(citation: история чечни в xix-xx веках 2005). начальник кубанської області генерал євдокимов, що проводив виселення горців західного кавказу, сформулював принцип: «перша філантропія – своїм; горцям же я вважаю себе вправі надати лише те, що залишиться на їхню долю після задоволення останнього з російських інтересів»(citation: история чечни в xix-xx веках 2005). оптику, в якій ухвалювалися такі рішення, формулювала й імперська наука: берже, який 22 роки очолював кавказьку археографічну комісію і уклав перші десять томів «актів»(citation: акты собранные кавказскою археографическою комиссиею. том xi (1854-1856) 1888), обґрунтовував недовіру до горців їхньою природою: «восьмисоттисячне горське населення терської і дагестанської областей становить тут майже суцільну масу... пройнята мусульманським фанатизмом, розпаленим тривалою війною, вона продовжує ненавидіти нас, як іще недавніх заклятих ворогів, як невірних, і зберігатиме це почуття доти, доки ми залишатимемося в її очах гяурами»(citation: политика царизма по переселению горцев северо-восточного кавказа в турцию 2010). це не наказ, а голос епохи - та мова, якою виселення виглядало природним."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1858-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0006">T0006</a> Дегуманізація
+                </div>
+<div><a href="/uk/campaigns/C1022">C1022</a> Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Намісник на Кавказі й головнокомандувач Кавказької армії Барятинський - про чеченців, що бажали піти: «...це, мабуть, і непогано, що піде вся ця сволота, яка нам лише тягарем. Не зупиняйте, нехай ідуть до Мекки чи куди хочуть. А вже я постараюся подати Государеві цю справу в належному вигляді...» - імператорові справу подали як «добровільний рух самих чеченців»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Начальник Кубанської області генерал Євдокимов, що проводив виселення горців Західного Кавказу, сформулював принцип: «Перша філантропія – своїм; горцям же я вважаю себе вправі надати лише те, що залишиться на їхню долю після задоволення останнього з російських інтересів»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Оптику, в якій ухвалювалися такі рішення, формулювала й імперська наука: Берже, який 22 роки очолював Кавказьку археографічну комісію і уклав перші десять томів «Актів»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856) 1888"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>, обґрунтовував недовіру до горців їхньою природою: «Восьмисоттисячне горське населення Терської і Дагестанської областей становить тут майже суцільну масу... Пройнята мусульманським фанатизмом, розпаленим тривалою війною, вона продовжує ненавидіти нас, як іще недавніх заклятих ворогів, як невірних, і зберігатиме це почуття доти, доки ми залишатимемося в її очах гяурами»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Болохина Н. И.. (2010). Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию."data-reference="Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию 2010"><sup><a href="https://cyberleninka.ru/article/n/politika-tsarizma-po-pereseleniyu-gortsev-severo-vostochnogo-kavkaza-v-turtsiyu-vtoraya-polovina-hih-nachalo-hh-veka" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Це не наказ, а голос епохи - та мова, якою виселення виглядало природним.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="дезінформація начальник терської області генерал лорис-меліков у спеціальній депеші до головного штабу кавказької армії підкреслював: «для успіху справи необхідно, щоб горці не тільки не знали про наше бажання сприяти переселенню, а й місцева влада мусить, навпаки, ніби відхиляти їх від цього наміру»(citation: история чечни в xix-xx веках 2005); виконувати її доручили начальникові середнього військового відділу туманову, і він звітував про неї самому лорис-мелікову: «першою і неодмінною умовою для збудження в чеченцях бажання переселитися до туреччини вважаю невиявлення того, що бажання це походить від уряду... отже, все це має залишатися в найглибшій таємниці; від нашого вміння залежатиме без кровопролиття чи особливих негараздів довершити велике…»(citation: мир чеченцев. xix век 2007). у чечні «поширювалися підроблені прокламації, нібито від турецького уряду, в яких переселенцям обіцяли гостинний прийом і добре матеріальне забезпечення»(citation: история чечни в xix-xx веках 2005) - сам лорис-меліков письмово просив надіслати йому зразки турецьких прокламацій «для поширення серед населення»(citation: мир чеченцев. xix век 2007). агенти лякали народ майбутнім: «розпускали провокаційні чутки про те, що жоден чеченець не отримає ані клаптя землі, що всю молодь віддадуть у солдати, що мусульманську релігію скоріше заборонять і всі стануть християнами»(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1858-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0137">T0137</a> Дезінформація
+                </div>
+<div><a href="/uk/campaigns/C1022">C1022</a> Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Начальник Терської області генерал Лорис-Меліков у спеціальній депеші до Головного штабу Кавказької армії підкреслював: «Для успіху справи необхідно, щоб горці не тільки не знали про наше бажання сприяти переселенню, а й місцева влада мусить, навпаки, ніби відхиляти їх від цього наміру»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; виконувати її доручили начальникові Середнього військового відділу Туманову, і він звітував про неї самому Лорис-Мелікову: «Першою і неодмінною умовою для збудження в чеченцях бажання переселитися до Туреччини вважаю невиявлення того, що бажання це походить від уряду... отже, все це має залишатися в найглибшій таємниці; від нашого вміння залежатиме без кровопролиття чи особливих негараздів довершити велике…»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. У Чечні «поширювалися підроблені прокламації, нібито від турецького уряду, в яких переселенцям обіцяли гостинний прийом і добре матеріальне забезпечення»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> - сам Лорис-Меліков письмово просив надіслати йому зразки турецьких прокламацій «для поширення серед населення»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Агенти лякали народ майбутнім: «розпускали провокаційні чутки про те, що жоден чеченець не отримає ані клаптя землі, що всю молодь віддадуть у солдати, що мусульманську релігію скоріше заборонять і всі стануть християнами»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="підкуп еліт генерал кундухов, до того сам начальник чеченського округу, отримав від намісника «вельми делікатне завдання – провести неофіційні переговори з турецьким урядом про здійснення масового переселення чеченців» і письмовий припис «розпочати збудження серед чеченського населення прагнення до відходу в туреччину»(citation: история чечни в xix-xx веках 2005). на агітацію він отримав зі скарбниці 5 тисяч рублів(citation: история чечни в xix-xx веках 2005); історик з. х. ібрагімова пише про 10 тисяч «для «негласної винагороди» трьох чи чотирьох осіб, найпопулярніших серед населення, тобто для підкупу впливових осіб»(citation: мир чеченцев. xix век 2007); особисто кундухову виплачено 45 тисяч рублів «нібито за залишене в росії майно» за загальних витрат скарбниці понад 130 тисяч(citation: история чечни в xix-xx веках 2005). сам кундухов описав у мемуарах вербування чеченської верхівки в лютому 1865 року: запросивши наїба (поставленого владою управителя округу) малої чечні садуллу османова (в інших джерелах - саадула осмаєв) і старшину карабулацького товариства цугова, він домігся того, що «вони всі без найменшого заперечення погодилися переселитися... і поклялися готуватися до переселення»(citation: чеченцы в русско-кавказской войне 1998). османов не був призначенцем зі сторони: у зведеному списку наїбів імамату він стоїть як «саадулла османов з ніхалоя (наїб малої чечні)»(citation: история чечни в xix-xx веках 2005) - людина, що воювала разом із шамілем, а за імперську платню і землю погнала свій народ до туреччини. ціну купівлі видно на ньому ж: наїбством він управляв вісім років, за службу отримав 550 десятин землі, дав клятву на корані сприяти переселенню «до кінця» і зобов'язався вести другу хвилю тих, хто йде, - іти попереду перших було умовою виплати винагороди(citation: мир чеченцев. xix век 2007). працював він так, що навіть начальник терської області генерал лорис-меліков визнавав: наїб «перегинає палицю», розпускаючи перекручені чутки, і хотів якнайшвидше позбутися занадто запального агітатора(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1858-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0015">T0015</a> Підкуп еліт
+                </div>
+<div><a href="/uk/campaigns/C1022">C1022</a> Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Генерал Кундухов, до того сам начальник Чеченського округу, отримав від намісника «вельми делікатне завдання – провести неофіційні переговори з турецьким урядом про здійснення масового переселення чеченців» і письмовий припис «розпочати збудження серед чеченського населення прагнення до відходу в Туреччину»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. На агітацію він отримав зі скарбниці 5 тисяч рублів<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; історик З. Х. Ібрагімова пише про 10 тисяч «для «негласної винагороди» трьох чи чотирьох осіб, найпопулярніших серед населення, тобто для підкупу впливових осіб»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; особисто Кундухову виплачено 45 тисяч рублів «нібито за залишене в Росії майно» за загальних витрат скарбниці понад 130 тисяч<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Сам Кундухов описав у мемуарах вербування чеченської верхівки в лютому 1865 року: запросивши наїба (поставленого владою управителя округу) Малої Чечні Садуллу Османова (в інших джерелах - Саадула Осмаєв) і старшину карабулацького товариства Цугова, він домігся того, що «Вони всі без найменшого заперечення погодилися переселитися... і поклялися готуватися до переселення»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Османов не був призначенцем зі сторони: у зведеному списку наїбів імамату він стоїть як «Саадулла Османов з Ніхалоя (наїб Малої Чечні)»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> - людина, що воювала разом із Шамілем, а за імперську платню і землю погнала свій народ до Туреччини. Ціну купівлі видно на ньому ж: наїбством він управляв вісім років, за службу отримав 550 десятин землі, дав клятву на Корані сприяти переселенню «до кінця» і зобов'язався вести другу хвилю тих, хто йде, - іти попереду перших було умовою виплати винагороди<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Працював він так, що навіть начальник Терської області генерал Лорис-Меліков визнавав: наїб «перегинає палицю», розпускаючи перекручені чутки, і хотів якнайшвидше позбутися занадто запального агітатора<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="обмеження географії розселення відповідь імперії на прохання тих, хто повернувся, зафіксована формулою «на найвищому рівні»: «про зворотне переселення горців і мови бути не може»(citation: история чечни в xix-xx веках 2005). за правилами, затвердженими в червні 1861 року начальником головного штабу кавказької армії генералом карцовим, горцям, які вступили в турецьке підданство або прострочили паспорти, повертатися «рішуче заборонялося»(citation: мир чеченцев. xix век 2007). до листопада 1865 року на кордоні скупчилося 2600 осіб, готових заради повернення прийняти православ'я, - «однак російське керівництво навіть на таких умовах не поспішало пропускати їх через кордон... повертатися їм було вже нікуди, родові землі були або конфісковані, або продані»(citation: мир чеченцев. xix век 2007). тих, хто намагався повернутися таємно, ловили роками: 1867 року затримано 162 особи, 1868 - 663, 1869 - 369, 1870 - 1263; «за десять років, з 1862 по 1872 рр., до терської області зуміли повернутися 5964 горці (переважно чеченці), з яких 2315 осіб влада в примусовому порядку знову вислала до туреччини»(citation: история чечни в xix-xx веках 2005). навіть дозволених не пускали додому: карабулаків (вайнахське товариство, споріднене з чеченцями), що повернулися, «не було допущено на рідні землі, а поселено одним аулом сагопші на землях чеченського селища пседах»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1858-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1858</div>
+                <div>
+                    <a href="/uk/techniques/T0142">T0142</a> Обмеження географії розселення
+                </div>
+<div><a href="/uk/campaigns/C1022">C1022</a> Мухаджирство: виселення чеченців до Османської імперії, заборона повернення та заміщення населення (1858-1872)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Відповідь імперії на прохання тих, хто повернувся, зафіксована формулою «на найвищому рівні»: «Про зворотне переселення горців і мови бути не може»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. За правилами, затвердженими в червні 1861 року начальником Головного штабу Кавказької армії генералом Карцовим, горцям, які вступили в турецьке підданство або прострочили паспорти, повертатися «рішуче заборонялося»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. До листопада 1865 року на кордоні скупчилося 2600 осіб, готових заради повернення прийняти православ'я, - «Однак російське керівництво навіть на таких умовах не поспішало пропускати їх через кордон... повертатися їм було вже нікуди, родові землі були або конфісковані, або продані»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Тих, хто намагався повернутися таємно, ловили роками: 1867 року затримано 162 особи, 1868 - 663, 1869 - 369, 1870 - 1263; «За десять років, з 1862 по 1872 рр., до Терської області зуміли повернутися 5964 горці (переважно чеченці), з яких 2315 осіб влада в примусовому порядку знову вислала до Туреччини»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Навіть дозволених не пускали додому: карабулаків (вайнахське товариство, споріднене з чеченцями), що повернулися, «не було допущено на рідні землі, а поселено одним аулом Сагопші на землях чеченського селища Пседах»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://cyberleninka.ru/article/n/politika-tsarizma-po-pereseleniyu-gortsev-severo-vostochnogo-kavkaza-v-turtsiyu-vtoraya-polovina-hih-nachalo-hh-veka" target="_blank">
+                        Болохина Н. И.. (2010). Политика царизма по переселению горцев Северо-Восточного Кавказа в Турцию.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank">
+                        Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+<script src="/uk/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

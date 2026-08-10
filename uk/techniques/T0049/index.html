@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/techniques/T0049/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0049/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0049/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0049/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0049/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Примусова мобілізація, техніка T0049 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/techniques/T0049/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Примусова мобілізація, техніка T0049 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/techniques/">Техніки</a></li>
+  <li class="breadcrumb-item">Примусова мобілізація</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Примусова мобілізація
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агресори можуть примусово забирати представників корінного народу до лав власних збройних сил для участі в бойових діях (зокрема проти їхніх власних співвітчизників). Ця техніка застосовується для отримання вигоди шляхом використання місцевого населення як безоплатного людського ресурсу. Водночас вона слугує цілям нейтралізації захисту: відправляючи чоловіків на далекі фронти, колонізатор цілеспрямовано виснажує демографічний і військовий потенціал регіону, позбавляючи суспільство здатності до самооборони.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0049
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Підтехніки:&nbsp;</span>
+                    Немає підтехнік
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактичні цілі, які досягаються застосуванням техніки або підтехніки">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/uk/tactics/TA0006">Отримання вигоди</a>,                        <a href="/uk/tactics/TA0004">Ослаблення захисту</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народи, проти яких застосовувалася техніка або підтехніка">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народи:&nbsp;</span>Нохчі (Чеченці), Українці
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контриб'ютори:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версія:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Створено:&nbsp;</span>21 квітня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>9 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/T0049" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реалізовані процедури</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="примусова мобілізація окупаційна адміністрація зобов'язувала підпорядковані спільноти нохчі брати участь у військових кампаніях: історик е. н. кушева вказує на документи «про можливість участі мурзи шиха... в поході російських ратних людей»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0008"
+             data-date="1588-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1588</div>
+<div><a href="/uk/campaigns/C1112">C1112</a> Початок політичного підпорядкування Нохчі (1588–1591)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація зобов'язувала підпорядковані спільноти Нохчі брати участь у військових кампаніях: історик Е. Н. Кушева вказує на документи «про можливість участі мурзи Шиха... в поході російських ратних людей»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація окупаційна адміністрація насильно спрямовувала підпорядкованих нохчі воювати проти їхніх власних співвітчизників: історик е. н. кушева вказує в заголовку первинного документа на здійснений «похід терських ратних людей і терських окочан... проти ендерейського володаря салтан-магмута і людей окоцьких та мічкізьких кабаків, що приєдналися до нього»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1614-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1614</div>
+<div><a href="/uk/campaigns/C1114">C1114</a> Позбавлення Нохчі суб'єктності та встановлення чужорідного управління (1614–1616)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація насильно спрямовувала підпорядкованих Нохчі воювати проти їхніх власних співвітчизників: історик Е. Н. Кушева вказує в заголовку первинного документа на здійснений «похід терських ратних людей і терських Окочан... проти ендерейського володаря Салтан-Магмута і людей окоцьких та мічкізьких кабаків, що приєдналися до нього»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація окупаційна адміністрація терського міста мобілізувала підпорядкованих союзників метрополії: у чолобитній цареві михайлу федоровичу кабардинський князь шолох звітував, що «посилав мене... воєвода микита дмитрійович вельямінов з батьком моїм на твою государеву службу... на твоїх государевих непослушників — на мічкіських людей, на їхні кабаки»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1617-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1617</div>
+<div><a href="/uk/campaigns/C1120">C1120</a> Каральний похід і розорення гірських спільнот Нохчі (1617–1618)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація Терського міста мобілізувала підпорядкованих союзників метрополії: у чолобитній цареві Михайлу Федоровичу кабардинський князь Шолох звітував, що «посилав мене... воєвода Микита Дмитрійович Вельямінов з батьком моїм на твою государеву службу... на твоїх государевих непослушників — на мічкіських людей, на їхні кабаки»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація окупаційна адміністрація примушувала підпорядкованих нохчі до участі у збройних конфліктах: у своїй чолобитній цареві михайлу федоровичу окоцький мурза кохостров бійтеміров та служилі окочани терського міста звітували, що «з твоїми государевими непослушниками б'ємося ми, холопи твої государеві, не шкодуючи голів своїх, за тебе, государя, кров свою проливаємо і голови свої складаємо»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1626-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1626</div>
+<div><a href="/uk/campaigns/C1116">C1116</a> Використання Нохчі у воєнних експедиціях, інтервенція та обкладення ясаком (1626–1628)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація примушувала підпорядкованих Нохчі до участі у збройних конфліктах: у своїй чолобитній цареві Михайлу Федоровичу окоцький мурза Кохостров Бійтеміров та служилі Окочани Терського міста звітували, що «з твоїми государевими непослушниками б'ємося ми, холопи твої государеві, не шкодуючи голів своїх, за тебе, государя, кров свою проливаємо і голови свої складаємо»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація окупаційна адміністрація та лояльні їй сили направляли підпорядкованих нохчі (окочан) для участі у збройних конфліктах, зокрема проти їхніх співвітчизників: історикиня і. х. тхамокова констатує, що 1626 року воєводи послали в похід «окочан 252 особи»(citation: терское казачество в этнокультурном пространстве северного кавказа 2017)(citation: кабардино-русские отношения в xvi-xviii вв. документы и материалы. том i 1957), а 1628 року під час збройного вторгнення кабардинський мурза коншов-мурза бітемрюков «ходив на цих «горських людей»... з «окочанами»»(citation: терское казачество в этнокультурном пространстве северного кавказа 2017)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1626-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1626</div>
+<div><a href="/uk/campaigns/C1116">C1116</a> Використання Нохчі у воєнних експедиціях, інтервенція та обкладення ясаком (1626–1628)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація та лояльні їй сили направляли підпорядкованих Нохчі (Окочан) для участі у збройних конфліктах, зокрема проти їхніх співвітчизників: історикиня І. Х. Тхамокова констатує, що 1626 року воєводи послали в похід «Окочан 252 особи»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Тхамокова И. Х.. (2017). Терское казачество в этнокультурном пространстве Северного Кавказа."data-reference="Терское казачество в этнокультурном пространстве Северного Кавказа 2017"><sup><a href="http://www.kbigi.ru/fmedia/%D0%A2%D1%85%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0-%D0%98.%D0%A5.-17.01.2018-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B0%D0%B9%D1%82%D0%B0.pdf" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I."data-reference="Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I 1957"><sup><a href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, а 1628 року під час збройного вторгнення кабардинський мурза Коншов-мурза Бітемрюков «ходив на цих «горських людей»... з «Окочанами»»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Тхамокова И. Х.. (2017). Терское казачество в этнокультурном пространстве Северного Кавказа."data-reference="Терское казачество в этнокультурном пространстве Северного Кавказа 2017"><sup><a href="http://www.kbigi.ru/fmedia/%D0%A2%D1%85%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0-%D0%98.%D0%A5.-17.01.2018-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B0%D0%B9%D1%82%D0%B0.pdf" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація призначена підконтрольна адміністрація направляла підпорядкованих нохчі (окочан) для участі в кримських походах метрополії: у відписці кабардинського князя каспулата муцаловича черкаського до посольського приказу від 1675 року констатовано, що для походу на кримські улуси в його розпорядженні перебували «окочан 190 людей»(citation: кабардино-русские отношения в xvi-xviii вв. документы и материалы. том i 1957); історикиня і. х. тхамокова додає, що 1675 року в криму разом із князем воювали загони «з узденями, з новохрещенами та «окочанами»»(citation: терское казачество в этнокультурном пространстве северного кавказа 2017)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1661-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1661</div>
+<div><a href="/uk/campaigns/C1122">C1122</a> Встановлення чужорідного управління та мобілізація Нохчі в Кримські походи (1661–1676)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Призначена підконтрольна адміністрація направляла підпорядкованих Нохчі (Окочан) для участі в Кримських походах метрополії: у відписці кабардинського князя Каспулата Муцаловича Черкаського до Посольського приказу від 1675 року констатовано, що для походу на кримські улуси в його розпорядженні перебували «Окочан 190 людей»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I."data-reference="Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I 1957"><sup><a href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; історикиня І. Х. Тхамокова додає, що 1675 року в Криму разом із князем воювали загони «з узденями, з новохрещенами та «Окочанами»»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Тхамокова И. Х.. (2017). Терское казачество в этнокультурном пространстве Северного Кавказа."data-reference="Терское казачество в этнокультурном пространстве Северного Кавказа 2017"><sup><a href="http://www.kbigi.ru/fmedia/%D0%A2%D1%85%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0-%D0%98.%D0%A5.-17.01.2018-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B0%D0%B9%D1%82%D0%B0.pdf" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація окупаційна адміністрація направляла підпорядкованих нохчі (окочан) для участі у збройних конфліктах (чигиринських походах) на території україни: історикиня і. х. тхамокова вказує, що в 1678 році кабардинський князь каспулат муцалович черкаський (під чиєю владою перебували окочани) отримав царську грамоту «за те, що він брав участь у кримському та чигиринському походах»(citation: терское казачество в этнокультурном пространстве северного кавказа 2017); у переліках документів за 1678 рік зафіксовано відписку чугуївського воєводи івана рихтарова до розрядного приказу «про похід полку кн. каспулата муцаловича черкаського під чугуїв»(citation: кабардино-русские отношения в xvi-xviii вв. документы и материалы. том i 1957); а в 1679 році цар федір олексійович видав указ посольському приказу «про несення його полком сторожової служби в околицях чугуєва та харкова»(citation: кабардино-русские отношения в xvi-xviii вв. документы и материалы. том i 1957)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1677-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1677</div>
+<div><a href="/uk/campaigns/C1123">C1123</a> Примусова мобілізація Нохчі на російсько-турецьку війну (1677–1679)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація направляла підпорядкованих Нохчі (Окочан) для участі у збройних конфліктах (Чигиринських походах) на території України: історикиня І. Х. Тхамокова вказує, що в 1678 році кабардинський князь Каспулат Муцалович Черкаський (під чиєю владою перебували Окочани) отримав царську грамоту «за те, що він брав участь у кримському та чигиринському походах»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Тхамокова И. Х.. (2017). Терское казачество в этнокультурном пространстве Северного Кавказа."data-reference="Терское казачество в этнокультурном пространстве Северного Кавказа 2017"><sup><a href="http://www.kbigi.ru/fmedia/%D0%A2%D1%85%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0-%D0%98.%D0%A5.-17.01.2018-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B0%D0%B9%D1%82%D0%B0.pdf" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; у переліках документів за 1678 рік зафіксовано відписку чугуївського воєводи Івана Рихтарова до Розрядного приказу «про похід полку кн. Каспулата Муцаловича Черкаського під Чугуїв»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I."data-reference="Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I 1957"><sup><a href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; а в 1679 році цар Федір Олексійович видав указ Посольському приказу «про несення його полком сторожової служби в околицях Чугуєва та Харкова»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I."data-reference="Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I 1957"><sup><a href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація відправлення козацьких полків на далекі театри бойових дій (країни балтії, польща), що вело до їхнього виснаження. війська були «цілорічною військовою службою утруджений, знужнілий, опішалий, знищілий»(citation: иван мазепа и российская империя. история «предательства» 2011)(citation: мазепа 2007)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1700-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1700</div>
+<div><a href="/uk/campaigns/C0011">C0011</a> Інтеграційні реформи Петра I та Північна війна (1700–1708)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Відправлення козацьких полків на далекі театри бойових дій (країни Балтії, Польща), що вело до їхнього виснаження. Війська були «цілорічною військовою службою утруджений, знужнілий, опішалий, знищілий»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація примусова інкорпорація автохтонних збройних сил до імперської армії: «слободські козацькі полкі були скасовані і на їх місце велено і було скласти 5 гусарських полків»(citation: історія слобідської україни 1918)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1765-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1765</div>
+<div><a href="/uk/campaigns/C0031">C0031</a> Скасування козацького устрою в Слобідській Україні (1765)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Примусова інкорпорація автохтонних збройних сил до імперської армії: «Слободські козацькі полкі були скасовані і на їх місце велено і було скласти 5 гусарських полків»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Дмитро Багалій. (1918). Історія Слобідської України."data-reference="Історія Слобідської України 1918"><sup><a href="https://archive.org/details/bagaliy1" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація використання українських козацьких полків в імперській війні проти османської імперії. заслуги запорожців та їхнього кошового калнишевського в цій війні «були визнані царським урядом й імператрицею, яка нагородила його золотою медаллю з діамантами»(citation: енциклопедія історії україни: т. 4 2007) – що не врятувало ні його, ні січ від розправи одразу після перемоги."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1768-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1768</div>
+<div><a href="/uk/campaigns/C0032">C0032</a> Російсько-турецька війна та Кючук-Кайнарджійський договір (1768–1774)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Використання українських козацьких полків в імперській війні проти Османської імперії. Заслуги запорожців та їхнього кошового Калнишевського в цій війні «були визнані царським урядом й імператрицею, яка нагородила його золотою медаллю з діамантами»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2007). Енциклопедія історії України: Т. 4."data-reference="Енциклопедія історії України: Т. 4 2007"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span> – що не врятувало ні його, ні Січ від розправи одразу після перемоги.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація використання українських козаків як військового ресурсу для штурму турецьких фортець і закріплення імперських прав на крим: під очаковом «у штурмі фортеці брали участь „вірні козаки“»(citation: енциклопедія історії україни: т. 7 2010), а під час штурму ізмаїла «загалом у битві взяло участь понад 6 тис. чорноморців»(citation: енциклопедія історії україни: т. 3 2005)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1783-04-08 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Квітень 1783</div>
+<div><a href="/uk/campaigns/C0035">C0035</a> Військова анексія Кримського ханства (1783)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Використання українських козаків як військового ресурсу для штурму турецьких фортець і закріплення імперських прав на Крим: під Очаковом «У штурмі фортеці брали участь „вірні козаки"»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2010). Енциклопедія історії України: Т. 7."data-reference="Енциклопедія історії України: Т. 7 2010"><sup><a href="http://www.history.org.ua/?termin=Natsionalni_rajony" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>, а під час штурму Ізмаїла «Загалом у битві взяло участь понад 6 тис. чорноморців»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2005). Енциклопедія історії України: Т. 3."data-reference="Енциклопедія історії України: Т. 3 2005"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація використання українських козацьких формувань в імперській війні: «рос. війська, до складу яких входило усть-дунайське буджацьке козацьке військо, захопили хотин, бендери… акерман»(citation: енциклопедія історії україни: т. 9 2012)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1806-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1806</div>
+<div><a href="/uk/campaigns/C0039">C0039</a> Російсько-турецька війна та анексія Бессарабії (1806–1812)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Використання українських козацьких формувань в імперській війні: «Рос. війська, до складу яких входило Усть-Дунайське Буджацьке козацьке військо, захопили Хотин, Бендери… Акерман»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація масовий призов до ополчення та формування козачих полків на основі неправдивих обіцянок повернути козацькі вольності: «україна використовувалася для комплектування, спорядження, переміщення військ… в т. ч. 75-тис. ополчення з київ., подільської, черніг. та полтав. губ.»(citation: енциклопедія історії україни: т. 1 2003)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1812-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1812</div>
+<div><a href="/uk/campaigns/C0040">C0040</a> Війна з Наполеоном: примусова мобілізація та обман (1812)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Масовий призов до ополчення та формування козачих полків на основі неправдивих обіцянок повернути козацькі вольності: «Україна використовувалася для комплектування, спорядження, переміщення військ… в т. ч. 75-тис. ополчення з Київ., Подільської, Черніг. та Полтав. губ.»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1."data-reference="Енциклопедія історії України: Т. 1 2003"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація регулярна армія російської імперії примушувала корінне населення нести військову службу на боці завойовника, зокрема проти одноплемінників. імперський генерал єрмолов у своїх «записках» свідчить, що «замість данини постановлено за нарядом начальників висилати на службу людей», і визнає: «ще не було прикладу, щоб хтось міг змусити чеченців застосовувати зброю проти своїх земляків, але вже зроблено перший крок до цього, і їм навіяно, що цього завжди від них вимагатимуть»(citation: записки а.п. ермолова. 1798-1826 гг. 1991)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1817</div>
+<div><a href="/uk/campaigns/C1021">C1021</a> Знищення присунженських селищ Нохчі та зведення фортеці Грозної на їхньому місці (1817–1818)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Регулярна армія Російської імперії примушувала корінне населення нести військову службу на боці завойовника, зокрема проти одноплемінників. Імперський генерал Єрмолов у своїх «Записках» свідчить, що «замість данини постановлено за нарядом начальників висилати на службу людей», і визнає: «ще не було прикладу, щоб хтось міг змусити Чеченців застосовувати зброю проти своїх земляків, але вже зроблено перший крок до цього, і їм навіяно, що цього завжди від них вимагатимуть»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація у ніч на 10 січня 1827 року генерал лаптєв, начальник лівого флангу кавказької лінії, примусив чотириста чеченців підкорених громад брати участь у рейді на нохчі-селище узені-юрт із бойовим завданням проти співвітчизників. імперський історик потто писав: вони «перепливли аргун і мали йти обхідною дорогою, щоб відрізати мешканцям відступ до лісу»(citation: кавказская война. в 5 томах. том 5. время паскевича, или бунт чечни 2006). влітку 1827 року генерал енгельгардт, начальник лівого флангу кавказької лінії, змусив брати участь у засідці на мешканців самашок поряд із сотнею моздоцьких козаків, як фіксував потто, «стільки ж мирних чеченців»(citation: кавказская война. в 5 томах. том 5. время паскевича, или бунт чечни 2006). підкореність цих громад утримувалася системою заручників, що документує та сама практика лаптєва щодо гельдигена."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1826-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1826</div>
+<div><a href="/uk/campaigns/C1149">C1149</a> Знищення аулу біженців Узені-Юрт, вимагання заручників із Гельдигена та захоплення мешканців Самашок під час жнив (1826-1827)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У ніч на 10 січня 1827 року генерал Лаптєв, начальник лівого флангу Кавказької лінії, примусив чотириста Чеченців підкорених громад брати участь у рейді на нохчі-селище Узені-Юрт із бойовим завданням проти співвітчизників. Імперський історик Потто писав: вони «перепливли Аргун і мали йти обхідною дорогою, щоб відрізати мешканцям відступ до лісу»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Потто В.. (2006). Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни."data-reference="Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни 2006"><sup><a href="https://loveread.ec/book-comments.php?book=75379" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Влітку 1827 року генерал Енгельгардт, начальник лівого флангу Кавказької лінії, змусив брати участь у засідці на мешканців Самашок поряд із сотнею моздоцьких козаків, як фіксував Потто, «стільки ж мирних Чеченців»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Потто В.. (2006). Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни."data-reference="Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни 2006"><sup><a href="https://loveread.ec/book-comments.php?book=75379" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Підкореність цих громад утримувалася системою заручників, що документує та сама практика Лаптєва щодо Гельдигена.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація масовий набір селян до ополчення: «приводом до них стало опублікування під час кримської війни 1853—1856 маніфесту імп. миколи i, що передбачав створення рухомого держ. ополчення»(citation: енциклопедія історії україни: т. 4 2007) - маніфест та укази про набір від 29 січня 1855 року (№ 28.991–28.993); київської губернії в переліку призваних губерній не було, селяни сприйняли загальноімперський заклик як звернений до себе(citation: полное собрание законов российской империи. собрание второе. том xxx, отделение 1 (1855) 1856)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1853-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1853</div>
+<div><a href="/uk/campaigns/C0061">C0061</a> Кримська війна та придушення «Київської козаччини» (1853–1856)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Масовий набір селян до ополчення: «Приводом до них стало опублікування під час Кримської війни 1853—1856 маніфесту імп. Миколи I, що передбачав створення рухомого держ. ополчення»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2007). Енциклопедія історії України: Т. 4."data-reference="Енциклопедія історії України: Т. 4 2007"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span> - маніфест та укази про набір від 29 січня 1855 року (№ 28.991–28.993); Київської губернії в переліку призваних губерній не було, селяни сприйняли загальноімперський заклик як звернений до себе<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Российская империя (ПСЗРИ); №28991-28993 от 29 января 1855 г. (манифест о государственном ополчении, повод к «Киевской козаччине»). (1856). Полное собрание законов Российской империи. Собрание второе. Том XXX, отделение 1 (1855)."data-reference="Полное собрание законов Российской империи. Собрание второе. Том XXX, отделение 1 (1855) 1856"><sup><a href="https://archive.org/details/t3018551856t301855otdnie1ot2853" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація використання українців у складі імперської армії в масштабних загарбницьких війнах на кавказі та в центральній азії – рекрутська повинність поширювалася на українські губернії з часів ліквідації автономії(citation: енциклопедія історії україни: т. 9 2012)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1864-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1864</div>
+<div><a href="/uk/campaigns/C0063">C0063</a> Формування ідеології великодержавного шовінізму (1864–1876)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Використання українців у складі імперської армії в масштабних загарбницьких війнах на Кавказі та в Центральній Азії – рекрутська повинність поширювалася на українські губернії з часів ліквідації автономії<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація мобілізація мешканців колонізованих українських губерній до імперської армії для війни на балканах – у рамках загальної військової повинності, що діяла в українських землях з часів ліквідації автономії(citation: енциклопедія історії україни: т. 9 2012)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1877</div>
+<div><a href="/uk/campaigns/C0064">C0064</a> Російсько-турецька війна та панславізм (1877–1878)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Мобілізація мешканців колонізованих українських губерній до імперської армії для війни на Балканах – у рамках загальної військової повинності, що діяла в українських землях з часів ліквідації автономії<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація примусовий призов мільйонів до імперської армії: «за роки війни до лав рос. армії було мобілізовано 3,5 млн українців (за ін. даними — 4,5 млн із заг. чисельності 15,5 млн)»(citation: енциклопедія історії україни: т. 8 2011)."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1914-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1914</div>
+<div><a href="/uk/campaigns/C0070">C0070</a> Перша світова війна та окупація Галичини (1914–1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Примусовий призов мільйонів до імперської армії: «За роки війни до лав рос. армії було мобілізовано 3,5 млн українців (за ін. даними — 4,5 млн із заг. чисельності 15,5 млн)»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2011). Енциклопедія історії України: Т. 8."data-reference="Енциклопедія історії України: Т. 8 2011"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація у травні 1916 року російська імперія мобілізувала в армію страйкуючих робітників грозненських нафтопромислів - тих, хто мав відстрочку від військової служби і брав участь у страйку. історики я. з. ахмадов і е. х. хасмагомадов пишуть: «було видано розпорядження про негайну мобілізацію всіх грозненських робітників, які мають відстрочку від військової служби і беруть участь у страйку»(citation: история чечни в xix-xx веках 2005). страйк почався зі спору про заробітну плату: 12 травня робітники вручили раді з'їзду терських нафтопромисловців письмові вимоги про її підвищення в середньому на 50%, 21 травня о другій годині дня по тривожних заводських гудках промисли стали, а 31 травня, пишуть ті ж історики, «робітники повсюдно почали повертатися на роботу»(citation: история чечни в xix-xx веках 2005). не хотіли воювати й ті, кого вже набрали: з півтори тисячі осіб четвертого набору «дикої дивізії», які проходили підготовку в запасному полку, до бойових частин прибули лише 553 - решту військове командування повернуло на кавказ «з огляду на їхню «ненадійність»»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1914-08-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1914</div>
+<div><a href="/uk/campaigns/C1189">C1189</a> Перша світова війна в Чечні: вивіз «ненадійного елементу» в «Дику дивізію», надзвичайна охорона і мобілізація страйкарів (1914-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>У травні 1916 року Російська імперія мобілізувала в армію страйкуючих робітників грозненських нафтопромислів - тих, хто мав відстрочку від військової служби і брав участь у страйку. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: «було видано розпорядження про негайну мобілізацію всіх грозненських робітників, які мають відстрочку від військової служби і беруть участь у страйку»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Страйк почався зі спору про заробітну плату: 12 травня робітники вручили Раді з'їзду Терських нафтопромисловців письмові вимоги про її підвищення в середньому на 50%, 21 травня о другій годині дня по тривожних заводських гудках промисли стали, а 31 травня, пишуть ті ж історики, «робітники повсюдно почали повертатися на роботу»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Не хотіли воювати й ті, кого вже набрали: з півтори тисячі осіб четвертого набору «Дикої дивізії», які проходили підготовку в запасному полку, до бойових частин прибули лише 553 - решту військове командування повернуло на Кавказ «з огляду на їхню «ненадійність»»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація у лютому 1919 року добровольча армія оголосила на з'їзді в алдах мобілізацію горців - коштом самих сіл: «селища зобов'язані були споряджати й утримувати мобілізованих за свій рахунок»(citation: история чечни в xix-xx веках 2005). призначений правителем чечні генерал алієв провів мобілізацію: «зібрані в такий спосіб 200-300 вершників (разом з кабардинцями та інгушами) брали участь у придушенні селянських заворушень на ставропіллі»(citation: история чечни в xix-xx веках 2005). історик є. ф. жупікова передає висновок дослідника п. аптекаря про причини повстання чеченців проти денікіна: «насильницькі мобілізації та реквізиції продовольства для армії денікіна»(citation: повстанческое движение на северном кавказе в 1920-1925 годах 2013)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0014"
+             data-tools="S0010"
+             data-date="1919-02-19 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 1919</div>
+<div><a href="/uk/campaigns/C1174">C1174</a> Денікінський терор у Чечні: зруйновані аули і 15 тисяч загиблих (1919)</div><div><a href="/uk/groups/G0014">G0014</a> Білий рух (ЗСПР)</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У лютому 1919 року Добровольча армія оголосила на з'їзді в Алдах мобілізацію горців - коштом самих сіл: «селища зобов'язані були споряджати й утримувати мобілізованих за свій рахунок»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Призначений правителем Чечні генерал Алієв провів мобілізацію: «Зібрані в такий спосіб 200-300 вершників (разом з кабардинцями та інгушами) брали участь у придушенні селянських заворушень на Ставропіллі»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Історик Є. Ф. Жупікова передає висновок дослідника П. Аптекаря про причини повстання чеченців проти Денікіна: «насильницькі мобілізації та реквізиції продовольства для армії Денікіна»<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Жупикова Е. Ф.. (2013). Повстанческое движение на Северном Кавказе в 1920-1925 годах."data-reference="Повстанческое движение на Северном Кавказе в 1920-1925 годах 2013"><sup><a href="http://www.ainros.ru/ainst/t1/jupikova.pdf" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусова мобілізація масовий призов польовими військкоматами населення щойно звільнених територій: «„чорносвитники“ або „чорна піхота“ – таку неофіційну назву отримали чоловіки і юнаки, мобілізовані польовими військовими комісаріатами, а фактично командирами об'єднань, з'єднань і частин у 1943–1944 рр. після звільнення червоною армією окупованих ворогом територій»(citation: «чорна піхота» як історичне явище 2019)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1941-06-22 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1941</div>
+<div><a href="/uk/campaigns/C0082">C0082</a> Тактика «випаленої землі» та злочинна мобілізація (1941–1945)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Масовий призов польовими військкоматами населення щойно звільнених територій: «„Чорносвитники" або „чорна піхота" – таку неофіційну назву отримали чоловіки і юнаки, мобілізовані польовими військовими комісаріатами, а фактично командирами об'єднань, з'єднань і частин у 1943–1944 рр. після звільнення Червоною армією окупованих ворогом територій»<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Р. І. Пилявець (Воєнно-історичний вісник, 2019, № 1). (2019). «Чорна піхота» як історичне явище."data-reference="«Чорна піхота» як історичне явище 2019"><sup><a href="https://doi.org/10.33099/2707-1383-2019-31-1-156-174" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Українці",
+"russia/nokhchi": "Нохчі (Чеченці)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="http://www.kbigi.ru/fmedia/%D0%A2%D1%85%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0-%D0%98.%D0%A5.-17.01.2018-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B0%D0%B9%D1%82%D0%B0.pdf" target="_blank">
+                        Тхамокова И. Х.. (2017). Терское казачество в этнокультурном пространстве Северного Кавказа.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank">
+                        Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank">
+                        Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://loveread.ec/book-comments.php?book=69990" target="_blank">
+                        Татьяна Таирова-Яковлева. (2007). Мазепа.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://archive.org/details/bagaliy1" target="_blank">
+                        Дмитро Багалій. (1918). Історія Слобідської України.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2007). Енциклопедія історії України: Т. 4.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="http://www.history.org.ua/?termin=Natsionalni_rajony" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2010). Енциклопедія історії України: Т. 7.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2005). Енциклопедія історії України: Т. 3.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="10.0">
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank">
+                        Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://loveread.ec/book-comments.php?book=75379" target="_blank">
+                        Потто В.. (2006). Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://archive.org/details/t3018551856t301855otdnie1ot2853" target="_blank">
+                        Российская империя (ПСЗРИ); №28991-28993 от 29 января 1855 г. (манифест о государственном ополчении, повод к «Киевской козаччине»). (1856). Полное собрание законов Российской империи. Собрание второе. Том XXX, отделение 1 (1855).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2011). Енциклопедія історії України: Т. 8.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="http://www.ainros.ru/ainst/t1/jupikova.pdf" target="_blank">
+                        Жупикова Е. Ф.. (2013). Повстанческое движение на Северном Кавказе в 1920-1925 годах.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-18" href="https://doi.org/10.33099/2707-1383-2019-31-1-156-174" target="_blank">
+                        Р. І. Пилявець (Воєнно-історичний вісник, 2019, № 1). (2019). «Чорна піхота» як історичне явище.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

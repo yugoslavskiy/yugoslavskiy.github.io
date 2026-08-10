@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1168/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1168/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1168/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1168/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1168/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Просеки и голод: завоевание Чечни Евдокимовым (1857-1859), кампания C1168 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1168/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Просеки и голод: завоевание Чечни Евдокимовым (1857-1859), кампания C1168 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>В 1857-1859 годах империя завершила завоевание Чечни: просеки резали страну на части, аулы и запасы выжигались, обессиленные общества одно за другим принуждались к капитуляции, сдавшихся сгоняли на равнину под надзор. Метод сформулировал сам генерал Евдокимов, командовавший Чеченским отрядом, - рапортом военному министру Сухозанету от 25 марта 1857 года он объяснил назначение просеки: она «отняла отъ непокорныхъ широкія поля, мѣста ихъ посѣвовъ, и разрѣзавъ, такъ сказать, непокорное населеніе, гнѣздившееся въ недоступныхъ до сего времени лѣсахъ, поставило его въ необходимость искать спасеніе или бѣгствомъ въ горы, или выходомъ къ намъ на поляны»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Имперский историк Волконский вывел формулу периода: «куда бы ни ступила наша нога – прорубаются непроходимые леса, делаются просеки... закладываются редуты, укрепления: природа осилена – Кавказ сдается»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. А. Волконский. (1879). 1858 год в Чечне."data-reference="1858 год в Чечне 1879"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Что несло подчинение, чеченцам сказал имам Шамиль (руководитель сопротивления горцев Дагестана и Чечни российскому завоеванию) на собрании в Шали осенью 1858 года - речь записал его спутник и хронист Гаджи-Али: «они отберут у вас оружие и даже не позволят иметь ножа, Всех почетных ваших сошлют в Сибирь и вы будете после того как мужики»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Гаджи-Али. (1873). Сказание очевидца о Шамиле."data-reference="Сказание очевидца о Шамиле 1873"><sup><a href="https://kp.rusneb.ru/item/material/skazanie-ochevidca-o-shamile" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Состояние страны наиб Большой Чечни Талхиг Шалинский передал имаму письмом: «Чечня горит, имам, иди тушить»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1168
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Январь 1857</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Август 1859</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>3 августа 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>3 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1168" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1168/C1168-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1168%2FC1168-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0009">G0009</a></td>
+                <td><a href="/groups/G0009">Российская Империя</a></td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0010"> S0010 </a></td>
+                <td><a href="/software/S0010"> Регулярная армия </a></td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="разрушение природного ландшафта просека - широкая полоса, вырубленная в лесу, чтобы лишить обороняющихся укрытия и пустить по ней войска, - была несущим инструментом завоевания 1857-1859 годов: лес, защищавший чеченские общества, вырубался планомерно. «журнал военных действий чеченского отряда» с 15 января 1857 года фиксирует будни: «21-го числа всѣ войска... заняты были истребленіемъ ауловъ, садовъ и лѣса»; «22-го числа тѣ-же занятія. аулы окончательно уничтожены, сады вырублены и гельдыгенская просѣка проложена шириною въ 750 саж.» - это около полутора километров (сажень - чуть больше двух метров)(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). назначение просек генерал евдокимов, командовавший чеченским отрядом, доложил военному министру сухозанету рапортом от 25 марта 1857 года: просека «отняла отъ непокорныхъ широкія поля, мѣста ихъ посѣвовъ», а население поставила перед выбором - «искать спасеніе или бѣгствомъ въ горы, или выходомъ къ намъ на поляны»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). 19 марта 1857 года генерал николаи занял гойтемировские ворота - проход в аух и ичкерию (чеченские области на северо-востоке и юго-востоке): рапорт объясняет задачу - «чтобы уничтожить это гнѣздо разбойниковъ и открыть доступы въ аухъ и ичкерію, необходимо было овладѣть уроч. гойтемиръ-капу и устроить тамъ просѣку»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904); историк д. а. хожаев подтверждает по полковой истории: «19 марта 1857 года эти укрепления были захвачены царскими войсками и уничтожены»(citation: чеченцы в русско-кавказской войне 1998). в феврале 1859 года лес рубили уже у стен ведено - столицы имамата, государства шамиля: «8 февраля 1859 года, несмотря на сопротивление чеченцев и дагестанцев, многочисленные царские войска, расчистив от лесов все пространство между селениями тевзан и элистанжи, вышли к укреплению ведено»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1857</div>
+                <div>
+                    <a href="/techniques/T0140">T0140</a> Разрушение природного ландшафта
+                </div>
+<div><a href="/campaigns/C1168">C1168</a> Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Просека - широкая полоса, вырубленная в лесу, чтобы лишить обороняющихся укрытия и пустить по ней войска, - была несущим инструментом завоевания 1857-1859 годов: лес, защищавший чеченские общества, вырубался планомерно. «Журнал военных действий Чеченского отряда» с 15 января 1857 года фиксирует будни: «21-го числа всѣ войска... заняты были истребленіемъ ауловъ, садовъ и лѣса»; «22-го числа тѣ-же занятія. Аулы окончательно уничтожены, сады вырублены и Гельдыгенская просѣка проложена шириною въ 750 саж.» - это около полутора километров (сажень - чуть больше двух метров)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Назначение просек генерал Евдокимов, командовавший Чеченским отрядом, доложил военному министру Сухозанету рапортом от 25 марта 1857 года: просека «отняла отъ непокорныхъ широкія поля, мѣста ихъ посѣвовъ», а население поставила перед выбором - «искать спасеніе или бѣгствомъ въ горы, или выходомъ къ намъ на поляны»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 19 марта 1857 года генерал Николаи занял Гойтемировские ворота - проход в Аух и Ичкерию (чеченские области на северо-востоке и юго-востоке): рапорт объясняет задачу - «Чтобы уничтожить это гнѣздо разбойниковъ и открыть доступы въ Аухъ и Ичкерію, необходимо было овладѣть уроч. Гойтемиръ-Капу и устроить тамъ просѣку»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; историк Д. А. Хожаев подтверждает по полковой истории: «19 марта 1857 года эти укрепления были захвачены царскими войсками и уничтожены»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. В феврале 1859 года лес рубили уже у стен Ведено - столицы имамата, государства Шамиля: «8 февраля 1859 года, несмотря на сопротивление чеченцев и дагестанцев, многочисленные царские войска, расчистив от лесов все пространство между селениями Тевзан и Элистанжи, вышли к укреплению Ведено»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальное уничтожение инфраструктуры генерал евдокимов, командовавший войсками левого крыла кавказской линии (цепи имперских укреплений на земле нохчи), записал в журнале военных действий зимы 1857 года: он направил генерала мищенко вниз по хизы-шавдону, «поручивъ ему... истреблять аулы, чтобы отнять у чеченцевъ самую мысль о возможности оставаться на мѣстѣ прежняго жительства»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). исполнение записано там же: «ген.-м. мищенко сжегъ всѣ аулы и хутора на назначенномъ ему пространствѣ; къ нему вышло множество покорившихся... до 400 двор., подъ прикрытіемъ части войскъ... направлена въ умаханъ-юртъ»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). на рапорт об этой кампании император александр ii ответил одобрением «за совершенно успѣшное окончаніе 1-го періода зимней кампаніи»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). в ноябре 1857 года тот же журнал подвёл итог похода на пограничную с чечнёй салатавию: «салатавія разорена и сожжена, такъ что жители ея должны уже будутъ селиться на мѣстахъ прежнихъ салатавскихъ ауловъ по сулаку»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). взяв ведено, столицу имамата - государства шамиля, - империя уничтожила крепость: «занятая 1 апреля 1859 года царскими войсками, крепость ведено была полностью уничтожена в течение пяти дней»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1857</div>
+                <div>
+                    <a href="/techniques/T0105">T0105</a> Тотальное уничтожение инфраструктуры
+                </div>
+<div><a href="/campaigns/C1168">C1168</a> Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Генерал Евдокимов, командовавший войсками левого крыла Кавказской линии (цепи имперских укреплений на земле нохчи), записал в журнале военных действий зимы 1857 года: он направил генерала Мищенко вниз по Хизы-Шавдону, «поручивъ ему... истреблять аулы, чтобы отнять у Чеченцевъ самую мысль о возможности оставаться на мѣстѣ прежняго жительства»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Исполнение записано там же: «Ген.-м. Мищенко сжегъ всѣ аулы и хутора на назначенномъ ему пространствѣ; къ нему вышло множество покорившихся... до 400 двор., подъ прикрытіемъ части войскъ... направлена въ Умаханъ-юртъ»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. На рапорт об этой кампании император Александр II ответил одобрением «за совершенно успѣшное окончаніе 1-го періода зимней кампаніи»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. В ноябре 1857 года тот же журнал подвёл итог похода на пограничную с Чечнёй Салатавию: «Салатавія разорена и сожжена, такъ что жители ея должны уже будутъ селиться на мѣстахъ прежнихъ Салатавскихъ ауловъ по Сулаку»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Взяв Ведено, столицу имамата - государства Шамиля, - империя уничтожила крепость: «Занятая 1 апреля 1859 года царскими войсками, крепость Ведено была полностью уничтожена в течение пяти дней»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="искусственный голод историк н. и. покровский пишет о малой чечне (равнинно-предгорной западной части чечни): её жители «еще в начале пятидесятых годов были загнаны русскими войсками в горные трущобы и обречены на голод» (кампания c1166)(citation: кавказские войны и имамат шамиля 2009). просеки продолжали ту же работу: «расчистка гехинской просеки дает евдокимову возможность опустошить поля тех из малочеченцев, которые еще не принесли покорности, скрываясь в горах»(citation: кавказские войны и имамат шамиля 2009). выбор, который оставляла политика, сформулирован в рапорте генерала евдокимова, командовавшего чеченским отрядом, от 25 марта 1857 года: бегство в горы - или выход «къ намъ на поляны»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904); голод в горах делал первый путь смертельным."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1857</div>
+                <div>
+                    <a href="/techniques/T0121">T0121</a> Искусственный голод
+                </div>
+<div><a href="/campaigns/C1168">C1168</a> Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историк Н. И. Покровский пишет о Малой Чечне (равнинно-предгорной западной части Чечни): её жители «еще в начале пятидесятых годов были загнаны русскими войсками в горные трущобы и обречены на голод» (кампания C1166)<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Просеки продолжали ту же работу: «Расчистка гехинской просеки дает Евдокимову возможность опустошить поля тех из малочеченцев, которые еще не принесли покорности, скрываясь в горах»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Выбор, который оставляла политика, сформулирован в рапорте генерала Евдокимова, командовавшего Чеченским отрядом, от 25 марта 1857 года: бегство в горы - или выход «къ намъ на поляны»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; голод в горах делал первый путь смертельным.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="карательные экспедиции историк н. и. покровский пишет: «весь январь 1857 г. чеченский и кумыкский отряды рубят просеки», а «с 10 ноября началась новая экспедиция в аух. ауховцы не выдержали и сдались, "принесли покорность"»(citation: кавказские войны и имамат шамиля 2009). в 1858 году войска генерала евдокимова вошли в аргунское ущелье: «царские войска ведут наступление по долине аргуна. в январе чеченский отряд занял выход из аргунского ущелья на плоскость... только в июле 1858 г. евдокимов двинулся дальше... 4 июля он перешел мескен-дук и проник в шатоевское общество»(citation: кавказские войны и имамат шамиля 2009). ход летней экспедиции виден по журналу самого генерала евдокимова, поданному военному министру сухозанету рапортом от 11 августа 1858 года, № 237: 4 августа к аргуну подошёл имам шамиль «со всею своею кавалеріею изъ назрановской экспедиціи» и стал с двумя орудиями за оврагом верды-ахк; «убѣдясь въ намѣреніи нашемъ оставаться на правомъ берегу чанты-аргуна, онъ приказалъ снимать лагерь», после чего имперские «2 легкихъ орудія и 2 полу-пудовыхъ мортиры открыли, по приказанію моему, огонь по горцамъ». в тот же день евдокимов «осмотрѣлъ мѣсто, на которомъ должно быть возведено главное укрѣпленіе, и тотчасъ-же приказалъ приступить къ разбивкѣ» его(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). в феврале 1859 года войска подошли к ведено, столице имамата и резиденции имама шамиля (руководителя сопротивления горцев дагестана и чечни российскому завоеванию), - крепость пала 1 апреля 1859 года(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1857</div>
+                <div>
+                    <a href="/techniques/T0077">T0077</a> Карательные экспедиции
+                </div>
+<div><a href="/campaigns/C1168">C1168</a> Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историк Н. И. Покровский пишет: «Весь январь 1857 г. Чеченский и Кумыкский отряды рубят просеки», а «С 10 ноября началась новая экспедиция в Аух. Ауховцы не выдержали и сдались, "принесли покорность"»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. В 1858 году войска генерала Евдокимова вошли в Аргунское ущелье: «Царские войска ведут наступление по долине Аргуна. В январе Чеченский отряд занял выход из Аргунского ущелья на плоскость... только в июле 1858 г. Евдокимов двинулся дальше... 4 июля он перешел Мескен-Дук и проник в Шатоевское общество»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Ход летней экспедиции виден по журналу самого генерала Евдокимова, поданному военному министру Сухозанету рапортом от 11 августа 1858 года, № 237: 4 августа к Аргуну подошёл имам Шамиль «со всею своею кавалеріею изъ Назрановской экспедиціи» и стал с двумя орудиями за оврагом Верды-ахк; «убѣдясь въ намѣреніи нашемъ оставаться на правомъ берегу Чанты-Аргуна, онъ приказалъ снимать лагерь», после чего имперские «2 легкихъ орудія и 2 полу-пудовыхъ мортиры открыли, по приказанію моему, огонь по горцамъ». В тот же день Евдокимов «осмотрѣлъ мѣсто, на которомъ должно быть возведено главное укрѣпленіе, и тотчасъ-же приказалъ приступить къ разбивкѣ» его<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. В феврале 1859 года войска подошли к Ведено, столице имамата и резиденции имама Шамиля (руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию), - крепость пала 1 апреля 1859 года<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="принудительное оформление подданства 7 декабря 1857 года, по журналу генерала евдокимова, командовавшего чеченским отрядом, «явились депутаты от всего народонаселения долины хулхулау с предложением принести покорность и переселиться в наши пределы» - запись приводит историк н. и. покровский(citation: кавказские войны и имамат шамиля 2009). «в апреле 1858 г. сдаются гойтинцы и вслед за ними гехинцы. к середине апреля русское командование может окончательно заявить, что завоевание малой чечни им закончено»(citation: кавказские войны и имамат шамиля 2009). «в августе 1858 года шатоевцы сложили оружие»(citation: чеченцы в русско-кавказской войне 1998) - тот же журнал евдокимова датирует это 7 августа и объясняет причину: «лишь только шатоевцы увидѣли, что тавлинцы оставляютъ ихъ и что мы намѣрены твердо упрочиться въ занятомъ нами краѣ, то тотчасъ прислали ко мнѣ депутатовъ съ предложеніемъ покорности и съ просьбою о дозволеніи поселиться на мѣстахъ бывшихъ своихъ ауловъ»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904); «5 апреля чеберлоевцы изгнали наиба и покорились», а «12 апреля свое бессилие перед русской армией признали ауховские чеченцы»(citation: чеченцы в русско-кавказской войне 1998). капитуляцию оформляла и бумага с обещаниями: в январе 1859 года, при наступлении на ведено, распространена прокламация главнокомандующего барятинского к чеченскому народу - полный текст приводит историк д. а. хожаев: «правительство русское предоставляет вам совершенно свободно исполнять навсегда веру ваших отцов», «вас никогда не будут требовать в солдаты и не обратят вас в казаков», «даруется вам льгота на три года... по истечении сего срока вы должны будете для содержания ваших народных управлений вносить по три рубля с дома», «поставленные над вами правители будут управлять по шариату и адату» (шариат - исламское право; адат - обычное право горцев)(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1857</div>
+                <div>
+                    <a href="/techniques/T0147">T0147</a> Принудительное оформление подданства
+                </div>
+<div><a href="/campaigns/C1168">C1168</a> Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>7 декабря 1857 года, по журналу генерала Евдокимова, командовавшего Чеченским отрядом, «явились депутаты от всего народонаселения долины Хулхулау с предложением принести покорность и переселиться в наши пределы» - запись приводит историк Н. И. Покровский<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. «В апреле 1858 г. сдаются гойтинцы и вслед за ними гехинцы. К середине апреля русское командование может окончательно заявить, что завоевание Малой Чечни им закончено»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. «В августе 1858 года шатоевцы сложили оружие»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span> - тот же журнал Евдокимова датирует это 7 августа и объясняет причину: «Лишь только Шатоевцы увидѣли, что Тавлинцы оставляютъ ихъ и что мы намѣрены твердо упрочиться въ занятомъ нами краѣ, то тотчасъ прислали ко мнѣ депутатовъ съ предложеніемъ покорности и съ просьбою о дозволеніи поселиться на мѣстахъ бывшихъ своихъ ауловъ»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; «5 апреля чеберлоевцы изгнали наиба и покорились», а «12 апреля свое бессилие перед русской армией признали ауховские чеченцы»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Капитуляцию оформляла и бумага с обещаниями: в январе 1859 года, при наступлении на Ведено, распространена прокламация главнокомандующего Барятинского к чеченскому народу - полный текст приводит историк Д. А. Хожаев: «правительство Русское предоставляет вам совершенно свободно исполнять навсегда веру ваших отцов», «вас никогда не будут требовать в солдаты и не обратят вас в казаков», «даруется вам льгота на три года... по истечении сего срока вы должны будете для содержания ваших народных управлений вносить по три рубля с дома», «поставленные над вами правители будут управлять по шариату и адату» (шариат - исламское право; адат - обычное право горцев)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="депортация историк д. а. хожаев пишет о вёснах 1859 года: «всех покоренных горцев тут же, под конвоем царских войск, переселяли на плоскость для надзора»(citation: чеченцы в русско-кавказской войне 1998). на плоскость, то есть на равнину под надзор, гнали сразу: в декабре 1857 года до 400 дворов, вышедших из истребляемых аулов, направлены под прикрытием войск в умахан-юрт(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). после взятия ведено генерал евдокимов приказал своему подчинённому ностицу «приступить къ переселенію чеченцевъ, живущихъ между хулхулау и гудермесомъ»: 8 апреля 1859 года «до 300 сем., жившихъ въ ближайшихъ хуторахъ на правомъ берегу хулхулау, тотчасъ же явились въ лагерь со своими пожитками и скотомъ»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). сопротивление переселению фиксируют сами имперские документы: наиб (управляющий округом при имаме) осман «нѣсколько разъ пытался пройти мимо отряда на плоскость и старался воспрепятствовать переселенію чеченцевъ»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904); отдельно, по журналу военных действий не позднее 9 апреля 1859 года, «ичкеринцы, ауховцы и салатавцы, собравшись в большом числе, хотели воспрепятствовать переселению» жителей с аксая(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). аулам верховьев фортанги и ассы, принуждённым к капитуляции в ноябре 1858 года, выселение назначили отсрочкой: «оставаться въ занимаемыхъ ими мѣстахъ еще въ теченіи трехъ мѣсяцевъ, съ раннею-же весною они выселятся на плоскость малой чечни въ галашевское общество»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). последним держался беной: историки я. з. ахмадов и э. х. хасмагомадов пишут, что евдокимов «осенью 1859 г. и в начале 1860 г. принялся за жителей горного общества беной», часть которых «расселили по окрестным аулам и хуторам»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1857</div>
+                <div>
+                    <a href="/techniques/T0127">T0127</a> Депортация
+                </div>
+<div><a href="/campaigns/C1168">C1168</a> Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историк Д. А. Хожаев пишет о вёснах 1859 года: «Всех покоренных горцев тут же, под конвоем царских войск, переселяли на плоскость для надзора»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. На плоскость, то есть на равнину под надзор, гнали сразу: в декабре 1857 года до 400 дворов, вышедших из истребляемых аулов, направлены под прикрытием войск в Умахан-юрт<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. После взятия Ведено генерал Евдокимов приказал своему подчинённому Ностицу «приступить къ переселенію Чеченцевъ, живущихъ между Хулхулау и Гудермесомъ»: 8 апреля 1859 года «до 300 сем., жившихъ въ ближайшихъ хуторахъ на правомъ берегу Хулхулау, тотчасъ же явились въ лагерь со своими пожитками и скотомъ»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Сопротивление переселению фиксируют сами имперские документы: наиб (управляющий округом при имаме) Осман «нѣсколько разъ пытался пройти мимо отряда на плоскость и старался воспрепятствовать переселенію Чеченцевъ»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; отдельно, по журналу военных действий не позднее 9 апреля 1859 года, «ичкеринцы, ауховцы и салатавцы, собравшись в большом числе, хотели воспрепятствовать переселению» жителей с Аксая<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Аулам верховьев Фортанги и Ассы, принуждённым к капитуляции в ноябре 1858 года, выселение назначили отсрочкой: «оставаться въ занимаемыхъ ими мѣстахъ еще въ теченіи трехъ мѣсяцевъ, съ раннею-же весною они выселятся на плоскость Малой Чечни въ Галашевское общество»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Последним держался Беной: историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут, что Евдокимов «осенью 1859 г. и в начале 1860 г. принялся за жителей горного общества Беной», часть которых «расселили по окрестным аулам и хуторам»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="экономическая блокада генерал евдокимов записал в журнале военных действий по 22 июня 1859 года (рапорт военному министру сухозанету, № 544): за отказ выдать пленных «я объявилъ беноевцевъ и ихъ сосѣдей непокорными, лишенными покровительства русскихъ законовъ и приказалъ окрестному населенію захватывать ихъ въ плѣнъ и отнимать у нихъ скотъ»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). историк д. а. хожаев передаёт ту же политику: «временной администрации окрестных селений прямо предписывалось прекратить всякие контакты с беноем, брать в плен и уничтожать беноевцев»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1857</div>
+                <div>
+                    <a href="/techniques/T0108">T0108</a> Экономическая блокада
+                </div>
+<div><a href="/campaigns/C1168">C1168</a> Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Генерал Евдокимов записал в журнале военных действий по 22 июня 1859 года (рапорт военному министру Сухозанету, № 544): за отказ выдать пленных «я объявилъ Беноевцевъ и ихъ сосѣдей непокорными, лишенными покровительства Русскихъ законовъ и приказалъ окрестному населенію захватывать ихъ въ плѣнъ и отнимать у нихъ скотъ»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Историк Д. А. Хожаев передаёт ту же политику: «Временной администрации окрестных селений прямо предписывалось прекратить всякие контакты с Беноем, брать в плен и уничтожать беноевцев»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="выращивание коллаборационистской элиты в ноябре 1858 года генерал евдокимов, по собственному журналу, «нашелъ болѣе выгоднымъ употребить въ дѣло мирное туземное населеніе»: наиб (управляющий округом при имаме) саиб-дулла с двумя с лишним тысячами вооружённых чеченцев принудил к сдаче аулы верховьев фортанги и ассы, которые «выдали саибъ-дуллѣ 27 чел. русскихъ плѣнныхъ и аманатовъ изъ лучшихъ фамилій» (аманат - человек, которого империя забирала из общины как заложника)(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). бывших наибов имамата власть берегла для будущей службы: полковник белик, по рапорту евдокимова от 8 сентября 1858 года, который цитирует историк н. и. покровский, «водворял порядок и устанавливал первые начала управления во вновь покоряющихся обществах; жертвы, преследуемые народом, искали у него убежища»(citation: кавказские войны и имамат шамиля 2009). 4 июля 1859 года, по историку д. а. хожаеву, чеченские старшины пришли к главнокомандующему кавказской армией барятинскому: «чеченская депутация почетных лиц, среди которых были бывшие наибы талхиг, эски, эдил, дуба, умалат, явилась в крепость грозную к князю барятинскому» - это талхиг шалинский, наиб большой чечни и начальник артиллерии имамата, и дуба вашендароевский, наиб малой чечни; перешедшие наибы «получили царские чины, награды и были назначены наибами тех же участков, где когда-то они служили шамилю»(citation: чеченцы в русско-кавказской войне 1998). 19 августа 1859 года главнокомандующий барятинский дал «предварительное согласие на отвод земель в чечне и на кумыкской плоскости» подпоручику асханову, подполковнику чермоеву и пензулаеву(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). итог подвёл историк н. и. покровский: «главами царской администрации в чечне и дагестане после 1859 г. выступают лица, хорошо знакомые нам как наибы шамиля»(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1857</div>
+                <div>
+                    <a href="/techniques/T0154">T0154</a> Выращивание коллаборационистской элиты
+                </div>
+<div><a href="/campaigns/C1168">C1168</a> Просеки и голод: завоевание Чечни Евдокимовым (1857-1859)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В ноябре 1858 года генерал Евдокимов, по собственному журналу, «нашелъ болѣе выгоднымъ употребить въ дѣло мирное туземное населеніе»: наиб (управляющий округом при имаме) Саиб-Дулла с двумя с лишним тысячами вооружённых чеченцев принудил к сдаче аулы верховьев Фортанги и Ассы, которые «выдали Саибъ-Дуллѣ 27 чел. русскихъ плѣнныхъ и аманатовъ изъ лучшихъ фамилій» (аманат - человек, которого империя забирала из общины как заложника)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Бывших наибов имамата власть берегла для будущей службы: полковник Белик, по рапорту Евдокимова от 8 сентября 1858 года, который цитирует историк Н. И. Покровский, «водворял порядок и устанавливал первые начала управления во вновь покоряющихся обществах; жертвы, преследуемые народом, искали у него убежища»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. 4 июля 1859 года, по историку Д. А. Хожаеву, чеченские старшины пришли к главнокомандующему Кавказской армией Барятинскому: «чеченская депутация почетных лиц, среди которых были бывшие наибы Талхиг, Эски, Эдил, Дуба, Умалат, явилась в крепость Грозную к князю Барятинскому» - это Талхиг Шалинский, наиб Большой Чечни и начальник артиллерии имамата, и Дуба Вашендароевский, наиб Малой Чечни; перешедшие наибы «получили царские чины, награды и были назначены наибами тех же участков, где когда-то они служили Шамилю»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. 19 августа 1859 года главнокомандующий Барятинский дал «предварительное согласие на отвод земель в Чечне и на Кумыкской плоскости» подпоручику Асханову, подполковнику Чермоеву и Пензулаеву<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Итог подвёл историк Н. И. Покровский: «главами царской администрации в Чечне и Дагестане после 1859 г. выступают лица, хорошо знакомые нам как наибы Шамиля»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1879). 1858 год в Чечне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://kp.rusneb.ru/item/material/skazanie-ochevidca-o-shamile" target="_blank">
+                        Гаджи-Али. (1873). Сказание очевидца о Шамиле.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="5.0">
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/campaigns/C1173/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1173/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1173/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1173/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1173/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Колоніальна нафта: вилучення грозненських надр і рента козацького війська (1845-1917), кампанія C1173 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/campaigns/C1173/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Колоніальна нафта: вилучення грозненських надр і рента козацького війська (1845-1917), кампанія C1173 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/">Кампанії</a></li>
+  <li class="breadcrumb-item">Колоніальна нафта: вилучення грозненських надр і рента козацького війська (1845-1917)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Колоніальна нафта: вилучення грозненських надр і рента козацького війська (1845-1917)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>Російська імперія у 1845-1917 роках відібрала в чеченців грозненську нафту: дохід з надр вона законом закріпила за козацьким військом, а чеченські громади до промислу не допустила - ні як власників, ні як отримувачів ренти. 16 лютого 1845 року параграф 154 «Положення про Кавказьке лінійне військо» віддав козацькому війську дохід з нафтових джерел біля фортеці Грозної: «на знак особливого благовоління…на користь війська надається всемилостивіше пожалуваний йому дохід від нафтових джерел поблизу фортеці Грозної»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Колодязі, з яких чеченські власники раніше торгували нафтою, стали статтею військового бюджету, а коли 6 жовтня 1893 року зі свердловини компанії нафтопромисловця Ахвердова вдарив перший промисловий фонтан - «тільки за перші два тижні дав 150 тисяч пудів нафти»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, - з'ясувалося, що найбагатший промисел лежить під землею, відібраною в чеченських аулів. Правову рамку сформулював у 1894 році начальник Терської області генерал Каханов (стояв на чолі області з 1889 по 1900 рік<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>), відмовившись поширити на чеченські землі правила про селянську оренду надр: «...казенні землі, населені горськими жителями, віддані були їм не у володіння на праві власності, а лише в користування...»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Історик З. Х. Ібрагімова підводить розподіл: «Якщо загальний дохід з нафтової промисловості взяти за 100%, то промисловці отримували 35%, скарбниця 32%, власники землі 24% і посередники 9%» - власником землі вважалося козацьке військо, чеченській громаді частки не було<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Тільки двом селам - Алдам і Новим Алдам - вдалося домовитися з промисловцями напряму, і на цих угодах видно справжню ціну надр: 18 квітня 1915 року схід Нових Алдів - села на 520 дворів - здав нафтопромисловцю Степанові Ліанозову 20 десятин на 24 роки по 5 тисяч рублів за десятину і ще по 2 копійки з кожного пуда видобутої нафти на користь громади<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>, а нафтопромисловець Тапа Чермоєв за ділянки біля Алдів заплатив громаді 30 тисяч рублів одноразово і договором гарантував їй чверть доходів з видобутої нафти<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Усім іншим чеченським громадам закон не залишив нічого - їхню частку збирало козацьке військо.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1173
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>
+                    <span>Лютий 1845</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>
+                    <span>Березень 1917</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версія</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Створено:&nbsp;</span>5 серпня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>5 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/C1173" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Шари Навігатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Шар russia-colonialism</h6>
+                    <a class="dropdown-item" href="/uk/campaigns/C1173/C1173-russia-colonialism-layer.json" download target="_blank">завантажити</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/uk/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fuk%2Fcampaigns%2FC1173%2FC1173-russia-colonialism-layer.json" target="_blank">відкрити <img width="10" src="/uk/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Актори</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/groups/G0009">G0009</a></td>
+                <td><a href="/uk/groups/G0009">Російська імперія</a></td>
+                <td>3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Застосовані інструменти</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Процедури</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/uk/software/S0012"> S0012 </a></td>
+                <td><a href="/uk/software/S0012"> Окупаційні та підконтрольні адміністрації </a></td>
+                <td>3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реалізовані процедури</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="вилучення ресурсів російська імперія відібрала в чеченців нафтові колодязі біля фортеці грозної і 16 лютого 1845 року закріпила вилучення законом: параграф 154 «положення про кавказьке лінійне військо», затвердженого імператором миколою i, гласив: «на знак особливого благовоління…на користь війська надається всемилостивіше пожалуваний йому дохід від нафтових джерел поблизу фортеці грозної»(citation: мир чеченцев. xix век 2007). до вилучення нафта годувала самих чеченців - історик з. х. ібрагімова пише за документами: у 1788 році чеченський володар казбулат «торгував і мав певний дохід з нафтових колодязів, розташованих у його володіннях»; моздокські козаки у проханні 1811 року згадували, як нафта «привозилася на продаж... і продавалася вільною ціною»; «пізніше, нафта була вилучена в чеченців і стала власністю кавказького лінійного полку, який здавав її у відкуп»(citation: мир чеченцев. xix век 2007). за 57 років відкупної системи, з 1833 по 1890 рік, військо отримало 152 500 рублів сріблом чистого доходу(citation: мир чеченцев. xix век 2007)(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1845-02-16 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 1845</div>
+                <div>
+                    <a href="/uk/techniques/T0052">T0052</a> Вилучення ресурсів
+                </div>
+<div><a href="/uk/campaigns/C1173">C1173</a> Колоніальна нафта: вилучення грозненських надр і рента козацького війська (1845-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія відібрала в чеченців нафтові колодязі біля фортеці Грозної і 16 лютого 1845 року закріпила вилучення законом: параграф 154 «Положення про Кавказьке лінійне військо», затвердженого імператором Миколою I, гласив: «на знак особливого благовоління…на користь війська надається всемилостивіше пожалуваний йому дохід від нафтових джерел поблизу фортеці Грозної»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. До вилучення нафта годувала самих чеченців - історик З. Х. Ібрагімова пише за документами: у 1788 році чеченський володар Казбулат «торгував і мав певний дохід з нафтових колодязів, розташованих у його володіннях»; моздокські козаки у проханні 1811 року згадували, як нафта «привозилася на продаж... і продавалася вільною ціною»; «Пізніше, нафта була вилучена в чеченців і стала власністю Кавказького лінійного полку, який здавав її у відкуп»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. За 57 років відкупної системи, з 1833 по 1890 рік, військо отримало 152 500 рублів сріблом чистого доходу<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правова сегрегація населення російська імперія наказами по терській області від 15 серпня 1890 року і березня 1897 року заборонила чеченським сільським громадам «входити ні в які угоди з гірничопромисловцями» без дозволу уряду - «винних, в особі сільських посадових осіб, притягали до відповідальності і в судах порушували позови про знищення укладених договорів»(citation: мир чеченцев. xix век 2007). підставу заборони формулює історик з. х. ібрагімова: «аульні громади були позбавлені права здавати в оренду нафтоносні ділянки - земля їм надавалася не на правах власності, а тільки в користування з правом поверхневої розробки, надра її вважалися надбанням скарбниці»(citation: мир чеченцев. xix век 2007). коли міністерство землеробства затвердило правила, що дозволяли селянським громадам самим здавати землю під розробку надр, начальник терської області генерал каханов у 1894 році «категорично заперечував проти поширення на чеченські землі» цих правил - і вимагав, щоб навіть при визнанні прав громад постанова про здачу землі затверджувалася начальником дільниці, а третина доходів ішла «на сплату подимної податі належних громад»(citation: история чечни в xix-xx веках 2005). для козаків діяла зворотна норма: з 1891 року при відході надр у скарбницю станицям належала заміна землі або винагорода - «у чеченських громад запасних земельних наділів державою передбачено не було. тим більше не йшлося про матеріальне заохочення»(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1845-02-16 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 1845</div>
+                <div>
+                    <a href="/uk/techniques/T0032">T0032</a> Правова сегрегація населення
+                </div>
+<div><a href="/uk/campaigns/C1173">C1173</a> Колоніальна нафта: вилучення грозненських надр і рента козацького війська (1845-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія наказами по Терській області від 15 серпня 1890 року і березня 1897 року заборонила чеченським сільським громадам «входити ні в які угоди з гірничопромисловцями» без дозволу уряду - «Винних, в особі сільських посадових осіб, притягали до відповідальності і в судах порушували позови про знищення укладених договорів»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Підставу заборони формулює історик З. Х. Ібрагімова: «Аульні громади були позбавлені права здавати в оренду нафтоносні ділянки - земля їм надавалася не на правах власності, а тільки в користування з правом поверхневої розробки, надра її вважалися надбанням скарбниці»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Коли міністерство землеробства затвердило правила, що дозволяли селянським громадам самим здавати землю під розробку надр, начальник Терської області генерал Каханов у 1894 році «категорично заперечував проти поширення на чеченські землі» цих правил - і вимагав, щоб навіть при визнанні прав громад постанова про здачу землі затверджувалася начальником дільниці, а третина доходів ішла «на сплату подимної податі належних громад»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Для козаків діяла зворотна норма: з 1891 року при відході надр у скарбницю станицям належала заміна землі або винагорода - «У чеченських громад запасних земельних наділів державою передбачено не було. Тим більше не йшлося про матеріальне заохочення»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="ресурсна експлуатація терське козацьке військо російської імперії здавало відібрані чеченські землі в оренду нафтовим компаніям і жило рентою з чужих надр: у 1899 році на землях війська видобуто близько 21,9 мільйона пудів нафти з 26,22 мільйона загального видобутку, і тільки за цей рік компанії виплатили війську 631,8 тисячі рублів(citation: история чечни в xix-xx веках 2005). історики я. з. ахмадов і е. х. хасмагомадов пишуть: найбільшим власником нафтоносних ділянок виявилося саме військо, розробки воно само не вело, а звичайні умови оренди становили 150 рублів на рік за десятину (десятина - трохи більше гектара) плюс «від 2 до 6 копійок з кожного пуда видобутої нафти»(citation: история чечни в xix-xx веках 2005). історик з. х. ібрагімова фіксує динаміку: військові капітали з 1877 по 1900 рік зросли з 400 тисяч до 3 мільйонів рублів - «це було результатом отримання доходів з нафтоносних земель»(citation: мир чеченцев. xix век 2007). масштаб задав сам промисел: 27 серпня 1895 року свердловина №7 ахвердова дала «фонтан неймовірної сили, що давав до 1 млн пудів на добу... гул і запах нафти було чути за 15 верст від родовища»(citation: становление и развитие нефтяной промышленности в терской области 2018)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1845-02-16 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 1845</div>
+                <div>
+                    <a href="/uk/techniques/T0102">T0102</a> Ресурсна експлуатація
+                </div>
+<div><a href="/uk/campaigns/C1173">C1173</a> Колоніальна нафта: вилучення грозненських надр і рента козацького війська (1845-1917)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Терське козацьке військо Російської імперії здавало відібрані чеченські землі в оренду нафтовим компаніям і жило рентою з чужих надр: у 1899 році на землях війська видобуто близько 21,9 мільйона пудів нафти з 26,22 мільйона загального видобутку, і тільки за цей рік компанії виплатили війську 631,8 тисячі рублів<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть: найбільшим власником нафтоносних ділянок виявилося саме військо, розробки воно само не вело, а звичайні умови оренди становили 150 рублів на рік за десятину (десятина - трохи більше гектара) плюс «від 2 до 6 копійок з кожного пуда видобутої нафти»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Історик З. Х. Ібрагімова фіксує динаміку: військові капітали з 1877 по 1900 рік зросли з 400 тисяч до 3 мільйонів рублів - «Це було результатом отримання доходів з нафтоносних земель»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Масштаб задав сам промисел: 27 серпня 1895 року свердловина №7 Ахвердова дала «фонтан неймовірної сили, що давав до 1 млн пудів на добу... Гул і запах нафти було чути за 15 верст від родовища»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Гайтамирова С. А.. (2018). Становление и развитие нефтяной промышленности в Терской области."data-reference="Становление и развитие нефтяной промышленности в Терской области 2018"><sup><a href="https://cyberleninka.ru/article/n/stanovlenie-i-razvitie-neftyanoy-promyshlennosti-v-terskoy-oblasti-v-kontse-xix-nachale-xx-v" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="3.0">
+                                
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://cyberleninka.ru/article/n/stanovlenie-i-razvitie-neftyanoy-promyshlennosti-v-terskoy-oblasti-v-kontse-xix-nachale-xx-v" target="_blank">
+                        Гайтамирова С. А.. (2018). Становление и развитие нефтяной промышленности в Терской области.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+<script src="/uk/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

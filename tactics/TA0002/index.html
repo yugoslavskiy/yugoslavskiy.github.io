@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/tactics/TA0002/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/tactics/TA0002/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/tactics/TA0002/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/tactics/TA0002/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/tactics/TA0002/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Подготовка к захвату, тактика TA0002 - Россия | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/tactics/TA0002/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Подготовка к захвату, тактика TA0002 - Россия | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/tactics/russia">Тактики</a></li>
+  <li class="breadcrumb-item"><a href="/tactics/russia">Россия</a></li>
+  <li class="breadcrumb-item">Подготовка к захвату</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>
+          Подготовка к захвату
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>Действия, создающие условия для будущего захвата: разведка, скупка элит, медиа и активов, создание экономических и военных зависимостей, договоры с двойным дном, инфильтрация институтов. На этом этапе агрессор ещё не контролирует территорию, но уже подтачивает её способность к самостоятельному существованию и защите.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-data"><span class="h5 card-title">ID:</span> TA0002</div>
+                <div class="card-data"><span class="h5 card-title">Создано:&nbsp;</span>23 мая 2026</div>
+                <div class="card-data"><span class="h5 card-title">Изменено:&nbsp;</span>12 июля 2026</div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/TA0002" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="techniques">Техники</h2>
+        <h6 class="table-object-count">Техники: 15</h6>
+        <table class="table-techniques">
+        <thead>
+            <tr>
+                <td colspan="2">ID</td>
+                <td>Название</td>
+                <td>Описание</td>
+            </tr>
+        </thead>
+        <tbody>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0132"> T0132 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0132"> Внедрение в местные политические структуры </a>
+                    </td>
+                    <td>
+                                Агрессор целенаправленно внедряет своих агентов и лоялистов в уже существующие, легитимные представительные органы, партии или съезды жертвы. Это позволяет перехватить управление структурой изнутри, саботировать ее работу или заставить принимать решения в интересах агрессора.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0136"> T0136 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0136"> Кибероперации </a>
+                    </td>
+                    <td>
+                                Агрессоры могут осуществлять многоэтапные атаки в цифровой среде для шпионажа, кражи данных, разрушения критической инфраструктуры и паралича государственных институтов. Эти операции охватывают широкий спектр тактик: от разведки, получения первоначального доступа (например, через фишинг, компрометацию учетных записей или атаки на цепочки поставок) и закрепления в системе, до обхода защиты, кражи учетных данных и эксфильтрации информации. Финальным этапом часто становится деструктивное воздействие (Impact), такое как уничтожение данных, стирание дисков или атаки типа «отказ в обслуживании» (Denial of Service). Более подробно эти техники раскрываются в специализированном фреймворке <a href="https://attack.mitre.org/">MITRE ATT&amp;CK</a>.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0150"> T0150 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0150"> Комплексная разведка территорий </a>
+                    </td>
+                    <td>
+                                Агрессоры целенаправленно организуют сбор стратегических, географических, демографических и экономических данных о целевых территориях. В рамках этой техники колонизатор посылает дипломатов, купцов, исследователей или специализированные экспедиции для выявления численности населения потенциального объекта колонизации, оценки его обороноспособности и инфраструктуры, а также разведки полезных ископаемых и природных ресурсов. Полученная информация используется метрополией для планирования последующего силового захвата, установления контроля или экономической эксплуатации. Зачастую эмиссары колонизатора пытаются расположить к себе население с помощью ценных для него подарков (например, стеклянные бусы, напоминающие используемые в качестве денег предметы и воспринимаемые как иностранная валюта) или взаимовыгодного торгового обмена. В некоторых случаях имеет место привлечение людей к участию в ритуалах, которые потом воспринимаются колонизатором как декларация подданства.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0143"> T0143 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0143"> Культивирование имперской диаспоры </a>
+                    </td>
+                    <td>
+                                Культивированием имперской диаспоры – целенаправленная политика бывшей метрополии по поддержанию и воспроизводству особой идентичности у потомков колонистов и поселенцев, оставшихся на территориях, вышедших из-под её контроля. Эта политика реализуется через инфраструктуру языкового, образовательного и медийного воспроизводства: финансирование школ и культурных центров, телевещание на языке метрополии, упрощённое предоставление гражданства и статуса соотечественника, государственные и квазигосударственные фонды поддержки диаспоры . Параллельно с институциональным каркасом метрополия культивирует аффективную инфраструктуру: ностальгию по имперскому прошлому, нарратив культурного превосходства и одновременно нарратив о виктимизации диаспоры в новом государстве. Эта работа направлена на удержание идентификации с метрополией у второго, третьего и последующих поколений, давно не имеющих личного опыта имперской жизни, и предотвращение их социальной и политической интеграции с государства, в которых они живут. Конечная цель этой деятельности – реваншистская: культивируемая диаспора рассматривается метрополией как ресурс, на который можно будет опереться в момент, когда она предпримет попытку пересмотра постимперских границ, будь то прямая аннексия территорий компактного проживания диаспоры, инструментализация её протестов как casus belli или дестабилизация новых государств изнутри. Исторические примеры обнажают этот механизм: судетские немцы в межвоенной Чехословакии, послужившие предлогом для Мюнхенского сговора 1938 года и последующей ликвидации чехословацкой государственности; русскоязычные сообщества в Молдове и в Крыму, ставшие риторическим основанием для российских интервенций 1992 и 2014 годов; русскоязычное население в Эстонии, Латвии и Литве как длящийся объект аналогичной политики.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0131"> T0131 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0131"> Поддержка подконтрольной оппозиции </a>
+                    </td>
+                    <td>
+                                Агрессор тайно или явно обеспечивает всестороннюю поддержку (финансовую, медийную, организационную и политическую) подконтрольным политическим силам внутри колонизируемого общества. Цель - создать легальную пятую колонну, которая будет действовать в интересах метрополии, маскируя внешнее вмешательство под внутренний политический процесс.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0012"> T0012 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0012"> Поддержка сепаратизма </a>
+                    </td>
+                    <td>
+                                Агрессоры могут тайно или явно финансировать, вооружать и политически поддерживать радикальные группировки, выступающие за откол части территории от суверенного государства. Искусственное разжигание внутренних конфликтов извне ослабляет государственные институты, дестабилизирует регион и создает удобный предлог для последующего открытого вмешательства колонизатора под видом миротворческой операции или защиты якобы угнетаемого меньшинства.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0015"> T0015 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0015"> Подкуп элит </a>
+                    </td>
+                    <td>
+                                Агрессоры могут использовать системную коррупцию, раздачу привилегий, титулов и масштабных финансовых средств для переманивания на свою сторону представителей высшего руководства, интеллигенции и военных чинов целевого государства. Эта техника пронизывает все этапы колонизации: от подготовки к захвату (вербовка агентуры влияния) до захвата управления (саботаж при обороне) и институционального закрепления (покупка лояльности марионеточного правительства). Поощряя личные амбиции элиты в ущерб национальным интересам, колонизатор разрушает способность местного населения к организованному сопротивлению.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0039"> T0039 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0039"> Сговор с третьей стороной за спиной народа </a>
+                    </td>
+                    <td>
+                                Агрессоры могут заключать тайные или открытые дипломатические соглашения с другими геополитическими игроками о разделе сфер влияния, полностью игнорируя суверенитет и интересы коренного народа. Данная техника применяется для дипломатической подготовки к захвату и последующего захвата управления. Сделки за спиной колонизируемого общества позволяют агрессору лишить его потенциальных международных союзников, легитимизировать оккупацию на внешнеполитическом уровне и беспрепятственно расчленить территории местного населения.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0011"> T0011 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0011"> Скупка медиа и активов </a>
+                    </td>
+                    <td>
+                                Агрессоры могут тайно или через подставных лиц приобретать контрольные пакеты акций в ключевых средствах массовой информации, стратегических предприятиях и инфраструктурных объектах целевого региона. Монополизация информационного и экономического пространства позволяет колонизатору формировать нужную общественную повестку, манипулировать мнением местного населения и ослаблять самостоятельность институтов коренного народа еще до начала открытого силового вмешательства.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0013"> T0013 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0013"> Создание агентуры влияния </a>
+                    </td>
+                    <td>
+                                Агрессоры могут целенаправленно вербовать, подкупать или идеологически мотивировать рядовых представителей местного населения, маргинализированные группы и криминальные элементы для создания скрытой сети лояльных исполнителей на целевой территории. Формирование подконтрольной агентуры, включающей провокаторов, уличных боевиков, информаторов и диверсантов, позволяет колонизатору организовывать искусственные массовые беспорядки, осуществлять физическое давление на гражданских активистов, собирать разведывательные данные и дестабилизировать общественно-политическую обстановку внутри колонизируемого общества перед началом открытой интервенции.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0014"> T0014 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0014"> Спонсирование внутренних радикальных группировок </a>
+                    </td>
+                    <td>
+                                Агрессоры могут тайно финансировать, обучать, вооружать и информационно поддерживать маргинальные или радикальные группировки внутри колонизируемого общества. Искусственная эскалация внутренних конфликтов и разжигание насилия извне ослабляет правоохранительную систему коренного народа, дестабилизирует регион и создает для колонизатора удобный предлог для внешнего вмешательства под видом миротворческой операции или восстановления порядка.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0152"> T0152 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0152"> Стравливание соседних народов </a>
+                    </td>
+                    <td>
+                                Метрополия намеренно сеет и поддерживает вражду между соседними коренными народами, чтобы они ослабляли друг друга и не объединились против неё. Вместо того чтобы противостоять единому сопротивлению, колонизатор разделяет его: натравливает один народ на другой, вооружает и вознаграждает лояльных против непокорных, переводит общую враждебность к империи во взаимную рознь покоряемых. Механизм опирается на уже существующие или искусственно раздуваемые различия — родовые, территориальные, конфессиональные — и закрепляет их как постоянную линию раскола, лишая коренные народы возможности выступить вместе. Метрополия при этом сохраняет собственные войска, перекладывая часть подавления на стравленную сторону и выставляя себя арбитром.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0107"> T0107 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0107"> Транспортная блокада </a>
+                    </td>
+                    <td>
+                                Агрессоры могут целенаправленно перекрывать воздушное, железнодорожное, морское и автомобильное сообщение с целевым регионом. Физическая изоляция территории от внешнего мира позволяет колонизатору парализовать логистику коренного народа, прервать поставки жизненно важных грузов и лишить общество возможности получать внешнюю помощь или координировать свои действия с союзниками.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0088"> T0088 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0088"> Фиктивные договоры </a>
+                    </td>
+                    <td>
+                                Агрессоры могут использовать дипломатические соглашения как инструмент юридической ловушки для коренного народа. Заключая договор о протекторате или союзе, колонизатор изначально отказывается брать на себя симметричные обязательства, используя текст соглашения исключительно для урезания прав местного населения. Это создает легальную базу для последующего одностороннего вмешательства и демонтажа независимых институтов без формального объявления войны.
+
+                    </td>
+                </tr>
+                <tr class="technique">
+                    <td colspan="2">
+                        <a href="/techniques/T0108"> T0108 </a>
+                    </td>
+                    <td>
+                        <a href="/techniques/T0108"> Экономическая блокада </a>
+                    </td>
+                    <td>
+                                Агрессоры могут вводить финансовые и торговые ограничения, блокировать банковские переводы и останавливать работу предприятий коренного народа,. Эта техника применяется для подготовки к захвату и нейтрализации защиты. Искусственное удушение экономики лишает колонизируемое общество ресурсов, необходимых для самообеспечения и обороны, провоцируя внутренний кризис и ослабляя институты перед началом открытой интервенции или в ходе активного конфликта.
+
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

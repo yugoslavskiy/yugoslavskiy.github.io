@@ -1,0 +1,1108 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/techniques/T0015/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0015/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0015/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0015/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0015/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Подкуп элит, техника T0015 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/techniques/T0015/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Подкуп элит, техника T0015 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/techniques/">Техники</a></li>
+  <li class="breadcrumb-item">Подкуп элит</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Подкуп элит
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агрессоры могут использовать системную коррупцию, раздачу привилегий, титулов и масштабных финансовых средств для переманивания на свою сторону представителей высшего руководства, интеллигенции и военных чинов целевого государства. Эта техника пронизывает все этапы колонизации: от подготовки к захвату (вербовка агентуры влияния) до захвата управления (саботаж при обороне) и институционального закрепления (покупка лояльности марионеточного правительства). Поощряя личные амбиции элиты в ущерб национальным интересам, колонизатор разрушает способность местного населения к организованному сопротивлению.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0015
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Подтехники:&nbsp;</span>
+                    Нет подтехник
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактические цели, которые достигаются применением техники или подтехники">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/tactics/TA0005">Закрепление</a>,                        <a href="/tactics/TA0003">Захват управления</a>,                        <a href="/tactics/TA0002">Подготовка к захвату</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народы, против которых применялась техника или подтехника">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народы:&nbsp;</span>Нохчи (Чеченцы), Украинцы
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контрибьюторы:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версия:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Создано:&nbsp;</span>21 апреля 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>9 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/T0015" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реализованные процедуры</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="подкуп элит для обеспечения политического подчинения элиты нохчи администрация использовала финансовое стимулирование: историк мурат яшар (murat yasar) указывает, что «подписание шерти шло рука об руку с денежным содержанием и подарками, которые царь давал местным правителям»(citation: the north caucasus borderland: between muscovy and the ottoman empire, 1555–1605 2022)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0008"
+             data-tools="S0009"
+             data-date="1588-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1588</div>
+<div><a href="/campaigns/C1112">C1112</a> Начало политического подчинения нохчи (1588–1591)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0009">S0009</a> Дипломатия</div>            </div>
+            <div class="proc-desc">
+                        <p>Для обеспечения политического подчинения элиты нохчи администрация использовала финансовое стимулирование: историк Мурат Яшар (Murat Yasar) указывает, что «подписание шерти шло рука об руку с денежным содержанием и подарками, которые царь давал местным правителям»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Murat Yaşar. (2022). The North Caucasus Borderland: Between Muscovy and the Ottoman Empire, 1555–1605."data-reference="The North Caucasus Borderland: Between Muscovy and the Ottoman Empire, 1555–1605 2022"><sup><a href="https://dokumen.pub/the-north-caucasus-borderland-between-muscovy-and-the-ottoman-empire-1555-1605-9781474498715.html" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит оккупационная администрация раздавала привилегии и передавала лояльным предводителям нохчи власть над зависимыми людьми для переманивания их на свою сторону: в перечне дел посольского приказа за 1645 год зафиксирована челобитная служилого окоцкого мурзы чепана кохострова царю михаилу федоровичу и докладная выписка центрального аппарата «о пожаловании его прибавкою к жалованью и владением узденями и «людьми» его брата мурзы албира кохострова»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1645-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1645</div>
+<div><a href="/campaigns/C1107">C1107</a> Подкуп элит, принуждение к подданству и взятие аманатов (1645–1658)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Оккупационная администрация раздавала привилегии и передавала лояльным предводителям нохчи власть над зависимыми людьми для переманивания их на свою сторону: в перечне дел Посольского приказа за 1645 год зафиксирована челобитная служилого окоцкого мурзы Чепана Кохострова царю Михаилу Федоровичу и докладная выписка центрального аппарата «о пожаловании его прибавкою к жалованью и владением узденями и «людьми» его брата мурзы Албира Кохострова»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит ставка на сословные интересы старшины: «коломацкими статьями ограничивалась как власть гетмана, так и соответственно автономия гетманщины, зато были значительно расширены права казацкой старшины»(citation: україна в міжнародних відносинах 2012) – расширяя права старшинской олигархии за счет гетмана, москва получала рычаги влияния на автономию руками её же элиты."
+             data-platforms="Украинцы"
+             data-groups="G0008"
+             data-tools="S0009"
+             data-date="1672-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1672</div>
+<div><a href="/campaigns/C0025">C0025</a> Конотопские статьи Ивана Самойловича (1672)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0009">S0009</a> Дипломатия</div>            </div>
+            <div class="proc-desc">
+                        <p>Ставка на сословные интересы старшины: «Коломацкими статьями ограничивалась как власть гетмана, так и соответственно автономия Гетманщины, зато были значительно расширены права казацкой старшины»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ред. М. Варварцев, Інститут історії України НАНУ (енцикл. словник-довідник, вип. 3). (2012). Україна в міжнародних відносинах."data-reference="Україна в міжнародних відносинах 2012"><sup><a href="https://uk.wikisource.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0_%D0%B2_%D0%BC%D1%96%D0%B6%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%B8%D1%85_%D0%B2%D1%96%D0%B4%D0%BD%D0%BE%D1%81%D0%B8%D0%BD%D0%B0%D1%85" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span> – расширяя права старшинской олигархии за счет гетмана, Москва получала рычаги влияния на автономию руками её же элиты.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит для получения контроля над церковью москва применила коррупцию на международном уровне: киевскую митрополию захватили «путём подкупа, манипуляций, шантажа»(citation: участь генерального осавула івана мазепи у виборах митрополита 1685 р. 2019). плату зафиксировал сам константинопольский патриарх дионисий в письме к царям: «приняли есмы милостыню святаго вашего царствія отъ посланного вашего господина никиты алексѣевича три сорока соболей и двѣсти червонныхъ»(citation: архив юго-западной россии. часть 1. том v 1872)."
+             data-platforms="Украинцы"
+             data-groups="G0008"
+             data-tools="S0009"
+             data-date="1685-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1685</div>
+<div><a href="/campaigns/C0008">C0008</a> Аннексия Киевской митрополии Московским патриархатом (1685–1690)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0009">S0009</a> Дипломатия</div>            </div>
+            <div class="proc-desc">
+                        <p>Для получения контроля над церковью Москва применила коррупцию на международном уровне: Киевскую митрополию захватили «путём подкупа, манипуляций, шантажа»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Сергій Павленко (Сіверянський літопис, 2019, № 6). (2019). Участь генерального осавула Івана Мазепи у виборах митрополита 1685 р.."data-reference="Участь генерального осавула Івана Мазепи у виборах митрополита 1685 р. 2019"><sup><a href="http://dspace.nbuv.gov.ua/handle/123456789/162853" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Плату зафиксировал сам константинопольский патриарх Дионисий в письме к царям: «Приняли есмы милостыню святаго вашего царствія отъ посланного вашего господина Никиты Алексѣевича три сорока соболей и двѣсти червонныхъ»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Временная комиссия для разбора древних актов, Киев. (1872). Архив Юго-Западной России. Часть 1. Том V."data-reference="Архив Юго-Западной России. Часть 1. Том V 1872"><sup><a href="https://archive.org/details/arhivjugozapadnojrossiiizdavaemyjvreme89" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит чтобы гарантировать принятие кабальных условий договора, царство подкупило местную старшину гарантиями сохранения их должностей, поставив личные амбиции элиты выше национальных: «гетману старшины генеральной без воли и указу их царского пресветлого величества... с уряду никого не переменять же»(citation: иван мазепа и российская империя. история «предательства» 2011)."
+             data-platforms="Украинцы"
+             data-groups="G0008"
+             data-tools="S0009"
+             data-date="1687-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1687</div>
+<div><a href="/campaigns/C0007">C0007</a> Коломакские статьи (1687)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0009">S0009</a> Дипломатия</div>            </div>
+            <div class="proc-desc">
+                        <p>Чтобы гарантировать принятие кабальных условий договора, царство подкупило местную старшину гарантиями сохранения их должностей, поставив личные амбиции элиты выше национальных: «гетману старшины генеральной без воли и указу их царского пресветлого величества... с уряду никого не переменять же»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит раздача высших имперских наград для покупки лояльности гетмана на фоне ресурсного истощения украины: петр i «изволили мя нареши славного чина святого первозванного христова апостола андрея кавалером»(citation: иван мазепа и российская империя. история «предательства» 2011)(citation: мазепа 2007)."
+             data-platforms="Украинцы"
+             data-groups="G0008"
+             data-tools="S0009"
+             data-date="1695-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1695</div>
+<div><a href="/campaigns/C0010">C0010</a> Азовские походы и строительство крепостей (1695–1700)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0009">S0009</a> Дипломатия</div>            </div>
+            <div class="proc-desc">
+                        <p>Раздача высших имперских наград для покупки лояльности гетмана на фоне ресурсного истощения Украины: Петр I «изволили мя нареши славного чина святого первозванного Христова апостола Андрея кавалером»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span><span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит оккупационная администрация российской империи покупала лояльность местной знати государственными выплатами: историк я. з. ахмадов констатирует, что по утверждению генерал-аншефа в. я. левашова старший чеченский князь айдемир «был принят в российское подданство и ему было назначено постоянное царское жалованье»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019), и в целом «князья и их уздени стали даже получать денежное довольствие от российского правительства»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1735-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1735</div>
+<div><a href="/campaigns/C1133">C1133</a> Подкуп знати и институционализация системы заложников (1735)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Оккупационная администрация Российской империи покупала лояльность местной знати государственными выплатами: историк Я. З. Ахмадов констатирует, что по утверждению генерал-аншефа В. Я. Левашова старший чеченский князь Айдемир «был принят в российское подданство и ему было назначено постоянное царское жалованье»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>, и в целом «Князья и их уздени стали даже получать денежное довольствие от российского правительства»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит оккупационная администрация российской империи покупала лояльность представителей местной знати государственными выплатами: историк я. з. ахмадов фиксирует «наделение российским жалованьем 4 чеченских князей и их узденей»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1741-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1741</div>
+<div><a href="/campaigns/C1135">C1135</a> Расширение системы подкупа и принуждение горных обществ к подданству (1741–1748)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Оккупационная администрация Российской империи покупала лояльность представителей местной знати государственными выплатами: историк Я. З. Ахмадов фиксирует «наделение российским жалованьем 4 чеченских князей и их узденей»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит российская империя через главнокомандующего на кавказе генерала гудовича обратилась к старшинам нохчи с обвещением, предлагая экономические выгоды за принятие подданства и прекращение вооруженного сопротивления. за подчинение старшинам обещали допуск к соли: им «дозволено будет брать из здешних соляных озер по билетам безвозвратно с заплатою весьма малой постановленной цены», а также право «перегонять скот на сию сторону терека и пользоваться свободно по пустопорозжим пастбищным местам». обвещение было доведено до чеченского общества и его старшин (кусу аль-темир, масарай, идут), однако подданство принято не было; в начале следующего года империя перешла к вооруженному вторжению.(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869). то же предложение независимо фиксирует имперский историк дубровин: главнокомандующий на кавказе генерал гудович «обещал… отпускать соль в неограниченном размере, за самую ничтожную плату; дозволить перегонять скот для пастьбы в зимнее время на левый берег реки терека… и, наконец, сравнять их с русскими подданными»(citation: история войны и владычества русских на кавказе. том 5 1871)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0009"
+             data-date="1806-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1806</div>
+<div><a href="/campaigns/C1139">C1139</a> Неудачная попытка подкупа старшин нохчи экономическими посулами в обмен на подданство (1806)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0009">S0009</a> Дипломатия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя через главнокомандующего на Кавказе генерала Гудовича обратилась к старшинам нохчи с обвещением, предлагая экономические выгоды за принятие подданства и прекращение вооруженного сопротивления. За подчинение старшинам обещали допуск к соли: им «дозволено будет брать из здешних соляных озер по билетам безвозвратно с заплатою весьма малой постановленной цены», а также право «перегонять скот на сию сторону Терека и пользоваться свободно по пустопорозжим пастбищным местам». Обвещение было доведено до чеченского общества и его старшин (Кусу Аль-Темир, Масарай, Идут), однако подданство принято не было; в начале следующего года империя перешла к вооруженному вторжению.<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. То же предложение независимо фиксирует имперский историк Дубровин: главнокомандующий на Кавказе генерал Гудович «обещал… отпускать соль в неограниченном размере, за самую ничтожную плату; дозволить перегонять скот для пастьбы в зимнее время на левый берег реки Терека… и, наконец, сравнять их с русскими подданными»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Н. Ф. Дубровин. (1871). История войны и владычества русских на Кавказе. Том 5."data-reference="История войны и владычества русских на Кавказе. Том 5 1871"><sup><a href="http://apsnyteka.org/1456-dubrovin_n_istoria_vojny_i_vladychestva_russkikh_na_kavkaze.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит российская империя покупала лояльность старшин нохчи, чтобы их руками привести не подчинившиеся селения к подданству. главнокомандующий на кавказе генерал гудович поручил андреевскому старшине хаджи-реджебу склонять деревни «в покорность и подданство», а чеченскому узденю бик-булату назначил жалованье — «уговорил чеченского узденя бик-булата… которому сказал я… в год по 300 р. с. жалованья»; на привлечение остальных деревень выделялось «для приведения в верноподданство денег серебром около 3,000 р.»(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869). тот же подкуп со стороны нохчи фиксирует историк д. а. хожаев: через посредника хаджи-реджеба именем главнокомандующего на кавказе генерала гудовича был уговорен сам глава чеченского сопротивления бейбулат таймиев, учинивший «на верность подданству россии присягу», а хаджи-реджеб просил у генералов еще 3000 рублей серебром «для приведения в верноподданство остальных немирных чеченских деревень»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1807</div>
+<div><a href="/campaigns/C1140">C1140</a> Карательный поход Булгакова: разорение чеченских селений и принуждение к подданству (1807)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя покупала лояльность старшин нохчи, чтобы их руками привести не подчинившиеся селения к подданству. Главнокомандующий на Кавказе генерал Гудович поручил андреевскому старшине Хаджи-Реджебу склонять деревни «в покорность и подданство», а чеченскому узденю Бик-Булату назначил жалованье — «уговорил Чеченского узденя Бик-булата… которому сказал я… в год по 300 р. с. жалованья»; на привлечение остальных деревень выделялось «для приведения в верноподданство денег серебром около 3,000 р.»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Тот же подкуп со стороны нохчи фиксирует историк Д. А. Хожаев: через посредника Хаджи-Реджеба именем главнокомандующего на Кавказе генерала Гудовича был уговорен сам глава чеченского сопротивления Бейбулат Таймиев, учинивший «на верность подданству России присягу», а Хаджи-Реджеб просил у генералов еще 3000 рублей серебром «для приведения в верноподданство остальных немирных чеченских деревень»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит российская империя покупала лояльность старшин нохчи, чтобы их руками склонить чеченцев к подчинению. для этого главнокомандующий на кавказе генерал тормасов через есаула чернова предписывал выдать чеченским старшинам и духовенству «по 250, а другим по 150 р. с. единовременно, на что потребную сумму, всего 1,400 р.»(citation: акты собранные кавказскою археографическою комиссиею. том iv (1809-1811) 1870). историк я. з. ахмадов отмечает, что колониальная власть в целом действовала, опираясь на социальные верхи, «подкупая их всевозможными наградами и льготами за их службу в пользу россии»(citation: чечня и ингушетия в xviii - начале xix века 2002). историк д. а. хожаев приводит ту же формулу с прямым указанием источника денег: главнокомандующий на кавказе генерал тормасов соглашался «склонить главнейших чеченских старшин и их духовенство… дать по 250, а другим по 150 рублей серебром, собрать же означенные деньги от их же деревень», то есть подкуп верхов оплачивался изъятием с самих чеченских селений(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1809-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1809</div>
+<div><a href="/campaigns/C1141">C1141</a> Закрепление в Чечне: подкуп старшин, экономический контроль и стравливание соседей (1809-1811)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя покупала лояльность старшин нохчи, чтобы их руками склонить чеченцев к подчинению. Для этого главнокомандующий на Кавказе генерал Тормасов через есаула Чернова предписывал выдать чеченским старшинам и духовенству «по 250, а другим по 150 р. с. единовременно, на что потребную сумму, всего 1,400 р.»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1870). Акты собранные Кавказскою археографическою комиссиею. Том IV (1809-1811)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IV (1809-1811) 1870"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. Историк Я. З. Ахмадов отмечает, что колониальная власть в целом действовала, опираясь на социальные верхи, «подкупая их всевозможными наградами и льготами за их службу в пользу России»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Ахмадов Ш. Б.. (2002). Чечня и Ингушетия в XVIII - начале XIX века."data-reference="Чечня и Ингушетия в XVIII - начале XIX века 2002"><sup><a href="https://dzurdzuki.com/wp-content/uploads/download-manager-files/Ahmadov-SH.-B.-CHechnya-i-Ingushetiya-V-HUSH-nachale-XIX-veka-2002-god..pdf" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Историк Д. А. Хожаев приводит ту же формулу с прямым указанием источника денег: главнокомандующий на Кавказе генерал Тормасов соглашался «склонить главнейших чеченских старшин и их духовенство… дать по 250, а другим по 150 рублей серебром, собрать же означенные деньги от их же деревень», то есть подкуп верхов оплачивался изъятием с самих чеченских селений<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит переманивание на сторону империи кошевого атамана гладкого в 1828 году: часть задунайцев «во главе с кошевым атаманом о.гладким 30(18) мая 1828 перешли килийское гирло дуная, вошли в измаильский порт и присоединились к российской армии»(citation: енциклопедія історії україни: т. 3 2005)."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0017"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1817</div>
+<div><a href="/campaigns/C0041">C0041</a> Введение военных поселений и ликвидация Задунайской Сечи (1817–1828)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Переманивание на сторону империи кошевого атамана Гладкого в 1828 году: часть задунайцев «во главе с кошевым атаманом О.Гладким 30(18) мая 1828 перешли Килийское гирло Дуная, вошли в Измаильский порт и присоединились к российской армии»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2005). Енциклопедія історії України: Т. 3."data-reference="Енциклопедія історії України: Т. 3 2005"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит в сентябре 1837 года, готовя приезд николая i на кавказ, империя попыталась завербовать шамиля (шамиль - имам, руководитель сопротивления горцев дагестана и чечни российскому завоеванию), предложив ему власть и почёт в обмен на подчинение империи. волю императора генерал адлерберг передал генералу розену письмом от 10 августа 1837: сделать «шамилю и главным его сообщникам ташов-хаджи, кибит-магомету и карахскому кадию абдуррахману внушения... испросить милости предстать пред лицо самого монарха» в тифлисе(citation: три года на кавказе (1837-1839) 1884); первым в списке назван ташу-хаджи (шейх, в 1834-1836 годах имам чечни, духовный и военный руководитель чеченского сопротивления). исполняя это, генерал клюгенау добился личного свидания с шамилём 18 сентября 1837 у родника близ аула каранай; по записи хрониста шамиля мухаммед-тахира аль-карахи, генерал «заговорил, прося шамиля приехать для встречи с русским николаем. он утверждал, что император возвеличит его, шамиля, окажет ему почет, сделает управляющим делами всех дагестанских мусульман. от императора, мол, не будет никакой измены»(citation: блеск дагестанских шашек в некоторых шамилевских битвах 1941). параллельно генерал фезе поручил ахмед-хану мехтулинскому «убѣдить шамиля прибыть въ тифлисъ, ко времени высочайшаго туда прибытія», о чём генерал розен доносил чернышеву 25 сентября 1837(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881), а полковник пулло письмом потребовал от шамиля выслать «в кр. грозную двух депутатов для представления их государю»(citation: три года на кавказе (1837-1839) 1884). подкуп был доведён до адресата и отвергнут: 28 сентября 1837 шамиль ответил клюгенау письмом - «я решился не отправляться в тифлис, если и изрежут меня по кускам, потому, что я многократно видел от вас измены»(citation: три года на кавказе (1837-1839) 1884); в тифлис не поехали ни шамиль, ни ташу-хаджи. предложение шамилю поста «управляющего делами всех дагестанских мусульман» повторяло линию, которой империя в те же годы создавала лояльные ей религиозные институты (кампания c1159)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1837-09-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Сентябрь 1837</div>
+<div><a href="/campaigns/C1162">C1162</a> Попытка подкупа Шамиля обещанием власти над Дагестаном ради явки к Николаю I в Тифлис и вызов чеченского имама Ташу-Хаджи (1837)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В сентябре 1837 года, готовя приезд Николая I на Кавказ, империя попыталась завербовать Шамиля (Шамиль - имам, руководитель сопротивления горцев Дагестана и Чечни российскому завоеванию), предложив ему власть и почёт в обмен на подчинение империи. Волю императора генерал Адлерберг передал генералу Розену письмом от 10 августа 1837: сделать «Шамилю и главным его сообщникам Ташов-хаджи, Кибит-Магомету и карахскому кадию Абдуррахману внушения... испросить милости предстать пред лицо Самого Монарха» в Тифлисе<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Юров А.. (1884). Три года на Кавказе (1837-1839)."data-reference="Три года на Кавказе (1837-1839) 1884"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1820-1840/Tri_goda_Kavkaz/text1.htm" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>; первым в списке назван Ташу-Хаджи (шейх, в 1834-1836 годах имам Чечни, духовный и военный руководитель чеченского сопротивления). Исполняя это, генерал Клюгенау добился личного свидания с Шамилём 18 сентября 1837 у родника близ аула Каранай; по записи хрониста Шамиля Мухаммед-Тахира аль-Карахи, генерал «заговорил, прося Шамиля приехать для встречи с русским Николаем. Он утверждал, что император возвеличит его, Шамиля, окажет ему почет, сделает управляющим делами всех дагестанских мусульман. От императора, мол, не будет никакой измены»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Мухаммадом Тахиром аль-Карахи. (1941). Блеск дагестанских шашек в некоторых шамилевских битвах."data-reference="Блеск дагестанских шашек в некоторых шамилевских битвах 1941"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/Arabojaz_ist/Karachi_I/text1.htm" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Параллельно генерал Фезе поручил Ахмед-хану Мехтулинскому «убѣдить Шамиля прибыть въ Тифлисъ, ко времени Высочайшаго туда прибытія», о чём генерал Розен доносил Чернышеву 25 сентября 1837<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>, а полковник Пулло письмом потребовал от Шамиля выслать «в кр. Грозную двух депутатов для представления их Государю»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Юров А.. (1884). Три года на Кавказе (1837-1839)."data-reference="Три года на Кавказе (1837-1839) 1884"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1820-1840/Tri_goda_Kavkaz/text1.htm" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. Подкуп был доведён до адресата и отвергнут: 28 сентября 1837 Шамиль ответил Клюгенау письмом - «я решился не отправляться в Тифлис, если и изрежут меня по кускам, потому, что я многократно видел от вас измены»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Юров А.. (1884). Три года на Кавказе (1837-1839)."data-reference="Три года на Кавказе (1837-1839) 1884"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1820-1840/Tri_goda_Kavkaz/text1.htm" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>; в Тифлис не поехали ни Шамиль, ни Ташу-Хаджи. Предложение Шамилю поста «управляющего делами всех дагестанских мусульман» повторяло линию, которой империя в те же годы создавала лояльные ей религиозные институты (кампания C1159).</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит подкуп горской верхушки империя поставила на программную основу. военный министр чернышев секретным письмом генералу головину, командиру отдельного кавказского корпуса (главе имперских войск и администрации на кавказе), от 19 июля 1842 года предложил перенять опыт британской индии: «англичане умели утвердить владычество свое в индии политическими средствами... не должны ли и мы испытать эту систему?»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). головин ответным письмом от 28 августа 1842 года составил список кандидатов на перекупку из окружения шамиля (имама, руководителя сопротивления горцев дагестана и чечни российскому завоеванию) и запросил фонд: «склонением на нашу сторону некоторых из выше упомянутых лиц, много бы ослабил союз мюридства... я полагаю необходимым иметь в распоряжении главного здесь начальства до 15 тыс. червонцев готовой суммы» (червонец - золотая монета империи; мюридство - в имперском лексиконе движение сопротивления горцев)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). 1 февраля 1844 года император николай i утвердил фонд с превышением запроса: официальным служебным письмом чернышева генералу нейдгардту, сменившему головина во главе имперских войск на кавказе, «о видах ваших для тайных сношений с горцами» повелено «вместо просимых вами на сей предмет 10 тысяч червонцев ассигновать в ведение ваше 15 тысяч червонцев»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). к даргинской экспедиции 1845 года (походу имперской армии на резиденцию шамиля аул дарго) историки я. з. ахмадов и э. х. хасмагомадов фиксируют отдельный фонд: «для подкупа влиятельных лиц из горцев, было выделено 45 тысяч рублей серебром»(citation: история чечни в xix-xx веках 2005). на строящейся сунженской линии (цепи имперских казачьих станиц и укреплений на реке сунже) империя покупала лояльность отдельных чеченских старшин. воронцов, наместник и главнокомандующий на кавказе, писал в рапорте лета 1846 года о старшине аула натхой-кежу: «я обратил особенное мое внимание, чтобы привлечь алдумова в пользу нашу. за понесенные же им потери и 4 товарищами его... я бы полагал справедливым назначить вознаграждение»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июнь 1840</div>
+<div><a href="/campaigns/C1165">C1165</a> «Стеснение Чечни со всех сторон»: блокада, тайная война, карательные экспедиции и Сунженская линия (1840-1846)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Подкуп горской верхушки империя поставила на программную основу. Военный министр Чернышев секретным письмом генералу Головину, командиру Отдельного Кавказского корпуса (главе имперских войск и администрации на Кавказе), от 19 июля 1842 года предложил перенять опыт британской Индии: «Англичане умели утвердить владычество свое в Индии политическими средствами... Не должны ли и мы испытать эту систему?»<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>. Головин ответным письмом от 28 августа 1842 года составил список кандидатов на перекупку из окружения Шамиля (имама, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию) и запросил фонд: «Склонением на нашу сторону некоторых из выше упомянутых лиц, много бы ослабил союз мюридства... я полагаю необходимым иметь в распоряжении главного здесь начальства до 15 тыс. червонцев готовой суммы» (червонец - золотая монета империи; мюридство - в имперском лексиконе движение сопротивления горцев)<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>. 1 февраля 1844 года император Николай I утвердил фонд с превышением запроса: официальным служебным письмом Чернышева генералу Нейдгардту, сменившему Головина во главе имперских войск на Кавказе, «о видах ваших для тайных сношений с горцами» повелено «вместо просимых вами на сей предмет 10 тысяч червонцев ассигновать в ведение ваше 15 тысяч червонцев»<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>. К Даргинской экспедиции 1845 года (походу имперской армии на резиденцию Шамиля аул Дарго) историки Я. З. Ахмадов и Э. Х. Хасмагомадов фиксируют отдельный фонд: «для подкупа влиятельных лиц из горцев, было выделено 45 тысяч рублей серебром»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. На строящейся Сунженской линии (цепи имперских казачьих станиц и укреплений на реке Сунже) империя покупала лояльность отдельных чеченских старшин. Воронцов, наместник и главнокомандующий на Кавказе, писал в рапорте лета 1846 года о старшине аула Натхой-Кежу: «я обратил особенное мое внимание, чтобы привлечь Алдумова в пользу нашу. За понесенные же им потери и 4 товарищами его... я бы полагал справедливым назначить вознаграждение»<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит резню хутора наиба дубы (наместника имама шамиля, руководителя сопротивления горцев российскому завоеванию) 6 марта 1847 года подготовил точечный подкуп внутри семьи наиба. имперский офицер полторацкий, участник штурма, записал о проводнике отряда: «это был родной племянник наиба дубы, подкупленный вместе с братом своим за хороший куш из кармана меллера» - командовавшего отрядом меллер-закомельского(citation: воспоминания 1895). куплены были оба брата: один вёл войска на родной хутор, второй сидел заложником в воздвиженском - гарантией, что проводник не передумает."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Резню хутора наиба Дубы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию) 6 марта 1847 года подготовил точечный подкуп внутри семьи наиба. Имперский офицер Полторацкий, участник штурма, записал о проводнике отряда: «Это был родной племянник наиба Дубы, подкупленный вместе с братом своим за хороший куш из кармана Меллера» - командовавшего отрядом Меллер-Закомельского<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. Куплены были оба брата: один вёл войска на родной хутор, второй сидел заложником в Воздвиженском - гарантией, что проводник не передумает.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит империя демонстративно вознаграждала перебежчиков из верхушки сопротивления чинами, деньгами и землёй. бата шамурзаев, наиб шамиля (наместник имама, руководителя сопротивления горцев дагестана и чечни российскому завоеванию), перешёл к империи осенью 1851 года и получил награды. барятинский, командовавший на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), письмом воронцову, наместнику на кавказе, от 24 февраля 1852 года просил - «какую большую награду заслуживает бата, и я прошу у вас для него прощения, затем за автур возвратить ему чин и пенсию в 400 рублей в год; также прошу у вас для его сына... который часто служил нам проводником, офицерского чина»(citation: кавказские войны и имамат шамиля 2009). историки я. з. ахмадов и э. х. хасмагомадов пишут: «бата шамурзаев активно участвовал в войне против имама, был произведен в капитаны и награжден 500 десятинами земли... в качестве примера для других потенциальных перебежчиков»(citation: история чечни в xix-xx веках 2005). через бату воронцов, наместник на кавказе, передавал чеченцам ультиматумы - письмом барятинскому от 21 марта 1852 года: «я просил бату настоятельно твердить жителям северной части большой чечни, что мы им не позволим ни сеять, ни косить, если они не изъявят покорности»(citation: кавказские войны и имамат шамиля 2009). имперский историк волконский признал систему подкупа прямо: империя действовала «чрез их же одноверцев и лиц, подобных батию шамурзову», причём «не одними только словами, но и чем-либо более заманчивым и существенным - в особенности во времена воронцова и барятинского»(citation: погром чечни (1852) 1880)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Империя демонстративно вознаграждала перебежчиков из верхушки сопротивления чинами, деньгами и землёй. Бата Шамурзаев, наиб Шамиля (наместник имама, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию), перешёл к империи осенью 1851 года и получил награды. Барятинский, командовавший на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), письмом Воронцову, наместнику на Кавказе, от 24 февраля 1852 года просил - «какую большую награду заслуживает Бата, и я прошу у вас для него прощения, затем за Автур возвратить ему чин и пенсию в 400 рублей в год; также прошу у вас для его сына... который часто служил нам проводником, офицерского чина»<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «Бата Шамурзаев активно участвовал в войне против имама, был произведен в капитаны и награжден 500 десятинами земли... в качестве примера для других потенциальных перебежчиков»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. Через Бату Воронцов, наместник на Кавказе, передавал чеченцам ультиматумы - письмом Барятинскому от 21 марта 1852 года: «Я просил Бату настоятельно твердить жителям северной части Большой Чечни, что мы им не позволим ни сеять, ни косить, если они не изъявят покорности»<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span>. Имперский историк Волконский признал систему подкупа прямо: империя действовала «чрез их же одноверцев и лиц, подобных Батию Шамурзову», причём «не одними только словами, но и чем-либо более заманчивым и существенным - в особенности во времена Воронцова и Барятинского»<span onclick=scrollToRef('scite-22') id="scite-ref-22-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="21" aria-describedby="qtip-21">[22]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит генерал кундухов, до того сам начальник чеченского округа, получил от наместника «весьма деликатное задание – провести неофициальные переговоры с турецким правительством об осуществлении массового переселения чеченцев» и письменное предписание «приступить к возбуждению в среде чеченского населения стремления к уходу в турцию»(citation: история чечни в xix-xx веках 2005). на агитацию он получил из казны 5 тысяч рублей(citation: история чечни в xix-xx веках 2005); историк з. х. ибрагимова пишет о 10 тысячах «для «негласного вознаграждения» трёх или четырёх личностей, наиболее популярных среди населения, т.е. для подкупа влиятельных лиц»(citation: мир чеченцев. xix век 2007); лично кундухову выплачено 45 тысяч рублей «якобы за оставленное в россии имущество» при общих расходах казны более 130 тысяч(citation: история чечни в xix-xx веках 2005). сам кундухов описал в мемуарах вербовку чеченской верхушки в феврале 1865 года: пригласив наиба (поставленного властью управляющего округом) малой чечни садуллу османова (в других источниках - саадула осмаев) и старшину карабулакского общества цугова, он добился того, что «они все без малейшего возражения согласились переселиться... и поклялись готовиться к переселению»(citation: чеченцы в русско-кавказской войне 1998). османов не был назначенцем со стороны: в сводном списке наибов имамата он стоит как «саадулла османов из нихалоя (наиб малой чечни)»(citation: история чечни в xix-xx веках 2005) - человек, воевавший вместе с шамилём, за имперское жалованье и землю погнал свой народ в турцию. цена покупки видна на нём же: наибством он управлял восемь лет, за службу получил 550 десятин земли, дал клятву на коране содействовать переселению «до конца» и обязался вести вторую волну уходящих - идти впереди первых было условием выплаты вознаграждения(citation: мир чеченцев. xix век 2007). работал он так, что даже начальник терской области генерал лорис-меликов признавал: наиб «перегибает палку», распуская превратные слухи, и хотел поскорее избавиться от слишком запальчивого агитатора(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1858-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1858</div>
+<div><a href="/campaigns/C1022">C1022</a> Мухаджирство: выселение чеченцев в Османскую империю, запрет возвращения и замещение населения (1858-1872)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Генерал Кундухов, до того сам начальник Чеченского округа, получил от наместника «весьма деликатное задание – провести неофициальные переговоры с турецким правительством об осуществлении массового переселения чеченцев» и письменное предписание «приступить к возбуждению в среде чеченского населения стремления к уходу в Турцию»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. На агитацию он получил из казны 5 тысяч рублей<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>; историк З. Х. Ибрагимова пишет о 10 тысячах «для «негласного вознаграждения» трёх или четырёх личностей, наиболее популярных среди населения, т.е. для подкупа влиятельных лиц»<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>; лично Кундухову выплачено 45 тысяч рублей «якобы за оставленное в России имущество» при общих расходах казны более 130 тысяч<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. Сам Кундухов описал в мемуарах вербовку чеченской верхушки в феврале 1865 года: пригласив наиба (поставленного властью управляющего округом) Малой Чечни Садуллу Османова (в других источниках - Саадула Осмаев) и старшину карабулакского общества Цугова, он добился того, что «Они все без малейшего возражения согласились переселиться... и поклялись готовиться к переселению»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Османов не был назначенцем со стороны: в сводном списке наибов имамата он стоит как «Саадулла Османов из Нихалоя (наиб Малой Чечни)»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span> - человек, воевавший вместе с Шамилём, за имперское жалованье и землю погнал свой народ в Турцию. Цена покупки видна на нём же: наибством он управлял восемь лет, за службу получил 550 десятин земли, дал клятву на Коране содействовать переселению «до конца» и обязался вести вторую волну уходящих - идти впереди первых было условием выплаты вознаграждения<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>. Работал он так, что даже начальник Терской области генерал Лорис-Меликов признавал: наиб «перегибает палку», распуская превратные слухи, и хотел поскорее избавиться от слишком запальчивого агитатора<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит «только в 1867 г. за разного рода «заслуги» было передано по чечне в частное владение 8674 десятины (десятина - чуть больше гектара)» - по историку з. х. ибрагимовой, получили её 57 чеченцев, а инициатором раздач она называет наместника на кавказе барятинского(citation: мир чеченцев. xix век 2007); крупнейшие наделы получили чеченские владетельные фамилии - таймазовы (6550 десятин), бековичи-черкасские (свыше 6350), турловы, эльдаровы; раздавали землю и русским офицерам - «полковник ипполитов получил более 1 тысячи десятин земли в аргунском округе»(citation: история чечни в xix-xx веках 2005). иерархия раздач была сословной: крупнейшим горским владельцам - «от 1 до 5 тыс. десятин, смотря «по степени значения и оказанных каждым услуг правительству»», лицам второй категории (горская знать при первой - русских дворянах) - до 1 тысячи(citation: мир чеченцев. xix век 2007). землёй оплачивалась и низовая администрация: «сельские старшины получали по пять паев пахотных и сенокосных земель»(citation: история чечни в xix-xx веках 2005), аульные секретари - до 75 десятин(citation: царское прошлое чеченцев. власть и общество 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1860-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1860</div>
+<div><a href="/campaigns/C1171">C1171</a> Земельное ограбление: колониальный передел земли, малоземелье и казачья колонизация Терской области (1860-1917)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>«Только в 1867 г. за разного рода «заслуги» было передано по Чечне в частное владение 8674 десятины (десятина - чуть больше гектара)» - по историку З. Х. Ибрагимовой, получили её 57 чеченцев, а инициатором раздач она называет наместника на Кавказе Барятинского<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>; крупнейшие наделы получили чеченские владетельные фамилии - Таймазовы (6550 десятин), Бековичи-Черкасские (свыше 6350), Турловы, Эльдаровы; раздавали землю и русским офицерам - «полковник Ипполитов получил более 1 тысячи десятин земли в Аргунском округе»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. Иерархия раздач была сословной: крупнейшим горским владельцам - «от 1 до 5 тыс. десятин, смотря «по степени значения и оказанных каждым услуг правительству»», лицам второй категории (горская знать при первой - русских дворянах) - до 1 тысячи<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>. Землёй оплачивалась и низовая администрация: «сельские старшины получали по пять паев пахотных и сенокосных земель»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>, аульные секретари - до 75 десятин<span onclick=scrollToRef('scite-24') id="scite-ref-24-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="23" aria-describedby="qtip-23">[24]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит старшина шали борщик хамбулатов, организовавший отпор восставшим в апреле 1877 года, «был пожалован чином прапорщика милиции и годовым окладом в 600 рублей и получил пожизненную пенсию - 100 рублей в год»(citation: история чечни в xix-xx веках 2005); историк а. и. исмаилова называет пенсию «около 400 р. в год»(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Старшина Шали Борщик Хамбулатов, организовавший отпор восставшим в апреле 1877 года, «был пожалован чином прапорщика милиции и годовым окладом в 600 рублей и получил пожизненную пенсию - 100 рублей в год»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>; историк А. И. Исмаилова называет пенсию «около 400 р. в год»<span onclick=scrollToRef('scite-25') id="scite-ref-25-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="24" aria-describedby="qtip-24">[25]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит навязывание коррупционных схем поставок газа через компанию-посредника: москва «использовала череду компаний-посредников (itera с 1998 года, eural trans gas с 2003-го, rosukrenergo (rue) с 2005-го) для транспортировки, а иногда и поставки газа в украину», причем такая практика «давно критиковалась в европейских правительственных кругах и органами корпоративного управления (где вызывала озабоченность их непрозрачность)»(citation: the russo-ukrainian gas dispute of january 2009 2009). совладелец rue дмитрий фирташ в декабре 2008 года, по записи посла сша, «признал связи с деятелем российской оргпреступности семёном могилевичем, заявив, что ему требовалось одобрение могилевича, чтобы вообще войти в бизнес»(citation: cable 08kyiv2414: firtash makes his case to the usg 2008)."
+             data-platforms="Украинцы"
+             data-groups="G0011"
+             data-tools="S0017"
+             data-date="2006-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 2006</div>
+<div><a href="/campaigns/C0097">C0097</a> Газовые войны и энергетический шантаж (2006–2009)</div><div><a href="/groups/G0011">G0011</a> Российская Федерация</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Навязывание коррупционных схем поставок газа через компанию-посредника: Москва «использовала череду компаний-посредников (Itera с 1998 года, Eural Trans Gas с 2003-го, Rosukrenergo (RUE) с 2005-го) для транспортировки, а иногда и поставки газа в Украину», причем такая практика «давно критиковалась в европейских правительственных кругах и органами корпоративного управления (где вызывала озабоченность их непрозрачность)»<span onclick=scrollToRef('scite-26') id="scite-ref-26-a" class="scite-citeref-number" title="J. Stern, S. Pirani, K. Yafimava, Oxford Institute for Energy Studies. (2009). The Russo-Ukrainian gas dispute of January 2009."data-reference="The Russo-Ukrainian gas dispute of January 2009 2009"><sup><a href="https://www.oxfordenergy.org/wpcms/wp-content/uploads/2010/11/NG27-TheRussoUkrainianGasDisputeofJanuary2009AComprehensiveAssessment-JonathanSternSimonPiraniKatjaYafimava-2009.pdf" target="_blank" data-hasqtip="25" aria-describedby="qtip-25">[26]</a></sup></span>. Совладелец RUE Дмитрий Фирташ в декабре 2008 года, по записи посла США, «признал связи с деятелем российской оргпреступности Семёном Могилевичем, заявив, что ему требовалось одобрение Могилевича, чтобы вообще войти в бизнес»<span onclick=scrollToRef('scite-27') id="scite-ref-27-a" class="scite-citeref-number" title="Посольство США в Києві (WikiLeaks PlusD). (2008). Cable 08KYIV2414: Firtash makes his case to the USG."data-reference="Cable 08KYIV2414: Firtash makes his case to the USG 2008"><sup><a href="https://wikileaks.org/plusd/cables/08KYIV2414_a.html" target="_blank" data-hasqtip="26" aria-describedby="qtip-26">[27]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит использование экономического шантажа и обещаний кредита вкупе со скидкой на газ для принуждения в. януковича к срыву подписания соглашения об ассоциации с ес: 17 декабря 2013 года было объявлено о снижении цены газа «до 268,5 долларов за тысячу кубометров» (вместо 410) и о том, что «украина, согласно двусторонним договоренностям, получит 15 миллиардов долларов из российского фонда национального благосостояния, продав москве на эту сумму свои государственные ценные бумаги». при этом путин подчеркнул: «мы считаем, что это временное решение, имея в виду, что долгосрочные, долговременные договоренности должны и будут достигнуты»(citation: виктор янукович и владимир путин достигли компромисса в москве 2013)."
+             data-platforms="Украинцы"
+             data-groups="G0011"
+             data-tools="S0009"
+             data-date="2013-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Октябрь 2013</div>
+<div><a href="/campaigns/C0099">C0099</a> Срыв ассоциации с ЕС (2013–2014)</div><div><a href="/groups/G0011">G0011</a> Российская Федерация</div><div><a href="/software/S0009">S0009</a> Дипломатия</div>            </div>
+            <div class="proc-desc">
+                        <p>Использование экономического шантажа и обещаний кредита вкупе со скидкой на газ для принуждения В. Януковича к срыву подписания Соглашения об ассоциации с ЕС: 17 декабря 2013 года было объявлено о снижении цены газа «до 268,5 долларов за тысячу кубометров» (вместо 410) и о том, что «Украина, согласно двусторонним договоренностям, получит 15 миллиардов долларов из российского Фонда национального благосостояния, продав Москве на эту сумму свои государственные ценные бумаги». При этом Путин подчеркнул: «Мы считаем, что это временное решение, имея в виду, что долгосрочные, долговременные договоренности должны и будут достигнуты»<span onclick=scrollToRef('scite-28') id="scite-ref-28-a" class="scite-citeref-number" title="Радіо Свобода. (2013). Виктор Янукович и Владимир Путин достигли компромисса в Москве."data-reference="Виктор Янукович и Владимир Путин достигли компромисса в Москве 2013"><sup><a href="https://www.svoboda.org/a/25203188.html" target="_blank" data-hasqtip="27" aria-describedby="qtip-27">[28]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Украинцы",
+"russia/nokhchi": "Нохчи (Чеченцы)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://dokumen.pub/the-north-caucasus-borderland-between-muscovy-and-the-ottoman-empire-1555-1605-9781474498715.html" target="_blank">
+                        Murat Yaşar. (2022). The North Caucasus Borderland: Between Muscovy and the Ottoman Empire, 1555–1605.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://uk.wikisource.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0_%D0%B2_%D0%BC%D1%96%D0%B6%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%B8%D1%85_%D0%B2%D1%96%D0%B4%D0%BD%D0%BE%D1%81%D0%B8%D0%BD%D0%B0%D1%85" target="_blank">
+                        Ред. М. Варварцев, Інститут історії України НАНУ (енцикл. словник-довідник, вип. 3). (2012). Україна в міжнародних відносинах.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="http://dspace.nbuv.gov.ua/handle/123456789/162853" target="_blank">
+                        Сергій Павленко (Сіверянський літопис, 2019, № 6). (2019). Участь генерального осавула Івана Мазепи у виборах митрополита 1685 р..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://archive.org/details/arhivjugozapadnojrossiiizdavaemyjvreme89" target="_blank">
+                        Временная комиссия для разбора древних актов, Киев. (1872). Архив Юго-Западной России. Часть 1. Том V.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank">
+                        Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://loveread.ec/book-comments.php?book=69990" target="_blank">
+                        Татьяна Таирова-Яковлева. (2007). Мазепа.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank">
+                        Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="http://apsnyteka.org/1456-dubrovin_n_istoria_vojny_i_vladychestva_russkikh_na_kavkaze.html" target="_blank">
+                        Н. Ф. Дубровин. (1871). История войны и владычества русских на Кавказе. Том 5.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1870). Акты собранные Кавказскою археографическою комиссиею. Том IV (1809-1811).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://dzurdzuki.com/wp-content/uploads/download-manager-files/Ahmadov-SH.-B.-CHechnya-i-Ingushetiya-V-HUSH-nachale-XIX-veka-2002-god..pdf" target="_blank">
+                        Ахмадов Ш. Б.. (2002). Чечня и Ингушетия в XVIII - начале XIX века.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2005). Енциклопедія історії України: Т. 3.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="15.0">
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1820-1840/Tri_goda_Kavkaz/text1.htm" target="_blank">
+                        Юров А.. (1884). Три года на Кавказе (1837-1839).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/Arabojaz_ist/Karachi_I/text1.htm" target="_blank">
+                        Мухаммадом Тахиром аль-Карахи. (1941). Блеск дагестанских шашек в некоторых шамилевских битвах.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-18" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-19" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-19" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-20" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-20" href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank">
+                        В. А. Полторацкий. (1895). Воспоминания.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-21" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-21" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-22" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-22" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1880). Погром Чечни (1852).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-23" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-23" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-24" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-24" href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank">
+                        Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-25" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-25" href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank">
+                        Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-26" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-26" href="https://www.oxfordenergy.org/wpcms/wp-content/uploads/2010/11/NG27-TheRussoUkrainianGasDisputeofJanuary2009AComprehensiveAssessment-JonathanSternSimonPiraniKatjaYafimava-2009.pdf" target="_blank">
+                        J. Stern, S. Pirani, K. Yafimava, Oxford Institute for Energy Studies. (2009). The Russo-Ukrainian gas dispute of January 2009.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-27" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-27" href="https://wikileaks.org/plusd/cables/08KYIV2414_a.html" target="_blank">
+                        Посольство США в Києві (WikiLeaks PlusD). (2008). Cable 08KYIV2414: Firtash makes his case to the USG.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-28" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-28" href="https://www.svoboda.org/a/25203188.html" target="_blank">
+                        Радіо Свобода. (2013). Виктор Янукович и Владимир Путин достигли компромисса в Москве.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

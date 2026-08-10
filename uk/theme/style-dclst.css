@@ -1,0 +1,84 @@
+@font-face {
+  font-family: 'Chivo Mono';
+  src: url('/theme/fonts/Chivo_Mono/chivo-mono-700-latin.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* decolonial(.)ist mark - Chivo Mono 700, caps, +0.12em */
+.dclst, .dclst-line {
+  font-family: 'Chivo Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+.dclst-line {               /* навбар: габариты старой картинки (h24 + m8) */
+  white-space: nowrap;
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  margin: 8px 0;
+  font-size: clamp(13px, 1.5vw, 17px);
+  color: #f5f5f5;
+}
+.dclst-line .dot { background: #3b82f6; }
+.dclst {                    /* лендинг: диагональный знак */
+  display: inline-block;
+  line-height: 1.32;
+  text-align: left;
+  font-size: clamp(34px, 5vw, 64px);
+  color: var(--c-body-on, #111111); /* следует теме; тёмная делает знак светлым */
+}
+.dclst .dot { background: #2563eb; }
+.dclst .l  { display: block; }
+.dclst .l3 { text-align: right; }
+.dclst-copy {
+  /* одна строка, растянутая трансформацией на весь знак:
+     ширина строки 14 знаков x 0.72em = 10.08em, знак 8 x 0.72em = 5.76em -> scaleX 0.57
+     высота строки 1.32em, знак 3 x 1.32em -> scaleY 3 */
+  position: absolute;
+  top: 0; left: 0;
+  width: auto; height: auto;
+  clip: auto;
+  color: transparent;
+  z-index: 1;
+  font-size: 1em;
+  line-height: 1.32;
+  white-space: nowrap;
+  transform-origin: 0 0;
+  transform: scale(0.57, 3);
+}
+.dclst .dot, .dclst-line .dot {
+  display: inline-block;
+  width: 0.32em; height: 0.32em;
+  margin-right: 0.07em;
+}
+.dclst-copy {               /* настоящая точка: невидима, но копируется */
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
+}
+
+/* нижняя строка футера: мелкий текст и ссылки не должны тонуть в тёмном фоне */
+.footer small { color: rgba(255, 255, 255, .75); }
+.footer small a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer small a:hover { color: #fff; }
+
+/* переключатель темы в навбаре: без фона, наследует цвета навбара */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--c-primary-on, #f5f5f5);
+  opacity: 0.85;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  line-height: 1;
+  height: 100%;
+}
+.theme-toggle:hover { opacity: 1; }

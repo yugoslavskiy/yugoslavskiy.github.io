@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1166/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1166/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1166/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1166/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1166/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="«Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851), кампания C1166 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1166/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>«Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851), кампания C1166 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">«Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>«Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>В 1847-1851 годах империя уничтожала аулы Малой Чечни (равнинно-предгорной западной части Чечни) и вытесняла её население: прорубала в лесах просеки, ставила крепости, била по аулам короткими ударами с истреблением жителей. Имя политике дал её участник, имперский офицер Полторацкий, записавший о зимней экспедиции 1847-1848 годов: устройством Сунженской линии «мы очень стеснили Малую Чечню», а постройкой крепостей «окончательно приводили в исполнение ее смертный приговор» - приговор Малой Чечне<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 6 марта 1847 года имперский отряд вырезал хутор наиба Дубы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию) - Полторацкий записал: «стар и млад, женщины, дети и грудные младенцы, утонули в своей крови от остро наточенных штыков, никого не помиловавших, не пощадивших»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; историк Н. И. Покровский даёт рамку: «русское командование не отказывалось и от отдельных коротких ударов с целью устрашения чеченцев... Произошла форменная резня»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Итог подвёл генерал Слепцов рапортом от 4 октября 1850 года: «богатыя земли между Сунжею и Русскою дорогою достались въ безотчетное владѣніе правительства, такъ что вся плоскость Малой Чечни нынѣ совершенно очищена отъ враждебнаго населенія»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Имперский историк Волконский ретроспективно записал о Слепцове: он «истребил все неприятельское население, гнездившееся в ущельях от Бумута... до Рошни»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. На месте сожжённых аулов империя ставила казачьи станицы - семь станиц в 1847 и 1851 годах<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1166
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Январь 1847</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Ноябрь 1851</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>31 июля 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>31 июля 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1166" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1166/C1166-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1166%2FC1166-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0009">G0009</a></td>
+                <td><a href="/groups/G0009">Российская Империя</a></td>
+                <td>15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0010"> S0010 </a></td>
+                <td><a href="/software/S0010"> Регулярная армия </a></td>
+                <td>15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских удары по малой чечне (равнинно-предгорной западной части чечни) 1847-1851 годов сопровождались истреблением безоружных жителей, задокументированным самими исполнителями. 6 марта 1847 года отряд, ведомый подкупленным проводником, на рассвете ворвался в спящий хутор наиба дубы (наместника имама шамиля, руководителя сопротивления горцев российскому завоеванию); имперский офицер полторацкий, участник штурма, записал: «большинство, застигнутое врасплох полунагими, стар и млад, женщины, дети и грудные младенцы, утонули в своей крови от остро наточенных штыков, никого не помиловавших, не пощадивших»(citation: воспоминания 1895). 15 июня 1851 года в ущелье реки гехи, по историку н. и. покровскому, отряд генерала слепцова «истребил ряд хуторов и аулов. не успевшие уйти жители были вырезаны»(citation: кавказские войны и имамат шамиля 2009); собственный рапорт слепцова от 20 июня 1851 года формулирует мягче - «рѣшившіеся защищаться были убиты, или весьма немногіе пощажены и взяты въ плѣнъ»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). 15 сентября 1851 года у переправы через реку сунжу резню сдающихся признал сам командир. барятинский, командовавший на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), рапортом генералу завадовскому от 18 сентября 1851 года описал, как чеченцы, признавшие власть империи («мирные»), и казаки рубили бегущих: «мирные чеченцы и козаки наши, преслѣдуя ихъ по узкимъ тропинкамъ, рубили безпощадно. никто не думалъ защищаться... я самъ и офицеры мои старались удерживать убійства, но это почти было невозможно»; убитых он считает «болѣе 200 тѣлъ»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). 16 ноября 1851 года генерал козловский рапортом от 21 ноября 1851 года отчитался об истреблении аула дахин-ирзау: «я рѣшился истребить этотъ аулъ, что и исполнено мною, на разсвѣтѣ 16-го ноября, съ полнымъ успѣхомъ» - убитых более 40, раненых более 100(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0104">T0104</a> Массовые убийства гражданских
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Удары по Малой Чечне (равнинно-предгорной западной части Чечни) 1847-1851 годов сопровождались истреблением безоружных жителей, задокументированным самими исполнителями. 6 марта 1847 года отряд, ведомый подкупленным проводником, на рассвете ворвался в спящий хутор наиба Дубы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию); имперский офицер Полторацкий, участник штурма, записал: «большинство, застигнутое врасплох полунагими, стар и млад, женщины, дети и грудные младенцы, утонули в своей крови от остро наточенных штыков, никого не помиловавших, не пощадивших»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 15 июня 1851 года в ущелье реки Гехи, по историку Н. И. Покровскому, отряд генерала Слепцова «истребил ряд хуторов и аулов. Не успевшие уйти жители были вырезаны»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; собственный рапорт Слепцова от 20 июня 1851 года формулирует мягче - «рѣшившіеся защищаться были убиты, или весьма немногіе пощажены и взяты въ плѣнъ»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 15 сентября 1851 года у переправы через реку Сунжу резню сдающихся признал сам командир. Барятинский, командовавший на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), рапортом генералу Завадовскому от 18 сентября 1851 года описал, как чеченцы, признавшие власть империи («мирные»), и казаки рубили бегущих: «Мирные Чеченцы и козаки наши, преслѣдуя ихъ по узкимъ тропинкамъ, рубили безпощадно. Никто не думалъ защищаться... Я самъ и офицеры мои старались удерживать убійства, но это почти было невозможно»; убитых он считает «болѣе 200 тѣлъ»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 16 ноября 1851 года генерал Козловский рапортом от 21 ноября 1851 года отчитался об истреблении аула Дахин-Ирзау: «я рѣшился истребить этотъ аулъ, что и исполнено мною, на разсвѣтѣ 16-го ноября, съ полнымъ успѣхомъ» - убитых более 40, раненых более 100<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="террор резня как средство устрашения была осознанной практикой периода - и империя награждала за неё. историк н. и. покровский пишет об ударе по хутору наиба дубы (наместника имама шамиля, руководителя сопротивления горцев российскому завоеванию): «русское командование не отказывалось и от отдельных коротких ударов с целью устрашения чеченцев. объектом одного из таких ударов избран был хутор наиба дубы... произошла форменная резня»(citation: кавказские войны и имамат шамиля 2009). за эту резню империя раздала награды: имперский офицер полторацкий, участник резни, приводит приказ - «за отличное мужество и храбрость, оказанные в деле при истреблении аула дубы, производятся такие-то, и из прапорщиков в подпоручики - полторацкий», а воронцов, наместник на кавказе, прислал отряду «128 знаков отличия военного ордена» для солдат(citation: воспоминания 1895). награждение за «дело при истреблении аула» - официальное признание резни образцовой службой."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0022">T0022</a> Террор
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Резня как средство устрашения была осознанной практикой периода - и империя награждала за неё. Историк Н. И. Покровский пишет об ударе по хутору наиба Дубы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию): «русское командование не отказывалось и от отдельных коротких ударов с целью устрашения чеченцев. Объектом одного из таких ударов избран был хутор наиба Дубы... Произошла форменная резня»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. За эту резню империя раздала награды: имперский офицер Полторацкий, участник резни, приводит приказ - «за отличное мужество и храбрость, оказанные в деле при истреблении аула Дубы, производятся такие-то, и из прапорщиков в подпоручики - Полторацкий», а Воронцов, наместник на Кавказе, прислал отряду «128 знаков отличия военного ордена» для солдат<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Награждение за «дело при истреблении аула» - официальное признание резни образцовой службой.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="разрушение природного ландшафта империя прорубала и расширяла просеки в лесах малой чечни (равнинно-предгорной западной части чечни). историк н. и. покровский пишет о 1848 годе: «в январе - феврале р. к. фрейтаг очищал и расширял гойтинскую и гехинскую просеки»(citation: кавказские войны и имамат шамиля 2009). воронцов, наместник и главнокомандующий на кавказе, доложил назначение просек военному министру чернышеву служебным письмом (отношением) от 25 октября 1847 года: «эти просеки, в связи с прорубленными зимой с 1845 года на 1846 год, дают возможность с нескольких сторон проникать в чечню и наказывать враждебные аулы; стесненные в средствах жизни, видя постоянные свои неудачи, чеченцы колеблются и в большом числе семейств уже переселяются в наши пределы»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). император николай i наложил на донесение резолюцию «согласен» (6 ноября 1847 года; с одной организационной оговоркой - о невозможности формирования новых линейных батальонов)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0140">T0140</a> Разрушение природного ландшафта
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Империя прорубала и расширяла просеки в лесах Малой Чечни (равнинно-предгорной западной части Чечни). Историк Н. И. Покровский пишет о 1848 годе: «В январе - феврале Р. К. Фрейтаг очищал и расширял Гойтинскую и Гехинскую просеки»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Воронцов, наместник и главнокомандующий на Кавказе, доложил назначение просек военному министру Чернышеву служебным письмом (отношением) от 25 октября 1847 года: «Эти просеки, в связи с прорубленными зимой с 1845 года на 1846 год, дают возможность с нескольких сторон проникать в Чечню и наказывать враждебные аулы; стесненные в средствах жизни, видя постоянные свои неудачи, чеченцы колеблются и в большом числе семейств уже переселяются в наши пределы»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Император Николай I наложил на донесение резолюцию «Согласен» (6 ноября 1847 года; с одной организационной оговоркой - о невозможности формирования новых линейных батальонов)<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="возведение крепостей зимой 1847-1848 годов империя поставила крепости, запиравшие малую чечню (равнинно-предгорную западную часть чечни). имперский офицер полторацкий, участник зимней экспедиции 1847-1848 годов, записал: «устройством передовой сунженской линии, от грозной до владикавказа, мы очень стеснили малую чечню, но постройкой теперь крепостей на мартане, валерике и ассе мы окончательно приводили в исполнение ее смертный приговор»(citation: воспоминания 1895). историк н. и. покровский фиксирует продолжение в 1848 году: «в начале августа заложено было укрепление урус-мартан»(citation: кавказские войны и имамат шамиля 2009). станицы селили казаков на местах сожжённых аулов, крепости держали на той же земле войска."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0139">T0139</a> Возведение крепостей
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Зимой 1847-1848 годов империя поставила крепости, запиравшие Малую Чечню (равнинно-предгорную западную часть Чечни). Имперский офицер Полторацкий, участник зимней экспедиции 1847-1848 годов, записал: «Устройством передовой Сунженской линии, от Грозной до Владикавказа, мы очень стеснили Малую Чечню, но постройкой теперь крепостей на Мартане, Валерике и Ассе мы окончательно приводили в исполнение ее смертный приговор»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Историк Н. И. Покровский фиксирует продолжение в 1848 году: «в начале августа заложено было укрепление Урус-Мартан»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Станицы селили казаков на местах сожжённых аулов, крепости держали на той же земле войска.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальное уничтожение инфраструктуры империя уничтожала аулы и хутора малой чечни (равнинно-предгорной западной части чечни) удар за ударом. в ноябре-декабре 1847 года уничтожены голен-гойта и аул наиба саиб-дулы (наместника имама шамиля, руководителя сопротивления горцев российскому завоеванию): имперский офицер полторацкий, участник зимней экспедиции 1847-1848 годов, записал о сожжённых домах горцев (саклях) - «обгоревшие остовы сакель и на земле почерневшие густые лужи крови и всюду разбросанные людские трупы напоминали о так недавно существовавшем богатом ауле голен-гойте», а об ауле саиб-дулы: колонна «приступом взяла аул, все в нем истребила и сожгла до основания»(citation: воспоминания 1895). в ночь на 17 февраля 1850 года по предписанию главнокомандующего на кавказе, переданному журналом военных происшествий генерала ильинского, - «истребить тамъ жилища вреднаго и упорнаго въ непокорности населенія» - отряд полковника слепцова сжёг хутора музуроева, нехлоева и аул ясан-юрт: «не многіе изъ жителей успѣли спастись... окончивъ истребленіе хуторовъ и аула въ два часа времени, полк. слѣпцовъ началъ отступленіе»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). 15 июня 1851 года истреблён «ряд хуторов и аулов» гехинского ущелья(citation: кавказские войны и имамат шамиля 2009), а 16 ноября 1851 года - аул дахин-ирзау: рапорт генерала козловского отмечает «обращеніе въ пепелъ аула дахин-ирзау съ огромными запасами хлѣба и сѣна»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0105">T0105</a> Тотальное уничтожение инфраструктуры
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Империя уничтожала аулы и хутора Малой Чечни (равнинно-предгорной западной части Чечни) удар за ударом. В ноябре-декабре 1847 года уничтожены Голен-Гойта и аул наиба Саиб-дулы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию): имперский офицер Полторацкий, участник зимней экспедиции 1847-1848 годов, записал о сожжённых домах горцев (саклях) - «обгоревшие остовы сакель и на земле почерневшие густые лужи крови и всюду разбросанные людские трупы напоминали о так недавно существовавшем богатом ауле Голен-Гойте», а об ауле Саиб-дулы: колонна «приступом взяла аул, все в нем истребила и сожгла до основания»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. В ночь на 17 февраля 1850 года по предписанию главнокомандующего на Кавказе, переданному журналом военных происшествий генерала Ильинского, - «истребить тамъ жилища вреднаго и упорнаго въ непокорности населенія» - отряд полковника Слепцова сжёг хутора Музуроева, Нехлоева и аул Ясан-юрт: «Не многіе изъ жителей успѣли спастись... Окончивъ истребленіе хуторовъ и аула въ два часа времени, полк. Слѣпцовъ началъ отступленіе»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 15 июня 1851 года истреблён «ряд хуторов и аулов» Гехинского ущелья<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, а 16 ноября 1851 года - аул Дахин-Ирзау: рапорт генерала Козловского отмечает «обращеніе въ пепелъ аула Дахин-ирзау съ огромными запасами хлѣба и сѣна»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="карательные экспедиции короткие внезапные удары были рабочим режимом войск в малой чечне (равнинно-предгорной западной части чечни) 1847-1851 годов. отряд на хутор наиба дубы (наместника имама шамиля, руководителя сопротивления горцев российскому завоеванию) выступил «5-го марта, в 10 часов ночи» и ударил на рассвете(citation: воспоминания 1895); налёт 17 февраля 1850 года занял «два часа времени»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885); в июне, сентябре и ноябре 1851 года по аулам били отряды генералов слепцова, барятинского и козловского(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885)(citation: кавказские войны и имамат шамиля 2009). рамку практики дал историк н. и. покровский: «отдельные короткие удары с целью устрашения чеченцев»(citation: кавказские войны и имамат шамиля 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0077">T0077</a> Карательные экспедиции
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Короткие внезапные удары были рабочим режимом войск в Малой Чечне (равнинно-предгорной западной части Чечни) 1847-1851 годов. Отряд на хутор наиба Дубы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию) выступил «5-го марта, в 10 часов ночи» и ударил на рассвете<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; налёт 17 февраля 1850 года занял «два часа времени»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; в июне, сентябре и ноябре 1851 года по аулам били отряды генералов Слепцова, Барятинского и Козловского<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Рамку практики дал историк Н. И. Покровский: «отдельные короткие удары с целью устрашения чеченцев»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="депортация население горных ущелий малой чечни (равнинно-предгорной западной части чечни) империя сселяла к своим укреплениям. генерал слепцов рапортом генералу ильинскому от 4 октября 1850 года отчитался: «в два дня, с 30-го сентября по 2-е октября, аулы галгаевскій, эйшкалойскій, начхойскій и терлоева, разсѣянные хуторами, опустѣли. болѣе 150-ти семействъ населили пространство около закан-юрта и казах-кичу» - у имперских укреплений(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). рапорт оформляет переселение как просьбу старшин; механизм принуждения тот же рапорт называет прямо - стеснение будущими имперскими поселениями в долине и пример уже переселившихся соотечественников."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0127">T0127</a> Депортация
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Население горных ущелий Малой Чечни (равнинно-предгорной западной части Чечни) империя сселяла к своим укреплениям. Генерал Слепцов рапортом генералу Ильинскому от 4 октября 1850 года отчитался: «В два дня, с 30-го сентября по 2-е октября, аулы Галгаевскій, Эйшкалойскій, Начхойскій и Терлоева, разсѣянные хуторами, опустѣли. Болѣе 150-ти семействъ населили пространство около Закан-юрта и Казах-кичу» - у имперских укреплений<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Рапорт оформляет переселение как просьбу старшин; механизм принуждения тот же рапорт называет прямо - стеснение будущими имперскими поселениями в долине и пример уже переселившихся соотечественников.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="создание экономической безысходности выдавливание чеченцев с гор строилось на лишении средств жизни - и империя писала об этом открыто. воронцов, наместник и главнокомандующий на кавказе, доложил военному министру чернышеву служебным письмом (отношением) от 25 октября 1847 года: «стесненные в средствах жизни, видя постоянные свои неудачи, чеченцы колеблются и в большом числе семейств уже переселяются в наши пределы»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). генерал слепцов рапортом от 4 октября 1850 года строил на этом расчёт на будущее: горные общества, «стѣсненные будущими нашими поселеніями на долинѣ, ... неизбѣжно послѣдуютъ примѣру своихъ соотечественниковъ» - то есть тоже сойдут к укреплениям(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0141">T0141</a> Создание экономической безысходности
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Выдавливание чеченцев с гор строилось на лишении средств жизни - и империя писала об этом открыто. Воронцов, наместник и главнокомандующий на Кавказе, доложил военному министру Чернышеву служебным письмом (отношением) от 25 октября 1847 года: «стесненные в средствах жизни, видя постоянные свои неудачи, чеченцы колеблются и в большом числе семейств уже переселяются в наши пределы»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Генерал Слепцов рапортом от 4 октября 1850 года строил на этом расчёт на будущее: горные общества, «стѣсненные будущими нашими поселеніями на долинѣ, ... неизбѣжно послѣдуютъ примѣру своихъ соотечественниковъ» - то есть тоже сойдут к укреплениям<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="изъятие ресурсов земля выселенных обществ малой чечни (равнинно-предгорной западной части чечни) уходила империи. генерал слепцов рапортом генералу ильинскому от 4 октября 1850 года подвёл итог сселения горных аулов: «богатыя земли между сунжею и русскою дорогою достались въ безотчетное владѣніе правительства, такъ что вся плоскость малой чечни нынѣ совершенно очищена отъ враждебнаго населенія»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). «безотчетное владение» - формула самого рапорта: земля взята без какого-либо оформления прав прежних владельцев."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0052">T0052</a> Изъятие ресурсов
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Земля выселенных обществ Малой Чечни (равнинно-предгорной западной части Чечни) уходила империи. Генерал Слепцов рапортом генералу Ильинскому от 4 октября 1850 года подвёл итог сселения горных аулов: «богатыя земли между Сунжею и Русскою дорогою достались въ безотчетное владѣніе правительства, такъ что вся плоскость Малой Чечни нынѣ совершенно очищена отъ враждебнаго населенія»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. «Безотчетное владение» - формула самого рапорта: земля взята без какого-либо оформления прав прежних владельцев.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="ограничение географии расселения колонизация сунженской линии (цепи казачьих станиц по реке сунже) оставила чеченскому народу малую часть его собственной земли. историки я. з. ахмадов и э. х. хасмагомадов подводят итог: «после создания сунженской казачьей линии и других многочисленных военных укреплений, большая часть населения страны оказалась согнанной на пространстве протяженностью примерно 70 верст с запада на восток и 40 верст с юга на север» (верста - чуть больше километра); на душу приходилось меньше 2 десятин земли (десятина - чуть больше гектара) при норме выживания в 5(citation: история чечни в xix-xx веках 2005). ещё раньше империя взялась за сам порядок расселения: «еще в 40-е гг. xix в. российские власти стремились ликвидировать многочисленные хутора на территории плоскостной чечни, вынуждая их жителей переселяться в крупные селения с целью облегчить сбор налогов и податей и обеспечить должный полицейский контроль над населением»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0142">T0142</a> Ограничение географии расселения
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизация Сунженской линии (цепи казачьих станиц по реке Сунже) оставила чеченскому народу малую часть его собственной земли. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов подводят итог: «после создания Сунженской казачьей линии и других многочисленных военных укреплений, большая часть населения страны оказалась согнанной на пространстве протяженностью примерно 70 верст с запада на восток и 40 верст с юга на север» (верста - чуть больше километра); на душу приходилось меньше 2 десятин земли (десятина - чуть больше гектара) при норме выживания в 5<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Ещё раньше империя взялась за сам порядок расселения: «еще в 40-е гг. XIX в. российские власти стремились ликвидировать многочисленные хутора на территории плоскостной Чечни, вынуждая их жителей переселяться в крупные селения с целью облегчить сбор налогов и податей и обеспечить должный полицейский контроль над населением»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="миграционное замещение в 1847-1851 годах казачьи станицы вставали поимённо на местах аулов чеченцев и карабулаков (вайнахского общества между чечнёй и ингушетией). историки я. з. ахмадов и э. х. хасмагомадов дают ряд: «в 1847 г. на месте аула гажарийн-юрт сооружена станица нестеровская. в 1847 г. на месте аула эха-борзе - воздвигнута станица ассиновская... селение мохьмад-юрт - станица магомед-юртовская (1847 г.), современная вознесеновская; селение элдархан-юрт - станица карабулакская (1851 г.); селение семашки - станица самашкинская (1851 г.); селение заки-юрт - станица закан-юртовская, позднее романовская (1851 г.); селение алхан-кала - станица алхан-юртовская, позднее ермоловская (1851 г.)»(citation: история чечни в xix-xx веках 2005); о сожжённом ах-борзе они пишут прямо: «сожженное селение карабулаков ах-борзе в 1847 г. сменяется станицей ассиновской»(citation: история чечни в xix-xx веках 2005). продолжение колонизации империя планировала письменно: воронцов, наместник на кавказе, официальным служебным письмом (отношением) военному министру чернышеву от 25 октября 1847 года рассчитывал, что после вырубки лесов и «удаления оттуда враждебных чеченских аулов» «в 1849 году можно будет положить начало поселению 2-го сунженского полка»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). кем замещали, видно из переселенческих дел империи. в 1847 году на сунжу двинули семьи из войска донского - по спискам переселенческого дела, первый эшелон выступил 23 мая 1847 года и заселял только что построенные станицы магомет-юртовскую и ассинскую; итог списков - 219 душ мужского и 221 женского пола(citation: база переселенцев сунженского полка 1830-1860 (выписки из дел ргвиа) 2020). в 1850 году в станицы полка, включая ассинскую и магомет-юртовскую, империя водворила семьи женатых солдат регулярных полков, в том числе «принадлежавших помещичьему владению» - бывших крепостных(citation: база переселенцев сунженского полка 1830-1860 (выписки из дел ргвиа) 2020). первые семьи переселенцев жили, по имперскому очерку, «в балаганах, крытых соломой, или в землянках»(citation: генерал-майор н. п. слепцов (биографический очерк, терский сборник) 1903)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0117/001">T0117.001</a> Миграционное замещение
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В 1847-1851 годах казачьи станицы вставали поимённо на местах аулов чеченцев и карабулаков (вайнахского общества между Чечнёй и Ингушетией). Историки Я. З. Ахмадов и Э. Х. Хасмагомадов дают ряд: «В 1847 г. на месте аула Гажарийн-Юрт сооружена станица Нестеровская. В 1847 г. на месте аула Эха-Борзе - воздвигнута станица Ассиновская... селение Мохьмад-Юрт - станица Магомед-Юртовская (1847 г.), современная Вознесеновская; селение Элдархан-Юрт - станица Карабулакская (1851 г.); селение Семашки - станица Самашкинская (1851 г.); селение Заки-Юрт - станица Закан-Юртовская, позднее Романовская (1851 г.); селение Алхан-Кала - станица Алхан-Юртовская, позднее Ермоловская (1851 г.)»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; о сожжённом Ах-Борзе они пишут прямо: «сожженное селение карабулаков Ах-Борзе в 1847 г. сменяется станицей Ассиновской»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Продолжение колонизации империя планировала письменно: Воронцов, наместник на Кавказе, официальным служебным письмом (отношением) военному министру Чернышеву от 25 октября 1847 года рассчитывал, что после вырубки лесов и «удаления оттуда враждебных чеченских аулов» «в 1849 году можно будет положить начало поселению 2-го Сунженского полка»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Кем замещали, видно из переселенческих дел империи. В 1847 году на Сунжу двинули семьи из Войска Донского - по спискам переселенческого дела, первый эшелон выступил 23 мая 1847 года и заселял только что построенные станицы Магомет-Юртовскую и Ассинскую; итог списков - 219 душ мужского и 221 женского пола<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Zolin (форум «Гребенские казаки»). (2020). База переселенцев Сунженского полка 1830-1860 (выписки из дел РГВИА)."data-reference="База переселенцев Сунженского полка 1830-1860 (выписки из дел РГВИА) 2020"><sup><a href="https://combcossack.0pk.me/viewtopic.php?id=4769" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. В 1850 году в станицы полка, включая Ассинскую и Магомет-Юртовскую, империя водворила семьи женатых солдат регулярных полков, в том числе «принадлежавших помещичьему владению» - бывших крепостных<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Zolin (форум «Гребенские казаки»). (2020). База переселенцев Сунженского полка 1830-1860 (выписки из дел РГВИА)."data-reference="База переселенцев Сунженского полка 1830-1860 (выписки из дел РГВИА) 2020"><sup><a href="https://combcossack.0pk.me/viewtopic.php?id=4769" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Первые семьи переселенцев жили, по имперскому очерку, «в балаганах, крытых соломой, или в землянках»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Терский сборник, Владикавказ. (1903). Генерал-майор Н. П. Слепцов (биографический очерк, Терский сборник)."data-reference="Генерал-майор Н. П. Слепцов (биографический очерк, Терский сборник) 1903"><sup><a href="https://ghalghay.com/2010/03/15/%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB-%D0%BC%D0%B0%D0%B9%D0%BE%D1%80-%D0%BD-%D0%BF-%D1%81%D0%BB%D0%B5%D0%BF%D1%86%D0%BE%D0%B2-%D0%B2%D0%BB%D0%B0%D0%B4%D0%B8%D0%BA%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7/" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="захват заложников переселённых к укреплениям держали заложниками. генерал слепцов рапортом от 4 октября 1850 года доложил, что содержит в казачьей станице сунженской, поставленной на месте чеченского аула дибир-юрт, заложников (аманатов) - людей, которых империя забирала из семей переселённых, чтобы держать общины в повиновении под угрозой расправы над взятыми: «аманатовъ же, взятыхъ мною въ удостовѣреніе безусловной покорности переселившихся, я содержу въ ст. сунженской»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). заложник обеспечивал и резню хутора наиба дубы (наместника имама шамиля, руководителя сопротивления горцев российскому завоеванию) 6 марта 1847 года: имперский офицер полторацкий записал о двух подкупленных племянниках наиба - «в то время, как один из двух был, как аманат (заложник), арестован на гауптвахте в воздвиженском, другой... вел неприятельский отряд в родное гнездо свое»(citation: воспоминания 1895)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0099">T0099</a> Захват заложников
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Переселённых к укреплениям держали заложниками. Генерал Слепцов рапортом от 4 октября 1850 года доложил, что содержит в казачьей станице Сунженской, поставленной на месте чеченского аула Дибир-Юрт, заложников (аманатов) - людей, которых империя забирала из семей переселённых, чтобы держать общины в повиновении под угрозой расправы над взятыми: «Аманатовъ же, взятыхъ мною въ удостовѣреніе безусловной покорности переселившихся, я содержу въ ст. Сунженской»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Заложник обеспечивал и резню хутора наиба Дубы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию) 6 марта 1847 года: имперский офицер Полторацкий записал о двух подкупленных племянниках наиба - «в то время, как один из двух был, как аманат (заложник), арестован на гауптвахте в Воздвиженском, другой... вел неприятельский отряд в родное гнездо свое»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит резню хутора наиба дубы (наместника имама шамиля, руководителя сопротивления горцев российскому завоеванию) 6 марта 1847 года подготовил точечный подкуп внутри семьи наиба. имперский офицер полторацкий, участник штурма, записал о проводнике отряда: «это был родной племянник наиба дубы, подкупленный вместе с братом своим за хороший куш из кармана меллера» - командовавшего отрядом меллер-закомельского(citation: воспоминания 1895). куплены были оба брата: один вёл войска на родной хутор, второй сидел заложником в воздвиженском - гарантией, что проводник не передумает."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0015">T0015</a> Подкуп элит
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Резню хутора наиба Дубы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию) 6 марта 1847 года подготовил точечный подкуп внутри семьи наиба. Имперский офицер Полторацкий, участник штурма, записал о проводнике отряда: «Это был родной племянник наиба Дубы, подкупленный вместе с братом своим за хороший куш из кармана Меллера» - командовавшего отрядом Меллер-Закомельского<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Куплены были оба брата: один вёл войска на родной хутор, второй сидел заложником в Воздвиженском - гарантией, что проводник не передумает.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="похищение людей каждый удар по аулам малой чечни (равнинно-предгорной западной части чечни) кончался уводом людей. из резни хутора наиба дубы (наместника имама шамиля, руководителя сопротивления горцев российскому завоеванию) 6 марта 1847 года отряд, по записи имперского офицера полторацкого, «приволок за собою 9 человек пленных: трех беззубых стариков и шесть женщин»(citation: воспоминания 1895). в налёте 17 февраля 1850 года взято «плѣнными 54 души обоего пола»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885); у переправы через реку сунжу 15 сентября 1851 года - 38 пленных(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885); при истреблении дахин-ирзау 16 ноября 1851 года «захвачено въ плѣнъ 24 души»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). счёт «душами обоего пола» в рапортах - счёт уведённых гражданских, не бойцов."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0053">T0053</a> Похищение людей
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Каждый удар по аулам Малой Чечни (равнинно-предгорной западной части Чечни) кончался уводом людей. Из резни хутора наиба Дубы (наместника имама Шамиля, руководителя сопротивления горцев российскому завоеванию) 6 марта 1847 года отряд, по записи имперского офицера Полторацкого, «приволок за собою 9 человек пленных: трех беззубых стариков и шесть женщин»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. В налёте 17 февраля 1850 года взято «плѣнными 54 души обоего пола»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; у переправы через реку Сунжу 15 сентября 1851 года - 38 пленных<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; при истреблении Дахин-Ирзау 16 ноября 1851 года «захвачено въ плѣнъ 24 души»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Счёт «душами обоего пола» в рапортах - счёт уведённых гражданских, не бойцов.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="экономический контроль торговлю с чеченцами империя вела через контролируемые каналы. число казённых меновых дворов (пунктов обмена товарами под надзором чиновников) во второй половине 1840-х годов «было увеличено до 11»(citation: история чечни в xix-xx веках 2005). в 1850 году империя расширила торговлю - под тем же контролем: историк н. и. покровский пишет - «в 1850 г. главнокомандующий, желая сблизить непокорных горцев с русскими, разрешил открыть около крепости грозной ярмарку... после размена аманатов 15 мая заключено было перемирие на три дня... с нашей стороны недозволена была продажа оружия и железа» (аманат - заложник, которого империя забирала из общины как гарантию её подчинения)(citation: кавказские войны и имамат шамиля 2009); историки я. з. ахмадов и э. х. хасмагомадов пишут о «первой грозненской торговой ярмарке», на которую горцы привезли «разных товаров на 500-х арбах» (арба - двухколёсная повозка)(citation: история чечни в xix-xx веках 2005). ярмарка открывалась обменом заложниками; продажу оружия и железа империя не разрешала."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1847</div>
+                <div>
+                    <a href="/techniques/T0038">T0038</a> Экономический контроль
+                </div>
+<div><a href="/campaigns/C1166">C1166</a> «Смертный приговор» Малой Чечне: резня хутора Дубы, просеки, крепости, истребление населения и станицы на месте сожжённых аулов (1847-1851)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Торговлю с чеченцами империя вела через контролируемые каналы. Число казённых меновых дворов (пунктов обмена товарами под надзором чиновников) во второй половине 1840-х годов «было увеличено до 11»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. В 1850 году империя расширила торговлю - под тем же контролем: историк Н. И. Покровский пишет - «В 1850 г. главнокомандующий, желая сблизить непокорных горцев с русскими, разрешил открыть около крепости Грозной ярмарку... После размена аманатов 15 мая заключено было перемирие на три дня... С нашей стороны недозволена была продажа оружия и железа» (аманат - заложник, которого империя забирала из общины как гарантию её подчинения)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>; историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут о «первой Грозненской торговой ярмарке», на которую горцы привезли «разных товаров на 500-х арбах» (арба - двухколёсная повозка)<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Ярмарка открывалась обменом заложниками; продажу оружия и железа империя не разрешала.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank">
+                        В. А. Полторацкий. (1895). Воспоминания.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1880). Погром Чечни (1852).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="5.0">
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://combcossack.0pk.me/viewtopic.php?id=4769" target="_blank">
+                        Zolin (форум «Гребенские казаки»). (2020). База переселенцев Сунженского полка 1830-1860 (выписки из дел РГВИА).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://ghalghay.com/2010/03/15/%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB-%D0%BC%D0%B0%D0%B9%D0%BE%D1%80-%D0%BD-%D0%BF-%D1%81%D0%BB%D0%B5%D0%BF%D1%86%D0%BE%D0%B2-%D0%B2%D0%BB%D0%B0%D0%B4%D0%B8%D0%BA%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7/" target="_blank">
+                        Терский сборник, Владикавказ. (1903). Генерал-майор Н. П. Слепцов (биографический очерк, Терский сборник).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

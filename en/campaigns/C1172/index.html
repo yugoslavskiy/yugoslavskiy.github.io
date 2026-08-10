@@ -1,0 +1,807 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/campaigns/C1172/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1172/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1172/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1172/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1172/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content=""Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878), campaign C1172 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/campaigns/C1172/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>"Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878), campaign C1172 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in August 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/campaigns/">Campaigns</a></li>
+  <li class="breadcrumb-item">"Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>"Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>The uprising of 1877 - historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov call it a peasant war - was suppressed by the empire through the annihilation of everything that could sustain the insurgents. The methods were summed up by historian A. I. Ismailova: "The burning of auls, the deportation of the population, the destruction of crops - these are the main methods of struggle that the tsarist command applies with merciless consistency"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The tone of the orders was set by Svistunov, head of the Terek oblast - in his instructions to General Smekalov, according to historian A. I. Ismailova, one demand was invariably repeated: "For God's sake, just do not fall back, but advance at least little by little, mercilessly destroying everything and everyone before you... Our forces will keep arriving; just mow down everything without pity, beat and hang without mercy"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The principle of punishment was formulated by the viceroy in a memorandum: "so that punishment falls not only upon the fanatics seeking the feat of self-sacrifice, but also upon the guilty milieu surrounding them, so that by the fear of inevitable collective punishment... the mass is induced to counteract them"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The people's answer was recorded by the same imperial side - the inhabitants of Mekhkety refused the head of the Terek oblast, who threatened to deport the aul, the surrender of Uma Duev, leader of the uprising in mountain Chechnya: "...only the possible should be demanded of a people. You know how hard it is for us to part with the graves of our fathers and with our homeland, yet we submit without protest. But we cannot hand over Uma. He was our guest"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1172
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Start:&nbsp;</span>
+                    <span>April 1877</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">End:&nbsp;</span>
+                    <span>May 1878</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Contributors</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Version</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Created:&nbsp;</span>3 August 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>3 August 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/C1172" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Navigator Layers</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Layer russia-colonialism</h6>
+                    <a class="dropdown-item" href="/en/campaigns/C1172/C1172-russia-colonialism-layer.json" download target="_blank">download</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/en/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fen%2Fcampaigns%2FC1172%2FC1172-russia-colonialism-layer.json" target="_blank">open <img width="10" src="/en/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Actors</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Procedures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/en/groups/G0009">G0009</a></td>
+                <td><a href="/en/groups/G0009">Russian Empire</a></td>
+                <td>15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Instruments Applied</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Procedures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/en/software/S0010"> S0010 </a></td>
+                <td><a href="/en/software/S0010"> Regular Army </a></td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td><a href="/en/software/S0012"> S0012 </a></td>
+                <td><a href="/en/software/S0012"> Occupation and Controlled Administrations </a></td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Procedures Carried Out</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="punitive expeditions in may 1877 the detachment of colonel batyanov suppressed the uprising in borderland salatavia: historian a. i. ismailova writes - "the suppression of the uprising, which went on through the entire second half of may, was carried out with extreme cruelty. the auls of almak, dylym and burtunay with their hamlets were destroyed"(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). on 12 july 1877, "significant detachments of troops were moved against the bass auls. but the inhabitants, with their families and all their movable property, hid in the forests. the punitive expedition destroyed the auls, and the crops it ravaged and trampled down"(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). on 16 july colonel nakashidze entered cheberloy in two columns: historians ya. z. akhmadov and e. kh. khasmagomadov write - he "destroyed 5 villages, including the auls of makazhoy and sadoy, arrested up to a thousand people and seized a large number of livestock"(citation: история чечни в xix-xx веках 2005). on 14 august the troops took the aul of dyshni-vedeno at the walls of the vedeno fortress - the insurgents, according to historian a. i. ismailova, defended every saklia (a highlander's house) "despite the murderous artillery fire"(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0077">T0077</a> Punitive Expeditions
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In May 1877 the detachment of Colonel Batyanov suppressed the uprising in borderland Salatavia: historian A. I. Ismailova writes - "The suppression of the uprising, which went on through the entire second half of May, was carried out with extreme cruelty. The auls of Almak, Dylym and Burtunay with their hamlets were destroyed"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 12 July 1877, "significant detachments of troops were moved against the Bass auls. But the inhabitants, with their families and all their movable property, hid in the forests. The punitive expedition destroyed the auls, and the crops it ravaged and trampled down"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 16 July Colonel Nakashidze entered Cheberloy in two columns: historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write - he "destroyed 5 villages, including the auls of Makazhoy and Sadoy, arrested up to a thousand people and seized a large number of livestock"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. On 14 August the troops took the aul of Dyshni-Vedeno at the walls of the Vedeno fortress - the insurgents, according to historian A. I. Ismailova, defended every saklia (a highlander's house) "despite the murderous artillery fire"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror in the instructions of svistunov, head of the terek oblast, to general smekalov one demand was invariably repeated: "advance at least little by little, mercilessly destroying everything and everyone before you... our forces will keep arriving; just mow down everything without pity, beat and hang without mercy" - the instructions are quoted by historian a. i. ismailova from the imperial publication "materials for the description of the russo-turkish war of 1877-78"(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). historians ya. z. akhmadov and e. kh. khasmagomadov record: at the final stage the punitive forces "acted in full accordance" with this order(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0022">T0022</a> Terror
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In the instructions of Svistunov, head of the Terek oblast, to General Smekalov one demand was invariably repeated: "advance at least little by little, mercilessly destroying everything and everyone before you... Our forces will keep arriving; just mow down everything without pity, beat and hang without mercy" - the instructions are quoted by historian A. I. Ismailova from the imperial publication "Materials for the Description of the Russo-Turkish War of 1877-78"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov record: at the final stage the punitive forces "acted in full accordance" with this order<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="total destruction of infrastructure the order of colonel lokhvitsky of 17 july 1877 for the cheberloy uchastok (administrative section) prescribed: "to raze to the ground the villages of nizheloy, rigakhoy and nuy-khoy"(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007); historian a. i. ismailova sums up: "the auls and crops of the cheberloy uchastok were destroyed wholesale; the same fate befell many auls of the shatoy and evdokimovsky uchastoks. the inhabitants hid in the forests"(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). in october 1877, on the way back from the simsir hamlets, historian d. a. khozhaev records: "the russians burned and destroyed zandak and, for the second time, the village of benoy - everything, down to the last house, including the mosques, they leveled to the ground"(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0105">T0105</a> Total Destruction of Infrastructure
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The order of Colonel Lokhvitsky of 17 July 1877 for the Cheberloy uchastok (administrative section) prescribed: "to raze to the ground the villages of Nizheloy, Rigakhoy and Nuy-Khoy"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; historian A. I. Ismailova sums up: "The auls and crops of the Cheberloy uchastok were destroyed wholesale; the same fate befell many auls of the Shatoy and Evdokimovsky uchastoks. The inhabitants hid in the forests"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. In October 1877, on the way back from the Simsir hamlets, historian D. A. Khozhaev records: "the Russians burned and destroyed Zandak and, for the second time, the village of Benoy - everything, down to the last house, including the mosques, they leveled to the ground"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="artificial famine svistunov, head of the terek oblast, wrote to smekalov on 18 august 1877: "as for benoy and zandak, they must be deported to siberia to a man, or, if these scoundrels refuse, all of them must be killed off in winter like cockroaches and destroyed by famine"(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007); the same directive of svistunov is quoted by historian d. a. khozhaev(citation: чеченцы в русско-кавказской войне 1998). in the imperial publication of the correspondence (letter to smekalov of 18 august 1877, no. 226) the formula reads: "to freeze them all out in winter, like cockroaches, and destroy them by famine"(citation: материалы для описания русско-турецкой войны 1877-1878 гг. на кавказско-малоазиатском театре. том vi, часть 1 1910). the food base was being destroyed from the very first days: on 13 april 1877, merely for letting the detachment of alibek-haji, leader of the uprising, pass through the village, "the hayfields and maize fields of the inhabitants [of benoy] were completely burned by the tsarist troops"(citation: мир чеченцев. xix век 2007). colonel batyanov, according to historian z. kh. ibragimova, "widely applied the destruction of stores of grain and hay," believing that this made many "come to their senses"(citation: мир чеченцев. xix век 2007). in cheberloy the troops stood for about 20 days - "all this time they were ruining the fields of the cheberloy villages. their inhabitants meanwhile were in such a state as if the greatest of floods had struck them"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0121">T0121</a> Artificial Famine
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Svistunov, head of the Terek oblast, wrote to Smekalov on 18 August 1877: "As for Benoy and Zandak, they must be deported to Siberia to a man, or, if these scoundrels refuse, all of them must be killed off in winter like cockroaches and destroyed by famine"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; the same directive of Svistunov is quoted by historian D. A. Khozhaev<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. In the imperial publication of the correspondence (letter to Smekalov of 18 August 1877, No. 226) the formula reads: "to freeze them all out in winter, like cockroaches, and destroy them by famine"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кавказский военно-исторический отдел (Тифлис; в корпусе стр. 192-196). (1910). Материалы для описания русско-турецкой войны 1877-1878 гг. на Кавказско-Малоазиатском театре. Том VI, часть 1."data-reference="Материалы для описания русско-турецкой войны 1877-1878 гг. на Кавказско-Малоазиатском театре. Том VI, часть 1 1910"><sup><a href="https://runivers.ru/bookreader/book17115/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The food base was being destroyed from the very first days: on 13 April 1877, merely for letting the detachment of Alibek-Haji, leader of the uprising, pass through the village, "the hayfields and maize fields of the inhabitants [of Benoy] were completely burned by the tsarist troops"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Colonel Batyanov, according to historian Z. Kh. Ibragimova, "widely applied the destruction of stores of grain and hay," believing that this made many "come to their senses"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. In Cheberloy the troops stood for about 20 days - "All this time they were ruining the fields of the Cheberloy villages. Their inhabitants meanwhile were in such a state as if the greatest of floods had struck them"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="mass killings of civilians historians ya. z. akhmadov and e. kh. khasmagomadov write about the teams of "hunters": "the militiamen had orders to kill not only abreks in hiding, but any inhabitant heading from his village into the forest. as a reward for every person killed or caught in the forest the authorities paid 25 rubles" (abrek - the empire's label for a highlander it had outlawed)(citation: история чечни в xix-xx веках 2005); separate sums were set for the leaders - "for alibek-haji - several thousand rubles"(citation: история чечни в xix-xx веках 2005). captives were to be killed if an attempt was made to free them - and this was carried out: "during an attack by the insurgents on the detachment escorting 135 arrested inhabitants of the village of mekhkety to the vedeno fortress, the soldiers killed up to 20 mekhkety villagers"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0104">T0104</a> Mass Killings of Civilians
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write about the teams of "hunters": "the militiamen had orders to kill not only abreks in hiding, but any inhabitant heading from his village into the forest. As a reward for every person killed or caught in the forest the authorities paid 25 rubles" (abrek - the empire's label for a highlander it had outlawed)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; separate sums were set for the leaders - "for Alibek-Haji - several thousand rubles"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Captives were to be killed if an attempt was made to free them - and this was carried out: "during an attack by the insurgents on the detachment escorting 135 arrested inhabitants of the village of Mekhkety to the Vedeno fortress, the soldiers killed up to 20 Mekhkety villagers"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="hostage-taking svistunov, head of the terek oblast, ordered the head of the argun okrug on 20 august 1877: "in the event not only of any aul receiving the mutineers, but of the slightest disorder in it or disobedience to the authorities, you will send the amanats of that aul to grozny, and i will have them shot" (amanat - a person the empire took from a community as a hostage)(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). colonel batyanov, according to historian z. kh. ibragimova, declared that he considered it "a useful measure to shoot five of the amanats of every aul that had broken away"(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0099">T0099</a> Hostage-Taking
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Svistunov, head of the Terek oblast, ordered the head of the Argun okrug on 20 August 1877: "In the event not only of any aul receiving the mutineers, but of the slightest disorder in it or disobedience to the authorities, you will send the amanats of that aul to Grozny, and I will have them shot" (amanat - a person the empire took from a community as a hostage)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Colonel Batyanov, according to historian Z. Kh. Ibragimova, declared that he considered it "a useful measure to shoot five of the amanats of every aul that had broken away"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="false compromise / entrapment historian d. a. khozhaev writes about the surrender of alibek-haji and his naibs (naib - a district governor appointed by the authorities) in november 1877: "the head of the terek oblast, general prince loris-melikov, deceived them, giving his word of honor that all who turned themselves in would be pardoned"(citation: чеченцы в русско-кавказской войне 1998). alibek-haji's secretary goytukin rasu, an eyewitness, recorded the mechanism of the deception: alibek was told "that if he came to the authorities in peace, he would keep his freedom. trusting their words... he presented himself to the commandant of the vedeno fortress. the commandant at once ordered him seized and, having shackled his legs and arms in irons, sent him to the town jail"(citation: чеченцы в русско-кавказской войне 1998). those who surrendered were tried by a field court-martial and executed."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0028">T0028</a> False Compromise / Entrapment
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Historian D. A. Khozhaev writes about the surrender of Alibek-Haji and his naibs (naib - a district governor appointed by the authorities) in November 1877: "The head of the Terek oblast, General Prince Loris-Melikov, deceived them, giving his word of honor that all who turned themselves in would be pardoned"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Alibek-Haji's secretary Goytukin Rasu, an eyewitness, recorded the mechanism of the deception: Alibek was told "that if he came to the authorities in peace, he would keep his freedom. Trusting their words... he presented himself to the commandant of the Vedeno fortress. The commandant at once ordered him seized and, having shackled his legs and arms in irons, sent him to the town jail"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Those who surrendered were tried by a field court-martial and executed.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="neutralization of the opposition the field court-martial sat in grozny on 4-6 march 1878: "of the 17 persons tried, 11 were sentenced to death, among them alibek-haji, uma duev, one of his sons, and dada zalmaev"(citation: история чечни в xix-xx веках 2005); historian z. kh. ibragimova counts 18 tried and 13 sentenced to death, the rest - to 20 years of katorga (penal labor)(citation: мир чеченцев. xix век 2007). historian d. a. khozhaev writes: "on 9 march 1878, at 6 o'clock in the morning, in the town of grozny, on the fairground square, they were hanged and buried in a common pit" - and gives the list of the eleven by name(citation: чеченцы в русско-кавказской войне 1998); akhmadov and khasmagomadov add: the execution took place "amid dead silence and the evident sympathy of the assembled townspeople for those being executed"(citation: история чечни в xix-xx веках 2005). a participant in the suppression who was present at the execution admitted: "i was struck by the calm with which these people died"(citation: мир чеченцев. xix век 2007). the bodies, buried by the authorities in a common pit, were secretly reburied by chechens at night according to muslim rites - historian d. a. khozhaev relays the tradition of a cemetery near samashki, historian z. kh. ibragimova - of the tyrtov grove near grozny(citation: чеченцы в русско-кавказской войне 1998)(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0021">T0021</a> Neutralization of the Opposition
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The field court-martial sat in Grozny on 4-6 March 1878: "Of the 17 persons tried, 11 were sentenced to death, among them Alibek-Haji, Uma Duev, one of his sons, and Dada Zalmaev"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; historian Z. Kh. Ibragimova counts 18 tried and 13 sentenced to death, the rest - to 20 years of katorga (penal labor)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Historian D. A. Khozhaev writes: "On 9 March 1878, at 6 o'clock in the morning, in the town of Grozny, on the fairground square, they were hanged and buried in a common pit" - and gives the list of the eleven by name<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; Akhmadov and Khasmagomadov add: the execution took place "amid dead silence and the evident sympathy of the assembled townspeople for those being executed"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. A participant in the suppression who was present at the execution admitted: "I was struck by the calm with which these people died"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The bodies, buried by the authorities in a common pit, were secretly reburied by Chechens at night according to Muslim rites - historian D. A. Khozhaev relays the tradition of a cemetery near Samashki, historian Z. Kh. Ibragimova - of the Tyrtov grove near Grozny<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="deportation "already in august 1877 the first 150 inhabitants of the villages of zandak and dattykh were deported; small parties of exiles were being sent off throughout the autumn"(citation: история чечни в xix-xx веках 2005). "in the spring of the following year, 1878, another 110 families were deported from the terek oblast, and 660 families from dagestan. most of the deportees died within the first months of exile. it is also known that over 500 chechens were sentenced to lifelong katorga labor"(citation: история чечни в xix-xx веках 2005). historian z. kh. ibragimova gives the count for a single governorate: "of the 1625 highlanders deported in 1878 to the novgorod governorate, 429 died within the first months (118 of them men, the rest - women) and 74 were declared hopelessly ill"(citation: мир чеченцев. xix век 2007). the conditions were described by journalist yu. poluyansky, who visited the exiles: "in cherepovets the highlanders are housed in a half-ruined, long-uninhabited hovel... of the fifty people, up to thirty have already died, mostly children, of consumption and typhoid fever... for subsistence the adults are allotted 6 kopecks a day, the children 3 kopecks"(citation: мир чеченцев. xix век 2007). within chechnya, mountain villages were being driven down onto the plain: "from the locality indicated, the villages of mekhkety, khatuni and tauzen have been deported almost to a man"(citation: история чечни в xix-xx веках 2005); the plan for the wholesale deportation of the salatavians, "up to 3000 souls," to the northern governorates was cut down to 200 people only for lack of escort troops(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0127">T0127</a> Deportation
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>"Already in August 1877 the first 150 inhabitants of the villages of Zandak and Dattykh were deported; small parties of exiles were being sent off throughout the autumn"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. "In the spring of the following year, 1878, another 110 families were deported from the Terek oblast, and 660 families from Dagestan. Most of the deportees died within the first months of exile. It is also known that over 500 Chechens were sentenced to lifelong katorga labor"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Historian Z. Kh. Ibragimova gives the count for a single governorate: "of the 1625 highlanders deported in 1878 to the Novgorod governorate, 429 died within the first months (118 of them men, the rest - women) and 74 were declared hopelessly ill"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The conditions were described by journalist Yu. Poluyansky, who visited the exiles: "In Cherepovets the highlanders are housed in a half-ruined, long-uninhabited hovel... Of the fifty people, up to thirty have already died, mostly children, of consumption and typhoid fever... For subsistence the adults are allotted 6 kopecks a day, the children 3 kopecks"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Within Chechnya, mountain villages were being driven down onto the plain: "From the locality indicated, the villages of Mekhkety, Khatuni and Tauzen have been deported almost to a man"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; the plan for the wholesale deportation of the Salatavians, "up to 3000 souls," to the northern governorates was cut down to 200 people only for lack of escort troops<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="labor exploitation the order of colonel lokhvitsky of 17 july 1877 for the cheberloy uchastok obliged the punished themselves to cut a road for the troops into their own mountains: "the entire uchastok is to be obliged right now, within the very shortest time, to make a wide forest clearing (proseka) from the bosoevskaya mountain to the sharo-argun river over a stretch of upwards of 6 versts" (a verst is slightly over a kilometer)(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0057">T0057</a> Labor Exploitation
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The order of Colonel Lokhvitsky of 17 July 1877 for the Cheberloy uchastok obliged the punished themselves to cut a road for the troops into their own mountains: "the entire uchastok is to be obliged right now, within the very shortest time, to make a wide forest clearing (proseka) from the Bosoevskaya mountain to the Sharo-Argun river over a stretch of upwards of 6 versts" (a verst is slightly over a kilometer)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="expropriation of resources following the suppression of the 1877 uprising the empire took away the land of the mountain communities: historian z. kh. ibragimova records - "thousands of inhabitants of mountain villages were resettled onto the plain; their lands were confiscated"(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0052">T0052</a> Expropriation of Resources
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Following the suppression of the 1877 uprising the empire took away the land of the mountain communities: historian Z. Kh. Ibragimova records - "Thousands of inhabitants of mountain villages were resettled onto the plain; their lands were confiscated"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="bribery of elites the starshina (headman) of shali, borshchik khambulatov, who organized the repulse of the insurgents in april 1877, "was granted the rank of ensign of the militia and an annual salary of 600 rubles, and received a lifelong pension - 100 rubles a year"(citation: история чечни в xix-xx веках 2005); historian a. i. ismailova puts the pension at "about 400 r. a year"(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0015">T0015</a> Bribery of Elites
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The starshina (headman) of Shali, Borshchik Khambulatov, who organized the repulse of the insurgents in April 1877, "was granted the rank of ensign of the militia and an annual salary of 600 rubles, and received a lifelong pension - 100 rubles a year"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; historian A. I. Ismailova puts the pension at "about 400 r. a year"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="creation of agents of influence historians ya. z. akhmadov and e. kh. khasmagomadov write: "on 3 october there came to general smekalov... a certain inhabitant of benoy named biy-sultan. in exchange for a full pardon and permission to gather the remains of his property, biy-sultan volunteered to serve as a guide to alibek-haji's last fortified point. thanks to this unexpected help the simsir hamlets were quickly captured"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0013">T0013</a> Creation of Agents of Influence
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "On 3 October there came to General Smekalov... a certain inhabitant of Benoy named Biy-Sultan. In exchange for a full pardon and permission to gather the remains of his property, Biy-Sultan volunteered to serve as a guide to Alibek-Haji's last fortified point. Thanks to this unexpected help the Simsir hamlets were quickly captured"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pitting neighboring peoples against each other the viceroy in the caucasus, mikhail romanov, expressed the wish to bring the dagestani militia (militia - armed detachments of highlanders in the empire's service) into the military operations in chechnya, and on the dagestan side, near the village of botlikh, a detachment of regular infantry and 12 sotnias of mounted and foot dagestani militia was concentrated(citation: история чечни в xix-xx веках 2005). at the beginning of may a detachment under colonel nakashidze was assembled in neighboring dagestan - two battalions of the apsheronsky and samursky regiments, 6 druzhinas and 3 sotnias of militia with guns(citation: история чечни в xix-xx веках 2005). the rout was completed in the same manner: the village of sogratl in dagestan, where the leaders of the uprising had taken refuge, was surrounded by russian troops and the dagestani militia(citation: чеченцы в русско-кавказской войне 1998). part of the suppression the empire shifted onto the colonized themselves, keeping for itself the role of arbiter and entrenching enmity between neighbors."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0152">T0152</a> Pitting Neighboring Peoples Against Each Other
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The viceroy in the Caucasus, Mikhail Romanov, expressed the wish to bring the Dagestani militia (militia - armed detachments of highlanders in the empire's service) into the military operations in Chechnya, and on the Dagestan side, near the village of Botlikh, a detachment of regular infantry and 12 sotnias of mounted and foot Dagestani militia was concentrated<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. At the beginning of May a detachment under Colonel Nakashidze was assembled in neighboring Dagestan - two battalions of the Apsheronsky and Samursky regiments, 6 druzhinas and 3 sotnias of militia with guns<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The rout was completed in the same manner: the village of Sogratl in Dagestan, where the leaders of the uprising had taken refuge, was surrounded by Russian troops and the Dagestani militia<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Part of the suppression the empire shifted onto the colonized themselves, keeping for itself the role of arbiter and entrenching enmity between neighbors.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage the troops that occupied chechen territories during the suppression of the 1877 uprising plundered the population. during the destruction of the five villages of cheberloy the detachment of nakashidze "arrested up to a thousand people and seized a large number of livestock"(citation: история чечни в xix-xx веках 2005), and historian z. kh. ibragimova records the practice beyond the orders: "the soldiers looted with impunity in the occupied territories, and also ravaged crops, took horses away from the population, slaughtered livestock even without any need for it"(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+                <div>
+                    <a href="/en/techniques/T0164">T0164</a> Pillage
+                </div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The troops that occupied Chechen territories during the suppression of the 1877 uprising plundered the population. During the destruction of the five villages of Cheberloy the detachment of Nakashidze "arrested up to a thousand people and seized a large number of livestock"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, and historian Z. Kh. Ibragimova records the practice beyond the orders: "the soldiers looted with impunity in the occupied territories, and also ravaged crops, took horses away from the population, slaughtered livestock even without any need for it"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank">
+                        Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://runivers.ru/bookreader/book17115/" target="_blank">
+                        Кавказский военно-исторический отдел (Тифлис; в корпусе стр. 192-196). (1910). Материалы для описания русско-турецкой войны 1877-1878 гг. на Кавказско-Малоазиатском театре. Том VI, часть 1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+<script src="/en/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

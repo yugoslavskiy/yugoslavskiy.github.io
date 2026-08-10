@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/techniques/T0164/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0164/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0164/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0164/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0164/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Pillage, technique T0164 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/techniques/T0164/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Pillage, technique T0164 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in August 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/techniques/">Techniques</a></li>
+  <li class="breadcrumb-item">Pillage</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Pillage
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Aggressors may loot: appropriate residents' property during assaults, sweep operations and searches, divide the "spoils" between soldiers and commanders, carry off livestock, household goods and valuables. Pillage is not limited to combat: on occupied territory it is any appropriation of residents' property - by soldiers or by representatives of the aggressor's administration - for private or institutional benefit without the owner's consent. The Hague Regulations forbid giving up a locality to pillage "even when taken by assault" (Article 28) and "formally forbid" pillage on occupied territory (Article 47); pillaging a town or place is a war crime (Rome Statute, Article 8(2)(b)(xvi)), and both organized seizure of property and acts of individuals for private gain qualify as pillage (ICTY, Celebici case, 1998).</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0164
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Sub-techniques:&nbsp;</span>
+                    No sub-techniques
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The tactical goals achieved by using the technique or sub-technique">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Tactics:</span>
+                        <a href="/en/tactics/TA0006">Extraction of Benefits</a>,                        <a href="/en/tactics/TA0004">Defense Impairment</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The peoples against whom the technique or sub-technique was used">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">People:&nbsp;</span>Nokhchi (Chechens)
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Contributors:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Version:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Created:&nbsp;</span>6 August 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>7 August 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/T0164" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Procedures Carried Out</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="pillage representatives of the metropole's authorities openly seized property from the nokhchi population, abusing their official position: in their petition to tsar mikhail fyodorovich, the service okochans of the terek town reported that the kabardian prince sunchaley yanglychevich cherkassky «having taken from us by force 8 good horses from the herd, sent them off to his kabaks (villages) in kabarda»(citation: кабардино-русские отношения в xvi-xviii вв. документы и материалы. том i 1957)(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1614-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1614</div>
+<div><a href="/en/campaigns/C1114">C1114</a> Deprivation of the Nokhchi of political agency and the imposition of alien governance (1614–1616)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>Representatives of the metropole's authorities openly seized property from the Nokhchi population, abusing their official position: in their petition to Tsar Mikhail Fyodorovich, the service Okochans of the Terek town reported that the Kabardian prince Sunchaley Yanglychevich Cherkassky «having taken from us by force 8 good horses from the herd, sent them off to his kabaks (villages) in Kabarda»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I."data-reference="Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I 1957"><sup><a href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage the punitive detachments plundered and enslaved the population: in a petition to tsar mikhail fyodorovich, the kabardian prince sunchaley yanglychevich cherkassky reported that they «utterly ruined» the auls «and took many captives»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1617-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1617</div>
+<div><a href="/en/campaigns/C1120">C1120</a> Punitive campaign and the devastation of the Nokhchi mountain communities (1617–1618)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The punitive detachments plundered and enslaved the population: in a petition to Tsar Mikhail Fyodorovich, the Kabardian prince Sunchaley Yanglychevich Cherkassky reported that they «utterly ruined» the auls «and took many captives»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage solzha (sunzhenskaya), one of the wealthiest villages, the russian empire kept as a source of supply for the fortress of groznaya, and having seized the village by force, it spent several days carting away its stores. historian d. a. khozhayev records the ravaging of solzha (sunzhenskaya), as a consequence of which “most of the peaceful neighboring auls fled into the mountains, and the flourishing banks were left deserted for a long time thereafter”(citation: чеченцы в русско-кавказской войне 1998). imperial general yermolov testifies in his “notes” that he had earlier ordered the troops to spare the village so that the fortress “could obtain from it all necessary supplies,” and when the troops seized the village, “grain, forage, and timber fit for building were carted away for several days”(citation: записки а.п. ермолова. 1798-1826 гг. 1991)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1818-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">September 1818</div>
+<div><a href="/en/campaigns/C1136">C1136</a> Exploitation of the village of Solzha (Sunzhenskaya) as a resource base and its punitive devastation for the armed resistance of the Nokhchi (1818)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Solzha (Sunzhenskaya), one of the wealthiest villages, the Russian Empire kept as a source of supply for the fortress of Groznaya, and having seized the village by force, it spent several days carting away its stores. Historian D. A. Khozhayev records the ravaging of Solzha (Sunzhenskaya), as a consequence of which "most of the peaceful neighboring auls fled into the mountains, and the flourishing banks were left deserted for a long time thereafter"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Imperial general Yermolov testifies in his "Notes" that he had earlier ordered the troops to spare the village so that the fortress "could obtain from it all necessary supplies," and when the troops seized the village, "grain, forage, and timber fit for building were carted away for several days"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage when laying waste to a nokhchi aul, the russian empire handed its property over to the soldiers as spoils. historian d. a. khozhaev writes that the punitive raids under yermolov proceeded “with the destruction of the population, houses, crops, orchards, and forests, the driving off of livestock, and the plundering of property,” while russian commanders invaded peaceful lands “to distinguish themselves or to seize booty”(citation: чеченцы в русско-кавказской войне 1998). general yermolov himself admits this in his “notes”: after the destruction of dadi-yurt, “the soldiers came away with rather rich spoils”(citation: записки а.п. ермолова. 1798-1826 гг. 1991)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1819-07-18 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1819</div>
+<div><a href="/en/campaigns/C1143">C1143</a> Demonstrative destruction of the aul of Dadi-Yurt and the erection of the Vnezapnaya fortress to force the Nokhchi off the Kumyk plain (1819)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>When laying waste to a Nokhchi aul, the Russian Empire handed its property over to the soldiers as spoils. Historian D. A. Khozhaev writes that the punitive raids under Yermolov proceeded "with the destruction of the population, houses, crops, orchards, and forests, the driving off of livestock, and the plundering of property," while Russian commanders invaded peaceful lands "to distinguish themselves or to seize booty"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. General Yermolov himself admits this in his "Notes": after the destruction of Dadi-Yurt, "the soldiers came away with rather rich spoils"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage the russian empire drove off livestock and plundered the ravaged villages of the nokhchi. historian d. a. khozhaev writes that by may 18, 1826, «livestock had been driven off», and after the troops returned, yermolov «sent a detachment of 500 cossacks against daut-martan», and «the village was ravaged and plundered»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1826-01-26 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1826</div>
+<div><a href="/en/campaigns/C1148">C1148</a> Devastation of the Lowland Nokhchi Villages in Yermolov’s Punitive Campaign (1826)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The Russian Empire drove off livestock and plundered the ravaged villages of the Nokhchi. Historian D. A. Khozhaev writes that by May 18, 1826, «livestock had been driven off», and after the troops returned, Yermolov «sent a detachment of 500 Cossacks against Daut-Martan», and «the village was ravaged and plundered»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage in december 1830, during the encirclement of the village of daut-martan, the troops of general velyaminov appropriated the property of the fleeing inhabitants: the imperial historian potto records that "the inhabitants managed to flee, but all their property became the booty of the detachment"(citation: кавказская война. в 5 томах. том 5. время паскевича, или бунт чечни 2006)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1830-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">September 1830</div>
+<div><a href="/en/campaigns/C1152">C1152</a> Burning of Lowland Chechnya by Velyaminov's Expedition: Demolition of Villages from the Sunzha to Mairtup, Seizure of Astemir's Family, Collective Penalties Imposed on Chechen Villages, the Cutting Down of Fleeing Inhabitants of Dzulgai-Yurt, and Destruction of Winter Stores (1830-1831)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In December 1830, during the encirclement of the village of Daut-Martan, the troops of General Velyaminov appropriated the property of the fleeing inhabitants: the imperial historian Potto records that "the inhabitants managed to flee, but all their property became the booty of the detachment"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Потто В.. (2006). Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни."data-reference="Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни 2006"><sup><a href="https://loveread.ec/book-comments.php?book=75379" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage on december 23, 1831, the detachment of lieutenant colonel zass, commander of the mozdok cossack regiment, dispatched by general velyaminov, drove off the livestock of the inhabitants of the devastated hamlets near the village of chertugai. the imperial historian volkonsky wrote: zass “delivered to the camp... up to 250 head of cattle”(citation: война на восточном кавказе с 1824 по 1834 г. в связи с мюридизмом 1886). driving off 250 head of livestock in the middle of winter deprived the inhabitants of the devastated hamlets of their basic means of subsistence."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1831-12-23 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">December 1831</div>
+<div><a href="/en/campaigns/C1154">C1154</a> Velyaminov's winter raids on Chechen hamlets and villages along the Sunzha: capture of women and devastation of homesteads (1831-1832)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>On December 23, 1831, the detachment of Lieutenant Colonel Zass, commander of the Mozdok Cossack Regiment, dispatched by General Velyaminov, drove off the livestock of the inhabitants of the devastated hamlets near the village of Chertugai. The imperial historian Volkonsky wrote: Zass "delivered to the camp... up to 250 head of cattle"<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Н. А. Волконский. (1886). Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом."data-reference="Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом 1886"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Driving off 250 head of livestock in the middle of winter deprived the inhabitants of the devastated hamlets of their basic means of subsistence.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage in the campaign of august - september 1832 the troops of corps commander rosen appropriated the property and livestock of the residents of the villages being devastated. the imperial historian volkonsky wrote: the property of 50 families who had taken refuge in the forest near mairtup "fell as booty to the detachment", and near tsentoroy "6 horses and 50 head of cattle were seized"(citation: война на восточном кавказе с 1824 по 1834 г. в связи с мюридизмом 1886). rosen reported to minister of war chernyshev that on september 15, near the village of dungen-yurt, the cavalry "seized 140 sheep and 9 head of cattle"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1832-08-22 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">August 1832</div>
+<div><a href="/en/campaigns/C1155">C1155</a> Extermination of 61 settlements of lowland Chechnya and mountainous Ichkeria by Rosen's troops, burning alive of the defenders of Germenchuk, and extortion of hostages from 80 villages (1832)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In the campaign of August - September 1832 the troops of corps commander Rosen appropriated the property and livestock of the residents of the villages being devastated. The imperial historian Volkonsky wrote: the property of 50 families who had taken refuge in the forest near Mairtup "fell as booty to the detachment", and near Tsentoroy "6 horses and 50 head of cattle were seized"<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Н. А. Волконский. (1886). Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом."data-reference="Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом 1886"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Rosen reported to Minister of War Chernyshev that on September 15, near the village of Dungen-yurt, the cavalry "seized 140 sheep and 9 head of cattle"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage on august 23, 1836, during the destruction of the aul of zandak, the detachment of colonel pullo, commander of the sunzha fortified line, appropriated the property and livestock of the inhabitants. corps commander rosen reported to the minister of war: "our troops received as booty the property of the inhabitants and 384 head of cattle"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1835-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1835</div>
+<div><a href="/en/campaigns/C1156">C1156</a> Covert reconnaissance of Chechnya by Rosen's topographers and the devastation of Zandak by Pullo's detachment: capture of 31 inhabitants and seizure of livestock (1835-1836)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>On August 23, 1836, during the destruction of the aul of Zandak, the detachment of Colonel Pullo, commander of the Sunzha fortified line, appropriated the property and livestock of the inhabitants. Corps commander Rosen reported to the Minister of War: "our troops received as booty the property of the inhabitants and 384 head of cattle"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage in the course of the extermination of kishkeroy-yurt on 28-31 december 1836, pullo's detachment appropriated the inhabitants' property, including weapons taken from the bodies of the slain: "all the property of the inhabitants and the weapons taken from the slain fell to our troops"(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-12-27 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">December 1836</div>
+<div><a href="/en/campaigns/C1158">C1158</a> Extermination of the Inhabitants of Kishkeroy-Yurt by Pullo's Detachment: 76 Killed, 40 Captured, Village Burned with Its Stores (December 1836)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In the course of the extermination of Kishkeroy-Yurt on 28-31 December 1836, Pullo's detachment appropriated the inhabitants' property, including weapons taken from the bodies of the slain: "all the property of the inhabitants and the weapons taken from the slain fell to our troops"<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage throughout feze's spring tour (february-april 1837), the troops took the chechens' livestock and property. according to rozen's reports to minister of war chernyshev: on 5 february the livestock of mullah udi's detachment was taken - "148 head of livestock of various kinds"; on 11 february "213 head of livestock of various kinds belonging to the unsubmissive chechens were seized"; against those hiding in the forests "searches were made in various directions... and livestock of various kinds and property were seized from many of them"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). the april raid on the gertli settlement, according to the report of 30 may, took "465 head of small livestock"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1837-02-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">February 1837</div>
+<div><a href="/en/campaigns/C1161">C1161</a> Coercion of Chechnya into Oaths by Feze's Spring Tour: Amanats from Communities Coerced into the Oath, Destruction of Auls along the Dzhalka, a Livestock Fine (February-April 1837)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Throughout Feze's spring tour (February-April 1837), the troops took the Chechens' livestock and property. According to Rozen's reports to Minister of War Chernyshev: on 5 February the livestock of mullah Udi's detachment was taken - "148 head of livestock of various kinds"; on 11 February "213 head of livestock of various kinds belonging to the unsubmissive Chechens were seized"; against those hiding in the forests "searches were made in various directions... and livestock of various kinds and property were seized from many of them"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. The April raid on the Gertli settlement, according to the report of 30 May, took "465 head of small livestock"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage in the marches of 1839-1840 the troops fed themselves on cattle taken from the chechens and carried off the goods of the auls they were devastating. of the december 1839 march of the detachment of general pullo, who commanded the left flank of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), the imperial historian yurov wrote: "on the march the men subsisted on ration cattle taken from the natives by way of fine"(citation: 1840, 1841 и 1842-й годы на кавказе 1886) - the army supplied itself with the population's property, framing the seizure as a fine. in the summer of 1840 the troops of general galafeyev plundered the auls of lesser chechnya they were devastating: historian d. a. khozhayev - "the detachment rode out onto the clearing with the goods looted in the devastated auls"(citation: чеченцы в русско-кавказской войне 1998). in november, at the destruction of the aul of mirti-irzau, the imperial historian yurov recorded: "150 head of horned cattle were seized"(citation: 1840, 1841 и 1842-й годы на кавказе 1886)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1838-11-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">November 1838</div>
+<div><a href="/en/campaigns/C1164">C1164</a> Forcing Chechnya into submission after the fall of Akhulgo and suppression of the general uprising of 1840 (1838-1840)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In the marches of 1839-1840 the troops fed themselves on cattle taken from the Chechens and carried off the goods of the auls they were devastating. Of the December 1839 march of the detachment of general Pullo, who commanded the left flank of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), the imperial historian Yurov wrote: "on the march the men subsisted on ration cattle taken from the natives by way of fine"<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span> - the army supplied itself with the population's property, framing the seizure as a fine. In the summer of 1840 the troops of general Galafeyev plundered the auls of Lesser Chechnya they were devastating: historian D. A. Khozhayev - "The detachment rode out onto the clearing with the goods looted in the devastated auls"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. In November, at the destruction of the aul of Mirti-Irzau, the imperial historian Yurov recorded: "150 head of horned cattle were seized"<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage from the cut clearings and the new fortifications imperial detachments swooped on the chechen auls, plundering and burning them. historian n. i. pokrovsky describes the practice of 1846: "russian troops systematically fell the forests to run wide strategic roads... and the tsarist detachments from time to time swoop on the auls, plunder and burn them"(citation: кавказские войны и имамат шамиля 2009). the plunder here is not an excess but the regular mode of operations of the troops from the line."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>From the cut clearings and the new fortifications imperial detachments swooped on the Chechen auls, plundering and burning them. Historian N. I. Pokrovsky describes the practice of 1846: "Russian troops systematically fell the forests to run wide strategic roads... and the tsarist detachments from time to time swoop on the auls, plunder and burn them"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. The plunder here is not an excess but the regular mode of operations of the troops from the line.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage at the destruction of the aul khan-kala, also known as syurin-kort, the troops of the march of baryatinsky, who commanded on the left flank of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), entered the inhabitants and their cattle as their booty. imperial historian volkonsky drew up the account: "three hundred fifty syurin-kort people and more than three thousand head of horned cattle became our asset, our, so to speak, property"(citation: погром чечни (1852) 1880)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1852</div>
+<div><a href="/en/campaigns/C1167">C1167</a> "Neither plow nor sow": the pogrom of Chechnya, organized famine, the buying-up of elites and the institutions of subjugation (1852-1857)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>At the destruction of the aul Khan-Kala, also known as Syurin-Kort, the troops of the march of Baryatinsky, who commanded on the left flank of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), entered the inhabitants and their cattle as their booty. Imperial historian Volkonsky drew up the account: "three hundred fifty Syurin-Kort people and more than three thousand head of horned cattle became our asset, our, so to speak, property"<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage the military teams and cossack units brought in at the beginning of the 20th century for sweeping searches of the mountain auls robbed the residents with the authorities' encouragement: historians ya. z. akhmadov and e. kh. khasmagomadov write that the searches "were as a rule accompanied by robberies and other unlawful actions of soldiers and cossacks, which was encouraged in every way by the terek command"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1858</div>
+<div><a href="/en/campaigns/C1170">C1170</a> "Military-Popular Administration": the Colonial Regime of the Terek Oblast (1858-1917)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The military teams and Cossack units brought in at the beginning of the 20th century for sweeping searches of the mountain auls robbed the residents with the authorities' encouragement: historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write that the searches "were as a rule accompanied by robberies and other unlawful actions of soldiers and Cossacks, which was encouraged in every way by the Terek command"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage the troops that occupied chechen territories during the suppression of the 1877 uprising plundered the population. during the destruction of the five villages of cheberloy the detachment of nakashidze "arrested up to a thousand people and seized a large number of livestock"(citation: история чечни в xix-xx веках 2005), and historian z. kh. ibragimova records the practice beyond the orders: "the soldiers looted with impunity in the occupied territories, and also ravaged crops, took horses away from the population, slaughtered livestock even without any need for it"(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The troops that occupied Chechen territories during the suppression of the 1877 uprising plundered the population. During the destruction of the five villages of Cheberloy the detachment of Nakashidze "arrested up to a thousand people and seized a large number of livestock"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>, and historian Z. Kh. Ibragimova records the practice beyond the orders: "the soldiers looted with impunity in the occupied territories, and also ravaged crops, took horses away from the population, slaughtered livestock even without any need for it"<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="pillage in 1920 the red army looted the chechen villages where it was stationed: the units quartered in chechnya, historians ya. z. akhmadov and e. kh. khasmagomadov write, "received almost no property or food allowance", which pushed them into "self-supply" - "...the red army not only ran riot, but took away grain, cattle and so forth, terrorizing the population with senseless killings"(citation: история чечни в xix-xx веках 2005). in the summer of 1920, in tsentoroy, the chechens routed a unit of the caucasus labor army "engaged in outright plunder"(citation: история чечни в xix-xx веках 2005). the property of the killed was taken too: during the disarmament of may 1922 "up to 30 'bandits' were captured and shot, and their property was confiscated by the authorities"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0013"
+             data-tools="S0010"
+             data-date="1920-04-03 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1920</div>
+<div><a href="/en/campaigns/C1176">C1176</a> Sovietization of Chechnya: revkoms in place of Soviets, punitive operations and Cheka executions (1920-1924)</div><div><a href="/en/groups/G0013">G0013</a> Soviet Russia (RSFSR)</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In 1920 the Red Army looted the Chechen villages where it was stationed: the units quartered in Chechnya, historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write, "received almost no property or food allowance", which pushed them into "self-supply" - "...the Red Army not only ran riot, but took away grain, cattle and so forth, terrorizing the population with senseless killings"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. In the summer of 1920, in Tsentoroy, the Chechens routed a unit of the Caucasus Labor Army "engaged in outright plunder"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. The property of the killed was taken too: during the disarmament of May 1922 "up to 30 'bandits' were captured and shot, and their property was confiscated by the authorities"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Ukrainians",
+"russia/nokhchi": "Nokhchi (Chechens)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank">
+                        Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank">
+                        Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://loveread.ec/book-comments.php?book=75379" target="_blank">
+                        Потто В.. (2006). Кавказская война. В 5 томах. Том 5. Время Паскевича, или Бунт Чечни.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1886). Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="8.0">
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1880). Погром Чечни (1852).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/techniques/T0032/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0032/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0032/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0032/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0032/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Legal Segregation of the Population, technique T0032 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/techniques/T0032/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Legal Segregation of the Population, technique T0032 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in August 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/techniques/">Techniques</a></li>
+  <li class="breadcrumb-item">Legal Segregation of the Population</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Legal Segregation of the Population
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Aggressors may introduce discriminatory norms at the legislative level that restrict the basic rights of the Indigenous people compared with representatives of the metropole. This technique is used for the institutional consolidation of control. Creating artificial barriers in access to education, government positions, property ownership, or freedom of movement (including the creation of zones of artificial settlement) allows the colonizer to marginalize the local population and fix its subordinate status in the social hierarchy being constructed.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0032
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Sub-techniques:&nbsp;</span>
+                    No sub-techniques
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The tactical goals achieved by using the technique or sub-technique">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Tactic:</span>
+                        <a href="/en/tactics/TA0005">Persistence</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The peoples against whom the technique or sub-technique was used">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Peoples:&nbsp;</span>Nokhchi (Chechens), Ukrainians
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Contributors:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Version:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Created:&nbsp;</span>21 April 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>9 August 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/T0032" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Procedures Carried Out</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="legal segregation of the population the legal enserfment of ukrainian peasants by catherine ii's decree of may 3, 1783, depriving them of the right of free movement: "for the certain and reliable collection of treasury revenues in the viceroyalties of kyiv, chernihiv, and novhorod-siverskyi and for the prevention of any flights… each of the villagers is to remain in the place and station where he is registered by the current last revision"(citation: указ екатерины ii о податях 1783)."
+             data-platforms="Ukrainians"
+             data-groups="G0009"
+             data-tools="S0024"
+             data-date="1781-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1781</div>
+<div><a href="/en/campaigns/C0034">C0034</a> Administrative Dismantling and Enserfment of the Left Bank (1781–1786)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0024">S0024</a> Police Apparatus</div>            </div>
+            <div class="proc-desc">
+                        <p>The legal enserfment of Ukrainian peasants by Catherine II's decree of May 3, 1783, depriving them of the right of free movement: "For the certain and reliable collection of treasury revenues in the viceroyalties of Kyiv, Chernihiv, and Novhorod-Siverskyi and for the prevention of any flights… each of the villagers is to remain in the place and station where he is registered by the current last revision"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Екатерина II (ПСЗРИ, т. XXI, № 15724, 3 мая 1783). (1783). Указ Екатерины II о податях."data-reference="Указ Екатерины II о податях 1783"><sup><a href="https://psz.ri.org.ru/I/XXI.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="legal segregation of the population the introduction of territorial discrimination: by the decree of 1791, the jewish population's right to burgher and merchant status was confined to specific viceroyalties – ekaterinoslav and taurida(citation: указ о правах гражданства евреев 1791) – the legal foundation of the future pale of settlement, which confined the area of residence and economic activity to the colonized governorates."
+             data-platforms="Ukrainians"
+             data-groups="G0009"
+             data-tools="S0024"
+             data-date="1791-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1791</div>
+<div><a href="/en/campaigns/C0036">C0036</a> Establishment of the "Pale of Settlement" (1791)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0024">S0024</a> Police Apparatus</div>            </div>
+            <div class="proc-desc">
+                        <p>The introduction of territorial discrimination: by the decree of 1791, the Jewish population's right to burgher and merchant status was confined to specific viceroyalties – Ekaterinoslav and Taurida<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Екатерина II (ПСЗРИ, т. XXIII, № 17006, 23 декабря 1791). (1791). Указ о правах гражданства евреев."data-reference="Указ о правах гражданства евреев 1791"><sup><a href="https://psz.ri.org.ru/I/XXIII.pdf" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> – the legal foundation of the future Pale of Settlement, which confined the area of residence and economic activity to the colonized governorates.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="legal segregation of the population by orders for the terek oblast of 15 august 1890 and march 1897 the russian empire forbade the chechen village communities "to enter into any agreements with mining industrialists" without the government's permission - "the guilty, in the person of village officials, were brought to account, and suits were brought in the courts to annul the concluded contracts"(citation: мир чеченцев. xix век 2007). the ground of the ban is formulated by historian z. kh. ibragimova: "the aul communities were deprived of the right to lease out oil-bearing plots - the land was granted to them not by right of property but only into use with the right of surface working; its subsoil was considered the property of the treasury"(citation: мир чеченцев. xix век 2007). when the ministry of agriculture confirmed rules that allowed peasant communities to lease out their own land for the working of the subsoil, the head of the terek oblast, general kakhanov, in 1894 "categorically objected to the extension to the chechen lands" of these rules - and demanded that, even if the communities' rights were recognized, the resolution on leasing the land be confirmed by the uchastok chief and a third of the income go "to pay the podymnaya tax of the communities concerned"(citation: история чечни в xix-xx веках 2005). for the cossacks the opposite rule was in force: from 1891, when subsoil passed to the treasury, stanitsas were entitled to replacement land or compensation - "for the chechen communities no reserve land allotments were provided by the state. still less was there any question of material reward"(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1845-02-16 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">February 1845</div>
+<div><a href="/en/campaigns/C1173">C1173</a> Colonial oil: the seizure of the Grozny subsoil and the rent of the Cossack host (1845-1917)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>By orders for the Terek oblast of 15 August 1890 and March 1897 the Russian Empire forbade the Chechen village communities "to enter into any agreements with mining industrialists" without the government's permission - "The guilty, in the person of village officials, were brought to account, and suits were brought in the courts to annul the concluded contracts"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The ground of the ban is formulated by historian Z. Kh. Ibragimova: "The aul communities were deprived of the right to lease out oil-bearing plots - the land was granted to them not by right of property but only into use with the right of surface working; its subsoil was considered the property of the treasury"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. When the Ministry of Agriculture confirmed rules that allowed peasant communities to lease out their own land for the working of the subsoil, the head of the Terek oblast, General Kakhanov, in 1894 "categorically objected to the extension to the Chechen lands" of these rules - and demanded that, even if the communities' rights were recognized, the resolution on leasing the land be confirmed by the uchastok chief and a third of the income go "to pay the podymnaya tax of the communities concerned"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. For the Cossacks the opposite rule was in force: from 1891, when subsoil passed to the treasury, stanitsas were entitled to replacement land or compensation - "For the Chechen communities no reserve land allotments were provided by the state. Still less was there any question of material reward"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="legal segregation of the population from 1882 "especially important" cases in which the accused were highlanders were transferred to the field court-martial; in 1893, with the emperor's permission, a significant share of highlanders' criminal cases was withdrawn from the general civil courts - into whose jurisdiction these cases passed, the source does not specify(citation: царское прошлое чеченцев. власть и общество 2009). punishment could also be imposed without any court: the head of the oblast jailed highlanders for up to one month at his personal discretion, and imposed penalties on aul communities for harbouring(citation: царское прошлое чеченцев. власть и общество 2009); on 19 november 1893 the rules of administrative deportation to eastern siberia on accusation or suspicion of stealing horses and livestock were extended to the terek oblast(citation: царское прошлое чеченцев. власть и общество 2009), and according to historians ya. z. akhmadov and e. kh. khasmagomadov the decision on administrative exile for a term of up to five years was taken by the commander of the caucasus army, and the place of exile was chechen island in the caspian(citation: история чечни в xix-xx веках 2005). the 1894 "temporary regulation on measures to restrain the native population of the terek oblast from 'predation'" - its draft was submitted for approval by the head of the terek oblast, general kakhanov - according to historian z. kh. ibragimova, wrote the collective liability of the village community for committed crimes into law(citation: царское прошлое чеченцев. власть и общество 2009); historians ya. z. akhmadov and e. kh. khasmagomadov record the mechanics: mountain villages paid for stolen livestock "if the tracks of the stolen livestock turned out to be lost near the given village", while "the possibility that the thieves might not be highlanders at all was completely ignored"(citation: история чечни в xix-xx веках 2005). indigenous inhabitants were barred from holding the posts of pristav and okrug head and from serving as justices of the peace(citation: царское прошлое чеченцев. власть и общество 2009); the 1888 regulation on the administration of the terek and kuban oblasts established, in the words of historian z. kh. ibragimova, "a narrowly caste-based military-cossack administration, without the participation not only of representatives of the mountain peoples but of the non-cossack element as well... the highlanders were placed outside the operation of the general laws"(citation: царское прошлое чеченцев. власть и общество 2009). in the 1890s the administration, by a separate order, forbade cossacks to keep kunachestvo with highlanders (kunachestvo - sworn brotherhood, an institution of friendship between households)(citation: царское прошлое чеченцев. власть и общество 2009). service was segregated too: the "political unreliability" of the caucasus muslims led the authorities to give up forming line units from them, and from 1886, by order of the minister of war, recruits from the terek oblast were assigned only to troops stationed in the caucasus(citation: царское прошлое чеченцев. власть и общество 2009). zemstvos were never introduced in the oblast at all; the proposal on zemstvo institutions in the terek oblast, submitted to the state duma in 1914, was not adopted before the revolution(citation: царское прошлое чеченцев. власть и общество 2009)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1858</div>
+<div><a href="/en/campaigns/C1170">C1170</a> "Military-Popular Administration": the Colonial Regime of the Terek Oblast (1858-1917)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>From 1882 "especially important" cases in which the accused were highlanders were transferred to the field court-martial; in 1893, with the emperor's permission, a significant share of highlanders' criminal cases was withdrawn from the general civil courts - into whose jurisdiction these cases passed, the source does not specify<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Punishment could also be imposed without any court: the head of the oblast jailed highlanders for up to one month at his personal discretion, and imposed penalties on aul communities for harbouring<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; on 19 November 1893 the rules of administrative deportation to Eastern Siberia on accusation or suspicion of stealing horses and livestock were extended to the Terek oblast<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, and according to historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov the decision on administrative exile for a term of up to five years was taken by the commander of the Caucasus Army, and the place of exile was Chechen Island in the Caspian<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The 1894 "Temporary Regulation on Measures to Restrain the Native Population of the Terek Oblast from 'Predation'" - its draft was submitted for approval by the head of the Terek oblast, general Kakhanov - according to historian Z. Kh. Ibragimova, wrote the collective liability of the village community for committed crimes into law<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov record the mechanics: mountain villages paid for stolen livestock "if the tracks of the stolen livestock turned out to be lost near the given village", while "the possibility that the thieves might not be highlanders at all was completely ignored"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Indigenous inhabitants were barred from holding the posts of pristav and okrug head and from serving as justices of the peace<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; the 1888 regulation on the administration of the Terek and Kuban oblasts established, in the words of historian Z. Kh. Ibragimova, "a narrowly caste-based military-Cossack administration, without the participation not only of representatives of the mountain peoples but of the non-Cossack element as well... the highlanders were placed outside the operation of the general laws"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. In the 1890s the administration, by a separate order, forbade Cossacks to keep kunachestvo with highlanders (kunachestvo - sworn brotherhood, an institution of friendship between households)<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Service was segregated too: the "political unreliability" of the Caucasus Muslims led the authorities to give up forming line units from them, and from 1886, by order of the Minister of War, recruits from the Terek oblast were assigned only to troops stationed in the Caucasus<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Zemstvos were never introduced in the oblast at all; the proposal on zemstvo institutions in the Terek oblast, submitted to the State Duma in 1914, was not adopted before the revolution<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="legal segregation of the population the allotment norm was written out by estate and origin: "cossacks are allotted 30 desiatinas (a desiatina is a little over a hectare) per soul, while natives get no more than 2-5 desiatinas"(citation: мир чеченцев. xix век 2007); the gap was also entrenched by the general rules of allotment: by the count of the newspaper kazachy vestnik for 1884, on which historian z. kh. ibragimova relies, russian residents of the caucasus krai received "24–30 desiatinas of land allotment per soul, whereas natives got 12–18 desiatinas per dym, which on average numbered 5 men" (a dym is a hearth, a household)(citation: мир чеченцев. xix век 2007). in 1886 in the grozny okrug "an average chechen family with many children... had 11 desiatinas of land, while the average cossack family owned more than 92 desiatinas"(citation: история чечни в xix-xx веках 2005). by order no. 418 of the viceroy of 1863, "the right to buy land plots from the local population was received by russian officers and officials of the oblast administration"(citation: мир чеченцев. xix век 2007) - an ordinary chechen could not be a buyer of that same category of land; the rules of 1 march 1902 instituted the buying-up of privately owned lands "for the needs of the caucasus cossack hosts, at the expense of their capital funds"(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1860-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1860</div>
+<div><a href="/en/campaigns/C1171">C1171</a> Land plunder: the colonial repartition of land, land hunger and Cossack colonization of the Terek oblast (1860-1917)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The allotment norm was written out by estate and origin: "Cossacks are allotted 30 desiatinas (a desiatina is a little over a hectare) per soul, while natives get no more than 2-5 desiatinas"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; the gap was also entrenched by the general rules of allotment: by the count of the newspaper Kazachy Vestnik for 1884, on which historian Z. Kh. Ibragimova relies, Russian residents of the Caucasus krai received "24–30 desiatinas of land allotment per soul, whereas natives got 12–18 desiatinas per dym, which on average numbered 5 men" (a dym is a hearth, a household)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. In 1886 in the Grozny okrug "an average Chechen family with many children... had 11 desiatinas of land, while the average Cossack family owned more than 92 desiatinas"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. By Order No. 418 of the viceroy of 1863, "the right to buy land plots from the local population was received by Russian officers and officials of the oblast administration"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span> - an ordinary Chechen could not be a buyer of that same category of land; the rules of 1 March 1902 instituted the buying-up of privately owned lands "for the needs of the Caucasus Cossack hosts, at the expense of their capital funds"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="legal segregation of the population on 24 october 1905 the russian empire imposed martial law "in the grozny, vedeno and khasav-yurt okrugs of the terek oblast, that is, in the whole of chechnya", and on 23 december extended it to the entire oblast(citation: история чечни в xix-xx веках 2005). the weapons ban "applied exclusively to the highlanders and the out-of-town settlers and did not extend to the cossacks. moreover... the viceroy of the caucasus ordered that 10 thousand single-shot berdan rifles and a million cartridges be distributed to the cossacks of the terek oblast free of charge"(citation: история чечни в xix-xx веках 2005). on 22 june 1909 martial law was lifted - but "in the terek oblast a 'state of reinforced protection' was introduced at the same time", whose ordinances "effectively reduced to 'nought' the democratic rights and freedoms 'granted' by the imperial decree of 17 october 1905"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">October 1905</div>
+<div><a href="/en/campaigns/C1175">C1175</a> Collective punishment in the abrek era: fines, quartering of troops and exile for Zelimkhan (1905-1913)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>On 24 October 1905 the Russian Empire imposed martial law "in the Grozny, Vedeno and Khasav-Yurt okrugs of the Terek oblast, that is, in the whole of Chechnya", and on 23 December extended it to the entire oblast<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The weapons ban "applied exclusively to the highlanders and the out-of-town settlers and did not extend to the Cossacks. Moreover... the Viceroy of the Caucasus ordered that 10 thousand single-shot Berdan rifles and a million cartridges be distributed to the Cossacks of the Terek oblast free of charge"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. On 22 June 1909 martial law was lifted - but "in the Terek oblast a 'state of reinforced protection' was introduced at the same time", whose ordinances "effectively reduced to 'nought' the democratic rights and freedoms 'granted' by the imperial decree of 17 October 1905"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="legal segregation of the population the official classing of the indigenous population as aliens: stolypin prescribed to the governors to refuse the registration of "any alien societies whatsoever, including ukrainian and jewish ones, regardless of the aims they pursue"(citation: столыпинский циркуляр 1910)."
+             data-platforms="Ukrainians"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1906-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1906</div>
+<div><a href="/en/campaigns/C0050">C0050</a> Destruction of Ukrainian Societies and Segregation (1906–1910)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0008">S0008</a> Government</div>            </div>
+            <div class="proc-desc">
+                        <p>The official classing of the indigenous population as aliens: Stolypin prescribed to the governors to refuse the registration of "any alien societies whatsoever, including Ukrainian and Jewish ones, regardless of the aims they pursue"<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="П. А. Столыпин, председатель Совета министров РИ (20.01.1910). (1910). Столыпинский циркуляр."data-reference="Столыпинский циркуляр 1910"><sup><a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%BE%D0%BB%D1%8B%D0%BF%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%86%D0%B8%D1%80%D0%BA%D1%83%D0%BB%D1%8F%D1%80" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="legal segregation of the population on 13 august 1914 the russian empire placed the terek oblast under the regime of "extraordinary security" - an imperial regime that handed the residents over to the extrajudicial powers of the administration - and then the oblast administration issued an order "on the protection of tranquility at the enterprises", under which the fate of "violators of tranquility" was decided by military courts(citation: история чечни в xix-xx веках 2005). how this worked can be seen from the strike of may 1916 at the grozny oil fields: the administration brought armed cossacks onto the fields, they arrested 13 workers, and, as historians ya. z. akhmadov and e. kh. khasmagomadov remark, "all those arrested turned out to be muslims"(citation: история чечни в xix-xx веках 2005). the police arrested nine more workers on the first day of the strike - for sounding the alarm whistles of the plants(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1914-08-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">August 1914</div>
+<div><a href="/en/campaigns/C1189">C1189</a> First World War in Chechnya: removal of the "unreliable element" into the "Savage Division", extraordinary security and mobilization of strikers (1914-1917)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>On 13 August 1914 the Russian Empire placed the Terek oblast under the regime of "extraordinary security" - an imperial regime that handed the residents over to the extrajudicial powers of the administration - and then the oblast administration issued an order "on the protection of tranquility at the enterprises", under which the fate of "violators of tranquility" was decided by military courts<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. How this worked can be seen from the strike of May 1916 at the Grozny oil fields: the administration brought armed Cossacks onto the fields, they arrested 13 workers, and, as historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov remark, "all those arrested turned out to be Muslims"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The police arrested nine more workers on the first day of the strike - for sounding the alarm whistles of the plants<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Ukrainians",
+"russia/nokhchi": "Nokhchi (Chechens)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://psz.ri.org.ru/I/XXI.pdf" target="_blank">
+                        Екатерина II (ПСЗРИ, т. XXI, № 15724, 3 мая 1783). (1783). Указ Екатерины II о податях.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://psz.ri.org.ru/I/XXIII.pdf" target="_blank">
+                        Екатерина II (ПСЗРИ, т. XXIII, № 17006, 23 декабря 1791). (1791). Указ о правах гражданства евреев.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank">
+                        Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%BE%D0%BB%D1%8B%D0%BF%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%86%D0%B8%D1%80%D0%BA%D1%83%D0%BB%D1%8F%D1%80" target="_blank">
+                        П. А. Столыпин, председатель Совета министров РИ (20.01.1910). (1910). Столыпинский циркуляр.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

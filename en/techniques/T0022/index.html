@@ -1,0 +1,1170 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/techniques/T0022/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0022/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0022/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0022/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0022/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Terror, technique T0022 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/techniques/T0022/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Terror, technique T0022 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in August 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/techniques/">Techniques</a></li>
+  <li class="breadcrumb-item">Terror</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Terror
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Aggressors may use systemic, demonstrative, and large-scale violence against the local population. This form of radical pressure is used to neutralize defenses in the active phase of a conflict and for the subsequent consolidation of the occupation regime. Carrying out mass extrajudicial executions, public reprisals, and torture is aimed at the total psychological breaking of the colonized society's will, the physical suppression of resistance, and coercion into unconditional submission.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0022
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Sub-techniques:&nbsp;</span>
+                    No sub-techniques
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The tactical goals achieved by using the technique or sub-technique">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Tactics:</span>
+                        <a href="/en/tactics/TA0005">Persistence</a>,                        <a href="/en/tactics/TA0004">Defense Impairment</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The peoples against whom the technique or sub-technique was used">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Peoples:&nbsp;</span>Nokhchi (Chechens), Ukrainians
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Contributors:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Version:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Created:&nbsp;</span>21 April 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>9 August 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/T0022" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Procedures Carried Out</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="terror the occupation administration of tersky town employed mass terrorizing violence: in a petition to tsar mikhail fyodorovich, the kabardian prince sunchaley yanglychevich cherkassky reported that the military detachments «burned down and utterly ruined many shibut and kalkan and erokhan and michkiz kabaks»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997) and «slew many peo[ple]»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1617-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1617</div>
+<div><a href="/en/campaigns/C1120">C1120</a> Punitive campaign and the devastation of the Nokhchi mountain communities (1617–1618)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>The occupation administration of Tersky Town employed mass terrorizing violence: in a petition to Tsar Mikhail Fyodorovich, the Kabardian prince Sunchaley Yanglychevich Cherkassky reported that the military detachments «burned down and utterly ruined many Shibut and Kalkan and Erokhan and Michkiz kabaks»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span> and «slew many peo[ple]»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the government of the tsardom of muscovy used demonstrative brutal executions to psychologically break the indigenous population: historian ya. z. akhmadov records that the captured leader of the uprising was "hanged by a rib on a hook in accordance with peter i's order to p.m. apraksin ('carry out a cruel death penalty')"(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0008"
+             data-tools="S0008"
+             data-date="1708-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1708</div>
+<div><a href="/en/campaigns/C1126">C1126</a> Suppression of the Uprising of Murat Kuchukov and Terror against the Indigenous Population (1708)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0008">S0008</a> Government</div>            </div>
+            <div class="proc-desc">
+                        <p>The government of the Tsardom of Muscovy used demonstrative brutal executions to psychologically break the Indigenous population: historian Ya. Z. Akhmadov records that the captured leader of the uprising was "hanged by a rib on a hook in accordance with Peter I's order to P.M. Apraksin ('carry out a cruel death penalty')"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the demonstrative destruction of the city as an act of intimidation for the rest of the country. peter i personally gave the order: "and baturyn, as a sign to the traitors (since they resisted), burn down entirely as an example to others"(citation: мазепа 2007)(citation: иван мазепа и российская империя. история «предательства» 2011). hrushevsky: the muscovite army, having taken baturyn "through the treachery of one man," "dealt terribly with the populace: the people were slaughtered, the town razed to the ground, the commanders given over to terrible tortures"(citation: ілюстрована історія україни 1921)."
+             data-platforms="Ukrainians"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1708-10-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">October 1708</div>
+<div><a href="/en/campaigns/C0012">C0012</a> Mazepa's Defection to Sweden and the Baturyn Massacre (1708)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The demonstrative destruction of the city as an act of intimidation for the rest of the country. Peter I personally gave the order: "and Baturyn, as a sign to the traitors (since they resisted), burn down entirely as an example to others"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Hrushevsky: the Muscovite army, having taken Baturyn "through the treachery of one man," "dealt terribly with the populace: the people were slaughtered, the town razed to the ground, the commanders given over to terrible tortures"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України."data-reference="Ілюстрована історія України 1921"><sup><a href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror intimidation of the population by an exemplary reprisal against an entire town: during the capture of baturyn "in the bloody massacre and fire a multitude of the town's defenders and inhabitants perished"(citation: иван мазепа и российская империя. история «предательства» 2011), "the town was razed to the ground and its inhabitants annihilated," and the returning residents were charged a special tax "for treason"(citation: енциклопедія історії україни: т. 1 2003). the devastation of the hetman capital also destroyed the state archive of the hetmanate, which suffered "during the storming of baturyn castle by a. menshikov in 1708"(citation: енциклопедія історії україни: т. 1 2003)."
+             data-platforms="Ukrainians"
+             data-groups="G0008"
+             data-tools="S0017"
+             data-date="1708-11-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">November 1708</div>
+<div><a href="/en/campaigns/C0013">C0013</a> The Lebedyn Executions (1708–1709)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>Intimidation of the population by an exemplary reprisal against an entire town: during the capture of Baturyn "in the bloody massacre and fire a multitude of the town's defenders and inhabitants perished"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>, "the town was razed to the ground and its inhabitants annihilated," and the returning residents were charged a special tax "for treason"<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1."data-reference="Енциклопедія історії України: Т. 1 2003"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. The devastation of the hetman capital also destroyed the state archive of the Hetmanate, which suffered "during the storming of Baturyn castle by A. Menshikov in 1708"<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1."data-reference="Енциклопедія історії України: Т. 1 2003"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror public executions of prisoners as intimidation: "cossacks and officers were hanged, their heads were cut off, and the graves of old zaporozhians were desecrated"(citation: мазепа 2007). the head of the acting otaman was demonstratively sent to zaporizhzhia(citation: мазепа 2007)."
+             data-platforms="Ukrainians"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1709-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1709</div>
+<div><a href="/en/campaigns/C0014">C0014</a> Liquidation of the Zaporozhian Sich (1709)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Public executions of prisoners as intimidation: "Cossacks and officers were hanged, their heads were cut off, and the graves of old Zaporozhians were desecrated"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The head of the acting otaman was demonstratively sent to Zaporizhzhia<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror mass executions of captured cossacks after the capitulation at perevolochna and poltava for the final intimidation of the supporters of autonomy(citation: иван мазепа и российская империя. история «предательства» 2011)."
+             data-platforms="Ukrainians"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1709-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1709</div>
+<div><a href="/en/campaigns/C0015">C0015</a> The Battle of Poltava and the Final Defeat of the Hetmanate (1709)</div><div><a href="/en/groups/G0008">G0008</a> Tsardom of Muscovy</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Mass executions of captured Cossacks after the capitulation at Perevolochna and Poltava for the final intimidation of the supporters of autonomy<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the regular army of the russian empire instilled submission through fear of the demonstrative destruction of families. imperial general yermolov, in his “address” to the chechens, declared: “the slightest disobedience… and your auls will be destroyed, your families sold off into the mountains, the amanats hanged, villages exterminated by fire, women and children slaughtered”(citation: чеченцы в русско-кавказской войне 1998)(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1817</div>
+<div><a href="/en/campaigns/C1021">C1021</a> Destruction of the Nokhchi Villages along the Sunzha and Erection of the Groznaya Fortress in Their Place (1817–1818)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The Regular Army of the Russian Empire instilled submission through fear of the demonstrative destruction of families. Imperial general Yermolov, in his "Address" to the Chechens, declared: "The slightest disobedience… and your auls will be destroyed, your families sold off into the mountains, the amanats hanged, villages exterminated by fire, women and children slaughtered"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span><span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the russian empire destroyed a single village demonstratively, in order to terrorize the rest of the nokhchi into abandoning their lands. imperial historian potto writes that general yermolov decided to clear the kumyk plain, “forcing the chechens to withdraw… beyond the kachkalyk mountain ridge,” and they could be compelled to do so “only by an example of terror,” and the aul of dadi-yurt “was chosen as the expiatory sacrifice”(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007). yermolov himself admits this calculation in his “notes”: “only an example of terror can compel them to remove their wives,” and after the destruction of the aul “the example of dadan-yurt spread terror everywhere”(citation: записки а.п. ермолова. 1798-1826 гг. 1991)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1819-07-18 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1819</div>
+<div><a href="/en/campaigns/C1143">C1143</a> Demonstrative destruction of the aul of Dadi-Yurt and the erection of the Vnezapnaya fortress to force the Nokhchi off the Kumyk plain (1819)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The Russian Empire destroyed a single village demonstratively, in order to terrorize the rest of the Nokhchi into abandoning their lands. Imperial historian Potto writes that general Yermolov decided to clear the Kumyk plain, "forcing the Chechens to withdraw… beyond the Kachkalyk mountain ridge," and they could be compelled to do so "only by an example of terror," and the aul of Dadi-Yurt "was chosen as the expiatory sacrifice"<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Yermolov himself admits this calculation in his "Notes": "only an example of terror can compel them to remove their wives," and after the destruction of the aul "the example of Dadan-Yurt spread terror everywhere"<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the russian empire exterminated people for show in order to terrorize the highlanders. historian d. a. khozhaev writes that at the gerzel-aul fortification «the tsarist generals decided to stage a demonstrative execution to intimidate the highlanders», for which they summoned «318 respected men from the aksai (kumyk and chechen) villages», whom general lisanevich, «calling out those assembled one by one… threatened and subjected to insults»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1825-07-18 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1825</div>
+<div><a href="/en/campaigns/C1147">C1147</a> Mass Killing of Elders Summoned to a Demonstrative Execution at Gerzel-Aul (1825)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The Russian Empire exterminated people for show in order to terrorize the highlanders. Historian D. A. Khozhaev writes that at the Gerzel-aul fortification «the tsarist generals decided to stage a demonstrative execution to intimidate the highlanders», for which they summoned «318 respected men from the Aksai (Kumyk and Chechen) villages», whom General Lisanevich, «calling out those assembled one by one… threatened and subjected to insults»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror on august 23, 1832, during the storming of germenchuk, the troops of corps commander rosen burned alive about 60 encircled defenders of the village, led by mullah abdurakhman, who had refused to surrender. rosen reported to minister of war chernyshev: a group “numbering about 60 men ... led by ... mullah abdur-rakhman, was cut off and surrounded by us in one large house”(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). the imperial historian volkonsky, writing on the basis of rosen’s dispatches, acknowledges the method of the massacre: “major general volkhovsky ordered burning firewood and hay to be thrown into the chimneys. this had its effect... while the greater part, together with mullah abdurakhman, perished in the flames, continuing to chant verses of the quran”(citation: война на восточном кавказе с 1824 по 1834 г. в связи с мюридизмом 1886). the demonstrative burning of people alive served to terrorize all of chechnya; volkonsky acknowledges the calculation: the destruction of germenchuk “was bound to have the most crushing effect on the chechens”(citation: война на восточном кавказе с 1824 по 1834 г. в связи с мюридизмом 1886)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1832-08-22 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">August 1832</div>
+<div><a href="/en/campaigns/C1155">C1155</a> Extermination of 61 settlements of lowland Chechnya and mountainous Ichkeria by Rosen's troops, burning alive of the defenders of Germenchuk, and extortion of hostages from 80 villages (1832)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>On August 23, 1832, during the storming of Germenchuk, the troops of corps commander Rosen burned alive about 60 encircled defenders of the village, led by Mullah Abdurakhman, who had refused to surrender. Rosen reported to Minister of War Chernyshev: a group "numbering about 60 men ... led by ... Mullah Abdur-Rakhman, was cut off and surrounded by us in one large house"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. The imperial historian Volkonsky, writing on the basis of Rosen’s dispatches, acknowledges the method of the massacre: "Major General Volkhovsky ordered burning firewood and hay to be thrown into the chimneys. This had its effect... while the greater part, together with Mullah Abdurakhman, perished in the flames, continuing to chant verses of the Quran"<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Н. А. Волконский. (1886). Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом."data-reference="Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом 1886"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. The demonstrative burning of people alive served to terrorize all of Chechnya; Volkonsky acknowledges the calculation: the destruction of Germenchuk "was bound to have the most crushing effect on the Chechens"<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Н. А. Волконский. (1886). Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом."data-reference="Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом 1886"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the method of the amanat-and-tribute system of pullo, commander of the left flank of the caucasus line (a chain of imperial fortifications on the land of the nokhchi), was deliberately induced fear. pullo described it plainly in a memorandum of 1840: "by threatening all the unsubmissive communities with the annihilation of their property, i instilled in them such fear, brought them to such a state, that one after another they began to submit. from 1834 to 1840 the auls of the michik people, the aukhovites and the salatavians that had broken away, of greater and lesser chechnya, and the never-subjugated villages of the ichkerians and the gumbetovians recognized the authority of the russian government" (the listed names are highland communities of chechnya and neighboring dagestan)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). fear was not a side effect but a declared instrument: pullo credits the submission of the communities as the direct result of threats of annihilation."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">September 1836</div>
+<div><a href="/en/campaigns/C1163">C1163</a> The amanat-and-tribute system of colonel Pullo in the seized auls of Chechnya (1836-1840)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The method of the amanat-and-tribute system of Pullo, commander of the left flank of the Caucasus Line (a chain of imperial fortifications on the land of the Nokhchi), was deliberately induced fear. Pullo described it plainly in a memorandum of 1840: "by threatening all the unsubmissive communities with the annihilation of their property, I instilled in them such fear, brought them to such a state, that one after another they began to submit. From 1834 to 1840 the auls of the Michik people, the Aukhovites and the Salatavians that had broken away, of Greater and Lesser Chechnya, and the never-subjugated villages of the Ichkerians and the Gumbetovians recognized the authority of the Russian government" (the listed names are highland communities of Chechnya and neighboring Dagestan)<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. Fear was not a side effect but a declared instrument: Pullo credits the submission of the communities as the direct result of threats of annihilation.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror feze's spring tour across chechnya (february-april 1837) was built on demonstrative violence converted into submission. rozen's report to minister of war chernyshev of 4 march 1837 records the result of the annihilation of the auls: "the chechens, gripped by fear from the preceding actions... fell into great despondency"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881) - after which the oaths followed one after another. feze himself reported the calculation to general velyaminov on 15 march 1837: he acted "with the intention of making use, as far as possible, of the panic fear" that had gripped "the tavlins and the andians" after the battle at avtury(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959); rozen's report of 11 march uses the same word for the demand of submission from the andians - "wishing to make use of the fear"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). fear drove people off their land: after the march sweeps through the forests the inhabitants, according to the report of 12 april, "were compelled by these searches to withdraw into the distant mountains"(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1837-02-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">February 1837</div>
+<div><a href="/en/campaigns/C1161">C1161</a> Coercion of Chechnya into Oaths by Feze's Spring Tour: Amanats from Communities Coerced into the Oath, Destruction of Auls along the Dzhalka, a Livestock Fine (February-April 1837)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Feze's spring tour across Chechnya (February-April 1837) was built on demonstrative violence converted into submission. Rozen's report to Minister of War Chernyshev of 4 March 1837 records the result of the annihilation of the auls: "the Chechens, gripped by fear from the preceding actions... fell into great despondency"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span> - after which the oaths followed one after another. Feze himself reported the calculation to General Velyaminov on 15 March 1837: he acted "with the intention of making use, as far as possible, of the panic fear" that had gripped "the Tavlins and the Andians" after the battle at Avtury<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>; Rozen's report of 11 March uses the same word for the demand of submission from the Andians - "wishing to make use of the fear"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Fear drove people off their land: after the March sweeps through the forests the inhabitants, according to the report of 12 April, "were compelled by these searches to withdraw into the distant mountains"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the invasion of ichkeria (mountainous south-eastern chechnya) by imperial troops in may 1839 opened with a public threat of annihilation. general grabbe, commander of the troops of the caucasus line (the chain of imperial fortifications on the land of the nokhchi), in a proclamation "to the ichkerian people" threatened: "those auls which give refuge to tashev-hadji will all be annihilated to their foundations, and your children will long remember how all instigators are punished" (tashu-hadji - a sheikh, in 1834-1836 the imam of chechnya, spiritual and military leader of the chechen resistance)(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1838-11-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">November 1838</div>
+<div><a href="/en/campaigns/C1164">C1164</a> Forcing Chechnya into submission after the fall of Akhulgo and suppression of the general uprising of 1840 (1838-1840)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The invasion of Ichkeria (mountainous south-eastern Chechnya) by imperial troops in May 1839 opened with a public threat of annihilation. General Grabbe, commander of the troops of the Caucasus Line (the chain of imperial fortifications on the land of the Nokhchi), in a proclamation "to the Ichkerian people" threatened: "Those auls which give refuge to Tashev-hadji will all be annihilated to their foundations, and your children will long remember how all instigators are punished" (Tashu-Hadji - a sheikh, in 1834-1836 the imam of Chechnya, spiritual and military leader of the Chechen resistance)<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror general neidhardt, head of the imperial troops in the caucasus, in an instruction to the commander of the nazran detachment of 5 april 1844 prescribed fear as the goal of the troops' actions: "by the simultaneous appearance and actions of detachments from different sides, along the whole extent of the theatres of revolt, to spread fear over the entire population, and, keeping the chechens in their homes, to prevent them from giving help to the lezgin tribes" (lezgin tribes - in the imperial lexicon, the highlanders of dagestan)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). the population's fear here is not a side effect of military operations but their declared goal, set for the troops by written order."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">June 1840</div>
+<div><a href="/en/campaigns/C1165">C1165</a> "Constriction of Chechnya from all sides": blockade, secret war, punitive expeditions and the Sunzha Line (1840-1846)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>General Neidhardt, head of the imperial troops in the Caucasus, in an instruction to the commander of the Nazran detachment of 5 April 1844 prescribed fear as the goal of the troops' actions: "by the simultaneous appearance and actions of detachments from different sides, along the whole extent of the theatres of revolt, to spread fear over the entire population, and, keeping the Chechens in their homes, to prevent them from giving help to the Lezgin tribes" (Lezgin tribes - in the imperial lexicon, the highlanders of Dagestan)<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. The population's fear here is not a side effect of military operations but their declared goal, set for the troops by written order.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror massacre as a means of intimidation was a conscious practice of the period - and the empire gave awards for it. historian n. i. pokrovsky writes of the strike on the hamlet of naib duba (a deputy of imam shamil, leader of the highlanders' resistance to the russian conquest): "the russian command did not renounce separate short strikes aimed at terrifying the chechens. the object of one such strike was the hamlet of naib duba... what took place was an outright massacre"(citation: кавказские войны и имамат шамиля 2009). for this massacre the empire handed out awards: imperial officer poltoratsky, a participant in the massacre, cites the order - "for the excellent courage and bravery shown in the action at the annihilation of the aul of duba, such-and-such are promoted, and from ensign to second lieutenant - poltoratsky," while vorontsov, the viceroy in the caucasus, sent the detachment "128 badges of the military order" for the soldiers(citation: воспоминания 1895). an award for "the action at the annihilation of an aul" is official recognition of massacre as exemplary service."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1847</div>
+<div><a href="/en/campaigns/C1166">C1166</a> "Death sentence" for Lesser Chechnya: the massacre of Duba's hamlet, forest clearings, fortresses, annihilation of the population and stanitsas on the sites of burned auls (1847-1851)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>Massacre as a means of intimidation was a conscious practice of the period - and the empire gave awards for it. Historian N. I. Pokrovsky writes of the strike on the hamlet of naib Duba (a deputy of Imam Shamil, leader of the highlanders' resistance to the Russian conquest): "the Russian command did not renounce separate short strikes aimed at terrifying the Chechens. The object of one such strike was the hamlet of naib Duba... What took place was an outright massacre"<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. For this massacre the empire handed out awards: imperial officer Poltoratsky, a participant in the massacre, cites the order - "for the excellent courage and bravery shown in the action at the annihilation of the aul of Duba, such-and-such are promoted, and from ensign to second lieutenant - Poltoratsky," while Vorontsov, the viceroy in the Caucasus, sent the detachment "128 badges of the military order" for the soldiers<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. An award for "the action at the annihilation of an aul" is official recognition of massacre as exemplary service.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror at the start of the twentieth century the terek authorities began to bring in military detachments and cossack units for mass searches of highland auls - formally to confiscate weapons and to "detain fugitives"(citation: история чечни в xix-xx веках 2005). historians ya. z. akhmadov and e. kh. khasmagomadov write what this turned into: sweeping searches of mountain villages "were as a rule accompanied by looting and other unlawful acts by soldiers and cossacks, which was encouraged in every way by the terek authorities, who constantly sought a pretext for applying harsher measures against the highlanders"(citation: история чечни в xix-xx веках 2005). how literally this encouragement worked is visible in november 1902: during a search staged by cossacks at the bazaar of the village of shaami-yurt mass disturbances broke out, the ataman of the samashkinskaya stanitsa, gridnev, forbade his men to use firearms, and the clash ended without bloodshed - after which the head of the terek oblast removed gridnev from his post and expressed displeasure to the cossacks who had taken part in the disturbances for their "passivity"(citation: история чечни в xix-xx веках 2005). the sanction came from the very top: when the head of the terek oblast reported that the clashes between chechens and cossacks were bringing material damage and human casualties and that these groups of the population should be kept apart, nicholas ii replied that "it is precisely this neighbourhood that keeps up in the cossacks their old ancestral daring, and therefore there is no need whatever to take measures to soften the situation"(citation: мир чеченцев. xix век 2007). bloodshed in chechen villages was for the authorities not an incidental cost but the working condition of the land."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1858</div>
+<div><a href="/en/campaigns/C1170">C1170</a> "Military-Popular Administration": the Colonial Regime of the Terek Oblast (1858-1917)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>At the start of the twentieth century the Terek authorities began to bring in military detachments and Cossack units for mass searches of highland auls - formally to confiscate weapons and to "detain fugitives"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write what this turned into: sweeping searches of mountain villages "were as a rule accompanied by looting and other unlawful acts by soldiers and Cossacks, which was encouraged in every way by the Terek authorities, who constantly sought a pretext for applying harsher measures against the highlanders"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. How literally this encouragement worked is visible in November 1902: during a search staged by Cossacks at the bazaar of the village of Shaami-Yurt mass disturbances broke out, the ataman of the Samashkinskaya stanitsa, Gridnev, forbade his men to use firearms, and the clash ended without bloodshed - after which the head of the Terek oblast removed Gridnev from his post and expressed displeasure to the Cossacks who had taken part in the disturbances for their "passivity"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. The sanction came from the very top: when the head of the Terek oblast reported that the clashes between Chechens and Cossacks were bringing material damage and human casualties and that these groups of the population should be kept apart, Nicholas II replied that "it is precisely this neighbourhood that keeps up in the Cossacks their old ancestral daring, and therefore there is no need whatever to take measures to soften the situation"<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>. Bloodshed in Chechen villages was for the authorities not an incidental cost but the working condition of the land.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror in the instructions of svistunov, head of the terek oblast, to general smekalov one demand was invariably repeated: "advance at least little by little, mercilessly destroying everything and everyone before you... our forces will keep arriving; just mow down everything without pity, beat and hang without mercy" - the instructions are quoted by historian a. i. ismailova from the imperial publication "materials for the description of the russo-turkish war of 1877-78"(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). historians ya. z. akhmadov and e. kh. khasmagomadov record: at the final stage the punitive forces "acted in full accordance" with this order(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1877</div>
+<div><a href="/en/campaigns/C1172">C1172</a> "Mow Down Everything, Beat and Hang Without Mercy": Suppression of the 1877 Uprising and the Executions in Grozny (1877-1878)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In the instructions of Svistunov, head of the Terek oblast, to General Smekalov one demand was invariably repeated: "advance at least little by little, mercilessly destroying everything and everyone before you... Our forces will keep arriving; just mow down everything without pity, beat and hang without mercy" - the instructions are quoted by historian A. I. Ismailova from the imperial publication "Materials for the Description of the Russo-Turkish War of 1877-78"<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov record: at the final stage the punitive forces "acted in full accordance" with this order<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the intimidation of the population and suppression of the liberation movement by radical monarchist organizations whose program rested on the principles of "the unity and indivisibility of the russian empire, the preservation of autocracy… great-power chauvinism, antisemitism, militant orthodoxy"(citation: енциклопедія історії україни: т. 9 2012). the outcome was "the mass jewish pogroms provoked by the 'union,' particularly in ukraine, in the 'pale of settlement'"(citation: енциклопедія історії україни: т. 9 2012)."
+             data-platforms="Ukrainians"
+             data-groups="G0009"
+             data-tools="S0017"
+             data-date="1905-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1905</div>
+<div><a href="/en/campaigns/C0068">C0068</a> Black Hundred Terror and Pogroms (1905–1907)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>The intimidation of the population and suppression of the liberation movement by radical monarchist organizations whose program rested on the principles of "the unity and indivisibility of the Russian Empire, the preservation of autocracy… great-power chauvinism, antisemitism, militant Orthodoxy"<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. The outcome was "the mass Jewish pogroms provoked by the 'Union,' particularly in Ukraine, in the 'Pale of Settlement'"<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror a military directive of the russian empire of late 1907 prescribed to the commander of the brigade stationed in the grozny and vedeno okrugs, in the event of an uprising, "...to act with full energy, scattering the bands to the point of total annihilation, and likewise wiping off the face of the earth the villages that sheltered them, bearing in mind that such a method will be not only more effective but also more humane"(citation: история чечни в xix-xx веках 2005). the prescription was carried out. in august 1908 the village of tsatsan-yurt was subjected to an "execution" with mass searches, and its residents had a "contribution" for undelivered weapons exacted from them - 7 thousand rubles(citation: история чечни в xix-xx веках 2005). in 1911, in the vedeno and grozny okrugs, all hamlets built "without permission" were demolished, and 100 thousand rubles were exacted from the chechen population of both okrugs in favor of those who had suffered "...during the attack of zelimkhan's band"(citation: история чечни в xix-xx веках 2005). people from the abrek's circle were killed and hanged: salambek gorovodzhiev was hanged; in march 1911 ayub tomayev was killed in starye atagi(citation: история чечни в xix-xx веках 2005). speech was persecuted in the same manner: "any propaganda undermining the authority of the government and the local authorities was prohibited in the strictest way", and the offender faced up to three years of prison or a fine of up to 3 thousand rubles(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1905-10-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">October 1905</div>
+<div><a href="/en/campaigns/C1175">C1175</a> Collective punishment in the abrek era: fines, quartering of troops and exile for Zelimkhan (1905-1913)</div><div><a href="/en/groups/G0009">G0009</a> Russian Empire</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>A military directive of the Russian Empire of late 1907 prescribed to the commander of the brigade stationed in the Grozny and Vedeno okrugs, in the event of an uprising, "...to act with full energy, scattering the bands to the point of total annihilation, and likewise wiping off the face of the earth the villages that sheltered them, bearing in mind that such a method will be not only more effective but also more humane"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. The prescription was carried out. In August 1908 the village of Tsatsan-Yurt was subjected to an "execution" with mass searches, and its residents had a "contribution" for undelivered weapons exacted from them - 7 thousand rubles<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. In 1911, in the Vedeno and Grozny okrugs, all hamlets built "without permission" were demolished, and 100 thousand rubles were exacted from the Chechen population of both okrugs in favor of those who had suffered "...during the attack of Zelimkhan's band"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. People from the abrek's circle were killed and hanged: Salambek Gorovodzhiev was hanged; in March 1911 Ayub Tomayev was killed in Starye Atagi<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Speech was persecuted in the same manner: "Any propaganda undermining the authority of the government and the local authorities was prohibited in the strictest way", and the offender faced up to three years of prison or a fine of up to 3 thousand rubles<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror systematic, demonstrative violence and intimidation by the forces of the cheka (the all-ukrainian cheka, vuchk) to create an atmosphere of total fear and to coerce the peasantry into surrendering food(citation: україна й українці в постімперську добу (1917—1939) 2021)."
+             data-platforms="Ukrainians"
+             data-groups="G0013"
+             data-tools="S0017"
+             data-date="1919-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1919</div>
+<div><a href="/en/campaigns/C0074">C0074</a> Second Armed Invasion and Resource Depletion (1919)</div><div><a href="/en/groups/G0013">G0013</a> Soviet Russia (RSFSR)</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>Systematic, demonstrative violence and intimidation by the forces of the Cheka (the All-Ukrainian Cheka, VUChK) to create an atmosphere of total fear and to coerce the peasantry into surrendering food<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Єфіменко Г. Г., Кульчицький С. В., Пиріг Р. Я., Скальський В. В., Якубова Л. Д.. (2021). Україна й українці в постімперську добу (1917—1939)."data-reference="Україна й українці в постімперську добу (1917—1939) 2021"><sup><a href="http://resource.history.org.ua/item/0016476" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the volunteer army answered the uprising in grozny in december 1919 with mass executions: after the suppression of the rising on the night of 23 december the insurgent leader gikalo reported: "right now there are nightmarish reprisals in grozny: 79 people have been hanged and a mass of people shot"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0014"
+             data-tools="S0010"
+             data-date="1919-02-19 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">February 1919</div>
+<div><a href="/en/campaigns/C1174">C1174</a> Denikin's terror in Chechnya: destroyed auls and 15 thousand dead (1919)</div><div><a href="/en/groups/G0014">G0014</a> White Movement (AFSR)</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>The Volunteer Army answered the uprising in Grozny in December 1919 with mass executions: after the suppression of the rising on the night of 23 December the insurgent leader Gikalo reported: "Right now there are nightmarish reprisals in Grozny: 79 people have been hanged and a mass of people shot"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror soviet russia carried out executions for show: "during the chechen congress in grozny, by verdict of the local cheka, 7 chechens were demonstratively shot. the execution made such '...a devastating impression on the masses of chechens who had not yet had time to disperse after the congress' that the command of the caucasus labor army demanded that henceforth death sentences on chechens be carried out as far away from chechnya as possible"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0013"
+             data-tools="S0017"
+             data-date="1920-04-03 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 1920</div>
+<div><a href="/en/campaigns/C1176">C1176</a> Sovietization of Chechnya: revkoms in place of Soviets, punitive operations and Cheka executions (1920-1924)</div><div><a href="/en/groups/G0013">G0013</a> Soviet Russia (RSFSR)</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>Soviet Russia carried out executions for show: "During the Chechen congress in Grozny, by verdict of the local Cheka, 7 Chechens were demonstratively shot. The execution made such '...a devastating impression on the masses of Chechens who had not yet had time to disperse after the congress' that the command of the Caucasus Labor Army demanded that henceforth death sentences on Chechens be carried out as far away from Chechnya as possible"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror systematic psychological suppression through public show trials of "saboteurs" and the introduction of the punitive law on the protection of socialist property (the "law of five ears of grain")(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Ukrainians"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1932-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">August 1932</div>
+<div><a href="/en/campaigns/C0078">C0078</a> Terror by Famine: The Holodomor (1932–1933)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>Systematic psychological suppression through public show trials of "saboteurs" and the introduction of the punitive law on the protection of socialist property (the "law of five ears of grain")<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror creation of an atmosphere of total paralyzing fear in society through the fabrication of cases (for example, the "union for the liberation of ukraine") and the staging of public show trials(citation: відносини держави, суспільства і особи під час створення радянського ладу в україні (1917 – 1938 рр.) 2013)."
+             data-platforms="Ukrainians"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1933-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1933</div>
+<div><a href="/en/campaigns/C0079">C0079</a> Cultural Terror and the "Executed Renaissance" (1933–1938)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>Creation of an atmosphere of total paralyzing fear in society through the fabrication of cases (for example, the "Union for the Liberation of Ukraine") and the staging of public show trials<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.)."data-reference="Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.) 2013"><sup><a href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the creation of an atmosphere of total fear through the bloody provocations of nkvd special groups operating in the guise of the upa: people's commissar strokach "initiated the formation of special groups of the nkvd of the ukrainian ssr from former partisans for the struggle against the upa" and "personally interrogated the captured leaders of the oun networks of western ukraine"(citation: енциклопедія історії україни: т. 9 2012). the terror was also demonstrative: "one of the forms of struggle was the policy of intimidating oun and upa members and the local population: open trials and executions, putting the bodies of the dead on public display, and destroying insurgent graves"(citation: рух опору у карпатському краї (1940–1950 рр.): тексти лекцій (ільницький) 2024)."
+             data-platforms="Ukrainians"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1944-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">January 1944</div>
+<div><a href="/en/campaigns/C0084">C0084</a> Suppression of UPA Resistance and Operation "Vistula" (1944–1951)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>The creation of an atmosphere of total fear through the bloody provocations of NKVD special groups operating in the guise of the UPA: People's Commissar Strokach "initiated the formation of special groups of the NKVD of the Ukrainian SSR from former partisans for the struggle against the UPA" and "personally interrogated the captured leaders of the OUN networks of Western Ukraine"<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. The terror was also demonstrative: "one of the forms of struggle was the policy of intimidating OUN and UPA members and the local population: open trials and executions, putting the bodies of the dead on public display, and destroying insurgent graves"<span onclick=scrollToRef('scite-22') id="scite-ref-22-a" class="scite-citeref-number" title="Василь Ільницький, ДДПУ ім. І. Франка. (2024). Рух Опору у Карпатському краї (1940–1950 рр.): тексти лекцій (Ільницький)."data-reference="Рух Опору у Карпатському краї (1940–1950 рр.): тексти лекцій (Ільницький) 2024"><sup><a href="http://www.ir.dspu.edu.ua/jspui/bitstream/123456789/3209/1/%D0%86%D0%BB%D1%8C%D0%BD%D0%B8%D1%86%D1%8C%D0%BA%D0%B8%D0%B9%20%D0%9B%D0%B5%D0%BA%D1%86%D1%96%D1%97%20%D0%A0%D1%83%D1%85%20%D0%9E%D0%BF%D0%BE%D1%80%D1%83%20%D1%83%20%D0%9A%D0%B0%D1%80%D0%BF%D0%B0%D1%82.%20%D0%BA%D1%80%D0%B0%D1%97.pdf" target="_blank" data-hasqtip="21" aria-describedby="qtip-21">[22]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror the staging of public political persecution (attacks on rylsky, sosiura, yanovsky, the campaign against "cosmopolitans"), instilling an atmosphere of fear. its outcome was the execution of the defendants in the jac case: "on august 12, 1952 they were all executed"(citation: енциклопедія історії україни: т. 3 2005)."
+             data-platforms="Ukrainians"
+             data-groups="G0010"
+             data-tools="S0021"
+             data-date="1946-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">August 1946</div>
+<div><a href="/en/campaigns/C0085">C0085</a> Postwar Ideological Terror ("Zhdanovshchina") (1946–1953)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0021">S0021</a> Propaganda</div>            </div>
+            <div class="proc-desc">
+                        <p>The staging of public political persecution (attacks on Rylsky, Sosiura, Yanovsky, the campaign against "cosmopolitans"), instilling an atmosphere of fear. Its outcome was the execution of the defendants in the JAC case: "on August 12, 1952 they were all executed"<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2005). Енциклопедія історії України: Т. 3."data-reference="Енциклопедія історії України: Т. 3 2005"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror use of political trials, interrogations, and administrative pressure by the kgb on the signatories of the "letter of 139" to create an atmosphere of fear in cultural circles: "administrative repressions against the 'signatories' began, along with kgb pressure. rumors spread across kyiv and ukraine about the existence of an underground terrorist banderite organization run by western intelligence services"(citation: горська алла олександрівна 2005)."
+             data-platforms="Ukrainians"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1965-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">August 1965</div>
+<div><a href="/en/campaigns/C0088">C0088</a> The First Wave of Repressions Against the "Sixtiers" (1965–1968)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>Use of political trials, interrogations, and administrative pressure by the KGB on the signatories of the "Letter of 139" to create an atmosphere of fear in cultural circles: "Administrative repressions against the 'signatories' began, along with KGB pressure. Rumors spread across Kyiv and Ukraine about the existence of an underground terrorist Banderite organization run by Western intelligence services"<span onclick=scrollToRef('scite-24') id="scite-ref-24-a" class="scite-citeref-number" title="Василь Овсієнко (Музей ХПГ). (2005). Горська Алла Олександрівна."data-reference="Горська Алла Олександрівна 2005"><sup><a href="https://museum.khpg.org/1113894362" target="_blank" data-hasqtip="23" aria-describedby="qtip-23">[24]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror engagement in combat operations of russian neo-nazi groups (such as the "rusich" sabotage and reconnaissance group under the command of a. milchakov), whose ringleaders openly called for unmotivated sadistic violence against civilians ("slaughter the homeless, the puppies, and the children!")(citation: рашизм: звір з безодні 2023)."
+             data-platforms="Ukrainians"
+             data-groups="G0011"
+             data-tools="S0012"
+             data-date="2014-04-12 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">April 2014</div>
+<div><a href="/en/campaigns/C0101">C0101</a> Continuation of the Russo-Ukrainian War: Armed Aggression in the Donbas (2014–2015)</div><div><a href="/en/groups/G0011">G0011</a> Russian Federation</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>Engagement in combat operations of Russian neo-Nazi groups (such as the "Rusich" sabotage and reconnaissance group under the command of A. Milchakov), whose ringleaders openly called for unmotivated sadistic violence against civilians ("Slaughter the homeless, the puppies, and the children!")<span onclick=scrollToRef('scite-25') id="scite-ref-25-a" class="scite-citeref-number" title="Лариса Якубова. (2023). Рашизм: Звір з безодні."data-reference="Рашизм: Звір з безодні 2023"><sup><a href="https://resource.history.org.ua/item/0018160" target="_blank" data-hasqtip="24" aria-describedby="qtip-24">[25]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Ukrainians",
+"russia/nokhchi": "Nokhchi (Chechens)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank">
+                        Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://loveread.ec/book-comments.php?book=69990" target="_blank">
+                        Татьяна Таирова-Яковлева. (2007). Мазепа.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank">
+                        Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://diasporiana.org.ua/istoriya/2650-grushevskiy-m-ilyustrovana-istoriya-ukrayini-rusi/" target="_blank">
+                        Михайло Грушевський (вид. з доведенням до 1918 р.; репринт Нью-Йорк 1967). (1921). Ілюстрована історія України.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://loveread.ec/book-comments.php?book=75382" target="_blank">
+                        Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank">
+                        Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1886). Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="14.0">
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank">
+                        В. А. Полторацкий. (1895). Воспоминания.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-18" href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank">
+                        Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-19" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-19" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-20" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-20" href="http://resource.history.org.ua/item/0016476" target="_blank">
+                        Єфіменко Г. Г., Кульчицький С. В., Пиріг Р. Я., Скальський В. В., Якубова Л. Д.. (2021). Україна й українці в постімперську добу (1917—1939).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-21" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-21" href="https://history.org.ua/LiberUA/978-966-02-7102-9/978-966-02-7102-9.pdf" target="_blank">
+                        Лариса Якубова. (2013). Відносини держави, суспільства і особи під час створення радянського ладу в Україні (1917 – 1938 рр.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-22" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-22" href="http://www.ir.dspu.edu.ua/jspui/bitstream/123456789/3209/1/%D0%86%D0%BB%D1%8C%D0%BD%D0%B8%D1%86%D1%8C%D0%BA%D0%B8%D0%B9%20%D0%9B%D0%B5%D0%BA%D1%86%D1%96%D1%97%20%D0%A0%D1%83%D1%85%20%D0%9E%D0%BF%D0%BE%D1%80%D1%83%20%D1%83%20%D0%9A%D0%B0%D1%80%D0%BF%D0%B0%D1%82.%20%D0%BA%D1%80%D0%B0%D1%97.pdf" target="_blank">
+                        Василь Ільницький, ДДПУ ім. І. Франка. (2024). Рух Опору у Карпатському краї (1940–1950 рр.): тексти лекцій (Ільницький).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-23" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-23" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2005). Енциклопедія історії України: Т. 3.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-24" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-24" href="https://museum.khpg.org/1113894362" target="_blank">
+                        Василь Овсієнко (Музей ХПГ). (2005). Горська Алла Олександрівна.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-25" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-25" href="https://resource.history.org.ua/item/0018160" target="_blank">
+                        Лариса Якубова. (2023). Рашизм: Звір з безодні.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

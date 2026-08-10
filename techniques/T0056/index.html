@@ -1,0 +1,856 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/techniques/T0056/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0056/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0056/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0056/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0056/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Налогообложение, техника T0056 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/techniques/T0056/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Налогообложение, техника T0056 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/techniques/">Техники</a></li>
+  <li class="breadcrumb-item">Налогообложение</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Налогообложение
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агрессоры могут устанавливать прямой контроль над фискальной системой на захваченных территориях, перенаправляя сборы с местного населения непосредственно в собственную казну. Введение новых податей, перекладывание финансового бремени имперских войн на плечи коренного народа и искусственное понижение социального статуса местных жителей для их максимального экономического обложения позволяют колонизатору системно выкачивать ресурсы и истощать экономику региона.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0056
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Подтехники:&nbsp;</span>
+                    Нет подтехник
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактические цели, которые достигаются применением техники или подтехники">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактика:</span>
+                        <a href="/tactics/TA0006">Извлечение выгоды</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народы, против которых применялась техника или подтехника">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народы:&nbsp;</span>Нохчи (Чеченцы), Украинцы
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контрибьюторы:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версия:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Создано:&nbsp;</span>21 апреля 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>9 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/T0056" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реализованные процедуры</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="налогообложение оккупационная администрация обложила горные общества нохчи данью: в выписке из книги приказной избы терского города зафиксировано, что администрация направляла людей «в мичкизы для государева ясаку»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1614-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1614</div>
+<div><a href="/campaigns/C1114">C1114</a> Лишение нохчи субъектности и установление чужеродного управления (1614–1616)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Оккупационная администрация обложила горные общества нохчи данью: в выписке из книги Приказной избы Терского города зафиксировано, что администрация направляла людей «в Мичкизы для государева ясаку»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение оккупационная администрация использовала физическую утрату документов для искусственного понижения социального статуса местных жителей ради их экономического обложения: в выписке посольского приказа по челобитной царю михаилу федоровичу констатируется, что после того как «государева жаловальная грамота пропала», наследники погибшего делегата нохчи были лишены привилегий и «сверстаны во всем с окочаны, с пахотными людьми, и подводы и телеги с них емлют», тогда как ранее с них «никаких податей не имывано»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1617-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1617</div>
+<div><a href="/campaigns/C1115">C1115</a> Экономическая эксплуатация и создание зависимости нохчи (1617–1622)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Оккупационная администрация использовала физическую утрату документов для искусственного понижения социального статуса местных жителей ради их экономического обложения: в выписке Посольского приказа по челобитной царю Михаилу Федоровичу констатируется, что после того как «государева жаловальная грамота пропала», наследники погибшего делегата нохчи были лишены привилегий и «сверстаны во всем с окочаны, с пахотными людьми, и подводы и телеги с них емлют», тогда как ранее с них «никаких податей не имывано»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение оккупационная администрация обложила горные общества нохчи (шибутян) ежегодной натуральной данью: в отписке терских воевод ивана андреевича дашкова и богдана герасимовича приклонского в посольский приказ констатируется, что при оформлении подданства в 1627 году от горцев потребовали «ясак давати по кулю меду на год»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1626-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1626</div>
+<div><a href="/campaigns/C1116">C1116</a> Использование нохчи в военных экспедициях, интервенция и обложение ясаком (1626–1628)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Оккупационная администрация обложила горные общества нохчи (шибутян) ежегодной натуральной данью: в отписке терских воевод Ивана Андреевича Дашкова и Богдана Герасимовича Приклонского в Посольский приказ констатируется, что при оформлении подданства в 1627 году от горцев потребовали «ясак давати по кулю меду на год»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение прямое изъятие экономических ресурсов автономии: «сбор налогов с украинского населения (за исключением казацкого сословия) возлагался на царскую администрацию. собранные средства направлялись в царскую казну»(citation: енциклопедія історії україни: т. 7 2010)."
+             data-platforms="Украинцы"
+             data-groups="G0008"
+             data-tools="S0008"
+             data-date="1665-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Сентябрь 1665</div>
+<div><a href="/campaigns/C0024">C0024</a> Московские статьи Ивана Брюховецкого (1665)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Прямое изъятие экономических ресурсов автономии: «Сбор налогов с украинского населения (за исключением казацкого сословия) возлагался на царскую администрацию. Собранные средства направлялись в царскую казну»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2010). Енциклопедія історії України: Т. 7."data-reference="Енциклопедія історії України: Т. 7 2010"><sup><a href="http://www.history.org.ua/?termin=Natsionalni_rajony" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение почувствовав политическую власть над левобережьем, москва немедленно попыталась перехватить право на сбор налогов, чтобы напрямую выкачивать ресурсы: «попыток русских воевод... ввести в украине свою систему налогообложения приводили только к бунтам (например... попытку переписи 1666 года...)»(citation: иван мазепа и российская империя. история «предательства» 2011)."
+             data-platforms="Украинцы"
+             data-groups="G0008"
+             data-tools="S0008"
+             data-date="1667-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1667</div>
+<div><a href="/campaigns/C0005">C0005</a> Андрусовское перемирие (1667)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Почувствовав политическую власть над Левобережьем, Москва немедленно попыталась перехватить право на сбор налогов, чтобы напрямую выкачивать ресурсы: «попыток русских воевод... ввести в Украине свою систему налогообложения приводили только к бунтам (например... попытку переписи 1666 года...)»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение оккупационная администрация московского царства обложила общества нохчи дискриминационными сборами за внутреннее перемещение грузов: историк ш. б. ахмадов подчеркивает, что «окочане (чеченцы-аккинцы), проживавшие в городе терки должны были в обязательном порядке платить пошлину за различные товары и изделия, вывозимые ими на продажу к своим соотечественникам в чечню и ингушетию»(citation: чечня и ингушетия в xviii - начале xix века 2002)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1691-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1691</div>
+<div><a href="/campaigns/C1124">C1124</a> Карательные рейды и экономическое удушение нохчи (1691–1700)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Оккупационная администрация Московского Царства обложила общества нохчи дискриминационными сборами за внутреннее перемещение грузов: историк Ш. Б. Ахмадов подчеркивает, что «окочане (чеченцы-аккинцы), проживавшие в городе Терки должны были в обязательном порядке платить пошлину за различные товары и изделия, вывозимые ими на продажу к своим соотечественникам в Чечню и Ингушетию»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Ахмадов Ш. Б.. (2002). Чечня и Ингушетия в XVIII - начале XIX века."data-reference="Чечня и Ингушетия в XVIII - начале XIX века 2002"><sup><a href="https://dzurdzuki.com/wp-content/uploads/download-manager-files/Ahmadov-SH.-B.-CHechnya-i-Ingushetiya-V-HUSH-nachale-XIX-veka-2002-god..pdf" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение перекладывание финансового и логистического бремени имперских войн на плечи автономии: «корм охочим войскам поставляли посполитые, они же заготавливали на зиму сено для войсковой артиллерии»(citation: иван мазепа и российская империя. история «предательства» 2011)(citation: мазепа 2007)."
+             data-platforms="Украинцы"
+             data-groups="G0008"
+             data-tools="S0008"
+             data-date="1695-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1695</div>
+<div><a href="/campaigns/C0010">C0010</a> Азовские походы и строительство крепостей (1695–1700)</div><div><a href="/groups/G0008">G0008</a> Московское Царство</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Перекладывание финансового и логистического бремени имперских войн на плечи автономии: «Корм охочим войскам поставляли посполитые, они же заготавливали на зиму сено для войсковой артиллерии»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение оккупационная администрация российской империи взимала дискриминационные пошлины за перемещение товаров коренного населения: историк я. з. ахмадов цитирует таможенные книги, констатируя, что в 1726 году «с проезжего письма с терского жителя окоченина курмана богоматова... пошлин по указу 24 алтыни деньги взято»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1726-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1726</div>
+<div><a href="/campaigns/C1131">C1131</a> Экономическая дискриминация и разведка территорий (1726–1728)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Оккупационная администрация Российской империи взимала дискриминационные пошлины за перемещение товаров коренного населения: историк Я. З. Ахмадов цитирует таможенные книги, констатируя, что в 1726 году «с проезжего письма с терского жителя окоченина Курмана Богоматова... пошлин по указу 24 алтыни деньги взято»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение понижение социального статуса коренного населения с целью экономического изъятия: «казаков и подпомощников перевели в военные обыватели и обложили подушным», а имевшие право курить горилку «должны были теперь платить… в казну по 95 коп. с души»(citation: історія слобідської україни 1918)."
+             data-platforms="Украинцы"
+             data-groups="G0009"
+             data-tools="S0008"
+             data-date="1765-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1765</div>
+<div><a href="/campaigns/C0031">C0031</a> Отмена казацкого устройства в Слободской Украине (1765)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Понижение социального статуса коренного населения с целью экономического изъятия: «Казаков и подпомощников перевели в военные обыватели и обложили подушным», а имевшие право курить горилку «должны были теперь платить… в казну по 95 коп. с души»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Дмитро Багалій. (1918). Історія Слобідської України."data-reference="Історія Слобідської України 1918"><sup><a href="https://archive.org/details/bagaliy1" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение в сентябре 1832 корпусный командир розен обложил сёла чечни и ичкерии ежегодной податью с каждого двора как условием пощады. имперский историк волконский писал: «от д. мецо-ерзо-юрт взяты аманаты и подать по рублю с дыма»; сёла ешта-кале и ейни-кале обязались «платить на будущее время подать по 1 рублю с дыма»(citation: война на восточном кавказе с 1824 по 1834 г. в связи с мюридизмом 1886). розен доносил военному министру чернышёву: село гурдали «выдала аманата и обязалась платить подать»(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). подать взыскивалась с народа, чьи сёла и посевы в те же дни истреблялись войсками."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1832-08-22 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Август 1832</div>
+<div><a href="/campaigns/C1155">C1155</a> Истребление 61 селения равнинной Чечни и горной Ичкерии войсками Розена, сожжение заживо защитников Герменчука и вымогание заложников от 80 сёл (1832)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В сентябре 1832 корпусный командир Розен обложил сёла Чечни и Ичкерии ежегодной податью с каждого двора как условием пощады. Имперский историк Волконский писал: «от д. Мецо-ерзо-юрт взяты аманаты и подать по рублю с дыма»; сёла Ешта-кале и Ейни-кале обязались «платить на будущее время подать по 1 рублю с дыма»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Н. А. Волконский. (1886). Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом."data-reference="Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом 1886"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Розен доносил военному министру Чернышёву: село Гурдали «выдала аманата и обязалась платить подать»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Подать взыскивалась с народа, чьи сёла и посевы в те же дни истреблялись войсками.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение 27 августа 1836 полковник пулло обложил податью аул зандак на реке яман-су, разорённый его отрядом 23 августа 1836 (кампания c1156): платёж подати стал условием принятия «покорности» разгромленного села. в рапорте генералу петрову от 27 августа 1836 пулло фиксировал обязательство, принятое старшинами в крепости грозной: «платить наравне с ауховцами и прочими покорными племенами установленную подать»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). подать была не встречным предложением села, а действовавшей имперской нормой обложения обществ, которые империя считала «покорными»; отказ означал бы возврат «мстящего оружия русских» - село только что пережило разорение, пленение жителей и угон скота(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-08-27 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Август 1836</div>
+<div><a href="/campaigns/C1157">C1157</a> Принуждение разорённого Зандака к подчинению и подати полковником Пулло (1836)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>27 августа 1836 полковник Пулло обложил податью аул Зандак на реке Яман-су, разорённый его отрядом 23 августа 1836 (кампания C1156): платёж подати стал условием принятия «покорности» разгромленного села. В рапорте генералу Петрову от 27 августа 1836 Пулло фиксировал обязательство, принятое старшинами в крепости Грозной: «платить наравне с ауховцами и прочими покорными племенами установленную подать»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Подать была не встречным предложением села, а действовавшей имперской нормой обложения обществ, которые империя считала «покорными»; отказ означал бы возврат «мстящего оружия русских» - село только что пережило разорение, пленение жителей и угон скота<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение аманатско-податная система пулло, командующего левым флангом кавказской линии (цепи имперских укреплений на земле нохчи), обложила захваченные империей аулы чечни податью. пулло в докладной записке 1840 года: «по мере покорения горских обществ каждое выдавало аманатов, платило подать по рублю сер. с сакли, выдавало всех находящихся у него русских пленных» (сакля - дом горца: подать бралась с каждого дома; аманаты - заложники, которых империя забирала у аулов для контроля над ними)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). ведомость горским народам 1840 года, опубликованная в сборнике документов «движение горцев северо-восточного кавказа в 20-50 гг. xix века» вместе с докладной запиской пулло, прямо называет подать наказанием: качкалыковцы, мичиковские чеченцы и ауховцы (чеченские общества восточной чечни) «платят подать, которою обложены в наказание за неоднократные возмущения», а чеченцы, живущие за рекой сунжей, «в наказание за возмущение, обложены податью»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). деньги выжимались исправно: генерал граббе, командующий войсками кавказской линии и начальник пулло, рапортом военному министру империи чернышеву от 23 марта 1840 года назвал исправную уплату податей признаком наступившего «спокойствия» - рапорт перечисляет «исправномъ платежѣ податей и повинностей» за считанные недели до восстания(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884). мухаммед-тахир аль-карахи, хронист шамиля (шамиль - имам, руководитель сопротивления горцев дагестана и чечни российскому завоеванию), назвал этот побор - по рублю с каждого дома и по ружью с каждых десяти домов - причиной, по которой чеченцы звали шамиля."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Сентябрь 1836</div>
+<div><a href="/campaigns/C1163">C1163</a> Аманатско-податная система полковника Пулло в захваченных аулах Чечни (1836-1840)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатско-податная система Пулло, командующего левым флангом Кавказской линии (цепи имперских укреплений на земле нохчи), обложила захваченные империей аулы Чечни податью. Пулло в докладной записке 1840 года: «По мере покорения горских обществ каждое выдавало аманатов, платило подать по рублю сер. с сакли, выдавало всех находящихся у него русских пленных» (сакля - дом горца: подать бралась с каждого дома; аманаты - заложники, которых империя забирала у аулов для контроля над ними)<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Ведомость горским народам 1840 года, опубликованная в сборнике документов «Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века» вместе с докладной запиской Пулло, прямо называет подать наказанием: качкалыковцы, мичиковские чеченцы и ауховцы (чеченские общества восточной Чечни) «платят подать, которою обложены в наказание за неоднократные возмущения», а чеченцы, живущие за рекой Сунжей, «в наказание за возмущение, обложены податью»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Деньги выжимались исправно: генерал Граббе, командующий войсками Кавказской линии и начальник Пулло, рапортом военному министру империи Чернышеву от 23 марта 1840 года назвал исправную уплату податей признаком наступившего «спокойствия» - рапорт перечисляет «исправномъ платежѣ податей и повинностей» за считанные недели до восстания<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Мухаммед-Тахир аль-Карахи, хронист Шамиля (Шамиль - имам, руководитель сопротивления горцев Дагестана и Чечни российскому завоеванию), назвал этот побор - по рублю с каждого дома и по ружью с каждых десяти домов - причиной, по которой чеченцы звали Шамиля.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение зимние экспедиции генерала пулло, командовавшего левым флангом кавказской линии (цепи имперских укреплений на земле нохчи), собирали с чеченских аулов деньги под именем податей. имперский историк юров подвёл счёт декабрьского похода 1839 года: «всего, за время этой бескровной военной прогулки, было собрано 3779 рублей, 455 ружей, и выдано 97 абреков, 7 пленных и два беглых» (абрек - имперский ярлык горца, объявленного вне закона)(citation: 1840, 1841 и 1842-й годы на кавказе 1886), а январского 1840 года по реке мичик: аулы «послушно представили 2463 рубля, 545 ружей, скот для довольствии отряда и выдали 30-ть абреков»(citation: 1840, 1841 и 1842-й годы на кавказе 1886). после подавления восстания обложение закрепили штрафом: пункт 10 «условий, предписываемых покоряющимся горцам», изданных генералом граббе, командующим войсками кавказской линии, 15 июня 1840 года, предписал «в виде наказания за участие в восстании шамиля, заплатить штрафу с каждой сакли по два барана» (сакля - дом горца; шамиль - имам, руководитель сопротивления горцев дагестана и чечни российскому завоеванию)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1838-11-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Ноябрь 1838</div>
+<div><a href="/campaigns/C1164">C1164</a> Принуждение Чечни к подчинению после разгрома Ахульго и подавление всеобщего восстания 1840 года (1838-1840)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Зимние экспедиции генерала Пулло, командовавшего левым флангом Кавказской линии (цепи имперских укреплений на земле нохчи), собирали с чеченских аулов деньги под именем податей. Имперский историк Юров подвёл счёт декабрьского похода 1839 года: «Всего, за время этой бескровной военной прогулки, было собрано 3779 рублей, 455 ружей, и выдано 97 абреков, 7 пленных и два беглых» (абрек - имперский ярлык горца, объявленного вне закона)<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>, а январского 1840 года по реке Мичик: аулы «послушно представили 2463 рубля, 545 ружей, скот для довольствии отряда и выдали 30-ть абреков»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. После подавления восстания обложение закрепили штрафом: пункт 10 «Условий, предписываемых покоряющимся горцам», изданных генералом Граббе, командующим войсками Кавказской линии, 15 июня 1840 года, предписал «В виде наказания за участие в восстании Шамиля, заплатить штрафу с каждой сакли по два барана» (сакля - дом горца; Шамиль - имам, руководитель сопротивления горцев Дагестана и Чечни российскому завоеванию)<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение историк з. х. ибрагимова пишет: административный аппарат в чечне и ингушетии с 1860-х годов «содержался в основном на средства, собираемые с народа»(citation: царское прошлое чеченцев. власть и общество 2009). в воинскую повинность горцев империя не верила - и обложила их взамен деньгами: законами 2 и 9 июня 1887 года для мусульман терской области введён денежный сбор взамен воинской службы, размером «не превышал 22 копеек с «дыма»»(citation: царское прошлое чеченцев. власть и общество 2009) («дым» - отдельный двор, домохозяйство)(citation: царское прошлое чеченцев. власть и общество 2009); историки я. з. ахмадов и э. х. хасмагомадов подтверждают: «в 1887 г. российское правительство ввело для них специальный денежный сбор»(citation: история чечни в xix-xx веках 2005). дальше сборы только росли: «с 1887 по 1905 гг. сумма налогов выросла с 228,1 до 678,8 тыс. рублей, то есть увеличилась за эти годы почти в три раза», а подымная подать - налог с каждого двора - «в терской области достигла в 90-х гг. до 70 коп. за десятину, а в это время во внутренних губерниях страны она была не более 17 коп., или в 4 раза меньше»(citation: царское прошлое чеченцев. власть и общество 2009). сверх сбора сельские общества несли повинности: содержание старшины и правления, дорог, канав и караулов(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1858-04-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1858</div>
+<div><a href="/campaigns/C1170">C1170</a> «Военно-народное управление»: колониальный режим Терской области (1858-1917)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Историк З. Х. Ибрагимова пишет: административный аппарат в Чечне и Ингушетии с 1860-х годов «содержался в основном на средства, собираемые с народа»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. В воинскую повинность горцев империя не верила - и обложила их взамен деньгами: законами 2 и 9 июня 1887 года для мусульман Терской области введён денежный сбор взамен воинской службы, размером «не превышал 22 копеек с «дыма»»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span> («дым» - отдельный двор, домохозяйство)<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>; историки Я. З. Ахмадов и Э. Х. Хасмагомадов подтверждают: «в 1887 г. российское правительство ввело для них специальный денежный сбор»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. Дальше сборы только росли: «С 1887 по 1905 гг. сумма налогов выросла с 228,1 до 678,8 тыс. рублей, то есть увеличилась за эти годы почти в три раза», а подымная подать - налог с каждого двора - «в Терской области достигла в 90-х гг. до 70 коп. за десятину, а в это время во внутренних губерниях страны она была не более 17 коп., или в 4 раза меньше»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество."data-reference="Царское прошлое чеченцев. Власть и общество 2009"><sup><a href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Сверх сбора сельские общества несли повинности: содержание старшины и правления, дорог, канав и караулов<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="налогообложение российская империя с формирования чеченского полка в 1914 году возложила его содержание на сами чеченские общества: полная экипировка каждого всадника обходилась в 300 рублей, и платили их не казна, а сельские общества, рекомендовавшие человека в полк. историки я. з. ахмадов и э. х. хасмагомадов пишут: «содержание национальных полков тяжелым бременем ложилось на крестьян-горцев»(citation: история чечни в xix-xx веках 2005). казённых средств не хватало и на остальное: новый конский состав, собранный для пополнения дивизии осенью 1916 года, был, как пишут те же историки, «весьма плох», и командование дивизии добивалось выделения средств на закупку лошадей(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1914-08-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Август 1914</div>
+<div><a href="/campaigns/C1189">C1189</a> Первая мировая война в Чечне: вывоз «ненадежного элемента» в «Дикую дивизию», чрезвычайная охрана и мобилизация бастующих (1914-1917)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Российская империя с формирования Чеченского полка в 1914 году возложила его содержание на сами чеченские общества: полная экипировка каждого всадника обходилась в 300 рублей, и платили их не казна, а сельские общества, рекомендовавшие человека в полк. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «содержание национальных полков тяжелым бременем ложилось на крестьян-горцев»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. Казённых средств не хватало и на остальное: новый конский состав, собранный для пополнения дивизии осенью 1916 года, был, как пишут те же историки, «весьма плох», и командование дивизии добивалось выделения средств на закупку лошадей<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Украинцы",
+"russia/nokhchi": "Нохчи (Чеченцы)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="http://www.history.org.ua/?termin=Natsionalni_rajony" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2010). Енциклопедія історії України: Т. 7.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank">
+                        Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://dzurdzuki.com/wp-content/uploads/download-manager-files/Ahmadov-SH.-B.-CHechnya-i-Ingushetiya-V-HUSH-nachale-XIX-veka-2002-god..pdf" target="_blank">
+                        Ахмадов Ш. Б.. (2002). Чечня и Ингушетия в XVIII - начале XIX века.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://loveread.ec/book-comments.php?book=69990" target="_blank">
+                        Татьяна Таирова-Яковлева. (2007). Мазепа.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank">
+                        Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://archive.org/details/bagaliy1" target="_blank">
+                        Дмитро Багалій. (1918). Історія Слобідської України.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="8.0">
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1886). Война на Восточном Кавказе с 1824 по 1834 г. в связи с мюридизмом.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://rusneb.ru/catalog/000199_000009_004409385/" target="_blank">
+                        Ибрагимова З. Х.. (2009). Царское прошлое чеченцев. Власть и общество.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

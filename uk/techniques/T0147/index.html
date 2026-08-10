@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/techniques/T0147/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0147/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0147/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0147/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0147/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Примусове оформлення підданства, техніка T0147 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/techniques/T0147/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Примусове оформлення підданства, техніка T0147 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/techniques/">Техніки</a></li>
+  <li class="breadcrumb-item">Примусове оформлення підданства</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Примусове оформлення підданства
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агресори примушують лідерів колонізованих суспільств до офіційного юридичного закріплення свого підлеглого статусу. Цей процес відбувається під економічним або військовим тиском, при цьому умови заздалегідь складених договорів не підлягають обговоренню<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Michael Khodarkovsky. (1999). Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800."data-reference="Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800 1999"><sup><a href="https://www.journals.uchicago.edu/doi/pdfplus/10.1086/235251" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Для забезпечення легітимності в очах місцевого населення колонізатор часто вимагає складення присяги на вірність за релігійними звичаями самих підкорюваних народів<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Michael Khodarkovsky. (2002). Russia's Steppe Frontier: The Making of a Colonial Empire 1500-1800."data-reference="Russia's Steppe Frontier: The Making of a Colonial Empire 1500-1800 2002"><sup><a href="https://dokumen.pub/russias-steppe-frontier-the-making-of-a-colonial-empire-1500-1800-9780253339898.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Історичним прикладом подібної практики є шерть — присяга на вірність, юридичне закріплення якої нерідко супроводжувалося видачею заручників з числа родичів або місцевої знаті<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Википедия. (2024). Шерть - Википедия."data-reference="Шерть - Википедия 2024"><sup><a href="https://ru.wikipedia.org/w/index.php?title=%D0%A8%D0%B5%D1%80%D1%82%D1%8C&oldid=142267485" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span><span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Michael Khodarkovsky. (1999). Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800."data-reference="Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800 1999"><sup><a href="https://www.journals.uchicago.edu/doi/pdfplus/10.1086/235251" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. У деяких випадках громадянство метрополії є необхідною умовою свободи пересування, можливості звертатися до суду або не бути вигнаним на підставі нелегального перебування на території, анексованій колонізатором<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Диана Курышко, Нина Назарова. (2025). «Как любил Украину, так и буду любить, а российский паспорт взял, чтобы жить». Как устроена принудительная паспортизация."data-reference="«Как любил Украину, так и буду любить, а российский паспорт взял, чтобы жить». Как устроена принудительная паспортизация 2025"><sup><a href="https://www.bbc.com/russian/articles/c20pgklmxp3o" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0147
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Підтехніки:&nbsp;</span>
+                    Немає підтехнік
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактичні цілі, які досягаються застосуванням техніки або підтехніки">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/uk/tactics/TA0003">Захоплення управління</a>,                        <a href="/uk/tactics/TA0005">Закріплення</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народи, проти яких застосовувалася техніка або підтехніка">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народи:&nbsp;</span>Нохчі (Чеченці), Українці
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контриб'ютори:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версія:&nbsp;</span>1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Створено:&nbsp;</span>10 червня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>10 червня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/T0147" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реалізовані процедури</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства під прямою воєнною загрозою гірські громади вимушено капітулювали: у чолобитній цареві михайлу федоровичу кабардинський князь сунчалей янгличевич черкаський доповідав, що горці «вину свою принесли... добили чолом і шерть... дали»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1617-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1617</div>
+<div><a href="/uk/campaigns/C1120">C1120</a> Каральний похід і розорення гірських спільнот Нохчі (1617–1618)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Під прямою воєнною загрозою гірські громади вимушено капітулювали: у чолобитній цареві Михайлу Федоровичу кабардинський князь Сунчалей Янгличевич Черкаський доповідав, що горці «вину свою принесли... добили чолом і шерть... дали»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства окупаційна адміністрація вимагала від гірських громад нохчі (шибутян) юридичного закріплення підпорядкованого статусу: у відписці терських воєвод івана андрійовича дашкова та богдана герасимовича приклонського до посольського приказу зафіксовано інформацію про «присягу, дану шибутянами лаварсаном язиєвим і затишкою лаварсановим за 20 дворів у 1627 р.»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997), з прямим приписом, щоб вони «від государя відступні не були і були під государевою рукою в прямому холопстві»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1626-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1626</div>
+<div><a href="/uk/campaigns/C1116">C1116</a> Використання Нохчі у воєнних експедиціях, інтервенція та обкладення ясаком (1626–1628)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація вимагала від гірських громад Нохчі (Шибутян) юридичного закріплення підпорядкованого статусу: у відписці терських воєвод Івана Андрійовича Дашкова та Богдана Герасимовича Приклонського до Посольського приказу зафіксовано інформацію про «присягу, дану Шибутянами Лаварсаном Язиєвим і Затишкою Лаварсановим за 20 дворів у 1627 р.»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, з прямим приписом, щоб вони «від государя відступні не були і були під государевою рукою в прямому холопстві»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства окупаційна адміністрація примусила гірські суспільства нохчі до юридичного підпорядкування: у 1647 році під тиском терських воєвод шибутяни «вчинилися під твоєю государевою високою рукою в прямому холопстві... на курані шерть учинили»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997), а мічкізькі люди «з усією мічкізькою землею під твоєю государевою високою рукою в холопстві вчинилися... і на курані шертували»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1645-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1645</div>
+<div><a href="/uk/campaigns/C1107">C1107</a> Підкуп еліт, примус до підданства та взяття аманатів (1645–1658)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація примусила гірські суспільства Нохчі до юридичного підпорядкування: у 1647 році під тиском терських воєвод Шибутяни «вчинилися під твоєю государевою високою рукою в прямому холопстві... на курані шерть учинили»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, а мічкізькі люди «з усією Мічкізькою землею під твоєю государевою високою рукою в холопстві вчинилися... і на курані шертували»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства окупаційна адміністрація робила спроби примусити незалежні суспільства нохчі (шибутян) до юридичного підпорядкування: у виписці до доповіді посольського приказу цареві олексію михайловичу 1660 року констатовано, що терські воєводи мелентій квашнін з товаришами послали до горців військового емісара і звеліли йому «до віри їх привести»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997), однак спроба виявилася безуспішною, і він «жителів шибутської землі до віри не при[ві]в»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1658-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1658</div>
+<div><a href="/uk/campaigns/C1119">C1119</a> Комплексна розвідка територій і спроба примусу до підданства (1658–1660)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація робила спроби примусити незалежні суспільства Нохчі (Шибутян) до юридичного підпорядкування: у виписці до доповіді Посольського приказу цареві Олексію Михайловичу 1660 року констатовано, що терські воєводи Мелентій Квашнін з товаришами послали до Горців військового емісара і звеліли йому «до віри їх привести»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, однак спроба виявилася безуспішною, і він «жителів Шибутської землі до віри не при[ві]в»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства центральна влада московського царства використовувала призначеного правителя для юридичного підпорядкування регіону: у 1676 році посольський приказ надіслав припис кабардинському князеві каспулату муцаловичу черкаському про необхідність прибуття в терське місто «для приведення до присяги населення північного кавказу царям івану та петру олексійовичам»(citation: кабардино-русские отношения в xvi-xviii вв. документы и материалы. том i 1957)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0012"
+             data-date="1661-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1661</div>
+<div><a href="/uk/campaigns/C1122">C1122</a> Встановлення чужорідного управління та мобілізація Нохчі в Кримські походи (1661–1676)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Центральна влада Московського царства використовувала призначеного правителя для юридичного підпорядкування регіону: у 1676 році Посольський приказ надіслав припис кабардинському князеві Каспулату Муцаловичу Черкаському про необхідність прибуття в Терське місто «для приведення до присяги населення Північного Кавказу царям Івану та Петру Олексійовичам»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I."data-reference="Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I 1957"><sup><a href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства дипломатичний апарат московського царства розширював юридичне підпорядкування територій нохчі: історик я. з. ахмадов фіксує, що метрополія оформила 1696 року «вираження покровительства росією брагунському князівству в чечні»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0009"
+             data-date="1691-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1691</div>
+<div><a href="/uk/campaigns/C1124">C1124</a> Каральні рейди та економічне удушення Нохчі (1691–1700)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0009">S0009</a> Дипломатія</div>            </div>
+            <div class="proc-desc">
+                        <p>Дипломатичний апарат Московського царства розширював юридичне підпорядкування територій Нохчі: історик Я. З. Ахмадов фіксує, що метрополія оформила 1696 року «вираження покровительства Росією Брагунському князівству в Чечні»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства дипломатичний апарат російської імперії розширював юридичне підпорядкування територій нохчі під загрозою воєнного знищення: історик я. з. ахмадов констатує, що, зазнавши поразки 1722 року, місцеві князі склали присягу, ««включивши до неї вперше і своїх чеченців»»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0009"
+             data-date="1722-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1722</div>
+<div><a href="/uk/campaigns/C1129">C1129</a> Придушення повстання, воєнна інтервенція та примусове оформлення підданства (1722)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0009">S0009</a> Дипломатія</div>            </div>
+            <div class="proc-desc">
+                        <p>Дипломатичний апарат Російської імперії розширював юридичне підпорядкування територій Нохчі під загрозою воєнного знищення: історик Я. З. Ахмадов констатує, що, зазнавши поразки 1722 року, місцеві князі склали присягу, ««включивши до неї вперше і своїх Чеченців»»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства повернення запорозької січі під владу імперії на умовах корони: «із тактичних міркувань у ході підготовки до чергової турец. війни а[нна] і[ванівна] амністувала запорожців і дозволила їм вернутися на старі січові місця (1734) і заснувати нову січ»(citation: енциклопедія історії україни: т. 1 2003) – амністія оформлювала перехід козаків під владу росії із зобов'язанням військової служби."
+             data-platforms="Українці"
+             data-groups="G0009"
+             data-tools="S0009"
+             data-date="1734-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1734</div>
+<div><a href="/uk/campaigns/C0029">C0029</a> Правління гетьманського уряду та Лубенський договір (1734–1750)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0009">S0009</a> Дипломатія</div>            </div>
+            <div class="proc-desc">
+                        <p>Повернення Запорозької Січі під владу імперії на умовах корони: «Із тактичних міркувань у ході підготовки до чергової турец. війни А[нна] І[ванівна] амністувала запорожців і дозволила їм вернутися на старі січові місця (1734) і заснувати Нову Січ»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1."data-reference="Енциклопедія історії України: Т. 1 2003"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span> – амністія оформлювала перехід козаків під владу Росії із зобов'язанням військової служби.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства окупаційна адміністрація російської імперії нав'язувала корінному населенню юридичне закріплення підлеглого статусу, використовуючи їхню економічну скруту та виставляючи присягу жорстким ультиматумом: історик я. з. ахмадов констатує, що 1747 року на прохання горців про переселення «було надано офіційну згоду імператорського двору («допустити і визначити») за умови складення горцями присяги російського підданства»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019), а до відсутніх «було послано офіцерів «для учинення присяги»»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019); аналогічно 1748 року, коли гірські громади просили про підданство, щоб «з купецтвом до міста кізляр... їздити під захистом було вільно»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019), адміністрація «погодилася з цією пропозицією за умови неодмінного переселення «чебутлінців» з гір у пониззя сунжі»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1741-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1741</div>
+<div><a href="/uk/campaigns/C1135">C1135</a> Розширення системи підкупу та примус гірських суспільств до підданства (1741–1748)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0012">S0012</a> Окупаційні та підконтрольні адміністрації</div>            </div>
+            <div class="proc-desc">
+                        <p>Окупаційна адміністрація Російської імперії нав'язувала корінному населенню юридичне закріплення підлеглого статусу, використовуючи їхню економічну скруту та виставляючи присягу жорстким ультиматумом: історик Я. З. Ахмадов констатує, що 1747 року на прохання горців про переселення «було надано офіційну згоду імператорського двору («допустити і визначити») за умови складення горцями присяги російського підданства»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>, а до відсутніх «було послано офіцерів «для учинення присяги»»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>; аналогічно 1748 року, коли гірські громади просили про підданство, щоб «з купецтвом до міста Кізляр... їздити під захистом було вільно»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>, адміністрація «погодилася з цією пропозицією за умови неодмінного переселення «чебутлінців» з гір у пониззя Сунжі»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства російська імперія силою зброї примушувала громади нохчі до присяги на підданство. після розорення селищ командувач кавказької лінії генерал булгаков пред'явив чеченському народові постанову, за якою старшини «віддаємо себе з усім народом чеченським… у вічне вірнопідданство… у чому й даємо присягу за нашим звичаєм на святому корані», а за порушення народ піддавав себе «найсуворішому покаранню і розоренню осель наших без спротиву»; головнокомандувач на кавказі генерал гудович доповідав, що чеченці «цілковито підкорені силою зброї та приведені до присяги на вічну вірність підданства»(citation: акты собранные кавказскою археографическою комиссиею. том iii (1806-1809) 1869)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1807-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1807</div>
+<div><a href="/uk/campaigns/C1140">C1140</a> Каральний похід Булгакова: розорення чеченських селищ і примус до підданства (1807)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія силою зброї примушувала громади Нохчі до присяги на підданство. Після розорення селищ командувач Кавказької лінії генерал Булгаков пред'явив чеченському народові постанову, за якою старшини «віддаємо себе з усім народом Чеченським… у вічне вірнопідданство… у чому й даємо присягу за нашим звичаєм на святому Корані», а за порушення народ піддавав себе «найсуворішому покаранню і розоренню осель наших без спротиву»; головнокомандувач на Кавказі генерал Гудович доповідав, що Чеченці «цілковито підкорені силою зброї та приведені до присяги на вічну вірність підданства»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809) 1869"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства регулярна армія російської імперії, ввівши війська на сунжу та зайнявши чеченську землю, вимагала від старшин чеченських селищ поновити присягу імперії під загрозою розправи як з «явними ворогами». імперський генерал єрмолов у своїх «записках» свідчить, що в травні 1818 року «старшини майже всіх найголовніших чеченських сіл були скликані до мене», у військовий табір, і він зажадав, «щоб надалі таких [хижацтв] не чинили, і на підтвердження вони мають поновити давню присягу на покору, повернути утримуваних у них полонених»(citation: записки а.п. ермолова. 1798-1826 гг. 1991). вимога залишилася невиконаною: старшини «нічого не обіцяли»(citation: записки а.п. ермолова. 1798-1826 гг. 1991)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1817</div>
+<div><a href="/uk/campaigns/C1021">C1021</a> Знищення присунженських селищ Нохчі та зведення фортеці Грозної на їхньому місці (1817–1818)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Регулярна армія Російської імперії, ввівши війська на Сунжу та зайнявши чеченську землю, вимагала від старшин чеченських селищ поновити присягу імперії під загрозою розправи як з «явними ворогами». Імперський генерал Єрмолов у своїх «Записках» свідчить, що в травні 1818 року «старшини майже всіх найголовніших чеченських сіл були скликані до мене», у військовий табір, і він зажадав, «щоб надалі таких [хижацтв] не чинили, і на підтвердження вони мають поновити давню присягу на покору, повернути утримуваних у них полонених»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Вимога залишилася невиконаною: старшини «нічого не обіцяли»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства 6 березня 1829 року в тарках бейбулат таймієв зі 120 старшинами чечні були змушені скласти присягу через шамхала тарковського. історик д. а. хожаєв фіксував вимушеність цього кроку: старшини «намагалися уникнути підпорядкування царським приставам, відвести від чечні загрозу постійних набігів»(citation: чеченцы в русско-кавказской войне 1998). самі чеченці у проханні до паскевича у квітні 1829 року документували тло, на якому підписувалася покірність: імперське командування «арештовували, брали в полон, вішали й засилали до сибіру та в інші місця багатьох із тих, які, будучи покірними, служили великому государеві»(citation: акты собранные кавказскою археографическою комиссиею. том vii (1827-1831) 1878). командувач військ на кавказькій лінії емануель у рапорті паскевичу від 15 травня 1829 року обумовив визнання покірності: вона «лише тоді буде визнана благонаміреною, коли вони беззастережно складуть присягу та видадуть аманатів»(citation: акты собранные кавказскою археографическою комиссиею. том vii (1827-1831) 1878). утримуючи бейбулата в тифлісі, паскевич закріпив підданство «постановою про покірність чеченців росії» та положенням від 2 серпня 1829 року(citation: чеченцы в русско-кавказской войне 1998)(citation: акты собранные кавказскою археографическою комиссиею. том vii (1827-1831) 1878)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1828-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1828</div>
+<div><a href="/uk/campaigns/C1150">C1150</a> Обман і силове утримання Бейбулата Таймієва Паскевичем, розкол Чечні на партії та примус до присяги (1828-1829)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>6 березня 1829 року в Тарках Бейбулат Таймієв зі 120 старшинами Чечні були змушені скласти присягу через шамхала Тарковського. Історик Д. А. Хожаєв фіксував вимушеність цього кроку: старшини «намагалися уникнути підпорядкування царським приставам, відвести від Чечні загрозу постійних набігів»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Самі Чеченці у проханні до Паскевича у квітні 1829 року документували тло, на якому підписувалася покірність: імперське командування «арештовували, брали в полон, вішали й засилали до Сибіру та в інші місця багатьох із тих, які, будучи покірними, служили великому Государеві»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831) 1878"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. Командувач військ на Кавказькій лінії Емануель у рапорті Паскевичу від 15 травня 1829 року обумовив визнання покірності: вона «лише тоді буде визнана благонаміреною, коли вони беззастережно складуть присягу та видадуть аманатів»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831) 1878"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. Утримуючи Бейбулата в Тифлісі, Паскевич закріпив підданство «Постановою про покірність чеченців Росії» та положенням від 2 серпня 1829 року<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span><span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831) 1878"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства 27 серпня 1836 полковник пулло прийняв у фортеці грозній вимушену «покірність» аулу зандак на річці яман-су, зруйнованого його загоном 23 серпня 1836 (кампанія c1156). підпорядкування було спроєктоване самим руйнуванням: у рапорті генералу петрову від 27 серпня 1836 пулло визнав: «будучи ж упевнений, що жителі зандака за загальними правилами чеченців після покарання проситимуть покірності, і вважаючи таку корисною для уряду, я не наказав палити села»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). тим же рапортом він зафіксував стан, у якому село йшло до підпорядкування: руйнування «привело як жителів села, так і всіх, хто живе в його околицях, у страх і зневіру»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). старшини прислали «прохання про прийняття їх у покірність російському урядові», і підданство було оформлено на умовах, продиктованих імперією: вірність, повний розрив із керівником чеченського опору ташу-хаджі, заборона зібрань, видача російських полонених в обмін на жителів зандака, захоплених під час руйнування, і встановлена подать(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). факт і дату оформлення розен зафіксував у донесенні військовому міністру: «27-го серпня старшини зандаківські з'явилися до командувача сунженською лінією з виявленням покірності, яку встановленим порядком і прийнято від них»(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-08-27 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1836</div>
+<div><a href="/uk/campaigns/C1157">C1157</a> Примус зруйнованого Зандака до підпорядкування й податі полковником Пулло (1836)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>27 серпня 1836 полковник Пулло прийняв у фортеці Грозній вимушену «покірність» аулу Зандак на річці Яман-су, зруйнованого його загоном 23 серпня 1836 (кампанія C1156). Підпорядкування було спроєктоване самим руйнуванням: у рапорті генералу Петрову від 27 серпня 1836 Пулло визнав: «Будучи ж упевнений, що жителі Зандака за загальними правилами чеченців після покарання проситимуть покірності, і вважаючи таку корисною для уряду, я не наказав палити села»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Тим же рапортом він зафіксував стан, у якому село йшло до підпорядкування: руйнування «привело як жителів села, так і всіх, хто живе в його околицях, у страх і зневіру»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Старшини прислали «прохання про прийняття їх у покірність російському урядові», і підданство було оформлено на умовах, продиктованих імперією: вірність, повний розрив із керівником чеченського опору Ташу-Хаджі, заборона зібрань, видача російських полонених в обмін на жителів Зандака, захоплених під час руйнування, і встановлена подать<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Факт і дату оформлення Розен зафіксував у донесенні військовому міністру: «27-го серпня старшини Зандаківські з'явилися до командувача Сунженською лінією з виявленням покірності, яку встановленим порядком і прийнято від них»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства аманатсько-податна система пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), оформляла підпорядкування чеченських товариств як «покірність» із зобов'язаннями перед імперією. відомість горським народам 1840 року, опублікована у збірнику документів «движение горцев северо-восточного кавказа в 20-50 гг. xix века», фіксує підсумок по товариству ако (акінці - чеченське товариство у верхів'ях річки гехі): «виявили покірність у 1839 році, видали аманатів і зобов'язалися платити подать по руб. сріблом з дому» (аманати - заручники, яких імперія забирала в аулів для контролю над ними)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). оформлення йшло під системою страху, яку пулло описав у доповідній записці 1840 року: «погрожуючи всім непокірним товариствам і винищенням їхнього майна, я навів на них такий страх... що одні за одними почали підкорятися»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податна система Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), оформляла підпорядкування чеченських товариств як «покірність» із зобов'язаннями перед імперією. Відомість горським народам 1840 року, опублікована у збірнику документів «Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века», фіксує підсумок по товариству Ако (акінці - чеченське товариство у верхів'ях річки Гехі): «Виявили покірність у 1839 році, видали аманатів і зобов'язалися платити подать по руб. сріблом з дому» (аманати - заручники, яких імперія забирала в аулів для контролю над ними)<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Оформлення йшло під системою страху, яку Пулло описав у доповідній записці 1840 року: «погрожуючи всім непокірним товариствам і винищенням їхнього майна, я навів на них такий страх... що одні за одними почали підкорятися»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства 26 січня 1837 року, на четвертий день винищення малої чечні експедицією фезе - через два дні після взяття сусіднього шалаж-юрта з 14 убитими - війська, увійшовши в аул ачхой, взяли з нього присягу «в покірності» і 6 аманатів (аманат - людина, яку імперія забирала в громади як гарантію підпорядкування)(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). рамку журнал експедиції, представлений розеном військовому міністру чернишову 11 лютого 1837, проговорює сам: «війська прямують до них не для покарання їх, а власне для утвердження в покірності»(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881) - закріплення підпорядкування під військовим тиском, оформлене імперією як добровільний акт тих, хто підпорядкувався."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1837-01-23 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1837</div>
+<div><a href="/uk/campaigns/C1160">C1160</a> Винищення Малої Чечні експедицією Фезе: 92 полонених, понад тисяча спалених сакель (січень 1837)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>26 січня 1837 року, на четвертий день винищення Малої Чечні експедицією Фезе - через два дні після взяття сусіднього Шалаж-юрта з 14 убитими - війська, увійшовши в аул Ачхой, взяли з нього присягу «в покірності» і 6 аманатів (аманат - людина, яку імперія забирала в громади як гарантію підпорядкування)<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. Рамку журнал експедиції, представлений Розеном військовому міністру Чернишову 11 лютого 1837, проговорює сам: «війська прямують до них не для покарання їх, а власне для утвердження в покірності»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span> - закріплення підпорядкування під військовим тиском, оформлене імперією як добровільний акт тих, хто підпорядкувався.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства у лютому-березні 1837 року війська фезе, винищуючи аули тих, хто ухилявся, брали з чеченських громад присяги імперії одну за одною - рапорти розена військовому міністру чернишову рахують їх за датами: 6 лютого шалі («принесли присягу на покірність нашому уряду і представили в заставу оної аманатів»), 8 лютого герменчук («поновлена присяга на підданство»), 15 лютого гельдіген («принесли присягу на вірнопідданство і видали за вибором з кращих сімейств аманатів»), 21 лютого шість аулів мічика, 25 лютого аули по яман-су від балан-су до білетлі і на аксаї(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). до 24 лютого, за рапортом від 11 березня, фезе «привів до покірності чеченців, що мешкають по р. мічику»; наприкінці березня біля табору при устар-хані війська взяли присягу зі старшин гойтинського лісу і мартанського міжгір'я - ті «принесли присягу на вірнопідданство г. і. (государю імператору) і представили аманатів у забезпечення своєї покірності»(citation: акты собранные кавказскою археографическою комиссиею. том viii (1831-1837) 1881). присяга під військами, що щойно винищили сусідні аули, закріплювала підпорядкування як юридичний факт (аманат - людина, яку імперія забирала в громади як гарантію підпорядкування)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1837-02-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 1837</div>
+<div><a href="/uk/campaigns/C1161">C1161</a> Примушення Чечні до присяги весняним туром Фезе: аманати з примушених до присяги громад, знищення аулів по Джалці, штраф худобою (лютий-квітень 1837)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У лютому-березні 1837 року війська Фезе, винищуючи аули тих, хто ухилявся, брали з чеченських громад присяги імперії одну за одною - рапорти Розена військовому міністру Чернишову рахують їх за датами: 6 лютого Шалі («принесли присягу на покірність нашому уряду і представили в заставу оної аманатів»), 8 лютого Герменчук («поновлена присяга на підданство»), 15 лютого Гельдіген («принесли присягу на вірнопідданство і видали за вибором з кращих сімейств аманатів»), 21 лютого шість аулів Мічика, 25 лютого аули по Яман-су від Балан-су до Білетлі і на Аксаї<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. До 24 лютого, за рапортом від 11 березня, Фезе «привів до покірності чеченців, що мешкають по р. Мічику»; наприкінці березня біля табору при Устар-хані війська взяли присягу зі старшин Гойтинського лісу і Мартанського міжгір'я - ті «принесли присягу на вірнопідданство Г. І. (Государю Імператору) і представили аманатів у забезпечення своєї покірності»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837) 1881"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. Присяга під військами, що щойно винищили сусідні аули, закріплювала підпорядкування як юридичний факт (аманат - людина, яку імперія забирала в громади як гарантію підпорядкування).</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства імперія оформлювала підпорядкування чеченських громад як «покірність» (імперська формула підданства). після вторгнення генерала граббе, командувача військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), в ічкерію (гірську південно-східну чечню) у травні 1839 року імперський огляд 1840 року записав: «ічкеринці внаслідок експедиції до них ген. граббе в 1839 році виявили покірність, але навряд чи така упрочена» - сумнів у міцності «покірності» належить самому імперському документу(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). після придушення повстання граббе 14 червня 1840 року видав відозву до повсталих: «схаменіться і врятуйте себе нині щиросердним каяттям і негайною покірністю. інакше війська наші пройдуть скрізь...», а 15 червня - дванадцять пунктів «умов, приписуваних горцям, що підкоряються», де другим пунктом стоїть присяга: «принести присягу в покірності російському імператору, і надати через старшин присяжні листи російському начальству» (старшини - глави аульних громад)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1838-11-17 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Листопад 1838</div>
+<div><a href="/uk/campaigns/C1164">C1164</a> Примушення Чечні до підкорення після розгрому Ахульго та придушення загального повстання 1840 року (1838-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Імперія оформлювала підпорядкування чеченських громад як «покірність» (імперська формула підданства). Після вторгнення генерала Граббе, командувача військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), в Ічкерію (гірську південно-східну Чечню) у травні 1839 року імперський огляд 1840 року записав: «Ічкеринці внаслідок експедиції до них ген. Граббе в 1839 році виявили покірність, але навряд чи така упрочена» - сумнів у міцності «покірності» належить самому імперському документу<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Після придушення повстання Граббе 14 червня 1840 року видав відозву до повсталих: «Схаменіться і врятуйте себе нині щиросердним каяттям і негайною покірністю. Інакше війська наші пройдуть скрізь...», а 15 червня - дванадцять пунктів «Умов, приписуваних горцям, що підкоряються», де другим пунктом стоїть присяга: «Принести присягу в покірності російському імператору, і надати через старшин присяжні листи російському начальству» (старшини - глави аульних громад)<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства 7 грудня 1857 року, за журналом генерала євдокимова, який командував чеченським загоном, «з'явилися депутати від усього народонаселення долини хулхулау з пропозицією принести покірність і переселитися в наші межі» - запис наводить історик м. і. покровський(citation: кавказские войны и имамат шамиля 2009). «у квітні 1858 р. здаються гойтинці, а слідом за ними гехінці. до середини квітня російське командування може остаточно заявити, що завоювання малої чечні ним закінчено»(citation: кавказские войны и имамат шамиля 2009). «у серпні 1858 року шатоєвці склали зброю»(citation: чеченцы в русско-кавказской войне 1998) - той самий журнал євдокимова датує це 7 серпня і пояснює причину: «щойно шатоєвці побачили, що тавлінці залишають їх і що ми маємо намір твердо утвердитися в зайнятому нами краї, то одразу прислали до мене депутатів із пропозицією покірності і з проханням про дозвіл поселитися на місцях колишніх своїх аулів»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904); «5 квітня чеберлоєвці вигнали наїба і покорилися», а «12 квітня своє безсилля перед російською армією визнали ауховські чеченці»(citation: чеченцы в русско-кавказской войне 1998). капітуляцію оформлював і папір з обіцянками: у січні 1859 року, під час наступу на ведено, поширено прокламацію головнокомандувача барятинського до чеченського народу - повний текст наводить історик д. а. хожаєв: «уряд російський надає вам цілком вільно виконувати назавжди віру ваших батьків», «вас ніколи не вимагатимуть у солдати і не обернуть вас на козаків», «дарується вам пільга на три роки... після закінчення цього строку ви повинні будете для утримання ваших народних управлінь вносити по три рублі з дому», «поставлені над вами правителі будуть управляти за шаріатом і адатом» (шаріат - ісламське право; адат - звичаєве право горців)(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1857</div>
+<div><a href="/uk/campaigns/C1168">C1168</a> Просіки і голод: завоювання Чечні Євдокимовим (1857-1859)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>7 грудня 1857 року, за журналом генерала Євдокимова, який командував Чеченським загоном, «з'явилися депутати від усього народонаселення долини Хулхулау з пропозицією принести покірність і переселитися в наші межі» - запис наводить історик М. І. Покровський<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. «У квітні 1858 р. здаються гойтинці, а слідом за ними гехінці. До середини квітня російське командування може остаточно заявити, що завоювання Малої Чечні ним закінчено»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. «У серпні 1858 року шатоєвці склали зброю»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span> - той самий журнал Євдокимова датує це 7 серпня і пояснює причину: «Щойно шатоєвці побачили, що тавлінці залишають їх і що ми маємо намір твердо утвердитися в зайнятому нами краї, то одразу прислали до мене депутатів із пропозицією покірності і з проханням про дозвіл поселитися на місцях колишніх своїх аулів»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>; «5 квітня чеберлоєвці вигнали наїба і покорилися», а «12 квітня своє безсилля перед російською армією визнали ауховські чеченці»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Капітуляцію оформлював і папір з обіцянками: у січні 1859 року, під час наступу на Ведено, поширено прокламацію головнокомандувача Барятинського до чеченського народу - повний текст наводить історик Д. А. Хожаєв: «уряд Російський надає вам цілком вільно виконувати назавжди віру ваших батьків», «вас ніколи не вимагатимуть у солдати і не обернуть вас на козаків», «дарується вам пільга на три роки... після закінчення цього строку ви повинні будете для утримання ваших народних управлінь вносити по три рублі з дому», «поставлені над вами правителі будуть управляти за шаріатом і адатом» (шаріат - ісламське право; адат - звичаєве право горців)<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="примусове оформлення підданства 19 лютого 1919 року генерал ляхов на з'їзді представників чечні в алдах оголосив вимоги добровольчої армії, включно з мобілізацією: «ці вимоги висувалися в ультимативній формі і не підлягали обговоренню», - пишуть історики я. з. ахмадов і е. х. хасмагомадов, - і з'їзд залишив ультиматум без відповіді(citation: история чечни в xix-xx веках 2005). у квітні 1919 року командування висунуло новий ультиматум: «повну покірність чеченців призначеному правителю чечні, видачу всіх червоноармійців, більшовиків і абреків, а також усіх цінностей, вивезених у чечню червоною армією... повернення розкрадених матеріалів із залізниці та організацію постачання продовольства і фуражу для армії»; за невиконання окремої вимоги - негайно повернути групу козаків, захоплених в околицях села, - армія штурмом узяла цацан-юрт(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0014"
+             data-tools="S0010"
+             data-date="1919-02-19 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Лютий 1919</div>
+<div><a href="/uk/campaigns/C1174">C1174</a> Денікінський терор у Чечні: зруйновані аули і 15 тисяч загиблих (1919)</div><div><a href="/uk/groups/G0014">G0014</a> Білий рух (ЗСПР)</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>19 лютого 1919 року генерал Ляхов на з'їзді представників Чечні в Алдах оголосив вимоги Добровольчої армії, включно з мобілізацією: «Ці вимоги висувалися в ультимативній формі і не підлягали обговоренню», - пишуть історики Я. З. Ахмадов і Е. Х. Хасмагомадов, - і з'їзд залишив ультиматум без відповіді<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>. У квітні 1919 року командування висунуло новий ультиматум: «повну покірність чеченців призначеному правителю Чечні, видачу всіх червоноармійців, більшовиків і абреків, а також усіх цінностей, вивезених у Чечню Червоною Армією... повернення розкрадених матеріалів із залізниці та організацію постачання продовольства і фуражу для армії»; за невиконання окремої вимоги - негайно повернути групу козаків, захоплених в околицях села, - армія штурмом узяла Цацан-Юрт<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Українці",
+"russia/nokhchi": "Нохчі (Чеченці)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://www.journals.uchicago.edu/doi/pdfplus/10.1086/235251" target="_blank">
+                        Michael Khodarkovsky. (1999). Of Christianity, Enlightenment, and Colonialism: Russia in the North Caucasus, 1550–1800.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://dokumen.pub/russias-steppe-frontier-the-making-of-a-colonial-empire-1500-1800-9780253339898.html" target="_blank">
+                        Michael Khodarkovsky. (2002). Russia's Steppe Frontier: The Making of a Colonial Empire 1500-1800.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://ru.wikipedia.org/w/index.php?title=%D0%A8%D0%B5%D1%80%D1%82%D1%8C&oldid=142267485" target="_blank">
+                        Википедия. (2024). Шерть - Википедия.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.bbc.com/russian/articles/c20pgklmxp3o" target="_blank">
+                        Диана Курышко, Нина Назарова. (2025). «Как любил Украину, так и буду любить, а российский паспорт взял, чтобы жить». Как устроена принудительная паспортизация.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://dzurdzuki.com/download/kabardino-russkie-otnosheniya-v-xvi-xviii-vv-dokumenty-i-materialy-tom-i-1957/" target="_blank">
+                        Кушева Е. Н.. (1957). Кабардино-русские отношения в XVI-XVIII вв. Документы и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank">
+                        Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2003). Енциклопедія історії України: Т. 1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1869). Акты собранные Кавказскою археографическою комиссиею. Том III (1806-1809).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="10.0">
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank">
+                        Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1878). Акты собранные Кавказскою археографическою комиссиею. Том VII (1827-1831).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1881). Акты собранные Кавказскою археографическою комиссиею. Том VIII (1831-1837).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

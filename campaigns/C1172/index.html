@@ -1,0 +1,807 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1172/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1172/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1172/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1172/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1172/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="«Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878), кампания C1172 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1172/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>«Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878), кампания C1172 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">«Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>«Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>Восстание 1877 года - историки Я. З. Ахмадов и Э. Х. Хасмагомадов называют его крестьянской войной - империя подавляла истреблением всего, что могло поддержать восставших. Методы сформулировала историк А. И. Исмаилова: «Сжигание аулов, высылка населения, уничтожение посевов - вот основные методы борьбы, которые царское командование применяет с беспощадной последовательностью»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Характер приказов задал Свистунов, начальник Терской области, - в его распоряжениях генералу Смекалову, по историку А. И. Исмаиловой, неизменно повторялось требование: «Ради бога, только не отходите назад, а продвигайтесь хотя понемногу вперед, беспощадно уничтожая перед собой все и всех... Силы наши все будут прибывать; только без сожаления косите все, бейте и вешайте беспощадно»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Принцип наказания сформулировал наместник докладной запиской: «чтобы наказание распространялось не на одних только ищущих подвига самопожертвования фанатиков, а и на окружающую их виновную среду, чтобы страхом неизбежного общего наказания... побудить массу противодействовать»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Ответ народа записала та же имперская сторона - жители Мехкетов отказали начальнику Терской области в выдаче Умы Дуева, руководителя восстания в горной Чечне, под угрозой выселения аула: «...от народа следует требовать только возможного. Ты знаешь, как нам трудно расстаться с могилами отцов и родиной, но мы беспрекословно покоряемся. Выдать же Уму не можем. Он был наш гость»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1172
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Апрель 1877</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Май 1878</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>3 августа 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>3 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1172" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1172/C1172-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1172%2FC1172-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0009">G0009</a></td>
+                <td><a href="/groups/G0009">Российская Империя</a></td>
+                <td>15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0010"> S0010 </a></td>
+                <td><a href="/software/S0010"> Регулярная армия </a></td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td><a href="/software/S0012"> S0012 </a></td>
+                <td><a href="/software/S0012"> Оккупационные и подконтрольные администрации </a></td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="карательные экспедиции в мае 1877 года отряд полковника батьянова подавил восстание в пограничной салатавии: историк а. и. исмаилова пишет - «подавление восстания, продолжавшееся всю вторую половину мая, было проведено с чрезвычайной жестокостью. аулы алмак, дылым и буртунай с их хуторами были уничтожены»(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). 12 июля 1877 года «против бассовских аулов были двинуты значительные отряды войск. но жители с семействами и всем движимым имуществом скрылись в лесах. карательная экспедиция уничтожила аулы, а посевы вытравила и вытоптала»(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). 16 июля полковник накашидзе двумя колоннами вошёл в чеберлой: историки я. з. ахмадов и э. х. хасмагомадов пишут - «разрушил 5 селений, включая аулы макажой и садой, арестовал до тысячи человек и захватил большое количество скота»(citation: история чечни в xix-xx веках 2005). 14 августа войска взяли аул дышни-ведено у стен веденской крепости - восставшие, по историку а. и. исмаиловой, отстаивали каждую саклю (дом горца) «несмотря на убийственный артиллерийский огонь»(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0077">T0077</a> Карательные экспедиции
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В мае 1877 года отряд полковника Батьянова подавил восстание в пограничной Салатавии: историк А. И. Исмаилова пишет - «Подавление восстания, продолжавшееся всю вторую половину мая, было проведено с чрезвычайной жестокостью. Аулы Алмак, Дылым и Буртунай с их хуторами были уничтожены»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 12 июля 1877 года «против бассовских аулов были двинуты значительные отряды войск. Но жители с семействами и всем движимым имуществом скрылись в лесах. Карательная экспедиция уничтожила аулы, а посевы вытравила и вытоптала»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 16 июля полковник Накашидзе двумя колоннами вошёл в Чеберлой: историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут - «разрушил 5 селений, включая аулы Макажой и Садой, арестовал до тысячи человек и захватил большое количество скота»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 14 августа войска взяли аул Дышни-Ведено у стен Веденской крепости - восставшие, по историку А. И. Исмаиловой, отстаивали каждую саклю (дом горца) «несмотря на убийственный артиллерийский огонь»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="террор в распоряжениях свистунова, начальника терской области, генералу смекалову неизменно повторялось требование: «продвигайтесь хотя понемногу вперед, беспощадно уничтожая перед собой все и всех... силы наши все будут прибывать; только без сожаления косите все, бейте и вешайте беспощадно» - распоряжения приводит историк а. и. исмаилова по имперскому изданию «материалы для описания русско-турецкой войны 1877-78 гг.»(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). историки я. з. ахмадов и э. х. хасмагомадов фиксируют: на заключительном этапе каратели «действовали в полном соответствии» с этим приказом(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0022">T0022</a> Террор
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В распоряжениях Свистунова, начальника Терской области, генералу Смекалову неизменно повторялось требование: «продвигайтесь хотя понемногу вперед, беспощадно уничтожая перед собой все и всех... Силы наши все будут прибывать; только без сожаления косите все, бейте и вешайте беспощадно» - распоряжения приводит историк А. И. Исмаилова по имперскому изданию «Материалы для описания русско-турецкой войны 1877-78 гг.»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов фиксируют: на заключительном этапе каратели «действовали в полном соответствии» с этим приказом<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальное уничтожение инфраструктуры приказ полковника лохвицкого от 17 июля 1877 года по чеберлоевскому участку предписал: «разорить до основания селения нижелой, ригахой и нуй-хой»(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007); историк а. и. исмаилова подводит итог: «аулы и посевы чаберлоевского участка были сплошь уничтожены; такая же участь постигла многие аулы шатоевского и евдокимовского участков. жители скрылись в лесах»(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). в октябре 1877 года, на обратном пути от симсирских хуторов, историк д. а. хожаев фиксирует: «русские сожгли и разрушили зандак и, вторично, селение беной - все до последнего дома, включая и мечети, сровняли с землей»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0105">T0105</a> Тотальное уничтожение инфраструктуры
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Приказ полковника Лохвицкого от 17 июля 1877 года по Чеберлоевскому участку предписал: «разорить до основания селения Нижелой, Ригахой и Нуй-Хой»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; историк А. И. Исмаилова подводит итог: «Аулы и посевы Чаберлоевского участка были сплошь уничтожены; такая же участь постигла многие аулы Шатоевского и Евдокимовского участков. Жители скрылись в лесах»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. В октябре 1877 года, на обратном пути от симсирских хуторов, историк Д. А. Хожаев фиксирует: «русские сожгли и разрушили Зандак и, вторично, селение Беной - все до последнего дома, включая и мечети, сровняли с землей»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="искусственный голод свистунов, начальник терской области, писал смекалову 18 августа 1877 года: «беной же и зандак надо поголовно выселить в сибирь, или, если эти подлецы не пожелают, выморить всех зимой как тараканов и уничтожить голодом»(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007); эту же директиву свистунова приводит историк д. а. хожаев(citation: чеченцы в русско-кавказской войне 1998). в имперской публикации переписки (письмо смекалову от 18 августа 1877 года, №226) формула читается: «выморозить всѣхъ зимою, какъ таракановъ и уничтожить голодомъ»(citation: материалы для описания русско-турецкой войны 1877-1878 гг. на кавказско-малоазиатском театре. том vi, часть 1 1910). продовольственную базу уничтожали с первых дней: 13 апреля 1877 года за один лишь пропуск отряда алибека-хаджи, руководителя восстания, через село «покосы и кукурузные поля жителей [беноя] были полностью сожжены царскими войсками»(citation: мир чеченцев. xix век 2007). полковник батьянов, по историку з. х. ибрагимовой, «широко применял уничтожение запасов хлеба и сена», считая, что это заставляет «одуматься» многих(citation: мир чеченцев. xix век 2007). в чеберлое войска простояли около 20 дней - «все это время они портили поля чеберлоевских селений. жители же их находились тогда в таком состоянии, словно бы поразило их величайшее наводнение»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0121">T0121</a> Искусственный голод
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Свистунов, начальник Терской области, писал Смекалову 18 августа 1877 года: «Беной же и Зандак надо поголовно выселить в Сибирь, или, если эти подлецы не пожелают, выморить всех зимой как тараканов и уничтожить голодом»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; эту же директиву Свистунова приводит историк Д. А. Хожаев<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. В имперской публикации переписки (письмо Смекалову от 18 августа 1877 года, №226) формула читается: «выморозить всѣхъ зимою, какъ таракановъ и уничтожить голодомъ»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кавказский военно-исторический отдел (Тифлис; в корпусе стр. 192-196). (1910). Материалы для описания русско-турецкой войны 1877-1878 гг. на Кавказско-Малоазиатском театре. Том VI, часть 1."data-reference="Материалы для описания русско-турецкой войны 1877-1878 гг. на Кавказско-Малоазиатском театре. Том VI, часть 1 1910"><sup><a href="https://runivers.ru/bookreader/book17115/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Продовольственную базу уничтожали с первых дней: 13 апреля 1877 года за один лишь пропуск отряда Алибека-Хаджи, руководителя восстания, через село «покосы и кукурузные поля жителей [Беноя] были полностью сожжены царскими войсками»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Полковник Батьянов, по историку З. Х. Ибрагимовой, «широко применял уничтожение запасов хлеба и сена», считая, что это заставляет «одуматься» многих<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. В Чеберлое войска простояли около 20 дней - «Все это время они портили поля чеберлоевских селений. Жители же их находились тогда в таком состоянии, словно бы поразило их величайшее наводнение»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских историки я. з. ахмадов и э. х. хасмагомадов пишут о командах «охотников»: «милиционеры имели приказ убивать не только скрывающихся абреков, но и любого жителя, направлявшегося из своего селения в лес. в качестве вознаграждения за каждого убитого или пойманного в лесу человека власти выплачивали 25 рублей» (абрек - имперский ярлык горца вне закона)(citation: история чечни в xix-xx веках 2005); за руководителей назначены отдельные суммы - «за алибека-хаджи - несколько тысяч рублей»(citation: история чечни в xix-xx веках 2005). пленных полагалось убивать при попытке их отбить - и это исполнялось: «при нападении повстанцев на отряд, сопровождавший в веденскую крепость 135 арестованных жителей селения мехкеты, солдатами было убито до 20 мехкетинцев»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0104">T0104</a> Массовые убийства гражданских
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут о командах «охотников»: «милиционеры имели приказ убивать не только скрывающихся абреков, но и любого жителя, направлявшегося из своего селения в лес. В качестве вознаграждения за каждого убитого или пойманного в лесу человека власти выплачивали 25 рублей» (абрек - имперский ярлык горца вне закона)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; за руководителей назначены отдельные суммы - «за Алибека-хаджи - несколько тысяч рублей»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Пленных полагалось убивать при попытке их отбить - и это исполнялось: «при нападении повстанцев на отряд, сопровождавший в Веденскую крепость 135 арестованных жителей селения Мехкеты, солдатами было убито до 20 мехкетинцев»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="захват заложников свистунов, начальник терской области, предписал начальнику аргунского округа 20 августа 1877 года: «в случае не только принятия мятежников каким-либо аулом, но малейшего в нем беспорядка или ослушания властям, вы будете присылать в грозный аманатов такого аула, а я их буду расстреливать» (аманат - человек, которого империя забирала из общины как заложника)(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007). полковник батьянов, по историку з. х. ибрагимовой, заявлял, что полагает «полезною мерою расстрелять из числа аманатов по пять человек каждого отложившегося аула»(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0099">T0099</a> Захват заложников
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Свистунов, начальник Терской области, предписал начальнику Аргунского округа 20 августа 1877 года: «В случае не только принятия мятежников каким-либо аулом, но малейшего в нем беспорядка или ослушания властям, вы будете присылать в Грозный аманатов такого аула, а я их буду расстреливать» (аманат - человек, которого империя забирала из общины как заложника)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Полковник Батьянов, по историку З. Х. Ибрагимовой, заявлял, что полагает «полезною мерою расстрелять из числа аманатов по пять человек каждого отложившегося аула»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="ложный компромисс/ловушка историк д. а. хожаев пишет о сдаче алибека-хаджи и его наибов (наиб - поставленный властью управляющий округом) в ноябре 1877 года: «начальник терской области генерал князь лорис-меликов обманул их, дав честное слово о помиловании всех, явившихся с повинной»(citation: чеченцы в русско-кавказской войне 1998). секретарь алибека-хаджи гойтукин расу, очевидец, записал механизм обмана: алибеку передали, «что если он придет к властям с миром, то ему оставят свободу. поверив их словам... он явился к начальнику веденской крепости. начальник тотчас же приказал схватить его и, заковав ноги и руки в кандалы, отправил в городскую тюрьму»(citation: чеченцы в русско-кавказской войне 1998). сдавшихся судили военно-полевым судом и казнили."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0028">T0028</a> Ложный компромисс/ловушка
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историк Д. А. Хожаев пишет о сдаче Алибека-Хаджи и его наибов (наиб - поставленный властью управляющий округом) в ноябре 1877 года: «Начальник Терской области генерал князь Лорис-Меликов обманул их, дав честное слово о помиловании всех, явившихся с повинной»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Секретарь Алибека-Хаджи Гойтукин Расу, очевидец, записал механизм обмана: Алибеку передали, «что если он придет к властям с миром, то ему оставят свободу. Поверив их словам... он явился к начальнику Веденской крепости. Начальник тотчас же приказал схватить его и, заковав ноги и руки в кандалы, отправил в городскую тюрьму»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Сдавшихся судили военно-полевым судом и казнили.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтрализация оппозиции военно-полевой суд заседал в грозном 4-6 марта 1878 года: «из 17 лиц судимых 11 были приговорены к смертной казни, в том числе алибек-хаджи, ума дуев, один из его сыновей и дада залмаев»(citation: история чечни в xix-xx веках 2005); историк з. х. ибрагимова считает 18 судимых и 13 приговорённых, остальных - к 20 годам каторги(citation: мир чеченцев. xix век 2007). историк д. а. хожаев пишет: «9 марта 1878 года в 6 часов утра в городе грозном на ярмарочной площади они были повешены и зарыты в общей яме» - и даёт поимённый список одиннадцати(citation: чеченцы в русско-кавказской войне 1998); ахмадов и хасмагомадов добавляют: казнь прошла «при гробовом молчании и явном сочувствии к казнимым собравшихся горожан»(citation: история чечни в xix-xx веках 2005). участник подавления, присутствовавший на казни, признал: «меня поразило спокойствие, с которым эти люди умирали»(citation: мир чеченцев. xix век 2007). тела, зарытые властью в общей яме, чеченцы ночью тайно перезахоронили по мусульманскому обряду - историк д. а. хожаев передаёт предание о кладбище у самашек, историк з. х. ибрагимова - о тыртовой роще под грозным(citation: чеченцы в русско-кавказской войне 1998)(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0021">T0021</a> Нейтрализация оппозиции
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Военно-полевой суд заседал в Грозном 4-6 марта 1878 года: «Из 17 лиц судимых 11 были приговорены к смертной казни, в том числе Алибек-хаджи, Ума Дуев, один из его сыновей и Дада Залмаев»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; историк З. Х. Ибрагимова считает 18 судимых и 13 приговорённых, остальных - к 20 годам каторги<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Историк Д. А. Хожаев пишет: «9 марта 1878 года в 6 часов утра в городе Грозном на ярмарочной площади они были повешены и зарыты в общей яме» - и даёт поимённый список одиннадцати<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; Ахмадов и Хасмагомадов добавляют: казнь прошла «при гробовом молчании и явном сочувствии к казнимым собравшихся горожан»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Участник подавления, присутствовавший на казни, признал: «Меня поразило спокойствие, с которым эти люди умирали»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Тела, зарытые властью в общей яме, чеченцы ночью тайно перезахоронили по мусульманскому обряду - историк Д. А. Хожаев передаёт предание о кладбище у Самашек, историк З. Х. Ибрагимова - о Тыртовой роще под Грозным<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="депортация «уже в августе 1877 г. были высланы первые 150 жителей селений зандак и даттых, небольшие партии ссыльных отправлялись всю осень»(citation: история чечни в xix-xx веках 2005). «весной следующего, 1878 г., из терской области выслано еще 110 семей, а из дагестана - 660 семейств. большая часть высланных умерла уже в первые месяцы ссылки. известно также, что свыше 500 чеченцев были приговорены к пожизненным каторжным работам»(citation: история чечни в xix-xx веках 2005). историк з. х. ибрагимова даёт счёт по одной губернии: «из 1625 горцев, выселенных в 1878 году в новгородскую губернию, в первые месяцы умерли 429 (из них 118 мужчин, остальные - женщины) и 74 были признаны безнадёжно больными»(citation: мир чеченцев. xix век 2007). условия описал журналист ю. полуянский, посетивший ссыльных: «в череповце горцы помещены в полуразвалившейся, давно необитаемой лачуге... из пятидесяти человек уже умерло до тридцати, преимущественно дети, от чахотки и брюшного тифа... на пропитание взрослым отпускают ежедневно по 6 копеек, детям по 3 копейки»(citation: мир чеченцев. xix век 2007). внутри чечни горные сёла сгонялись на равнину: «из указанной местности почти поголовно выселены селения мехкеты, хатуни и таузень»(citation: история чечни в xix-xx веках 2005); план поголовного выселения салатавцев «до 3000 душ» в северные губернии урезан до 200 человек только из-за нехватки конвоя(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0127">T0127</a> Депортация
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>«Уже в августе 1877 г. были высланы первые 150 жителей селений Зандак и Даттых, небольшие партии ссыльных отправлялись всю осень»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. «Весной следующего, 1878 г., из Терской области выслано еще 110 семей, а из Дагестана - 660 семейств. Большая часть высланных умерла уже в первые месяцы ссылки. Известно также, что свыше 500 чеченцев были приговорены к пожизненным каторжным работам»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историк З. Х. Ибрагимова даёт счёт по одной губернии: «из 1625 горцев, выселенных в 1878 году в Новгородскую губернию, в первые месяцы умерли 429 (из них 118 мужчин, остальные - женщины) и 74 были признаны безнадёжно больными»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Условия описал журналист Ю. Полуянский, посетивший ссыльных: «В Череповце горцы помещены в полуразвалившейся, давно необитаемой лачуге... Из пятидесяти человек уже умерло до тридцати, преимущественно дети, от чахотки и брюшного тифа... На пропитание взрослым отпускают ежедневно по 6 копеек, детям по 3 копейки»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Внутри Чечни горные сёла сгонялись на равнину: «Из указанной местности почти поголовно выселены селения Мехкеты, Хатуни и Таузень»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; план поголовного выселения салатавцев «до 3000 душ» в северные губернии урезан до 200 человек только из-за нехватки конвоя<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="эксплуатация труда приказ полковника лохвицкого от 17 июля 1877 года по чеберлоевскому участку обязал наказанных самих прорубить войскам дорогу в свои горы: «весь участок обязать теперь же в самый краткий срок сделать широкую просеку от босоевской горы к р. шаро-аргуну на пространство слишком 6-ть верст» (верста - чуть больше километра)(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0057">T0057</a> Эксплуатация труда
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Приказ полковника Лохвицкого от 17 июля 1877 года по Чеберлоевскому участку обязал наказанных самих прорубить войскам дорогу в свои горы: «весь участок обязать теперь же в самый краткий срок сделать широкую просеку от Босоевской горы к р. Шаро-Аргуну на пространство слишком 6-ть верст» (верста - чуть больше километра)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="изъятие ресурсов по итогам подавления восстания 1877 года империя отбирала землю горных обществ: историк з. х. ибрагимова фиксирует - «тысячи жителей горных селений были переселены на плоскость, земли их конфисковывались»(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0052">T0052</a> Изъятие ресурсов
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>По итогам подавления восстания 1877 года империя отбирала землю горных обществ: историк З. Х. Ибрагимова фиксирует - «Тысячи жителей горных селений были переселены на плоскость, земли их конфисковывались»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит старшина шали борщик хамбулатов, организовавший отпор восставшим в апреле 1877 года, «был пожалован чином прапорщика милиции и годовым окладом в 600 рублей и получил пожизненную пенсию - 100 рублей в год»(citation: история чечни в xix-xx веках 2005); историк а. и. исмаилова называет пенсию «около 400 р. в год»(citation: к вопросу о ходе и основных этапах восстания в чечне в 1877 году 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0012"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0015">T0015</a> Подкуп элит
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0012">S0012</a> Оккупационные и подконтрольные администрации</div>            </div>
+            <div class="proc-desc">
+                        <p>Старшина Шали Борщик Хамбулатов, организовавший отпор восставшим в апреле 1877 года, «был пожалован чином прапорщика милиции и годовым окладом в 600 рублей и получил пожизненную пенсию - 100 рублей в год»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; историк А. И. Исмаилова называет пенсию «около 400 р. в год»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году."data-reference="К вопросу о ходе и основных этапах восстания в Чечне в 1877 году 2007"><sup><a href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="создание агентуры влияния историки я. з. ахмадов и э. х. хасмагомадов пишут: «3 октября к генералу смекалову... пришел некий житель беноя по имени бий-султан. в обмен на полное прощение и разрешение собрать остатки своего имущества бий-султан вызвался стать проводником к последнему укрепленному пункту алибек-хаджи. благодаря этой неожиданной помощи симсирские хутора были быстро захвачены»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0013">T0013</a> Создание агентуры влияния
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «3 октября к генералу Смекалову... пришел некий житель Беноя по имени Бий-Султан. В обмен на полное прощение и разрешение собрать остатки своего имущества Бий-Султан вызвался стать проводником к последнему укрепленному пункту Алибек-хаджи. Благодаря этой неожиданной помощи симсирские хутора были быстро захвачены»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="стравливание соседних народов наместник на кавказе михаил романов высказал пожелание привлечь к военным действиям в чечне дагестанскую милицию (милиция - вооружённые отряды горцев на службе империи), а со стороны дагестана, близ селения ботлих, был сосредоточен отряд из регулярной пехоты и 12 сотен конной и пешей дагестанской милиции(citation: история чечни в xix-xx веках 2005). в начале мая в соседнем дагестане был собран отряд полковника накашидзе - два батальона апшеронского и самурского полков, 6 дружин и 3 сотни милиции при орудиях(citation: история чечни в xix-xx веках 2005). разгром завершился тем же способом: селение согратль в дагестане, где укрылись руководители восстания, было окружено русскими войсками и дагестанской милицией(citation: чеченцы в русско-кавказской войне 1998). часть подавления империя перекладывала на самих колонизированных, оставляя за собой роль арбитра и закрепляя вражду между соседями."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0152">T0152</a> Стравливание соседних народов
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Наместник на Кавказе Михаил Романов высказал пожелание привлечь к военным действиям в Чечне дагестанскую милицию (милиция - вооружённые отряды горцев на службе империи), а со стороны Дагестана, близ селения Ботлих, был сосредоточен отряд из регулярной пехоты и 12 сотен конной и пешей дагестанской милиции<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В начале мая в соседнем Дагестане был собран отряд полковника Накашидзе - два батальона Апшеронского и Самурского полков, 6 дружин и 3 сотни милиции при орудиях<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Разгром завершился тем же способом: селение Согратль в Дагестане, где укрылись руководители восстания, было окружено русскими войсками и дагестанской милицией<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Часть подавления империя перекладывала на самих колонизированных, оставляя за собой роль арбитра и закрепляя вражду между соседями.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="мародёрство войска, занявшие чеченские территории при подавлении восстания 1877 года, грабили население. при разрушении пяти селений чеберлоя отряд накашидзе «арестовал до тысячи человек и захватил большое количество скота»(citation: история чечни в xix-xx веках 2005), а историк з. х. ибрагимова фиксирует практику сверх приказов: «солдаты безнаказанно мародёрствовали на занятых территориях, а также травили посевы, отбирали у населения лошадей, резали скот даже без какой-либо на то необходимости»(citation: мир чеченцев. xix век 2007)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1877-04-13 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Апрель 1877</div>
+                <div>
+                    <a href="/techniques/T0164">T0164</a> Мародёрство
+                </div>
+<div><a href="/campaigns/C1172">C1172</a> «Косите все, бейте и вешайте беспощадно»: подавление восстания 1877 года и казни в Грозном (1877-1878)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Войска, занявшие чеченские территории при подавлении восстания 1877 года, грабили население. При разрушении пяти селений Чеберлоя отряд Накашидзе «арестовал до тысячи человек и захватил большое количество скота»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, а историк З. Х. Ибрагимова фиксирует практику сверх приказов: «солдаты безнаказанно мародёрствовали на занятых территориях, а также травили посевы, отбирали у населения лошадей, резали скот даже без какой-либо на то необходимости»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век."data-reference="Мир чеченцев. XIX век 2007"><sup><a href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://cyberleninka.ru/article/n/k-voprosu-o-hode-i-osnovnyh-etapah-vosstaniya-v-chechne-v-1877-godu" target="_blank">
+                        Исмаилова А. И.. (2007). К вопросу о ходе и основных этапах восстания в Чечне в 1877 году.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://rusneb.ru/catalog/000199_000009_003141981/" target="_blank">
+                        Ибрагимова З. Х.. (2007). Мир чеченцев. XIX век.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://runivers.ru/bookreader/book17115/" target="_blank">
+                        Кавказский военно-исторический отдел (Тифлис; в корпусе стр. 192-196). (1910). Материалы для описания русско-турецкой войны 1877-1878 гг. на Кавказско-Малоазиатском театре. Том VI, часть 1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

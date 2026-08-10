@@ -1,0 +1,670 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/techniques/T0108/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0108/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0108/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0108/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0108/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Економічна блокада, техніка T0108 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/techniques/T0108/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Економічна блокада, техніка T0108 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/techniques/">Техніки</a></li>
+  <li class="breadcrumb-item">Економічна блокада</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Економічна блокада
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агресори можуть запроваджувати фінансові й торговельні обмеження, блокувати банківські перекази та зупиняти роботу підприємств корінного народу. Ця техніка застосовується для підготовки до захоплення та нейтралізації захисту. Штучне удушення економіки позбавляє колонізоване суспільство ресурсів, необхідних для самозабезпечення й оборони, провокуючи внутрішню кризу та послаблюючи інститути перед початком відкритої інтервенції або в ході активного конфлікту.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0108
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Підтехніки:&nbsp;</span>
+                    Немає підтехнік
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактичні цілі, які досягаються застосуванням техніки або підтехніки">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/uk/tactics/TA0004">Ослаблення захисту</a>,                        <a href="/uk/tactics/TA0002">Підготовка до захоплення</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народи, проти яких застосовувалася техніка або підтехніка">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народи:&nbsp;</span>Нохчі (Чеченці), Українці
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контриб'ютори:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версія:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Створено:&nbsp;</span>21 квітня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>9 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/T0108" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реалізовані процедури</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="економічна блокада частиною аманатсько-податної системи пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), був режим економічної блокади аулів чечні, що не підпорядкувалися. пулло в доповідній записці 1840 року: призначені імперією наглядачі над аулами (пристави) і війська «припинили зносини покірних з непокірними і забороняли першим продавати хліб немирним і пасти їхню худобу на своїх полях» («немирні» - в імперському лексиконі аули, що не підпорядкувалися імперії)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). дозволена торгівля була загнана під контроль: «у кизлярі і на деяких інших пунктах відкрилися торжища» - обмін йшов тільки в пунктах, контрольованих імперією(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). дію блокади визнали її ж автори: генерал граббе, командувач військ кавказької лінії і начальник пулло, рапортом військовому міністру імперії чернишову від 23 березня 1840 року писав, що гірські аули «не могли вже мати хліборобства і пасовищ на рівнині», що «посилило ще бідування жителів нагірної чечні»; частина жителів думала підпорядкуватися «для відвернення голоду», інші вирішили «позбутися російського іга»(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884). у складеному 1840 року плані завоювання горців лівого флангу («припущення... до підкорення племен») граббе сформулював механізм дії блокади: нагляд приставів «непокірним... загрожував голодом. шаміль скористався цим настроєм умів» (шаміль - імам, керівник спротиву горців дагестану і чечні російському завоюванню)(citation: акты собранные кавказскою археографическою комиссиею. том ix (1837-1844) 1884)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Частиною аманатсько-податної системи Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), був режим економічної блокади аулів Чечні, що не підпорядкувалися. Пулло в доповідній записці 1840 року: призначені імперією наглядачі над аулами (пристави) і війська «припинили зносини покірних з непокірними і забороняли першим продавати хліб немирним і пасти їхню худобу на своїх полях» («немирні» - в імперському лексиконі аули, що не підпорядкувалися імперії)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Дозволена торгівля була загнана під контроль: «У Кизлярі і на деяких інших пунктах відкрилися торжища» - обмін йшов тільки в пунктах, контрольованих імперією<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Дію блокади визнали її ж автори: генерал Граббе, командувач військ Кавказької лінії і начальник Пулло, рапортом військовому міністру імперії Чернишову від 23 березня 1840 року писав, що гірські аули «не могли вже мати хліборобства і пасовищ на рівнині», що «посилило ще бідування жителів нагірної Чечні»; частина жителів думала підпорядкуватися «для відвернення голоду», інші вирішили «позбутися Російського іга»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. У складеному 1840 року плані завоювання горців лівого флангу («Припущення... до підкорення племен») Граббе сформулював механізм дії блокади: нагляд приставів «непокірним... загрожував голодом. Шаміль скористався цим настроєм умів» (Шаміль - імам, керівник спротиву горців Дагестану і Чечні російському завоюванню)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844) 1884"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="економічна блокада у 1841-1846 роках імперія тримала чечню, що не підкорилася, в торговельній блокаді. 7 травня 1841 року генерал граббе, командувач військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), розіслав шістьом начальникам дільниць лінії припис «вжити найсуворіших заходів, щоб непокірним горцям не передавалося пороху, сірки, свинцю чи будь-яких інших припасів, а з нашого боку за виконанням цього мати неослабний і постійний нагляд»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). дію блокади визнала імперська записка «про політичний стан чечні» при рапорті генерала нейдгардта, глави імперських військ на кавказі, від 20 листопада 1843 року: чеченцям бракує тканин, заліза і солі, і «причину цього шукати треба в припиненні торговельних зв'язків з росіянами, а не в нестачі продовольчих засобів»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). історики я. з. ахмадов і е. х. хасмагомадов пишуть, що чеченські наїбства (області імамату, керовані намісниками імама - наїбами) стали його економічною базою: хліб та інша сільськогосподарська продукція чеченських селян дали «імамату можливість майже два десятиліття жити в умовах повної економічної блокади»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У 1841-1846 роках імперія тримала Чечню, що не підкорилася, в торговельній блокаді. 7 травня 1841 року генерал Граббе, командувач військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), розіслав шістьом начальникам дільниць лінії припис «вжити найсуворіших заходів, щоб непокірним горцям не передавалося пороху, сірки, свинцю чи будь-яких інших припасів, а з нашого боку за виконанням цього мати неослабний і постійний нагляд»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Дію блокади визнала імперська записка «Про політичний стан Чечні» при рапорті генерала Нейдгардта, глави імперських військ на Кавказі, від 20 листопада 1843 року: чеченцям бракує тканин, заліза і солі, і «причину цього шукати треба в припиненні торговельних зв'язків з росіянами, а не в нестачі продовольчих засобів»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов пишуть, що чеченські наїбства (області імамату, керовані намісниками імама - наїбами) стали його економічною базою: хліб та інша сільськогосподарська продукція чеченських селян дали «імамату можливість майже два десятиліття жити в умовах повної економічної блокади»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="економічна блокада голодну стратегію доповнювала блокада торгівлі. воронцов, намісник і головнокомандувач на кавказі, листом барятинському, що командував на лівому фланзі кавказької лінії (ланцюга імперських укріплень на землі нохчі), від 21 березня 1852 року разом із погрозою «ми їм не дозволимо ні сіяти, ні косити» приписував обмежити продаж солі тим, хто не підкорився імперії; лист наводить історик м. і. покровський(citation: кавказские войны и имамат шамиля 2009). історики я. з. ахмадов і е. х. хасмагомадов передають за хронікою дагестанського автора генічутлінського блокаду солі, заліза та бязі (бавовняної тканини)(citation: история чечни в xix-xx веках 2005). у роки кримської війни імперія блокаду не послабила: ті самі історики пишуть - «до 200 тисяч солдатів і офіцерів упевнено блокують райони дій горців на північному кавказі - навіть тяжкі поразки в криму не змусили російське командування послабити цю блокаду»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1852</div>
+<div><a href="/uk/campaigns/C1167">C1167</a> «Ні орати, ні сіяти»: погром Чечні, організований голод, перекупівля еліт та інститути підкорення (1852-1857)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Голодну стратегію доповнювала блокада торгівлі. Воронцов, намісник і головнокомандувач на Кавказі, листом Барятинському, що командував на лівому фланзі Кавказької лінії (ланцюга імперських укріплень на землі нохчі), від 21 березня 1852 року разом із погрозою «ми їм не дозволимо ні сіяти, ні косити» приписував обмежити продаж солі тим, хто не підкорився імперії; лист наводить історик М. І. Покровський<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Історики Я. З. Ахмадов і Е. Х. Хасмагомадов передають за хронікою дагестанського автора Генічутлінського блокаду солі, заліза та бязі (бавовняної тканини)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. У роки Кримської війни імперія блокаду не послабила: ті самі історики пишуть - «До 200 тисяч солдатів і офіцерів упевнено блокують райони дій горців на Північному Кавказі - навіть тяжкі поразки в Криму не змусили російське командування послабити цю блокаду»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="економічна блокада генерал євдокимов записав у журналі воєнних дій по 22 червня 1859 року (рапорт військовому міністрові сухозанету, № 544): за відмову видати полонених «я оголосив беноєвців та їхніх сусідів непокірними, позбавленими покровительства російських законів, і наказав навколишньому населенню захоплювати їх у полон і відбирати в них худобу»(citation: акты собранные кавказскою археографическою комиссиею. том xii (1856-1862) 1904). історик д. а. хожаєв передає ту саму політику: «тимчасовій адміністрації навколишніх селищ прямо приписувалося припинити всякі контакти з беноєм, брати в полон і знищувати беноєвців»(citation: чеченцы в русско-кавказской войне 1998)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1857-01-15 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1857</div>
+<div><a href="/uk/campaigns/C1168">C1168</a> Просіки і голод: завоювання Чечні Євдокимовим (1857-1859)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Генерал Євдокимов записав у журналі воєнних дій по 22 червня 1859 року (рапорт військовому міністрові Сухозанету, № 544): за відмову видати полонених «я оголосив беноєвців та їхніх сусідів непокірними, позбавленими покровительства російських законів, і наказав навколишньому населенню захоплювати їх у полон і відбирати в них худобу»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862) 1904"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Історик Д. А. Хожаєв передає ту саму політику: «Тимчасовій адміністрації навколишніх селищ прямо приписувалося припинити всякі контакти з Беноєм, брати в полон і знищувати беноєвців»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="економічна блокада запровадження режиму «чорних дощок» - повної економічної блокади населених пунктів. постанова рнк усрр і цк кп(б)у від 6 грудня 1932 року, підписана чубарем і косіором, приписувала «негайне припинення підвозу товарів, повне припинення кооперативної і державної торгівлі на місці та вивіз із відповідних кооперативних і державних крамниць усіх наявних товарів», а також «повна заборона колгоспної торгівлі як для колгоспів, колгоспників, так і одноосібників»(citation: о занесении на черную доску сел, злостно саботирующих хлебозаготовки 1932)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1932-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1932</div>
+<div><a href="/uk/campaigns/C0078">C0078</a> Терор голодом: Голодомор (1932–1933)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Запровадження режиму «чорних дощок» - повної економічної блокади населених пунктів. Постанова РНК УСРР і ЦК КП(б)У від 6 грудня 1932 року, підписана Чубарем і Косіором, приписувала «негайне припинення підвозу товарів, повне припинення кооперативної і державної торгівлі на місці та вивіз із відповідних кооперативних і державних крамниць усіх наявних товарів», а також «повна заборона колгоспної торгівлі як для колгоспів, колгоспників, так і одноосібників»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="СНК УССР и ЦК КП(б)У (В. Чубарь, С. Косиор), 6 декабря 1932. (1932). О занесении на черную доску сел, злостно саботирующих хлебозаготовки."data-reference="О занесении на черную доску сел, злостно саботирующих хлебозаготовки 1932"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_6_%D0%B4%D0%B5%D0%BA%D0%B0%D0%B1%D1%80%D1%8F_1932_%D0%B3_%D0%A1%D0%9D%D0%9A_%D0%A3%D0%A1%D0%A1%D0%A0_%D0%B8_%D0%A6%D0%9A_%D0%9A%D0%9F%28%D0%B1%29%D0%A3_%C2%AB%D0%9E_%D0%B7%D0%B0%D0%BD%D0%B5%D1%81%D0%B5%D0%BD%D0%B8%D0%B8_%D0%BD%D0%B0_%D1%87%D0%B5%D1%80%D0%BD%D1%83%D1%8E_%D0%B4%D0%BE%D1%81%D0%BA%D1%83_%D1%81%D0%B5%D0%BB%2C_%D0%B7%D0%BB%D0%BE%D1%81%D1%82%D0%BD%D0%BE_%D1%81%D0%B0%D0%B1%D0%BE%D1%82%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D1%85_%D1%85%D0%BB%D0%B5%D0%B1%D0%BE%D0%B7%D0%B0%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B8%C2%BB" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="економічна блокада прямий енергетичний шантаж і відключення постачання газу в розпал зими: 1 січня 2006 року - «о 10:00 за московським часом 1 січня 2006 року „газпром“ припинив постачання газу в україну»(citation: the russian-ukrainian gas crisis of january 2006 2006); 1 січня 2009 року - «російський експорт в україну було припинено 1 січня», після чого експорт до єс було «різко скорочено 6 січня та повністю припинено з 7 січня», а в найбільш постраждалих балканських країнах настала гуманітарна надзвичайна ситуація: «частина населення не могла опалювати свої домівки»(citation: the russo-ukrainian gas dispute of january 2009 2009)."
+             data-platforms="Українці"
+             data-groups="G0011"
+             data-tools="S0009"
+             data-date="2006-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 2006</div>
+<div><a href="/uk/campaigns/C0097">C0097</a> Газові війни та енергетичний шантаж (2006–2009)</div><div><a href="/uk/groups/G0011">G0011</a> Російська Федерація</div><div><a href="/uk/software/S0009">S0009</a> Дипломатія</div>            </div>
+            <div class="proc-desc">
+                        <p>Прямий енергетичний шантаж і відключення постачання газу в розпал зими: 1 січня 2006 року - «о 10:00 за московським часом 1 січня 2006 року „Газпром" припинив постачання газу в Україну»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Jonathan Stern, Oxford Institute for Energy Studies. (2006). The Russian-Ukrainian gas crisis of January 2006."data-reference="The Russian-Ukrainian gas crisis of January 2006 2006"><sup><a href="https://www.oxfordenergy.org/wpcms/wp-content/uploads/2011/01/Jan2006-RussiaUkraineGasCrisis-JonathanStern.pdf" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>; 1 січня 2009 року - «російський експорт в Україну було припинено 1 січня», після чого експорт до ЄС було «різко скорочено 6 січня та повністю припинено з 7 січня», а в найбільш постраждалих балканських країнах настала гуманітарна надзвичайна ситуація: «частина населення не могла опалювати свої домівки»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="J. Stern, S. Pirani, K. Yafimava, Oxford Institute for Energy Studies. (2009). The Russo-Ukrainian gas dispute of January 2009."data-reference="The Russo-Ukrainian gas dispute of January 2009 2009"><sup><a href="https://www.oxfordenergy.org/wpcms/wp-content/uploads/2010/11/NG27-TheRussoUkrainianGasDisputeofJanuary2009AComprehensiveAssessment-JonathanSternSimonPiraniKatjaYafimava-2009.pdf" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Українці",
+"russia/nokhchi": "Нохчі (Чеченці)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1884). Акты собранные Кавказскою археографическою комиссиею. Том IX (1837-1844).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1904). Акты собранные Кавказскою археографическою комиссиею. Том XII (1856-1862).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="6.0">
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_6_%D0%B4%D0%B5%D0%BA%D0%B0%D0%B1%D1%80%D1%8F_1932_%D0%B3_%D0%A1%D0%9D%D0%9A_%D0%A3%D0%A1%D0%A1%D0%A0_%D0%B8_%D0%A6%D0%9A_%D0%9A%D0%9F%28%D0%B1%29%D0%A3_%C2%AB%D0%9E_%D0%B7%D0%B0%D0%BD%D0%B5%D1%81%D0%B5%D0%BD%D0%B8%D0%B8_%D0%BD%D0%B0_%D1%87%D0%B5%D1%80%D0%BD%D1%83%D1%8E_%D0%B4%D0%BE%D1%81%D0%BA%D1%83_%D1%81%D0%B5%D0%BB%2C_%D0%B7%D0%BB%D0%BE%D1%81%D1%82%D0%BD%D0%BE_%D1%81%D0%B0%D0%B1%D0%BE%D1%82%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D1%85_%D1%85%D0%BB%D0%B5%D0%B1%D0%BE%D0%B7%D0%B0%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B8%C2%BB" target="_blank">
+                        СНК УССР и ЦК КП(б)У (В. Чубарь, С. Косиор), 6 декабря 1932. (1932). О занесении на черную доску сел, злостно саботирующих хлебозаготовки.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://www.oxfordenergy.org/wpcms/wp-content/uploads/2011/01/Jan2006-RussiaUkraineGasCrisis-JonathanStern.pdf" target="_blank">
+                        Jonathan Stern, Oxford Institute for Energy Studies. (2006). The Russian-Ukrainian gas crisis of January 2006.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="https://www.oxfordenergy.org/wpcms/wp-content/uploads/2010/11/NG27-TheRussoUkrainianGasDisputeofJanuary2009AComprehensiveAssessment-JonathanSternSimonPiraniKatjaYafimava-2009.pdf" target="_blank">
+                        J. Stern, S. Pirani, K. Yafimava, Oxford Institute for Energy Studies. (2009). The Russo-Ukrainian gas dispute of January 2009.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

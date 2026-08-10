@@ -1,0 +1,590 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/techniques/T0120/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0120/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0120/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0120/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0120/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Винищення за ознакою ідентичності, техніка T0120 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/techniques/T0120/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Винищення за ознакою ідентичності, техніка T0120 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/techniques/">Техніки</a></li>
+  <li class="breadcrumb-item">Винищення за ознакою ідентичності</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Винищення за ознакою ідентичності
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агресори можуть здійснювати цілеспрямоване фізичне знищення людей виключно на підставі їхньої національної, культурної чи політичної належності. Масові репресії, позасудові страти інтелігенції та системний терор мають подвійну мету: негайно придушити активний опір і превентивно ліквідувати соціальну базу, здатну зберігати та передавати національний код у майбутньому.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0120
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Підтехніки:&nbsp;</span>
+                    Немає підтехнік
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактичні цілі, які досягаються застосуванням техніки або підтехніки">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/uk/tactics/TA0005">Закріплення</a>,                        <a href="/uk/tactics/TA0004">Ослаблення захисту</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народи, проти яких застосовувалася техніка або підтехніка">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народ:&nbsp;</span>Українці
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контриб'ютори:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версія:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Створено:&nbsp;</span>21 квітня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>9 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/T0120" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реалізовані процедури</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="винищення за ознакою ідентичності цілеспрямоване фізичне знищення національної культурної еліти. офіційний розворот закріпила постанова цк вкп(б) і раднаркому «про хлібозаготівлі на україні, північному кавказі та в західній області» від 14 грудня 1932 року за підписами сталіна й молотова: українізацію оголошено проведеною «механічно», що, за текстом постанови, «полегшило буржуазно-націоналістичним елементам, петлюрівцям та ін. створення своїх легальних прикриттів, своїх контрреволюційних осередків та організацій»(citation: о хлебозаготовках на украине, северном кавказе и в западной области 1932). термін «розстріляне відродження» й означає «репресивн[у] політик[у] комуніст. москви, спрямован[у] на фізичне знищення укр. інтелектуальної еліти 1920—30х рр. (ширше — усієї національно свідомої інтелігенції української) й табуювання її творчих здобутків»(citation: енциклопедія історії україни: т. 9 2012)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1922-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1922</div>
+<div><a href="/uk/campaigns/C0052">C0052</a> Сталінський терор і кінець українізації (1922–1939)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Цілеспрямоване фізичне знищення національної культурної еліти. Офіційний розворот закріпила постанова ЦК ВКП(б) і Раднаркому «Про хлібозаготівлі на Україні, Північному Кавказі та в Західній області» від 14 грудня 1932 року за підписами Сталіна й Молотова: українізацію оголошено проведеною «механічно», що, за текстом постанови, «полегшило буржуазно-націоналістичним елементам, петлюрівцям та ін. створення своїх легальних прикриттів, своїх контрреволюційних осередків та організацій»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="ЦК ВКП(б) и СНК СССР (И. Сталин, В. Молотов), 14 декабря 1932; РГАСПИ ф.17, оп.3, д.2025, л.42-42об. (1932). О хлебозаготовках на Украине, Северном Кавказе и в Западной области."data-reference="О хлебозаготовках на Украине, Северном Кавказе и в Западной области 1932"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_14_%D0%B4%D0%B5%D0%BA%D0%B0%D0%B1%D1%80%D1%8F_1932_%D0%B3._%D0%A6%D0%9A_%D0%92%D0%9A%D0%9F%28%D0%B1%29_%D0%B8_%D0%A1%D0%9D%D0%9A_%D0%A1%D0%A1%D0%A1%D0%A0_%C2%AB%D0%9E_%D1%85%D0%BB%D0%B5%D0%B1%D0%BE%D0%B7%D0%B0%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0%D1%85_%D0%BD%D0%B0_%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B5%2C_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%BC_%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D0%B5_%D0%B8_%D0%B2_%D0%97%D0%B0%D0%BF%D0%B0%D0%B4%D0%BD%D0%BE%D0%B9_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8%C2%BB" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Термін «розстріляне відродження» й означає «репресивн[у] політик[у] комуніст. Москви, спрямован[у] на фізичне знищення укр. інтелектуальної еліти 1920—30х рр. (ширше — усієї національно свідомої інтелігенції української) й табуювання її творчих здобутків»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9."data-reference="Енциклопедія історії України: Т. 9 2012"><sup><a href="https://archive.org/details/e0h0u" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="винищення за ознакою ідентичності проведення таємних масових «національних операцій» нквс для фізичного знищення представників етнічних меншин(citation: в тени «большого брата»: западные национальные меньшинства в ссср (1917-1938 гг.) 2011). механізм задали оперативні накази наркома єжова: № 00485 від 11 серпня 1937 року відкрив польську операцію - «з 20 серпня 1937 року розпочати широку операцію, спрямовану на повну ліквідацію місцевих організацій „пов“», з терміном завершення «у 3-місячний строк»(citation: оперативный приказ нквд ссср № 00485 1937), - а № 00439 від 25 липня 1937 року — німецьку(citation: оперативный приказ нквд ссср № 00439 1937); за їхніми лекалами пройшли грецька, болгарська та інші операції(citation: в тени «большого брата»: западные национальные меньшинства в ссср (1917-1938 гг.) 2011). масштаб записано у звітності самого карателя: за цифровими зведеннями 1-го спецвідділу нквс урср від 30 серпня 1938 року, в порядку наказів №№ 00485, 00593 та інших по республіці заарештовано 94 659 осіб (54 011 - по польській лінії, 23 036 - по німецькій, 5 642 - по грецькій), з них до 1 липня 1938 року засуджено 61 683; загалом же зі 197 945 засуджених нквс урср за звітний період до розстрілу присуджено 122 274 особи - майже двоє з кожних трьох(citation: сводные данные об арестованных и осужденных органами нквд усср за время с 1 октября 1936 года по 1-е июля 1938 года 1938). за всіма «національними лініями» срср засуджено 335 513 осіб, з них розстріляно 73,66%(citation: національне питання в україні хх – початку ххі ст. 2012)."
+             data-platforms="Українці"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-08-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Серпень 1937</div>
+<div><a href="/uk/campaigns/C0080">C0080</a> Національні операції НКВС та інституційна русифікація (1937–1939)</div><div><a href="/uk/groups/G0010">G0010</a> СРСР</div><div><a href="/uk/software/S0017">S0017</a> Таємна поліція та Спецслужби</div>            </div>
+            <div class="proc-desc">
+                        <p>Проведення таємних масових «національних операцій» НКВС для фізичного знищення представників етнічних меншин<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Виктор Дённингхаус. (2011). В тени «Большого Брата»: Западные национальные меньшинства в СССР (1917-1938 гг.)."data-reference="В тени «Большого Брата»: Западные национальные меньшинства в СССР (1917-1938 гг.) 2011"><sup><a href="https://www.rulit.me/books/v-teni-bolshogo-brata-zapadnye-nacionalnye-menshinstva-v-sssr-1917-1938-gg-read-229462-1.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Механізм задали оперативні накази наркома Єжова: № 00485 від 11 серпня 1937 року відкрив польську операцію - «з 20 серпня 1937 року розпочати широку операцію, спрямовану на повну ліквідацію місцевих організацій „ПОВ"», з терміном завершення «у 3-місячний строк»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Нарком внутренних дел Н. Ежов, 11 августа 1937 («польская операция»; Викитека, публ. по архивной копии). (1937). Оперативный приказ НКВД СССР № 00485."data-reference="Оперативный приказ НКВД СССР № 00485 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_11.08.1937_%E2%84%96_00485" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>, - а № 00439 від 25 липня 1937 року — німецьку<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Нарком внутренних дел Н. Ежов, 25 июля 1937 («немецкая операция»; Викитека, публ. по ксерокопии архива УФСБ СПб). (1937). Оперативный приказ НКВД СССР № 00439."data-reference="Оперативный приказ НКВД СССР № 00439 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_25.07.1937_%E2%84%96_00439" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>; за їхніми лекалами пройшли грецька, болгарська та інші операції<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Виктор Дённингхаус. (2011). В тени «Большого Брата»: Западные национальные меньшинства в СССР (1917-1938 гг.)."data-reference="В тени «Большого Брата»: Западные национальные меньшинства в СССР (1917-1938 гг.) 2011"><sup><a href="https://www.rulit.me/books/v-teni-bolshogo-brata-zapadnye-nacionalnye-menshinstva-v-sssr-1917-1938-gg-read-229462-1.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Масштаб записано у звітності самого карателя: за цифровими зведеннями 1-го спецвідділу НКВС УРСР від 30 серпня 1938 року, в порядку наказів №№ 00485, 00593 та інших по республіці заарештовано 94 659 осіб (54 011 - по польській лінії, 23 036 - по німецькій, 5 642 - по грецькій), з них до 1 липня 1938 року засуджено 61 683; загалом же зі 197 945 засуджених НКВС УРСР за звітний період до розстрілу присуджено 122 274 особи - майже двоє з кожних трьох<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Док. № 158 (редакційний заголовок тому: «Цифрові зведення про заарештованих і засуджених органами НКВС УРСР за період з 1 жовтня 1936 р. по 1 липня 1938 р.») у вид.: Польща та Україна у тридцятих–сорокових роках XX століття. Т. 8: Великий терор: польська операція 1937–1938, ч. 2 (ГДА СБУ + ІПН, Варшава–Київ, 2010); ГДА СБУ, ф. 16, оп. 31 (1951), спр. 55, арк. 199–204; підписав нач. 1-го спецвідділу НКВС УРСР Назаренко, 30.08.1938. (1938). Сводные данные об арестованных и осужденных органами НКВД УССР за время с 1 октября 1936 года по 1-е июля 1938 года."data-reference="Сводные данные об арестованных и осужденных органами НКВД УССР за время с 1 октября 1936 года по 1-е июля 1938 года 1938"><sup><a href="https://przystanekhistoria.pl/download/166/146938/T8WielkiTerrorcz2-komplet.pdf" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. За всіма «національними лініями» СРСР засуджено 335 513 осіб, з них розстріляно 73,66%<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Л. Якубова, В. Головченко, О. Аркуша та ін. (Інститут історії України НАНУ). (2012). Національне питання в Україні ХХ – початку ХХІ ст.."data-reference="Національне питання в Україні ХХ – початку ХХІ ст. 2012"><sup><a href="http://resource.history.org.ua/item/0007905" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Українці",
+"russia/nokhchi": "Нохчі (Чеченці)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_14_%D0%B4%D0%B5%D0%BA%D0%B0%D0%B1%D1%80%D1%8F_1932_%D0%B3._%D0%A6%D0%9A_%D0%92%D0%9A%D0%9F%28%D0%B1%29_%D0%B8_%D0%A1%D0%9D%D0%9A_%D0%A1%D0%A1%D0%A1%D0%A0_%C2%AB%D0%9E_%D1%85%D0%BB%D0%B5%D0%B1%D0%BE%D0%B7%D0%B0%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0%D1%85_%D0%BD%D0%B0_%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B5%2C_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%BC_%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D0%B5_%D0%B8_%D0%B2_%D0%97%D0%B0%D0%BF%D0%B0%D0%B4%D0%BD%D0%BE%D0%B9_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8%C2%BB" target="_blank">
+                        ЦК ВКП(б) и СНК СССР (И. Сталин, В. Молотов), 14 декабря 1932; РГАСПИ ф.17, оп.3, д.2025, л.42-42об. (1932). О хлебозаготовках на Украине, Северном Кавказе и в Западной области.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://archive.org/details/e0h0u" target="_blank">
+                        Редкол.: В. А. Смолій (голова) та ін. НАН України. Інститут історії України. (2012). Енциклопедія історії України: Т. 9.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://www.rulit.me/books/v-teni-bolshogo-brata-zapadnye-nacionalnye-menshinstva-v-sssr-1917-1938-gg-read-229462-1.html" target="_blank">
+                        Виктор Дённингхаус. (2011). В тени «Большого Брата»: Западные национальные меньшинства в СССР (1917-1938 гг.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_11.08.1937_%E2%84%96_00485" target="_blank">
+                        Нарком внутренних дел Н. Ежов, 11 августа 1937 («польская операция»; Викитека, публ. по архивной копии). (1937). Оперативный приказ НКВД СССР № 00485.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="5.0">
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_25.07.1937_%E2%84%96_00439" target="_blank">
+                        Нарком внутренних дел Н. Ежов, 25 июля 1937 («немецкая операция»; Викитека, публ. по ксерокопии архива УФСБ СПб). (1937). Оперативный приказ НКВД СССР № 00439.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://przystanekhistoria.pl/download/166/146938/T8WielkiTerrorcz2-komplet.pdf" target="_blank">
+                        Док. № 158 (редакційний заголовок тому: «Цифрові зведення про заарештованих і засуджених органами НКВС УРСР за період з 1 жовтня 1936 р. по 1 липня 1938 р.») у вид.: Польща та Україна у тридцятих–сорокових роках XX століття. Т. 8: Великий терор: польська операція 1937–1938, ч. 2 (ГДА СБУ + ІПН, Варшава–Київ, 2010); ГДА СБУ, ф. 16, оп. 31 (1951), спр. 55, арк. 199–204; підписав нач. 1-го спецвідділу НКВС УРСР Назаренко, 30.08.1938. (1938). Сводные данные об арестованных и осужденных органами НКВД УССР за время с 1 октября 1936 года по 1-е июля 1938 года.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="http://resource.history.org.ua/item/0007905" target="_blank">
+                        Л. Якубова, В. Головченко, О. Аркуша та ін. (Інститут історії України НАНУ). (2012). Національне питання в Україні ХХ – початку ХХІ ст..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

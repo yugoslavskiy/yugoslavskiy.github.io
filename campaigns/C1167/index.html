@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1167/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1167/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1167/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1167/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1167/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="«Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857), кампания C1167 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1167/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>«Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857), кампания C1167 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">«Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>«Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>В 1852-1857 годах империя голодом принуждала Большую Чечню (равнинную восточную часть Чечни) к подчинению или уходу с земли. Период открыла зимняя экспедиция Барятинского, командовавшего на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), - имперский историк Волконский, её участник, издал свой рассказ под заглавием «Погром Чечни»; задачу отряда в десять с лишним тысяч штыков он записал так: «разбить неприятельские скопища, уничтожить все средства продовольствия жителей и неприятеля, и потом действовать сообразно с обстоятельствами»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Уничтожение еды стало доктриной: Воронцов, наместник и главнокомандующий на Кавказе, отношением военному министру Чернышеву от 28 августа 1852 года доложил, что лишённые посевов и сена чеченцы «должны - или переселиться въ наши предѣлы, или уйти въ самую глубь горъ»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Ещё в марте Воронцов писал Барятинскому: «мы им не позволим ни сеять, ни косить, если они не изъявят покорности» - письмо от 21 марта 1852 года приводит историк Н. И. Покровский<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; историки Я. З. Ахмадов и Э. Х. Хасмагомадов передают ту же политику формулой прокламаций - командование предупреждало чеченцев, что не позволит им «ни пахать, ни сеять», и заключают: «Это обещание было сдержано в буквальном смысле, и в 1856-1857 гг. в Чечне наступил голод, которого чеченцы почти никогда не знали»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Тем же периодом империя перекупала верхушку сопротивления - Бата Шамурзаев, наиб Шамиля (наместник имама, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию), перешедший к империи осенью 1851 года, получил чин, пенсию и землю «в качестве примера для других потенциальных перебежчиков»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span> - и строила институты подчинения: в 1852 году в крепости Грозной учреждён «Чеченский народный суд», выработавший «Правила для управления покорными чеченцами»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1167
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Январь 1852</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Декабрь 1857</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>31 июля 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>4 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1167" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1167/C1167-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1167%2FC1167-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0009">G0009</a></td>
+                <td><a href="/groups/G0009">Российская Империя</a></td>
+                <td>15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0010"> S0010 </a></td>
+                <td><a href="/software/S0010"> Регулярная армия </a></td>
+                <td>15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="карательные экспедиции период 1852-1856 годов прошёл сериями карательных выходов по большой чечне (равнинной восточной части чечни) и её окраинам. 4 января 1852 года в крепости воздвиженской собрался отряд барятинского, командовавшего на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи): имперский историк волконский, участник похода, считает «свыше десяти тысяч штыков, около полторы тысячи кавалерии, 24 орудия», а задачу передаёт так - «разбить неприятельские скопища, уничтожить все средства продовольствия жителей и неприятеля, и потом действовать сообразно с обстоятельствами»(citation: погром чечни (1852) 1880). восточнее выходы шли до 1856 года: генерал бакланов записал в мемуарах о «сильном бою при истреблении аулов денги-юрт и али-юрт» 25 февраля 1853 года(citation: моя боевая жизнь. записки войска донскаго генерал-лейтенанта якова петрова бакланова, написанные собственною его рукою 1871). наградную механику походов разоблачил изнутри имперский офицер полторацкий: солдаты кабардинского полка заняли оставленные чеченцами окопы на мичике без потерь, и их «направили в тот же день брать аулы гурдалой и аса-юрт, где им удалось потерять несколько убитых и раненых, что было необходимо, так как штурм окопов обошелся им без единой царапины»(citation: воспоминания 1895) - аулы атаковали ради потерь для наградного представления."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0077">T0077</a> Карательные экспедиции
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Период 1852-1856 годов прошёл сериями карательных выходов по Большой Чечне (равнинной восточной части Чечни) и её окраинам. 4 января 1852 года в крепости Воздвиженской собрался отряд Барятинского, командовавшего на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи): имперский историк Волконский, участник похода, считает «свыше десяти тысяч штыков, около полторы тысячи кавалерии, 24 орудия», а задачу передаёт так - «разбить неприятельские скопища, уничтожить все средства продовольствия жителей и неприятеля, и потом действовать сообразно с обстоятельствами»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Восточнее выходы шли до 1856 года: генерал Бакланов записал в мемуарах о «сильном бою при истреблении аулов Денги-Юрт и Али-Юрт» 25 февраля 1853 года<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бакланов Я.. (1871). Моя боевая жизнь. Записки Войска Донскаго генерал-лейтенанта Якова Петрова Бакланова, написанные собственною его рукою."data-reference="Моя боевая жизнь. Записки Войска Донскаго генерал-лейтенанта Якова Петрова Бакланова, написанные собственною его рукою 1871"><sup><a href="https://readli.net/moya-boevaya-zhizn-yazyik-doreformennyiy/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Наградную механику походов разоблачил изнутри имперский офицер Полторацкий: солдаты Кабардинского полка заняли оставленные чеченцами окопы на Мичике без потерь, и их «направили в тот же день брать аулы Гурдалой и Аса-Юрт, где им удалось потерять несколько убитых и раненых, что было необходимо, так как штурм окопов обошелся им без единой царапины»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span> - аулы атаковали ради потерь для наградного представления.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских в погроме чечни 1852 года жертвы среди жителей шли на сотни. 18 января 1852 года на реке гойте действовал отряд барятинского, командовавшего на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи): имперский историк волконский, участник похода, подвёл итог дня - «мы в этот день... уничтожили до двух тысяч дворов»; счёт по людям он записал так: «пленных захвачено всего лишь десять человек - и тех едва успели вырвать силою из-под кинжалов казаков. независимо от горцев, павших собственно в битве, число жертв, погибших в аулах на гойте, простирается до двухсот человек»(citation: погром чечни (1852) 1880). о набеге на аул гурдали 11 августа 1852 года источники расходятся: историк н. и. покровский передаёт рапорт барятинского от 21 августа 1852 года - «вырезал все его население, кроме 52 человек, взятых в плен»(citation: кавказские войны и имамат шамиля 2009); волконский же, описавший тот же день, утверждает, что аул не пал, отряд отступил с тяжёлыми потерями, и сожалеет: «если бы мы действительно разорили, сожгли гурдали, перебили бы все его население... дело вышло бы и существеннее, и полезнее»(citation: погром чечни (1852) 1880) - рапорт барятинского и рассказ волконского описывают один и тот же день взаимоисключающим образом. истребление людей было и заявленным планом: воронцов, наместник и главнокомандующий на кавказе, письмом императору от 1-20 марта 1854 года сформулировал задачу минувшей зимы - «окончательное покореніе и истребленіе остающихся немирныхъ по окрестностямъ на плоскости»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885) («немирные» - в имперском лексиконе не подчинившиеся империи)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0104">T0104</a> Массовые убийства гражданских
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>В погроме Чечни 1852 года жертвы среди жителей шли на сотни. 18 января 1852 года на реке Гойте действовал отряд Барятинского, командовавшего на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи): имперский историк Волконский, участник похода, подвёл итог дня - «мы в этот день... уничтожили до двух тысяч дворов»; счёт по людям он записал так: «Пленных захвачено всего лишь десять человек - и тех едва успели вырвать силою из-под кинжалов казаков. Независимо от горцев, павших собственно в битве, число жертв, погибших в аулах на Гойте, простирается до двухсот человек»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. О набеге на аул Гурдали 11 августа 1852 года источники расходятся: историк Н. И. Покровский передаёт рапорт Барятинского от 21 августа 1852 года - «вырезал все его население, кроме 52 человек, взятых в плен»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; Волконский же, описавший тот же день, утверждает, что аул не пал, отряд отступил с тяжёлыми потерями, и сожалеет: «Если бы мы действительно разорили, сожгли Гурдали, перебили бы все его население... дело вышло бы и существеннее, и полезнее»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span> - рапорт Барятинского и рассказ Волконского описывают один и тот же день взаимоисключающим образом. Истребление людей было и заявленным планом: Воронцов, наместник и главнокомандующий на Кавказе, письмом императору от 1-20 марта 1854 года сформулировал задачу минувшей зимы - «окончательное покореніе и истребленіе остающихся немирныхъ по окрестностямъ на плоскости»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> («немирные» - в имперском лексиконе не подчинившиеся империи).</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальное уничтожение инфраструктуры аулы большой чечни (равнинной восточной части чечни) выжигались весь период. 6 января 1852 года сожжены автуры - имперский историк волконский, участник погрома, записал: «аул автуры имел в то время до девятисот дворов и принадлежал к числу богатейших аулов», а об отступлении отряда: «все аулы и хутора, которые были на пути нашего отступления, запылали подобно своей метрополии»(citation: погром чечни (1852) 1880). 27 марта 1852 года при штурме аула наиба талгика (наиб - наместник имама шамиля) «самый аул был обращен в груду пепла и развалин»(citation: погром чечни (1852) 1880). в декабре 1852 года главнокомандующий на кавказе приказал уничтожить хан-калу барятинскому, командовавшему на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), - волконский передаёт приказ: «главнокомандующий настоятельно приказал князю барятинскому взять этот аул и снести его с лица земли», а исполнение: «аул, в числе девяносто пяти домов, был предан пламени, и к вечеру того же дня от него не осталось ни одного здорового камня»(citation: погром чечни (1852) 1880). итог 1853 года подвёл воронцов, наместник и главнокомандующий на кавказе: письмом императору от 1-20 марта 1854 года он доложил, что барятинский «завладѣлъ мичикомъ, сдѣлалъ огромной ширины просѣку черезъ качкалыковскій хребетъ до равнинъ большой чечни и истребилъ большую часть деревень, которыя оставались еще непокорными по мичику и другимъ рѣчкамъ по направленію къ умахан юрту»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). в январе 1854 года разорены аулы по рекам джалке и хаби-шовдану - хроника имперских «выдающихся событий» считает переселение «418 сем. чеченцевъ»(citation: акты собранные кавказскою археографическою комиссиею. том xi (1854-1856) 1888)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0105">T0105</a> Тотальное уничтожение инфраструктуры
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Аулы Большой Чечни (равнинной восточной части Чечни) выжигались весь период. 6 января 1852 года сожжены Автуры - имперский историк Волконский, участник погрома, записал: «Аул Автуры имел в то время до девятисот дворов и принадлежал к числу богатейших аулов», а об отступлении отряда: «все аулы и хутора, которые были на пути нашего отступления, запылали подобно своей метрополии»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 27 марта 1852 года при штурме аула наиба Талгика (наиб - наместник имама Шамиля) «самый аул был обращен в груду пепла и развалин»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. В декабре 1852 года главнокомандующий на Кавказе приказал уничтожить Хан-Калу Барятинскому, командовавшему на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), - Волконский передаёт приказ: «главнокомандующий настоятельно приказал князю Барятинскому взять этот аул и снести его с лица земли», а исполнение: «Аул, в числе девяносто пяти домов, был предан пламени, и к вечеру того же дня от него не осталось ни одного здорового камня»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Итог 1853 года подвёл Воронцов, наместник и главнокомандующий на Кавказе: письмом императору от 1-20 марта 1854 года он доложил, что Барятинский «завладѣлъ Мичикомъ, сдѣлалъ огромной ширины просѣку черезъ Качкалыковскій хребетъ до равнинъ Большой Чечни и истребилъ большую часть деревень, которыя оставались еще непокорными по Мичику и другимъ рѣчкамъ по направленію къ Умахан юрту»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. В январе 1854 года разорены аулы по рекам Джалке и Хаби-Шовдану - хроника имперских «выдающихся событий» считает переселение «418 сем. Чеченцевъ»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856) 1888"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="искусственный голод голод был спланированной целью политики 1852-1857 годов - империя писала об этом в приказах и отчётах. 29 июля 1852 года у аула белгатой колонна, по записи имперского историка волконского, «найдя там такие же запасы сена, как и накануне, истребила их до последнего стебелька»(citation: погром чечни (1852) 1880). барятинский, командовавший на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), письмом воронцову, наместнику на кавказе, от 16 августа 1852 года считал эффект для дагестанской конницы имама шамиля, руководителя сопротивления горцев дагестана и чечни российскому завоеванию: «в предстоящую зимнюю экспедицию шамиль почти не может иметь в чечне тавлинской кавалерии, потому что нечем ее будет продовольствовать»(citation: кавказские войны и имамат шамиля 2009). доктрину закрепил воронцов отношением военному министру чернышеву от 28 августа 1852 года: лишённые посевов и сена чеченцы «должны - или переселиться въ наши предѣлы, или уйти въ самую глубь горъ»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). генерал ольшевский подвёл итог практике в записках: «уничтожение хлебных посевов... заставляло чеченцев скорее других мер покоряться нам, переселяясь в наши пределы»(citation: кавказские войны и имамат шамиля 2009). результат зафиксировали историки я. з. ахмадов и э. х. хасмагомадов: «в 1856-1857 гг. в чечне наступил голод, которого чеченцы почти никогда не знали»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0121">T0121</a> Искусственный голод
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Голод был спланированной целью политики 1852-1857 годов - империя писала об этом в приказах и отчётах. 29 июля 1852 года у аула Белгатой колонна, по записи имперского историка Волконского, «найдя там такие же запасы сена, как и накануне, истребила их до последнего стебелька»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Барятинский, командовавший на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), письмом Воронцову, наместнику на Кавказе, от 16 августа 1852 года считал эффект для дагестанской конницы имама Шамиля, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию: «в предстоящую зимнюю экспедицию Шамиль почти не может иметь в Чечне тавлинской кавалерии, потому что нечем ее будет продовольствовать»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Доктрину закрепил Воронцов отношением военному министру Чернышеву от 28 августа 1852 года: лишённые посевов и сена чеченцы «должны - или переселиться въ наши предѣлы, или уйти въ самую глубь горъ»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Генерал Ольшевский подвёл итог практике в записках: «Уничтожение хлебных посевов... заставляло чеченцев скорее других мер покоряться нам, переселяясь в наши пределы»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Результат зафиксировали историки Я. З. Ахмадов и Э. Х. Хасмагомадов: «в 1856-1857 гг. в Чечне наступил голод, которого чеченцы почти никогда не знали»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="экономическая блокада голодную стратегию дополняла блокада торговли. воронцов, наместник и главнокомандующий на кавказе, письмом барятинскому, командовавшему на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), от 21 марта 1852 года вместе с угрозой «мы им не позволим ни сеять, ни косить» предписывал стеснить продажу соли тем, кто не подчинился империи; письмо приводит историк н. и. покровский(citation: кавказские войны и имамат шамиля 2009). историки я. з. ахмадов и э. х. хасмагомадов передают по хронике дагестанского автора геничутлинского блокаду соли, железа и бязи (хлопчатой ткани)(citation: история чечни в xix-xx веках 2005). в годы крымской войны империя блокаду не ослабила: те же историки пишут - «до 200 тысяч солдат и офицеров уверенно блокируют районы действия горцев на северном кавказе - даже тяжелые поражения в крыму не заставили российское командование ослабить эту блокаду»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0108">T0108</a> Экономическая блокада
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Голодную стратегию дополняла блокада торговли. Воронцов, наместник и главнокомандующий на Кавказе, письмом Барятинскому, командовавшему на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), от 21 марта 1852 года вместе с угрозой «мы им не позволим ни сеять, ни косить» предписывал стеснить продажу соли тем, кто не подчинился империи; письмо приводит историк Н. И. Покровский<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов передают по хронике дагестанского автора Геничутлинского блокаду соли, железа и бязи (хлопчатой ткани)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. В годы Крымской войны империя блокаду не ослабила: те же историки пишут - «До 200 тысяч солдат и офицеров уверенно блокируют районы действия горцев на Северном Кавказе - даже тяжелые поражения в Крыму не заставили российское командование ослабить эту блокаду»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="разрушение природного ландшафта империя вырубила качкалыковский лес, защиту восточной чечни, за полтора месяца. генерал бакланов, исполнитель, записал в мемуарах: «5-го января 1852 г. я сосредоточил... три баталиона пехоты... приступил к рубке леса; в течение месяца дошёл до мичука... очистив к 16-му февралю 1852 г. лес от берега на 100, а по реке на 300 сажен» (сажень - чуть больше двух метров)(citation: моя боевая жизнь. записки войска донскаго генерал-лейтенанта якова петрова бакланова, написанные собственною его рукою 1871). итог записал имперский историк волконский: «вековой, дремучий лес, служившей горцам главною защитою и обороною, пал навсегда, и качкалыковский хребет обнажился»(citation: погром чечни (1852) 1880). расчёт изложил письменно воронцов, наместник и главнокомандующий на кавказе, - письмом императору от 1-20 марта 1854 года, сдавая дела перед отпуском. рубку он описал как многолетнюю систему: «это важное дѣло, хорошо начатое ген. фрейтагомъ и потомъ сильно подвинутое ежегодными экспедиціями для рубки лѣсовъ ген.-ми нестеровымъ, козловскимъ и кн. барятинскимъ»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885), а итог считал так: вытесненные с равнины в чёрные горы чеченцы не смогут там прокормиться и «въ скоромъ времени должны къ намъ перейти, или объявить покорность на мѣстахъ; тогда слабое населеніе ичкеринцевъ одно не будетъ въ состояніи держаться»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0140">T0140</a> Разрушение природного ландшафта
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Империя вырубила Качкалыковский лес, защиту восточной Чечни, за полтора месяца. Генерал Бакланов, исполнитель, записал в мемуарах: «5-го января 1852 г. я сосредоточил... три баталиона пехоты... приступил к рубке леса; в течение месяца дошёл до Мичука... очистив к 16-му февралю 1852 г. лес от берега на 100, а по реке на 300 сажен» (сажень - чуть больше двух метров)<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бакланов Я.. (1871). Моя боевая жизнь. Записки Войска Донскаго генерал-лейтенанта Якова Петрова Бакланова, написанные собственною его рукою."data-reference="Моя боевая жизнь. Записки Войска Донскаго генерал-лейтенанта Якова Петрова Бакланова, написанные собственною его рукою 1871"><sup><a href="https://readli.net/moya-boevaya-zhizn-yazyik-doreformennyiy/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Итог записал имперский историк Волконский: «вековой, дремучий лес, служившей горцам главною защитою и обороною, пал навсегда, и качкалыковский хребет обнажился»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Расчёт изложил письменно Воронцов, наместник и главнокомандующий на Кавказе, - письмом императору от 1-20 марта 1854 года, сдавая дела перед отпуском. Рубку он описал как многолетнюю систему: «Это важное дѣло, хорошо начатое ген. Фрейтагомъ и потомъ сильно подвинутое ежегодными экспедиціями для рубки лѣсовъ ген.-ми Нестеровымъ, Козловскимъ и кн. Барятинскимъ»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, а итог считал так: вытесненные с равнины в Чёрные горы чеченцы не смогут там прокормиться и «въ скоромъ времени должны къ намъ перейти, или объявить покорность на мѣстахъ; тогда слабое населеніе Ичкеринцевъ одно не будетъ въ состояніи держаться»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="депортация сожжение и голод гнали чеченские семьи с их земли под власть империи - и империя вела счёт уведённым. 23 марта 1852 года колонна генерала бакланова увела жителей двух аулов: имперский историк волконский считает - «их было двести пятьдесят восемь душ обоего пола и возраста: пятьдесят одно семейство из мазлагаша и шестнадцать семейств из гурдали»(citation: погром чечни (1852) 1880); механику выбора он же передал словами современников о наибах - наместниках имама шамиля: «щиплют их наибы, щиплем и будем щипать... решились из двух зол выбирать лучшее, т.е. переселиться к нам»(citation: погром чечни (1852) 1880). после уничтожения хан-калы в декабре 1852 года барятинский, командовавший на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), рапортом от 10 февраля 1853 года считал: из примерно 500 жителей 350 приведены в крепость грозную, «общую потерю жителей должно полагать въ числѣ около 100 чел.» - судьба этой сотни, по признанию самого рапорта, «въ точности неизвѣстна»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885). в январе 1854 года после разорения аулов по джалке выселены «418 сем. чеченцевъ»(citation: акты собранные кавказскою археографическою комиссиею. том xi (1854-1856) 1888), а приказ генерала муравьёва, главнокомандующего на кавказе, от 19 июля 1855 года считает итог: «болѣе 1 т. чеченскихъ семействъ переселились въ наши покорные аулы»(citation: акты собранные кавказскою археографическою комиссиею. том xi (1854-1856) 1888). план на 1856 год ставил выбор прямо: чеченцам «избрать одно изъ двухъ - покориться, или выселиться далѣе во внутрь черныхъ горъ»(citation: акты собранные кавказскою археографическою комиссиею. том xi (1854-1856) 1888)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0127">T0127</a> Депортация
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Сожжение и голод гнали чеченские семьи с их земли под власть империи - и империя вела счёт уведённым. 23 марта 1852 года колонна генерала Бакланова увела жителей двух аулов: имперский историк Волконский считает - «Их было двести пятьдесят восемь душ обоего пола и возраста: пятьдесят одно семейство из Мазлагаша и шестнадцать семейств из Гурдали»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; механику выбора он же передал словами современников о наибах - наместниках имама Шамиля: «щиплют их наибы, щиплем и будем щипать... решились из двух зол выбирать лучшее, т.е. переселиться к нам»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. После уничтожения Хан-Калы в декабре 1852 года Барятинский, командовавший на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), рапортом от 10 февраля 1853 года считал: из примерно 500 жителей 350 приведены в крепость Грозную, «общую потерю жителей должно полагать въ числѣ около 100 чел.» - судьба этой сотни, по признанию самого рапорта, «въ точности неизвѣстна»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. В январе 1854 года после разорения аулов по Джалке выселены «418 сем. Чеченцевъ»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856) 1888"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>, а приказ генерала Муравьёва, главнокомандующего на Кавказе, от 19 июля 1855 года считает итог: «болѣе 1 т. Чеченскихъ семействъ переселились въ наши покорные аулы»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856) 1888"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. План на 1856 год ставил выбор прямо: чеченцам «избрать одно изъ двухъ - покориться, или выселиться далѣе во внутрь Черныхъ горъ»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856) 1888"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="создание экономической безысходности империя выжила жителей ханкальского ущелья голодом по открыто сформулированному плану. имперский историк волконский записал замысел лета 1852 года: барятинский, командовавший на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), «решился... выкурить жителей из ущелья, именно - выкурить, потому что нужно было огнем истребить все, что давало им продовольствие»; расчёт волконский записал так - «искать же у нас пропитания - значит смириться, подчиниться и волей-неволей переселиться»(citation: погром чечни (1852) 1880). тот же расчёт стоял за сносом хан-калы - жителей рассчитывали оторвать от имама шамиля, руководителя сопротивления горцев дагестана и чечни российскому завоеванию: «жители, лишенные крова и пропитания, вместо перебега к шамилю, стали бы искать у нас приюта»(citation: погром чечни (1852) 1880). при осаде хан-калы отряд отрезал аул и от воды: «у неприятеля была отнята возможность иметь прикрытый доступ к реке, и он лишался воды»(citation: погром чечни (1852) 1880)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0141">T0141</a> Создание экономической безысходности
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Империя выжила жителей Ханкальского ущелья голодом по открыто сформулированному плану. Имперский историк Волконский записал замысел лета 1852 года: Барятинский, командовавший на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), «решился... выкурить жителей из ущелья, именно - выкурить, потому что нужно было огнем истребить все, что давало им продовольствие»; расчёт Волконский записал так - «Искать же у нас пропитания - значит смириться, подчиниться и волей-неволей переселиться»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Тот же расчёт стоял за сносом Хан-Калы - жителей рассчитывали оторвать от имама Шамиля, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию: «жители, лишенные крова и пропитания, вместо перебега к Шамилю, стали бы искать у нас приюта»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. При осаде Хан-Калы отряд отрезал аул и от воды: «у неприятеля была отнята возможность иметь прикрытый доступ к реке, и он лишался воды»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="изъятие ресурсов просеки отнимали у чеченцев кормившую их землю, и империя записывала этот отъём себе в актив: приказ воронцова, наместника на кавказе, по отдельному кавказскому корпусу от 5 января 1853 года считал итог качкалыковской просеки: «устройство этой просѣки отняло у непокорныхъ чеченцевъ значительное количество земли, которое могло прокормить до 1,500 душъ»(citation: акты собранные кавказскою археографическою комиссиею. том x (1844-1854) 1885)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0052">T0052</a> Изъятие ресурсов
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Просеки отнимали у чеченцев кормившую их землю, и империя записывала этот отъём себе в актив: приказ Воронцова, наместника на Кавказе, по Отдельному Кавказскому корпусу от 5 января 1853 года считал итог качкалыковской просеки: «Устройство этой просѣки отняло у непокорныхъ Чеченцевъ значительное количество земли, которое могло прокормить до 1,500 душъ»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854) 1885"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="подкуп элит империя демонстративно вознаграждала перебежчиков из верхушки сопротивления чинами, деньгами и землёй. бата шамурзаев, наиб шамиля (наместник имама, руководителя сопротивления горцев дагестана и чечни российскому завоеванию), перешёл к империи осенью 1851 года и получил награды. барятинский, командовавший на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), письмом воронцову, наместнику на кавказе, от 24 февраля 1852 года просил - «какую большую награду заслуживает бата, и я прошу у вас для него прощения, затем за автур возвратить ему чин и пенсию в 400 рублей в год; также прошу у вас для его сына... который часто служил нам проводником, офицерского чина»(citation: кавказские войны и имамат шамиля 2009). историки я. з. ахмадов и э. х. хасмагомадов пишут: «бата шамурзаев активно участвовал в войне против имама, был произведен в капитаны и награжден 500 десятинами земли... в качестве примера для других потенциальных перебежчиков»(citation: история чечни в xix-xx веках 2005). через бату воронцов, наместник на кавказе, передавал чеченцам ультиматумы - письмом барятинскому от 21 марта 1852 года: «я просил бату настоятельно твердить жителям северной части большой чечни, что мы им не позволим ни сеять, ни косить, если они не изъявят покорности»(citation: кавказские войны и имамат шамиля 2009). имперский историк волконский признал систему подкупа прямо: империя действовала «чрез их же одноверцев и лиц, подобных батию шамурзову», причём «не одними только словами, но и чем-либо более заманчивым и существенным - в особенности во времена воронцова и барятинского»(citation: погром чечни (1852) 1880)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0015">T0015</a> Подкуп элит
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Империя демонстративно вознаграждала перебежчиков из верхушки сопротивления чинами, деньгами и землёй. Бата Шамурзаев, наиб Шамиля (наместник имама, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию), перешёл к империи осенью 1851 года и получил награды. Барятинский, командовавший на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), письмом Воронцову, наместнику на Кавказе, от 24 февраля 1852 года просил - «какую большую награду заслуживает Бата, и я прошу у вас для него прощения, затем за Автур возвратить ему чин и пенсию в 400 рублей в год; также прошу у вас для его сына... который часто служил нам проводником, офицерского чина»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «Бата Шамурзаев активно участвовал в войне против имама, был произведен в капитаны и награжден 500 десятинами земли... в качестве примера для других потенциальных перебежчиков»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Через Бату Воронцов, наместник на Кавказе, передавал чеченцам ультиматумы - письмом Барятинскому от 21 марта 1852 года: «Я просил Бату настоятельно твердить жителям северной части Большой Чечни, что мы им не позволим ни сеять, ни косить, если они не изъявят покорности»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Имперский историк Волконский признал систему подкупа прямо: империя действовала «чрез их же одноверцев и лиц, подобных Батию Шамурзову», причём «не одними только словами, но и чем-либо более заманчивым и существенным - в особенности во времена Воронцова и Барятинского»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="создание агентуры влияния перекупленные наибы вели для империи разведку и участвовали в планировании походов. имперский историк волконский пишет о бате шамурзаеве, перешедшем к империи наибе шамиля (наместнике имама, руководителя сопротивления горцев дагестана и чечни российскому завоеванию): бата «имел повсюду своих агентов, сообщавших ему обо всех движениях шамиля», а зимняя экспедиция 1852 года «была предпринята и ведена князем барятинским» по указаниям баты; «начальник отряда не скрывал, что успешным взятием аулов он много обязан и бате»(citation: погром чечни (1852) 1880). барятинский, командовавший на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), письмом воронцову, наместнику на кавказе, от 4 июня 1852 года подтверждал: «бата мне передал много интересного относительно секретных происков шамиля у осетин»(citation: кавказские войны и имамат шамиля 2009). в июле 1856 года к империи перебежал юсуф-хаджи сафаров, бывший советник имамата, и письменно предложил свои знания барятинскому: «знаю многое о шамиле и его войсках... надеюсь быть полезным русскому правительству и ручаюсь уничтожить все сделанное мною у шамиля, потому что хозяин дома лучше знает, что в нем делается»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0013">T0013</a> Создание агентуры влияния
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Перекупленные наибы вели для империи разведку и участвовали в планировании походов. Имперский историк Волконский пишет о Бате Шамурзаеве, перешедшем к империи наибе Шамиля (наместнике имама, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию): Бата «имел повсюду своих агентов, сообщавших ему обо всех движениях Шамиля», а зимняя экспедиция 1852 года «была предпринята и ведена князем Барятинским» по указаниям Баты; «Начальник отряда не скрывал, что успешным взятием аулов он много обязан и Бате»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Барятинский, командовавший на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), письмом Воронцову, наместнику на Кавказе, от 4 июня 1852 года подтверждал: «Бата мне передал много интересного относительно секретных происков Шамиля у осетин»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В июле 1856 года к империи перебежал Юсуф-Хаджи Сафаров, бывший советник имамата, и письменно предложил свои знания Барятинскому: «Знаю многое о Шамиле и его войсках... надеюсь быть полезным русскому правительству и ручаюсь уничтожить все сделанное мною у Шамиля, потому что хозяин дома лучше знает, что в нем делается»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="захват заложников даже принимая перебежчиков из верхушки имамата, империя страховалась заложниками. когда в начале февраля 1854 года на имперскую сторону переходил умаев, наиб малой чечни (наместник имама шамиля, руководителя сопротивления горцев дагестана и чечни российскому завоеванию), пристав (назначенный империей надзиратель) потребовал гарантию - подполковник предемиров рапортом генералу вревскому от 6 февраля 1854 года: «опасаясь со стороны его измены и не желая через то понести из-за него потерю в людях, я потребовал, чтобы он предварительно дал аманат. 3-го февраля был доставлен в аманаты к приставу сын эндирея» (аманат - человек, которого империя забирала из общины как заложника)(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). ребёнок наиба стал платой за право отца сдаться."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0099">T0099</a> Захват заложников
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Даже принимая перебежчиков из верхушки имамата, империя страховалась заложниками. Когда в начале февраля 1854 года на имперскую сторону переходил Умаев, наиб Малой Чечни (наместник имама Шамиля, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию), пристав (назначенный империей надзиратель) потребовал гарантию - подполковник Предемиров рапортом генералу Вревскому от 6 февраля 1854 года: «опасаясь со стороны его измены и не желая через то понести из-за него потерю в людях, я потребовал, чтобы он предварительно дал аманат. 3-го февраля был доставлен в аманаты к приставу сын Эндирея» (аманат - человек, которого империя забирала из общины как заложника)<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Ребёнок наиба стал платой за право отца сдаться.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="установка новой системы управления над захваченной частью чечни империя выстроила собственные управляющие институты. историк н. и. покровский пишет о проекте барятинского, командовавшего на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи): «разработанное барятинским положение об управлении чеченцами, частично возрождавшее суд по адатам: царизм боялся шариатского суда... "положение" это было утверждено николаем i и введено в действие» (адаты - обычное право горцев; шариат - исламское право, на котором строился суд имамата)(citation: кавказские войны и имамат шамиля 2009). историки я. з. ахмадов и э. х. хасмагомадов описывают исполнение: «еще в 1852 г. в крепости грозная был учрежден так называемый "чеченский народный суд" во главе с российским штаб-офицером... в противовес шариату, насаждаемому в чечне имамом шамилем, российские власти стремились усилить влияние обычного права - адатов»; первым председателем «чеченского» суда был российский полковник бартоломей, переводчиками - бата шамурзаев и касим курумов, а исполнение приговоров контролировало «управление чеченского народа» с правом принуждения(citation: история чечни в xix-xx веках 2005). суд выработал и писаный кодекс подчинения - «правила для управления покорными чеченцами»: статьи «предусматривавшие наказание за неповиновение властям, укрывательство абреков, связь с "немирными" соотечественниками, условия "выхода с покорностью" с территории имамата» («немирные» - в имперском лексиконе не подчинившиеся империи; абрек - имперский ярлык горца вне закона); в 1854 году «правила» дополнены(citation: история чечни в xix-xx веках 2005). итог зафиксировал изнутри генерал муравьёв, главнокомандующий на кавказе, - в феврале 1855 года он писал из крепости грозной генералу ермолову, командовавшему на кавказе в прошлом: «уже здѣсь учреждено пять наибствъ, есть приставъ и судъ, установленный въ подражаніе вашего кабардинскаго суда» (наибство - имперская административная единица, скопированная с института наместников имама шамиля, руководителя сопротивления горцев дагестана и чечни российскому завоеванию; пристав - назначенный империей надзиратель)(citation: акты собранные кавказскою археографическою комиссиею. том xi (1854-1856) 1888)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0036">T0036</a> Установка новой системы управления
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Над захваченной частью Чечни империя выстроила собственные управляющие институты. Историк Н. И. Покровский пишет о проекте Барятинского, командовавшего на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи): «разработанное Барятинским положение об управлении чеченцами, частично возрождавшее суд по адатам: царизм боялся шариатского суда... "Положение" это было утверждено Николаем I и введено в действие» (адаты - обычное право горцев; шариат - исламское право, на котором строился суд имамата)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов описывают исполнение: «Еще в 1852 г. в крепости Грозная был учрежден так называемый "Чеченский народный суд" во главе с российским штаб-офицером... в противовес шариату, насаждаемому в Чечне имамом Шамилем, российские власти стремились усилить влияние обычного права - адатов»; первым председателем «чеченского» суда был российский полковник Бартоломей, переводчиками - Бата Шамурзаев и Касим Курумов, а исполнение приговоров контролировало «Управление чеченского народа» с правом принуждения<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Суд выработал и писаный кодекс подчинения - «Правила для управления покорными чеченцами»: статьи «предусматривавшие наказание за неповиновение властям, укрывательство абреков, связь с "немирными" соотечественниками, условия "выхода с покорностью" с территории имамата» («немирные» - в имперском лексиконе не подчинившиеся империи; абрек - имперский ярлык горца вне закона); в 1854 году «Правила» дополнены<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Итог зафиксировал изнутри генерал Муравьёв, главнокомандующий на Кавказе, - в феврале 1855 года он писал из крепости Грозной генералу Ермолову, командовавшему на Кавказе в прошлом: «Уже здѣсь учреждено пять наибствъ, есть приставъ и судъ, установленный въ подражаніе вашего Кабардинскаго суда» (наибство - имперская административная единица, скопированная с института наместников имама Шамиля, руководителя сопротивления горцев Дагестана и Чечни российскому завоеванию; пристав - назначенный империей надзиратель)<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856) 1888"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="миграционное замещение казачьи станицы продолжали вставать на местах чеченских аулов: в 1856-1857 годах на месте селения чурт-тоги поставлена станица петропавловская - историки я. з. ахмадов и э. х. хасмагомадов дают пару в общем ряду: «селение чурт-тоги - станица петропавловская (1856 г.)»(citation: история чечни в xix-xx веках 2005). метод в том же году подтвердил письменно генерал муравьёв, главнокомандующий на кавказе: «упрочивать владычество наше переселяемыми вперед станицами - есть способ, уже с пользой испытанный, и его не следует изменять»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0117/001">T0117.001</a> Миграционное замещение
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Казачьи станицы продолжали вставать на местах чеченских аулов: в 1856-1857 годах на месте селения Чурт-Тоги поставлена станица Петропавловская - историки Я. З. Ахмадов и Э. Х. Хасмагомадов дают пару в общем ряду: «селение Чурт-Тоги - станица Петропавловская (1856 г.)»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Метод в том же году подтвердил письменно генерал Муравьёв, главнокомандующий на Кавказе: «упрочивать владычество наше переселяемыми вперед станицами - есть способ, уже с пользой испытанный, и его не следует изменять»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="мародёрство при уничтожении аула хан-кала, он же сюрин-корт, войска похода барятинского, командовавшего на левом фланге кавказской линии (цепи имперских укреплений на земле нохчи), записали жителей и их скот себе в добычу. имперский историк волконский подвёл счёт: «триста пятьдесят человек сюрин-кортцев и более трех тысяч голов рогатого скота сделались нашим достоянием, нашею, так сказать, собственностью»(citation: погром чечни (1852) 1880)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1852-01-04 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Январь 1852</div>
+                <div>
+                    <a href="/techniques/T0164">T0164</a> Мародёрство
+                </div>
+<div><a href="/campaigns/C1167">C1167</a> «Ни пахать, ни сеять»: погром Чечни, организованный голод, перекупка элит и институты подчинения (1852-1857)</div><div><a href="/groups/G0009">G0009</a> Российская Империя</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>При уничтожении аула Хан-Кала, он же Сюрин-Корт, войска похода Барятинского, командовавшего на левом фланге Кавказской линии (цепи имперских укреплений на земле нохчи), записали жителей и их скот себе в добычу. Имперский историк Волконский подвёл счёт: «триста пятьдесят человек сюрин-кортцев и более трех тысяч голов рогатого скота сделались нашим достоянием, нашею, так сказать, собственностью»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Н. А. Волконский. (1880). Погром Чечни (1852)."data-reference="Погром Чечни (1852) 1880"><sup><a href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://drevlit.ru/docs/kavkaz/XIX/1820-1840/Volkonskij_N_A/index.php" target="_blank">
+                        Н. А. Волконский. (1880). Погром Чечни (1852).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1885). Акты собранные Кавказскою археографическою комиссиею. Том X (1844-1854).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="5.0">
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://readli.net/moya-boevaya-zhizn-yazyik-doreformennyiy/" target="_blank">
+                        Бакланов Я.. (1871). Моя боевая жизнь. Записки Войска Донскаго генерал-лейтенанта Якова Петрова Бакланова, написанные собственною его рукою.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank">
+                        В. А. Полторацкий. (1895). Воспоминания.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1888). Акты собранные Кавказскою археографическою комиссиею. Том XI (1854-1856).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

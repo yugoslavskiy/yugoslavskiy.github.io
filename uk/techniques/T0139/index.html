@@ -1,0 +1,864 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/techniques/T0139/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0139/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0139/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0139/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0139/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Зведення фортець, техніка T0139 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/techniques/T0139/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Зведення фортець, техніка T0139 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в серпні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/techniques/">Техніки</a></li>
+  <li class="breadcrumb-item">Зведення фортець</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          Зведення фортець
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>Агресори можуть будувати фортеці, остроги та ланцюги оборонних рубежів (військові лінії) на територіях корінних народів. Ця інфраструктура фізично відрізає місцеве населення від життєво важливих ресурсів (наприклад, рівнинних пасовищ), блокує комунікації та слугує захищеним плацдармом для постійного розміщення окупаційних військ і подальшого переселення колоністів із метрополії.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0139
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Підтехніки:&nbsp;</span>
+                    Немає підтехнік
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Тактичні цілі, які досягаються застосуванням техніки або підтехніки">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Тактики:</span>
+                        <a href="/uk/tactics/TA0005">Закріплення</a>,                        <a href="/uk/tactics/TA0004">Ослаблення захисту</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="Народи, проти яких застосовувалася техніка або підтехніка">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Народи:&nbsp;</span>Нохчі (Чеченці), Українці
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Контриб'ютори:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Версія:&nbsp;</span>1.1
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Створено:&nbsp;</span>21 квітня 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Змінено:&nbsp;</span>9 серпня 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/uk/go/tg/T0139" data-test-ignore="true">Обговорити в Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Реалізовані процедури</h2>
+        <div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Пошук за текстом (назва, техніка або опис):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введіть ключове слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фільтр за народами:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Діапазон дат (за початком): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Діапазон дат (за початком) (min)">
+                <input type="range" class="pl-date-max" aria-label="Діапазон дат (за початком) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортування за датою:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Спочатку нові" data-oldest="Спочатку старі">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="зведення фортець військові сили московського царства звели укріплений пункт на землях нохчі: історик е. н. кушева констатує, що в 1567 році «руське місто... було того ж року поставлене»(citation: народы северного кавказа и их связи с россией (вторая половина xvi - 30-е годы xvii вв) 1963)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1567-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1567</div>
+<div><a href="/uk/campaigns/C1105">C1105</a> Закладення першого плацдарму на річці Сунжа (1567)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Військові сили Московського царства звели укріплений пункт на землях Нохчі: історик Е. Н. Кушева констатує, що в 1567 році «руське місто... було того ж року поставлене»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1963). Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв)."data-reference="Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв) 1963"><sup><a href="https://instituteofhistory.ru/media/library/publication/files/%D0%9A%D1%83%D1%88%D0%B5%D0%B2%D0%B0_%D0%95.%D0%9D._%D0%9D%D0%B0%D1%80%D0%BE%D0%B4%D1%8B_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B3%D0%BE_%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D0%B0_%D0%B8_%D0%B8%D1%85_%D1%81%D0%B2%D1%8F%D0%B7%D0%B8_%D1%81_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B5%D0%B9._%D0%9C%D0%BE%D1%81_TFA3pwz.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець військові сили московського царства багаторазово відновлювали укріплений пункт на землях нохчі: історик е. н. кушева пише, що «в 1577 - 1578 рр... руське місто було відновлене на річці терек у гирлі сунжі»(citation: народы северного кавказа и их связи с россией (вторая половина xvi - 30-е годы xvii вв) 1963), а укладачка збірника документів е. н. кушева вказує, що військові сили московського царства «острог відбудовували в 1590, 1635 рр.»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997) і «в 1651 р. був знову збудований руський острог на лівому березі сунжі»(citation: русско-чеченские отношения. вторая пол. xvi-xvii в. 1997)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1571-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1571</div>
+<div><a href="/uk/campaigns/C1109">C1109</a> Циклічна перебудова та ліквідація укріплень на річці Сунжа (1571–1653)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Військові сили Московського царства багаторазово відновлювали укріплений пункт на землях Нохчі: історик Е. Н. Кушева пише, що «в 1577 - 1578 рр... руське місто було відновлене на річці Терек у гирлі Сунжі»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1963). Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв)."data-reference="Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв) 1963"><sup><a href="https://instituteofhistory.ru/media/library/publication/files/%D0%9A%D1%83%D1%88%D0%B5%D0%B2%D0%B0_%D0%95.%D0%9D._%D0%9D%D0%B0%D1%80%D0%BE%D0%B4%D1%8B_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B3%D0%BE_%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D0%B0_%D0%B8_%D0%B8%D1%85_%D1%81%D0%B2%D1%8F%D0%B7%D0%B8_%D1%81_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B5%D0%B9._%D0%9C%D0%BE%D1%81_TFA3pwz.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>, а укладачка збірника документів Е. Н. Кушева вказує, що військові сили Московського царства «острог відбудовували в 1590, 1635 рр.»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> і «в 1651 р. був знову збудований руський острог на лівому березі Сунжі»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в.."data-reference="Русско-чеченские отношения. Вторая пол. XVI-XVII в. 1997"><sup><a href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець військові сили московського царства звели нову укріплену базу: історик е. н. кушева пише, що вони «ставили її у 1588-1589 рр... михайло бурцев і келар протасьєв... у його гарнізоні основну силу становили стрільці, озброєні «вогненним боєм», пищалями»(citation: народы северного кавказа и их связи с россией (вторая половина xvi - 30-е годы xvii вв) 1963), а історики а. с. куліков і в. а. рунов додають, що на початку xvii століття «терське містечко перетворилося на досить потужну фортецю. її артилерія налічувала 40 великих гармат»(citation: все кавказские войны россии. самая полная энциклопедия 2013)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1588-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1588</div>
+<div><a href="/uk/campaigns/C1110">C1110</a> Закладення та зміцнення Терського міста (1588–1623)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Військові сили Московського царства звели нову укріплену базу: історик Е. Н. Кушева пише, що вони «ставили її у 1588-1589 рр... Михайло Бурцев і Келар Протасьєв... у його гарнізоні основну силу становили стрільці, озброєні «вогненним боєм», пищалями»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Кушева. Е. Н.. (1963). Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв)."data-reference="Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв) 1963"><sup><a href="https://instituteofhistory.ru/media/library/publication/files/%D0%9A%D1%83%D1%88%D0%B5%D0%B2%D0%B0_%D0%95.%D0%9D._%D0%9D%D0%B0%D1%80%D0%BE%D0%B4%D1%8B_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B3%D0%BE_%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D0%B0_%D0%B8_%D0%B8%D1%85_%D1%81%D0%B2%D1%8F%D0%B7%D0%B8_%D1%81_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B5%D0%B9._%D0%9C%D0%BE%D1%81_TFA3pwz.pdf" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>, а історики А. С. Куліков і В. А. Рунов додають, що на початку XVII століття «Терське містечко перетворилося на досить потужну фортецю. Її артилерія налічувала 40 великих гармат»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Анатолий Куликов, Валентин Рунов. (2013). Все Кавказские войны России. Самая полная энциклопедия."data-reference="Все Кавказские войны России. Самая полная энциклопедия 2013"><sup><a href="http://www.litres.ru/pages/biblio_book/?art=6880367" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець розгортання мережі військових баз (новобогородицька, кам'яний затон) біля запорозької січі. під приводом захисту москва встановлювала жорсткий військовий контроль: «запорожці... як умову для будь-якої присяги висували зруйнування кам'яного затону»(citation: иван мазепа и российская империя. история «предательства» 2011)(citation: мазепа 2007)."
+             data-platforms="Українці"
+             data-groups="G0008"
+             data-tools="S0010"
+             data-date="1695-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1695</div>
+<div><a href="/uk/campaigns/C0010">C0010</a> Азовські походи та будівництво фортець (1695–1700)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Розгортання мережі військових баз (Новобогородицька, Кам'яний Затон) біля Запорозької Січі. Під приводом захисту Москва встановлювала жорсткий військовий контроль: «Запорожці... як умову для будь-якої присяги висували зруйнування Кам'яного Затону»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства»."data-reference="Иван Мазепа и Российская империя. История «предательства» 2011"><sup><a href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Татьяна Таирова-Яковлева. (2007). Мазепа."data-reference="Мазепа 2007"><sup><a href="https://loveread.ec/book-comments.php?book=69990" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець уряд московського царства укрупнював воєнізовані поселення на кордоні із землями нохчі для посилення контролю: історик я. з. ахмадов констатує, що у 1711–1712 роках «дрібні козацькі гребінські містечка по тереку зводяться, за розпорядженням царя петра i, у 5 станиць - від червленої до курдюковської»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0008"
+             data-tools="S0008"
+             data-date="1711-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1711</div>
+<div><a href="/uk/campaigns/C1127">C1127</a> Зміцнення прикордонної лінії та розвідка ресурсів (1711–1717)</div><div><a href="/uk/groups/G0008">G0008</a> Московське царство</div><div><a href="/uk/software/S0008">S0008</a> Уряд</div>            </div>
+            <div class="proc-desc">
+                        <p>Уряд Московського царства укрупнював воєнізовані поселення на кордоні із землями Нохчі для посилення контролю: історик Я. З. Ахмадов констатує, що у 1711–1712 роках «дрібні козацькі гребінські містечка по Тереку зводяться, за розпорядженням царя Петра I, у 5 станиць - від Червленої до Курдюковської»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець регулярна армія російської імперії заклала нову військову базу для інфраструктурного закріплення в регіоні: історик я. з. ахмадов констатує, що восени 1722 року петро i «заклав на сулаку фортецю святий хрест»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1722-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1722</div>
+<div><a href="/uk/campaigns/C1130">C1130</a> Зведення фортеці Святого Хреста та примусове переселення (1722–1724)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Регулярна армія Російської імперії заклала нову військову базу для інфраструктурного закріплення в регіоні: історик Я. З. Ахмадов констатує, що восени 1722 року Петро I «заклав на Сулаку фортецю Святий Хрест»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець уряд російської імперії вибудовував військову лінію шляхом інженерного зведення укріплених воєнізованих пунктів для ізоляції корінного населення: історик я. з. ахмадов констатує, що 1736 року було засновано «три нові козачі станиці: бороздинську, каргалинську, дубовську»(citation: чечено-русские отношения в xviii веке. исследования и материалы. том i 2019), які, як фіксує історик і. х. тхамокова, виступали фортифікаціями, оскільки кожна така станиця «була ніби невеликою фортечкою, що слугувала для захисту від ворожих набігів»(citation: терское казачество в этнокультурном пространстве северного кавказа 2017)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0025"
+             data-date="1736-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1736</div>
+<div><a href="/uk/campaigns/C1134">C1134</a> Зведення укріплених станиць, підселення Козаків на кордонах та утримання заручників (1736–1740)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0025">S0025</a> Воєнізовані поселенці</div>            </div>
+            <div class="proc-desc">
+                        <p>Уряд Російської імперії вибудовував військову лінію шляхом інженерного зведення укріплених воєнізованих пунктів для ізоляції корінного населення: історик Я. З. Ахмадов констатує, що 1736 року було засновано «три нові козачі станиці: Бороздинську, Каргалинську, Дубовську»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I."data-reference="Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I 2019"><sup><a href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>, які, як фіксує історик І. Х. Тхамокова, виступали фортифікаціями, оскільки кожна така станиця «була ніби невеликою фортечкою, що слугувала для захисту від ворожих набігів»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Тхамокова И. Х.. (2017). Терское казачество в этнокультурном пространстве Северного Кавказа."data-reference="Терское казачество в этнокультурном пространстве Северного Кавказа 2017"><sup><a href="http://www.kbigi.ru/fmedia/%D0%A2%D1%85%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0-%D0%98.%D0%A5.-17.01.2018-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B0%D0%B9%D1%82%D0%B0.pdf" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець регулярна армія російської імперії зводила на зайнятій території фортецю як опорний пункт, щоб тримати під вогнем підступи до чеченських земель і відрізати жителів від їхніх земель. історик д. а. хожаєв фіксує, що фортеця будувалася «на чеченській землі»(citation: чеченцы в русско-кавказской войне 1998). імперський генерал єрмолов у своїх «записках» свідчить, що фортеця, «утискаючи жителів у володінні найкращими землями… недалеко від входу через урочище хан-кале, названа грозною», а земляні роботи були закінчені до половини жовтня 1818 року(citation: записки а.п. ермолова. 1798-1826 гг. 1991). імперський історик потто підтверджує закладення 10 червня 1818 року: «під грім гармат було закладено сильну фортецю на шість бастіонів, яку єрмолов назвав грозною»(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007). ще у всепідданішому рапорті листопада 1817 року єрмолов прямо називав мету сунженських фортець: «треба зайняти р. сунжу і по її течії влаштувати фортеці: тоді чеченці будуть стиснуті у своїх горах, позбудуться землі, придатної для обробітку, і пасовищних місць, на яких увесь зимовий час вони ховають свої стада від жорстокого в горах клімату»(citation: акты собранные кавказскою археографическою комиссиею. том vi, часть вторая (1816-1827) 1875)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1817-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1817</div>
+<div><a href="/uk/campaigns/C1021">C1021</a> Знищення присунженських селищ Нохчі та зведення фортеці Грозної на їхньому місці (1817–1818)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Регулярна армія Російської імперії зводила на зайнятій території фортецю як опорний пункт, щоб тримати під вогнем підступи до чеченських земель і відрізати жителів від їхніх земель. Історик Д. А. Хожаєв фіксує, що фортеця будувалася «на чеченській землі»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Імперський генерал Єрмолов у своїх «Записках» свідчить, що фортеця, «утискаючи жителів у володінні найкращими землями… недалеко від входу через урочище Хан-Кале, названа Грозною», а земляні роботи були закінчені до половини жовтня 1818 року<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг.."data-reference="Записки А.П. Ермолова. 1798-1826 гг. 1991"><sup><a href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Імперський історик Потто підтверджує закладення 10 червня 1818 року: «під грім гармат було закладено сильну фортецю на шість бастіонів, яку Єрмолов назвав Грозною»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Ще у всепідданішому рапорті листопада 1817 року Єрмолов прямо називав мету сунженських фортець: «Треба зайняти р. Сунжу і по її течії влаштувати фортеці: тоді Чеченці будуть стиснуті у своїх горах, позбудуться землі, придатної для обробітку, і пасовищних місць, на яких увесь зимовий час вони ховають свої стада від жорстокого в горах клімату»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1875). Акты собранные Кавказскою археографическою комиссиею. Том VI, часть вторая (1816-1827)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VI, часть вторая (1816-1827) 1875"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець російська імперія ставила навколо чечні кільце фортець, щоб стиснути її та відрізати від сусідів. історик д. а. хожаєв пише, що слідом за грозною 1819 року з’явилася фортеця внезапна, поставлена, щоб «стискати непокірну чечню новими фортецями та укріпленнями»(citation: чеченцы в русско-кавказской войне 1998). імперський історик потто підтверджує призначення й дату: закладена вісімнадцятого липня 1819 року, вона «розділила чеченців від кумиків» і «перегороджувала [чеченцям] шлях через салатавські гори», а з грозною її зв’язали низкою укріплень(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007). цю фортецю генерал єрмолов планував ще у всепідданішому рапорті листопада 1817 року, передбачаючи, що «продовживши лінію через аксаївські та андріївські селища до р. сулак, буде закрито кизляр»(citation: акты собранные кавказскою археографическою комиссиею. том vi, часть вторая (1816-1827) 1875)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1819-07-18 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Липень 1819</div>
+<div><a href="/uk/campaigns/C1143">C1143</a> Показове знищення аулу Даді-юрт і зведення фортеці Внезапної для витіснення Нохчі з кумицької рівнини (1819)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія ставила навколо Чечні кільце фортець, щоб стиснути її та відрізати від сусідів. Історик Д. А. Хожаєв пише, що слідом за Грозною 1819 року з’явилася фортеця Внезапна, поставлена, щоб «стискати непокірну Чечню новими фортецями та укріпленнями»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Імперський історик Потто підтверджує призначення й дату: закладена вісімнадцятого липня 1819 року, вона «розділила Чеченців від Кумиків» і «перегороджувала [Чеченцям] шлях через Салатавські гори», а з Грозною її зв’язали низкою укріплень<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Цю фортецю генерал Єрмолов планував ще у всепідданішому рапорті листопада 1817 року, передбачаючи, що «продовживши Лінію через Аксаївські та Андріївські селища до р. Сулак, буде закрито Кизляр»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Кавказская археографическая комиссия. (1875). Акты собранные Кавказскою археографическою комиссиею. Том VI, часть вторая (1816-1827)."data-reference="Акты собранные Кавказскою археографическою комиссиею. Том VI, часть вторая (1816-1827) 1875"><sup><a href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець російська імперія ставила на відібраній у нохчі землі ланцюг укріплень, щоб закріпити захоплення й тримати населення у підпорядкуванні. історик д. а. хожаєв пише, що єрмолов, переносячи кавказьку лінію на сунжу, «стискав непокірну чечню новими фортецями та укріпленнями», і на «окупованій території збудовано укріплення… нєотступний стан, злобний окоп, внєзапна (1819 рік) та інші»(citation: чеченцы в русско-кавказской войне 1998). імперський історик потто підтверджує, що влітку 1820 року, ледве закінчивши герменчуцьку просіку, греков «взявся до вирубки лісу по сунжі та до будівництва на розчищених галявинах двох нових укріплень: усть-мартанського редуту і злобного окопу», а на місці знесеного качкаликського істі-су поставив «нєотступний стан»(citation: кавказская война. в 5 томах. том 2. ермоловское время 2007)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1820-03-06 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Березень 1820</div>
+<div><a href="/uk/campaigns/C1145">C1145</a> Нічний напад на аул Топлі, спалення Герменчука та примушення Нохчі до вирубування власних лісів (1820)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Російська імперія ставила на відібраній у Нохчі землі ланцюг укріплень, щоб закріпити захоплення й тримати населення у підпорядкуванні. Історик Д. А. Хожаєв пише, що Єрмолов, переносячи Кавказьку лінію на Сунжу, «стискав непокірну Чечню новими фортецями та укріпленнями», і на «окупованій території збудовано укріплення… Нєотступний Стан, Злобний Окоп, Внєзапна (1819 рік) та інші»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Імперський історик Потто підтверджує, що влітку 1820 року, ледве закінчивши герменчуцьку просіку, Греков «взявся до вирубки лісу по Сунжі та до будівництва на розчищених галявинах двох нових укріплень: Усть-Мартанського редуту і Злобного Окопу», а на місці знесеного качкаликського Істі-су поставив «Нєотступний Стан»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время."data-reference="Кавказская война. В 5 томах. Том 2. Ермоловское время 2007"><sup><a href="https://loveread.ec/book-comments.php?book=75382" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець аманатсько-податну систему пулло, командувача лівого флангу кавказької лінії (ланцюга імперських укріплень на землі нохчі), закріплювали нові укріплення на чеченській землі. чеченський письменник абузар айдаміров фіксує закладення укріплення умахан-юрт на річці сунжі в 1837 році(citation: хронология истории чечено-ингушетии 1991). план генерала головіна, командира окремого кавказького корпусу (голови імперських військ на кавказі), на 1840 рік приписував «звести укріплення біля черкея і поблизу старого аксая (при герзель-аулі)» - герзель-аул стоїть на межі чечні і кумицької рівнини; будівництво йшло всю зиму: імперський історик юров пише, що в березні 1840 року пулло особисто перебував «у герзель-аулі для приведення його в кращий оборонний стан», і укріплення «вдалося закінчити з гріхом пополам»(citation: 1840, 1841 и 1842-й годы на кавказе 1886)."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1836-09-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Вересень 1836</div>
+<div><a href="/uk/campaigns/C1163">C1163</a> Аманатсько-податна система полковника Пулло у захоплених аулах Чечні (1836-1840)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Аманатсько-податну систему Пулло, командувача лівого флангу Кавказької лінії (ланцюга імперських укріплень на землі нохчі), закріплювали нові укріплення на чеченській землі. Чеченський письменник Абузар Айдаміров фіксує закладення укріплення Умахан-Юрт на річці Сунжі в 1837 році<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="А. А. Айдамиров. (1991). Хронология истории Чечено-Ингушетии."data-reference="Хронология истории Чечено-Ингушетии 1991"><sup><a href="https://www.prlib.ru/item/1968825" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. План генерала Головіна, командира Окремого Кавказького корпусу (голови імперських військ на Кавказі), на 1840 рік приписував «звести укріплення біля Черкея і поблизу старого Аксая (при Герзель-аулі)» - Герзель-аул стоїть на межі Чечні і Кумицької рівнини; будівництво йшло всю зиму: імперський історик Юров пише, що в березні 1840 року Пулло особисто перебував «у Герзель-аулі для приведення його в кращий оборонний стан», і укріплення «вдалося закінчити з гріхом пополам»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе."data-reference="1840, 1841 и 1842-й годы на Кавказе 1886"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець у 1841-1846 роках імперія забудувала чеченські рівнини ланцюгом укріплень. історик н. і. покровський пише про 1841 рік: «улітку та восени російське командування гарячково укріплює сунженську лінію: у липні - серпні будують укріплення закан юрт, а в серпні - жовтні - укріплення казах кічу»(citation: кавказские войны и имамат шамиля 2009); історики я. з. ахмадов і е. х. хасмагомадов фіксують функцію: «будівництво двох нових укріплень - казахкічу і закан-юртівського, дозволило повністю виключити пересування великих чеченських загонів за сунжу і ще більше ізолювало притереччя від решти чечні»(citation: история чечни в xix-xx веках 2005). у 1844 році - «будівництво воздвиженського укріплення восени 1844 р. на місці зруйнованого аулу чахкері (чахкар-атаги), біля початку аргунської ущелини»(citation: история чечни в xix-xx веках 2005); покровський називає призначення: «воздвиженське мало тепер стати базою для частих набігів на чеченські аули, для зимових рубок лісу в площинній чечні»(citation: кавказские войны и имамат шамиля 2009). у 1846 році на річці фортанзі збудовано форт ачхой. функцію ачхоя імперський рапорт назвав так: «влаштування укріплення на фортанзі, майже в серці малої чечні, серед рівнин-житниць, не може не мати впливу на підкорення її»(citation: движение горцев северо-восточного кавказа в 20-50 гг. xix века: сборник документов 1959). вторгнення в аух (чеченську область на північному сході) у червні 1841 року війська генерала граббе, командувача військ кавказької лінії (ланцюга імперських укріплень на землі нохчі), закріпили укріпленням на захопленій землі: 16-17 червня збудовано тимчасове укріплення в акташ-аусі. укріплення простояло одне літо: історик н. і. покровський пише - «21 вересня укріплення було зрито, загін відійшов»(citation: кавказские войны и имамат шамиля 2009). біля цього укріплення імперія збирала «вірні» їй ауховські сім'ї перед переселенням під владу кумицьких володарів."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1840-06-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Червень 1840</div>
+<div><a href="/uk/campaigns/C1165">C1165</a> «Стиснення Чечні з усіх боків»: блокада, таємна війна, каральні експедиції та Сунженська лінія (1840-1846)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>У 1841-1846 роках імперія забудувала чеченські рівнини ланцюгом укріплень. Історик Н. І. Покровський пише про 1841 рік: «улітку та восени російське командування гарячково укріплює Сунженську лінію: у липні - серпні будують укріплення Закан Юрт, а в серпні - жовтні - укріплення Казах Кічу»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>; історики Я. З. Ахмадов і Е. Х. Хасмагомадов фіксують функцію: «Будівництво двох нових укріплень - Казахкічу і Закан-Юртівського, дозволило повністю виключити пересування великих чеченських загонів за Сунжу і ще більше ізолювало Притереччя від решти Чечні»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. У 1844 році - «будівництво Воздвиженського укріплення восени 1844 р. на місці зруйнованого аулу Чахкері (Чахкар-Атаги), біля початку Аргунської ущелини»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>; Покровський називає призначення: «Воздвиженське мало тепер стати базою для частих набігів на чеченські аули, для зимових рубок лісу в площинній Чечні»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. У 1846 році на річці Фортанзі збудовано форт Ачхой. Функцію Ачхоя імперський рапорт назвав так: «Влаштування укріплення на Фортанзі, майже в серці Малої Чечні, серед рівнин-житниць, не може не мати впливу на підкорення її»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов."data-reference="Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов 1959"><sup><a href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Вторгнення в Аух (чеченську область на північному сході) у червні 1841 року війська генерала Граббе, командувача військ Кавказької лінії (ланцюга імперських укріплень на землі нохчі), закріпили укріпленням на захопленій землі: 16-17 червня збудовано тимчасове укріплення в Акташ-Аусі. Укріплення простояло одне літо: історик Н. І. Покровський пише - «21 вересня укріплення було зрито, загін відійшов»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. Біля цього укріплення імперія збирала «вірні» їй ауховські сім'ї перед переселенням під владу кумицьких володарів.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="зведення фортець узимку 1847-1848 років імперія поставила фортеці, що замикали малу чечню (рівнинно-передгірну західну частину чечні). імперський офіцер полторацький, учасник зимової експедиції 1847-1848 років, записав: «улаштуванням передової сунженської лінії, від грозної до владикавказа, ми дуже стиснули малу чечню, але побудовою тепер фортець на мартані, валерику й ассі ми остаточно виконували її смертний вирок»(citation: воспоминания 1895). історик м. і. покровський фіксує продовження в 1848 році: «на початку серпня закладено було укріплення урус-мартан»(citation: кавказские войны и имамат шамиля 2009). станиці селили козаків на місцях спалених аулів, фортеці тримали на тій самій землі війська."
+             data-platforms="Нохчі (Чеченці)"
+             data-groups="G0009"
+             data-tools="S0010"
+             data-date="1847-01-05 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Січень 1847</div>
+<div><a href="/uk/campaigns/C1166">C1166</a> «Смертний вирок» Малій Чечні: різанина хутора Дуби, просіки, фортеці, винищення населення і станиці на місці спалених аулів (1847-1851)</div><div><a href="/uk/groups/G0009">G0009</a> Російська імперія</div><div><a href="/uk/software/S0010">S0010</a> Регулярна армія</div>            </div>
+            <div class="proc-desc">
+                        <p>Узимку 1847-1848 років імперія поставила фортеці, що замикали Малу Чечню (рівнинно-передгірну західну частину Чечні). Імперський офіцер Полторацький, учасник зимової експедиції 1847-1848 років, записав: «Улаштуванням передової Сунженської лінії, від Грозної до Владикавказа, ми дуже стиснули Малу Чечню, але побудовою тепер фортець на Мартані, Валерику й Ассі ми остаточно виконували її смертний вирок»<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="В. А. Полторацкий. (1895). Воспоминания."data-reference="Воспоминания 1895"><sup><a href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>. Історик М. І. Покровський фіксує продовження в 1848 році: «на початку серпня закладено було укріплення Урус-Мартан»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля."data-reference="Кавказские войны и имамат Шамиля 2009"><sup><a href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. Станиці селили козаків на місцях спалених аулів, фортеці тримали на тій самій землі війська.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="/uk/theme/scripts/people-filter.js"></script>
+<script src="/uk/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Українці",
+"russia/nokhchi": "Нохчі (Чеченці)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://instituteofhistory.ru/media/library/publication/files/%D0%9A%D1%83%D1%88%D0%B5%D0%B2%D0%B0_%D0%95.%D0%9D._%D0%9D%D0%B0%D1%80%D0%BE%D0%B4%D1%8B_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B3%D0%BE_%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D0%B0_%D0%B8_%D0%B8%D1%85_%D1%81%D0%B2%D1%8F%D0%B7%D0%B8_%D1%81_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B5%D0%B9._%D0%9C%D0%BE%D1%81_TFA3pwz.pdf" target="_blank">
+                        Кушева. Е. Н.. (1963). Народы Северного Кавказа и их связи с Россией (вторая половина XVI - 30-е годы XVII вв).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://dzurdzuki.com/download/kusheva-e-n-russko-chechenskie-otnosheniya-vtoraya-pol-xvi-xvii-v-sost-1997-g/" target="_blank">
+                        Кушева. Е. Н.. (1997). Русско-чеченские отношения. Вторая пол. XVI-XVII в..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="http://www.litres.ru/pages/biblio_book/?art=6880367" target="_blank">
+                        Анатолий Куликов, Валентин Рунов. (2013). Все Кавказские войны России. Самая полная энциклопедия.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://www.rulit.me/books/ivan-mazepa-i-rossijskaya-imperiya-istoriya-predatelstva-read-266874-1.html" target="_blank">
+                        Татьяна Таирова-Яковлева. (2011). Иван Мазепа и Российская империя. История «предательства».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://loveread.ec/book-comments.php?book=69990" target="_blank">
+                        Татьяна Таирова-Яковлева. (2007). Мазепа.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://roskav.ru/wp-content/uploads/2020/04/2019-CHecheno-russkie-otnosheniya-v-XVIII-veke.-Issledovanie-i-materi-aly.-T.-1.-.pdf" target="_blank">
+                        Ахмадов Я. З.. (2019). Чечено-русские отношения в XVIII веке. Исследования и материалы. Том I.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="http://www.kbigi.ru/fmedia/%D0%A2%D1%85%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0-%D0%98.%D0%A5.-17.01.2018-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B0%D0%B9%D1%82%D0%B0.pdf" target="_blank">
+                        Тхамокова И. Х.. (2017). Терское казачество в этнокультурном пространстве Северного Кавказа.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="http://militera.lib.ru/memo/russian/ermolov_ap/index.html" target="_blank">
+                        Ермолов А.. (1991). Записки А.П. Ермолова. 1798-1826 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="10.0">
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="https://loveread.ec/book-comments.php?book=75382" target="_blank">
+                        Потто В.. (2007). Кавказская война. В 5 томах. Том 2. Ермоловское время.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="http://apsnyteka.org/381-akak_i_xii.html" target="_blank">
+                        Кавказская археографическая комиссия. (1875). Акты собранные Кавказскою археографическою комиссиею. Том VI, часть вторая (1816-1827).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="https://www.prlib.ru/item/1968825" target="_blank">
+                        А. А. Айдамиров. (1991). Хронология истории Чечено-Ингушетии.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://www.vostlit.info/Texts/Dokumenty/Kavkaz/XIX/1840-1860/1840_1841_1842_gody/text1.htm" target="_blank">
+                        Юров А.. (1886). 1840, 1841 и 1842-й годы на Кавказе.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://books.google.com.ua/books/about/%D0%9A%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B_%D0%B8_%D0%B8%D0%BC.html?id=OR8qAQAAMAAJ&redir_esc=y" target="_blank">
+                        Н. И. Покровский. (2009). Кавказские войны и имамат Шамиля.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-15" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-16" href="https://books.google.com.ua/books/about/%D0%94%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D1%86%D0%B5%D0%B2_%D1%81%D0%B5%D0%B2%D0%B5%D1%80.html?id=c4xizwEACAAJ&redir_esc=y" target="_blank">
+                        В. Г. Гаджиев, X. X. Рамазанов. (1959). Движение горцев северо-восточного Кавказа в 20-50 гг. XIX века: сборник документов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-17" href="https://www.vostlit.info/Texts/Dokumenty/M.Asien/XIX/1860-1880/Poltorackij/text1.htm" target="_blank">
+                        В. А. Полторацкий. (1895). Воспоминания.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/uk/theme/scripts/settings.js"></script>
+<script src="/uk/theme/scripts/tour/tour-techniques.js"></script>
+<script src="/uk/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>
