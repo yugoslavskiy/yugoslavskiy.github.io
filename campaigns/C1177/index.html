@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1177/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1177/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1177/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1177/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1177/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925), кампания C1177 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1177/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925), кампания C1177 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body">
+                      <p>К 1925 году советская власть стояла в Чечне пятый год и оставалась во многом номинальной: пять лет советизации (кампания C1176) - ревкомы вместо выборных Советов, аресты шейхов, два частичных разоружения - не дали Москве контроля над народом, в горах укрывался имам Нажмуддин Гоцинский - духовный глава вооружённого сопротивления в Дагестане и Чечне, а характеристика Горного района, составленная штабом будущей операции, признавала: «За Шаро-Аргуном советской власти не существует»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Сост. Мурдалов М. М., Алаудинов А. А. (сборник документов, Ridero; документы РГВА ф. 25896 оп. 9). (2021). Чечня. Политическая и общественная обстановка. 1920-30 гг.."data-reference="Чечня. Политическая и общественная обстановка. 1920-30 гг. 2021"><sup><a href="https://ridero.ru/books/chechnya_politicheskaya_i_obshestvennaya_obstanovka/freeText/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Москва же вела курс на изъятие власти у автономий - историк Т. У. Эльбуздукаева пишет: «Непрекращающийся бандитизм и повстанческие движения на Северном Кавказе воспринимались московской властью как убедительный аргумент в пользу ее централизаторских усилий, процесса перехода автономного суверенитета из кавказских в московские руки»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Этим курсом и стала операция 1925 года: СССР отобрал оружие у населения Чечни силами армии и ОГПУ (политической полиции, предшественницы современной ФСБ) - с 25 августа войска прошли 242 селения, 101 из них обстреляли из [артиллерийских] орудий и пулемётов, 16 разбомбили с самолётов, арестовали больше 300 человек и почти всех расстреляли без суда. Войска под видом манёвров входили в область, окружали аул за аулом, созывали сход, предъявляли ультиматум о сдаче оружия по готовой разнарядке и при невыполнении открывали огонь по селению; о целях Эльбуздукаева пишет: центрами операции штаб заранее определил горные общества, «где предположительно находился [глава сопротивления] Н. Гоцинский»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Инструкция от 4 августа 1925 года, утверждённая командующим Северо-Кавказским военным округом (СКВО) Уборевичем, предписывала при невыполнении ультиматума открывать по селению артиллерийский огонь на десять минут и разрешала повторять его несколько раз<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Обман тоже был назначен документом: приказом от 31 июля 1925 года штаб Рабоче-крестьянской Красной армии (РККА) одобрил Уборевичу манёвры в Чечне и тем же документом назначил разоружение: «Вместе с тем, - говорилось в приказе, - пользуясь сосредоточением значительного количества войск, на территории Чечни (район предстоящих маневров) командование СКВО по согласованию с ППОГПУ [полномочным представительством ОГПУ] на Северном Кавказе намечает провести разоружение и изъятие бандитского элемента, что по ряду политических признаков является весьма своевременным»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Жупикова Е. Ф.. (2013). Повстанческое движение на Северном Кавказе в 1920-1925 годах."data-reference="Повстанческое движение на Северном Кавказе в 1920-1925 годах 2013"><sup><a href="http://www.ainros.ru/ainst/t1/jupikova.pdf" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Санкцию дал лично Сталин: в июле 1925 года секретарь Северо-Кавказского крайкома партии Микоян<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Сост. Л. С. Гатагова, Л. П. Кошелева, Л. А. Роговая; РОССПЭН, М., 2005 (документы РГАСПИ). (2005). ЦК РКП(б)-ВКП(б) и национальный вопрос. Кн. 1. 1918-1933 гг.."data-reference="ЦК РКП(б)-ВКП(б) и национальный вопрос. Кн. 1. 1918-1933 гг. 2005"><sup><a href="https://docs.historyrussia.org/ru/nodes/34436-tsk-rkp-b-vkp-b-i-natsionalnyy-vopros-kn-1-1918-1933-gg" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span> встретился с ним в Сочи и после разговора телеграфировал в Москву Молотову: «Политическое положение в Чечне обострилось. Сталин дал личное согласие на необходимость операции»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Через много лет Микоян подвёл в мемуарах итог: «Эта операция коренным образом очистила воздух Чечни»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Микоян А. И. (М.: Вагриус; глава 15 «Проблемы казачества. Чечня»). (1999). Так было: Размышления о минувшем."data-reference="Так было: Размышления о минувшем 1999"><sup><a href="http://militera.lib.ru/memo/russian/mikoyan/02.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1177
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Июль 1925</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Октябрь 1925</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>13 августа 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>13 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1177" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1177/C1177-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1177%2FC1177-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0010">G0010</a></td>
+                <td><a href="/groups/G0010">СССР</a></td>
+                <td>14</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0010"> S0010 </a></td>
+                <td><a href="/software/S0010"> Регулярная армия </a></td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td><a href="/software/S0017"> S0017 </a></td>
+                <td><a href="/software/S0017"> Тайная полиция и Спецслужбы </a></td>
+                <td>5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="дегуманизация 31 июля 1925 года реввоенсовет ссср объяснил готовящуюся операцию свойствами целого народа - в приказе сказано: «чеченская область является очагом уголовного бандитизма, распространяемого на соседние с чечней районы... в массе своей чеченцы склонны к бандитизму, как к главному источнику легкой наживы, чему способствует наличие большого количества оружия. нагорная чечня является убежищем для наиболее закоренелых врагов советской власти»(citation: хроника первого разоружения чечни 2015). ярлык из приказа перешёл в рабочую номенклатуру операции: инструкция от 4 августа 1925 года, утверждённая командующим северо-кавказским военным округом уборевичем, членом реввоенсовета округа володиным и полномочным представителем огпу (политической полиции, предшественницы современной фсб) по краю евдокимовым, ставит людей в один ряд с винтовками и «изымает» их одним глаголом - пункт 8 инструкции гласит: «в случае выполнения условий сдачи оружия поголовный обыск не производится, а только изымается бандитский и порочный элемент»(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022). так преступность объявлена свойством народа, а его люди - «элементом», подлежащим изъятию."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0006">T0006</a> Дегуманизация
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>31 июля 1925 года Реввоенсовет СССР объяснил готовящуюся операцию свойствами целого народа - в приказе сказано: «Чеченская область является очагом уголовного бандитизма, распространяемого на соседние с Чечней районы... В массе своей чеченцы склонны к бандитизму, как к главному источнику легкой наживы, чему способствует наличие большого количества оружия. Нагорная Чечня является убежищем для наиболее закоренелых врагов Советской власти»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Ярлык из приказа перешёл в рабочую номенклатуру операции: инструкция от 4 августа 1925 года, утверждённая командующим Северо-Кавказским военным округом Уборевичем, членом Реввоенсовета округа Володиным и полномочным представителем ОГПУ (политической полиции, предшественницы современной ФСБ) по краю Евдокимовым, ставит людей в один ряд с винтовками и «изымает» их одним глаголом - пункт 8 инструкции гласит: «В случае выполнения условий сдачи оружия поголовный обыск не производится, а только изымается бандитский и порочный элемент»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Так преступность объявлена свойством народа, а его люди - «элементом», подлежащим изъятию.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="навязывание образа отсталости 31 июля 1925 года реввоенсовет ссср приказом, обосновывавшим операцию по разоружению чечни, объявил чеченцев неспособными к правильному хозяйству: «предоставленные после революции на плоскости богатые земельные угодья чеченцы полностью не используют, ведут отсталыми формами свое сельское хозяйство, не трудолюбивы»(citation: хроника первого разоружения чечни 2015). обвинение стоит в военном приказе как одно из оснований для ввода войск: земельные угодья народу «предоставила» сама власть, его способ хозяйствовать она же объявила отсталым, а вывод из этой оценки - войсковая операция. историк т. у. эльбуздукаева, публикующая приказ, приводит и его продолжение: назрели «политические признаки» - усталость населения от войны и требование борьбы с «бандитизмом»(citation: хроника первого разоружения чечни 2015) - то есть даже по логике документа воевать предстояло не с хозяйственной отсталостью, но именно она поставлена в обоснование."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0001">T0001</a> Навязывание образа отсталости
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>31 июля 1925 года Реввоенсовет СССР приказом, обосновывавшим операцию по разоружению Чечни, объявил чеченцев неспособными к правильному хозяйству: «Предоставленные после революции на плоскости богатые земельные угодья чеченцы полностью не используют, ведут отсталыми формами свое сельское хозяйство, не трудолюбивы»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Обвинение стоит в военном приказе как одно из оснований для ввода войск: земельные угодья народу «предоставила» сама власть, его способ хозяйствовать она же объявила отсталым, а вывод из этой оценки - войсковая операция. Историк Т. У. Эльбуздукаева, публикующая приказ, приводит и его продолжение: назрели «политические признаки» - усталость населения от войны и требование борьбы с «бандитизмом»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> - то есть даже по логике документа воевать предстояло не с хозяйственной отсталостью, но именно она поставлена в обоснование.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="навязывание своей картины реальности войсковую операцию с артобстрелами документы её штаба описали как принесение мира: «основные задачи особых оперативных групп огпу при операции в чеченской автономной области», утверждённые полномочным представителем огпу (политической полиции, предшественницы современной фсб) по краю евдокимовым, командующим северо-кавказским военным округом уборевичем и членом реввоенсовета округа володиным, открываются словами о том, что массовая операция «в конечном своем результате должна принести общее умиротворение чечне и создать соответствующую обстановку для мирного советско-хозяйственного строительства области»(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022). ту же рамку предписывалось произносить вслух в каждом ауле: по инструкции о разоружении от 4 августа 1925 года представители власти, войдя в окружённое войсками село, объявляли сходу цель прихода - «изъятие оружия в видах обеспечения чеченской властью нормальной трудовой жизни трудящегося населения», а артобстрелу в этой рамке дано имя: «предупредительный огонь, как мера воздействия»(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022). организатор операции, секретарь северо-кавказского крайкома партии микоян, довёл эту картину до итоговой формулы в мемуарах: «это была блестящая операция без всякого кровопролития»(citation: так было: размышления о минувшем 1999) - в той же главе он сам описывает чеченских стариков, взятых чекистами в заложники, и обстрел чеченского села войсками ссср."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0007">T0007</a> Навязывание своей картины реальности
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Войсковую операцию с артобстрелами документы её штаба описали как принесение мира: «Основные задачи Особых оперативных групп ОГПУ при операции в Чеченской Автономной области», утверждённые полномочным представителем ОГПУ (политической полиции, предшественницы современной ФСБ) по краю Евдокимовым, командующим Северо-Кавказским военным округом Уборевичем и членом Реввоенсовета округа Володиным, открываются словами о том, что массовая операция «в конечном своем результате должна принести общее умиротворение Чечне и создать соответствующую обстановку для мирного советско-хозяйственного строительства области»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Ту же рамку предписывалось произносить вслух в каждом ауле: по инструкции о разоружении от 4 августа 1925 года представители власти, войдя в окружённое войсками село, объявляли сходу цель прихода - «изъятие оружия в видах обеспечения чеченской властью нормальной трудовой жизни трудящегося населения», а артобстрелу в этой рамке дано имя: «предупредительный огонь, как мера воздействия»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Организатор операции, секретарь Северо-Кавказского крайкома партии Микоян, довёл эту картину до итоговой формулы в мемуарах: «Это была блестящая операция без всякого кровопролития»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Микоян А. И. (М.: Вагриус; глава 15 «Проблемы казачества. Чечня»). (1999). Так было: Размышления о минувшем."data-reference="Так было: Размышления о минувшем 1999"><sup><a href="http://militera.lib.ru/memo/russian/mikoyan/02.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span> - в той же главе он сам описывает чеченских стариков, взятых чекистами в заложники, и обстрел чеченского села войсками СССР.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="военная интервенция 25 августа 1925 года ссср ввёл войска в чеченскую автономную область, чтобы отобрать оружие у жителей; операцию вели армия и огпу (политическая полиция, предшественница современной фсб) под общим руководством командующего северо-кавказским военным округом уборевича и полномочного представителя огпу по краю евдокимова(citation: хроника первого разоружения чечни 2015). историки я. з. ахмадов и э. х. хасмагомадов пишут о силах, собранных против чеченских сёл: «всего к участию в ней были привлечены около семи тысяч красноармейцев при 240 пулеметах и 24 [артиллерийских] орудиях. кроме того, в распоряжении командующего операцией находилось два авиационных отряда и бронепоезд. в тактическом отношении войска, а также оперативные группы гпу, были разбиты на семь группировок»(citation: история чечни в xix-xx веках 2005). историк т. у. эльбуздукаева приводит по военным документам другой счёт: 6183 красноармейца при 137 станковых и 102 лёгких пулемётах, 14 горных и 10 лёгких [артиллерийских] орудиях, и сверх того 341 сотрудник огпу, собранный со всего северного кавказа(citation: хроника первого разоружения чечни 2015). один из организаторов операции, секретарь северо-кавказского крайкома партии микоян, вспоминал, что «договорились направить в чечню "на учения" две дивизии. в ходе учений предусматривались общение с населением, вечера самодеятельности, концерты, сближение с местной молодежью, что должно было еще больше укрепить доверие к советской власти»(citation: так было: размышления о минувшем 1999); ту же легенду разбрасывали с воздуха - в рассказе уцелевшего спутника имама нажмуддина гоцинского, напечатанном в 1936 году в варшавском журнале «северный кавказ», сказано: «для успокоения населения с аэропланов разбрасывались прокламации, в которых писалось, что происходят обыкновенные маневры и жителей просят не беспокоиться и сидеть по домам»(citation: как погиб нажмутдин гоцинский 1936). руководителя самой чечни - председателя чеченского цика (высшего органа власти автономной области) эльдарханова - о подготовке не известили: «центр и органы огпу не посчитали нужным проинформировать о готовящейся акции даже председателя чеченского цика т. эльдарханова. скопление войск в грозном было объяснено предстоящими маневрами»(citation: хроника первого разоружения чечни 2015). при этом инструкция о разоружении от 4 августа 1925 года вписала чеченский цик в каждый шаг исполнения: его представители вместе с командованием входят в окружённый аул и созывают сход, заседают в комиссиях по приёму оружия, обязаны давать характеристики районов, а после «всех перечисленных мер воздействия» получают полномочия распускать сельские исполкомы и ставить ревкомы(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022). ещё до ввода войск огпу описало каждое село: историк е. ф. жупикова приводит - «органы огпу собрали сведения о наиболее влиятельных муллах и шейхах, о почетных стариках, о проводниках, без которых невозможно было проникнуть в горы»(citation: к вопросу о разоружении чечни в 1920-1925 годах 1998); на каждый населённый пункт завели анкету с числом жителей и дворов, составом населения по тайпам (родам) и количеством оружия, которое планировали изъять(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0019">T0019</a> Военная интервенция
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>25 августа 1925 года СССР ввёл войска в Чеченскую автономную область, чтобы отобрать оружие у жителей; операцию вели армия и ОГПУ (политическая полиция, предшественница современной ФСБ) под общим руководством командующего Северо-Кавказским военным округом Уборевича и полномочного представителя ОГПУ по краю Евдокимова<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут о силах, собранных против чеченских сёл: «Всего к участию в ней были привлечены около семи тысяч красноармейцев при 240 пулеметах и 24 [артиллерийских] орудиях. Кроме того, в распоряжении командующего операцией находилось два авиационных отряда и бронепоезд. В тактическом отношении войска, а также оперативные группы ГПУ, были разбиты на семь группировок»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Историк Т. У. Эльбуздукаева приводит по военным документам другой счёт: 6183 красноармейца при 137 станковых и 102 лёгких пулемётах, 14 горных и 10 лёгких [артиллерийских] орудиях, и сверх того 341 сотрудник ОГПУ, собранный со всего Северного Кавказа<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Один из организаторов операции, секретарь Северо-Кавказского крайкома партии Микоян, вспоминал, что «Договорились направить в Чечню "на учения" две дивизии. В ходе учений предусматривались общение с населением, вечера самодеятельности, концерты, сближение с местной молодежью, что должно было еще больше укрепить доверие к Советской власти»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Микоян А. И. (М.: Вагриус; глава 15 «Проблемы казачества. Чечня»). (1999). Так было: Размышления о минувшем."data-reference="Так было: Размышления о минувшем 1999"><sup><a href="http://militera.lib.ru/memo/russian/mikoyan/02.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>; ту же легенду разбрасывали с воздуха - в рассказе уцелевшего спутника имама Нажмуддина Гоцинского, напечатанном в 1936 году в варшавском журнале «Северный Кавказ», сказано: «Для успокоения населения с аэропланов разбрасывались прокламации, в которых писалось, что происходят обыкновенные маневры и жителей просят не беспокоиться и сидеть по домам»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Дж. Х-и, со слов участника событий // Северный Кавказ (Şimalî Kafkasya), орган Народной партии горцев Кавказа, Варшава, 1936, № 23, с. 27-28. (1936). Как погиб Нажмутдин Гоцинский."data-reference="Как погиб Нажмутдин Гоцинский 1936"><sup><a href="https://archive.org/details/jbc.bj.uj.edu.pl.NDIGCZAS023449_72125611" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Руководителя самой Чечни - председателя Чеченского ЦИКа (высшего органа власти автономной области) Эльдарханова - о подготовке не известили: «Центр и органы ОГПУ не посчитали нужным проинформировать о готовящейся акции даже председателя Чеченского ЦИКа Т. Эльдарханова. Скопление войск в Грозном было объяснено предстоящими маневрами»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. При этом инструкция о разоружении от 4 августа 1925 года вписала Чеченский ЦИК в каждый шаг исполнения: его представители вместе с командованием входят в окружённый аул и созывают сход, заседают в комиссиях по приёму оружия, обязаны давать характеристики районов, а после «всех перечисленных мер воздействия» получают полномочия распускать сельские исполкомы и ставить ревкомы<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Ещё до ввода войск ОГПУ описало каждое село: историк Е. Ф. Жупикова приводит - «Органы ОГПУ собрали сведения о наиболее влиятельных муллах и шейхах, о почетных стариках, о проводниках, без которых невозможно было проникнуть в горы»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Жупикова Е. Ф. (Труды МПГУ, с. 93-99; перепечатка scepsis.net). (1998). К вопросу о разоружении Чечни в 1920-1925 годах."data-reference="К вопросу о разоружении Чечни в 1920-1925 годах 1998"><sup><a href="https://scepsis.net/library/id_1063.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>; на каждый населённый пункт завели анкету с числом жителей и дворов, составом населения по тайпам (родам) и количеством оружия, которое планировали изъять<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="принудительное разоружение за три недели операции, с 25 августа по 12 сентября 1925 года, войска ссср забрали у жителей чечни 25299 винтовок, 4319 револьверов и пистолетов, пулемёт и около 80 тысяч патронов(citation: история чечни в xix-xx веках 2005); огпу (политическая полиция, предшественница современной фсб) доложило сталину округлённо: «в чечне во время операции изъято 24000 винтовок, 4000 револьверов, около 70000 патронов, 2 пулемета»(citation: совершенно секретно: лубянка - сталину о положении в стране. том 3, 1925 год 2002), а секретарь северо-кавказского крайкома партии микоян, один из организаторов операции, в мемуарах насчитал «более 30 тыс. винтовок, более 10 пулеметов»(citation: так было: размышления о минувшем 1999). по оценке историка е. ф. жупиковой, изъятое составило «примерно 75% имевшегося у населения до начала операции и примерно половину оружия, изъятого во всех горских областях»(citation: к вопросу о разоружении чечни в 1920-1925 годах 1998). по инструкции о разоружении от 4 августа 1925 года жителям объявляли «точная цифра подлежащего изъятию огнестрельного оружия и припасов к нему», взятая из анкет огпу, и давали на сдачу не больше двух часов(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022); микоян описывает ту же разнарядку словами «предъявят каждому селу требование сдать все оружие в том количестве, которое было известно по агентурным данным»(citation: так было: размышления о минувшем 1999). отбирать оружие начали ещё до ввода войск, разделив жителей списками: у занесённых в списки «порочного элемента» и их родственников «оружие местные ревкомы отбирали, а у остальных жителей регистрировали»(citation: к вопросу о разоружении чечни в 1920-1925 годах 1998). отдать оружие без обстрела просили сами жители: в начале сентября 1925 года делегаты гойтинского общества ески карлагов, хату добриев и джаби отгаев обратились в реввоенсовет округа с просьбой: «теперь при разоружении, которое мы считаем правильным мы просим принять это во внимание и ходатайствуем сделать исключением допустив добровольную сдачу оружия без принятия репрессивных мер»; ответ пришёл телеграммой «весьма срочной» за подписями командующего северо-кавказским военным округом уборевича, члена реввоенсовета округа володина и полномочного представителя огпу по краю евдокимова: «революционные заслуги селения гойты красная армия хорошо знает. сдача оружия должна быть произведена добровольно 9 сентября с доставкой оружия грозный. необходимое оружие для самообороны аулу гойты будет оставлено»(citation: чечня. политическая и общественная обстановка. 1920-30 гг. 2021)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0155">T0155</a> Принудительное разоружение
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>За три недели операции, с 25 августа по 12 сентября 1925 года, войска СССР забрали у жителей Чечни 25299 винтовок, 4319 револьверов и пистолетов, пулемёт и около 80 тысяч патронов<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>; ОГПУ (политическая полиция, предшественница современной ФСБ) доложило Сталину округлённо: «В Чечне во время операции изъято 24000 винтовок, 4000 револьверов, около 70000 патронов, 2 пулемета»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Информационный отдел ОГПУ (обзоры политического состояния СССР); изд. ИРИ РАН, М., 2002; ЦА ФСБ РФ Ф. 2. Оп. 3. (2002). Совершенно секретно: Лубянка - Сталину о положении в стране. Том 3, 1925 год."data-reference="Совершенно секретно: Лубянка - Сталину о положении в стране. Том 3, 1925 год 2002"><sup><a href="https://istmat.org/node/22548" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>, а секретарь Северо-Кавказского крайкома партии Микоян, один из организаторов операции, в мемуарах насчитал «более 30 тыс. винтовок, более 10 пулеметов»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Микоян А. И. (М.: Вагриус; глава 15 «Проблемы казачества. Чечня»). (1999). Так было: Размышления о минувшем."data-reference="Так было: Размышления о минувшем 1999"><sup><a href="http://militera.lib.ru/memo/russian/mikoyan/02.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. По оценке историка Е. Ф. Жупиковой, изъятое составило «примерно 75% имевшегося у населения до начала операции и примерно половину оружия, изъятого во всех горских областях»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Жупикова Е. Ф. (Труды МПГУ, с. 93-99; перепечатка scepsis.net). (1998). К вопросу о разоружении Чечни в 1920-1925 годах."data-reference="К вопросу о разоружении Чечни в 1920-1925 годах 1998"><sup><a href="https://scepsis.net/library/id_1063.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. По инструкции о разоружении от 4 августа 1925 года жителям объявляли «точная цифра подлежащего изъятию огнестрельного оружия и припасов к нему», взятая из анкет ОГПУ, и давали на сдачу не больше двух часов<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; Микоян описывает ту же разнарядку словами «предъявят каждому селу требование сдать все оружие в том количестве, которое было известно по агентурным данным»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Микоян А. И. (М.: Вагриус; глава 15 «Проблемы казачества. Чечня»). (1999). Так было: Размышления о минувшем."data-reference="Так было: Размышления о минувшем 1999"><sup><a href="http://militera.lib.ru/memo/russian/mikoyan/02.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Отбирать оружие начали ещё до ввода войск, разделив жителей списками: у занесённых в списки «порочного элемента» и их родственников «оружие местные ревкомы отбирали, а у остальных жителей регистрировали»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Жупикова Е. Ф. (Труды МПГУ, с. 93-99; перепечатка scepsis.net). (1998). К вопросу о разоружении Чечни в 1920-1925 годах."data-reference="К вопросу о разоружении Чечни в 1920-1925 годах 1998"><sup><a href="https://scepsis.net/library/id_1063.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Отдать оружие без обстрела просили сами жители: в начале сентября 1925 года делегаты Гойтинского общества Ески Карлагов, Хату Добриев и Джаби Отгаев обратились в Реввоенсовет округа с просьбой: «Теперь при разоружении, которое мы считаем правильным мы просим принять это во внимание и ходатайствуем сделать исключением допустив добровольную сдачу оружия без принятия репрессивных мер»; ответ пришёл телеграммой «весьма срочной» за подписями командующего Северо-Кавказским военным округом Уборевича, члена Реввоенсовета округа Володина и полномочного представителя ОГПУ по краю Евдокимова: «Революционные заслуги селения Гойты Красная Армия хорошо знает. Сдача оружия должна быть произведена добровольно 9 сентября с доставкой оружия Грозный. Необходимое оружие для самообороны аулу Гойты будет оставлено»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Сост. Мурдалов М. М., Алаудинов А. А. (сборник документов, Ridero; документы РГВА ф. 25896 оп. 9). (2021). Чечня. Политическая и общественная обстановка. 1920-30 гг.."data-reference="Чечня. Политическая и общественная обстановка. 1920-30 гг. 2021"><sup><a href="https://ridero.ru/books/chechnya_politicheskaya_i_obshestvennaya_obstanovka/freeText/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="неизбирательные нападения целью артиллерии и авиации зачастую становились не военные объекты, а жилые населённые пункты целиком: инструкция от 4 августа 1925 года, утверждённая командующим северо-кавказским военным округом уборевичем, членом реввоенсовета округа володиным и полномочным представителем огпу (политической полиции, предшественницы современной фсб) по краю евдокимовым, предписывала - «если население аула в установленный срок целиком не выполнит требования о сдаче оружия или выполнит частично, то командование отрядом, в качестве угрозы, открывает артиллерийский огонь (а за отсутствием артиллерии-пулеметный) в течении 10 минут на высокие разрывы и полу-поражения», и добавляла: «в зависимости от обстановки предупредительный огонь, как мера воздействия, может открываться и несколько раз»(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022); ни военного объекта, ни цели внутри села документ не называет вовсе. из 242 разоружённых селений 101 попало под ружейно-пулемётный и артиллерийский обстрел, 16 - под удары с воздуха(citation: история чечни в xix-xx веках 2005); по подсчёту историка е. ф. жупиковой, «на 16 аулов, где скрывались руководители повстанцев, было сброшено 104 пудовых бомбы [около 1,7 тонны]»(citation: к вопросу о разоружении чечни в 1920-1925 годах 1998). пудовая авиабомба - это около 16 килограммов, вес мины современного 120-мм миномёта; в среднем на аул пришлось по шесть-семь таких бомб. авиацией распоряжался начальник ввс округа петрожицкий, и историк т. у. эльбуздукаева перечисляет цели поимённо: «в ходе проведения операции самолеты 3-го, а с 6 сентября — и 5-го авиационных отрядов наносили авиаудары по аулам зумсой, дай, тагир хой, акки боуги, ошни, химой, нижелой, рагехой, урус-мартан и ножай-юрт»(citation: хроника первого разоружения чечни 2015). как выглядел «предупредительный огонь» в одном ауле, видно из донесения по ачхой-мартану 25 августа 1925 года: «по аулу было выпущено 15 шрапнелей сперва на высокий разрыв четыре затем на поражение. после того, как было ранено две чеченки, жители начали отдавать оружие»(citation: из архива дахо джанхотова: ведомость приема-передачи уголовных дел как исторический документ 2021). историк а. ю. лашков пишет об ударе по аулу дай: «первоначально из-за сильного тумана авиаудару ошибочно подверглось соседнее селение чубахкимерой»(citation: 1925 год: спецоперация красной армии 2000)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0165">T0165</a> Неизбирательные нападения
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Целью артиллерии и авиации зачастую становились не военные объекты, а жилые населённые пункты целиком: инструкция от 4 августа 1925 года, утверждённая командующим Северо-Кавказским военным округом Уборевичем, членом Реввоенсовета округа Володиным и полномочным представителем ОГПУ (политической полиции, предшественницы современной ФСБ) по краю Евдокимовым, предписывала - «Если население аула в установленный срок целиком не выполнит требования о сдаче оружия или выполнит частично, то командование отрядом, в качестве угрозы, открывает артиллерийский огонь (а за отсутствием артиллерии-пулеметный) в течении 10 минут на высокие разрывы и полу-поражения», и добавляла: «в зависимости от обстановки предупредительный огонь, как мера воздействия, может открываться и несколько раз»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; ни военного объекта, ни цели внутри села документ не называет вовсе. Из 242 разоружённых селений 101 попало под ружейно-пулемётный и артиллерийский обстрел, 16 - под удары с воздуха<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>; по подсчёту историка Е. Ф. Жупиковой, «На 16 аулов, где скрывались руководители повстанцев, было сброшено 104 пудовых бомбы [около 1,7 тонны]»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Жупикова Е. Ф. (Труды МПГУ, с. 93-99; перепечатка scepsis.net). (1998). К вопросу о разоружении Чечни в 1920-1925 годах."data-reference="К вопросу о разоружении Чечни в 1920-1925 годах 1998"><sup><a href="https://scepsis.net/library/id_1063.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Пудовая авиабомба - это около 16 килограммов, вес мины современного 120-мм миномёта; в среднем на аул пришлось по шесть-семь таких бомб. Авиацией распоряжался начальник ВВС округа Петрожицкий, и историк Т. У. Эльбуздукаева перечисляет цели поимённо: «В ходе проведения операции самолеты 3-го, а с 6 сентября — и 5-го авиационных отрядов наносили авиаудары по аулам Зумсой, Дай, Тагир Хой, Акки Боуги, Ошни, Химой, Нижелой, Рагехой, Урус-Мартан и Ножай-Юрт»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Как выглядел «предупредительный огонь» в одном ауле, видно из донесения по Ачхой-Мартану 25 августа 1925 года: «по аулу было выпущено 15 шрапнелей сперва на высокий разрыв четыре затем на поражение. После того, как было ранено две чеченки, жители начали отдавать оружие»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Дахо А. А. // Глобус: гуманитарные науки; Комплексный НИИ им. Х. И. Ибрагимова РАН, Грозный. (2021). Из архива Дахо Джанхотова: ведомость приема-передачи уголовных дел как исторический документ."data-reference="Из архива Дахо Джанхотова: ведомость приема-передачи уголовных дел как исторический документ 2021"><sup><a href="https://cyberleninka.ru/article/n/iz-arhiva-daho-dzhanhotova-vedomost-priema-peredachi-ugolovnyh-del-kak-istoricheskiy-dokument" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Историк А. Ю. Лашков пишет об ударе по аулу Дай: «Первоначально из-за сильного тумана авиаудару ошибочно подверглось соседнее селение Чубахкимерой»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Лашков А. Ю. (Независимое военное обозрение, 21.04.2000; по документам РГВА, вкл. доклад Уншлихта в Политбюро 07.09.1925). (2000). 1925 год: спецоперация Красной армии."data-reference="1925 год: спецоперация Красной армии 2000"><sup><a href="https://nvo.ng.ru/history/2000-04-21/5_sp_ops.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="карательные экспедиции по сопротивляющимся сёлам войска шли рейдами с поголовными обысками и арестами. инструкция о массовых обысках, изданная к операции штабом огпу (политической полиции, предшественницы современной фсб), велела оцеплять дома, задерживать и обыскивать всех, кто в них находится, а об арестах говорит пунктами 7 и 8: «все противодействующие в той или иной мере успешному проведению массовой операции привлекаются к ответственности и арестовываются», «злостные укрыватели оружия арестовываются»; о взятом при обыске тот же документ говорит: «при обысках и арестах забирается только лишь вся переписка в том числе и переписка на арабском языке, а также всё найденное при обыске оружие»(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022). информационный отдел огпу подытожил операцию в «обзоре политического состояния ссср за сентябрь 1925 г.» с грифом «совершенно секретно» словами «с нашей стороны потери 20 человек»(citation: совершенно секретно: лубянка - сталину о положении в стране. том 3, 1925 год 2002), а об убитых и раненых в обстрелянных и разбомблённых аулах не сообщил ничего. счёт потерь за всю операцию историки я. з. ахмадов и э. х. хасмагомадов приводят по журнальной публикации 1995 года: шесть убитых мирных жителей, 30 раненых, ещё 12 убитых отнесены к «бандитам», при потерях самих войск в пять человек убитыми и девять ранеными(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0077">T0077</a> Карательные экспедиции
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>По сопротивляющимся сёлам войска шли рейдами с поголовными обысками и арестами. Инструкция о массовых обысках, изданная к операции штабом ОГПУ (политической полиции, предшественницы современной ФСБ), велела оцеплять дома, задерживать и обыскивать всех, кто в них находится, а об арестах говорит пунктами 7 и 8: «Все противодействующие в той или иной мере успешному проведению массовой операции привлекаются к ответственности и арестовываются», «Злостные укрыватели оружия арестовываются»; о взятом при обыске тот же документ говорит: «При обысках и арестах забирается только лишь вся переписка в том числе и переписка на арабском языке, а также всё найденное при обыске оружие»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Информационный отдел ОГПУ подытожил операцию в «Обзоре политического состояния СССР за сентябрь 1925 г.» с грифом «Совершенно секретно» словами «С нашей стороны потери 20 человек»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Информационный отдел ОГПУ (обзоры политического состояния СССР); изд. ИРИ РАН, М., 2002; ЦА ФСБ РФ Ф. 2. Оп. 3. (2002). Совершенно секретно: Лубянка - Сталину о положении в стране. Том 3, 1925 год."data-reference="Совершенно секретно: Лубянка - Сталину о положении в стране. Том 3, 1925 год 2002"><sup><a href="https://istmat.org/node/22548" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>, а об убитых и раненых в обстрелянных и разбомблённых аулах не сообщил ничего. Счёт потерь за всю операцию историки Я. З. Ахмадов и Э. Х. Хасмагомадов приводят по журнальной публикации 1995 года: шесть убитых мирных жителей, 30 раненых, ещё 12 убитых отнесены к «бандитам», при потерях самих войск в пять человек убитыми и девять ранеными<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальное уничтожение инфраструктуры разоружая чечню, войска ссср разрушали сёла, не выполнившие ультиматум, вплоть до полного сноса: аул хакмеды - свыше 300 дворов - уничтожен целиком, в ауле дай разрушено 20 домов, урус-мартан трое суток стоял под артиллерийским огнём и авиаударами. уцелевший спутник имама нажмуддина гоцинского - духовного главы сопротивления в дагестане и чечне, за которым войска шли в горы, - рассказывал в 1936 году в варшавском журнале «северный кавказ»: «затем огонь был перенесен на ближайшие аулы, из которых аул хакмеды (свыше 300 дворов) был совершенно разрушен»(citation: как погиб нажмутдин гоцинский 1936). аул дай, центр сопротивления пятого боевого участка, историк а. ю. лашков описывает по документам военного архива: «от обстрела и бомбометаний аул дай существенно пострадал: 20 домов оказались разрушенными, были немногочисленные человеческие жертвы»(citation: 1925 год: спецоперация красной армии 2000). историки я. з. ахмадов и э. х. хасмагомадов пишут: «...аул урус-мартан подвергался артобстрелу и авиаударам трое суток, аул дай бомбили трижды, два дня артиллерия обстреливала аулы общества зумсой»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0105">T0105</a> Тотальное уничтожение инфраструктуры
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Разоружая Чечню, войска СССР разрушали сёла, не выполнившие ультиматум, вплоть до полного сноса: аул Хакмеды - свыше 300 дворов - уничтожен целиком, в ауле Дай разрушено 20 домов, Урус-Мартан трое суток стоял под артиллерийским огнём и авиаударами. Уцелевший спутник имама Нажмуддина Гоцинского - духовного главы сопротивления в Дагестане и Чечне, за которым войска шли в горы, - рассказывал в 1936 году в варшавском журнале «Северный Кавказ»: «Затем огонь был перенесен на ближайшие аулы, из которых аул Хакмеды (свыше 300 дворов) был совершенно разрушен»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Дж. Х-и, со слов участника событий // Северный Кавказ (Şimalî Kafkasya), орган Народной партии горцев Кавказа, Варшава, 1936, № 23, с. 27-28. (1936). Как погиб Нажмутдин Гоцинский."data-reference="Как погиб Нажмутдин Гоцинский 1936"><sup><a href="https://archive.org/details/jbc.bj.uj.edu.pl.NDIGCZAS023449_72125611" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Аул Дай, центр сопротивления пятого боевого участка, историк А. Ю. Лашков описывает по документам военного архива: «От обстрела и бомбометаний аул Дай существенно пострадал: 20 домов оказались разрушенными, были немногочисленные человеческие жертвы»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Лашков А. Ю. (Независимое военное обозрение, 21.04.2000; по документам РГВА, вкл. доклад Уншлихта в Политбюро 07.09.1925). (2000). 1925 год: спецоперация Красной армии."data-reference="1925 год: спецоперация Красной армии 2000"><sup><a href="https://nvo.ng.ru/history/2000-04-21/5_sp_ops.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «...аул Урус-Мартан подвергался артобстрелу и авиаударам трое суток, аул Дай бомбили трижды, два дня артиллерия обстреливала аулы общества Зумсой»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="коллективные наказания ещё до операции сельские сходы вместе с ревкомами (невыборными комитетами, поставленными вместо избранных советов, - кампания c1176) составляли списки «порочного элемента» - жителей, замеченных в грабежах; историк е. ф. жупикова пишет: «они и их родственники несли материальную ответственность за все случаи хищений на территории чечни»(citation: к вопросу о разоружении чечни в 1920-1925 годах 1998) - родственники платили за чужие кражи по факту родства и записи в списке. выйти из списка можно было только присягой с обязательством доносить: «если "порочный элемент" приносил присягу в том, что в течение года не будет грабить и будет доносить на воров, его из списка исключали»(citation: к вопросу о разоружении чечни в 1920-1925 годах 1998). когда войска дошли до гор, той же категорией считали разрушенное: по итогу бомбардировок 16 аулов «взорвали 119 домов "порочного элемента"»(citation: к вопросу о разоружении чечни в 1920-1925 годах 1998); историки я. з. ахмадов и э. х. хасмагомадов подтверждают число - «взорвано 119 домов»(citation: история чечни в xix-xx веках 2005): дом взрывали за то, что его хозяин значился в списке."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0159">T0159</a> Коллективные наказания
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Ещё до операции сельские сходы вместе с ревкомами (невыборными комитетами, поставленными вместо избранных Советов, - кампания C1176) составляли списки «порочного элемента» - жителей, замеченных в грабежах; историк Е. Ф. Жупикова пишет: «Они и их родственники несли материальную ответственность за все случаи хищений на территории Чечни»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Жупикова Е. Ф. (Труды МПГУ, с. 93-99; перепечатка scepsis.net). (1998). К вопросу о разоружении Чечни в 1920-1925 годах."data-reference="К вопросу о разоружении Чечни в 1920-1925 годах 1998"><sup><a href="https://scepsis.net/library/id_1063.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span> - родственники платили за чужие кражи по факту родства и записи в списке. Выйти из списка можно было только присягой с обязательством доносить: «Если "порочный элемент" приносил присягу в том, что в течение года не будет грабить и будет доносить на воров, его из списка исключали»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Жупикова Е. Ф. (Труды МПГУ, с. 93-99; перепечатка scepsis.net). (1998). К вопросу о разоружении Чечни в 1920-1925 годах."data-reference="К вопросу о разоружении Чечни в 1920-1925 годах 1998"><sup><a href="https://scepsis.net/library/id_1063.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Когда войска дошли до гор, той же категорией считали разрушенное: по итогу бомбардировок 16 аулов «взорвали 119 домов "порочного элемента"»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Жупикова Е. Ф. (Труды МПГУ, с. 93-99; перепечатка scepsis.net). (1998). К вопросу о разоружении Чечни в 1920-1925 годах."data-reference="К вопросу о разоружении Чечни в 1920-1925 годах 1998"><sup><a href="https://scepsis.net/library/id_1063.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>; историки Я. З. Ахмадов и Э. Х. Хасмагомадов подтверждают число - «взорвано 119 домов»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>: дом взрывали за то, что его хозяин значился в списке.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="захват заложников чтобы получить укрывавшегося в горах чечни имама нажмуддина гоцинского, огпу (политическая полиция, предшественница современной фсб) забрало из сёл стариков и держало их заложниками под угрозой уничтожения сёл артиллерией. один из организаторов операции, секретарь северо-кавказского крайкома партии микоян, описал это сам: «чтобы поймать его, чекисты пригласили к себе из сел, где он мог скрываться, стариков и, объявив их заложниками, предупредили, что если они не скажут, где находится гоцинский, то разрушат села артиллерией, а их арестуют и предадут суду. целые сутки уговаривали стариков, но все было безрезультатно. тогда в этот район прислали самолет. они страшно боялись самолета. только после того, как по селу выпустили несколько снарядов с тем, чтобы без разрушения домов жители почувствовали его силу, старики сказали, в каком ущелье скрывается гоцинский»(citation: так было: размышления о минувшем 1999). слово «заложники» есть и в документах самой операции: 4 сентября 1925 года начальник чеченского областного отдела огпу миронов доносил: «доношу, население выдает нажмудина. сейчас веду переговоры с представителями. дело ведется через отпущенных мною заложников... пусть 15 часов появятся аэропланы, но не бьют. для эффекта пусть прибудут штук 6—7»(citation: чечня. политическая и общественная обстановка. 1920-30 гг. 2021). для шароевского района счёт заложников известен по документам военного архива: историк а. ю. лашков пишет, что «командование военной группировки потребовало от населения шароевского района сдать известного бандита гоцинского. при этом 40 человек из числа почтенных стариков были взяты в заложники. однако требование о сдаче гоцинского в назначенный срок не было удовлетворено, поэтому войска прибегли к усиленным репрессиям. за два дня на район сбросили 22 пуда бомб [около 360 килограммов - как 22 мины современного 120-мм миномёта]»(citation: 1925 год: спецоперация красной армии 2000). уцелевший спутник гоцинского называет другое число и добавляет то, чего нет в советских бумагах: из разрушенного аула хакмеды «было взято 105 заложников», а заложникам грозил расстрел - в его рассказе сказано: «о расстреле заложников в случае сопротивления писали в своих прокламациях большевики»(citation: как погиб нажмутдин гоцинский 1936). в инструкции о разоружении от 4 августа 1925 года, утверждённой руководителями операции, слова «заложники» нет - она разрешает только аресты «влиятельных лиц аула» как крайнюю меру: заложничество делалось сверх написанного, и его следы остались в донесениях исполнителей и мемуарах организатора."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0099">T0099</a> Захват заложников
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Чтобы получить укрывавшегося в горах Чечни имама Нажмуддина Гоцинского, ОГПУ (политическая полиция, предшественница современной ФСБ) забрало из сёл стариков и держало их заложниками под угрозой уничтожения сёл артиллерией. Один из организаторов операции, секретарь Северо-Кавказского крайкома партии Микоян, описал это сам: «чтобы поймать его, чекисты пригласили к себе из сел, где он мог скрываться, стариков и, объявив их заложниками, предупредили, что если они не скажут, где находится Гоцинский, то разрушат села артиллерией, а их арестуют и предадут суду. Целые сутки уговаривали стариков, но все было безрезультатно. Тогда в этот район прислали самолет. Они страшно боялись самолета. Только после того, как по селу выпустили несколько снарядов с тем, чтобы без разрушения домов жители почувствовали его силу, старики сказали, в каком ущелье скрывается Гоцинский»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Микоян А. И. (М.: Вагриус; глава 15 «Проблемы казачества. Чечня»). (1999). Так было: Размышления о минувшем."data-reference="Так было: Размышления о минувшем 1999"><sup><a href="http://militera.lib.ru/memo/russian/mikoyan/02.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Слово «заложники» есть и в документах самой операции: 4 сентября 1925 года начальник Чеченского областного отдела ОГПУ Миронов доносил: «Доношу, население выдает Нажмудина. Сейчас веду переговоры с представителями. Дело ведется через отпущенных мною заложников... Пусть 15 часов появятся аэропланы, но не бьют. Для эффекта пусть прибудут штук 6—7»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Сост. Мурдалов М. М., Алаудинов А. А. (сборник документов, Ridero; документы РГВА ф. 25896 оп. 9). (2021). Чечня. Политическая и общественная обстановка. 1920-30 гг.."data-reference="Чечня. Политическая и общественная обстановка. 1920-30 гг. 2021"><sup><a href="https://ridero.ru/books/chechnya_politicheskaya_i_obshestvennaya_obstanovka/freeText/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Для Шароевского района счёт заложников известен по документам военного архива: историк А. Ю. Лашков пишет, что «командование военной группировки потребовало от населения Шароевского района сдать известного бандита Гоцинского. При этом 40 человек из числа почтенных стариков были взяты в заложники. Однако требование о сдаче Гоцинского в назначенный срок не было удовлетворено, поэтому войска прибегли к усиленным репрессиям. За два дня на район сбросили 22 пуда бомб [около 360 килограммов - как 22 мины современного 120-мм миномёта]»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Лашков А. Ю. (Независимое военное обозрение, 21.04.2000; по документам РГВА, вкл. доклад Уншлихта в Политбюро 07.09.1925). (2000). 1925 год: спецоперация Красной армии."data-reference="1925 год: спецоперация Красной армии 2000"><sup><a href="https://nvo.ng.ru/history/2000-04-21/5_sp_ops.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. Уцелевший спутник Гоцинского называет другое число и добавляет то, чего нет в советских бумагах: из разрушенного аула Хакмеды «было взято 105 заложников», а заложникам грозил расстрел - в его рассказе сказано: «о расстреле заложников в случае сопротивления писали в своих прокламациях большевики»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Дж. Х-и, со слов участника событий // Северный Кавказ (Şimalî Kafkasya), орган Народной партии горцев Кавказа, Варшава, 1936, № 23, с. 27-28. (1936). Как погиб Нажмутдин Гоцинский."data-reference="Как погиб Нажмутдин Гоцинский 1936"><sup><a href="https://archive.org/details/jbc.bj.uj.edu.pl.NDIGCZAS023449_72125611" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. В инструкции о разоружении от 4 августа 1925 года, утверждённой руководителями операции, слова «заложники» нет - она разрешает только аресты «влиятельных лиц аула» как крайнюю меру: заложничество делалось сверх написанного, и его следы остались в донесениях исполнителей и мемуарах организатора.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="принудительная выдача беглых и повстанцев 8 сентября 1925 года советская авиация сбросила на ножай-юрт восемь пудовых - по 16 килограммов, как мина современного 120-мм миномёта - бомб, чтобы принудить село выдать бывшего начальника окружной милиции гибертиева(citation: утраченные иллюзии: советизация чечни по-сталински (1917-1925 гг.) 2022). так же принуждали урус-мартан: историк а. ю. лашков пишет, что после артиллерийского огня и бомбовых ударов «руководство урус-мартана пошло на уступки и выдало бандитов 9 сентября»(citation: 1925 год: спецоперация красной армии 2000). о представителях местной власти инструкция о массовых обысках, изданная к операции штабом огпу (политической полиции, предшественницы современной фсб), говорит: они привлекаются к изъятию как «обязанные указать жилища лиц, подлежащих изъятию, а также тех лиц (родственников и проч.), где подлежащее изъятию лицо может укрываться»(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022) - исполнителем изъятия делали саму общину. цену этого требования называет историк е. ф. жупикова: «в силу горского обычая гостеприимства, население чечни, даже если оно враждебно относилось к руководителям повстанцев и главарям бандитов, не могло выдать их властям. нарушение обычая опозорило бы горца на много поколений и грозило бы кровной местью его роду со стороны выданного им человека»(citation: к вопросу о разоружении чечни в 1920-1925 годах 1998)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0156">T0156</a> Принудительная выдача беглых и повстанцев
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>8 сентября 1925 года советская авиация сбросила на Ножай-Юрт восемь пудовых - по 16 килограммов, как мина современного 120-мм миномёта - бомб, чтобы принудить село выдать бывшего начальника окружной милиции Гибертиева<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Дендиев К. Г., Осмаев А. Д. // Архивный вестник. Вып. 8. Грозный, 2022, с. 22-35. (2022). Утраченные иллюзии: советизация Чечни по-сталински (1917-1925 гг.)."data-reference="Утраченные иллюзии: советизация Чечни по-сталински (1917-1925 гг.) 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Так же принуждали Урус-Мартан: историк А. Ю. Лашков пишет, что после артиллерийского огня и бомбовых ударов «руководство Урус-Мартана пошло на уступки и выдало бандитов 9 сентября»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Лашков А. Ю. (Независимое военное обозрение, 21.04.2000; по документам РГВА, вкл. доклад Уншлихта в Политбюро 07.09.1925). (2000). 1925 год: спецоперация Красной армии."data-reference="1925 год: спецоперация Красной армии 2000"><sup><a href="https://nvo.ng.ru/history/2000-04-21/5_sp_ops.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. О представителях местной власти инструкция о массовых обысках, изданная к операции штабом ОГПУ (политической полиции, предшественницы современной ФСБ), говорит: они привлекаются к изъятию как «обязанные указать жилища лиц, подлежащих изъятию, а также тех лиц (родственников и проч.), где подлежащее изъятию лицо может укрываться»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span> - исполнителем изъятия делали саму общину. Цену этого требования называет историк Е. Ф. Жупикова: «В силу горского обычая гостеприимства, население Чечни, даже если оно враждебно относилось к руководителям повстанцев и главарям бандитов, не могло выдать их властям. Нарушение обычая опозорило бы горца на много поколений и грозило бы кровной местью его роду со стороны выданного им человека»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Жупикова Е. Ф. (Труды МПГУ, с. 93-99; перепечатка scepsis.net). (1998). К вопросу о разоружении Чечни в 1920-1925 годах."data-reference="К вопросу о разоружении Чечни в 1920-1925 годах 1998"><sup><a href="https://scepsis.net/library/id_1063.html" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтрализация оппозиции за два месяца операции 1925 года ссср арестовал и расстрелял лидеров сопротивления чечни и дагестана. имама нажмуддина гоцинского, духовного главу сопротивления в дагестане и чечне, огпу (политическая полиция, предшественница современной фсб) арестовало 5 сентября 1925 года. место его укрытия выдали под угрозой обстрела сёл старики-заложники шароевского района. в тот же день командующий северо-кавказским военным округом уборевич, полномочный представитель огпу по краю евдокимов и член реввоенсовета округа володин доложили в москву: «операция в шароевском районе закончилась удачно. после 5 дней репрессий, агентурной работы сегодня в 14 часов через самолеты получено донесение, что гоцинский взят»(citation: 1925 год: спецоперация красной армии 2000); арестовала его оперативная группа гпу под командованием м. ушаева(citation: история чечни в xix-xx веках 2005). историк т. у. эльбуздукаева пишет: «в срочном порядке н. гоцинский был вывезен в ростов-на-дону, где 15 октября 1925 г. был приговорен к расстрелу»(citation: хроника первого разоружения чечни 2015). аресты предусмотрены и инструкцией о разоружении от 4 августа 1925 года - она допускает: «производство арестов влиятельных лиц аула, реакционно настроенных», с оговоркой прибегать к этой мере «как к крайней, с соблюдением максимального такта»(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022). под обстрелом сдавались и невиновные: историки я. з. ахмадов и э. х. хасмагомадов пишут, что в урус-мартане «после артиллерийских и авиационных обстрелов селения, сдались властям шейхи солса-хаджи яндаров и билу-хаджи гайтаев, вскоре, кстати, отпущенные вследствие полной невиновности»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0021">T0021</a> Нейтрализация оппозиции
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>За два месяца операции 1925 года СССР арестовал и расстрелял лидеров сопротивления Чечни и Дагестана. Имама Нажмуддина Гоцинского, духовного главу сопротивления в Дагестане и Чечне, ОГПУ (политическая полиция, предшественница современной ФСБ) арестовало 5 сентября 1925 года. Место его укрытия выдали под угрозой обстрела сёл старики-заложники Шароевского района. В тот же день командующий Северо-Кавказским военным округом Уборевич, полномочный представитель ОГПУ по краю Евдокимов и член Реввоенсовета округа Володин доложили в Москву: «Операция в Шароевском районе закончилась удачно. После 5 дней репрессий, агентурной работы сегодня в 14 часов через самолеты получено донесение, что Гоцинский взят»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Лашков А. Ю. (Независимое военное обозрение, 21.04.2000; по документам РГВА, вкл. доклад Уншлихта в Политбюро 07.09.1925). (2000). 1925 год: спецоперация Красной армии."data-reference="1925 год: спецоперация Красной армии 2000"><sup><a href="https://nvo.ng.ru/history/2000-04-21/5_sp_ops.html" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>; арестовала его оперативная группа ГПУ под командованием М. Ушаева<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Историк Т. У. Эльбуздукаева пишет: «В срочном порядке Н. Гоцинский был вывезен в Ростов-на-Дону, где 15 октября 1925 г. был приговорен к расстрелу»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни."data-reference="Хроника первого разоружения Чечни 2015"><sup><a href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Аресты предусмотрены и инструкцией о разоружении от 4 августа 1925 года - она допускает: «производство арестов влиятельных лиц аула, реакционно настроенных», с оговоркой прибегать к этой мере «как к крайней, с соблюдением максимального такта»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Под обстрелом сдавались и невиновные: историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут, что в Урус-Мартане «после артиллерийских и авиационных обстрелов селения, сдались властям шейхи Солса-хаджи Яндаров и Билу-хаджи Гайтаев, вскоре, кстати, отпущенные вследствие полной невиновности»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="фиктивные суды инструкция о массовых обысках, изданная к операции штабом огпу (политической полиции, предшественницы современной фсб), устанавливает, что арестованные до окончания следствия сосредотачиваются при штабах районных групп огпу, а о дальнейшем пункт 19 говорит: «порядок ведения следствия и дальнейшего направления арестованного предусматривается в положении о тройках по внесудебному разбирательству дел»(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022). «основные задачи особых оперативных групп огпу», утверждённые полномочным представителем огпу по краю евдокимовым, командующим северо-кавказским военным округом уборевичем и членом реввоенсовета округа володиным, включают тот же порядок прямо в перечень задач: «изъятие контрреволюционного, бандитского и прочего преступного антисоветского элемента... учет такового, ведение следствия и внесудебного разбирательства дел по ним и транспортирование их по месту назначения»(citation: о подготовке к операции по разоружению и борьбе с бандитизмом в чечне 2022). через этот порядок прошли 183 арестованных из более чем трёхсот взятых в ходе операции - следствие по ним закончилось внесудебным расстрелом(citation: история чечни в xix-xx веках 2005). право внесудебной расправы огпу получило годом раньше - секретным постановлением президиума цик от 9 мая 1924 года (кампания c1176); инструкция операции применила его к арестованным."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0160">T0160</a> Фиктивные суды
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Инструкция о массовых обысках, изданная к операции штабом ОГПУ (политической полиции, предшественницы современной ФСБ), устанавливает, что арестованные до окончания следствия сосредотачиваются при штабах районных групп ОГПУ, а о дальнейшем пункт 19 говорит: «Порядок ведения следствия и дальнейшего направления арестованного предусматривается в положении о тройках по внесудебному разбирательству дел»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. «Основные задачи Особых оперативных групп ОГПУ», утверждённые полномочным представителем ОГПУ по краю Евдокимовым, командующим Северо-Кавказским военным округом Уборевичем и членом Реввоенсовета округа Володиным, включают тот же порядок прямо в перечень задач: «Изъятие контрреволюционного, бандитского и прочего преступного антисоветского элемента... учет такового, ведение следствия и внесудебного разбирательства дел по ним и транспортирование их по месту назначения»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне."data-reference="О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне 2022"><sup><a href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Через этот порядок прошли 183 арестованных из более чем трёхсот взятых в ходе операции - следствие по ним закончилось внесудебным расстрелом<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Право внесудебной расправы ОГПУ получило годом раньше - секретным постановлением Президиума ЦИК от 9 мая 1924 года (кампания C1176); инструкция операции применила его к арестованным.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="убийство пленных ссср расстрелял почти всех арестованных в ходе операции 1925 года - людей, уже находившихся в руках войск и огпу (политической полиции, предшественницы современной фсб). историки я. з. ахмадов и э. х. хасмагомадов пишут: «общее число арестованных превысило 300 человек. из общего числа арестованных 105 человек были расстреляны на месте, в отношении 183 человек было открыто следствие, также закончившееся внесудебным расстрелом, 21 человек выслан»(citation: история чечни в xix-xx веках 2005). «активных» среди них даже собственный счёт огпу находил немного: в обзоре, поданном сталину, названы 50 «активных бандитов и видных контрреволюционных деятелей», при том что «всего арестовано 400 бандитов и им содействовавших элементов»(citation: совершенно секретно: лубянка - сталину о положении в стране. том 3, 1925 год 2002) - расстреливали в основном не лидеров, а рядовых задержанных, чья вина не устанавливалась никаким судом. так убили и главного пленника операции: имама нажмуддина гоцинского - духовного главу сопротивления в дагестане и чечне, задержанного 5 сентября 1925 года и приговорённого в ростове-на-дону, - расстреляли, по слову горца-эмигранта, писавшего в парижском журнале «прометей» в 1930 году, «il fut fusillé sans jugement dans les souterrains du guépéou de rostov» - без суда, в подвалах гпу в ростове(citation: la situation de la religion dans la république des montagnards 1930)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1925-07-31 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1925</div>
+                <div>
+                    <a href="/techniques/T0162/003">T0162.003</a> Убийство пленных
+                </div>
+<div><a href="/campaigns/C1177">C1177</a> Разоружение Чечни: войсковая операция с артобстрелами и бомбардировками аулов (1925)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>СССР расстрелял почти всех арестованных в ходе операции 1925 года - людей, уже находившихся в руках войск и ОГПУ (политической полиции, предшественницы современной ФСБ). Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «Общее число арестованных превысило 300 человек. Из общего числа арестованных 105 человек были расстреляны на месте, в отношении 183 человек было открыто следствие, также закончившееся внесудебным расстрелом, 21 человек выслан»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. «Активных» среди них даже собственный счёт ОГПУ находил немного: в обзоре, поданном Сталину, названы 50 «активных бандитов и видных контрреволюционных деятелей», при том что «Всего арестовано 400 бандитов и им содействовавших элементов»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Информационный отдел ОГПУ (обзоры политического состояния СССР); изд. ИРИ РАН, М., 2002; ЦА ФСБ РФ Ф. 2. Оп. 3. (2002). Совершенно секретно: Лубянка - Сталину о положении в стране. Том 3, 1925 год."data-reference="Совершенно секретно: Лубянка - Сталину о положении в стране. Том 3, 1925 год 2002"><sup><a href="https://istmat.org/node/22548" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span> - расстреливали в основном не лидеров, а рядовых задержанных, чья вина не устанавливалась никаким судом. Так убили и главного пленника операции: имама Нажмуддина Гоцинского - духовного главу сопротивления в Дагестане и Чечне, задержанного 5 сентября 1925 года и приговорённого в Ростове-на-Дону, - расстреляли, по слову горца-эмигранта, писавшего в парижском журнале «Прометей» в 1930 году, «Il fut fusillé sans jugement dans les souterrains du Guépéou de Rostov» - без суда, в подвалах ГПУ в Ростове<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Un Montagnard (аноним, горец Северного Кавказа) // Prométhée. Париж, 1930. № 46 (septembre). С. 15-18; скан Gallica / BnF. (1930). La Situation de la Religion dans la République des Montagnards."data-reference="La Situation de la Religion dans la République des Montagnards 1930"><sup><a href="https://gallica.bnf.fr/ark%3A/12148/bpt6k6361221r" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://ridero.ru/books/chechnya_politicheskaya_i_obshestvennaya_obstanovka/freeText/" target="_blank">
+                        Сост. Мурдалов М. М., Алаудинов А. А. (сборник документов, Ridero; документы РГВА ф. 25896 оп. 9). (2021). Чечня. Политическая и общественная обстановка. 1920-30 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://cyberleninka.ru/article/n/hronika-pervogo-razoruzheniya-chechni-20-e-gg-xx-v" target="_blank">
+                        Эльбуздукаева Т. У.. (2015). Хроника первого разоружения Чечни.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank">
+                        Публ. Орсаханов А. Р., Садаев С. В. // Архивный вестник. Вып. 8. Грозный: Архивное управление Правительства ЧР, 2022, с. 36-65 (продолжение - вып. 9, 2023, с. 155-197); АУП ЧР ф. Р-1299 оп. 1 д. 17, РГВА ф. 25896 оп. 9 д. 277. (2022). О подготовке к операции по разоружению и борьбе с бандитизмом в Чечне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="http://www.ainros.ru/ainst/t1/jupikova.pdf" target="_blank">
+                        Жупикова Е. Ф.. (2013). Повстанческое движение на Северном Кавказе в 1920-1925 годах.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://docs.historyrussia.org/ru/nodes/34436-tsk-rkp-b-vkp-b-i-natsionalnyy-vopros-kn-1-1918-1933-gg" target="_blank">
+                        Сост. Л. С. Гатагова, Л. П. Кошелева, Л. А. Роговая; РОССПЭН, М., 2005 (документы РГАСПИ). (2005). ЦК РКП(б)-ВКП(б) и национальный вопрос. Кн. 1. 1918-1933 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="http://militera.lib.ru/memo/russian/mikoyan/02.html" target="_blank">
+                        Микоян А. И. (М.: Вагриус; глава 15 «Проблемы казачества. Чечня»). (1999). Так было: Размышления о минувшем.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="8.0">
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://archive.org/details/jbc.bj.uj.edu.pl.NDIGCZAS023449_72125611" target="_blank">
+                        Дж. Х-и, со слов участника событий // Северный Кавказ (Şimalî Kafkasya), орган Народной партии горцев Кавказа, Варшава, 1936, № 23, с. 27-28. (1936). Как погиб Нажмутдин Гоцинский.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="https://scepsis.net/library/id_1063.html" target="_blank">
+                        Жупикова Е. Ф. (Труды МПГУ, с. 93-99; перепечатка scepsis.net). (1998). К вопросу о разоружении Чечни в 1920-1925 годах.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="https://istmat.org/node/22548" target="_blank">
+                        Информационный отдел ОГПУ (обзоры политического состояния СССР); изд. ИРИ РАН, М., 2002; ЦА ФСБ РФ Ф. 2. Оп. 3. (2002). Совершенно секретно: Лубянка - Сталину о положении в стране. Том 3, 1925 год.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://cyberleninka.ru/article/n/iz-arhiva-daho-dzhanhotova-vedomost-priema-peredachi-ugolovnyh-del-kak-istoricheskiy-dokument" target="_blank">
+                        Дахо А. А. // Глобус: гуманитарные науки; Комплексный НИИ им. Х. И. Ибрагимова РАН, Грозный. (2021). Из архива Дахо Джанхотова: ведомость приема-передачи уголовных дел как исторический документ.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-12" href="https://nvo.ng.ru/history/2000-04-21/5_sp_ops.html" target="_blank">
+                        Лашков А. Ю. (Независимое военное обозрение, 21.04.2000; по документам РГВА, вкл. доклад Уншлихта в Политбюро 07.09.1925). (2000). 1925 год: спецоперация Красной армии.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="http://web.archive.org/web/20240408142524id_/https%3A//arhiv-chr.ru/deyatelnost/nashi-izdaniya/send/5-nashi-izdaniya/51-arkhivnyj-vestnik-8" target="_blank">
+                        Дендиев К. Г., Осмаев А. Д. // Архивный вестник. Вып. 8. Грозный, 2022, с. 22-35. (2022). Утраченные иллюзии: советизация Чечни по-сталински (1917-1925 гг.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-14" href="https://gallica.bnf.fr/ark%3A/12148/bpt6k6361221r" target="_blank">
+                        Un Montagnard (аноним, горец Северного Кавказа) // Prométhée. Париж, 1930. № 46 (septembre). С. 15-18; скан Gallica / BnF. (1930). La Situation de la Religion dans la République des Montagnards.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>
