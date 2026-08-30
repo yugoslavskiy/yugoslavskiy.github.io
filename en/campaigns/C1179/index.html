@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/campaigns/C1179/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1179/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1179/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1179/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1179/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="The Great Terror in Chechen-Ingushetia (1937-1940), campaign C1179 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/campaigns/C1179/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>The Great Terror in Chechen-Ingushetia (1937-1940), campaign C1179 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in August 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/campaigns/">Campaigns</a></li>
+  <li class="breadcrumb-item">The Great Terror in Chechen-Ingushetia (1937-1940)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>The Great Terror in Chechen-Ingushetia (1937-1940)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>By 1937 Chechnya had been through disarmament (campaign C1177) and the forced merging of peasant households into kolkhozes ("collectivization") with punitive expeditions against insurgent auls (campaign C1178). In 1934 the colonizer merged the oblast with Ingushetia into the united Chechen-Ingush Autonomous Oblast, and in 1936 renamed it the Chechen-Ingush Autonomous Soviet Socialist Republic (ChIASSR); today the occupier calls these lands the Chechen Republic and the Republic of Ingushetia within Russia. Through this republic, as through other parts of the USSR, passed the Great Terror: that is what historians call the mass arrests and executions of 1937-1938, for which Moscow assigned each republic and oblast its own number. The repressions began with the resolution of the supreme organ of the occupation power (the "Politburo of the TsK VKP(b)") "On anti-Soviet elements" of 2 July 1937, signed by Stalin<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг.."data-reference="Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг. 2014"><sup><a href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 11 July 1937 the Politburo, by a separate decision, approved the number of people to be shot in the republic - separately for peasants whom the colonizer deemed "well-off" ("kulaks") and for "criminals"; the historian G. I. Kakagasanov cites it thus: "kulaks - 862 pers., criminals - 555 pers."<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг.."data-reference="Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг. 2014"><sup><a href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 30 July Yezhov, the People's Commissar (minister) of Internal Affairs of the USSR, issued operational order No. 00447 "On the operation to repress former kulaks, criminals and other anti-Soviet elements"; for the ChIASSR it records: 500 people - to be shot (the order's "first category"), 1,500 - to be confined in camps (the "second category")<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447."data-reference="Приказ НКВД СССР № 00447 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Already by mid-August 1937 the arrested were more numerous than recorded in the order, and on 1 March 1938 Moscow assigned the republic a new number - 10,108 people ordered arrested and convicted<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "by various estimates, in the '30s - early '40s no fewer than 30-40 thousand Chechens and Ingush became victims of the Stalinist terror"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The case of the "bourgeois-nationalist center" - 137 former senior officials of the republic - the Chekist investigators, as the Chechen historian A. G. Avtorkhanov writes, spent three years fabricating; the military tribunal tried the arrested in 1940<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1179
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Start:&nbsp;</span>
+                    <span>July 1937</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">End:&nbsp;</span>
+                    <span>December 1940</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Contributors</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Version</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Created:&nbsp;</span>29 August 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>29 August 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/C1179" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Navigator Layers</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Layer russia-colonialism</h6>
+                    <a class="dropdown-item" href="/en/campaigns/C1179/C1179-russia-colonialism-layer.json" download target="_blank">download</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/en/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fen%2Fcampaigns%2FC1179%2FC1179-russia-colonialism-layer.json" target="_blank">open <img width="10" src="/en/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Actors</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Procedures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/en/groups/G0010">G0010</a></td>
+                <td><a href="/en/groups/G0010">USSR</a></td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Instruments Applied</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Procedures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/en/software/S0017"> S0017 </a></td>
+                <td><a href="/en/software/S0017"> Secret Police and Security Services </a></td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Procedures Carried Out</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="neutralization of the opposition the chechen historian a. g. avtorkhanov, who worked in chechnya in those years and later wrote about it in emigration, writes: "at the beginning of october 1937, accompanied by a large chekist staff, there arrived in chechen-ingushetia a candidate member of the politburo, chairman of the party collegium of the kpk under the tsk and yezhov's deputy – shkiryatov"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). shkiryatov convened an enlarged plenum of the oblast committee of the party in the lenin house of culture in grozny - by the archival protocols the plenum ran on 8-10 october 1937, with 194 participants(citation: политические репрессии в чечне 1920-1930-х годов 2019) - and summoned there also the senior officials of the city and the districts. avtorkhanov continues: "shkiryatov gave the order to arrest all chechens and ingush who were members of the chechen-ingush oblast committee"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). the chekists arrested them right there, in the hall of the plenum. avtorkhanov writes of what followed: "then shkiryatov's order was extended to all chechen-ingush officials, from the chairman of the republic's government down to the chairman of a village soviet"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). in october and november 1937 the nkvd (a predecessor of today's fsb) arrested ali gorchkhanov, chairman of the government of the republic; abdul-khalim salamov, his deputy; khasi vakhayev, second secretary of the oblast committee; magomed mamakayev, head of the culture and propaganda department of the oblast committee; khamid okuyev, people's commissar (minister) of education; musa khaniev, chairman of the supreme court; khasan mekhtiev, prosecutor of the republic; and said baduev, chairman of the union of soviet writers. avtorkhanov writes also of the lower floors: "arrested were also the chairmen of the district executive committees (in the chechen-ingush republic there were up to 28 districts), almost all chairmen of village soviets, of kolkhozes, and their party organizers"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). of the 23 heads of the district nkvd departments only goytiev was a chechen, and the nkvd arrested him too. the nkvd arrested, and the party organs removed from office - historians ya. z. akhmadov and e. kh. khasmagomadov write: "in all, in october 1937, 30 of the 76 members and candidate members of the chechen-ingush obkom were repressed, including all the chechens and ingush; 20 of the 28 secretaries of district party committees; 77 members of district committees and 192 senior officials of the rural districts of the republic"(citation: история чечни в xix-xx веках 2005); in 1938 the colonizer removed almost all heads of the district land departments, 19 chairmen of district executive committees and 22 secretaries of district committees(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1937</div>
+                <div>
+                    <a href="/en/techniques/T0021">T0021</a> Neutralization of the Opposition
+                </div>
+<div><a href="/en/campaigns/C1179">C1179</a> The Great Terror in Chechen-Ingushetia (1937-1940)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>The Chechen historian A. G. Avtorkhanov, who worked in Chechnya in those years and later wrote about it in emigration, writes: "At the beginning of October 1937, accompanied by a large Chekist staff, there arrived in Chechen-Ingushetia a candidate member of the Politburo, chairman of the Party Collegium of the KPK under the TsK and Yezhov's deputy – Shkiryatov"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Shkiryatov convened an enlarged plenum of the oblast committee of the party in the Lenin House of Culture in Grozny - by the archival protocols the plenum ran on 8-10 October 1937, with 194 participants<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span> - and summoned there also the senior officials of the city and the districts. Avtorkhanov continues: "Shkiryatov gave the order to arrest all Chechens and Ingush who were members of the Chechen-Ingush oblast committee"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The Chekists arrested them right there, in the hall of the plenum. Avtorkhanov writes of what followed: "Then Shkiryatov's order was extended to all Chechen-Ingush officials, from the chairman of the republic's government down to the chairman of a village soviet"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. In October and November 1937 the NKVD (a predecessor of today's FSB) arrested Ali Gorchkhanov, chairman of the government of the republic; Abdul-Khalim Salamov, his deputy; Khasi Vakhayev, second secretary of the oblast committee; Magomed Mamakayev, head of the culture and propaganda department of the oblast committee; Khamid Okuyev, People's Commissar (minister) of education; Musa Khaniev, chairman of the Supreme Court; Khasan Mekhtiev, prosecutor of the republic; and Said Baduev, chairman of the Union of Soviet Writers. Avtorkhanov writes also of the lower floors: "Arrested were also the chairmen of the district executive committees (in the Chechen-Ingush republic there were up to 28 districts), almost all chairmen of village Soviets, of kolkhozes, and their party organizers"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Of the 23 heads of the district NKVD departments only Goytiev was a Chechen, and the NKVD arrested him too. The NKVD arrested, and the party organs removed from office - historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "In all, in October 1937, 30 of the 76 members and candidate members of the Chechen-Ingush obkom were repressed, including all the Chechens and Ingush; 20 of the 28 secretaries of district party committees; 77 members of district committees and 192 senior officials of the rural districts of the republic"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; in 1938 the colonizer removed almost all heads of the district land departments, 19 chairmen of district executive committees and 22 secretaries of district committees<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="manufacturing criminals from the summer of 1937 to november 1938 the nkvd (the political police, a predecessor of today's fsb) arrested people in the republic by the categories and numbers assigned in operational order no. 00447 of yezhov, the people's commissar (minister) of internal affairs of the ussr, of 30 july 1937. the chechen historian a. g. avtorkhanov, who worked in chechnya in those years and later wrote about it in emigration, described the beginning of the operation: "on the night of 31 july to 1 august 1937, by lists drawn up beforehand by the nkvd, the so-called 'general operation for the removal of anti-soviet elements' was carried out across all auls and districts"; the chekists hauled the arrested to grozny - to the central garage of "grozneft", to the stalin club, to the pre-trial detention house of the republic's militia(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). avtorkhanov names "up to 14 thousand people" arrested in the first wave; the published operational summary on the course of the operation gives, for mid-august, about 2.4 thousand arrested across the whole republic, divided in it by the assigned categories: 888 "kulaks" (peasants whom the colonizer deemed "well-off"), 831 "criminals", 682 of the "counter-revolutionary element"(citation: политические репрессии в чечне 1920-1930-х годов 2019). gridasov, head of the gudermes district department of the nkvd, answered an officer who asked how to arrest a man when there was no material on him: "material will always be found, so long as he wears a caucasian hat!"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). the arrests went on until november 1938: in the autumn of 1937 moscow raised the number assigned to the republic to 3,200 people, and on 1 march 1938 assigned a new one - 10,108 people, of whom the troika convicted 6,767(citation: политические репрессии в чечне 1920-1930-х годов 2019). on 8 september 1937 the newspaper "pravda" printed an article by its special correspondent kuzovkin under the headline: "the bourgeois-nationalist tangle in chechen-ingushetia"(citation: политические репрессии в чечне 1920-1930-х годов 2019). avtorkhanov relates its content: the author of the article "proved that in chechen-ingushetia 'bourgeois nationalists' sit in the party leadership and at the head of the government, leading the chechen-ingush people down an anti-soviet path", and the newspaper and the author called on a judge not named by name: "to untangle the bourgeois-nationalist tangle to the end"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). avtorkhanov writes of what the investigators manufactured out of the arrested: "over the course of three years the chekist investigators created the case of a 'bourgeois-nationalist, counter-revolutionary-insurgent, bukharinite-trotskyite, terrorist-espionage, anti-soviet, wrecking organization' – literally so ran the many-storeyed formula of the charge for the top layer of the arrested"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). into this "top layer", which the chekists named the "bourgeois-nationalist center of chechnya and ingushetia", the investigation wrote 137 former senior officials of the republic. the investigation entered among these 137 also abdurakhman avtorkhanov, who was then studying in moscow: it wrote people into the case regardless of where they were and what they did(citation: история чечни в xix-xx веках 2005). to each of them the investigation imputed article 58 - treason against the motherland, preparation of an armed uprising, wrecking, terrorist acts, diversion, anti-soviet agitation, membership in an anti-soviet organization, and sabotage. according to the charge, the "center" acted in alliance with identical "centers" of dagestan, ossetia, kabardino-balkaria, karachay, adygea and circassia and was preparing, as avtorkhanov writes, "the proclamation of a 'north caucasus federative republic' under the protectorate of turkey and england", with the "moscow inter-national center" holding the liaison between them all(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1937</div>
+                <div>
+                    <a href="/en/techniques/T0166">T0166</a> Manufacturing Criminals
+                </div>
+<div><a href="/en/campaigns/C1179">C1179</a> The Great Terror in Chechen-Ingushetia (1937-1940)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>From the summer of 1937 to November 1938 the NKVD (the political police, a predecessor of today's FSB) arrested people in the republic by the categories and numbers assigned in operational order No. 00447 of Yezhov, the People's Commissar (minister) of Internal Affairs of the USSR, of 30 July 1937. The Chechen historian A. G. Avtorkhanov, who worked in Chechnya in those years and later wrote about it in emigration, described the beginning of the operation: "On the night of 31 July to 1 August 1937, by lists drawn up beforehand by the NKVD, the so-called 'general operation for the removal of anti-Soviet elements' was carried out across all auls and districts"; the Chekists hauled the arrested to Grozny - to the central garage of "Grozneft", to the Stalin club, to the pre-trial detention house of the republic's militia<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Avtorkhanov names "up to 14 thousand people" arrested in the first wave; the published operational summary on the course of the operation gives, for mid-August, about 2.4 thousand arrested across the whole republic, divided in it by the assigned categories: 888 "kulaks" (peasants whom the colonizer deemed "well-off"), 831 "criminals", 682 of the "counter-revolutionary element"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Gridasov, head of the Gudermes district department of the NKVD, answered an officer who asked how to arrest a man when there was no material on him: "Material will always be found, so long as he wears a Caucasian hat!"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The arrests went on until November 1938: in the autumn of 1937 Moscow raised the number assigned to the republic to 3,200 people, and on 1 March 1938 assigned a new one - 10,108 people, of whom the troika convicted 6,767<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. On 8 September 1937 the newspaper "Pravda" printed an article by its special correspondent Kuzovkin under the headline: "The Bourgeois-Nationalist Tangle in Chechen-Ingushetia"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Avtorkhanov relates its content: the author of the article "proved that in Chechen-Ingushetia 'bourgeois nationalists' sit in the party leadership and at the head of the government, leading the Chechen-Ingush people down an anti-Soviet path", and the newspaper and the author called on a judge not named by name: "to untangle the bourgeois-nationalist tangle to the end"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Avtorkhanov writes of what the investigators manufactured out of the arrested: "Over the course of three years the Chekist investigators created the case of a 'bourgeois-nationalist, counter-revolutionary-insurgent, Bukharinite-Trotskyite, terrorist-espionage, anti-Soviet, wrecking organization' – literally so ran the many-storeyed formula of the charge for the top layer of the arrested"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Into this "top layer", which the Chekists named the "bourgeois-nationalist center of Chechnya and Ingushetia", the investigation wrote 137 former senior officials of the republic. The investigation entered among these 137 also Abdurakhman Avtorkhanov, who was then studying in Moscow: it wrote people into the case regardless of where they were and what they did<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. To each of them the investigation imputed Article 58 - treason against the Motherland, preparation of an armed uprising, wrecking, terrorist acts, diversion, anti-Soviet agitation, membership in an anti-Soviet organization, and sabotage. According to the charge, the "center" acted in alliance with identical "centers" of Dagestan, Ossetia, Kabardino-Balkaria, Karachay, Adygea and Circassia and was preparing, as Avtorkhanov writes, "the proclamation of a 'North Caucasus federative republic' under the protectorate of Turkey and England", with the "Moscow inter-national center" holding the liaison between them all<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="liquidation of national civic organizations the colonizer repressed almost the entire union of writers of chechen-ingushetia. on 20 november 1937 the bureau of the oblast committee of the party (the "obkom vkp(b)") dissolved the board of the writers of the republic - the resolution's wording: "as having proved clogged with hostile bourgeois-nationalist elements /arsanov, mamakayev, aiskhanov and others/"(citation: политические репрессии в чечне 1920-1930-х годов 2019). one of the convicted, khalid oshaev, wrote in 1961 to the ossetian writer khadzhi-murat muguev: "of the 12 members of the union of writers of chechen-ingushetia 9 people were arrested, 7 convicted, 4 shot. i myself, a member of the union of writers since 1934, spent 13 years in confinement, and for 2 years was held in solitary confinement"(citation: письмо халида ошаева хаджи-мурату мугуеву 1961)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1937</div>
+                <div>
+                    <a href="/en/techniques/T0128">T0128</a> Liquidation of National Civic Organizations
+                </div>
+<div><a href="/en/campaigns/C1179">C1179</a> The Great Terror in Chechen-Ingushetia (1937-1940)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>The colonizer repressed almost the entire Union of Writers of Chechen-Ingushetia. On 20 November 1937 the bureau of the oblast committee of the party (the "obkom VKP(b)") dissolved the board of the writers of the republic - the resolution's wording: "as having proved clogged with hostile bourgeois-nationalist elements /Arsanov, Mamakayev, Aiskhanov and others/"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. One of the convicted, Khalid Oshaev, wrote in 1961 to the Ossetian writer Khadzhi-Murat Muguev: "of the 12 members of the union of writers of Chechen-Ingushetia 9 people were arrested, 7 convicted, 4 shot. I myself, a member of the Union of Writers since 1934, spent 13 years in confinement, and for 2 years was held in solitary confinement"<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Полное название: Письмо чеченского писателя Халида Ошаева писателю Хаджи-Мурату Мугуеву от 15 сентября 1961 года - свидетельство о репрессиях 1937-1938 годов в Чечено-Ингушетии (аресты писателей, пытки, лагерь). Публикация Chechenpress. (1961). Письмо Халида Ошаева Хаджи-Мурату Мугуеву."data-reference="Письмо Халида Ошаева Хаджи-Мурату Мугуеву 1961"><sup><a href="https://thechechenpress.com/history/5350-2013-12-30-16-35-39.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="destruction of local knowledge systems on 13 november 1937 the bureau of the oblast committee of the party (the "obkom vkp(b)") approved two lists not subject to disclosure: no. 25/97 - on the removal of literature published in the republic - and no. 31/107 - on the mandatory removal of books from libraries and the book trade; the ban covered the works of 29 authors, among whom the historian k. g. dendiev names d. madayev, kh. yandarov, n. muzayev, d. malsagov and kh. oshaev(citation: политические репрессии в чечне 1920-1930-х годов 2019). the first chechen literary works had appeared in the early 1920s(citation: история чечни в xix-xx веках 2005) - the colonizer was removing and banning a literature not yet twenty years old."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1937</div>
+                <div>
+                    <a href="/en/techniques/T0044">T0044</a> Destruction of Local Knowledge Systems
+                </div>
+<div><a href="/en/campaigns/C1179">C1179</a> The Great Terror in Chechen-Ingushetia (1937-1940)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>On 13 November 1937 the bureau of the oblast committee of the party (the "obkom VKP(b)") approved two lists not subject to disclosure: No. 25/97 - on the removal of literature published in the republic - and No. 31/107 - on the mandatory removal of books from libraries and the book trade; the ban covered the works of 29 authors, among whom the historian K. G. Dendiev names D. Madayev, Kh. Yandarov, N. Muzayev, D. Malsagov and Kh. Oshaev<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The first Chechen literary works had appeared in the early 1920s<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span> - the colonizer was removing and banning a literature not yet twenty years old.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="torture and abuse torture of the arrested was officially sanctioned by the central committee of the bolshevik party (the tsk vkp(b)). historians ya. z. akhmadov and e. kh. khasmagomadov write: "...against all those arrested under political articles torture was widely applied, officially permitted as measures of 'physical influence'"; stalin's letter, circulated to party organs in january 1939, said: "the tsk vkp(b) explains that the application of physical influence in the practice of the nkvd was permitted from 1937 with the sanction of the tsk vkp(b)"(citation: история чечни в xix-xx веках 2005). one of the executors in the republic was porubay, named in a 1938 memorandum of the oblast committee of the party as deputy people's commissar (minister) of internal affairs of the republic. after the change of course he was put on trial - the charge: he "applied perverted methods of conducting the investigation and coerced the arrested into giving knowingly false testimony", and on the cases he falsified the troika passed death sentences(citation: политические репрессии в чечне 1920-1930-х годов 2019). the chechen historian a. g. avtorkhanov, who worked in chechnya in those years and later wrote about it in emigration, writes that the investigation of the case of the "bourgeois-nationalist center" lasted three years, and describes its methods: "the investigation was conducted with the application of the physical tortures usual for the whole ussr, with a certain supplement for the specific 'national character'"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). avtorkhanov names those whom the chekists tortured to death: "during this investigation there were tortured to death: the former chairman of the oblast executive committee d. machukayev, the former head of the obkom culture-and-propaganda department m. gisayev, the former secretary of the ingush obkom vkp(b) idris zyazikov, and others"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). he writes also of those whom torture drove to suicide: "unable to endure the regime of torture, the following committed suicide: the chairman of the planning commission of the republic m. islamov, the secretary of a district party committee m. bektemirov"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). avtorkhanov writes of the result: "by way of this unheard-of inquisition, named the 'preliminary investigation', the chekists forced up to 90 percent of the members of the 'bourgeois-nationalist center' to sign and even to compose 'sincere confessions' of crimes they had, of course, not committed"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). abdul-khalim salamov, deputy chairman of the government of the republic, under torture signed "sincere handwritten testimony" about the delivery into the republic from england through turkey of 50 mountain guns, 1,000 machine guns, 200 thousand rifles, 5 million cartridges, 10 thousand shells and grenades for an armed uprising; there too he wrote that england had promised to support that uprising from the air. he also named the exact place where the weapons were buried in the mountains; avtorkhanov writes: "the chekists dug up all the indicated mountain gorges. naturally they found nothing, but the beatings continued, with demands to point out the true place where the weapons were buried"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). the defendants showed the tribunal the marks of torture; avtorkhanov writes: "the defendants, pointing to the scars of inflicted wounds, to knocked-out teeth, to mutilated parts of the organism (one had even been castrated during interrogation), declared that they had signed their false testimony under the influence of these physical tortures and in the hope that the day of trial, or of death, would thus be brought nearer"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1937</div>
+                <div>
+                    <a href="/en/techniques/T0162/004">T0162.004</a> Torture and Abuse
+                </div>
+<div><a href="/en/campaigns/C1179">C1179</a> The Great Terror in Chechen-Ingushetia (1937-1940)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>Torture of the arrested was officially sanctioned by the Central Committee of the Bolshevik party (the TsK VKP(b)). Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "...against all those arrested under political articles torture was widely applied, officially permitted as measures of 'physical influence'"; Stalin's letter, circulated to party organs in January 1939, said: "The TsK VKP(b) explains that the application of physical influence in the practice of the NKVD was permitted from 1937 with the sanction of the TsK VKP(b)"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. One of the executors in the republic was Porubay, named in a 1938 memorandum of the oblast committee of the party as deputy People's Commissar (minister) of Internal Affairs of the republic. After the change of course he was put on trial - the charge: he "applied perverted methods of conducting the investigation and coerced the arrested into giving knowingly false testimony", and on the cases he falsified the troika passed death sentences<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The Chechen historian A. G. Avtorkhanov, who worked in Chechnya in those years and later wrote about it in emigration, writes that the investigation of the case of the "bourgeois-nationalist center" lasted three years, and describes its methods: "The investigation was conducted with the application of the physical tortures usual for the whole USSR, with a certain supplement for the specific 'national character'"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Avtorkhanov names those whom the Chekists tortured to death: "During this investigation there were tortured to death: the former chairman of the oblast executive committee D. Machukayev, the former head of the obkom culture-and-propaganda department M. Gisayev, the former secretary of the Ingush obkom VKP(b) Idris Zyazikov, and others"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. He writes also of those whom torture drove to suicide: "Unable to endure the regime of torture, the following committed suicide: the chairman of the planning commission of the republic M. Islamov, the secretary of a district party committee M. Bektemirov"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Avtorkhanov writes of the result: "By way of this unheard-of inquisition, named the 'preliminary investigation', the Chekists forced up to 90 percent of the members of the 'bourgeois-nationalist center' to sign and even to compose 'sincere confessions' of crimes they had, of course, not committed"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Abdul-Khalim Salamov, deputy chairman of the government of the republic, under torture signed "sincere handwritten testimony" about the delivery into the republic from England through Turkey of 50 mountain guns, 1,000 machine guns, 200 thousand rifles, 5 million cartridges, 10 thousand shells and grenades for an armed uprising; there too he wrote that England had promised to support that uprising from the air. He also named the exact place where the weapons were buried in the mountains; Avtorkhanov writes: "the Chekists dug up all the indicated mountain gorges. Naturally they found nothing, but the beatings continued, with demands to point out the true place where the weapons were buried"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The defendants showed the tribunal the marks of torture; Avtorkhanov writes: "The defendants, pointing to the scars of inflicted wounds, to knocked-out teeth, to mutilated parts of the organism (one had even been castrated during interrogation), declared that they had signed their false testimony under the influence of these physical tortures and in the hope that the day of trial, or of death, would thus be brought nearer"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="sham trials an extrajudicial organ - the "troika" - passed sentences in chechen-ingushetia under operational order no. 00447 of yezhov, the people's commissar (minister) of internal affairs of the ussr, of 30 july 1937, and yezhov confirmed the troika's composition in the text of the order: "i confirm the following personal composition of the republican, krai and oblast troikas: ... chechen-ingush assr: chairman - dementyev; members yegorov, vakhayev"(citation: приказ нквд ссср № 00447 1937) - dementyev, people's commissar (minister) of internal affairs of the republic; yegorov, first secretary of the oblast committee of the party; and vakhayev, second secretary. the historian g. i. kakagasanov describes the institution: "an extrajudicial organ created for carrying out punitive policy... its composition included: the head of the ogpu, the secretary of the party organization, the prosecutor of the republic, krai or oblast"(citation: новая волна репрессий против крестьянства и других слоев населения в республиках северного кавказа в 1937-1938 гг. 2014). the troika's procedure and its regime of secrecy are prescribed in the text of the order: the troikas examine "the materials on each arrested person or group of arrested persons", and first-category sentences are carried out "with the obligatory full preservation in secrecy of the time and place of the carrying out of the sentence"(citation: приказ нквд ссср № 00447 1937). the nkvd (the people's commissariat (ministry) of internal affairs - successor of the ogpu and a predecessor of today's fsb) did not inform the families of the condemned of the execution; kakagasanov writes: "more often this took place under the formula 'convicted without the right of correspondence', which meant 'execution by shooting'"(citation: новая волна репрессий против крестьянства и других слоев населения в республиках северного кавказа в 1937-1938 гг. 2014). historians ya. z. akhmadov and e. kh. khasmagomadov describe also "conviction by albums" - sentencing in absentia on a brief docket, "without acquaintance with the criminal case itself"(citation: история чечни в xix-xx веках 2005): that procedure was set by the orders of the "national lines" of the terror, beginning with nkvd order no. 00485. the investigation of the case of the "bourgeois-nationalist center" lasted, by the count of the chechen historian a. g. avtorkhanov - a contemporary of the events who wrote in emigration - exactly three years(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). the chekists chose not to try 137 people in a single trial and split the "center" into three groups: into the first they gathered the soviet-party leadership of the republic - ali gorchkhanov, abdul-khalim salamov, khasi vakhayev, khamid okuyev and tuchaev; into the second - non-party men whom the investigation called the cultural-ideological leadership - khalid yandarov, akhmat matsiev, abdurakhman avtorkhanov, d. malsagov, magomed mamakayev; into the third - a "terrorist group", into which "the chekists gathered, by the logic of things, young people alone"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). the groups came before the military tribunal of the north caucasus military district; avtorkhanov writes: "of the roughly 120 people who reached the trial alive, only one - the former mullah akhmat tuchaev - admitted his guilt. all the rest declared with one voice that all the crimes imputed to them were an invention, and their 'sincere confessions' false and fabricated from beginning to end", "the entire charge and the evidence in the case were built exclusively on this personal testimony extracted by torture", "there was no other material evidence or witness testimony to substantiate the charge" - and the tribunal passed its guilty verdict on the first group "solely on the basis of the testimony of one defendant – a. tuchaev"(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). the tribunal sentenced abdul-khalim salamov, ali gorchkhanov and tuchaev to be shot, the rest - to prison terms of 7 to 25 years(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). from the death cell tuchaev submitted a petition for clemency addressed to kalinin, chairman of the presidium of the supreme soviet of the ussr, and wrote in it: he had confessed to crimes he had not committed because only so had the nkvd promised to free his family and spare his life(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). moscow commuted the death sentences of all three and reduced the terms of the others; the "terrorist group" the same tribunal released in its entirety, the case of the "culture-ideologists" it "did not accept for proceedings at all", and those who sat without "cases" the chekists put through the special board - the nkvd's own departmental "court", which passed sentences with no trial and no defendant present(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1937</div>
+                <div>
+                    <a href="/en/techniques/T0160">T0160</a> Sham Trials
+                </div>
+<div><a href="/en/campaigns/C1179">C1179</a> The Great Terror in Chechen-Ingushetia (1937-1940)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>An extrajudicial organ - the "troika" - passed sentences in Chechen-Ingushetia under operational order No. 00447 of Yezhov, the People's Commissar (minister) of Internal Affairs of the USSR, of 30 July 1937, and Yezhov confirmed the troika's composition in the text of the order: "I confirm the following personal composition of the republican, krai and oblast troikas: ... Chechen-Ingush ASSR: chairman - Dementyev; members Yegorov, Vakhayev"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447."data-reference="Приказ НКВД СССР № 00447 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> - Dementyev, People's Commissar (minister) of Internal Affairs of the republic; Yegorov, first secretary of the oblast committee of the party; and Vakhayev, second secretary. The historian G. I. Kakagasanov describes the institution: "An extrajudicial organ created for carrying out punitive policy... Its composition included: the head of the OGPU, the secretary of the party organization, the prosecutor of the republic, krai or oblast"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг.."data-reference="Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг. 2014"><sup><a href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The troika's procedure and its regime of secrecy are prescribed in the text of the order: the troikas examine "the materials on each arrested person or group of arrested persons", and first-category sentences are carried out "with the obligatory full preservation in secrecy of the time and place of the carrying out of the sentence"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447."data-reference="Приказ НКВД СССР № 00447 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The NKVD (the People's Commissariat (ministry) of Internal Affairs - successor of the OGPU and a predecessor of today's FSB) did not inform the families of the condemned of the execution; Kakagasanov writes: "More often this took place under the formula 'convicted without the right of correspondence', which meant 'execution by shooting'"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг.."data-reference="Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг. 2014"><sup><a href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov describe also "conviction by albums" - sentencing in absentia on a brief docket, "without acquaintance with the criminal case itself"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>: that procedure was set by the orders of the "national lines" of the terror, beginning with NKVD order No. 00485. The investigation of the case of the "bourgeois-nationalist center" lasted, by the count of the Chechen historian A. G. Avtorkhanov - a contemporary of the events who wrote in emigration - exactly three years<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The Chekists chose not to try 137 people in a single trial and split the "center" into three groups: into the first they gathered the Soviet-party leadership of the republic - Ali Gorchkhanov, Abdul-Khalim Salamov, Khasi Vakhayev, Khamid Okuyev and Tuchaev; into the second - non-party men whom the investigation called the cultural-ideological leadership - Khalid Yandarov, Akhmat Matsiev, Abdurakhman Avtorkhanov, D. Malsagov, Magomed Mamakayev; into the third - a "terrorist group", into which "the Chekists gathered, by the logic of things, young people alone"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The groups came before the military tribunal of the North Caucasus Military District; Avtorkhanov writes: "of the roughly 120 people who reached the trial alive, only one - the former mullah Akhmat Tuchaev - admitted his guilt. All the rest declared with one voice that all the crimes imputed to them were an invention, and their 'sincere confessions' false and fabricated from beginning to end", "The entire charge and the evidence in the case were built exclusively on this personal testimony extracted by torture", "There was no other material evidence or witness testimony to substantiate the charge" - and the tribunal passed its guilty verdict on the first group "solely on the basis of the testimony of one defendant – A. Tuchaev"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The tribunal sentenced Abdul-Khalim Salamov, Ali Gorchkhanov and Tuchaev to be shot, the rest - to prison terms of 7 to 25 years<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. From the death cell Tuchaev submitted a petition for clemency addressed to Kalinin, chairman of the Presidium of the Supreme Soviet of the USSR, and wrote in it: he had confessed to crimes he had not committed because only so had the NKVD promised to free his family and spare his life<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Moscow commuted the death sentences of all three and reduced the terms of the others; the "terrorist group" the same tribunal released in its entirety, the case of the "culture-ideologists" it "did not accept for proceedings at all", and those who sat without "cases" the Chekists put through the Special Board - the NKVD's own departmental "court", which passed sentences with no trial and no defendant present<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="terror on the morning after the night arrests of 31 july 1937 the bureau of the oblast committee of the party resolved: to hold meetings in all kolkhozes "with an explanation of the political situation in the countryside", and by 5 august - district and komsomol meetings "on the results of the operation"(citation: политические репрессии в чечне 1920-1930-х годов 2019). on 3 august 1937 the central committee of the bolshevik party (the tsk vkp(b)), by telegram no. 1178, obliged the oblast committees of the party: to organize "in each oblast, by districts, 2-3 open show trials" of assigned "wreckers of agriculture" - "covering the course of the trials widely in the local press"(citation: политические репрессии в чечне 1920-1930-х годов 2019). the newspaper "groznensky rabochy" ["the grozny worker"] covered the open trials from august 1937 - on 20 august under the headline: "the trial of the former managers of chechingtorg"(citation: политические репрессии в чечне 1920-1930-х годов 2019). from 11 september 1937 the same newspaper printed denunciations in waves, day after day: 11 september: "untangle the bourgeois-nationalist tangle" - with a report on a meeting at which "of the 587 members and 132 candidate members of the party present at the meeting... 520 people spoke"; 15 september: "enemies of the chechen-ingush people: root out and smash to the end the band of bourgeois nationalists"; 16 september: "enemies of the people have the run of chechingizdat: the wolf pack is headed by the dyed-in-the-wool nationalist arsanukayev"; 17 september: "expose and smash the vile band of bourgeois nationalists! - such is the common voice of the party organizations of chechen-ingushetia"; the newspaper denounced people by name - gorchkhanov, salamov, mekhtiev, vakhayev, okuyev, khaniev, matsiev, yandarov(citation: политические репрессии в чечне 1920-1930-х годов 2019). on 27 september the newspaper printed an announcement: "wreckers of grain: toward the coming trials" - three days before the report on the trial itself; on 12 october, under the headline: "the trial of the wreckers from the artemovsky elevator" - the newspaper reported: "the workers and housewives who filled the hall met the verdict with stormy applause"; on 3 november, under the headline: "the trial of the wreckers of the second oil refinery"(citation: политические репрессии в чечне 1920-1930-х годов 2019). in march 1938 the participants of a rally in the oktyabrsky district of grozny demanded of the military collegium of the supreme court of the ussr the shooting of "rabid fascist dogs"(citation: политические репрессии в чечне 1920-1930-х годов 2019), "groznensky rabochy" on 11 march printed an open letter of the pioneers of grozny school no. 3 demanding "the physical annihilation of the bestial enemies of the people"(citation: региональная журналистика северного кавказа 1917-1938 2022), and of the trial of 16-26 march the historian k. g. dendiev writes: the proceedings in the case of the "bourgeois-nationalist trotskyite-bukharinite counter-revolutionary group of abastov, kebiev, zarmayev and others" "were heard in open session, with the participation of a state prosecutor and an organ of the defense", and the indictment was printed by "groznensky rabochy"(citation: политические репрессии в чечне 1920-1930-х годов 2019)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1937</div>
+                <div>
+                    <a href="/en/techniques/T0022">T0022</a> Terror
+                </div>
+<div><a href="/en/campaigns/C1179">C1179</a> The Great Terror in Chechen-Ingushetia (1937-1940)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>On the morning after the night arrests of 31 July 1937 the bureau of the oblast committee of the party resolved: to hold meetings in all kolkhozes "with an explanation of the political situation in the countryside", and by 5 August - district and Komsomol meetings "on the results of the operation"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. On 3 August 1937 the Central Committee of the Bolshevik party (the TsK VKP(b)), by telegram No. 1178, obliged the oblast committees of the party: to organize "in each oblast, by districts, 2-3 open show trials" of assigned "wreckers of agriculture" - "covering the course of the trials widely in the local press"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The newspaper "Groznensky Rabochy" ["The Grozny Worker"] covered the open trials from August 1937 - on 20 August under the headline: "The Trial of the Former Managers of Chechingtorg"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. From 11 September 1937 the same newspaper printed denunciations in waves, day after day: 11 September: "Untangle the Bourgeois-Nationalist Tangle" - with a report on a meeting at which "of the 587 members and 132 candidate members of the party present at the meeting... 520 people spoke"; 15 September: "Enemies of the Chechen-Ingush People: Root Out and Smash to the End the Band of Bourgeois Nationalists"; 16 September: "Enemies of the People Have the Run of Chechingizdat: the Wolf Pack Is Headed by the Dyed-in-the-Wool Nationalist Arsanukayev"; 17 September: "Expose and Smash the Vile Band of Bourgeois Nationalists! - Such Is the Common Voice of the Party Organizations of Chechen-Ingushetia"; the newspaper denounced people by name - Gorchkhanov, Salamov, Mekhtiev, Vakhayev, Okuyev, Khaniev, Matsiev, Yandarov<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. On 27 September the newspaper printed an announcement: "Wreckers of Grain: Toward the Coming Trials" - three days before the report on the trial itself; on 12 October, under the headline: "The Trial of the Wreckers from the Artemovsky Elevator" - the newspaper reported: "the workers and housewives who filled the hall met the verdict with stormy applause"; on 3 November, under the headline: "The Trial of the Wreckers of the Second Oil Refinery"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. In March 1938 the participants of a rally in the Oktyabrsky district of Grozny demanded of the Military Collegium of the Supreme Court of the USSR the shooting of "rabid fascist dogs"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, "Groznensky Rabochy" on 11 March printed an open letter of the Pioneers of Grozny school No. 3 demanding "the physical annihilation of the bestial enemies of the people"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Полное название: Региональная журналистика Северного Кавказа в контексте формирования системы советских СМИ (1917-1938 гг.). Турпалов Лема Абдоллаевич; диссертация на соискание степени доктора филологических наук; КНИИ им. Х. И. Ибрагимова РАН, Грозный, 2022; защита - диссовет ВГУ (Воронеж). (2022). Региональная журналистика Северного Кавказа 1917-1938."data-reference="Региональная журналистика Северного Кавказа 1917-1938 2022"><sup><a href="http://www.science.vsu.ru/dissertations/11290/" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>, and of the trial of 16-26 March the historian K. G. Dendiev writes: the proceedings in the case of the "Bourgeois-nationalist Trotskyite-Bukharinite counter-revolutionary group of Abastov, Kebiev, Zarmayev and others" "were heard in open session, with the participation of a state prosecutor and an organ of the defense", and the indictment was printed by "Groznensky Rabochy"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="killing of prisoners and detainees on 11 july 1937 the occupation authorities approved the number of people "subject to shooting" in chechnya: 862 "kulaks" (peasants whom the colonizer deemed "well-off") and 555 "criminals" - 1,417 people in all(citation: политические репрессии в чечне 1920-1930-х годов 2019); operational order no. 00447 of yezhov, the people's commissar (minister) of internal affairs of the ussr, of 30 july records for the chiassr: 500 people - to be shot (the order's "first category")(citation: приказ нквд ссср № 00447 1937). historians ya. z. akhmadov and e. kh. khasmagomadov write of the executed writers: "of the 12 members of the chechen-ingush union of writers 9 were arrested, 7 convicted, among them four - s. baduev, a. dudayev, sh. aiskhanov, s. oziev - sentenced to be shot"(citation: история чечни в xix-xx веках 2005). the nkvd (a predecessor of today's fsb) arrested one of those four - the writer abdi dudayev - on 24 november 1937 "without the prosecutor's sanction", on the standard charge of "anti-soviet agitation", and on 2 december, by decision of the "troika under the nkvd of the chiassr", the chekists shot him - eight days from arrest to killing; the finding on his case of 13 may 1958 states: "the investigation of dudayev's case was conducted in violation of the law; confrontations with witnesses were not held"(citation: политические репрессии в чечне 1920-1930-х годов 2019). moscow personally confirmed the lists of detainees for shooting: stalin, molotov and zhdanov signed the list of 7 december 1937, and on 28 december the military collegium of the supreme court of the ussr passed 32 death sentences on it(citation: политические репрессии в чечне 1920-1930-х годов 2019); on 12 september 1938 the politburo confirmed a new list of those subject to its court: of the 61 under investigation, 50 went under the case of the "bourgeois-nationalist center", and 55 of them stood "in the shooting article"(citation: политические репрессии в чечне 1920-1930-х годов 2019). on 29 june 1938 the military collegium sentenced a large group of the republic's technical intelligentsia to various terms, and 30 people to be shot - the chekists shot them the same day(citation: политические репрессии в чечне 1920-1930-х годов 2019). the indictment in the case of porubay - deputy people's commissar (minister) of internal affairs of the republic, put on trial after the change of course - states: "falsified the investigative cases of khamzatkhanov, aliev, khasiev, kadilov, ukhuev, mutushev; all these persons were sentenced by decision of the troika to vmn" - "vmn" meant execution by shooting(citation: политические репрессии в чечне 1920-1930-х годов 2019). the chekists dumped the bodies of the killed into two trench-pits at the central cemetery of grozny - the historian t. u. elbuzdukayeva writes: there, "in october, november and december 1937", they dumped "the bodies of the shot"(citation: политические репрессии в чечне 1920-1930-х годов 2019). a. bozhedomov opened the burial in the summer of 1990 - by excavations with the participation of members of the chechen-ingush "memorial" and staff of the museum of local history(citation: политические репрессии в чечне 1920-1930-х годов 2019)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">July 1937</div>
+                <div>
+                    <a href="/en/techniques/T0162/003">T0162.003</a> Killing of Prisoners and Detainees
+                </div>
+<div><a href="/en/campaigns/C1179">C1179</a> The Great Terror in Chechen-Ingushetia (1937-1940)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0017">S0017</a> Secret Police and Security Services</div>            </div>
+            <div class="proc-desc">
+                        <p>On 11 July 1937 the occupation authorities approved the number of people "subject to shooting" in Chechnya: 862 "kulaks" (peasants whom the colonizer deemed "well-off") and 555 "criminals" - 1,417 people in all<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; operational order No. 00447 of Yezhov, the People's Commissar (minister) of Internal Affairs of the USSR, of 30 July records for the ChIASSR: 500 people - to be shot (the order's "first category")<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447."data-reference="Приказ НКВД СССР № 00447 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write of the executed writers: "of the 12 members of the Chechen-Ingush Union of Writers 9 were arrested, 7 convicted, among them four - S. Baduev, A. Dudayev, Sh. Aiskhanov, S. Oziev - sentenced to be shot"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. The NKVD (a predecessor of today's FSB) arrested one of those four - the writer Abdi Dudayev - on 24 November 1937 "without the prosecutor's sanction", on the standard charge of "anti-Soviet agitation", and on 2 December, by decision of the "troika under the NKVD of the ChIASSR", the Chekists shot him - eight days from arrest to killing; the finding on his case of 13 May 1958 states: "The investigation of Dudayev's case was conducted in violation of the law; confrontations with witnesses were not held"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Moscow personally confirmed the lists of detainees for shooting: Stalin, Molotov and Zhdanov signed the list of 7 December 1937, and on 28 December the Military Collegium of the Supreme Court of the USSR passed 32 death sentences on it<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; on 12 September 1938 the Politburo confirmed a new list of those subject to its court: of the 61 under investigation, 50 went under the case of the "bourgeois-nationalist center", and 55 of them stood "in the shooting article"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. On 29 June 1938 the Military Collegium sentenced a large group of the republic's technical intelligentsia to various terms, and 30 people to be shot - the Chekists shot them the same day<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The indictment in the case of Porubay - deputy People's Commissar (minister) of Internal Affairs of the republic, put on trial after the change of course - states: "Falsified the investigative cases of Khamzatkhanov, Aliev, Khasiev, Kadilov, Ukhuev, Mutushev; all these persons were sentenced by decision of the troika to VMN" - "VMN" meant execution by shooting<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. The Chekists dumped the bodies of the killed into two trench-pits at the central cemetery of Grozny - the historian T. U. Elbuzdukayeva writes: there, "in October, November and December 1937", they dumped "the bodies of the shot"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. A. Bozhedomov opened the burial in the summer of 1990 - by excavations with the participation of members of the Chechen-Ingush "Memorial" and staff of the museum of local history<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank">
+                        Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank">
+                        Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank">
+                        Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="5.0">
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank">
+                        Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://thechechenpress.com/history/5350-2013-12-30-16-35-39.html" target="_blank">
+                        Полное название: Письмо чеченского писателя Халида Ошаева писателю Хаджи-Мурату Мугуеву от 15 сентября 1961 года - свидетельство о репрессиях 1937-1938 годов в Чечено-Ингушетии (аресты писателей, пытки, лагерь). Публикация Chechenpress. (1961). Письмо Халида Ошаева Хаджи-Мурату Мугуеву.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="http://www.science.vsu.ru/dissertations/11290/" target="_blank">
+                        Полное название: Региональная журналистика Северного Кавказа в контексте формирования системы советских СМИ (1917-1938 гг.). Турпалов Лема Абдоллаевич; диссертация на соискание степени доктора филологических наук; КНИИ им. Х. И. Ибрагимова РАН, Грозный, 2022; защита - диссовет ВГУ (Воронеж). (2022). Региональная журналистика Северного Кавказа 1917-1938.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+<script src="/en/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

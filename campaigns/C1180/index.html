@@ -1,0 +1,951 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1180/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1180/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1180/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1180/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1180/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949), кампания C1180 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1180/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949), кампания C1180 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>23 февраля 1944 года СССР выселил весь чеченский народ с родной земли в Казахстан и Киргизию (нынешний Кыргызстан). Депортация была поголовной - это видно по числам: по переписи 1939 года в Чечено-Ингушетии жило 387,5 тысячи чеченцев<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>, и к 1 марта 1944 года советский НКВД (предшественник современной ФСБ) отчитался о 387 229 депортированных чеченцах - вместе с ингушами 478 479 человек<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Колонизатор назвал это выселение операцией «Чечевица»: историк П. М. Полян пишет, что уже в ноябре 1943 года заместитель народного комиссара (министра) внутренних дел Чернышев обсуждал с начальниками региональных управлений НКВД «вопросы, связанные с намечаемой операцией «Чечевица» — депортацией около 0,5 млн вайнахов (чеченцев и ингушей)»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Высший орган оккупационной власти («Политбюро ЦК ВКП(б)») обсуждал выселение ещё за год до объявленного повода - обвинения народа в пособничестве немцам: 11 февраля 1943 года речь шла уже о сроках, и Сталин «склонился ко второму предложению» - выселить после изгнания немцев с Кавказа<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Бывший народный комиссар (министр) внутренних дел республики Албогачиев признал в 1963 году: «Повторяю еще раз - не было никаких причин для выселения чеченцев и ингушей. Это подтвердил и сам Берия во время процесса над ним в 1953 году»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «Все указанное позволяет уверенно квалифицировать депортацию, в данном случае чеченцев и ингушей, как тягчайшее преступление - геноцид»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историк Д. А. Хожаев пишет: «вторая попытка уничтожения чеченцев была предпринята в 1944 году, когда весь народ был согнан с родной земли и депортирован в Среднюю Азию и Казахстан»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. 26 апреля 1991 года колонизатор признал геноцид собственным законом - в статье 2 закона РСФСР «О реабилитации репрессированных народов» сказано: «Репрессированными признаются народы..., в отношении которых по признакам национальной или иной принадлежности проводилась на государственном уровне политика клеветы и геноцида, сопровождавшаяся их насильственным переселением...»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Полное название: Закон РСФСР от 26 апреля 1991 года № 1107-1 «О реабилитации репрессированных народов». Ст. 2: политика «клеветы и геноцида» против репрессированных народов признана на государственном уровне. (1991). О реабилитации репрессированных народов."data-reference="О реабилитации репрессированных народов 1991"><sup><a href="https://base.garant.ru/10200365/" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Европейский парламент в 2004 году признал в резолюции: «депортация всего чеченского народа в Среднюю Азию 23 февраля 1944 года по приказу Сталина является актом геноцида по смыслу IV Гаагской конвенции 1907 года и Конвенции о предупреждении преступления геноцида и наказании за него, принятой Генеральной Ассамблеей ООН 9 декабря 1948 года»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Полное название: European Parliament recommendation to the Council on EU-Russia relations, P5_TA(2004)0121, 26 февраля 2004 года. Пункт 15: депортация чеченского народа 23 февраля 1944 года признана актом геноцида в смысле IV Гаагской конвенции 1907 года и Конвенции ООН о геноциде 1948 года. (2004). Рекомендация Европейского парламента по отношениям ЕС-Россия."data-reference="Рекомендация Европейского парламента по отношениям ЕС-Россия 2004"><sup><a href="https://www.europarl.europa.eu/doceo/document/TA-5-2004-0121_EN.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Верховная Рада Украины в постановлении от 18 октября 2022 года осудила «международные преступления, совершённые российской федерацией во время первой (1994-1996) и второй (1999-2009) войн против Чеченской Республики Ичкерия, политику геноцида Чеченского народа, наследуя преступные действия царского режима 1817-1864 годов и советской власти 1944 года»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Полное название: Постанова Верховної Ради України від 18 жовтня 2022 року № 2672-IX «Про Заяву Верховної Ради України про засудження збройної агресії російської федерації проти Чеченської Республіки Ічкерія, окупації її території та злочину геноциду Чеченського народу». (2022). Заява Верховної Ради України про засудження збройної агресії проти Чеченської Республіки Ічкерія та геноциду Чеченського народу."data-reference="Заява Верховної Ради України про засудження збройної агресії проти Чеченської Республіки Ічкерія та геноциду Чеченського народу 2022"><sup><a href="https://zakon.rada.gov.ua/laws/show/2672-20" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1180
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Февраль 1943</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Февраль 1949</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>29 августа 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>29 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1180" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1180/C1180-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1180%2FC1180-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0010">G0010</a></td>
+                <td><a href="/groups/G0010">СССР</a></td>
+                <td>18</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0017"> S0017 </a></td>
+                <td><a href="/software/S0017"> Тайная полиция и Спецслужбы </a></td>
+                <td>13</td>
+              </tr>
+              <tr>
+                <td><a href="/software/S0010"> S0010 </a></td>
+                <td><a href="/software/S0010"> Регулярная армия </a></td>
+                <td>5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="навязывание своей картины реальности ссср строил обвинения чеченцев в «бандитизме» на фальсифицированной статистике: проверка центрального аппарата советского нквд (предшественника современной фсб) летом 1943 года показала, что из 213 объявленных убитыми «бандитов» на учёте состояли только 22 человека; на конец августа 1943 года на учёте числилось 359 участников «бандгрупп» на всю чечено-ингушетию(citation: история чечни в xix-xx веках 2005). 9 ноября 1943 года заместитель народного комиссара (министра) внутренних дел кобулов подал народному комиссару (министру) внутренних дел берии докладную «о положении в районах чечено-ингушской асср» «с заведомо фальшивыми цифрами, о якобы массовом количестве активных бандитов и дезертиров. «кобулов! очень хорошая записка», - указал берия на докладе и дал ход подготовке операции «чечевица»»(citation: история чечни в xix-xx веках 2005). берия лгал и в итоговом докладе - доносил руководству ссср, что выселение прошло «без серьезных случаев сопротивления и инцидентов»; историки я. з. ахмадов и э. х. хасмагомадов пишут: «в своем донесении руководству страны нарком внутренних дел откровенно лгал: выселение чеченцев сопровождалось множеством инцидентов и массовыми убийствами мирных жителей»(citation: история чечни в xix-xx веках 2005). чеченский историк а. г. авторханов, писавший об этом в эмиграции в 1952 году, разобрал официальную версию по пунктам. мотив, объявленный указом 25 июня 1946 года, он приводит дословно - «многие из чеченцев и ингушей, подстрекаемые немецкими агентами, присоединились добровольно к организованным немцами формированиям и вместе с немецкими вооруженными силами выступали с оружием в руках против красной армии... поэтому чечено-ингушская республика ликвидируется с выселением ее населения» - и называет его рассчитанным «на невежество советского народа и на неосведомленность запада»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). против версии он ставит два факта: «во время второй мировой войны ни разу не было ноги немецкого солдата на территории чечено-ингушской республики, если не считать кратковременного занятия пограничного местечка малгобек, населенного русскими», и «присоединяться к немецким формированиям чеченцы и ингуши и физически не могли, так как в чечено-ингушетии не было обязательной мобилизации»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0007">T0007</a> Навязывание своей картины реальности
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>СССР строил обвинения чеченцев в «бандитизме» на фальсифицированной статистике: проверка центрального аппарата советского НКВД (предшественника современной ФСБ) летом 1943 года показала, что из 213 объявленных убитыми «бандитов» на учёте состояли только 22 человека; на конец августа 1943 года на учёте числилось 359 участников «бандгрупп» на всю Чечено-Ингушетию<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 9 ноября 1943 года заместитель народного комиссара (министра) внутренних дел Кобулов подал народному комиссару (министру) внутренних дел Берии докладную «О положении в районах Чечено-Ингушской АССР» «с заведомо фальшивыми цифрами, о якобы массовом количестве активных бандитов и дезертиров. «Кобулов! Очень хорошая записка», - указал Берия на докладе и дал ход подготовке операции «Чечевица»»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Берия лгал и в итоговом докладе - доносил руководству СССР, что выселение прошло «без серьезных случаев сопротивления и инцидентов»; историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «В своем донесении руководству страны нарком внутренних дел откровенно лгал: выселение чеченцев сопровождалось множеством инцидентов и массовыми убийствами мирных жителей»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Чеченский историк А. Г. Авторханов, писавший об этом в эмиграции в 1952 году, разобрал официальную версию по пунктам. Мотив, объявленный указом 25 июня 1946 года, он приводит дословно - «Многие из чеченцев и ингушей, подстрекаемые немецкими агентами, присоединились добровольно к организованным немцами формированиям и вместе с немецкими вооруженными силами выступали с оружием в руках против Красной Армии... Поэтому Чечено-Ингушская республика ликвидируется с выселением ее населения» - и называет его рассчитанным «на невежество советского народа и на неосведомленность Запада»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Против версии он ставит два факта: «во время второй мировой войны ни разу не было ноги немецкого солдата на территории Чечено-Ингушской республики, если не считать кратковременного занятия пограничного местечка Малгобек, населенного русскими», и «присоединяться к немецким формированиям чеченцы и ингуши и физически не могли, так как в Чечено-Ингушетии не было обязательной мобилизации»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="депортация 29 января 1944 года народный комиссар (министр) внутренних дел берия утвердил главный документ операции «чечевица» - «инструкцию о порядке проведения выселения чеченцев и ингушей»(citation: вайнахи и имперская власть 2011); 31 января государственный комитет обороны ссср издал два постановления о депортации и местах назначения(citation: история чечни в xix-xx веках 2005). в первом расписан приём выселенных на месте ссылки: советскому нквд (предшественнику современной фсб) поручалось направить «в феврале–марте с. г. для расселения в казахскую сср спецпереселенцев до 400 тыс. чел., в киргизскую сср до 90 тыс. чел.», а в каждом районе, куда привозили людей, предписывалось «организовать тройки в составе председателя райисполкома, секретаря райкома и начальника ро [районного отдела] нквд»(citation: постановление гко ссср № 5073сс 1944). вторым постановлением людей предписывалось везти «по тарифу перевозок заключенных»(citation: постановление гко ссср № 5074сс 1944). 7 февраля на совещании у берии «были определены конкретные задачи по организации выселения 459 486 чеченцев и ингушей - это 97 635 семей», назначена дата - 22-23 февраля(citation: из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024). колонизатор стянул в республику, пишут историки я. з. ахмадов и э. х. хасмагомадов, «до 19 тысяч сотрудников нквд и нкгб и 100 тысяч боеспособных солдат внутренних войск... свыше 15 тысяч железнодорожных вагонов и сотни паровозов, 6 тысяч грузовых автомобилей»(citation: история чечни в xix-xx веках 2005) - под легендой: «были распущены слухи о проведении крупных тактических учений в горах чечни и ингушетии»(citation: из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024). 23 февраля, в советский военный праздник («день красной армии»), войска нквд собрали мужчин - историк з. с. исакиева пишет: «вместо клубов мужчин повезли (и повели) на сборные пункты под усиленной вооруженной охраной»(citation: из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024). чеченский историк а. г. авторханов приводит свидетельство русского студента-очевидца, напечатанное в эмигрантском журнале «прометеус» в 1949 году, - о вечере 23 февраля в аулах: «вечером того дня красноармейцы развели огни на площадях аулов и начали пение и танцы. жители аулов, ни в чем не сомневаясь, собрались на это торжество как зрители. когда таким образом большинство жителей собралось на площади, были арестованы все мужчины. некоторые чеченцы имели оружие, и во многих местах началась стрельба... арестованные на площадях мужчины были заперты в сараи, и началась охота за теми, которых не было на площади. вся акция была проведена в два-три часа»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). «к 11 часам первого дня выселения из различных селений вывезено более 94 тысяч человек»(citation: история чечни в xix-xx веках 2005), к утру 24 февраля - более 333 тысяч. нквд вёз людей в 180 эшелонах: по «рационализаторскому» предложению ведомство уплотнило погрузку - «уплотнение погрузки спецконтингента» в его бумагах - с 24 до 45 человек в вагоне; историки пишут: «на деле же в товарные вагоны-«теплушки» набивали и до 80 человек»(citation: история чечни в xix-xx веках 2005). в пути, по официальным данным советского нквд, умер 1361 человек(citation: история чечни в xix-xx веках 2005); очевидец аметистов, впоследствии судья конституционного суда россии, вспоминал: «я видел, как привезли их [чеченцев] в вагонах - и половину выгружали уже трупами. живых выбросили на 40-градусный мороз»(citation: история чечни в xix-xx веках 2005). «последний эшелон с депортированными чеченцами и ингушами встал под разгрузку в казахской степи 20 марта 1944 г.»(citation: история чечни в xix-xx веках 2005). а. г. авторханов записал, как это выглядело для народа: «23 февраля 1944 года... в течение буквально 24 часов поголовно все население чечено-ингушской республики арестовывается, и начинается его погрузка в арестантские эшелоны для отправки в неизвестном направлении», а указ о ликвидации республики «был опубликован задним числом» - через два года и четыре месяца(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0127">T0127</a> Депортация
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>29 января 1944 года народный комиссар (министр) внутренних дел Берия утвердил главный документ операции «Чечевица» - «Инструкцию о порядке проведения выселения чеченцев и ингушей»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; 31 января Государственный комитет обороны СССР издал два постановления о депортации и местах назначения<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В первом расписан приём выселенных на месте ссылки: советскому НКВД (предшественнику современной ФСБ) поручалось направить «в феврале–марте с. г. для расселения в Казахскую ССР спецпереселенцев до 400 тыс. чел., в Киргизскую ССР до 90 тыс. чел.», а в каждом районе, куда привозили людей, предписывалось «организовать тройки в составе председателя райисполкома, секретаря райкома и начальника РО [районного отдела] НКВД»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Государственный комитет обороны СССР. (1944). Постановление ГКО СССР № 5073сс."data-reference="Постановление ГКО СССР № 5073сс 1944"><sup><a href="https://docs.historyrussia.org/ru/nodes/222845" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Вторым постановлением людей предписывалось везти «по тарифу перевозок заключенных»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Государственный комитет обороны СССР. (1944). Постановление ГКО СССР № 5074сс."data-reference="Постановление ГКО СССР № 5074сс 1944"><sup><a href="https://docs.historyrussia.org/ru/nodes/222846" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. 7 февраля на совещании у Берии «были определены конкретные задачи по организации выселения 459 486 чеченцев и ингушей - это 97 635 семей», назначена дата - 22-23 февраля<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Колонизатор стянул в республику, пишут историки Я. З. Ахмадов и Э. Х. Хасмагомадов, «до 19 тысяч сотрудников НКВД и НКГБ и 100 тысяч боеспособных солдат внутренних войск... свыше 15 тысяч железнодорожных вагонов и сотни паровозов, 6 тысяч грузовых автомобилей»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span> - под легендой: «были распущены слухи о проведении крупных тактических учений в горах Чечни и Ингушетии»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 23 февраля, в советский военный праздник («День Красной армии»), войска НКВД собрали мужчин - историк З. С. Исакиева пишет: «Вместо клубов мужчин повезли (и повели) на сборные пункты под усиленной вооруженной охраной»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Чеченский историк А. Г. Авторханов приводит свидетельство русского студента-очевидца, напечатанное в эмигрантском журнале «Прометеус» в 1949 году, - о вечере 23 февраля в аулах: «Вечером того дня красноармейцы развели огни на площадях аулов и начали пение и танцы. Жители аулов, ни в чем не сомневаясь, собрались на это торжество как зрители. Когда таким образом большинство жителей собралось на площади, были арестованы все мужчины. Некоторые чеченцы имели оружие, и во многих местах началась стрельба... Арестованные на площадях мужчины были заперты в сараи, и началась охота за теми, которых не было на площади. Вся акция была проведена в два-три часа»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. «К 11 часам первого дня выселения из различных селений вывезено более 94 тысяч человек»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, к утру 24 февраля - более 333 тысяч. НКВД вёз людей в 180 эшелонах: по «рационализаторскому» предложению ведомство уплотнило погрузку - «уплотнение погрузки спецконтингента» в его бумагах - с 24 до 45 человек в вагоне; историки пишут: «На деле же в товарные вагоны-«теплушки» набивали и до 80 человек»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В пути, по официальным данным советского НКВД, умер 1361 человек<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; очевидец Аметистов, впоследствии судья Конституционного суда России, вспоминал: «Я видел, как привезли их [чеченцев] в вагонах - и половину выгружали уже трупами. Живых выбросили на 40-градусный мороз»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. «Последний эшелон с депортированными чеченцами и ингушами встал под разгрузку в казахской степи 20 марта 1944 г.»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. А. Г. Авторханов записал, как это выглядело для народа: «23 февраля 1944 года... в течение буквально 24 часов поголовно все население Чечено-Ингушской республики арестовывается, и начинается его погрузка в арестантские эшелоны для отправки в неизвестном направлении», а указ о ликвидации республики «был опубликован задним числом» - через два года и четыре месяца<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="массовые убийства гражданских во время выселения каратели советского нквд (предшественника современной фсб) убивали на месте чеченцев, которых не могли довезти до эшелонов, - тяжелобольных, стариков, женщин с детьми: в бумагах ведомства они шли как «нетранспортабельные». 27 февраля 1944 года в ауле хайбах галанчожского района каратели, по историкам я. з. ахмадову и э. х. хасмагомадову, убили «свыше 700 человек»: собранных «нетранспортабельных» жителей хайбаха и окрестных хуторов полковник гвишиани, как пишут историки, «распорядился запереть... в конюшне местного колхоза им. л. п. берия, после чего сама конюшня была обложена сеном и подожжена»(citation: история чечни в xix-xx веках 2005). очевидец - заместитель народного комиссара (министра) юстиции республики дзияудин мальсагов - свидетельствовал: «когда конюшню объяло пламя, огромные, сильно укрепленные ворота под натиском людей рухнули, и сквозь огонь толпа обезумевших людей хлынула наружу. гвишиани скомандовал: «огонь!» из десятков стволов раздались автоматные и пулеметные очереди... никто не вырвался из огня и автоматной блокады. никто не спасся»(citation: история чечни в xix-xx веках 2005); гвишиани получил от народного комиссара (министра) внутренних дел берии, пишут историки, «персональную благодарность, представление к награде и повышение в звании»(citation: история чечни в xix-xx веках 2005). каратели убивали «нетранспортабельных» по всем горным районам: «47 тяжелобольных были умерщвлены и похоронены в одной яме на территории урус-мартановской районной больницы... по несколько десятков стариков, женщин и детей было сожжено в цори, таргиме и гули. многих, бежавших в тот день из сел в горы или лес, расстреливали на месте без предупреждения»(citation: история чечни в xix-xx веках 2005); «в итум-калинском районе... дома набивали больными и забрасывали гранатами и бутылками с зажигательной смесью»(citation: история чечни в xix-xx веках 2005). историк з. с. исакиева пишет: в конце марта 1944 года войска нквд «расстреляли» жителей горной малхисты, до которых в феврале не добрались из-за снегопада(citation: из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024). расстрелы больных чекисты фиксировали собственной перепиской: 28 мая 1944 года начальник галанчожского оперативного сектора гранский доносил заместителю народного комиссара (министра) госбезопасности кобулову о «самочинных расстрелах над оставшимися после переселения чеченками-старухами, больными, калеками» - по одному только начхоевскому сельсовету расстреляны «больные и калеки» числом «до 60 человек»(citation: ликвидировать ввиду нетранспортабельности 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0104">T0104</a> Массовые убийства гражданских
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Во время выселения каратели советского НКВД (предшественника современной ФСБ) убивали на месте чеченцев, которых не могли довезти до эшелонов, - тяжелобольных, стариков, женщин с детьми: в бумагах ведомства они шли как «нетранспортабельные». 27 февраля 1944 года в ауле Хайбах Галанчожского района каратели, по историкам Я. З. Ахмадову и Э. Х. Хасмагомадову, убили «свыше 700 человек»: собранных «нетранспортабельных» жителей Хайбаха и окрестных хуторов полковник Гвишиани, как пишут историки, «распорядился запереть... в конюшне местного колхоза им. Л. П. Берия, после чего сама конюшня была обложена сеном и подожжена»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Очевидец - заместитель народного комиссара (министра) юстиции республики Дзияудин Мальсагов - свидетельствовал: «Когда конюшню объяло пламя, огромные, сильно укрепленные ворота под натиском людей рухнули, и сквозь огонь толпа обезумевших людей хлынула наружу. Гвишиани скомандовал: «Огонь!» Из десятков стволов раздались автоматные и пулеметные очереди... Никто не вырвался из огня и автоматной блокады. Никто не спасся»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; Гвишиани получил от народного комиссара (министра) внутренних дел Берии, пишут историки, «персональную благодарность, представление к награде и повышение в звании»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Каратели убивали «нетранспортабельных» по всем горным районам: «47 тяжелобольных были умерщвлены и похоронены в одной яме на территории Урус-Мартановской районной больницы... по несколько десятков стариков, женщин и детей было сожжено в Цори, Таргиме и Гули. Многих, бежавших в тот день из сел в горы или лес, расстреливали на месте без предупреждения»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; «в Итум-Калинском районе... дома набивали больными и забрасывали гранатами и бутылками с зажигательной смесью»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историк З. С. Исакиева пишет: в конце марта 1944 года войска НКВД «расстреляли» жителей горной Малхисты, до которых в феврале не добрались из-за снегопада<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Расстрелы больных чекисты фиксировали собственной перепиской: 28 мая 1944 года начальник Галанчожского оперативного сектора Гранский доносил заместителю народного комиссара (министра) госбезопасности Кобулову о «самочинных расстрелах над оставшимися после переселения чеченками-старухами, больными, калеками» - по одному только Начхоевскому сельсовету расстреляны «больные и калеки» числом «до 60 человек»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Полное название: «Ликвидировать ввиду нетранспортабельности». Методы депортации чеченцев и ингушей // Новая газета. № 77, 20 июля 2009. Публикация рапорта начальника Галанчожского оперсектора Гранского заместителю наркома госбезопасности Кобулову от 28.05.1944 о «самочинных расстрелах» больных и калек (коллекция С. С. Кашурко).. (2009). Ликвидировать ввиду нетранспортабельности."data-reference="Ликвидировать ввиду нетранспортабельности 2009"><sup><a href="https://novayagazeta.ru/articles/2009/07/20/42065-likvidirovat-vvidu-netransportabelnosti" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="террор историки я. з. ахмадов и э. х. хасмагомадов пишут о днях выселения чеченцев: «в течение двух-трех суток, пока шло выселение, убивая по одному-два человека то там то здесь, каратели в общей сложности уничтожили не одну тысячу человек. причем громко и внятно объявлялось на русском языке: за попытку к бегству - расстрел, за неисполнение приказа - расстрел, за выражение протеста - расстрел»(citation: история чечни в xix-xx веках 2005). чеченский историк далхан хожаев пишет, что угрозы «объявляли по-русски, хотя многие языка не понимали», и счёт расправ пошёл с первых часов: «на плоскости чечни за несколько часов были расстреляны сотни людей (мужчины, женщины, дети и старики)»; в горах, где людей гнали к дорогам пешком, «чаще, чем на равнине, пристреливали отставших, ослабевших, не понявших приказа, да и так просто - «при попытке к бегству»»(citation: так это было: национальные репрессии в ссср 1993). историк з. с. исакиева пишет о колоннах из горных селений: «тех, кто не мог передвигаться, выводили из колонны и расстреливали, даже не разрешая похоронить»(citation: из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0022">T0022</a> Террор
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут о днях выселения чеченцев: «в течение двух-трех суток, пока шло выселение, убивая по одному-два человека то там то здесь, каратели в общей сложности уничтожили не одну тысячу человек. Причем громко и внятно объявлялось на русском языке: за попытку к бегству - расстрел, за неисполнение приказа - расстрел, за выражение протеста - расстрел»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Чеченский историк Далхан Хожаев пишет, что угрозы «объявляли по-русски, хотя многие языка не понимали», и счёт расправ пошёл с первых часов: «На плоскости Чечни за несколько часов были расстреляны сотни людей (мужчины, женщины, дети и старики)»; в горах, где людей гнали к дорогам пешком, «чаще, чем на равнине, пристреливали отставших, ослабевших, не понявших приказа, да и так просто - «при попытке к бегству»»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" data-reference="Так это было: национальные репрессии в СССР 1993"title="Полное название: Так это было: Национальные репрессии в СССР. 1919-1952 годы. Т. 2 / ред.-сост. С. У. Алиева. М.: Инсан, 1993. Свидетельства о депортации 1944 года (очерк Д. Хожаева «Геноцид», рассказ очевидца Д. Мальсагова, свидетельство Гаева, акт комиссии 22.08.1990) и документы о расхищении имущества спецпереселенцев (докладная руководителя бригады Наркомата госконтроля РСФСР Дроздова, август 1944).. (1993). Так это было: национальные репрессии в СССР."><sup>[12]</sup></span>. Историк З. С. Исакиева пишет о колоннах из горных селений: «Тех, кто не мог передвигаться, выводили из колонны и расстреливали, даже не разрешая похоронить»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="убийство пленных и задержанных в апреле-мае 1943 года сотрудники советского нквд (предшественника современной фсб) во главе с заместителем народного комиссара (министра) внутренних дел республики колесниковым во время «операций по борьбе с бандитизмом» задерживали чеченцев, «подозреваемых в связях с бандитами», и расстреливали их «незаконно, без суда и следствия» - за два месяца 25 человек, «ни в чем не повинных граждан»: в селе бачи-юрт по приказу командира кавалерийского взвода волосова конвой расстрелял 17 из 19 задержанных, среди них 15-летнюю девушку; в селе бельты конвой во главе с командиром отделения советской милиции дубасовым «без всяких поводов» расстрелял четверых и привёз в районный отдел нквд их трупы; на хуторе кулой командир батальона войск нквд (предшественников современной росгвардии) мейшвили расстрелял братьев байсара и баима батаевых, джамалани питалова и мавлу чебиева(citation: вайнахи и имперская власть 2011). палачи списывали расстрелы на «попытку к бегству», колесников давал «заключение о правильности применения оружия»; всё это установила главная военная прокуратура по письму чеченца дохтукаева из ссылки - итог в 1957 году доложили главе правительства ссср булганину, но к суду никого так и не привлекли: истёк десятилетний срок давности(citation: вайнахи и имперская власть 2011)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0162/003">T0162.003</a> Убийство пленных и задержанных
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>В апреле-мае 1943 года сотрудники советского НКВД (предшественника современной ФСБ) во главе с заместителем народного комиссара (министра) внутренних дел республики Колесниковым во время «операций по борьбе с бандитизмом» задерживали чеченцев, «подозреваемых в связях с бандитами», и расстреливали их «незаконно, без суда и следствия» - за два месяца 25 человек, «ни в чем не повинных граждан»: в селе Бачи-Юрт по приказу командира кавалерийского взвода Волосова конвой расстрелял 17 из 19 задержанных, среди них 15-летнюю девушку; в селе Бельты конвой во главе с командиром отделения советской милиции Дубасовым «без всяких поводов» расстрелял четверых и привёз в районный отдел НКВД их трупы; на хуторе Кулой командир батальона войск НКВД (предшественников современной Росгвардии) Мейшвили расстрелял братьев Байсара и Баима Батаевых, Джамалани Питалова и Мавлу Чебиева<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Палачи списывали расстрелы на «попытку к бегству», Колесников давал «заключение о правильности применения оружия»; всё это установила Главная военная прокуратура по письму чеченца Дохтукаева из ссылки - итог в 1957 году доложили главе правительства СССР Булганину, но к суду никого так и не привлекли: истёк десятилетний срок давности<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальное уничтожение инфраструктуры во время депортации - операции «чечевица» - войска советского нквд (предшественники современной росгвардии) сжигали горные аулы чеченцев сразу после того, как под конвоем выгоняли жителей к эшелонам в казахстан и киргизию (нынешний кыргызстан) и угоняли их скот. чеченский историк а. г. авторханов приводит свидетельство русского студента грозненского нефтяного института, которого в день выселения отправили в один из аулов: «в горных аулах эту акцию провели иначе. отсюда был эвакуирован весь скот, и тогда сожгли аулы, чтобы лишить "бандитов" базы для существования. днями можно было наблюдать в горах горящие аулы»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0105">T0105</a> Тотальное уничтожение инфраструктуры
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Во время депортации - операции «Чечевица» - войска советского НКВД (предшественники современной Росгвардии) сжигали горные аулы чеченцев сразу после того, как под конвоем выгоняли жителей к эшелонам в Казахстан и Киргизию (нынешний Кыргызстан) и угоняли их скот. Чеченский историк А. Г. Авторханов приводит свидетельство русского студента Грозненского нефтяного института, которого в день выселения отправили в один из аулов: «В горных аулах эту акцию провели иначе. Отсюда был эвакуирован весь скот, и тогда сожгли аулы, чтобы лишить "бандитов" базы для существования. Днями можно было наблюдать в горах горящие аулы»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="ложный компромисс/ловушка ссср обманом выманивал чеченцев, скрывавшихся в горах от оккупационного режима, обещая свободу, - в бумагах нквд (предшественника современной фсб) это называлось «легализацией». тех, кто поверил обещаниям, арестовывали или высылали вместе с соотечественниками в казахстан и киргизию (нынешний кыргызстан) в ходе геноцидной операции «чечевица». в справке начальника управления внутренних дел грозненской области дементьева (1956) сказано: только за сентябрь-октябрь 1943 года «легализовано 30 банд, в состав которых входило 183 чел. и 60 чел. бандитов-одиночек»(citation: вайнахи и имперская власть 2011). историк п. м. полян пишет: на учёте нквд «состояли 1300 так называемых легализованных бандитов, т. е. явившихся, по взаимной договоренности, с повинной и освобожденных за это от репрессий. всех или почти всех из них арестовали незадолго до выселения или в его ходе»(citation: вайнахи и имперская власть 2011). в дни выселения войска объявляли прощение ушедшим в горы - и высылали вышедших. русский студент-очевидец из грозного, чьё свидетельство напечатал эмигрантский журнал «прометеус» в 1949 году и приводит чеченский историк а. г. авторханов, пишет: «одновременно была объявлена амнистия [обещание не наказывать] для ушедших в горы, если они явятся добровольно. фактически некоторые из них и явились, но были также выселены…»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). летом 1944 года колонизатор повторил обман: историк п. м. полян пишет, что в июне из казахстана в грозный доставили высланных в феврале «испытанных» религиозных авторитетов, и те склоняли сотни скрывшихся чеченцев «к легализации и, стало быть, к выселению»(citation: вайнахи и имперская власть 2011)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0028">T0028</a> Ложный компромисс/ловушка
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>СССР обманом выманивал чеченцев, скрывавшихся в горах от оккупационного режима, обещая свободу, - в бумагах НКВД (предшественника современной ФСБ) это называлось «легализацией». Тех, кто поверил обещаниям, арестовывали или высылали вместе с соотечественниками в Казахстан и Киргизию (нынешний Кыргызстан) в ходе геноцидной операции «Чечевица». В справке начальника управления внутренних дел Грозненской области Дементьева (1956) сказано: только за сентябрь-октябрь 1943 года «легализовано 30 банд, в состав которых входило 183 чел. и 60 чел. бандитов-одиночек»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Историк П. М. Полян пишет: на учёте НКВД «состояли 1300 так называемых легализованных бандитов, т. е. явившихся, по взаимной договоренности, с повинной и освобожденных за это от репрессий. Всех или почти всех из них арестовали незадолго до выселения или в его ходе»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. В дни выселения войска объявляли прощение ушедшим в горы - и высылали вышедших. Русский студент-очевидец из Грозного, чьё свидетельство напечатал эмигрантский журнал «Прометеус» в 1949 году и приводит чеченский историк А. Г. Авторханов, пишет: «Одновременно была объявлена амнистия [обещание не наказывать] для ушедших в горы, если они явятся добровольно. Фактически некоторые из них и явились, но были также выселены…»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Летом 1944 года колонизатор повторил обман: историк П. М. Полян пишет, что в июне из Казахстана в Грозный доставили высланных в феврале «испытанных» религиозных авторитетов, и те склоняли сотни скрывшихся чеченцев «к легализации и, стало быть, к выселению»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="медицинская и гуманитарная блокада колонизатор отрезал чеченцам медицинскую помощь с первого дня выселения: чеченский историк далхан хожаев пишет, что войска, выгоняя людей из домов, «больных сбрасывали с больничных коек»(citation: так это было: национальные репрессии в ссср 1993). в эшелонах вспыхнул сыпной тиф - в справке советского нквд (предшественника современной фсб) от 7 апреля 1944 года о довезённых до киргизии сказано: «умерло 412 человек и 278 госпитализировано»(citation: история сталинского гулага 2004). без карантина и медицины на местах эпидемия разрослась: к 1 апреля 1944 года в казахстане заболело около 4800 человек, в киргизии - свыше 2000(citation: история чечни в xix-xx веках 2005). колонизатор под угрозой ареста запретил местным жителям помогать умирающим чеченцам. чеченский историк а. г. авторханов пишет: «местному населению было категорически запрещено оказывать помощь умирающим подачей пищи, воды или медикаментов. даже простое проявление человеческого сочувствия погибающим женщинам и детям каралось арестами»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0122">T0122</a> Медицинская и гуманитарная блокада
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор отрезал чеченцам медицинскую помощь с первого дня выселения: чеченский историк Далхан Хожаев пишет, что войска, выгоняя людей из домов, «больных сбрасывали с больничных коек»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" data-reference="Так это было: национальные репрессии в СССР 1993"title="Полное название: Так это было: Национальные репрессии в СССР. 1919-1952 годы. Т. 2 / ред.-сост. С. У. Алиева. М.: Инсан, 1993. Свидетельства о депортации 1944 года (очерк Д. Хожаева «Геноцид», рассказ очевидца Д. Мальсагова, свидетельство Гаева, акт комиссии 22.08.1990) и документы о расхищении имущества спецпереселенцев (докладная руководителя бригады Наркомата госконтроля РСФСР Дроздова, август 1944).. (1993). Так это было: национальные репрессии в СССР."><sup>[12]</sup></span>. В эшелонах вспыхнул сыпной тиф - в справке советского НКВД (предшественника современной ФСБ) от 7 апреля 1944 года о довезённых до Киргизии сказано: «умерло 412 человек и 278 госпитализировано»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Полное название: История сталинского Гулага. Конец 1920-х - первая половина 1950-х годов. Т. 1. Массовые репрессии в СССР. М.: РОССПЭН, 2004. Документы № 161-165 (с. 486-494) о депортации чеченцев и ингушей: приказ НКВД № 00193 от 28.02.1944, доклады Берии Сталину, справка НКВД от 07.04.1944 о прибывших в Киргизию (тиф, «умерло 412 человек и 278 госпитализировано»).. (2004). История сталинского Гулага."data-reference="История сталинского Гулага 2004"><sup><a href="https://docs.historyrussia.org/ru/nodes/49441-spravka-otdela-spetsposeleniy-nkvd-sssr-ob-okonchanii-rabot-po-pereseleniyu-chechentsev-ingushey-i-balkartsev-s-severnogo-kavkaza-v-kirgizskuyu-ssr-7-aprelya-1944-g" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. Без карантина и медицины на местах эпидемия разрослась: к 1 апреля 1944 года в Казахстане заболело около 4800 человек, в Киргизии - свыше 2000<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Колонизатор под угрозой ареста запретил местным жителям помогать умирающим чеченцам. Чеченский историк А. Г. Авторханов пишет: «Местному населению было категорически запрещено оказывать помощь умирающим подачей пищи, воды или медикаментов. Даже простое проявление человеческого сочувствия погибающим женщинам и детям каралось арестами»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="искусственный голод ссср, депортируя чеченцев и ингушей с родной земли, не позаботился о продовольствии в местах ссылки - от голода и болезней в ссылке за четыре с половиной года умерла почти треть депортированных. колонизатор отобрал у народа скот и продовольствие ещё дома: постановлением государственного комитета обороны ссср от 31 января 1944 года народные комиссариаты (министерства) обязывались «принять на северном кавказе от спецпереселенцев скот и сельскохозяйственную продукцию... с выдачей на принятое обменных квитанций», а из отобранного скота 350 лошадей, «годных к строевой службе», передавались кавалерийским частям советской милиции(citation: постановление гко ссср № 5074сс 1944). народный комиссар (министр) внутренних дел киргизской сср пчелкин докладывал народному комиссару (министру) внутренних дел ссср берии 22 апреля 1944 года: продовольствие, привезённое ссыльными, «иссякает», «установленная норма крайне недостаточна», колхозы помочь «не в состоянии из-за отсутствия его, в результате в отдельных районах имеют место случаи... употребления кореньев и трав»(citation: вайнахи и имперская власть 2011). историк п. м. полян пишет: из-за нехватки продуктов, помещений и кормов ссыльным в киргизии «пришлось забить до 90 %» скота, выданного «в порядке возмещения за оставленный ими в местах прежнего жительства», а выделенные им фонды местное начальство раздавало другим - в казалинском районе «одну тонну хлеба выдали местному партактиву», в колхозах базар-курганского района «продукты выдали только трудоспособным спецпереселенцам, а нетрудоспособных лишили пайка»(citation: вайнахи и имперская власть 2011). в ссылке чеченцы и ингуши умирали десятками тысяч: к концу 1944 года число ссыльных («спецпереселенцев» в терминах колонизатора) в киргизии упало примерно на 11,5 тысячи, в казахстане - более чем на 46 тысяч человек(citation: история чечни в xix-xx веках 2005). в 1945 году среди северокавказских ссыльных умерло 44 652 ребёнка - родилось 2230; голодало не менее 80 тысяч человек(citation: история чечни в xix-xx веках 2005); зимой 1948-1949 годов в казахской сср (нынешнем казахстане) голодало до 118 тысяч, 418 человек умерли от голода(citation: история чечни в xix-xx веках 2005). к октябрю 1948 года в ссылке умерло около 146,9 тысячи северокавказских ссыльных; прямые потери чеченцев и ингушей историки считают в 145,7 тысячи человек, а вместе с неродившимися - 300 тысяч; довоенную численность народ восстановил только к 1959 году(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0121">T0121</a> Искусственный голод
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>СССР, депортируя чеченцев и ингушей с родной земли, не позаботился о продовольствии в местах ссылки - от голода и болезней в ссылке за четыре с половиной года умерла почти треть депортированных. Колонизатор отобрал у народа скот и продовольствие ещё дома: постановлением Государственного комитета обороны СССР от 31 января 1944 года народные комиссариаты (министерства) обязывались «принять на Северном Кавказе от спецпереселенцев скот и сельскохозяйственную продукцию... с выдачей на принятое обменных квитанций», а из отобранного скота 350 лошадей, «годных к строевой службе», передавались кавалерийским частям советской милиции<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Государственный комитет обороны СССР. (1944). Постановление ГКО СССР № 5074сс."data-reference="Постановление ГКО СССР № 5074сс 1944"><sup><a href="https://docs.historyrussia.org/ru/nodes/222846" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Народный комиссар (министр) внутренних дел Киргизской ССР Пчелкин докладывал народному комиссару (министру) внутренних дел СССР Берии 22 апреля 1944 года: продовольствие, привезённое ссыльными, «иссякает», «установленная норма крайне недостаточна», колхозы помочь «не в состоянии из-за отсутствия его, в результате в отдельных районах имеют место случаи... употребления кореньев и трав»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Историк П. М. Полян пишет: из-за нехватки продуктов, помещений и кормов ссыльным в Киргизии «пришлось забить до 90 %» скота, выданного «в порядке возмещения за оставленный ими в местах прежнего жительства», а выделенные им фонды местное начальство раздавало другим - в Казалинском районе «одну тонну хлеба выдали местному партактиву», в колхозах Базар-Курганского района «продукты выдали только трудоспособным спецпереселенцам, а нетрудоспособных лишили пайка»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. В ссылке чеченцы и ингуши умирали десятками тысяч: к концу 1944 года число ссыльных («спецпереселенцев» в терминах колонизатора) в Киргизии упало примерно на 11,5 тысячи, в Казахстане - более чем на 46 тысяч человек<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В 1945 году среди северокавказских ссыльных умерло 44 652 ребёнка - родилось 2230; голодало не менее 80 тысяч человек<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; зимой 1948-1949 годов в Казахской ССР (нынешнем Казахстане) голодало до 118 тысяч, 418 человек умерли от голода<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. К октябрю 1948 года в ссылке умерло около 146,9 тысячи северокавказских ссыльных; прямые потери чеченцев и ингушей историки считают в 145,7 тысячи человек, а вместе с неродившимися - 300 тысяч; довоенную численность народ восстановил только к 1959 году<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения советский нквд (предшественник современной фсб) обязал ссыльных чеченцев и ингушей («спецпереселенцев» в терминах колонизатора) старше 12 лет ежемесячно отмечаться в спецкомендатуре - надзорной конторе ведомства на месте ссылки; с 16 лет комендатура заводила личные дела; колонизатор запретил им вступать в большевистскую партию, её молодёжный союз («комсомол») и профсоюзы и не брал их в армию(citation: из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024). с января 1945 года комендант мог без суда арестовать «виновных» до 5 суток или оштрафовать до 100 рублей(citation: история чечни в xix-xx веках 2005). указом президиума верховного совета ссср от 26 ноября 1948 года выселение объявлено вечным: чеченцы и ингуши «сосланы навечно», за побег - до 20 лет каторги, за содействие беглецам - до 5 лет тюрьмы(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0032">T0032</a> Правовая сегрегация населения
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Советский НКВД (предшественник современной ФСБ) обязал ссыльных чеченцев и ингушей («спецпереселенцев» в терминах колонизатора) старше 12 лет ежемесячно отмечаться в спецкомендатуре - надзорной конторе ведомства на месте ссылки; с 16 лет комендатура заводила личные дела; колонизатор запретил им вступать в большевистскую партию, её молодёжный союз («комсомол») и профсоюзы и не брал их в армию<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. С января 1945 года комендант мог без суда арестовать «виновных» до 5 суток или оштрафовать до 100 рублей<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Указом Президиума Верховного Совета СССР от 26 ноября 1948 года выселение объявлено вечным: чеченцы и ингуши «сосланы навечно», за побег - до 20 лет каторги, за содействие беглецам - до 5 лет тюрьмы<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="ограничение географии расселения колонизатор запер ссыльных чеченцев и ингушей в местах вселения: комендатуры запретили отлучки без своего разрешения, действовала круговая порука «десятидворок» - десять соседних дворов отвечали друг за друга(citation: история чечни в xix-xx веках 2005). люди всё равно бежали: за весну 1944 - конец 1950 года - свыше 20,6 тысячи побегов, почти всех беглецов чекисты задержали(citation: история чечни в xix-xx веках 2005). в 1948 году колонизатор запретил ссыльным жить ближе 100 километров от границы ссср и повторно переселил свыше 6 тысяч человек вглубь казахстана(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0142">T0142</a> Ограничение географии расселения
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор запер ссыльных чеченцев и ингушей в местах вселения: комендатуры запретили отлучки без своего разрешения, действовала круговая порука «десятидворок» - десять соседних дворов отвечали друг за друга<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Люди всё равно бежали: за весну 1944 - конец 1950 года - свыше 20,6 тысячи побегов, почти всех беглецов чекисты задержали<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В 1948 году колонизатор запретил ссыльным жить ближе 100 километров от границы СССР и повторно переселил свыше 6 тысяч человек вглубь Казахстана<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="административно-территориальное деление колонизатор упразднил саму республику чеченцев и ингушей и раскроил их землю между соседями: 7 марта 1944 года президиум верховного совета ссср издал указ «о ликвидации чечено-ингушской асср и об административном устройстве ее территории»(citation: из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024): равнинная чечня вошла в созданный тогда же грозненский округ ставропольского края - через месяц колонизатор преобразовал его в грозненскую область(citation: вайнахи и имперская власть 2011), горная часть поделена между грузинской сср (нынешней грузией) и дагестанской асср (нынешним дагестаном в составе россии), ингушские земли переданы северной осетии(citation: история чечни в xix-xx веках 2005). юридически упразднение закреплено законом 25 июня 1946 года(citation: из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0030">T0030</a> Административно-территориальное деление
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор упразднил саму республику чеченцев и ингушей и раскроил их землю между соседями: 7 марта 1944 года Президиум Верховного Совета СССР издал указ «О ликвидации Чечено-Ингушской АССР и об административном устройстве ее территории»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>: равнинная Чечня вошла в созданный тогда же Грозненский округ Ставропольского края - через месяц колонизатор преобразовал его в Грозненскую область<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>, горная часть поделена между Грузинской ССР (нынешней Грузией) и Дагестанской АССР (нынешним Дагестаном в составе России), ингушские земли переданы Северной Осетии<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Юридически упразднение закреплено законом 25 июня 1946 года<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации."data-reference="Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации 2024"><sup><a href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="миграционное замещение 23 февраля 1944 года колонизатор мобилизовал в грозном студентов и домохозяек, не занятых на фабриках, и с шести утра развёз их по чеченским аулам, из которых через полчаса после их прибытия войска увезли арестованных чеченцев. чеченский историк а. г. авторханов приводит свидетельство одного из мобилизованных - русского студента грозненского нефтяного института: «таким образом мы были по тщательно разработанному плану распределены по аулам, 20 – 30 человек на аул»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). студент пишет о работе, которую им дали в аулах: «задача студентов заключалась в том, чтобы до прибытия переселенцев из курской и орловской областей держать хозяйство в порядке. мы должны были собирать скот, кормить его, принять зерно, инвентарь и т. д.»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). к середине мая 1944 года в грозненскую область прибыло переселенцев числом в 40% от выселенных чеченцев, в том числе 6800 семей из ставропольского края(citation: история чечни в xix-xx веках 2005). в переданные дагестану районы колонизатор переселил 65 тысяч человек из 224 горных дагестанских селений(citation: история чечни в xix-xx веках 2005). гибли и переселенцы: в ауховском районе за 1944-1947 годы от болезней умерло около 2 тысяч - почти треть - переселённых лакцев, одного из горских народов дагестана(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0117/001">T0117.001</a> Миграционное замещение
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>23 февраля 1944 года колонизатор мобилизовал в Грозном студентов и домохозяек, не занятых на фабриках, и с шести утра развёз их по чеченским аулам, из которых через полчаса после их прибытия войска увезли арестованных чеченцев. Чеченский историк А. Г. Авторханов приводит свидетельство одного из мобилизованных - русского студента Грозненского нефтяного института: «Таким образом мы были по тщательно разработанному плану распределены по аулам, 20 – 30 человек на аул»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Студент пишет о работе, которую им дали в аулах: «Задача студентов заключалась в том, чтобы до прибытия переселенцев из Курской и Орловской областей держать хозяйство в порядке. Мы должны были собирать скот, кормить его, принять зерно, инвентарь и т. д.»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. К середине мая 1944 года в Грозненскую область прибыло переселенцев числом в 40% от выселенных чеченцев, в том числе 6800 семей из Ставропольского края<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В переданные Дагестану районы колонизатор переселил 65 тысяч человек из 224 горных дагестанских селений<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Гибли и переселенцы: в Ауховском районе за 1944-1947 годы от болезней умерло около 2 тысяч - почти треть - переселённых лакцев, одного из горских народов Дагестана<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="уничтожение исторической памяти на опустевшей после выселения чеченцев земле колонизатор уничтожал городские знаки их истории: разорил республиканский краеведческий музей и взорвал памятник чеченскому командиру асланбеку шерипову(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0045">T0045</a> Уничтожение исторической памяти
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>На опустевшей после выселения чеченцев земле колонизатор уничтожал городские знаки их истории: разорил республиканский краеведческий музей и взорвал памятник чеченскому командиру Асланбеку Шерипову<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="уничтожение святынь и некрополей колонизатор разорял святыни и могилы выселенных чеченцев. историки я. з. ахмадов и э. х. хасмагомадов пишут: «...по распоряжению партийно-советских органов были разграблены даже мечети и кладбища... могильные чурты (камни) легли в основания фундаментов заводов, животноводческих ферм, ими мостили улицы городов, выкладывали бордюры тротуаров»(citation: история чечни в xix-xx веках 2005). колонизатор уничтожил городскую мечеть грозного(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0045/001">T0045.001</a> Уничтожение святынь и некрополей
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор разорял святыни и могилы выселенных чеченцев. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «...по распоряжению партийно-советских органов были разграблены даже мечети и кладбища... Могильные чурты (камни) легли в основания фундаментов заводов, животноводческих ферм, ими мостили улицы городов, выкладывали бордюры тротуаров»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Колонизатор уничтожил городскую мечеть Грозного<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="сожжение книг и архивов депортировав чеченский народ в феврале 1944 года, колонизатор сжигал его книги и рукописи. историки я. з. ахмадов и э. х. хасмагомадов пишут: «на площадях и улицах грозного запылали костры из книг. сжигалась вся литература и учебники на арабском, чеченском и ингушском языках»(citation: история чечни в xix-xx веках 2005). историк д. а. хожаев пишет о родовых хрониках - тяптарах: «три дня и три ночи горел костер в центре грозного, в пламени которого были уничтожены почти все чеченские тяптары, а также вся рукописная и печатная литература, посвященная истории и культуре чеченцев»(citation: чеченцы в русско-кавказской войне 1998). из аулов, пишет д. а. хожаев, в открытых грузовиках везли «древние рукописи, религиозно-философские трактаты, арабоязычные книги по математике, астрономии, медицине, исторические хадисы, древние предания чеченцев и ингушей на арабском и чеченском (арабской графики) языках, светскую художественную литературу. все эти книги и рукописи были свалены в грозном прямо на снег у туалета в сквере, примыкающем к дворцу пионеров»(citation: так это было: национальные репрессии в ссср 1993)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0045/002">T0045.002</a> Сожжение книг и архивов
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Депортировав чеченский народ в феврале 1944 года, колонизатор сжигал его книги и рукописи. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «На площадях и улицах Грозного запылали костры из книг. Сжигалась вся литература и учебники на арабском, чеченском и ингушском языках»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историк Д. А. Хожаев пишет о родовых хрониках - тяптарах: «Три дня и три ночи горел костер в центре Грозного, в пламени которого были уничтожены почти все чеченские тяптары, а также вся рукописная и печатная литература, посвященная истории и культуре чеченцев»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне."data-reference="Чеченцы в Русско-Кавказской войне 1998"><sup><a href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Из аулов, пишет Д. А. Хожаев, в открытых грузовиках везли «древние рукописи, религиозно-философские трактаты, арабоязычные книги по математике, астрономии, медицине, исторические хадисы, древние предания чеченцев и ингушей на арабском и чеченском (арабской графики) языках, светскую художественную литературу. Все эти книги и рукописи были свалены в Грозном прямо на снег у туалета в сквере, примыкающем к Дворцу пионеров»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" data-reference="Так это было: национальные репрессии в СССР 1993"title="Полное название: Так это было: Национальные репрессии в СССР. 1919-1952 годы. Т. 2 / ред.-сост. С. У. Алиева. М.: Инсан, 1993. Свидетельства о депортации 1944 года (очерк Д. Хожаева «Геноцид», рассказ очевидца Д. Мальсагова, свидетельство Гаева, акт комиссии 22.08.1990) и документы о расхищении имущества спецпереселенцев (докладная руководителя бригады Наркомата госконтроля РСФСР Дроздова, август 1944).. (1993). Так это было: национальные репрессии в СССР."><sup>[12]</sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="стирание и переименование топонимов колонизатор стирал чеченские и ингушские имена с карты. историки я. з. ахмадов и э. х. хасмагомадов пишут: «спешно переименовывались улицы, поселки, аулы и районы»(citation: история чечни в xix-xx веках 2005). историк п. м. полян пишет об ингушских землях, переданных северной осетии: «были репрессированы и все ингушские топонимы, их заменили осетинскими или русскими» - указом президиума верховного совета рсфср от 29 апреля 1944 года пседахский район стал аланским, назрановский - коста-хетагуровским, ачалукский - нартовским, а указом от 30 августа 1944 года колонизатор переименовал «все районы и их центры» грозненской области(citation: вайнахи и имперская власть 2011). колонизатор назвал отошедшие грузии чеченские земли ахалхевским районом(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0043">T0043</a> Стирание и переименование топонимов
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор стирал чеченские и ингушские имена с карты. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «Спешно переименовывались улицы, поселки, аулы и районы»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историк П. М. Полян пишет об ингушских землях, переданных Северной Осетии: «были репрессированы и все ингушские топонимы, их заменили осетинскими или русскими» - указом Президиума Верховного Совета РСФСР от 29 апреля 1944 года Пседахский район стал Аланским, Назрановский - Коста-Хетагуровским, Ачалукский - Нартовским, а указом от 30 августа 1944 года колонизатор переименовал «все районы и их центры» Грозненской области<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть."data-reference="Вайнахи и имперская власть 2011"><sup><a href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Колонизатор назвал отошедшие Грузии чеченские земли Ахалхевским районом<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="мародерство выселяя чеченский народ в феврале 1944 года, колонизатор грабил его опустевшие дома. чеченский историк далхан хожаев пишет: «в дни переселения параллельно людскому к грозному сплошным потоком двигались колонны военных автомобилей с материальными ценностями, награбленными в опустевших домах чеченцев и ингушей. наиболее ценные по мнению охраны вещи - ковры, бурки, кавказские наборные ремни, украшенное золотом и серебром оружие (кинжалы, шашки, кремневые ружья работы чеченских мастеров прошлого века), драгоценности везли в крытых брезентом автофургонах»(citation: так это было: национальные репрессии в ссср 1993). руководитель бригады народного комиссариата (министерства) государственного контроля рсфср дроздов, по поручению правительства рсфср проверявший в августе 1944 года переданные дагестану районы, докладывал о «безудержном хищении и разбазаривании имущества спецпереселенцев», начавшемся «вскоре после выселения»: исполняющий обязанности председателя районного совета юсупов «полностью экипировался за счет имущества спецпереселенцев» - за ним недостача четырёх ручных и четырёх ножных швейных машин, 26 паласов, 30 ковров и 6 велосипедов; прокурор дагестана хашаев получил дом, сад, огород и «безхозную» корову; народный судья сулейманов оформил добычу распиской: «вещи получил, деньги не уплатил, в чем и расписуюсь»(citation: так это было: национальные репрессии в ссср 1993). историки я. з. ахмадов и э. х. хасмагомадов подводят итог: «в безудержных хищениях чужого добра оказалась замешанной вся партийно-хозяйственная и милицейская верхушка грозненской области, дагестана, ставрополья, северной осетии и грузии»; попавшихся снимали и судили, но «в конце концов пришлось отказаться от арестов, так как на свободе не оставалось, кому руководить»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0010"
+             data-date="1943-02-11 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Февраль 1943</div>
+                <div>
+                    <a href="/techniques/T0164">T0164</a> Мародерство
+                </div>
+<div><a href="/campaigns/C1180">C1180</a> Операция «Чечевица»: тотальная депортация чеченского народа и режим спецпоселения (1943-1949)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>Выселяя чеченский народ в феврале 1944 года, колонизатор грабил его опустевшие дома. Чеченский историк Далхан Хожаев пишет: «В дни переселения параллельно людскому к Грозному сплошным потоком двигались колонны военных автомобилей с материальными ценностями, награбленными в опустевших домах чеченцев и ингушей. Наиболее ценные по мнению охраны вещи - ковры, бурки, кавказские наборные ремни, украшенное золотом и серебром оружие (кинжалы, шашки, кремневые ружья работы чеченских мастеров прошлого века), драгоценности везли в крытых брезентом автофургонах»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" data-reference="Так это было: национальные репрессии в СССР 1993"title="Полное название: Так это было: Национальные репрессии в СССР. 1919-1952 годы. Т. 2 / ред.-сост. С. У. Алиева. М.: Инсан, 1993. Свидетельства о депортации 1944 года (очерк Д. Хожаева «Геноцид», рассказ очевидца Д. Мальсагова, свидетельство Гаева, акт комиссии 22.08.1990) и документы о расхищении имущества спецпереселенцев (докладная руководителя бригады Наркомата госконтроля РСФСР Дроздова, август 1944).. (1993). Так это было: национальные репрессии в СССР."><sup>[12]</sup></span>. Руководитель бригады Народного комиссариата (министерства) государственного контроля РСФСР Дроздов, по поручению правительства РСФСР проверявший в августе 1944 года переданные Дагестану районы, докладывал о «безудержном хищении и разбазаривании имущества спецпереселенцев», начавшемся «вскоре после выселения»: исполняющий обязанности председателя районного совета Юсупов «полностью экипировался за счет имущества спецпереселенцев» - за ним недостача четырёх ручных и четырёх ножных швейных машин, 26 паласов, 30 ковров и 6 велосипедов; прокурор Дагестана Хашаев получил дом, сад, огород и «безхозную» корову; народный судья Сулейманов оформил добычу распиской: «Вещи получил, деньги не уплатил, в чем и расписуюсь»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" data-reference="Так это было: национальные репрессии в СССР 1993"title="Полное название: Так это было: Национальные репрессии в СССР. 1919-1952 годы. Т. 2 / ред.-сост. С. У. Алиева. М.: Инсан, 1993. Свидетельства о депортации 1944 года (очерк Д. Хожаева «Геноцид», рассказ очевидца Д. Мальсагова, свидетельство Гаева, акт комиссии 22.08.1990) и документы о расхищении имущества спецпереселенцев (докладная руководителя бригады Наркомата госконтроля РСФСР Дроздова, август 1944).. (1993). Так это было: национальные репрессии в СССР."><sup>[12]</sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов подводят итог: «В безудержных хищениях чужого добра оказалась замешанной вся партийно-хозяйственная и милицейская верхушка Грозненской области, Дагестана, Ставрополья, Северной Осетии и Грузии»; попавшихся снимали и судили, но «в конце концов пришлось отказаться от арестов, так как на свободе не оставалось, кому руководить»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://rosspen.su/vajnahi-i-imperskaya-vlast/" target="_blank">
+                        Полное название: Вайнахи и имперская власть: проблема Чечни и Ингушетии во внутренней политике России и СССР (начало XIX - середина XX в.). Авт. коллектив: В. А. Козлов (рук.), Ф. Бенвенути, М. Е. Козлова, П. М. Полян, В. И. Шеремет; сост. И. А. Зюзина (отв. сост.) и др.; РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина», М., 2011 (История сталинизма. Документы). (2011). Вайнахи и имперская власть.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://cyberleninka.ru/article/n/iz-istorii-nasilstvennogo-vyseleniya-chechentsev-i-ingushey-k-80-letiyu-deportatsii-1944-2024-gg" target="_blank">
+                        Исакиева З. С. (DOI 10.24158/fik.2024.4.16). (2024). Из истории насильственного выселения чеченцев и ингушей: к 80-летию депортации.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://royallib.com/book/hogaev_dalhan/chechentsi_v_russkokavkazskoy_voyne_.html" target="_blank">
+                        Хожаев Далхан Абдулазизович. (1998). Чеченцы в Русско-Кавказской войне.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://base.garant.ru/10200365/" target="_blank">
+                        Полное название: Закон РСФСР от 26 апреля 1991 года № 1107-1 «О реабилитации репрессированных народов». Ст. 2: политика «клеветы и геноцида» против репрессированных народов признана на государственном уровне. (1991). О реабилитации репрессированных народов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://www.europarl.europa.eu/doceo/document/TA-5-2004-0121_EN.html" target="_blank">
+                        Полное название: European Parliament recommendation to the Council on EU-Russia relations, P5_TA(2004)0121, 26 февраля 2004 года. Пункт 15: депортация чеченского народа 23 февраля 1944 года признана актом геноцида в смысле IV Гаагской конвенции 1907 года и Конвенции ООН о геноциде 1948 года. (2004). Рекомендация Европейского парламента по отношениям ЕС-Россия.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="https://zakon.rada.gov.ua/laws/show/2672-20" target="_blank">
+                        Полное название: Постанова Верховної Ради України від 18 жовтня 2022 року № 2672-IX «Про Заяву Верховної Ради України про засудження збройної агресії російської федерації проти Чеченської Республіки Ічкерія, окупації її території та злочину геноциду Чеченського народу». (2022). Заява Верховної Ради України про засудження збройної агресії проти Чеченської Республіки Ічкерія та геноциду Чеченського народу.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="8.0">
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-8" href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank">
+                        Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-9" href="https://docs.historyrussia.org/ru/nodes/222845" target="_blank">
+                        Государственный комитет обороны СССР. (1944). Постановление ГКО СССР № 5073сс.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-10" href="https://docs.historyrussia.org/ru/nodes/222846" target="_blank">
+                        Государственный комитет обороны СССР. (1944). Постановление ГКО СССР № 5074сс.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-11" href="https://novayagazeta.ru/articles/2009/07/20/42065-likvidirovat-vvidu-netransportabelnosti" target="_blank">
+                        Полное название: «Ликвидировать ввиду нетранспортабельности». Методы депортации чеченцев и ингушей // Новая газета. № 77, 20 июля 2009. Публикация рапорта начальника Галанчожского оперсектора Гранского заместителю наркома госбезопасности Кобулову от 28.05.1944 о «самочинных расстрелах» больных и калек (коллекция С. С. Кашурко).. (2009). Ликвидировать ввиду нетранспортабельности.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">Полное название: Так это было: Национальные репрессии в СССР. 1919-1952 годы. Т. 2 / ред.-сост. С. У. Алиева. М.: Инсан, 1993. Свидетельства о депортации 1944 года (очерк Д. Хожаева «Геноцид», рассказ очевидца Д. Мальсагова, свидетельство Гаева, акт комиссии 22.08.1990) и документы о расхищении имущества спецпереселенцев (докладная руководителя бригады Наркомата госконтроля РСФСР Дроздова, август 1944).. (1993). Так это было: национальные репрессии в СССР.</span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-13" href="https://docs.historyrussia.org/ru/nodes/49441-spravka-otdela-spetsposeleniy-nkvd-sssr-ob-okonchanii-rabot-po-pereseleniyu-chechentsev-ingushey-i-balkartsev-s-severnogo-kavkaza-v-kirgizskuyu-ssr-7-aprelya-1944-g" target="_blank">
+                        Полное название: История сталинского Гулага. Конец 1920-х - первая половина 1950-х годов. Т. 1. Массовые репрессии в СССР. М.: РОССПЭН, 2004. Документы № 161-165 (с. 486-494) о депортации чеченцев и ингушей: приказ НКВД № 00193 от 28.02.1944, доклады Берии Сталину, справка НКВД от 07.04.1944 о прибывших в Киргизию (тиф, «умерло 412 человек и 278 госпитализировано»).. (2004). История сталинского Гулага.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

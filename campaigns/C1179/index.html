@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1179/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1179/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1179/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1179/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1179/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Большой террор в Чечено-Ингушетии (1937-1940), кампания C1179 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1179/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Большой террор в Чечено-Ингушетии (1937-1940), кампания C1179 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в августе 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">Большой террор в Чечено-Ингушетии (1937-1940)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Большой террор в Чечено-Ингушетии (1937-1940)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>К 1937 году Чечня прошла разоружение (кампания C1177) и принудительное сведение крестьянских хозяйств в колхозы («коллективизацию») с карательными экспедициями против восставших аулов (кампания C1178). В 1934 году колонизатор слил область с Ингушетией в объединённую Чечено-Ингушскую автономную область, а в 1936-м переименовал её в Чечено-Ингушскую Автономную Советскую Социалистическую Республику (ЧИАССР); сегодня оккупант называет эти земли Чеченской Республикой и Республикой Ингушетия в составе России. По этой республике, как и по другим частям СССР, прошёл Большой террор: так историки называют массовые аресты и расстрелы 1937-1938 годов, для которых Москва назначила каждой республике и области своё число. Репрессии начались с постановления высшего органа оккупационной власти («Политбюро ЦК ВКП(б)») «Об антисоветских элементах» от 2 июля 1937 года за подписью Сталина<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг.."data-reference="Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг. 2014"><sup><a href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 11 июля 1937 года Политбюро отдельным решением утвердило количество людей, которых по республике необходимо расстрелять, - отдельно по крестьянам, которых колонизатор посчитал «зажиточными» («кулаки»), отдельно по «уголовникам»; историк Г. И. Какагасанов приводит это так: «кулаков - 862 чел., уголовников - 555 чел.»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг.."data-reference="Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг. 2014"><sup><a href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 30 июля народный комиссар (министр) внутренних дел СССР Ежов издал оперативный приказ № 00447 «Об операции по репрессированию бывших кулаков, уголовников и других антисоветских элементов»; в нём по ЧИАССР записано: 500 человек - расстрелять («первая категория» приказа), 1500 - заключить в лагеря («вторая категория»)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447."data-reference="Приказ НКВД СССР № 00447 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Уже к середине августа 1937 года арестованных было больше, чем записано в приказе, а 1 марта 1938 года Москва назначила республике новое число - 10 108 человек, которых предписано было арестовать и осудить<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «по разным оценкам в 30-х - начале 40-х гг. жертвами сталинского террора стали не менее 30-40 тысяч чеченцев и ингушей»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Дело «буржуазно-националистического центра» - 137 бывших ответственных работников республики - чекистские следователи, как пишет чеченский историк А. Г. Авторханов, создавали три года; военный трибунал судил арестованных в 1940 году<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1179
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Июль 1937</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Декабрь 1940</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>29 августа 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>29 августа 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1179" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1179/C1179-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1179%2FC1179-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0010">G0010</a></td>
+                <td><a href="/groups/G0010">СССР</a></td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0017"> S0017 </a></td>
+                <td><a href="/software/S0017"> Тайная полиция и Спецслужбы </a></td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="нейтрализация оппозиции чеченский историк а. г. авторханов, работавший в те годы в чечне и писавший об этом в эмиграции, пишет: «в начале октября 1937 года в сопровождении большого чекистского штаба в чечено-ингушетию прибыл кандидат в члены политбюро, председатель партколлегии при кпк при цк и заместитель ежова – шкирятов»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). шкирятов собрал в грозненском доме культуры имени ленина расширенный пленум областного комитета партии - по архивным протоколам пленум шёл 8-10 октября 1937 года, участников было 194(citation: политические репрессии в чечне 1920-1930-х годов 2019) - и позвал туда же ответственных работников города и районов. авторханов продолжает: «шкирятов дал приказ об аресте всех чеченцев и ингушей, являющихся членами чечено-ингушского областного комитета»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). чекисты арестовали их тут же, в зале пленума. авторханов пишет о продолжении: «потом приказ шкирятова был распространен и на всех чечено-ингушских работников, от председателя республиканского правительства до председателя сельсовета»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). в октябре и ноябре 1937 года нквд (предшественник современной фсб) арестовал председателя правительства республики али горчханова, его заместителя абдул-халима саламова, второго секретаря областного комитета хаси вахаева, заведующего отделом культуры и пропаганды областного комитета магомеда мамакаева, народного комиссара (министра) просвещения хамида окуева, председателя верховного суда мусу ханиева, прокурора республики хасана мехтиева и председателя союза советских писателей саида бадуева. авторханов пишет и о нижних этажах: «арестованы были также председатели районных исполнительных комитетов (в чечено-ингушской республике было до 28 районов), почти все председатели сельских советов, колхозов и их партийные организаторы»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). из 23 начальников районных отделов нквд чеченцем был только гойтиев, и нквд арестовал его тоже. нквд арестовывал, а партийные органы снимали с должностей - историки я. з. ахмадов и э. х. хасмагомадов пишут: «всего в октябре 1937 г. было репрессировано 30 из 76 членов и кандидатов в члены чечено-ингушского обкома, включая всех чеченцев и ингушей; 20 из 28 секретарей районных партийных комитетов; 77 членов райкомов и 192 руководящих работников сельских районов республики»(citation: история чечни в xix-xx веках 2005); в 1938 году колонизатор снял почти всех заведующих земельными отделами районов, 19 председателей райисполкомов и 22 секретарей райкомов(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1937</div>
+                <div>
+                    <a href="/techniques/T0021">T0021</a> Нейтрализация оппозиции
+                </div>
+<div><a href="/campaigns/C1179">C1179</a> Большой террор в Чечено-Ингушетии (1937-1940)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Чеченский историк А. Г. Авторханов, работавший в те годы в Чечне и писавший об этом в эмиграции, пишет: «В начале октября 1937 года в сопровождении большого чекистского штаба в Чечено-Ингушетию прибыл кандидат в члены Политбюро, председатель партколлегии при КПК при ЦК и заместитель Ежова – Шкирятов»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Шкирятов собрал в грозненском Доме культуры имени Ленина расширенный пленум областного комитета партии - по архивным протоколам пленум шёл 8-10 октября 1937 года, участников было 194<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span> - и позвал туда же ответственных работников города и районов. Авторханов продолжает: «Шкирятов дал приказ об аресте всех чеченцев и ингушей, являющихся членами Чечено-Ингушского областного комитета»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Чекисты арестовали их тут же, в зале пленума. Авторханов пишет о продолжении: «Потом приказ Шкирятова был распространен и на всех чечено-ингушских работников, от председателя республиканского правительства до председателя сельсовета»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. В октябре и ноябре 1937 года НКВД (предшественник современной ФСБ) арестовал председателя правительства республики Али Горчханова, его заместителя Абдул-Халима Саламова, второго секретаря областного комитета Хаси Вахаева, заведующего отделом культуры и пропаганды областного комитета Магомеда Мамакаева, народного комиссара (министра) просвещения Хамида Окуева, председателя Верховного суда Мусу Ханиева, прокурора республики Хасана Мехтиева и председателя Союза советских писателей Саида Бадуева. Авторханов пишет и о нижних этажах: «Арестованы были также председатели районных исполнительных комитетов (в Чечено-Ингушской республике было до 28 районов), почти все председатели сельских Советов, колхозов и их партийные организаторы»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Из 23 начальников районных отделов НКВД чеченцем был только Гойтиев, и НКВД арестовал его тоже. НКВД арестовывал, а партийные органы снимали с должностей - историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «Всего в октябре 1937 г. было репрессировано 30 из 76 членов и кандидатов в члены Чечено-Ингушского обкома, включая всех чеченцев и ингушей; 20 из 28 секретарей районных партийных комитетов; 77 членов райкомов и 192 руководящих работников сельских районов республики»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; в 1938 году колонизатор снял почти всех заведующих земельными отделами районов, 19 председателей райисполкомов и 22 секретарей райкомов<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="фабрикация преступников с лета 1937 до ноября 1938 года нквд (политическая полиция, предшественница современной фсб) арестовывал в республике людей по категориям и числам, назначенным в оперативном приказе народного комиссара (министра) внутренних дел ссср ежова № 00447 от 30 июля 1937 года. чеченский историк а. г. авторханов, работавший в те годы в чечне и писавший об этом в эмиграции, описал начало операции: «в ночь с 31 июля на 1 августа 1937 года по ранее составленным нквд спискам была проведена по всем аулам и районам так называемая «генеральная операция по изъятию антисоветских элементов»»; чекисты свозили арестованных в грозный - в центральный гараж «грознефти», в клуб имени сталина, в дом предварительного заключения республиканской милиции(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). авторханов называет «до 14 тысяч человек» арестованных за первую волну; в опубликованной сводке о ходе операции на середину августа - около 2,4 тысячи арестованных по всей республике, и разделены они в ней по назначенным составам: 888 «кулаков» (крестьян, которых колонизатор посчитал «зажиточными»), 831 «уголовников», 682 «контрреволюционного элемента»(citation: политические репрессии в чечне 1920-1930-х годов 2019). начальник гудермесского районного отдела нквд гридасов ответил сотруднику, спросившему, как арестовать человека, если материала на него нет: «материал всегда найдется, лишь бы на нем была кавказская шапка!»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). аресты продолжались до ноября 1938 года: осенью 1937 года москва подняла назначенное по республике число до 3200 человек, а 1 марта 1938 года назначила новое - 10 108 человек, из которых тройка осудила 6767(citation: политические репрессии в чечне 1920-1930-х годов 2019). 8 сентября 1937 года газета «правда» напечатала статью специального корреспондента кузовкина под заголовком: «буржуазно-националистический клубок в чечено-ингушетии»(citation: политические репрессии в чечне 1920-1930-х годов 2019). авторханов излагает её содержание: автор статьи «доказывал, что в чечено-ингушетии в партийном руководстве и во главе правительства сидят «буржуазные националисты», которые ведут чечено-ингушский народ по антисоветскому пути», а газета и автор призывали не названного по имени судью: «до конца распутать буржуазно-националистический клубок»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). авторханов пишет о том, что следователи изготовили из арестованных: «в течение трех лет чекистские следователи создавали дело «буржуазно-националистической, контрреволюционно-повстанческой, бухаринско-троцкистской, террористическо-шпионской, антисоветской, вредительской организации» – буквально так гласила многоэтажная формула обвинения для головки арестованных»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). в эту «головку», которую чекисты назвали «буржуазно-националистическим центром чечни и ингушетии», следствие вписало 137 бывших ответственных работников республики. следствие записало в эти 137 и абдурахмана авторханова, находившегося тогда на учёбе в москве: оно вписывало людей в дело независимо от того, где они были и что делали(citation: история чечни в xix-xx веках 2005). каждому из них следствие вменило статью 58 - измену родине, подготовку вооружённого восстания, вредительство, террористические акты, диверсию, антисоветскую агитацию, членство в антисоветской организации и саботаж. по обвинению «центр» действовал в союзе с такими же «центрами» дагестана, осетии, кабардино-балкарии, карачая, адыгеи и черкесии и готовил, как пишет авторханов, «провозглашение «северокавказской федеративной республики» под протекторатом турции и англии», а связь между всеми ими держал «московский межнациональный центр»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1937</div>
+                <div>
+                    <a href="/techniques/T0166">T0166</a> Фабрикация преступников
+                </div>
+<div><a href="/campaigns/C1179">C1179</a> Большой террор в Чечено-Ингушетии (1937-1940)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>С лета 1937 до ноября 1938 года НКВД (политическая полиция, предшественница современной ФСБ) арестовывал в республике людей по категориям и числам, назначенным в оперативном приказе народного комиссара (министра) внутренних дел СССР Ежова № 00447 от 30 июля 1937 года. Чеченский историк А. Г. Авторханов, работавший в те годы в Чечне и писавший об этом в эмиграции, описал начало операции: «В ночь с 31 июля на 1 августа 1937 года по ранее составленным НКВД спискам была проведена по всем аулам и районам так называемая «генеральная операция по изъятию антисоветских элементов»»; чекисты свозили арестованных в Грозный - в центральный гараж «Грознефти», в клуб имени Сталина, в дом предварительного заключения республиканской милиции<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Авторханов называет «до 14 тысяч человек» арестованных за первую волну; в опубликованной сводке о ходе операции на середину августа - около 2,4 тысячи арестованных по всей республике, и разделены они в ней по назначенным составам: 888 «кулаков» (крестьян, которых колонизатор посчитал «зажиточными»), 831 «уголовников», 682 «контрреволюционного элемента»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Начальник Гудермесского районного отдела НКВД Гридасов ответил сотруднику, спросившему, как арестовать человека, если материала на него нет: «Материал всегда найдется, лишь бы на нем была кавказская шапка!»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Аресты продолжались до ноября 1938 года: осенью 1937 года Москва подняла назначенное по республике число до 3200 человек, а 1 марта 1938 года назначила новое - 10 108 человек, из которых тройка осудила 6767<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 8 сентября 1937 года газета «Правда» напечатала статью специального корреспондента Кузовкина под заголовком: «Буржуазно-националистический клубок в Чечено-Ингушетии»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Авторханов излагает её содержание: автор статьи «доказывал, что в Чечено-Ингушетии в партийном руководстве и во главе правительства сидят «буржуазные националисты», которые ведут чечено-ингушский народ по антисоветскому пути», а газета и автор призывали не названного по имени судью: «до конца распутать буржуазно-националистический клубок»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Авторханов пишет о том, что следователи изготовили из арестованных: «В течение трех лет чекистские следователи создавали дело «буржуазно-националистической, контрреволюционно-повстанческой, бухаринско-троцкистской, террористическо-шпионской, антисоветской, вредительской организации» – буквально так гласила многоэтажная формула обвинения для головки арестованных»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. В эту «головку», которую чекисты назвали «буржуазно-националистическим центром Чечни и Ингушетии», следствие вписало 137 бывших ответственных работников республики. Следствие записало в эти 137 и Абдурахмана Авторханова, находившегося тогда на учёбе в Москве: оно вписывало людей в дело независимо от того, где они были и что делали<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Каждому из них следствие вменило статью 58 - измену Родине, подготовку вооружённого восстания, вредительство, террористические акты, диверсию, антисоветскую агитацию, членство в антисоветской организации и саботаж. По обвинению «центр» действовал в союзе с такими же «центрами» Дагестана, Осетии, Кабардино-Балкарии, Карачая, Адыгеи и Черкесии и готовил, как пишет Авторханов, «провозглашение «Северокавказской федеративной республики» под протекторатом Турции и Англии», а связь между всеми ими держал «Московский межнациональный центр»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="ликвидация национальных общественных организаций колонизатор репрессировал почти весь союз писателей чечено-ингушетии. 20 ноября 1937 года бюро областного комитета партии («обком вкп(б)») распустило правление писателей республики - формулировка постановления: «как оказавшееся засоренным враждебными буржуазно-националистическими элементами /арсанов, мамакаев, айсханов и другие/»(citation: политические репрессии в чечне 1920-1930-х годов 2019). один из осуждённых, халид ошаев, писал в 1961 году осетинскому писателю хаджи-мурату мугуеву: «из 12 членов союза писателей чечено-ингушетии было арестовано 9 человек, осуждено 7 человек, расстреляно 4. сам я, член союза писателей с 1934 года, просидел в заключении 13 лет, 2 года сидел в одиночном заключении»(citation: письмо халида ошаева хаджи-мурату мугуеву 1961)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1937</div>
+                <div>
+                    <a href="/techniques/T0128">T0128</a> Ликвидация национальных общественных организаций
+                </div>
+<div><a href="/campaigns/C1179">C1179</a> Большой террор в Чечено-Ингушетии (1937-1940)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор репрессировал почти весь Союз писателей Чечено-Ингушетии. 20 ноября 1937 года бюро областного комитета партии («обком ВКП(б)») распустило правление писателей республики - формулировка постановления: «как оказавшееся засоренным враждебными буржуазно-националистическими элементами /Арсанов, Мамакаев, Айсханов и другие/»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Один из осуждённых, Халид Ошаев, писал в 1961 году осетинскому писателю Хаджи-Мурату Мугуеву: «из 12 членов союза писателей Чечено-Ингушетии было арестовано 9 человек, осуждено 7 человек, расстреляно 4. Сам я, член Союза писателей с 1934 года, просидел в заключении 13 лет, 2 года сидел в одиночном заключении»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Полное название: Письмо чеченского писателя Халида Ошаева писателю Хаджи-Мурату Мугуеву от 15 сентября 1961 года - свидетельство о репрессиях 1937-1938 годов в Чечено-Ингушетии (аресты писателей, пытки, лагерь). Публикация Chechenpress. (1961). Письмо Халида Ошаева Хаджи-Мурату Мугуеву."data-reference="Письмо Халида Ошаева Хаджи-Мурату Мугуеву 1961"><sup><a href="https://thechechenpress.com/history/5350-2013-12-30-16-35-39.html" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="уничтожение локальных систем знаний 13 ноября 1937 года бюро областного комитета партии («обком вкп(б)») утвердило два не подлежащих огласке списка: № 25/97 - об изъятии литературы, изданной в республике, - и № 31/107 - об изъятии книг в обязательном порядке из библиотек и книготорговой сети; под запрет попали произведения 29 авторов, среди которых историк к. г. дендиев называет д. мадаева, х. яндарова, н. музаева, д. мальсагова и х. ошаева(citation: политические репрессии в чечне 1920-1930-х годов 2019). первые чеченские литературные произведения появились в начале 1920-х годов(citation: история чечни в xix-xx веках 2005) - колонизатор изымал и запрещал литературу, которой не было и двадцати лет."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1937</div>
+                <div>
+                    <a href="/techniques/T0044">T0044</a> Уничтожение локальных систем знаний
+                </div>
+<div><a href="/campaigns/C1179">C1179</a> Большой террор в Чечено-Ингушетии (1937-1940)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>13 ноября 1937 года бюро областного комитета партии («обком ВКП(б)») утвердило два не подлежащих огласке списка: № 25/97 - об изъятии литературы, изданной в республике, - и № 31/107 - об изъятии книг в обязательном порядке из библиотек и книготорговой сети; под запрет попали произведения 29 авторов, среди которых историк К. Г. Дендиев называет Д. Мадаева, Х. Яндарова, Н. Музаева, Д. Мальсагова и Х. Ошаева<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Первые чеченские литературные произведения появились в начале 1920-х годов<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span> - колонизатор изымал и запрещал литературу, которой не было и двадцати лет.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="пытки и истязания пытки арестованных были официально разрешены центральным комитетом большевистской партии (цк вкп(б)). историки я. з. ахмадов и э. х. хасмагомадов пишут: «...против всех арестованных по политическим статьям широко применялись пытки, официально разрешенные как меры «физического воздействия»»; в письме сталина, разосланном в партийные органы в январе 1939 года, говорилось: «цк вкп(б) разъясняет, что применение физического воздействия в практике нквд было допущено с 1937 г. с разрешения цк вкп(б)»(citation: история чечни в xix-xx веках 2005). один из исполнителей в республике - порубай, в записке областного комитета партии 1938 года названный заместителем народного комиссара (министра) внутренних дел республики. после смены курса его судили - обвинение: «применял извращенные методы ведения следствия и принуждал арестованных к даче заведомо ложных показаний», а по сфальсифицированным им делам тройка выносила расстрельные приговоры(citation: политические репрессии в чечне 1920-1930-х годов 2019). чеченский историк а. г. авторханов, работавший в те годы в чечне и писавший об этом в эмиграции, пишет, что следствие по делу «буржуазно-националистического центра» шло три года, и описывает его методы: «следствие велось с применением обычных для всего ссср методов физических пыток с некоторой добавкой для специфического «национального характера»»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). авторханов называет тех, кого чекисты замучили насмерть: «во время этого следствия до смерти были замучены: бывший председатель областного исполнительного комитета д.мачукаев, бывший завкультпропом обкома м.гисаев, бывший секретарь ингушского обкома вкп(б) идрис зязиков и другие»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). он пишет и о тех, кого пытки довели до самоубийства: «не выдержав режима пыток, покончили самоубийством: председатель плановой комиссии республики м.исламов, секретарь райкома партии м.бектемиров»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). авторханов пишет о результате: «путем этой неслыханной инквизиции, названной «предварительным следствием», чекисты заставили до 90 процентов членов «буржуазно-националистического центра» подписывать и даже сочинять «искренние признания» в преступлениях, которых они, разумеется, не совершали»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). заместитель председателя правительства республики абдул-халим саламов под пытками подписал «искренние собственноручные показания» о доставке в республику из англии через турцию 50 горных орудий, 1000 пулемётов, 200 тысяч винтовок, 5 миллионов патронов, 10 тысяч снарядов и гранат для вооружённого восстания; там же он написал, что англия обещала поддержать это восстание с воздуха. он назвал и точное место, где это оружие зарыто в горах; авторханов пишет: «чекисты изрыли все указанные ущелья гор. при этом, конечно, ничего не нашли, но избиения продолжались с требованиями указать подлинное место, где зарыто это оружие»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). подсудимые показали трибуналу следы пыток; авторханов пишет: «подсудимые, указывая на шрамы от нанесенных ран, на выбитые зубы, изуродованные части организма (один даже был кастрирован во время допроса), заявили, что свои ложные показания они подписали под влиянием этих физических пыток и в надежде, что таким образом будет ускорен день суда, или смерти»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1937</div>
+                <div>
+                    <a href="/techniques/T0162/004">T0162.004</a> Пытки и истязания
+                </div>
+<div><a href="/campaigns/C1179">C1179</a> Большой террор в Чечено-Ингушетии (1937-1940)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Пытки арестованных были официально разрешены Центральным комитетом большевистской партии (ЦК ВКП(б)). Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «...против всех арестованных по политическим статьям широко применялись пытки, официально разрешенные как меры «физического воздействия»»; в письме Сталина, разосланном в партийные органы в январе 1939 года, говорилось: «ЦК ВКП(б) разъясняет, что применение физического воздействия в практике НКВД было допущено с 1937 г. с разрешения ЦК ВКП(б)»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Один из исполнителей в республике - Порубай, в записке областного комитета партии 1938 года названный заместителем народного комиссара (министра) внутренних дел республики. После смены курса его судили - обвинение: «применял извращенные методы ведения следствия и принуждал арестованных к даче заведомо ложных показаний», а по сфальсифицированным им делам тройка выносила расстрельные приговоры<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Чеченский историк А. Г. Авторханов, работавший в те годы в Чечне и писавший об этом в эмиграции, пишет, что следствие по делу «буржуазно-националистического центра» шло три года, и описывает его методы: «Следствие велось с применением обычных для всего СССР методов физических пыток с некоторой добавкой для специфического «национального характера»»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Авторханов называет тех, кого чекисты замучили насмерть: «Во время этого следствия до смерти были замучены: бывший председатель областного исполнительного комитета Д.Мачукаев, бывший завкультпропом обкома М.Гисаев, бывший секретарь Ингушского обкома ВКП(б) Идрис Зязиков и другие»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Он пишет и о тех, кого пытки довели до самоубийства: «Не выдержав режима пыток, покончили самоубийством: председатель плановой комиссии республики М.Исламов, секретарь райкома партии М.Бектемиров»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Авторханов пишет о результате: «Путем этой неслыханной инквизиции, названной «предварительным следствием», чекисты заставили до 90 процентов членов «буржуазно-националистического центра» подписывать и даже сочинять «искренние признания» в преступлениях, которых они, разумеется, не совершали»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Заместитель председателя правительства республики Абдул-Халим Саламов под пытками подписал «искренние собственноручные показания» о доставке в республику из Англии через Турцию 50 горных орудий, 1000 пулемётов, 200 тысяч винтовок, 5 миллионов патронов, 10 тысяч снарядов и гранат для вооружённого восстания; там же он написал, что Англия обещала поддержать это восстание с воздуха. Он назвал и точное место, где это оружие зарыто в горах; Авторханов пишет: «чекисты изрыли все указанные ущелья гор. При этом, конечно, ничего не нашли, но избиения продолжались с требованиями указать подлинное место, где зарыто это оружие»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Подсудимые показали трибуналу следы пыток; Авторханов пишет: «Подсудимые, указывая на шрамы от нанесенных ран, на выбитые зубы, изуродованные части организма (один даже был кастрирован во время допроса), заявили, что свои ложные показания они подписали под влиянием этих физических пыток и в надежде, что таким образом будет ускорен день суда, или смерти»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="фиктивные суды внесудебный орган - «тройка» - выносил в чечено-ингушетии приговоры по оперативному приказу народного комиссара (министра) внутренних дел ссср ежова № 00447 от 30 июля 1937 года, и состав тройки ежов утвердил текстом приказа: «утверждаю следующий персональный состав республиканских, краевых и областных троек: ... чечено-ингушская асср: председатель - дементьев; члены егоров, вахаев»(citation: приказ нквд ссср № 00447 1937) - народный комиссар (министр) внутренних дел республики дементьев, первый секретарь областного комитета партии егоров и второй секретарь вахаев. историк г. и. какагасанов описывает институт: «внесудебный орган, созданный для проведения карательной политики... в её состав входили: начальник огпу, секретарь парторганизации, прокурор республики, края, области»(citation: новая волна репрессий против крестьянства и других слоев населения в республиках северного кавказа в 1937-1938 гг. 2014). порядок работы тройки и режим тайны прописаны в тексте приказа: тройки рассматривают «материалы на каждого арестованного или группу арестованных», а приговоры первой категории приводятся в исполнение «с обязательным полным сохранением в тайне времени и места приведения приговора в исполнение»(citation: приказ нквд ссср № 00447 1937). о расстреле родным осуждённых нквд (народный комиссариат (министерство) внутренних дел - преемник огпу и предшественник современной фсб) не сообщал; какагасанов пишет: «чаще это происходило под формулировкой «осужден без права переписки», что означало «расстрел»»(citation: новая волна репрессий против крестьянства и других слоев населения в республиках северного кавказа в 1937-1938 гг. 2014). историки я. з. ахмадов и э. х. хасмагомадов описывают и «осуждение по альбомам» - заочное вынесение приговоров по краткой справке, «без ознакомления с самим уголовным делом»(citation: история чечни в xix-xx веках 2005): такой порядок задан приказами по «национальным линиям» террора, начиная с приказа нквд № 00485. следствие по делу «буржуазно-националистического центра» шло, по счёту чеченского историка а. г. авторханова - современника событий, писавшего в эмиграции, - ровно три года(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). судить 137 человек одним процессом чекисты не стали и разбили «центр» на три группы: в первую собрали советско-партийное руководство республики - али горчханова, абдул-халима саламова, хаси вахаева, хамида окуева и тучаева; во вторую - беспартийных, которых следствие называло культурно-идеологическим руководством, - халида яндарова, ахмата мациева, абдурахмана авторханова, д. мальсагова, магомеда мамакаева; в третью - «террористическую группу», куда «чекисты набрали по логике вещей одну молодежь»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). группы предстали перед военным трибуналом северокавказского военного округа; авторханов пишет: «из дошедших живыми до суда около 120 человек виновным себя признал только один бывший мулла ахмат тучаев. все остальные в один голос заявили, что все инкриминируемые им преступления – выдумка и их «искренние признания» являются ложными и вымышленными от начала до конца», «все обвинение и доказательства по делу строились исключительно на этих вынужденных пытками личных показаниях», «других вещественных доказательств или свидетельских показаний для обоснования обвинения не было» - и приговор первой группе трибунал вынес «единственно на основании показаний одного подсудимого – а.тучаева»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). трибунал приговорил абдул-халима саламова, али горчханова и тучаева к расстрелу, остальных - к тюремному заключению от 7 до 25 лет(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). из смертной камеры тучаев подал ходатайство о помиловании на имя председателя президиума верховного совета ссср калинина и написал в нём: он признавался в несовершённых преступлениях, потому что только так нквд обещал освободить его семью и сохранить ему жизнь(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). москва заменила расстрел всем троим и снизила сроки остальным; «террористическую группу» тот же трибунал освободил целиком, дело «культурников-идеологов» «вообще не принял к производству», а тех, кто сидел без «дел», чекисты пропустили через особое совещание - ведомственный «суд» самого нквд, который выносил приговоры без процесса и без подсудимого(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1937</div>
+                <div>
+                    <a href="/techniques/T0160">T0160</a> Фиктивные суды
+                </div>
+<div><a href="/campaigns/C1179">C1179</a> Большой террор в Чечено-Ингушетии (1937-1940)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Внесудебный орган - «тройка» - выносил в Чечено-Ингушетии приговоры по оперативному приказу народного комиссара (министра) внутренних дел СССР Ежова № 00447 от 30 июля 1937 года, и состав тройки Ежов утвердил текстом приказа: «Утверждаю следующий персональный состав республиканских, краевых и областных троек: ... Чечено-Ингушская АССР: председатель - Дементьев; члены Егоров, Вахаев»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447."data-reference="Приказ НКВД СССР № 00447 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> - народный комиссар (министр) внутренних дел республики Дементьев, первый секретарь областного комитета партии Егоров и второй секретарь Вахаев. Историк Г. И. Какагасанов описывает институт: «Внесудебный орган, созданный для проведения карательной политики... В её состав входили: начальник ОГПУ, секретарь парторганизации, прокурор республики, края, области»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг.."data-reference="Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг. 2014"><sup><a href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Порядок работы тройки и режим тайны прописаны в тексте приказа: тройки рассматривают «материалы на каждого арестованного или группу арестованных», а приговоры первой категории приводятся в исполнение «с обязательным полным сохранением в тайне времени и места приведения приговора в исполнение»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447."data-reference="Приказ НКВД СССР № 00447 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. О расстреле родным осуждённых НКВД (Народный комиссариат (министерство) внутренних дел - преемник ОГПУ и предшественник современной ФСБ) не сообщал; Какагасанов пишет: «Чаще это происходило под формулировкой «осужден без права переписки», что означало «расстрел»»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг.."data-reference="Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг. 2014"><sup><a href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов описывают и «осуждение по альбомам» - заочное вынесение приговоров по краткой справке, «без ознакомления с самим уголовным делом»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>: такой порядок задан приказами по «национальным линиям» террора, начиная с приказа НКВД № 00485. Следствие по делу «буржуазно-националистического центра» шло, по счёту чеченского историка А. Г. Авторханова - современника событий, писавшего в эмиграции, - ровно три года<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Судить 137 человек одним процессом чекисты не стали и разбили «центр» на три группы: в первую собрали советско-партийное руководство республики - Али Горчханова, Абдул-Халима Саламова, Хаси Вахаева, Хамида Окуева и Тучаева; во вторую - беспартийных, которых следствие называло культурно-идеологическим руководством, - Халида Яндарова, Ахмата Мациева, Абдурахмана Авторханова, Д. Мальсагова, Магомеда Мамакаева; в третью - «террористическую группу», куда «чекисты набрали по логике вещей одну молодежь»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Группы предстали перед военным трибуналом Северокавказского военного округа; Авторханов пишет: «из дошедших живыми до суда около 120 человек виновным себя признал только один бывший мулла Ахмат Тучаев. Все остальные в один голос заявили, что все инкриминируемые им преступления – выдумка и их «искренние признания» являются ложными и вымышленными от начала до конца», «Все обвинение и доказательства по делу строились исключительно на этих вынужденных пытками личных показаниях», «Других вещественных доказательств или свидетельских показаний для обоснования обвинения не было» - и приговор первой группе трибунал вынес «единственно на основании показаний одного подсудимого – А.Тучаева»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Трибунал приговорил Абдул-Халима Саламова, Али Горчханова и Тучаева к расстрелу, остальных - к тюремному заключению от 7 до 25 лет<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Из смертной камеры Тучаев подал ходатайство о помиловании на имя председателя Президиума Верховного Совета СССР Калинина и написал в нём: он признавался в несовершённых преступлениях, потому что только так НКВД обещал освободить его семью и сохранить ему жизнь<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Москва заменила расстрел всем троим и снизила сроки остальным; «террористическую группу» тот же трибунал освободил целиком, дело «культурников-идеологов» «вообще не принял к производству», а тех, кто сидел без «дел», чекисты пропустили через Особое совещание - ведомственный «суд» самого НКВД, который выносил приговоры без процесса и без подсудимого<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР."data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="террор наутро после ночных арестов 31 июля 1937 года бюро областного комитета партии постановило: провести во всех колхозах собрания «с разъяснением политической обстановки в деревне», а до 5 августа - районные и комсомольские собрания «об итогах операции»(citation: политические репрессии в чечне 1920-1930-х годов 2019). 3 августа 1937 года центральный комитет большевистской партии (цк вкп(б)) телеграммой № 1178 обязал областные комитеты партии: организовать «в каждой области по районам 2-3 открытых показательных процесса» над назначенными «вредителями сельского хозяйства» - «широко осветив ход судебных процессов в местной печати»(citation: политические репрессии в чечне 1920-1930-х годов 2019). газета «грозненский рабочий» освещала открытые суды с августа 1937 года - 20 августа под заголовком: «суд над бывшими руководителями чечингторга»(citation: политические репрессии в чечне 1920-1930-х годов 2019). с 11 сентября 1937 года та же газета печатала обличения волнами, день за днём: 11 сентября: «распутать буржуазно-националистический клубок» - с отчётом о собрании, где «из 587 членов и 132 кандидатов партии, присутствовавших на собрании... выступило 520 человек»; 15 сентября: «враги чечено-ингушского народа: выкорчевать и до конца разгромить банду буржуазных националистов»; 16 сентября: «враги народа хозяйничают в чечингиздате: волчью шайку возглавляет махровый националист арсанукаев»; 17 сентября: «разоблачить и разгромить подлую банду буржуазных националистов! - таков общий голос парторганизаций чечено-ингушетии»; людей газета обличала поимённо - горчханова, саламова, мехтиева, вахаева, окуева, ханиева, мациева, яндарова(citation: политические репрессии в чечне 1920-1930-х годов 2019). 27 сентября газета напечатала анонс: «вредители зерна: к предстоящим процессам» - за три дня до репортажа о самом суде; 12 октября под заголовком: «суд над вредителями с артемовского элеватора» - газета отчиталась: «переполнившие зал рабочие и домохозяйки встретили приговор бурными аплодисментами»; 3 ноября под заголовком: «суд над вредителями 2-го нефтеперегонного завода»(citation: политические репрессии в чечне 1920-1930-х годов 2019). в марте 1938 года участники митинга в октябрьском районе грозного требовали от военной коллегии верховного суда ссср расстрела «взбесившихся фашистских собак»(citation: политические репрессии в чечне 1920-1930-х годов 2019), «грозненский рабочий» 11 марта напечатал открытое письмо пионеров грозненской школы № 3 с требованием «физического уничтожения озверелых врагов народа»(citation: региональная журналистика северного кавказа 1917-1938 2022), а о суде 16-26 марта историк к. г. дендиев пишет: разбирательство по делу «буржуазно-националистической троцкистско-бухаринской контрреволюционной группы абастова, кебиева, зармаева и др.» «слушалось в открытом заседании, с участием государственного обвинителя и органа защиты», а обвинительное заключение напечатал «грозненский рабочий»(citation: политические репрессии в чечне 1920-1930-х годов 2019)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1937</div>
+                <div>
+                    <a href="/techniques/T0022">T0022</a> Террор
+                </div>
+<div><a href="/campaigns/C1179">C1179</a> Большой террор в Чечено-Ингушетии (1937-1940)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Наутро после ночных арестов 31 июля 1937 года бюро областного комитета партии постановило: провести во всех колхозах собрания «с разъяснением политической обстановки в деревне», а до 5 августа - районные и комсомольские собрания «об итогах операции»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 3 августа 1937 года Центральный комитет большевистской партии (ЦК ВКП(б)) телеграммой № 1178 обязал областные комитеты партии: организовать «в каждой области по районам 2-3 открытых показательных процесса» над назначенными «вредителями сельского хозяйства» - «широко осветив ход судебных процессов в местной печати»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Газета «Грозненский рабочий» освещала открытые суды с августа 1937 года - 20 августа под заголовком: «Суд над бывшими руководителями Чечингторга»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. С 11 сентября 1937 года та же газета печатала обличения волнами, день за днём: 11 сентября: «Распутать буржуазно-националистический клубок» - с отчётом о собрании, где «из 587 членов и 132 кандидатов партии, присутствовавших на собрании... выступило 520 человек»; 15 сентября: «Враги чечено-ингушского народа: выкорчевать и до конца разгромить банду буржуазных националистов»; 16 сентября: «Враги народа хозяйничают в Чечингиздате: волчью шайку возглавляет махровый националист Арсанукаев»; 17 сентября: «Разоблачить и разгромить подлую банду буржуазных националистов! - таков общий голос парторганизаций Чечено-Ингушетии»; людей газета обличала поимённо - Горчханова, Саламова, Мехтиева, Вахаева, Окуева, Ханиева, Мациева, Яндарова<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 27 сентября газета напечатала анонс: «Вредители зерна: к предстоящим процессам» - за три дня до репортажа о самом суде; 12 октября под заголовком: «Суд над вредителями с Артемовского элеватора» - газета отчиталась: «переполнившие зал рабочие и домохозяйки встретили приговор бурными аплодисментами»; 3 ноября под заголовком: «Суд над вредителями 2-го нефтеперегонного завода»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В марте 1938 года участники митинга в Октябрьском районе Грозного требовали от Военной коллегии Верховного суда СССР расстрела «взбесившихся фашистских собак»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, «Грозненский рабочий» 11 марта напечатал открытое письмо пионеров грозненской школы № 3 с требованием «физического уничтожения озверелых врагов народа»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Полное название: Региональная журналистика Северного Кавказа в контексте формирования системы советских СМИ (1917-1938 гг.). Турпалов Лема Абдоллаевич; диссертация на соискание степени доктора филологических наук; КНИИ им. Х. И. Ибрагимова РАН, Грозный, 2022; защита - диссовет ВГУ (Воронеж). (2022). Региональная журналистика Северного Кавказа 1917-1938."data-reference="Региональная журналистика Северного Кавказа 1917-1938 2022"><sup><a href="http://www.science.vsu.ru/dissertations/11290/" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>, а о суде 16-26 марта историк К. Г. Дендиев пишет: разбирательство по делу «Буржуазно-националистической троцкистско-бухаринской контрреволюционной группы Абастова, Кебиева, Зармаева и др.» «слушалось в открытом заседании, с участием государственного обвинителя и органа защиты», а обвинительное заключение напечатал «Грозненский рабочий»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="убийство пленных и задержанных 11 июля 1937 года оккупационные власти утвердили число «подлежащих расстрелу» людей в чечне: 862 «кулака» (крестьяне, которых колонизатор посчитал «зажиточными») и 555 «уголовников» - итого 1417 человек(citation: политические репрессии в чечне 1920-1930-х годов 2019); в оперативном приказе народного комиссара (министра) внутренних дел ссср ежова № 00447 от 30 июля по чиасср записано: 500 человек - расстрелять («первая категория» приказа)(citation: приказ нквд ссср № 00447 1937). историки я. з. ахмадов и э. х. хасмагомадов пишут о расстрелянных писателях: «из 12 членов чечено-ингушского союза писателей были арестованы 9, осуждены 7, в том числе четверо - с. бадуев, а. дудаев, ш. айсханов, с. озиев - приговорены к расстрелу»(citation: история чечни в xix-xx веках 2005). нквд (предшественник современной фсб) арестовал одного из этих четверых - писателя абди дудаева - 24 ноября 1937 года «без санкции прокурора», со стандартным обвинением в «антисоветской агитации», а 2 декабря по решению «тройки при нквд чиасср» чекисты его расстреляли - восемь дней от ареста до убийства; в заключении по делу от 13 мая 1958 года сказано: «следствие по делу дудаева проводилось с нарушением закона, очные ставки со свидетелями не проводились»(citation: политические репрессии в чечне 1920-1930-х годов 2019). москва лично утверждала списки задержанных на расстрел: сталин, молотов и жданов подписали список от 7 декабря 1937 года, и 28 декабря военная коллегия верховного суда ссср вынесла по нему 32 смертных приговора(citation: политические репрессии в чечне 1920-1930-х годов 2019); 12 сентября 1938 года политбюро утвердило новый список подлежащих её суду: из 61 подследственного 50 шли по делу «буржуазно-националистического центра», и 55 из них значились «в расстрельной статье»(citation: политические репрессии в чечне 1920-1930-х годов 2019). 29 июня 1938 года военная коллегия осудила на разные сроки большую группу технической интеллигенции республики, а 30 человек приговорила к расстрелу - чекисты расстреляли их в тот же день(citation: политические репрессии в чечне 1920-1930-х годов 2019). в обвинении по делу порубая - заместителя народного комиссара (министра) внутренних дел республики, которого судили после смены курса, - сказано: «сфальсифицировал следственные дела на хамзатханова, алиева, хасиева, кадилова, ухуева, мутушева, все эти лица решением тройки осуждены к вмн» - «вмн» означало расстрел(citation: политические репрессии в чечне 1920-1930-х годов 2019). чекисты сбрасывали тела убитых в две ямы-траншеи на центральном кладбище грозного - историк т. у. эльбуздукаева пишет: туда «в октябре, ноябре и декабре 1937 г.» сбрасывали «тела расстрелянных»(citation: политические репрессии в чечне 1920-1930-х годов 2019). а. божедомов вскрыл захоронение летом 1990 года - раскопками с участием членов чечено-ингушского «мемориала» и работников краеведческого музея(citation: политические репрессии в чечне 1920-1930-х годов 2019)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1937-07-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">Июль 1937</div>
+                <div>
+                    <a href="/techniques/T0162/003">T0162.003</a> Убийство пленных и задержанных
+                </div>
+<div><a href="/campaigns/C1179">C1179</a> Большой террор в Чечено-Ингушетии (1937-1940)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>11 июля 1937 года оккупационные власти утвердили число «подлежащих расстрелу» людей в Чечне: 862 «кулака» (крестьяне, которых колонизатор посчитал «зажиточными») и 555 «уголовников» - итого 1417 человек<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; в оперативном приказе народного комиссара (министра) внутренних дел СССР Ежова № 00447 от 30 июля по ЧИАССР записано: 500 человек - расстрелять («первая категория» приказа)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447."data-reference="Приказ НКВД СССР № 00447 1937"><sup><a href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут о расстрелянных писателях: «из 12 членов Чечено-Ингушского Союза писателей были арестованы 9, осуждены 7, в том числе четверо - С. Бадуев, А. Дудаев, Ш. Айсханов, С. Озиев - приговорены к расстрелу»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках."data-reference="История Чечни в XIX-XX веках 2005"><sup><a href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. НКВД (предшественник современной ФСБ) арестовал одного из этих четверых - писателя Абди Дудаева - 24 ноября 1937 года «без санкции прокурора», со стандартным обвинением в «антисоветской агитации», а 2 декабря по решению «тройки при НКВД ЧИАССР» чекисты его расстреляли - восемь дней от ареста до убийства; в заключении по делу от 13 мая 1958 года сказано: «Следствие по делу Дудаева проводилось с нарушением закона, очные ставки со свидетелями не проводились»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Москва лично утверждала списки задержанных на расстрел: Сталин, Молотов и Жданов подписали список от 7 декабря 1937 года, и 28 декабря Военная коллегия Верховного суда СССР вынесла по нему 32 смертных приговора<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; 12 сентября 1938 года Политбюро утвердило новый список подлежащих её суду: из 61 подследственного 50 шли по делу «буржуазно-националистического центра», и 55 из них значились «в расстрельной статье»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 29 июня 1938 года Военная коллегия осудила на разные сроки большую группу технической интеллигенции республики, а 30 человек приговорила к расстрелу - чекисты расстреляли их в тот же день<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. В обвинении по делу Порубая - заместителя народного комиссара (министра) внутренних дел республики, которого судили после смены курса, - сказано: «Сфальсифицировал следственные дела на Хамзатханова, Алиева, Хасиева, Кадилова, Ухуева, Мутушева, все эти лица решением тройки осуждены к ВМН» - «ВМН» означало расстрел<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Чекисты сбрасывали тела убитых в две ямы-траншеи на центральном кладбище Грозного - историк Т. У. Эльбуздукаева пишет: туда «в октябре, ноябре и декабре 1937 г.» сбрасывали «тела расстрелянных»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. А. Божедомов вскрыл захоронение летом 1990 года - раскопками с участием членов Чечено-Ингушского «Мемориала» и работников краеведческого музея<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов."data-reference="Политические репрессии в Чечне 1920-1930-х годов 2019"><sup><a href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-1" href="https://cyberleninka.ru/article/n/novaya-volna-repressiy-protiv-krestyanstva-i-drugih-sloev-naseleniya-v-respublikah-severnogo-kavkaza-v-1937-1938-gg" target="_blank">
+                        Какагасанов Г. И. (Вестник ИИАЭ, 2014, №2). (2014). Новая волна репрессий против крестьянства и других слоев населения в республиках Северного Кавказа в 1937-1938 гг..
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-2" href="https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7_%D0%9D%D0%9A%D0%92%D0%94_%D0%BE%D1%82_30.07.1937_%E2%84%96_00447" target="_blank">
+                        Полное название: Оперативный приказ НКВД СССР от 30 июля 1937 года № 00447 «Об операции по репрессированию бывших кулаков, уголовников и др. антисоветских элементов». Подписан народным комиссаром внутренних дел Н. Ежовым; сов. секретно. (1937). Приказ НКВД СССР № 00447.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-3" href="https://ucomplex.org/files/dissertation/74/dissertation_file/898e4962f0b685d3228f88aa4787fb8c.pdf" target="_blank">
+                        Полное название: Политические репрессии в Чечне 1920-1930-х гг.: предпосылки и динамика развития. Дендиев Казбек Гиланиевич (дисс. канд. ист. наук; Грозный, ЧГУ им. А. А. Кадырова). (2019). Политические репрессии в Чечне 1920-1930-х годов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-4" href="https://na5ballov.pro/lib/kray/7650-ahmadov-yaz-hasmagomadov-ex-istoriya-chechni-v-xix-xx-vekah.html" target="_blank">
+                        Я. З. Ахмадов, Э. Х. Хасмагомадов. (2005). История Чечни в XIX-XX веках.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="5.0">
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-5" href="https://royallib.com/book/uralov_avtorhanov_aleksandr/ubiystvo_checheno_ingushskogo_naroda_narodoubiystvo_v_sssr.html" target="_blank">
+                        Авторханов А. Г. (под псевдонимом А. Уралов; Мюнхен). (1952). Убийство чечено-ингушского народа. Народоубийство в СССР.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-6" href="https://thechechenpress.com/history/5350-2013-12-30-16-35-39.html" target="_blank">
+                        Полное название: Письмо чеченского писателя Халида Ошаева писателю Хаджи-Мурату Мугуеву от 15 сентября 1961 года - свидетельство о репрессиях 1937-1938 годов в Чечено-Ингушетии (аресты писателей, пытки, лагерь). Публикация Chechenpress. (1961). Письмо Халида Ошаева Хаджи-Мурату Мугуеву.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow" class="external text" name="scite-7" href="http://www.science.vsu.ru/dissertations/11290/" target="_blank">
+                        Полное название: Региональная журналистика Северного Кавказа в контексте формирования системы советских СМИ (1917-1938 гг.). Турпалов Лема Абдоллаевич; диссертация на соискание степени доктора филологических наук; КНИИ им. Х. И. Ибрагимова РАН, Грозный, 2022; защита - диссовет ВГУ (Воронеж). (2022). Региональная журналистика Северного Кавказа 1917-1938.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>
