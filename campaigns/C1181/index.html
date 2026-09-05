@@ -1,0 +1,830 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1181/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1181/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1181/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1181/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1181/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="referrer" content="no-referrer">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="«Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965), кампания C1181 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1181/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>«Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965), кампания C1181 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в сентябре 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">«Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>«Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>После депортации чеченцев в 1944 году (кампания C1180) оккупанты заняли их дома, аулы и поля. В 1952 году на землях выселенных народов Северного Кавказа их было больше миллиона<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Авторханов А. Г. Убийство чечено-ингушского народа. Народоубийство в СССР. 1952. – под псевдонимом А. Уралов; Мюнхен." data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/369" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Президиум Верховного Совета СССР ещё указом от 26 ноября 1948 года объявил ссылку вечной: чеченцы и ингуши «сосланы навечно», за побег - до 20 лет каторги<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Сама ссылка была устроена как тюрьма без стен. Тайная полиция признавала: «В 1949 г. был проведен ряд мероприятий по розыску и задержанию беглецов, а также установлению жесткого режима в местах поселений»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. По постановлению правительства СССР от 8 января 1945 года «всякая самовольная отлучка выселенца за пределы района расселения, обслуживаемого спецкомендатурой, рассматривается как побег и влечет за собой ответственность в уголовном порядке», а район этот порой ограничивался несколькими улицами в городе или одним сельсоветом<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Тем, кого ведомство записывало в «злостно уклоняющиеся от работы в колхозах», полагалось 8 лет лишения свободы<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, а десятерых религиозных наставников и их учеников суд оккупантов в июле 1952 года отправил в лагеря на сроки до 25 лет с конфискацией имущества<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. «Вечный» срок ссылки держался на указах Сталина. Ужесточение 1948-1949 годов шло его курсом конца 1940-х на подавление любой самостоятельности, и тайной полиции, которая требовала сажать беглецов без разбора, он в награду отдал и надзор за спецпоселенцами, и распоряжение их трудом<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. После его смерти срок ссылки чеченцев стал предметом ведомственного торга: летом 1953 года отдел центрального комитета большевистской партии предлагал снять с учёта спецпоселения 560 710 человек, среди них чеченцев и ингушей, а полицейское ведомство требовало «указанные категории лиц временно оставить на спецпоселении»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; министр внутренних дел СССР Круглов в сентябре просил председателя Совета Министров СССР Маленкова оставить чеченцев и ингушей на поселении ещё на пять лет, считая освобождение из-под надзора преждевременным. Решения по его записке так и не приняли<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Империя не вернула отнятые земли даже когда отпустила людей из ссылки: Президиум Верховного Совета СССР указом от 16 июля 1956 года снял с чеченского народа режим спецпоселения (принудительного проживания в Казахстане и Киргизии под надзором комендатур) - и той же статьёй закрепил: снятие ограничений «не влечет за собой возвращение им имущества, конфискованного при выселении, и что они не имеют права возвращаться в места, откуда были выселены»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Президиум Верховного Совета СССР. О снятии ограничений по спецпоселению с чеченцев, ингушей, карачаевцев и членов их семей. 1956. – указ от 16.07.1956." data-reference="О снятии ограничений по спецпоселению с чеченцев, ингушей, карачаевцев и членов их семей 1956"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/262" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Ведомства объясняли запрет тем, что земля уже роздана. Начальник полиции оккупанта Барсуков докладывал 26 июня 1956 года, что разместить чеченцев и ингушей в их районах «не представляется возможным», потому что «эти районы заселены переселенцами из центральных областей РСФСР»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, а министр внутренних дел СССР Дудоров докладывал руководству большевистской партии («ЦК КПСС»): «возможность восстановления автономии для чеченцев и ингушей в пределах прежней территории является делом трудным и вряд ли осуществимым... возвращение чеченцев и ингушей в прежние места жительства неизбежно вызовет целый ряд нежелательных последствий»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Народ вернулся сам, не дожидаясь разрешений: уже 15 июня 1957 года бюро областного комитета большевистской партии («Чечено-Ингушский обком КПСС») признавало, что «в республику уже прибыло более 122 тысяч чеченцев и ингушей вместо 70 тысяч, предусмотренных планом на 1957 год»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, а отдел переселений колониальной администрации («Оргкомитета по ЧИАССР») считал в справке на 20 января 1958 года: по плану должны переселиться 23 503 семьи - прибыло 52 037 семей, 201 746 человек<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с." data-reference="По решению Правительства Союза ССР 2003"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/620" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. «Почти треть взрослых чеченцев, ингушей и карачаевцев (до 80 тысяч человек) отказались дать» подписку об отказе от имущества - пишут историки Я. З. Ахмадов и Э. Х. Хасмагомадов - «и вернулись домой, не взирая на запреты»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Люди приехали на родину, занятую переселенцами и урезанную перекройкой границ: свои дома приходилось выкупать у новых владельцев<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, горные аулы остались закрытыми, а ингушские земли Тарской долины, на которых складывался ингушский народ, империя чеченцам и ингушам не вернула: в 1944 году она отдала их Северной Осетии, а восстанавливая республику в 1957 году, оставила за ней 1600 квадратных километров чернозёма и добавила взамен 5000 квадратных километров песков Бурунной степи за Тереком; протесты чечено-ингушской делегации руководство большевистской партии отклонило<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Историки считают итог в долях: «к 1961 г. чеченцы и ингуши составили 41% населения республики, в то время как в 1939 г. их доля достигала 58,4%»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1181
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Март 1949</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Декабрь 1965</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>5 сентября 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>5 сентября 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1181" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1181/C1181-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1181%2FC1181-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0010">G0010</a></td>
+                <td><a href="/groups/G0010">СССР</a></td>
+                <td>12</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0008"> S0008 </a></td>
+                <td><a href="/software/S0008"> Правительство </a></td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td><a href="/software/S0017"> S0017 </a></td>
+                <td><a href="/software/S0017"> Тайная полиция и Спецслужбы </a></td>
+                <td>4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="стравливание соседних народов чеченцы прожили ссылку под постоянными нападениями и провокациями. империя сама сделала их мишенью - клеймом «предателей», попустительством начальства и тайной полицией, которая после каждого погрома назначала виновными самих чеченцев. 16 июня 1950 года в городе лениногорске в казахстане на чеченцев напали рабочие, завербованные на свинцовые рудники, а заводилами у них были уголовники, выпущенные из казахстанских лагерей. погром готовили втайне и чеченскую общину застали врасплох: больше всего людей убили в первый день, когда чеченские мужчины поодиночке и небольшими группами разъехались поздравлять родных с окончанием рамадана (для мусульман это большой религиозный праздник). местное начальство, полиция оккупанта и спецкомендатура не остановили нападавших; чеченцы организовали оборону сами и спустя два дня уличных боёв, к 18 июня, вытеснили погромщиков на окраину города, а советские войска вошли только 19 июня. историки я. з. ахмадов и э. х. хасмагомадов пишут: «в общей сложности было зверски убито 36 чеченцев, включая женщин и детей»(citation: история чечни в xix-xx веках 2005). управление спецпоселениями мгб (предшественницы современной фсб) казахской сср признавало тем же летом «массовые драки между выселенцами-чеченцами и местными жителями (на ст. кушмурун кустанайской области, в усть-каменогорске и лениногорске восточно-казахстанской области), сопровождавшиеся убийствами и тяжелыми ранениями» - и вину за них возлагало на самих чеченцев(citation: вайнахи и имперская власть 2011); про усть-каменогорск 9-е управление мгб ссср докладывало в 1952 году: «возникла массовая драка, в которой участвовало до 150 чеченцев и около 300 рабочих. этот массовый беспорядок был ликвидирован только после вмешательства части мгб»(citation: вайнахи и имперская власть 2011). отдел спецпоселений полицейского ведомства в справке, составленной в июле 1950 года, датировал погром в лениногорске 17 июня и считал убитых по-своему: «в драке были убиты 34 спецпереселенца-чеченца», а нападение в усть-каменогорске относил к 27 июня(citation: по решению правительства союза сср 2003). в декабре 1954 года в селе елизаветинка акмолинской области учащиеся школы механизации называли чеченцев «предателями и изменниками родины» - с этими обвинениями русские пошли на массовое столкновение с чеченцами(citation: вайнахи и имперская власть 2011). 15 мая 1955 года в экибастузе рабочие, мобилизованные через военкомат на шахты, избили на улице двух чеченцев; полицейские укрыли избитых в отделении, но рабочие пришли туда и потребовали их выдачи. министр внутренних дел ссср круглов доносил руководству большевистской партии и правительству: «получив отказ, бывшие солдаты оттеснили сотрудников отделения милиции, насильно вытащили чеченцев на улицу и избили их. после этого рабочими был избит ряд других проживающих в городе чеченцев. в результате драки убито 3 и получили ранения 4 чеченца»(citation: вайнахи и имперская власть 2011)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0152">
+                    <span class="proc-tech-id">T0152</span>
+                    <span class="proc-tech-name">Стравливание соседних народов</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Чеченцы прожили ссылку под постоянными нападениями и провокациями. Империя сама сделала их мишенью - клеймом «предателей», попустительством начальства и тайной полицией, которая после каждого погрома назначала виновными самих чеченцев. 16 июня 1950 года в городе Лениногорске в Казахстане на чеченцев напали рабочие, завербованные на свинцовые рудники, а заводилами у них были уголовники, выпущенные из казахстанских лагерей. Погром готовили втайне и чеченскую общину застали врасплох: больше всего людей убили в первый день, когда чеченские мужчины поодиночке и небольшими группами разъехались поздравлять родных с окончанием рамадана (для мусульман это большой религиозный праздник). Местное начальство, полиция оккупанта и спецкомендатура не остановили нападавших; чеченцы организовали оборону сами и спустя два дня уличных боёв, к 18 июня, вытеснили погромщиков на окраину города, а советские войска вошли только 19 июня. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «В общей сложности было зверски убито 36 чеченцев, включая женщин и детей»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Управление спецпоселениями МГБ (предшественницы современной ФСБ) Казахской ССР признавало тем же летом «массовые драки между выселенцами-чеченцами и местными жителями (на ст. Кушмурун Кустанайской области, в Усть-Каменогорске и Лениногорске Восточно-Казахстанской области), сопровождавшиеся убийствами и тяжелыми ранениями» - и вину за них возлагало на самих чеченцев<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; про Усть-Каменогорск 9-е управление МГБ СССР докладывало в 1952 году: «возникла массовая драка, в которой участвовало до 150 чеченцев и около 300 рабочих. Этот массовый беспорядок был ликвидирован только после вмешательства части МГБ»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Отдел спецпоселений полицейского ведомства в справке, составленной в июле 1950 года, датировал погром в Лениногорске 17 июня и считал убитых по-своему: «В драке были убиты 34 спецпереселенца-чеченца», а нападение в Усть-Каменогорске относил к 27 июня<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с." data-reference="По решению Правительства Союза ССР 2003"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/620" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. В декабре 1954 года в селе Елизаветинка Акмолинской области учащиеся школы механизации называли чеченцев «предателями и изменниками родины» - с этими обвинениями русские пошли на массовое столкновение с чеченцами<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 15 мая 1955 года в Экибастузе рабочие, мобилизованные через военкомат на шахты, избили на улице двух чеченцев; полицейские укрыли избитых в отделении, но рабочие пришли туда и потребовали их выдачи. Министр внутренних дел СССР Круглов доносил руководству большевистской партии и правительству: «Получив отказ, бывшие солдаты оттеснили сотрудников отделения милиции, насильно вытащили чеченцев на улицу и избили их. После этого рабочими был избит ряд других проживающих в городе чеченцев. В результате драки убито 3 и получили ранения 4 чеченца»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="правовая сегрегация населения президиум верховного совета ссср указом от 11 марта 1952 года велел даже отсидевших срок не выпускать на волю: «отбывших наказание за разные преступления в исправительно-трудовых лагерях, колониях и тюрьмах» чеченцев, ингушей и других выселенных народов - «по истечении срока наказания направлять этапом на спецпоселение, под надзор органов министерства государственной безопасности ссср, по месту жительства их семей»(citation: по решению правительства союза сср 2003). общегосударственная амнистия 27 марта 1953 года была уголовной и ссыльных не касалась вовсе. историки я. з. ахмадов и э. х. хасмагомадов пишут: «вопрос о восстановлении чечено-ингушской асср не ставился даже в порядке обсуждения. на все многочисленные письма и обращения горцев в москву следовал жестокий недвусмысленный ответ, что чеченцы и ингуши должны оставаться в местах своего проживания навечно»(citation: история чечни в xix-xx веках 2005). империя отрезала ссыльных и от образования. дети формально подлежали всеобщему обучению, но в 1945 году в отдельных областях казахстана до 70% детей спецпереселенцев не ходили в школу: семьям, ограбленным при выселении, нечем было одеть детей - в документах это записано «по причине отсутствия теплой одежды и обуви»(citation: история чечни в xix-xx веках 2005), а в 1946 году из 89 тысяч детей спецпереселенцев с северного кавказа, обязанных учиться по закону о всеобщем образовании, реально учились только 22 тысячи(citation: история чечни в xix-xx веках 2005). к 1949 году не менее 60% северокавказских спецпереселенцев были полностью неграмотными, полное среднее образование было у 2,1%, высшее - у 0,2%(citation: история чечни в xix-xx веках 2005). империя перекрыла и дорогу в вуз: выпускнику школы требовалось специальное разрешение республиканских органов внутренних дел, учиться разрешали только в казахстане, киргизии и узбекистане, а после диплома чеченцы и ингуши всё равно не могли покинуть места выселения - и, по данным органов внутренних дел, значительная часть спецпереселенцев с высшим образованием, юристы, литераторы и педагоги, не могла устроиться по специальности(citation: история чечни в xix-xx веках 2005). образованных становилось меньше даже в абсолютных числах: в 1946 году в казахстане насчитывалось 1248 человек с высшим и средним специальным образованием среди выселенных с северного кавказа, к началу 1948 года их осталось 1127(citation: история чечни в xix-xx веках 2005). президиум верховного совета ссср указом от 16 июля 1956 года снял учёт спецпоселения - и той же второй статьёй лишил людей имущества и права на родину(citation: о снятии ограничений по спецпоселению с чеченцев, ингушей, карачаевцев и членов их семей 1956). сегрегацию не оправдывали даже собственные счёты империи. в феврале 1953 года инспекторы центрального комитета большевистской партии ганенко и алаторцев объехали спецпоселения в казахстане и узбекистане, и комиссия, разбиравшая их записку, пересказала её так: «многие местные партийные и советские органы допускают пренебрежительное отношение к работе среди спецпоселенцев, проходят мимо многочисленных фактов произвола в отношении этой части населения, ущемления законных прав спецпоселенцев, огульного политического недоверия к ним, что искусственно порождает настроения недовольства среди спецпоселенцев»(citation: вайнахи и имперская власть 2011). министерство внутренних дел в 1954 году назвало не соответствующими действительности жалобы на чеченцев и ингушей, будто бы терроризирующих местное население: на учёте спецпоселения в 1954 году состояло 506 043 человека, выселенных с северного кавказа, а осуждено и сидело в заключении из них только 5418 - около одного процента(citation: вайнахи и имперская власть 2011). то же министерство насчитало к 10 ноября 1955 года у высланных «за предательство» чеченцев 2280 участников войны, 4455 награждённых орденами и медалями и 2553 семьи погибших на фронте, у ингушей - ещё 1085, 1869 и 871(citation: по решению правительства союза сср 2003). империя амнистировала даже реальных пособников немецких оккупантов: указ от 17 сентября 1955 года так и назывался - «об амнистии советских граждан, сотрудничавших с оккупантами в период великой отечественной войны 1941-1945 гг.». но историки я. з. ахмадов и э. х. хасмагомадов пишут, что горских народов, репрессированных «якобы за «сотрудничество с немцами»», «данный указ не коснулся»(citation: история чечни в xix-xx веках 2005). в августе 1956 года инспекция, объехавшая казахстан и киргизию, докладывала президиуму верховного совета задним числом: «с 1948 по 1953 г. условия жизни спецпоселенцев были отягощены различного рода ограничениями, которые не вызывались серьезными причинами с точки зрения поведения самих спецпоселенцев. многих чеченцев сняли с работы, исключили из партии, арестовывали и затем осуждали на длительные сроки тюремного заключения»(citation: вайнахи и имперская власть 2011). президиум верховного совета ссср указом от 9 января 1957 года признал «необходимым восстановить национальную автономию чеченского и ингушского народов», рекомендовал само восстановление президиуму верховного совета рсфср и отменил лишь запрет возвращаться: «статью 2 указа от 16 июля 1956 года в части запрещения чеченцам и ингушам возвращаться на прежнее местожительство»(citation: о восстановлении чечено-ингушской асср в составе рсфср 1957). указ президиума верховного совета рсфср в тот же день восстановил республику(citation: вайнахи и имперская власть 2011), но возвращать конфискованное имущество ни один из этих актов не велел."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0032">
+                    <span class="proc-tech-id">T0032</span>
+                    <span class="proc-tech-name">Правовая сегрегация населения</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Президиум Верховного Совета СССР указом от 11 марта 1952 года велел даже отсидевших срок не выпускать на волю: «Отбывших наказание за разные преступления в исправительно-трудовых лагерях, колониях и тюрьмах» чеченцев, ингушей и других выселенных народов - «по истечении срока наказания направлять этапом на спецпоселение, под надзор органов Министерства государственной безопасности СССР, по месту жительства их семей»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с." data-reference="По решению Правительства Союза ССР 2003"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/620" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Общегосударственная амнистия 27 марта 1953 года была уголовной и ссыльных не касалась вовсе. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «вопрос о восстановлении Чечено-Ингушской АССР не ставился даже в порядке обсуждения. На все многочисленные письма и обращения горцев в Москву следовал жестокий недвусмысленный ответ, что чеченцы и ингуши должны оставаться в местах своего проживания навечно»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Империя отрезала ссыльных и от образования. Дети формально подлежали всеобщему обучению, но в 1945 году в отдельных областях Казахстана до 70% детей спецпереселенцев не ходили в школу: семьям, ограбленным при выселении, нечем было одеть детей - в документах это записано «по причине отсутствия теплой одежды и обуви»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, а в 1946 году из 89 тысяч детей спецпереселенцев с Северного Кавказа, обязанных учиться по закону о всеобщем образовании, реально учились только 22 тысячи<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. К 1949 году не менее 60% северокавказских спецпереселенцев были полностью неграмотными, полное среднее образование было у 2,1%, высшее - у 0,2%<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Империя перекрыла и дорогу в вуз: выпускнику школы требовалось специальное разрешение республиканских органов внутренних дел, учиться разрешали только в Казахстане, Киргизии и Узбекистане, а после диплома чеченцы и ингуши всё равно не могли покинуть места выселения - и, по данным органов внутренних дел, значительная часть спецпереселенцев с высшим образованием, юристы, литераторы и педагоги, не могла устроиться по специальности<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Образованных становилось меньше даже в абсолютных числах: в 1946 году в Казахстане насчитывалось 1248 человек с высшим и средним специальным образованием среди выселенных с Северного Кавказа, к началу 1948 года их осталось 1127<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Президиум Верховного Совета СССР указом от 16 июля 1956 года снял учёт спецпоселения - и той же второй статьёй лишил людей имущества и права на родину<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Президиум Верховного Совета СССР. О снятии ограничений по спецпоселению с чеченцев, ингушей, карачаевцев и членов их семей. 1956. – указ от 16.07.1956." data-reference="О снятии ограничений по спецпоселению с чеченцев, ингушей, карачаевцев и членов их семей 1956"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/262" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Сегрегацию не оправдывали даже собственные счёты империи. В феврале 1953 года инспекторы центрального комитета большевистской партии Ганенко и Алаторцев объехали спецпоселения в Казахстане и Узбекистане, и комиссия, разбиравшая их записку, пересказала её так: «Многие местные партийные и советские органы допускают пренебрежительное отношение к работе среди спецпоселенцев, проходят мимо многочисленных фактов произвола в отношении этой части населения, ущемления законных прав спецпоселенцев, огульного политического недоверия к ним, что искусственно порождает настроения недовольства среди спецпоселенцев»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Министерство внутренних дел в 1954 году назвало не соответствующими действительности жалобы на чеченцев и ингушей, будто бы терроризирующих местное население: на учёте спецпоселения в 1954 году состояло 506 043 человека, выселенных с Северного Кавказа, а осуждено и сидело в заключении из них только 5418 - около одного процента<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. То же министерство насчитало к 10 ноября 1955 года у высланных «за предательство» чеченцев 2280 участников войны, 4455 награждённых орденами и медалями и 2553 семьи погибших на фронте, у ингушей - ещё 1085, 1869 и 871<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с." data-reference="По решению Правительства Союза ССР 2003"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/620" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Империя амнистировала даже реальных пособников немецких оккупантов: указ от 17 сентября 1955 года так и назывался - «Об амнистии советских граждан, сотрудничавших с оккупантами в период Великой Отечественной войны 1941-1945 гг.». Но историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут, что горских народов, репрессированных «якобы за «сотрудничество с немцами»», «данный указ не коснулся»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. В августе 1956 года инспекция, объехавшая Казахстан и Киргизию, докладывала Президиуму Верховного Совета задним числом: «С 1948 по 1953 г. условия жизни спецпоселенцев были отягощены различного рода ограничениями, которые не вызывались серьезными причинами с точки зрения поведения самих спецпоселенцев. Многих чеченцев сняли с работы, исключили из партии, арестовывали и затем осуждали на длительные сроки тюремного заключения»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Президиум Верховного Совета СССР указом от 9 января 1957 года признал «необходимым восстановить национальную автономию чеченского и ингушского народов», рекомендовал само восстановление Президиуму Верховного Совета РСФСР и отменил лишь запрет возвращаться: «статью 2 Указа от 16 июля 1956 года в части запрещения чеченцам и ингушам возвращаться на прежнее местожительство»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Президиум Верховного Совета СССР. О восстановлении Чечено-Ингушской АССР в составе РСФСР. 1957. – указ от 09.01.1957." data-reference="О восстановлении Чечено-Ингушской АССР в составе РСФСР 1957"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/263" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Указ Президиума Верховного Совета РСФСР в тот же день восстановил республику<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, но возвращать конфискованное имущество ни один из этих актов не велел.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="эксплуатация труда колонизатор под угрозой тюрьмы эксплуатировал труд депортированных чеченцев. правительство ссср постановлением от 21 февраля 1948 года велело организовать «правильное и обязательное трудоиспользование спецпоселенцев»(citation: вайнахи и имперская власть 2011). по справкам отдела спецпоселений тайной полиции, чеченцы и ингуши работали в распоряжении всех министерств («наркоматов»), кроме военного: на 1 января 1949 года 125 753 человека были заняты в сельском хозяйстве, 6175 - в угольной промышленности, 9737 - в металлургии, 12 011 - в местной промышленности(citation: этнополитические процессы в чечено-ингушской асср в 1957-1990 гг. 2005). тех, кого ведомство записывало в «злостно уклоняющиеся от работы в колхозах», министерство внутренних дел ссср и генеральный прокурор совместным приказом требовали судить по статье 82 - «лишение свободы на 8 лет», но тайная полиция признавала, что на местах людей отправляли в новую высылку на те же 8 лет и вовсе без суда - решениями колхозных собраний(citation: вайнахи и имперская власть 2011). даже послабление колонизатор привязал к труду: постановлением от 5 июля 1954 года «о снятии некоторых ограничений в правовом положении спецпоселенцев» правительство ссср разрешило жить не в границах комендатуры, а в пределах своей области - но только занятым общественно полезным трудом(citation: вайнахи и имперская власть 2011)(citation: массовые беспорядки в ссср при хрущеве и брежневе 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0057">
+                    <span class="proc-tech-id">T0057</span>
+                    <span class="proc-tech-name">Эксплуатация труда</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор под угрозой тюрьмы эксплуатировал труд депортированных чеченцев. Правительство СССР постановлением от 21 февраля 1948 года велело организовать «правильное и обязательное трудоиспользование спецпоселенцев»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. По справкам отдела спецпоселений тайной полиции, чеченцы и ингуши работали в распоряжении всех министерств («наркоматов»), кроме военного: на 1 января 1949 года 125 753 человека были заняты в сельском хозяйстве, 6175 - в угольной промышленности, 9737 - в металлургии, 12 011 - в местной промышленности<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация." data-reference="Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/265" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Тех, кого ведомство записывало в «злостно уклоняющиеся от работы в колхозах», Министерство внутренних дел СССР и Генеральный прокурор совместным приказом требовали судить по статье 82 - «лишение свободы на 8 лет», но тайная полиция признавала, что на местах людей отправляли в новую высылку на те же 8 лет и вовсе без суда - решениями колхозных собраний<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Даже послабление колонизатор привязал к труду: постановлением от 5 июля 1954 года «О снятии некоторых ограничений в правовом положении спецпоселенцев» правительство СССР разрешило жить не в границах комендатуры, а в пределах своей области - но только занятым общественно полезным трудом<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span><span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Козлов В. А. Массовые беспорядки в СССР при Хрущеве и Брежневе. 2009. – 3-е изд. М.: РОССПЭН." data-reference="Массовые беспорядки в СССР при Хрущеве и Брежневе 2009"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/267" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="фиктивные суды колхозные собрания приговаривали депортированных чеченцев к высылке из мест поселения на 8 лет - без суда, следствия и защиты. правительство ссср установило такой порядок постановлением от 2 июня 1948 года: общее собрание колхоза или села выносило «общественный приговор» о выселении «за злостное уклонение от трудовой деятельности в сельском хозяйстве и ведение антиобщественного, паразитического образа жизни», а проводили эти собрания органы министерства внутренних дел. само министерство докладывало: «мероприятия по выселению были определены общими собраниями колхозов и крестьян сел, проводившимися органами мвд»(citation: по решению правительства союза сср 2003). министерство внутренних дел в докладе 1950 года признавало: «выселенцы, злостно уклоняющиеся от работы в колхозах, по решениям колхозных собраний высылаются на 8 лет в отдаленные районы страны» - так делали в кзыл-ординской, кустанайской, павлодарской и южно-казахстанской областях казахстана(citation: вайнахи и имперская власть 2011). само министерство называло высылку без суда лишь «ошибочной практикой» и «неправильным применением меры наказания»: по его же приказу таких людей полагалось отдавать под суд(citation: вайнахи и имперская власть 2011). историк в. а. козлов пишет по документам министерства: «более дальновидные полицейские чиновники вынуждены были признать, что наказывать чеченцев и ингушей за уклонение от работы нецелесообразно» - иначе «заработает естественный защитный механизм - единое монолитное сообщество поведет себя как один человек - всех не накажешь!»(citation: вайнахи и имперская власть 2011)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0160">
+                    <span class="proc-tech-id">T0160</span>
+                    <span class="proc-tech-name">Фиктивные суды</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Колхозные собрания приговаривали депортированных чеченцев к высылке из мест поселения на 8 лет - без суда, следствия и защиты. Правительство СССР установило такой порядок постановлением от 2 июня 1948 года: общее собрание колхоза или села выносило «общественный приговор» о выселении «за злостное уклонение от трудовой деятельности в сельском хозяйстве и ведение антиобщественного, паразитического образа жизни», а проводили эти собрания органы Министерства внутренних дел. Само министерство докладывало: «Мероприятия по выселению были определены общими собраниями колхозов и крестьян сел, проводившимися органами МВД»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с." data-reference="По решению Правительства Союза ССР 2003"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/620" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Министерство внутренних дел в докладе 1950 года признавало: «выселенцы, злостно уклоняющиеся от работы в колхозах, по решениям колхозных собраний высылаются на 8 лет в отдаленные районы страны» - так делали в Кзыл-Ординской, Кустанайской, Павлодарской и Южно-Казахстанской областях Казахстана<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Само министерство называло высылку без суда лишь «ошибочной практикой» и «неправильным применением меры наказания»: по его же приказу таких людей полагалось отдавать под суд<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историк В. А. Козлов пишет по документам министерства: «Более дальновидные полицейские чиновники вынуждены были признать, что наказывать чеченцев и ингушей за уклонение от работы нецелесообразно» - иначе «заработает естественный защитный механизм - единое монолитное сообщество поведет себя как один человек - всех не накажешь!»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="нейтрализация оппозиции ссср с помощью судов и тайной полиции преследовал религиозных лидеров депортированных чеченцев. верховный суд киргизской сср приговором 1-7 июля 1952 года отправил в лагеря десятерых руководителей и старейшин религиозных братств - накшбанди, кунта-хаджи, авды и чимирзы - на сроки от 8 до 25 лет; лидеру общины нуриду джабраилову в вину поставили, что он «под прикрытием религиозных убеждений проводил резко антисоветскую агитацию» и «призывал массы спецпереселенцев не работать в колхозе», руководителю братства кунта-хаджи юсупу ахматову - что он «категорически запрещал мюридам [своим последователям] посещать культурно-просветительные учреждения» и «запрещал детям посещать школу»; итог: «к 25 годам лишения свободы с отбытием в итл [исправительно-трудовом лагере], с последующим поражением избирательных прав сроком на 3 года и конфискацией всего имущества каждый»(citation: вайнахи и имперская власть 2011). тайная полиция «разрабатывала» духовенство - так на её языке называлась тайная слежка: на человека или группу заводили секретное дело, следили за ними через осведомителей и копили материалы для ареста. историк в. а. козлов пишет: два «наиболее характерных» таких дела на чеченцев, заведённые в 1952 году управлениями мгб (предшественницы современной фсб) областей казахской сср, «получили весьма красноречивые клички: «упрямые» и «фанатики». оба дела проходили по окраске «мусульманское духовенство»» (окраска - так тайная полиция называла тему дела)(citation: вайнахи и имперская власть 2011). министр государственной безопасности казахской сср бызов докладывал 12 августа 1950 года о таких же делах «блок», «мстители» и «кавказцы» - по последнему тайная полиция так же вела дело на бывших руководящих работников чечено-ингушетии - и называл число арестованных: «всего в казахстане за антисоветскую деятельность органами мгб арестовано за 1949 г. и 7 месяцев 1950 г. 874 выселенца»(citation: вайнахи и имперская власть 2011)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0021">
+                    <span class="proc-tech-id">T0021</span>
+                    <span class="proc-tech-name">Нейтрализация оппозиции</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>СССР с помощью судов и тайной полиции преследовал религиозных лидеров депортированных чеченцев. Верховный суд Киргизской ССР приговором 1-7 июля 1952 года отправил в лагеря десятерых руководителей и старейшин религиозных братств - Накшбанди, Кунта-Хаджи, Авды и Чимирзы - на сроки от 8 до 25 лет; лидеру общины Нуриду Джабраилову в вину поставили, что он «под прикрытием религиозных убеждений проводил резко антисоветскую агитацию» и «призывал массы спецпереселенцев не работать в колхозе», руководителю братства Кунта-Хаджи Юсупу Ахматову - что он «категорически запрещал мюридам [своим последователям] посещать культурно-просветительные учреждения» и «запрещал детям посещать школу»; итог: «к 25 годам лишения свободы с отбытием в ИТЛ [исправительно-трудовом лагере], с последующим поражением избирательных прав сроком на 3 года и конфискацией всего имущества каждый»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Тайная полиция «разрабатывала» духовенство - так на её языке называлась тайная слежка: на человека или группу заводили секретное дело, следили за ними через осведомителей и копили материалы для ареста. Историк В. А. Козлов пишет: два «наиболее характерных» таких дела на чеченцев, заведённые в 1952 году управлениями МГБ (предшественницы современной ФСБ) областей Казахской ССР, «получили весьма красноречивые клички: «Упрямые» и «Фанатики». Оба дела проходили по окраске «мусульманское духовенство»» (окраска - так тайная полиция называла тему дела)<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Министр государственной безопасности Казахской ССР Бызов докладывал 12 августа 1950 года о таких же делах «Блок», «Мстители» и «Кавказцы» - по последнему тайная полиция так же вела дело на бывших руководящих работников Чечено-Ингушетии - и называл число арестованных: «Всего в Казахстане за антисоветскую деятельность органами МГБ арестовано за 1949 г. и 7 месяцев 1950 г. 874 выселенца»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="уничтожение локальных систем знаний ссср оставил ссыльных чеченцев без школы на родном языке и без письменности, а из энциклопедий народ вычеркнул. обучение в школах шло на казахском и киргизском языках. историк а. б. кузнецова приводит слова бывших ссыльных: «была ликвидирована письменность на чеченском и ингушском языках»(citation: этнополитические процессы в чечено-ингушской асср в 1957-1990 гг. 2005). мгб (предшественница современной фсб) насчитало на 1 января 1952 года не охваченных обязательным обучением «детей народностей, выселенных из северного кавказа, - 33 702» и объяснило это «отсутствием зимней одежды и обуви, в связи с тяжелым материальным положением родителей, отсутствием школ в ряде мест расселения или отдаленностью школ от мест проживания»(citation: по решению правительства союза сср 2003). летом 1956 года проверяющие объехали места ссылки и доложили президиуму верховного совета ссср: «обучение детей в школах на родном языке не проводилось», в 1955/56 учебном году «из 61 тыс. детей школьного возраста обучалось только 50 тыс., или 81 %», а неграмотных «по некоторым районам количество их достигает 40-50 %»(citation: вайнахи и имперская власть 2011). историки я. з. ахмадов и э. х. хасмагомадов пишут, что «из всех справочников и энциклопедий сталинского времени тщательно вымарывалось упоминание о чеченцах и ингушах», а лингвист ю. дешериев «совершил по тем временам настоящую «идеологическую диверсию», издав в 1953 г. в москве исследование «бацбийский язык»» - историки пишут, что так он «пытался сохранить для потомков язык вайнахского народа, долженствующего, по решению «отца народов» [сталина], исчезнуть с лица земли» (бацбийцы закавказья, поясняют они, говорили на одном из диалектов чеченского языка)(citation: история чечни в xix-xx веках 2005). те же историки пишут, что язык удержала сама чеченская интеллигенция: её усилиями летом 1955 года вышел первый номер чеченской газеты «къинхьегаман байракх» («знамя труда»)(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0044">
+                    <span class="proc-tech-id">T0044</span>
+                    <span class="proc-tech-name">Уничтожение локальных систем знаний</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>СССР оставил ссыльных чеченцев без школы на родном языке и без письменности, а из энциклопедий народ вычеркнул. Обучение в школах шло на казахском и киргизском языках. Историк А. Б. Кузнецова приводит слова бывших ссыльных: «была ликвидирована письменность на чеченском и ингушском языках»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация." data-reference="Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/265" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. МГБ (предшественница современной ФСБ) насчитало на 1 января 1952 года не охваченных обязательным обучением «детей народностей, выселенных из Северного Кавказа, - 33 702» и объяснило это «отсутствием зимней одежды и обуви, в связи с тяжелым материальным положением родителей, отсутствием школ в ряде мест расселения или отдаленностью школ от мест проживания»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с." data-reference="По решению Правительства Союза ССР 2003"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/620" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Летом 1956 года проверяющие объехали места ссылки и доложили Президиуму Верховного Совета СССР: «Обучение детей в школах на родном языке не проводилось», в 1955/56 учебном году «из 61 тыс. детей школьного возраста обучалось только 50 тыс., или 81 %», а неграмотных «по некоторым районам количество их достигает 40-50 %»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут, что «из всех справочников и энциклопедий сталинского времени тщательно вымарывалось упоминание о чеченцах и ингушах», а лингвист Ю. Дешериев «совершил по тем временам настоящую «идеологическую диверсию», издав в 1953 г. в Москве исследование «Бацбийский язык»» - историки пишут, что так он «пытался сохранить для потомков язык вайнахского народа, долженствующего, по решению «отца народов» [Сталина], исчезнуть с лица земли» (бацбийцы Закавказья, поясняют они, говорили на одном из диалектов чеченского языка)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Те же историки пишут, что язык удержала сама чеченская интеллигенция: её усилиями летом 1955 года вышел первый номер чеченской газеты «Къинхьегаман байракх» («Знамя труда»)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="ограничение географии расселения ссср запрещал ссыльным чеченцам и ингушам покидать район поселения, который порой состоял из нескольких улиц. комиссия центрального комитета партии признавала это в 1953 году в записке главе правительства маленкову: «отлучка спецпоселенца без соответствующего разрешения за пределы района, обслуживаемого спецкомендатурой... рассматривается как побег и влечет за собой ответственность в уголовном порядке»(citation: массовые беспорядки в ссср при хрущеве и брежневе 2009). ссыльная ингушка аза базоркина, получившая в шестнадцать лет паспорт со штампом «спецпоселенец», свидетельствует, как комендант не выпустил друга её отца проводить умершую жену: «мусульманское кладбище находилось за чертой города и проводить жену за эту черту он не позволил»(citation: так это было: национальные репрессии в ссср 1993). лишь постановлением от 5 июля 1954 года совет министров ссср ослабил режим: занятым общественно полезным трудом дал «право проживания в пределах данной области, края, республики»(citation: постановление совета министров ссср № 1439-649с «о снятии некоторых ограничений в правовом положении спецпоселенцев» 1954), но побег остался преступлением: за выезд с поселения без разрешения судили по статье 82 уголовного кодекса рсфср (побег с места обязательного поселения)(citation: массовые беспорядки в ссср при хрущеве и брежневе 2009), и в 1956 году «из 328 тысяч чеченцев на учете в спецкомендатурах состояли немногим более 191,4 тысяч»(citation: история чечни в xix-xx веках 2005). запрет на возвращение пережил и указ от 9 января 1957 года: министр внутренних дел ссср дудоров просил руководство большевистской партии («цк кпсс») разрешить «лиц чеченской и ингушской национальностей, возвращающихся к прежнему месту жительства без разрешения оргкомитета, задерживать, снимать с поездов, пароходов, других видов транспорта и возвращать к местам бывшего поселения», а 9 апреля 1957 года докладывал: за три дня в поездах «было выявлено и задержано 2139 чел.»(citation: вайнахи и имперская власть 2011). оргкомитет растянул возврат на четыре года и сделал его платным: возвращающиеся жаловались формальному главе государства ворошилову, что представителем оргкомитета немухиным им «был сообщен порядок возвращения нас в течение 1957-1960 гг., причем все расходы, связанные с переездом, относились за счет нас, самих переезжающих»(citation: вайнахи и имперская власть 2011); 26 января 1957 года оргкомитет и бюро областного комитета партии («грозненский обком кпсс») установили, что «приезд для постоянного местожительства на территории республики может производиться только по разрешению оргкомитета чиасср [чечено-ингушской республики]», и предписали полиции оккупанта прописывать приезжих только по этим разрешениям(citation: вайнахи и имперская власть 2011); совет министров рсфср 5 сентября 1960 года продлил срок возвращения «до 1963 г.»(citation: вайнахи и имперская власть 2011). горная чечня осталась закрытой: пять горных районов - галанчожский, чеберлоевский, шароевский, итум-калинский и шатойский - указ от 9 января 1957 года не воссоздал(citation: вайнахи и имперская власть 2011). историки я. з. ахмадов и э. х. хасмагомадов пишут, что «горцам было запрещено проживание» там, а репатриантов «селили в новых совхозах, рабочих поселках, фермах... особенно в затеречных казачьих районах, причем в засушливых, нездоровых, отдаленных от районных центров и городов местах»(citation: история чечни в xix-xx веках 2005). те же историки пишут, что в станицах попутно «создавались условия для их быстрой культурной и языковой ассимиляции»: «в станицах преподавание велось только на русском языке, руководителями станичных советов, районов и хозяйств оставались исключительно русские»(citation: история чечни в xix-xx веках 2005). погром августа 1958 года в грозном, с требованием из резолюции погромщиков «чечено-ингушскому населению разрешить проживать в грозненской области не более 10 % от общего количества населения»(citation: вайнахи и имперская власть 2011), ссср обернул против самих чеченцев. историки пишут: «в ноябре 1958 г. в грозном и в грозненском (сельском) районе был установлен особый паспортный режим, согласно которому здесь вводились серьезные ограничения на прописку... подлинная цель данной акции состояла в создании административных препонов на пути миграции чеченского населения в грозный», а «инициатором введения запрета... выступили партийные и советские органы чечено-ингушетии»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0142">
+                    <span class="proc-tech-id">T0142</span>
+                    <span class="proc-tech-name">Ограничение географии расселения</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>СССР запрещал ссыльным чеченцам и ингушам покидать район поселения, который порой состоял из нескольких улиц. Комиссия Центрального комитета партии признавала это в 1953 году в записке главе правительства Маленкову: «отлучка спецпоселенца без соответствующего разрешения за пределы района, обслуживаемого спецкомендатурой... рассматривается как побег и влечет за собой ответственность в уголовном порядке»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Козлов В. А. Массовые беспорядки в СССР при Хрущеве и Брежневе. 2009. – 3-е изд. М.: РОССПЭН." data-reference="Массовые беспорядки в СССР при Хрущеве и Брежневе 2009"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/267" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Ссыльная ингушка Аза Базоркина, получившая в шестнадцать лет паспорт со штампом «спецпоселенец», свидетельствует, как комендант не выпустил друга её отца проводить умершую жену: «Мусульманское кладбище находилось за чертой города и проводить жену за эту черту он не позволил»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Так это было: национальные репрессии в СССР. 1993. – ред.-сост. Алиева С. У.; Т. 2 (1919-1952 годы); М.: Инсан." data-reference="Так это было: национальные репрессии в СССР 1993"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/553" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Лишь постановлением от 5 июля 1954 года Совет Министров СССР ослабил режим: занятым общественно полезным трудом дал «право проживания в пределах данной области, края, республики»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Постановление Совета Министров СССР № 1439-649с «О снятии некоторых ограничений в правовом положении спецпоселенцев». 1954. – Реабилитация: как это было. Документы Президиума ЦК КПСС и другие материалы. Март 1953 — февраль 1956. Т. 1. С. 158–159; ранее опубл.: Сборник законодательных и нормативных актов о репрессиях и реабилитации жертв политических репрессий. Ч. II. — Курск, 1999. С. 263–264." data-reference="Постановление Совета Министров СССР № 1439-649с «О снятии некоторых ограничений в правовом положении спецпоселенцев» 1954"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/606" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>, но побег остался преступлением: за выезд с поселения без разрешения судили по статье 82 Уголовного кодекса РСФСР (побег с места обязательного поселения)<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Козлов В. А. Массовые беспорядки в СССР при Хрущеве и Брежневе. 2009. – 3-е изд. М.: РОССПЭН." data-reference="Массовые беспорядки в СССР при Хрущеве и Брежневе 2009"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/267" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>, и в 1956 году «из 328 тысяч чеченцев на учете в спецкомендатурах состояли немногим более 191,4 тысяч»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Запрет на возвращение пережил и указ от 9 января 1957 года: министр внутренних дел СССР Дудоров просил руководство большевистской партии («ЦК КПСС») разрешить «лиц чеченской и ингушской национальностей, возвращающихся к прежнему месту жительства без разрешения Оргкомитета, задерживать, снимать с поездов, пароходов, других видов транспорта и возвращать к местам бывшего поселения», а 9 апреля 1957 года докладывал: за три дня в поездах «было выявлено и задержано 2139 чел.»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Оргкомитет растянул возврат на четыре года и сделал его платным: возвращающиеся жаловались формальному главе государства Ворошилову, что представителем Оргкомитета Немухиным им «был сообщен порядок возвращения нас в течение 1957-1960 гг., причем все расходы, связанные с переездом, относились за счет нас, самих переезжающих»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; 26 января 1957 года Оргкомитет и бюро областного комитета партии («Грозненский обком КПСС») установили, что «приезд для постоянного местожительства на территории республики может производиться только по разрешению Оргкомитета ЧИАССР [Чечено-Ингушской республики]», и предписали полиции оккупанта прописывать приезжих только по этим разрешениям<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>; Совет Министров РСФСР 5 сентября 1960 года продлил срок возвращения «до 1963 г.»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Горная Чечня осталась закрытой: пять горных районов - Галанчожский, Чеберлоевский, Шароевский, Итум-Калинский и Шатойский - указ от 9 января 1957 года не воссоздал<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут, что «горцам было запрещено проживание» там, а репатриантов «селили в новых совхозах, рабочих поселках, фермах... особенно в затеречных казачьих районах, причем в засушливых, нездоровых, отдаленных от районных центров и городов местах»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Те же историки пишут, что в станицах попутно «создавались условия для их быстрой культурной и языковой ассимиляции»: «В станицах преподавание велось только на русском языке, руководителями станичных советов, районов и хозяйств оставались исключительно русские»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Погром августа 1958 года в Грозном, с требованием из резолюции погромщиков «Чечено-ингушскому населению разрешить проживать в Грозненской области не более 10 % от общего количества населения»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, СССР обернул против самих чеченцев. Историки пишут: «В ноябре 1958 г. в Грозном и в Грозненском (сельском) районе был установлен особый паспортный режим, согласно которому здесь вводились серьезные ограничения на прописку... подлинная цель данной акции состояла в создании административных препонов на пути миграции чеченского населения в Грозный», а «Инициатором введения запрета... выступили партийные и советские органы Чечено-Ингушетии»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="тотальное уничтожение инфраструктуры колонизатор уничтожал горные сёла чеченцев, чтобы народу было некуда возвращаться. историки я. з. ахмадов и э. х. хасмагомадов пишут: «политика обезлюдения горной чечни, начатая в феврале 1944 г., нашла свое продолжение в 1957-1960 гг.» - и объясняют, как это делалось: «остатки домов взрывались и сжигались, рушились мосты и тропы. органы кгб и мвд силой оружия изгоняли на равнину семьи горцев, правдами и неправдами проникших заоблачными тропами в свои родные аулы»(citation: история чечни в xix-xx веках 2005). историк а. б. кузнецова подводит итог: «отдаленные от коммуникаций поселки и населенные пункты (высокогорные) были уничтожены», а с заселением сельских районов приезжими «были утеряны навыки отгонного животноводства, обработки высокогорных участков земли, террасного земледелия»(citation: этнополитические процессы в чечено-ингушской асср в 1957-1990 гг. 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0017"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0105">
+                    <span class="proc-tech-id">T0105</span>
+                    <span class="proc-tech-name">Тотальное уничтожение инфраструктуры</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0017">S0017</a> Тайная полиция и Спецслужбы</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор уничтожал горные сёла чеченцев, чтобы народу было некуда возвращаться. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «Политика обезлюдения Горной Чечни, начатая в феврале 1944 г., нашла свое продолжение в 1957-1960 гг.» - и объясняют, как это делалось: «Остатки домов взрывались и сжигались, рушились мосты и тропы. Органы КГБ и МВД силой оружия изгоняли на равнину семьи горцев, правдами и неправдами проникших заоблачными тропами в свои родные аулы»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Историк А. Б. Кузнецова подводит итог: «Отдаленные от коммуникаций поселки и населенные пункты (высокогорные) были уничтожены», а с заселением сельских районов приезжими «были утеряны навыки отгонного животноводства, обработки высокогорных участков земли, террасного земледелия»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация." data-reference="Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/265" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="административно-территориальное деление в июне 1956 года начальник советской милиции барсуков докладывал: «разместить чеченцев и ингушей в районах, где они проживали до выселения, не представляется возможным», потому что «эти районы заселены переселенцами из центральных областей рсфср», а на землях, отошедших к северной осетии, где до выселения «проживало 77 578 чеченцев и ингушей», «возвращение чеченцев и ингушей местные [и] партийные органы считают нецелесообразным»(citation: вайнахи и имперская власть 2011). министр внутренних дел ссср дудоров в июне 1956 года предлагал вовсе не возвращать народ: «прежняя территория заселена» - и ставил вопрос «о создании для чеченцев и ингушей областной автономии на территории казахской и киргизской сср»(citation: по решению правительства союза сср 2003). от плана ссср отказался из-за «резко отрицательного отношения чеченцев и ингушей» и их стремления вернуться домой(citation: этнополитические процессы в чечено-ингушской асср в 1957-1990 гг. 2005). указ от 9 января 1957 года поручил установить границы российскому парламенту (президиуму верховного совета рсфср)(citation: по решению правительства союза сср 2003) - и пригородный район остался за северной осетией. историки я. з. ахмадов и э. х. хасмагомадов пишут: «дружные протесты чечено-ингушской делегации по вопросу о пригородном районе были проигнорированы цк кпсс»; колонизатор отрезал «1600 квадратных километров исключительно черноземных земель», а республику увеличил «за счет песчаных земель бурунной степи (по существу, полупустынь) за тереком»(citation: история чечни в xix-xx веках 2005). историки пишут, что в дагестане колонизаторы «стремились не допустить одновременно восстановления ауховского (чеченского) района. для этого возвращающимся чеченцам не разрешали селиться в своих старых домах в родных аулах, а расселяли небольшими группами» по пяти районам(citation: история чечни в xix-xx веках 2005). российский парламент, устанавливая границы республики, не вернул ей и бывший ауховский район - в перечне переданных земель его нет(citation: вайнахи и имперская власть 2011). 10 апреля 1964 года новосёлы села дучи бывшего ауховского района избили и выдворили чеченца салиха сайтамулова, вернувшегося на участок родителей, а 12 апреля около 500 чеченцев пришли в дучи с требованиями, как записало следствие, «о разрешении сайтамулову и другим чеченцам проживать в сел. дучи и других бывших чеченских селениях, возвращении им их бывших домовладений и земельных участков»; кгб (предшественник современной фсб) при правительстве дагестана ответил уголовным делом о массовых беспорядках(citation: массовые беспорядки в ссср при хрущеве и брежневе 2009). дело развалилось: историк в. а. козлов пишет, что чеченцы «держались сплоченно и от дачи показаний уклонялись», и дело прекратили «за отсутствием... состава преступления»(citation: массовые беспорядки в ссср при хрущеве и брежневе 2009)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0030">
+                    <span class="proc-tech-id">T0030</span>
+                    <span class="proc-tech-name">Административно-территориальное деление</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>В июне 1956 года начальник советской милиции Барсуков докладывал: «разместить чеченцев и ингушей в районах, где они проживали до выселения, не представляется возможным», потому что «эти районы заселены переселенцами из центральных областей РСФСР», а на землях, отошедших к Северной Осетии, где до выселения «проживало 77 578 чеченцев и ингушей», «возвращение чеченцев и ингушей местные [и] партийные органы считают нецелесообразным»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Министр внутренних дел СССР Дудоров в июне 1956 года предлагал вовсе не возвращать народ: «Прежняя территория заселена» - и ставил вопрос «о создании для чеченцев и ингушей областной автономии на территории Казахской и Киргизской ССР»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с." data-reference="По решению Правительства Союза ССР 2003"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/620" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. От плана СССР отказался из-за «резко отрицательного отношения чеченцев и ингушей» и их стремления вернуться домой<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация." data-reference="Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/265" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Указ от 9 января 1957 года поручил установить границы российскому парламенту (Президиуму Верховного Совета РСФСР)<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с." data-reference="По решению Правительства Союза ССР 2003"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/620" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span> - и Пригородный район остался за Северной Осетией. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут: «Дружные протесты чечено-ингушской делегации по вопросу о Пригородном районе были проигнорированы ЦК КПСС»; колонизатор отрезал «1600 квадратных километров исключительно черноземных земель», а республику увеличил «за счет песчаных земель Бурунной степи (по существу, полупустынь) за Тереком»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Историки пишут, что в Дагестане колонизаторы «стремились не допустить одновременно восстановления Ауховского (чеченского) района. Для этого возвращающимся чеченцам не разрешали селиться в своих старых домах в родных аулах, а расселяли небольшими группами» по пяти районам<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Российский парламент, устанавливая границы республики, не вернул ей и бывший Ауховский район - в перечне переданных земель его нет<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 10 апреля 1964 года новосёлы села Дучи бывшего Ауховского района избили и выдворили чеченца Салиха Сайтамулова, вернувшегося на участок родителей, а 12 апреля около 500 чеченцев пришли в Дучи с требованиями, как записало следствие, «о разрешении Сайтамулову и другим чеченцам проживать в сел. Дучи и других бывших чеченских селениях, возвращении им их бывших домовладений и земельных участков»; КГБ (предшественник современной ФСБ) при правительстве Дагестана ответил уголовным делом о массовых беспорядках<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Козлов В. А. Массовые беспорядки в СССР при Хрущеве и Брежневе. 2009. – 3-е изд. М.: РОССПЭН." data-reference="Массовые беспорядки в СССР при Хрущеве и Брежневе 2009"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/267" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Дело развалилось: историк В. А. Козлов пишет, что чеченцы «держались сплоченно и от дачи показаний уклонялись», и дело прекратили «за отсутствием... состава преступления»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Козлов В. А. Массовые беспорядки в СССР при Хрущеве и Брежневе. 2009. – 3-е изд. М.: РОССПЭН." data-reference="Массовые беспорядки в СССР при Хрущеве и Брежневе 2009"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/267" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="административная коррупция и вымогательство историки я. з. ахмадов и э. х. хасмагомадов пишут, что чиновники оргкомитета, ведавшего возвращением чеченцев в республику, «зачастую вымогали взятки за пропуска, дающие право немедленно переселиться из казахстана и средней азии на кавказ»(citation: история чечни в xix-xx веках 2005). цену назвал главный агроном министерства сельского хозяйства казахстана х. у. арсанукаев в заявлении главе правительства ссср булганину 27 августа 1957 года: «раздача пропусков была организована с тем расчетом, что ставленники членов оргкомитета, да и сами они, изрядно наполнили свои чемоданы деньгами - один пропуск ими продавался в среднем за 2 тыс. руб.», - и передавал слова возвращающихся: «во время нашего выселения берия и то не нанес такой большой материальный ущерб нашему народу, как это нынче нанес нам оргкомитет чиасср [чечено-ингушской республики]»(citation: вайнахи и имперская власть 2011). чиновник правительства рсфср белов ответил 4 октября 1957 года, что взятки при выдаче пропусков уже разбирало руководство большевистской партии («цк кпсс»), членам оргкомитета тонгиеву и дукузову областной комитет партии «наложил на них строгое партийное взыскание», и предложил «ограничиться принятыми мерами»(citation: вайнахи и имперская власть 2011). дома выселенных никто не возвращал: «как ни дико, но чаще всего чеченцам приходилось выкупать свои дома и земли у новых владельцев»(citation: история чечни в xix-xx веках 2005) - за государственный кредит дома выехавших выкупали колхозы и совхозы республики: к октябрю 1958 года у них числилось 10 413 свободных «жилых домов... у выехавшего населения осетинской, аварской и других национальностей»(citation: вайнахи и имперская власть 2011)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0146">
+                    <span class="proc-tech-id">T0146</span>
+                    <span class="proc-tech-name">Административная коррупция и вымогательство</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут, что чиновники Оргкомитета, ведавшего возвращением чеченцев в республику, «зачастую вымогали взятки за пропуска, дающие право немедленно переселиться из Казахстана и Средней Азии на Кавказ»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Цену назвал главный агроном Министерства сельского хозяйства Казахстана Х. У. Арсанукаев в заявлении главе правительства СССР Булганину 27 августа 1957 года: «раздача пропусков была организована с тем расчетом, что ставленники членов Оргкомитета, да и сами они, изрядно наполнили свои чемоданы деньгами - один пропуск ими продавался в среднем за 2 тыс. руб.», - и передавал слова возвращающихся: «Во время нашего выселения Берия и то не нанес такой большой материальный ущерб нашему народу, как это нынче нанес нам Оргкомитет ЧИАССР [Чечено-Ингушской республики]»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Чиновник правительства РСФСР Белов ответил 4 октября 1957 года, что взятки при выдаче пропусков уже разбирало руководство большевистской партии («ЦК КПСС»), членам Оргкомитета Тонгиеву и Дукузову областной комитет партии «наложил на них строгое партийное взыскание», и предложил «ограничиться принятыми мерами»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Дома выселенных никто не возвращал: «Как ни дико, но чаще всего чеченцам приходилось выкупать свои дома и земли у новых владельцев»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span> - за государственный кредит дома выехавших выкупали колхозы и совхозы республики: к октябрю 1958 года у них числилось 10 413 свободных «жилых домов... у выехавшего населения осетинской, аварской и других национальностей»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="установление чужеродного управления колонизатор оставил высшие должности восстановленной республики за русскими руководителями. историки я. з. ахмадов и э. х. хасмагомадов пишут, что вокруг первого секретаря областного комитета большевистской партии («обкома кпсс») яковлева «сложилась группировка руководящих работников, которая отрицательно относилась «...к акту восстановления автономии чечено-ингушского народа...»», а сам яковлев «открыто заявлял, что считает большой ошибкой решение по реабилитации репрессированных народов»(citation: история чечни в xix-xx веках 2005). чиновник правительства рсфср федин докладывал 29 августа 1957 года, что трое членов оргкомитета из чеченцев и ингушей - дукузов, мальсагов и тепсаев - «более восьми месяцев не назначены ни на какие должности и по существу ни за что конкретно не отвечают», хотя «в республике ощущается большой недостаток в кадрах из чеченцев и ингушей»(citation: вайнахи и имперская власть 2011). писатель а. е. костерин, свидетель событий, писал: «все велось и ведется так, чтобы вызвать эксцессы со стороны изгнанников и против партийно-советских организаций, и против тех, кто заселил их селения... эти эксцессы были, есть и, к сожалению, будут, если не изменится позиция и тактика обкома»(citation: история чечни в xix-xx веках 2005). те же историки пишут: «очень быстро в социалистической чечено-ингушетии формируется негласная система распределения высших должностей» - посты первого секретаря областного комитета партии, министра внутренних дел, прокурора, главы кгб (предшественника современной фсб), руководителя «грознефти» и другие «закрепляются за русскими руководителями»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0151">
+                    <span class="proc-tech-id">T0151</span>
+                    <span class="proc-tech-name">Установление чужеродного управления</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор оставил высшие должности восстановленной республики за русскими руководителями. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут, что вокруг первого секретаря областного комитета большевистской партии («обкома КПСС») Яковлева «сложилась группировка руководящих работников, которая отрицательно относилась «...к акту восстановления автономии чечено-ингушского народа...»», а сам Яковлев «открыто заявлял, что считает большой ошибкой решение по реабилитации репрессированных народов»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Чиновник правительства РСФСР Федин докладывал 29 августа 1957 года, что трое членов Оргкомитета из чеченцев и ингушей - Дукузов, Мальсагов и Тепсаев - «более восьми месяцев не назначены ни на какие должности и по существу ни за что конкретно не отвечают», хотя «в республике ощущается большой недостаток в кадрах из чеченцев и ингушей»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы»." data-reference="Вайнахи и имперская власть 2011"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/533" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Писатель А. Е. Костерин, свидетель событий, писал: «Все велось и ведется так, чтобы вызвать эксцессы со стороны изгнанников и против партийно-советских организаций, и против тех, кто заселил их селения... Эти эксцессы были, есть и, к сожалению, будут, если не изменится позиция и тактика обкома»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Те же историки пишут: «Очень быстро в социалистической Чечено-Ингушетии формируется негласная система распределения высших должностей» - посты первого секретаря областного комитета партии, министра внутренних дел, прокурора, главы КГБ (предшественника современной ФСБ), руководителя «Грознефти» и другие «закрепляются за русскими руководителями»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="миграционное замещение колонизатор заселил земли выселенных чеченцев и ингушей приезжими и держал их там все годы ссылки. в 1956 году комиссия руководства большевистской партии («цк кпсс») готовила восстановление республики и доложила о приезжих: в районы, отошедшие грозненской области, «было переселено из рсфср, украины и молдавии 78 тыс. чел.», на земли, отданные дагестану, «переселилось из высокогорных районов республики 46 тыс. горцев», в районы, отданные северной осетии, - «55 тыс. чел.»(citation: по решению правительства союза сср 2003). историки я. з. ахмадов и э. х. хасмагомадов пишут, что уже к середине мая 1944 года приезжих в грозненской области было 40% от числа выселенных оттуда чеченцев, а «желающих ехать на новые места было мало» - и колонизатор платил переселенцам по 2500 рублей на семью и освобождал их от налогов на год(citation: история чечни в xix-xx веках 2005). чеченский историк а. г. авторханов, писавший в эмиграции, видел в замене населения расчёт империи, и назвал его: «создать на кавказе новый колониально-колонизаторский и военно-полицейский корпус иноземцев, подчиненных, исполнительных и послушных в деле защиты советских имперских интересов». итог он подвёл так: «заселением сюда более чем миллионного населения советских колонизаторов большевики уже вбили первый клин между братскими народами кавказа»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). вторым мотивом он называет нефть - «ясно обозначенный курс советского правительства взять окончательно в имперские руки ведущую и основную для всего советского союза кавказскую нефтяную экономику»(citation: убийство чечено-ингушского народа. народоубийство в ссср 1952). историки я. з. ахмадов и э. х. хасмагомадов подводят итог: «в результате искусственных сдвигов границ территорий, «поправок» в расселении репрессированных народов, к 1961 г. чеченцы и ингуши составили 41% населения республики, в то время как в 1939 г. их доля достигала 58,4%»(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1949-03-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0117/001">
+                    <span class="proc-tech-id">T0117.001</span>
+                    <span class="proc-tech-name">Миграционное замещение</span>
+                </a>
+                <div class="proc-date">Март 1949</div>
+<div><a href="/campaigns/C1181">C1181</a> «Сосланы навечно»: жизнь в спецпоселении и возвращение на занятую родину (1949-1965)</div><div><a href="/groups/G0010">G0010</a> СССР</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>Колонизатор заселил земли выселенных чеченцев и ингушей приезжими и держал их там все годы ссылки. В 1956 году комиссия руководства большевистской партии («ЦК КПСС») готовила восстановление республики и доложила о приезжих: в районы, отошедшие Грозненской области, «было переселено из РСФСР, Украины и Молдавии 78 тыс. чел.», на земли, отданные Дагестану, «переселилось из высокогорных районов республики 46 тыс. горцев», в районы, отданные Северной Осетии, - «55 тыс. чел.»<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с." data-reference="По решению Правительства Союза ССР 2003"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/620" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов пишут, что уже к середине мая 1944 года приезжих в Грозненской области было 40% от числа выселенных оттуда чеченцев, а «желающих ехать на новые места было мало» - и колонизатор платил переселенцам по 2500 рублей на семью и освобождал их от налогов на год<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Чеченский историк А. Г. Авторханов, писавший в эмиграции, видел в замене населения расчёт империи, и назвал его: «создать на Кавказе новый колониально-колонизаторский и военно-полицейский корпус иноземцев, подчиненных, исполнительных и послушных в деле защиты советских имперских интересов». Итог он подвёл так: «заселением сюда более чем миллионного населения советских колонизаторов большевики уже вбили первый клин между братскими народами Кавказа»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Авторханов А. Г. Убийство чечено-ингушского народа. Народоубийство в СССР. 1952. – под псевдонимом А. Уралов; Мюнхен." data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/369" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Вторым мотивом он называет нефть - «ясно обозначенный курс Советского правительства взять окончательно в имперские руки ведущую и основную для всего Советского Союза кавказскую нефтяную экономику»<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Авторханов А. Г. Убийство чечено-ингушского народа. Народоубийство в СССР. 1952. – под псевдонимом А. Уралов; Мюнхен." data-reference="Убийство чечено-ингушского народа. Народоубийство в СССР 1952"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/369" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Историки Я. З. Ахмадов и Э. Х. Хасмагомадов подводят итог: «В результате искусственных сдвигов границ территорий, «поправок» в расселении репрессированных народов, к 1961 г. чеченцы и ингуши составили 41% населения республики, в то время как в 1939 г. их доля достигала 58,4%»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-1" href="https://archive.decolonial.ist/369" target="_blank">
+                        Авторханов А. Г. Убийство чечено-ингушского народа. Народоубийство в СССР. 1952. – под псевдонимом А. Уралов; Мюнхен.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-2" href="https://archive.decolonial.ist/125" target="_blank">
+                        Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-3" href="https://archive.decolonial.ist/533" target="_blank">
+                        Козлов В. А. (рук.), Бенвенути Ф., Козлова М. Е., Полян П. М., Шеремет В. И. Вайнахи и имперская власть. 2011. – сост. Зюзина И. А. (отв. сост.) и др.; М.: РОССПЭН; Фонд «Президентский центр Б. Н. Ельцина»; серия «История сталинизма. Документы».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-4" href="https://archive.decolonial.ist/262" target="_blank">
+                        Президиум Верховного Совета СССР. О снятии ограничений по спецпоселению с чеченцев, ингушей, карачаевцев и членов их семей. 1956. – указ от 16.07.1956.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-5" href="https://archive.decolonial.ist/620" target="_blank">
+                        Бугай Н. Ф., Гонов А. М. По решению Правительства Союза ССР. 2003. – Нальчик: Эль-Фа, 2003. 928 с.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="6.0">
+                                
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-6" href="https://archive.decolonial.ist/263" target="_blank">
+                        Президиум Верховного Совета СССР. О восстановлении Чечено-Ингушской АССР в составе РСФСР. 1957. – указ от 09.01.1957.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-7" href="https://archive.decolonial.ist/265" target="_blank">
+                        Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-8" href="https://archive.decolonial.ist/267" target="_blank">
+                        Козлов В. А. Массовые беспорядки в СССР при Хрущеве и Брежневе. 2009. – 3-е изд. М.: РОССПЭН.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-9" href="https://archive.decolonial.ist/553" target="_blank">
+                        Так это было: национальные репрессии в СССР. 1993. – ред.-сост. Алиева С. У.; Т. 2 (1919-1952 годы); М.: Инсан.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-10" href="https://archive.decolonial.ist/606" target="_blank">
+                        Постановление Совета Министров СССР № 1439-649с «О снятии некоторых ограничений в правовом положении спецпоселенцев». 1954. – Реабилитация: как это было. Документы Президиума ЦК КПСС и другие материалы. Март 1953 — февраль 1956. Т. 1. С. 158–159; ранее опубл.: Сборник законодательных и нормативных актов о репрессиях и реабилитации жертв политических репрессий. Ч. II. — Курск, 1999. С. 263–264.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>
