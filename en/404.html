@@ -23,6 +23,10 @@
            поисковые боты индексируют корень как есть. */
         (function () {
             if ("en" !== "ru") return;
+            /* Страница 404 у GitHub Pages одна (русская) и отдаётся по ЛЮБОМУ несуществующему
+               адресу: редирект с неё дописывал «/uk» к пути в цикле (/uk/uk/uk/…, мерцание). */
+            if (true) return;
+            if (/^\/(en|uk|ce)(\/|$)/.test(window.location.pathname)) return;
             if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
             var supported = ["ru", "en", "uk"];
             var target = null;
@@ -172,12 +176,54 @@
             <!--start-indexing-for-search-->
      
 <div class="col text-center pt-5">
-    <div class="pt-5">
+    <div class="pt-5 not-found">
         <h1>404</h1>
-        <h4>Oh no! It looks like the page you're looking for doesn't exist.</h4>
-        <p class="deemphasis pt-4">If you think you reached this page because of an error, please create an issue on our <span class="font-weight-bold"><a href="https://github.com/mitre-attack/mitre-attack.github.io/issues">GitHub Issue Tracker</a>!</span></p>
+        <div class="not-found-lang" lang="ru" data-lang="ru">
+            <h4>Страница не найдена</h4>
+            <p class="deemphasis pt-3">Такого адреса на сайте нет. Возможно, страницу перенесли или в ссылке опечатка.</p>
+            <p><a href="/en/">На главную</a> &nbsp;·&nbsp; <a href="mailto:contact@decolonial.ist">Написать нам</a></p>
+        </div>
+        <div class="not-found-lang" lang="uk" data-lang="uk">
+            <h4>Сторінку не знайдено</h4>
+            <p class="deemphasis pt-3">Такої адреси на сайті немає. Можливо, сторінку перенесли або в посиланні помилка.</p>
+            <p><a href="/en/uk/">На головну</a> &nbsp;·&nbsp; <a href="mailto:contact@decolonial.ist">Написати нам</a></p>
+        </div>
+        <div class="not-found-lang" lang="en" data-lang="en">
+            <h4>Page not found</h4>
+            <p class="deemphasis pt-3">There is no such address on this site. The page may have moved, or the link has a typo.</p>
+            <p><a href="/en/en/">Home</a> &nbsp;·&nbsp; <a href="mailto:contact@decolonial.ist">Contact us</a></p>
+        </div>
     </div>
 </div>
+<script>
+(function () {
+    var supported = ["ru", "uk", "en"];
+    var lang = null;
+    var m = /^\/(uk|en)(\/|$)/.exec(window.location.pathname);
+    if (m) lang = m[1];
+    if (!lang) { try { lang = localStorage.getItem("dclst-lang"); } catch (e) {} }
+    if (!lang || supported.indexOf(lang) === -1) {
+        var prefs = navigator.languages || [navigator.language || ""];
+        for (var i = 0; i < prefs.length; i++) {
+            var code = String(prefs[i]).slice(0, 2).toLowerCase();
+            if (supported.indexOf(code) !== -1) { lang = code; break; }
+        }
+    }
+    if (!lang || supported.indexOf(lang) === -1) lang = "ru";
+    /* GitHub Pages отдаёт только корневую 404; языковые сборки кладут свои 404.html в /uk/ и /en/
+       с родной шапкой и баннером — перебрасываем туда. Защита от цикла: не прыгать на самих себя. */
+    var own = "/" + lang + "/404.html";
+    if (lang !== "en" && lang !== "ru" && window.location.pathname !== own) {
+        window.location.replace(own);
+        return;
+    }
+    var blocks = document.querySelectorAll(".not-found-lang");
+    for (var j = 0; j < blocks.length; j++) {
+        blocks[j].hidden = blocks[j].getAttribute("data-lang") !== lang;
+    }
+    document.documentElement.setAttribute("lang", lang);
+})();
+</script>
             <!--stop-indexing-for-search-->
             <!-- search overlay for entire page -- not displayed inline -->
             <div class="overlay search" id="search-overlay" style="display: none;">

@@ -23,6 +23,10 @@
            поисковые боты индексируют корень как есть. */
         (function () {
             if ("ru" !== "ru") return;
+            /* Страница 404 у GitHub Pages одна (русская) и отдаётся по ЛЮБОМУ несуществующему
+               адресу: редирект с неё дописывал «/uk» к пути в цикле (/uk/uk/uk/…, мерцание). */
+            if (false) return;
+            if (/^\/(en|uk|ce)(\/|$)/.test(window.location.pathname)) return;
             if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
             var supported = ["ru", "en", "uk"];
             var target = null;
