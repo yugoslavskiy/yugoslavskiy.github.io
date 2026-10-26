@@ -1,0 +1,714 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            /* Страница 404 у GitHub Pages одна (русская) и отдаётся по ЛЮБОМУ несуществующему
+               адресу: редирект с неё дописывал «/uk» к пути в цикле (/uk/uk/uk/…, мерцание). */
+            if (false) return;
+            if (/^\/(en|uk|ce)(\/|$)/.test(window.location.pathname)) return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/techniques/T0167/003/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/techniques/T0167/003/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/techniques/T0167/003/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/techniques/T0167/003/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/techniques/T0167/003/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="referrer" content="no-referrer">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Perfidy: Sham Corridor, sub-technique T0167.003 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/techniques/T0167/003/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Perfidy: Sham Corridor, sub-technique T0167.003 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in October 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/techniques/">Techniques</a></li>
+  <li class="breadcrumb-item"><a href="/en/techniques/T0167">Perfidy</a></li>
+  <li class="breadcrumb-item">Sham Corridor</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 id="">
+          <span id="subtechnique-parent-name">Perfidy:</span>
+          Sham Corridor
+        </h1>
+
+        <div class="row">
+          <div class="col-md-8">
+            <!--stop-indexing-for-search-->
+            <div class="card-block pb-2">
+              <div class="card">
+                <div class="card-header collapsed" id="subtechniques-card-header" data-toggle="collapse"
+                  data-target="#subtechniques-card-body" aria-expanded="false" aria-controls="subtechniques-card-body">
+                  <h5 class="mb-0" id="sub-techniques">Other sub-techniques of Perfidy
+                    (4)</h5>
+                </div>
+                <div id="subtechniques-card-body" class="card-body p-0 collapse"
+                  aria-labelledby="subtechniques-card-header">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="/en/techniques/T0167/001/" class="subtechnique-table-item"
+                            data-subtechnique_id="T0167.001"> T0167.001 </a>
+                        </td>
+                        <td>
+                          <a href="/en/techniques/T0167/001/" class="subtechnique-table-item"
+                            data-subtechnique_id="T0167.001"> False Guarantees of Safety </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="/en/techniques/T0167/002/" class="subtechnique-table-item"
+                            data-subtechnique_id="T0167.002"> T0167.002 </a>
+                        </td>
+                        <td>
+                          <a href="/en/techniques/T0167/002/" class="subtechnique-table-item"
+                            data-subtechnique_id="T0167.002"> Sham Ceasefire </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="active">
+                          T0167.003
+                        </td>
+                        <td class="active">
+                          Sham Corridor
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="/en/techniques/T0167/004/" class="subtechnique-table-item"
+                            data-subtechnique_id="T0167.004"> T0167.004 </a>
+                        </td>
+                        <td>
+                          <a href="/en/techniques/T0167/004/" class="subtechnique-table-item"
+                            data-subtechnique_id="T0167.004"> Negotiations as Cover for an Attack </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--start-indexing-for-search-->
+
+            <div class="description-body">
+                      <p>Aggressors may announce a "humanitarian corridor" or a deadline for leaving an encircled place, and then give no time, fire on and detain those who are leaving, or present the corridor as a justification for striking those who stayed.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="row card-data" id="card-id">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">ID:&nbsp;</span>T0167.003
+                  </div>
+                </div>
+                <!--stop-indexing-for-search-->
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Sub-technique of:&nbsp;</span>
+                    <a href="/en/techniques/T0167">T0167</a>
+                  </div>
+                </div>
+                <!--start-indexing-for-search-->
+                <div id="card-tactics" class="row card-data">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The tactical goals achieved by using the technique or sub-technique">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Tactic:</span>
+                        <a href="/en/tactics/TA0004">Defense Impairment</a>                  </div>
+                </div>
+                <div class="row card-data" id="card-platforms">
+                  <div class="col-md-1 px-0 text-center">
+                    <span data-toggle="tooltip" data-placement="left" title="" data-test-ignore="true"
+                      data-original-title="The peoples against whom the technique or sub-technique was used">&#9432;</span>
+                  </div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">People:&nbsp;</span>Nokhchi (Chechens)
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Contributors:&nbsp;</span>decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Version:&nbsp;</span>1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Created:&nbsp;</span>27 September 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-1 px-0 text-center"></div>
+                  <div class="col-md-11 pl-0">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>18 October 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/T0167.003" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+        <h2 class="pt-3" id="examples">Procedures Carried Out</h2>
+        <!--search-skip-start-->
+<div class="procedure-list" id="techProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="techProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="sham corridor in the autumn of 1994, russia attacked the chechen republic of ichkeria under the name of a puppet opposition, and on 11 december 1994 the russian army openly invaded the republic. the occupiers announced "corridors" for chechens to leave surrounded villages and towns, and then fired on those leaving, detained men at the exit and bombed the villages together with those who had not managed to get out.
+
+the "corridors" were announced by the command of the occupation forces when it surrounded a village or town before an assault(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010). russian commanders passed the conditions for leaving to the head of the village at their checkpoint or announced them through the itar-tass agency, and gave the chechens from two hours to two days to get out(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010)(citation: daily report: central eurasia (fbis-sov-96-162) 1996). the occupiers began shelling before the appointed time or closed the "corridor" before it ended. russian generals declared that all chechen civilians had left, and the troops fired on everyone who remained in the village(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010).
+
+on 7 april 1995, a russian general who refused to give his name gave the chechens in samashki, a village in the west of ichkeria, until four in the afternoon to leave, announcing this at one o'clock, and 15-25 minutes before the deadline the occupiers began shelling the village with mortars. of the five thousand people in the village, 100-150 managed to get out before the shelling, and even before the appointed hour the russian military killed two teenagers and mortally wounded a woman who were leaving the village(citation: всеми имеющимися средствами… результаты независимого расследования наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в чечне 1995). on 1-2 june 1995, the command of the occupation forces, by agreement with the assistance group of the organization for security and co-operation in europe, opened a "corridor" for chechens to leave the shatoy district in the mountains in the south of ichkeria, only in the daytime, from ten in the morning to seven in the evening. russian tank crews fired on a column of refugees from borzoy, a village in this district, and pilots bombed it and killed at least four refugees(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010). on 18 december 1995, while russian troops were shelling gudermes, the second-largest town of ichkeria, east of grozny, the crew of a russian helicopter fired rockets in an open field at chechen refugees, mostly women, who were walking from the town along the "humanitarian corridor" eastward to khasavyurt, a town in russian-controlled dagestan. the crew killed the son of one of the refugee women (see: "mass killings of civilians")(citation: caught in the crossfire: civilians in gudermes and pervomayskoye 1996)(citation: материалы опроса свидетелей. вторая сессия. москва, 20-24 апреля 1996 года. дополнительные слушания. третья сессия. прага, 24-26 мая 1996 года 1997).
+
+on 19 february 1996, on the third day of the assault on the settlement of novogroznensky in the east of ichkeria, kvashnin, commander of the russian troops in the north caucasus, declared that all chechen civilians had left the settlement through two "corridors", and refugees from novogroznensky denied this. according to the french agency agence france-presse, the occupiers killed at least 50 chechen civilians in the settlement(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010). on 4 march 1996, on the second day of the assault on sernovodsk, a village in the west of ichkeria, the occupiers opened a "corridor" and for two hours let vehicles of the international organization for migration into the village, and on 5 march they closed the way out. russian artillerymen and pilots resumed shelling the village, where about 7,000 people remained, and by 9 march, when the occupiers captured sernovodsk, they had killed at least 45 chechen civilians there (see: "mass killings of civilians")(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010)(citation: russian federation: human rights violations in the chechen republic (eur 46/20/96) 1996).
+
+on the night of 14 march 1996, the occupiers surrounded samashki, where about 12,000 people lived. on 14 march, the command of the occupation forces demanded 10 thousand dollars for a "corridor" for the chechens to leave the village. chechens from samashki told human rights defenders of memorial that the head of the village took this sum to the checkpoint in rubles - 50 million, collected from the villagers (see: "administrative corruption and extortion")(citation: материалы опроса свидетелей. вторая сессия. москва, 20-24 апреля 1996 года. дополнительные слушания. третья сессия. прага, 24-26 мая 1996 года 1997). on 15 march at six in the morning, the russian military at the checkpoint announced to the head of the village that from eight to ten in the morning they would let the chechens out toward russian-controlled ingushetia, and then would begin the assault. some families went south along another road, but there the occupiers let no one out, and the families returned to the village(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010)(citation: материалы опроса свидетелей. вторая сессия. москва, 20-24 апреля 1996 года. дополнительные слушания. третья сессия. прага, 24-26 мая 1996 года 1997). zaynap baysaeva, a chechen woman from samashki, told the public tribunal of the russian glasnost foundation in moscow on 22 april: "everyone who learned about the corridor — some on a tractor… some in a car, drove up to the checkpoint. but the road was already blocked — the mercenaries [russian servicemen] were standing there and detaining males from children in the 6th-9th grades to men of 65"(citation: материалы опроса свидетелей. вторая сессия. москва, 20-24 апреля 1996 года. дополнительные слушания. третья сессия. прага, 24-26 мая 1996 года 1997). at the checkpoint, russian soldiers took 91 chechens off the buses and unlawfully detained them from among those who were leaving through the "corridor". five weeks later, on 19 april, russia's ministry of internal affairs released them without charges (see: "filtration camp system")(citation: russia/chechnya: a legacy of abuse 1997)(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010). sixteen minutes after the end of the "corridor", russian troops began shelling the village from tanks and howitzers, helicopters and aircraft. about half of the village had not managed to leave (see: "indiscriminate attacks")(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010).
+
+on 16 march, russian soldiers at the checkpoint fired on a column of up to 500 chechens who were trying to get out of samashki, and the column returned to the village. on 18 march, several thousand chechens approached the russian positions on the southern edge of the village and demanded to be let out. the russian military allowed women with children to leave and threatened to send the men to a filtration camp, and the women refused to leave without their husbands, fathers, brothers and sons. on the morning of 19 march, the crew of a russian helicopter fired on the chechens near the russian positions, killed one chechen and wounded six or seven (see: "mass killings of civilians"). only after this, at noon, did the occupiers open a "corridor", and the chechens began to leave the encirclement, while a doctor from samashki took the wounded to the hospital in achkhoy-martan, a village in the west of ichkeria(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010). that day, at another russian checkpoint, soldiers fired an automatic grenade launcher at women who had been promised a "corridor" to collect their children from the village and return by five in the evening. the occupiers wounded eight to ten women, and the wounded ended up in the hospital in sleptsovskaya, a stanitsa in russian-controlled ingushetia(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010)(citation: материалы опроса свидетелей. вторая сессия. москва, 20-24 апреля 1996 года. дополнительные слушания. третья сессия. прага, 24-26 мая 1996 года 1997). during the assault that began on 15 march, the occupiers killed at least 35 chechen civilians in samashki(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010).
+
+on 6 may 1996, russian troops surrounded komsomolskoye, a village in the urus-martan district south-west of grozny, and demanded that the defenders lay down their arms by nightfall, otherwise shelling would begin at two in the morning. russian artillerymen opened fire at about three in the afternoon, 11 hours before the deadline, when the chechens in the village were still preparing to take the children out, and killed chechen civilians(citation: материалы опроса свидетелей. вторая сессия. москва, 20-24 апреля 1996 года. дополнительные слушания. третья сессия. прага, 24-26 мая 1996 года 1997). on 9 july 1996, russian troops surrounded gekhi, a village south-west of grozny, and on 11 july opened a "corridor" only for women, children and the elderly and closed it the same day. the russian military declared that only men remained in the village, although about 8,000 chechens had not managed to get out, and from 9 to 12 july the occupiers' artillerymen and pilots killed 19 chechen civilians in gekhi(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010)(citation: the war in chechnya 1999)(citation: daily report: central eurasia (fbis-sov-96-139) 1996).
+
+on 19 august 1996, when the armed forces of ichkeria had surrounded the occupiers in grozny, pulikovsky, acting commander of the occupation forces, gave the townspeople 48 hours to leave through the only "corridor", via the suburb of staraya sunzha in the east, and threatened to bomb the city afterwards(citation: daily report: central eurasia (fbis-sov-96-162) 1996). on the night of 20 august, before the deadline, the occupiers began bombing grozny and shelling it with artillery, and in the daytime they closed the "corridor"(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010)(citation: daily report: central eurasia (fbis-sov-96-163) 1996). human rights defenders of memorial write that no one counted the civilian townspeople whom the occupiers killed in grozny from 6 to 22 august, and journalists gave the figure of 2,000(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010). on 20 august, the crew of a russian helicopter near the village of goyty south of grozny fired on chechen refugees from the city who were traveling in buses and cars, and killed ten to twelve people(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010).
+
+human rights defenders of memorial write that throughout the war the russian military informed chechens about the "corridors" poorly or not at all, gave little time to get out before the shelling, and killed chechen civilians even as they were leaving through the "corridors"(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010).
+
+on 21 august 1996, lebed, secretary of russia's security council, flew to ichkeria and cancelled the threat to bomb grozny made by pulikovsky, acting commander of the occupation forces(citation: the war in chechnya 1999).
+
+in august 1996, the armed forces of ichkeria liberated grozny from the occupiers, forcing russia to the negotiating table(citation: the war in chechnya 1999). on 31 august 1996, peace agreements were signed in khasavyurt (see: "sham treaties")(citation: хасавюртовские соглашения 1996). on 31 december 1996, the last russian troops left the republic(citation: россия - чечня - цепь ошибок и преступлений. 1994—1996 2010)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0011"
+             data-tools="S0010"
+             data-date="1994-09-02 00:00:00+00:00">
+            <div class="proc-meta">
+                <div class="proc-date">September 1994</div>
+<div class="proc-addr"><a href="/en/procedures/C1193.T0167.003/" title="Procedure page">C1193.T0167.003&nbsp;&rarr;</a></div><div><a href="/en/campaigns/C1193">C1193</a> First Russian-Chechen War (1994–1996)</div><div><a href="/en/groups/G0011">G0011</a> Russian Federation</div><div><a href="/en/software/S0010">S0010</a> Regular Army</div>            </div>
+            <div class="proc-desc">
+                        <p>In the autumn of 1994, Russia attacked the Chechen Republic of Ichkeria under the name of a puppet opposition, and on 11 December 1994 the Russian army openly invaded the republic. The occupiers announced "corridors" for Chechens to leave surrounded villages and towns, and then fired on those leaving, detained men at the exit and bombed the villages together with those who had not managed to get out.</p><p>The "corridors" were announced by the command of the occupation forces when it surrounded a village or town before an assault<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Russian commanders passed the conditions for leaving to the head of the village at their checkpoint or announced them through the ITAR-TASS agency, and gave the Chechens from two hours to two days to get out<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-162). 1996. – 20.08.1996, 48 p." data-reference="Daily Report: Central Eurasia (FBIS-SOV-96-162) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1260" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. The occupiers began shelling before the appointed time or closed the "corridor" before it ended. Russian generals declared that all Chechen civilians had left, and the troops fired on everyone who remained in the village<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>On 7 April 1995, a Russian general who refused to give his name gave the Chechens in Samashki, a village in the west of Ichkeria, until four in the afternoon to leave, announcing this at one o'clock, and 15-25 minutes before the deadline the occupiers began shelling the village with mortars. Of the five thousand people in the village, 100-150 managed to get out before the shelling, and even before the appointed hour the Russian military killed two teenagers and mortally wounded a woman who were leaving the village<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А. Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне. 1995. – Составители: Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А.; глава миссии С. Ковалёв; ПЦ «Мемориал», М., 1995 (доклад о событиях в селе Самашки 7-8 апреля 1995 г.)." data-reference="Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/662" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. On 1-2 June 1995, the command of the occupation forces, by agreement with the Assistance Group of the Organization for Security and Co-operation in Europe, opened a "corridor" for Chechens to leave the Shatoy district in the mountains in the south of Ichkeria, only in the daytime, from ten in the morning to seven in the evening. Russian tank crews fired on a column of refugees from Borzoy, a village in this district, and pilots bombed it and killed at least four refugees<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 18 December 1995, while Russian troops were shelling Gudermes, the second-largest town of Ichkeria, east of Grozny, the crew of a Russian helicopter fired rockets in an open field at Chechen refugees, mostly women, who were walking from the town along the "humanitarian corridor" eastward to Khasavyurt, a town in Russian-controlled Dagestan. The crew killed the son of one of the refugee women (see: "Mass Killings of Civilians")<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Human Rights Watch/Helsinki. Caught in the Crossfire: Civilians in Gudermes and Pervomayskoye. 1996. – Vol. 8, No. 3 (D), March 1996." data-reference="Caught in the Crossfire: Civilians in Gudermes and Pervomayskoye 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/656" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/988" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p><p>On 19 February 1996, on the third day of the assault on the settlement of Novogroznensky in the east of Ichkeria, Kvashnin, commander of the Russian troops in the North Caucasus, declared that all Chechen civilians had left the settlement through two "corridors", and refugees from Novogroznensky denied this. According to the French agency Agence France-Presse, the occupiers killed at least 50 Chechen civilians in the settlement<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 4 March 1996, on the second day of the assault on Sernovodsk, a village in the west of Ichkeria, the occupiers opened a "corridor" and for two hours let vehicles of the International Organization for Migration into the village, and on 5 March they closed the way out. Russian artillerymen and pilots resumed shelling the village, where about 7,000 people remained, and by 9 March, when the occupiers captured Sernovodsk, they had killed at least 45 Chechen civilians there (see: "Mass Killings of Civilians")<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Amnesty International. Russian Federation: Human rights violations in the Chechen Republic (EUR 46/20/96). 1996. – April 1996, AI Index EUR 46/20/96." data-reference="Russian Federation: Human rights violations in the Chechen Republic (EUR 46/20/96) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/659" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>.</p><p>On the night of 14 March 1996, the occupiers surrounded Samashki, where about 12,000 people lived. On 14 March, the command of the occupation forces demanded 10 thousand dollars for a "corridor" for the Chechens to leave the village. Chechens from Samashki told human rights defenders of Memorial that the head of the village took this sum to the checkpoint in rubles - 50 million, collected from the villagers (see: "Administrative Corruption and Extortion")<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/988" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. On 15 March at six in the morning, the Russian military at the checkpoint announced to the head of the village that from eight to ten in the morning they would let the Chechens out toward Russian-controlled Ingushetia, and then would begin the assault. Some families went south along another road, but there the occupiers let no one out, and the families returned to the village<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/988" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Zaynap Baysaeva, a Chechen woman from Samashki, told the public tribunal of the Russian Glasnost Foundation in Moscow on 22 April: "Everyone who learned about the corridor — some on a tractor… some in a car, drove up to the checkpoint. But the road was already blocked — the mercenaries [Russian servicemen] were standing there and detaining males from children in the 6th-9th grades to men of 65"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/988" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. At the checkpoint, Russian soldiers took 91 Chechens off the buses and unlawfully detained them from among those who were leaving through the "corridor". Five weeks later, on 19 April, Russia's Ministry of Internal Affairs released them without charges (see: "Filtration Camp System")<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Human Rights Watch. Russia/Chechnya: A Legacy of Abuse. 1997. – Vol. 9, No. 2 (D), January 1997." data-reference="Russia/Chechnya: A Legacy of Abuse 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/657" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span><span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Sixteen minutes after the end of the "corridor", Russian troops began shelling the village from tanks and howitzers, helicopters and aircraft. About half of the village had not managed to leave (see: "Indiscriminate Attacks")<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>On 16 March, Russian soldiers at the checkpoint fired on a column of up to 500 Chechens who were trying to get out of Samashki, and the column returned to the village. On 18 March, several thousand Chechens approached the Russian positions on the southern edge of the village and demanded to be let out. The Russian military allowed women with children to leave and threatened to send the men to a filtration camp, and the women refused to leave without their husbands, fathers, brothers and sons. On the morning of 19 March, the crew of a Russian helicopter fired on the Chechens near the Russian positions, killed one Chechen and wounded six or seven (see: "Mass Killings of Civilians"). Only after this, at noon, did the occupiers open a "corridor", and the Chechens began to leave the encirclement, while a doctor from Samashki took the wounded to the hospital in Achkhoy-Martan, a village in the west of Ichkeria<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. That day, at another Russian checkpoint, soldiers fired an automatic grenade launcher at women who had been promised a "corridor" to collect their children from the village and return by five in the evening. The occupiers wounded eight to ten women, and the wounded ended up in the hospital in Sleptsovskaya, a stanitsa in Russian-controlled Ingushetia<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/988" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. During the assault that began on 15 March, the occupiers killed at least 35 Chechen civilians in Samashki<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>On 6 May 1996, Russian troops surrounded Komsomolskoye, a village in the Urus-Martan district south-west of Grozny, and demanded that the defenders lay down their arms by nightfall, otherwise shelling would begin at two in the morning. Russian artillerymen opened fire at about three in the afternoon, 11 hours before the deadline, when the Chechens in the village were still preparing to take the children out, and killed Chechen civilians<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/988" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. On 9 July 1996, Russian troops surrounded Gekhi, a village south-west of Grozny, and on 11 July opened a "corridor" only for women, children and the elderly and closed it the same day. The Russian military declared that only men remained in the village, although about 8,000 Chechens had not managed to get out, and from 9 to 12 July the occupiers' artillerymen and pilots killed 19 Chechen civilians in Gekhi<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Stasys Knezys, Romanas Sedlickas. The War in Chechnya. 1999. – College Station: Texas A&amp;M University Press, 1999. ISBN 0-89096-856-X." data-reference="The War in Chechnya 1999"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1127" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span><span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-139). 1996. – 18.07.1996." data-reference="Daily Report: Central Eurasia (FBIS-SOV-96-139) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1364" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>.</p><p>On 19 August 1996, when the Armed Forces of Ichkeria had surrounded the occupiers in Grozny, Pulikovsky, acting commander of the occupation forces, gave the townspeople 48 hours to leave through the only "corridor", via the suburb of Staraya Sunzha in the east, and threatened to bomb the city afterwards<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-162). 1996. – 20.08.1996, 48 p." data-reference="Daily Report: Central Eurasia (FBIS-SOV-96-162) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1260" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. On the night of 20 August, before the deadline, the occupiers began bombing Grozny and shelling it with artillery, and in the daytime they closed the "corridor"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-163). 1996. – 21.08.1996, 64 p." data-reference="Daily Report: Central Eurasia (FBIS-SOV-96-163) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1271" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Human rights defenders of Memorial write that no one counted the civilian townspeople whom the occupiers killed in Grozny from 6 to 22 August, and journalists gave the figure of 2,000<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 20 August, the crew of a Russian helicopter near the village of Goyty south of Grozny fired on Chechen refugees from the city who were traveling in buses and cars, and killed ten to twelve people<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>Human rights defenders of Memorial write that throughout the war the Russian military informed Chechens about the "corridors" poorly or not at all, gave little time to get out before the shelling, and killed Chechen civilians even as they were leaving through the "corridors"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>On 21 August 1996, Lebed, secretary of Russia's Security Council, flew to Ichkeria and cancelled the threat to bomb Grozny made by Pulikovsky, acting commander of the occupation forces<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Stasys Knezys, Romanas Sedlickas. The War in Chechnya. 1999. – College Station: Texas A&amp;M University Press, 1999. ISBN 0-89096-856-X." data-reference="The War in Chechnya 1999"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1127" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p><p>In August 1996, the Armed Forces of Ichkeria liberated Grozny from the occupiers, forcing Russia to the negotiating table<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Stasys Knezys, Romanas Sedlickas. The War in Chechnya. 1999. – College Station: Texas A&amp;M University Press, 1999. ISBN 0-89096-856-X." data-reference="The War in Chechnya 1999"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1127" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. On 31 August 1996, peace agreements were signed in Khasavyurt (see: "Sham Treaties")<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Совместное заявление и Принципы определения основ взаимоотношений между Российской Федерацией и Чеченской Республикой. Хасавюртовские соглашения. 1996. – подписи А. Лебедь, С. Харламов, А. Масхадов, С. Абумуслимов; Хасавюрт, 31.08.1996; публикация: Независимая газета, № 163, 03.09.1996." data-reference="Хасавюртовские соглашения 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/661" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. On 31 December 1996, the last Russian troops left the republic<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--search-skip-end-->
+
+        <script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+        <script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("techProcs")); });</script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // пришли с матрицы конкретного народа — оставляем в фильтре только его
+            // (чекбоксы уже построены initProcedureList: его DOMContentLoaded
+            // зарегистрирован раньше и выполняется первым)
+            const PEOPLE_BY_MATRIX_PATH = {
+"russia/ukrainians": "Ukrainians",
+"russia/nokhchi": "Nokhchi (Chechens)",
+            };
+            const container = document.querySelector('#techProcs .people-filter-box');
+            if (!container) return;
+            const ref = document.referrer || "";
+            for (const [path, people] of Object.entries(PEOPLE_BY_MATRIX_PATH)) {
+                if (ref.includes('/matrices/' + path)) {
+                    const boxes = Array.from(container.querySelectorAll('input[type=checkbox]'));
+                    const target = boxes.find(cb => cb.value === people.toLowerCase());
+                    if (target) {
+                        boxes.forEach(cb => { cb.checked = (cb === target); });
+                        container.dispatchEvent(new Event('change'));
+                    }
+                    break;
+                }
+            }
+        });
+        </script>
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-1" href="https://archive.decolonial.ist/en/27" target="_blank">
+                        Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-2" href="https://archive.decolonial.ist/en/1260" target="_blank">
+                        Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-162). 1996. – 20.08.1996, 48 p.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-3" href="https://archive.decolonial.ist/en/662" target="_blank">
+                        Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А. Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне. 1995. – Составители: Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А.; глава миссии С. Ковалёв; ПЦ «Мемориал», М., 1995 (доклад о событиях в селе Самашки 7-8 апреля 1995 г.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-4" href="https://archive.decolonial.ist/en/656" target="_blank">
+                        Human Rights Watch/Helsinki. Caught in the Crossfire: Civilians in Gudermes and Pervomayskoye. 1996. – Vol. 8, No. 3 (D), March 1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-5" href="https://archive.decolonial.ist/en/988" target="_blank">
+                        Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-6" href="https://archive.decolonial.ist/en/659" target="_blank">
+                        Amnesty International. Russian Federation: Human rights violations in the Chechen Republic (EUR 46/20/96). 1996. – April 1996, AI Index EUR 46/20/96.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="7.0">
+                                
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-7" href="https://archive.decolonial.ist/en/657" target="_blank">
+                        Human Rights Watch. Russia/Chechnya: A Legacy of Abuse. 1997. – Vol. 9, No. 2 (D), January 1997.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-8" href="https://archive.decolonial.ist/en/1127" target="_blank">
+                        Stasys Knezys, Romanas Sedlickas. The War in Chechnya. 1999. – College Station: Texas A&M University Press, 1999. ISBN 0-89096-856-X.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-9" href="https://archive.decolonial.ist/en/1364" target="_blank">
+                        Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-139). 1996. – 18.07.1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-10" href="https://archive.decolonial.ist/en/1271" target="_blank">
+                        Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-163). 1996. – 21.08.1996, 64 p.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-11" href="https://archive.decolonial.ist/en/661" target="_blank">
+                        Совместное заявление и Принципы определения основ взаимоотношений между Российской Федерацией и Чеченской Республикой. Хасавюртовские соглашения. 1996. – подписи А. Лебедь, С. Харламов, А. Масхадов, С. Абумуслимов; Хасавюрт, 31.08.1996; публикация: Независимая газета, № 163, 03.09.1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

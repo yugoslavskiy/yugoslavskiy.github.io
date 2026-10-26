@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            /* Страница 404 у GitHub Pages одна (русская) и отдаётся по ЛЮБОМУ несуществующему
+               адресу: редирект с неё дописывал «/uk» к пути в цикле (/uk/uk/uk/…, мерцание). */
+            if (false) return;
+            if (/^\/(en|uk|ce)(\/|$)/.test(window.location.pathname)) return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/procedures/C1193.T0112/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/procedures/C1193.T0112/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/procedures/C1193.T0112/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/procedures/C1193.T0112/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/procedures/C1193.T0112/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="referrer" content="no-referrer">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Крадіжка культурних цінностей у кампанії «Перша російсько-чеченська війна (1994–1996)», C1193.T0112 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/procedures/C1193.T0112/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Крадіжка культурних цінностей у кампанії «Перша російсько-чеченська війна (1994–1996)», C1193.T0112 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в жовтні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb mt-4">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/procedures/">Процедури</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/C1193">Перша російсько-чеченська війна (1994–1996)</a></li>
+  <li class="breadcrumb-item">Крадіжка культурних цінностей</li>
+</ol>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Крадіжка культурних цінностей</h1>
+        <p class="procedure-subtitle">
+          у кампанії «<a href="/uk/campaigns/C1193">Перша російсько-чеченська війна (1994–1996)</a>»        </p>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body procedure-body">
+                      <p>Восени 1994 року Росія напала на Чеченську Республіку Ічкерія під іменем маріонеткової опозиції, а 11 грудня 1994 року російська армія відкрито вторглася в республіку. Російські військові грабували музеї та будинки чеченців у Грозному, а фахівці міністерства культури Росії вивезли з руїн до Москви найцінніші з уцілілих картин.</p><p>З 1 по 4 січня 1995 року окупанти обстрілювали будівлю, де розміщувалися Чеченський національний музей і Музей образотворчих мистецтв, і майже повністю спалили обидва музеї (докладніше: «Знищення історичної пам'яті»)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>До весни 1995 року російські військові не пускали в руїни музеїв нікого з чеченців і розграбували те, що вціліло. Окупанти забирали експонати як трофеї, за званням і посадою<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>Російські солдати вантажили експонати Національного музею на бронетранспортери<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Воєначальники окупаційних військ за допомогою солдатів вивезли з відділу рукописів музею не одну вантажівку стародавніх книг у бік Моздока, міста в Північній Осетії, та Інгушетії, підконтрольних Росії<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>У лютому 1995 року співробітники ФСК (попередниці сучасної ФСБ) склали картини та інші твори мистецтва з руїн у 20-тонний залізничний контейнер<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Наприкінці березня російське міністерство з надзвичайних ситуацій привезло в Грозний п'ятьох фахівців міністерства культури Росії та московських музеїв. Група описала твори з контейнера<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия. 1996. – Материалы опроса свидетелей. Первая сессия. Москва, 21-25 февраля 1996 года. М.: Общественный фонд «Гласность», 1996." data-reference="Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/986" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Заступник директора музейного центру міністерства культури Хотін, один із п'ятьох, у лютому 1996 року розповів громадському трибуналу російського фонду «Гласність» у Москві: «Ми спробували все, що було можливо, винести з руїн. При цьому збереженість творів була практично нульовою. … Ми законсервували, попередньо привели до божого вигляду і вивезли близько 60 творів образотворчого мистецтва»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия. 1996. – Материалы опроса свидетелей. Первая сессия. Москва, 21-25 февраля 1996 года. М.: Общественный фонд «Гласность», 1996." data-reference="Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/986" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Директор Національного музею Іса Адаєв у травні 1996 року сказав цьому трибуналу в Празі: «Експерти-мистецтвознавці, які приїхали з Москви, допомагали красти речі, визначаючи потрібні за ступенем їхньої значущості. Ці експерти залишали, за їхніми словами, „непотрібний мотлох"»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>У 1995 році, під час захоплення Грозного, російські солдати двічі грабували домашню бібліотеку чеченського журналіста Аслана Дукаєва в місті, і його сестра врятувала лише кілька книг<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Aslan Doukaev. Chechnya&#x27;s Literary Pyre. 2004. – Foreign Policy, № 141, март-апрель 2004, с. 88; в библиотеке только превью ProQuest." data-reference="Chechnya's Literary Pyre 2004"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1613" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. У 1995 році, після захоплення Грозного, бійці частини 3111 дивізії внутрішніх військ МВС Росії імені Дзержинського (попередники сучасної Росгвардії) обшукали будинок чеченця на околиці міста і вивезли колекцію стародавніх рукописів, книг та ікон, яку там зберігав колишній заступник директора Грозненської філармонії Михайло Паталов. Його заява пройшла одинадцять прокурорських інстанцій, прокуратура завела справу, але вона залишилася без руху<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>У липні 1995 року делегація Ічкерії на переговорах з Росією в Грозному вимагала повернути експонати Національного музею. Російська делегація усно пообіцяла цим зайнятися<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Через сім місяців, у лютому 1996 року, вивезені картини лежали у сховищах міністерства культури Росії і чекали на реставрацію<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия. 1996. – Материалы опроса свидетелей. Первая сессия. Москва, 21-25 февраля 1996 года. М.: Общественный фонд «Гласность», 1996." data-reference="Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/986" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. У липні 2002 року 43 роботи Музею образотворчих мистецтв Грозного висіли в Москві на виставці Третьяковської галереї<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Grozny&#x27;s war-torn treasures. 2002. – The Globe and Mail, 2002." data-reference="Grozny's war-torn treasures 2002"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1611" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1193.T0112
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Техніка:&nbsp;</span>
+                    <a href="/uk/techniques/T0112">Крадіжка культурних цінностей</a>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Кампанія:&nbsp;</span>
+                    <a href="/uk/campaigns/C1193">Перша російсько-чеченська війна (1994–1996)</a>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>Вересень 1994
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>Грудень 1996
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-1" href="https://archive.decolonial.ist/uk/27" target="_blank">
+                        Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-2" href="https://archive.decolonial.ist/uk/988" target="_blank">
+                        Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-3" href="https://archive.decolonial.ist/uk/986" target="_blank">
+                        Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия. 1996. – Материалы опроса свидетелей. Первая сессия. Москва, 21-25 февраля 1996 года. М.: Общественный фонд «Гласность», 1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="4.0">
+                                
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-4" href="https://archive.decolonial.ist/uk/1613" target="_blank">
+                        Aslan Doukaev. Chechnya's Literary Pyre. 2004. – Foreign Policy, № 141, март-апрель 2004, с. 88; в библиотеке только превью ProQuest.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-5" href="https://archive.decolonial.ist/uk/1611" target="_blank">
+                        Grozny's war-torn treasures. 2002. – The Globe and Mail, 2002.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

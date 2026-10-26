@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            /* Страница 404 у GitHub Pages одна (русская) и отдаётся по ЛЮБОМУ несуществующему
+               адресу: редирект с неё дописывал «/uk» к пути в цикле (/uk/uk/uk/…, мерцание). */
+            if (false) return;
+            if (/^\/(en|uk|ce)(\/|$)/.test(window.location.pathname)) return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/procedures/C1193.T0020/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/procedures/C1193.T0020/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/procedures/C1193.T0020/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/procedures/C1193.T0020/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/procedures/C1193.T0020/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="referrer" content="no-referrer">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Staging a Coup in the campaign “First Russian-Chechen War (1994–1996)”, C1193.T0020 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/procedures/C1193.T0020/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Staging a Coup in the campaign “First Russian-Chechen War (1994–1996)”, C1193.T0020 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in October 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb mt-4">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/procedures/">Procedures</a></li>
+  <li class="breadcrumb-item"><a href="/en/campaigns/C1193">First Russian-Chechen War (1994–1996)</a></li>
+  <li class="breadcrumb-item">Staging a Coup</li>
+</ol>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Staging a Coup</h1>
+        <p class="procedure-subtitle">
+          in the campaign “<a href="/en/campaigns/C1193">First Russian-Chechen War (1994–1996)</a>”        </p>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body procedure-body">
+                      <p>In the autumn of 1994, Russia attacked the Chechen Republic of Ichkeria under the name of a puppet opposition, and on 11 December 1994 the Russian army openly invaded the republic. Russian special services and the army gave the puppet opposition money, weapons, instructors, tank crewmen and pilots in order to overthrow Dzhokhar Dudayev, the elected president of the Chechen Republic.</p><p>In the summer of 1994, Russia's Ministry for Nationalities Affairs and the FSK (a predecessor of today's FSB) helped the puppet opposition recruit armed fighters in Znamenskoye, a village in the northwest of Ichkeria, and in Urus-Martan, a town southwest of Grozny<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Russia allocated more than 150 billion rubles to the Provisional Council, the leadership of the puppet opposition, which it had confirmed at a congress on 3 June. In an analytical memorandum, the FSK named the head of the Provisional Council the most suitable candidate for support<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>On 3 September 1994, the Russian government, in an address to the Chechen people, proposed that Dzhokhar Dudayev resign<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>On 5 September 1994, the General Staff of the Russian army ordered that 10 armored personnel carriers and 6 combat helicopters with crews be handed over to the Provisional Council<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. From these helicopters, Russian pilots fired rockets at residential houses in Ichkeria (see: "Indiscriminate Attacks"). In November, the Russian army handed tanks over to the council<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Камышев Д. Оппозиция копит силы для последнего штурма. 1994. – «Коммерсантъ» № 223 (691) от 24.11.1994, рубрика «Ситуация в Чечне»." data-reference="Оппозиция копит силы для последнего штурма 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1045" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>In September and October 1994, Russian officers trained more than a hundred fighters of the Provisional Council to drive T-62 tanks and fire army mortars at the "Prudboy" training ground near Volgograd, a city in the south of Russia<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Краснопольский К. Чеченцы тренируются в Волгограде. 1994. – «Коммерсантъ» № 188 (656) от 05.10.1994; подзаголовок «Российские танкисты куют кадры для чеченской оппозиции»; автор назван в тексте: «корреспондент Ъ Константин Ъ-Краснопольский»." data-reference="Чеченцы тренируются в Волгограде 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1042" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span><span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>In October 1994, Savostyanov, the head of the Moscow directorate of the FSK, ordered that Russian soldiers and officers who knew how to maintain armored vehicles and fight in them be found for the Provisional Council. The military counterintelligence of the FSK selected the candidates<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Черкасов А. «Парад планет». Ноябрьский штурм Грозного: подготовка и осуществление. 2004. – Полит.ру, раздел «Аналитика», 29 ноября 2004; серия статей «Как начиналась «первая чеченская»»." data-reference="«Парад планет». Ноябрьский штурм Грозного: подготовка и осуществление 2004"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1086" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. From 3 to 9 November, FSK officers travelled around military units near Moscow and signed contracts with tank crewmen<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Черкасов А. «Парад планет». Ноябрьский штурм Грозного: подготовка и осуществление. 2004. – Полит.ру, раздел «Аналитика», 29 ноября 2004; серия статей «Как начиналась «первая чеченская»»." data-reference="«Парад планет». Ноябрьский штурм Грозного: подготовка и осуществление 2004"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1086" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p><p>In November 1994, Kolesnikov, the Chief of the General Staff of the Russian army, authorized sending the recruits to the Caucasus. Kotenkov, Russia's deputy minister for nationalities affairs, directed the dispatch, and by 16 November the recruits had been brought to Mozdok, a town in Russian-controlled North Ossetia near the border of the Chechen Republic<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Russia denied that it was sending its servicemen to fight for the Provisional Council (see: "Lies about Its Own Actions").</p><p>In the autumn of 1994, FSK officers fought on the side of the puppet opposition<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>From September 1994 until the assault on Grozny on 26 November, fighters of the Provisional Council and Russian crews attacked Ichkeria. On 2 September, fighters of the council and a column of twelve tanks with Russian crews attacked Grozny. The Armed Forces of Ichkeria stopped them at the settlement of Dolinsky, northwest of Grozny, knocked out a tank and took eight men prisoner, among them, according to initial reports, Russian servicemen<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Шпак В. Оппозиция перешла в наступление. 1994. – «Коммерсантъ» № 166 (634) от 03.09.1994." data-reference="Оппозиция перешла в наступление 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/717" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span><span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="РГТРК «Останкино», программа «Новости». Программа «Новости» от 2 сентября 1994 года: бой у посёлка Долинское. 1994. – телепрограмма, сюжет 2 мин 04 с, выпуск с английской озвучкой поверх русского эфира; копия с YouTube-канала «История ЧРИ» (ролик 7u4DDko99LY, загружен 03.09.2025)." data-reference="Программа «Новости» от 2 сентября 1994 года: бой у посёлка Долинское 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/729" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span><span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Хроника первой российской войны в Чечне. 2026. – Beda Media." data-reference="Хроника первой российской войны в Чечне 2026"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/26" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span><span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Dunlop J. B. Russia Confronts Chechnya: Roots of a Separatist Conflict. 1998. – Cambridge; New York: Cambridge University Press, 1998. ISBN 0-521-63619-1." data-reference="Russia Confronts Chechnya: Roots of a Separatist Conflict 1998"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/710" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span><span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-94-172). 1994. – 06.09.1994." data-reference="Daily Report: Central Eurasia (FBIS-SOV-94-172) 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1338" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. On 30 September, Russian pilots in four helicopters of the Provisional Council fired rockets at the "Severny" airport in Grozny and destroyed five civilian aircraft and two aircraft of the army of Ichkeria, and fighters of the puppet opposition blocked the entrances to the city<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Камышев Д. Оппозиция предложила Дудаеву сдаться. 1994. – «Коммерсантъ» № 186 от 01.10.1994, рубрика «Ситуация в Чечне»; заметка в двух частях (стр. 1 и окончание, kommersant.ru/doc/91261)." data-reference="Оппозиция предложила Дудаеву сдаться 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1068" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span><span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Hearst D. Chechen capital on war alert after raid. 1994. – «The Guardian», 01.10.1994; корреспонденция из Москвы." data-reference="Chechen capital on war alert after raid 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1039" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Dzhokhar Dudayev rejected the Provisional Council's ultimatum to surrender within six hours, and the council's fighters dispersed without attacking Grozny<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Камышев Д. Оппозиция предложила Дудаеву сдаться. 1994. – «Коммерсантъ» № 186 от 01.10.1994, рубрика «Ситуация в Чечне»; заметка в двух частях (стр. 1 и окончание, kommersant.ru/doc/91261)." data-reference="Оппозиция предложила Дудаеву сдаться 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1068" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span><span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Камышев Д. Наступление было непродолжительным. 1994. – «Коммерсантъ» № 197 (665) от 18.10.1994, рубрика «Ситуация в Чечне»." data-reference="Наступление было непродолжительным 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1043" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. On 15 October, fighters of the Provisional Council stormed Grozny from the south and from the north, and the Armed Forces of Ichkeria repelled the assault. The defenders took several dozen attackers prisoner, among them, according to various reports, 12 to 15 Russian officers<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Камышев Д. Наступление было непродолжительным. 1994. – «Коммерсантъ» № 197 (665) от 18.10.1994, рубрика «Ситуация в Чечне»." data-reference="Наступление было непродолжительным 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1043" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>, and on 16 October the council's fighters retreated to their bases in Znamenskoye and in Gekhi, a village southwest of Grozny<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>On 17 November 1994, nine days before the assault on Grozny, a group of Russian officers headed by Kolesnikov, the Chief of the General Staff, flew from Moscow to Mozdok<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Valery Yakov, special correspondent of the Moscow newspaper Izvestia, wrote about the preparation of the assault in November 1996: "There, in Mozdok, at the 'Arsenal' base, the contract soldiers [recruited Russian servicemen]… trained the Chechen crews [of the Provisional Council]… In all, the contract soldiers received 40 brand-new tanks, 16 of which had 'Russian' crews"<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Шаповалов Н. Победившая нас война. Часть 2. 2025. – «Новая газета Европа», 08.01.2025." data-reference="Победившая нас война. Часть 2 2025"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/727" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Черкасов А. «Парад планет». Ноябрьский штурм Грозного: подготовка и осуществление. 2004. – Полит.ру, раздел «Аналитика», 29 ноября 2004; серия статей «Как начиналась «первая чеченская»»." data-reference="«Парад планет». Ноябрьский штурм Грозного: подготовка и осуществление 2004"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1086" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. On 26 November, fighters of the Provisional Council and Russian tank crewmen under the command of Zhukov, the deputy commander of a Russian army corps from Volgograd, stormed Grozny<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Черкасов А. «Парад планет». Ноябрьский штурм Грозного: подготовка и осуществление. 2004. – Полит.ру, раздел «Аналитика», 29 ноября 2004; серия статей «Как начиналась «первая чеченская»»." data-reference="«Парад планет». Ноябрьский штурм Грозного: подготовка и осуществление 2004"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1086" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Zelimkhan Yandarbiyev, the vice president of the Chechen Republic, wrote in his memoirs that in the morning he saw the start of the assault from the window of his office in the presidential palace: "on the northeastern outskirts of the city, from the direction of Tolstoy-Yurt [a village north of Grozny where the fighters of the Provisional Council were stationed], tank and artillery fire began to thunder"<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Яндарбиев З. Чечения - битва за свободу. 1996. – Львов, 1996 (при содействии журнала «Свобода народів» и АБН; по карточке Google Books 495 с.)." data-reference="Чечения - битва за свободу 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/713" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. The tanks reached the center of Grozny, where fighters of the Armed Forces of Ichkeria shot them up with grenade launchers<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The defenders routed the attackers and, according to the government of the Chechen Republic, took 68 Russian servicemen prisoner<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="AP Television News. Chechnya - Dudayev&#x27;s Men Take Opposition Soldiers. 1994. – Видеозапись на YouTube, канал «AP Archive», загрузка 21.07.2015, 1:49; сюжет AP Television, датировка по титрам AP - 27 ноября 1994 года." data-reference="Chechnya - Dudayev's Men Take Opposition Soldiers 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1071" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. Among the prisoners were soldiers and officers of the Russian Kantemirovskaya Tank Division from near Moscow<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Черкасов А. Преданные. Как начиналась «первая чеченская». 2004. – Полит.ру, 3 декабря 2004, рубрика «Сюжет: Чечня»; серия статей «Как начиналась «первая чеченская»»." data-reference="Преданные. Как начиналась «первая чеченская» 2004"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1085" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>.</p><p>Human rights defenders of Memorial write that without Russia's military help the puppet opposition could not have overthrown Dzhokhar Dudayev<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>After the defeat of 26 November, the Provisional Council withdrew its fighters to its bases<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Stasys Knezys, Romanas Sedlickas. The War in Chechnya. 1999. – College Station: Texas A&amp;M University Press, 1999. ISBN 0-89096-856-X." data-reference="The War in Chechnya 1999"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/1127" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span><span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Fifteen days later, on 11 December 1994, the Russian army openly invaded the Chechen Republic of Ichkeria (see: "Military Intervention")<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1193.T0020
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Technique:&nbsp;</span>
+                    <a href="/en/techniques/T0020">Staging a Coup</a>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Campaign:&nbsp;</span>
+                    <a href="/en/campaigns/C1193">First Russian-Chechen War (1994–1996)</a>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Start:&nbsp;</span>September 1994
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">End:&nbsp;</span>December 1996
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Contributors</span>: decolonial.ist project
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-1" href="https://archive.decolonial.ist/en/27" target="_blank">
+                        Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-2" href="https://archive.decolonial.ist/en/1045" target="_blank">
+                        Камышев Д. Оппозиция копит силы для последнего штурма. 1994. – «Коммерсантъ» № 223 (691) от 24.11.1994, рубрика «Ситуация в Чечне».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-3" href="https://archive.decolonial.ist/en/1042" target="_blank">
+                        Краснопольский К. Чеченцы тренируются в Волгограде. 1994. – «Коммерсантъ» № 188 (656) от 05.10.1994; подзаголовок «Российские танкисты куют кадры для чеченской оппозиции»; автор назван в тексте: «корреспондент Ъ Константин Ъ-Краснопольский».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-4" href="https://archive.decolonial.ist/en/1086" target="_blank">
+                        Черкасов А. «Парад планет». Ноябрьский штурм Грозного: подготовка и осуществление. 2004. – Полит.ру, раздел «Аналитика», 29 ноября 2004; серия статей «Как начиналась «первая чеченская»».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-5" href="https://archive.decolonial.ist/en/717" target="_blank">
+                        Шпак В. Оппозиция перешла в наступление. 1994. – «Коммерсантъ» № 166 (634) от 03.09.1994.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-6" href="https://archive.decolonial.ist/en/729" target="_blank">
+                        РГТРК «Останкино», программа «Новости». Программа «Новости» от 2 сентября 1994 года: бой у посёлка Долинское. 1994. – телепрограмма, сюжет 2 мин 04 с, выпуск с английской озвучкой поверх русского эфира; копия с YouTube-канала «История ЧРИ» (ролик 7u4DDko99LY, загружен 03.09.2025).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-7" href="https://archive.decolonial.ist/en/26" target="_blank">
+                        Хроника первой российской войны в Чечне. 2026. – Beda Media.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-8" href="https://archive.decolonial.ist/en/710" target="_blank">
+                        Dunlop J. B. Russia Confronts Chechnya: Roots of a Separatist Conflict. 1998. – Cambridge; New York: Cambridge University Press, 1998. ISBN 0-521-63619-1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-9" href="https://archive.decolonial.ist/en/1338" target="_blank">
+                        Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-94-172). 1994. – 06.09.1994.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="10.0">
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-10" href="https://archive.decolonial.ist/en/1068" target="_blank">
+                        Камышев Д. Оппозиция предложила Дудаеву сдаться. 1994. – «Коммерсантъ» № 186 от 01.10.1994, рубрика «Ситуация в Чечне»; заметка в двух частях (стр. 1 и окончание, kommersant.ru/doc/91261).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-11" href="https://archive.decolonial.ist/en/1039" target="_blank">
+                        Hearst D. Chechen capital on war alert after raid. 1994. – «The Guardian», 01.10.1994; корреспонденция из Москвы.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-12" href="https://archive.decolonial.ist/en/1043" target="_blank">
+                        Камышев Д. Наступление было непродолжительным. 1994. – «Коммерсантъ» № 197 (665) от 18.10.1994, рубрика «Ситуация в Чечне».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-13" href="https://archive.decolonial.ist/en/727" target="_blank">
+                        Шаповалов Н. Победившая нас война. Часть 2. 2025. – «Новая газета Европа», 08.01.2025.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-14" href="https://archive.decolonial.ist/en/713" target="_blank">
+                        Яндарбиев З. Чечения - битва за свободу. 1996. – Львов, 1996 (при содействии журнала «Свобода народів» и АБН; по карточке Google Books 495 с.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-15" href="https://archive.decolonial.ist/en/1071" target="_blank">
+                        AP Television News. Chechnya - Dudayev's Men Take Opposition Soldiers. 1994. – Видеозапись на YouTube, канал «AP Archive», загрузка 21.07.2015, 1:49; сюжет AP Television, датировка по титрам AP - 27 ноября 1994 года.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-16" href="https://archive.decolonial.ist/en/1085" target="_blank">
+                        Черкасов А. Преданные. Как начиналась «первая чеченская». 2004. – Полит.ру, 3 декабря 2004, рубрика «Сюжет: Чечня»; серия статей «Как начиналась «первая чеченская»».
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-17" href="https://archive.decolonial.ist/en/1127" target="_blank">
+                        Stasys Knezys, Romanas Sedlickas. The War in Chechnya. 1999. – College Station: Texas A&M University Press, 1999. ISBN 0-89096-856-X.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

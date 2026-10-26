@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("en" !== "ru") return;
+            /* Страница 404 у GitHub Pages одна (русская) и отдаётся по ЛЮБОМУ несуществующему
+               адресу: редирект с неё дописывал «/uk» к пути в цикле (/uk/uk/uk/…, мерцание). */
+            if (false) return;
+            if (/^\/(en|uk|ce)(\/|$)/.test(window.location.pathname)) return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/en/campaigns/C1182/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1182/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1182/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1182/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1182/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="referrer" content="no-referrer">
+        <link rel='shortcut icon' href="/en/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/en/theme/apple-touch-icon.png">
+
+        <meta name="description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content=""Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989), campaign C1182 | DECOLONIAL.IST">
+        <meta property="og:description" content="A knowledge base of Russian colonialism: tactics, techniques, and procedures of the colonization of peoples.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://decolonial.ist/en/campaigns/C1182/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>"Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989), campaign C1182 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/en/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/en/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/en/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/en/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/en/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Language">
+                        <b>English</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/en/matrices/"  class="nav-link" ><b>Matrices</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/tactics/"  class="nav-link" ><b>Tactics</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/techniques/"  class="nav-link" ><b>Techniques</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/procedures/"  class="nav-link" ><b>Procedures</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/campaigns"  class="nav-link" ><b>Campaigns</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/en/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Colonizers</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/en/groups">Actors</a>
+                <a class="dropdown-item" href="/en/software">Instruments</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/faq/"  class="nav-link" ><b>FAQ</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/en/resources/contribute/"  class="nav-link" ><b>Contribute</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Search <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        The site is under development. Release is expected in October 2026. Want to help the project – <a href="/en/resources/contribute/">make a contribution</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/en/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/en/campaigns/">Campaigns</a></li>
+  <li class="breadcrumb-item">"Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>"Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>In 1965-1989 the Chechens and the Ingush, whom the coloniser had merged into a single region (the Chechen-Ingush ASSR), were ruled by Russian officials sent from Moscow. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "in the early 1970s, of the 60 ministries and agencies of the Council of Ministers of the ChIASSR only 17 were headed by Chechens or Ingush. In most rural districts the first secretaries of the district committees were Russians"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. In 1972 Chechen and Ingush communists wrote to Moscow about this twice. From 16 to 19 January 1973 several thousand Ingush (participants speak of 15 thousand), joined by Chechens, rallied on the central square of Grozny in front of the building of the region's occupation administration and demanded the return of the Prigorodny district, handed to North Ossetia during the deportation of 1944, or the lifting of the ban on settling there. On the night of 19 January soldiers of the internal troops (predecessors of today's Rosgvardiya) with truncheons and firemen spraying icy water from hoses dispersed those who remained on the square, drove them out of the city and dropped them off in the frost<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Яндиева М. Д. Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС). 2008. – Назрань-Москва: Ингушский «Мемориал», 2008; публикация в 4 частях на ghalghay.com, 31.03-03.04.2010." data-reference="Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС) 2008"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/638" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Then the coloniser went after those who had complained: on 13 March 1973 Moscow adopted a resolution "On Anti-Social Nationalist Manifestations in the City of Grozny", the authors of the letters were expelled from the only permitted party, the organisers of the rally were put on trial<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Яндиева М. Д. Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС). 2008. – Назрань-Москва: Ингушский «Мемориал», 2008; публикация в 4 частях на ghalghay.com, 31.03-03.04.2010." data-reference="Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС) 2008"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/638" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>, and in December KGB chairman Andropov (the KGB being the predecessor of today's FSB) reported on "measures" against "about 400 Ingush"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Андропов Ю. В., председатель КГБ СССР. Записка председателя КГБ СССР Ю. В. Андропова в ЦК КПСС № 3217-А о положении в Чечено-Ингушской АССР после событий января 1973 года. 1973. – записка от 27.12.1973 № 3217-А, гриф «Секретно», рассекречено; скан опубликован ghalghay.com 06.08.2012." data-reference="Записка председателя КГБ СССР Ю. В. Андропова в ЦК КПСС № 3217-А о положении в Чечено-Ингушской АССР после событий января 1973 года 1973"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/639" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. In those same years the coloniser worked to leave the Chechens and the Ingush without a history, a faith, a language or a livelihood of their own. The USSR rewrote history, imposing its own concept, "the 200th anniversary of the voluntary entry of Chechen-Ingushetia into Russia", and persecuted the Chechen historians who disputed it through decisions of the region's occupation administration<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Абдурахманов Д. Б., Ахмадов Я. З. Битва за Чечню. «Война историографий», или информационная война. 2015. – Грозный: ИПК «Грозненский рабочий», 2015, 432 с." data-reference="Битва за Чечню. «Война историографий», или информационная война 2015"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/631" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. In a quarter of a century the occupier did not allow the highlanders to open a single mosque<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Музаров Б. А., заместитель уполномоченного Совета по делам религий при Совмине СССР по ЧИАССР. Отчёт заместителя уполномоченного Совета по делам религий по Чечено-Ингушской АССР Б. А. Музарова о выполнении постановления ЦК КПСС от 5 апреля 1983 г. О мерах по идеологической изоляции реакционной части мусульманского духовенства. 1983. – отчёт от 25.08.1983; ГАРФ ф. Р-6991 оп. 6 д. 2557 л. 65-66, 68-70, 73-80; публикация islamperspectives.org." data-reference="Отчёт заместителя уполномоченного Совета по делам религий по Чечено-Ингушской АССР Б. А. Музарова о выполнении постановления ЦК КПСС от 5 апреля 1983 г. О мерах по идеологической изоляции реакционной части мусульманского духовенства 1983"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/643" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The schools to which Chechen and Ingush children returned worked only in Russian from the first grade: the law of the RSFSR of 16 April 1959 declared that "instruction at school is conducted in the pupils' native language" and left the choice of language to parents, but after the return from exile the coloniser opened no schools with Chechen as the language of instruction, so there was nothing to choose from<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Верховный Совет РСФСР. Закон РСФСР от 16 апреля 1959 г. Об укреплении связи школы с жизнью и о дальнейшем развитии системы народного образования в РСФСР. 1959." data-reference="Закон РСФСР от 16 апреля 1959 г. Об укреплении связи школы с жизнью и о дальнейшем развитии системы народного образования в РСФСР 1959"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/700" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. The factories and oil enterprises of Grozny hired newcomers rather than Chechens: by the end of the 1980s only 16 % of oil-refining workers were Chechens or Ingush, according to official statistics of 1979 up to 28 % of the able-bodied lived off their household plots, and according to the census of 1989 almost a quarter of the people lived outside the republic<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The coloniser said aloud what it thought of the people after the dispersal. A. Martazanova, a participant in the events of 1973, recalls: at a meeting of the region's occupation administration on 27 March one of its leaders, Bokov, "said that the Ingush and the Chechens had not yet been rehabilitated, that they had only been pardoned in advance, in the hope of good behaviour", while Rustem Goygov, head of a department in the same administration, who began: "But what about the decisions of the 20th Congress of the CPSU [the congress of 1956 that condemned the deportations of peoples], which…", was not allowed to finish and a month later was removed from his post; the phrase had first been uttered by Solomentsev, head of the government of the RSFSR, who had come to Grozny<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Яндиева М. Д. Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС). 2008. – Назрань-Москва: Ингушский «Мемориал», 2008; публикация в 4 частях на ghalghay.com, 31.03-03.04.2010." data-reference="Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС) 2008"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/638" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Eyewitness Aza Bazorkina recalls that a few days after the dispersal the newspaper Grozny Worker printed, over the signatures of intimidated Ingush, an article "To Serve One's People Honestly", which "says that the Ingush people have not been rehabilitated (as if there had been no 20th Party Congress!) but pardoned"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Так это было: национальные репрессии в СССР. 1993. – ред.-сост. Алиева С. У.; Т. 2 (1919-1952 годы); М.: Инсан." data-reference="Так это было: национальные репрессии в СССР 1993"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/553" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1182
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Start:&nbsp;</span>
+                    <span>January 1965</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">End:&nbsp;</span>
+                    <span>July 1989</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Contributors</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Version</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Created:&nbsp;</span>6 September 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Last Modified:&nbsp;</span>6 September 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/en/go/tg/C1182" data-test-ignore="true">Discuss on Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Navigator Layers</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Layer russia-colonialism</h6>
+                    <a class="dropdown-item" href="/en/campaigns/C1182/C1182-russia-colonialism-layer.json" download target="_blank">download</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/en/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fen%2Fcampaigns%2FC1182%2FC1182-russia-colonialism-layer.json" target="_blank">open <img width="10" src="/en/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Actors</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Procedures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/en/groups/G0010">G0010</a></td>
+                <td><a href="/en/groups/G0010">USSR</a></td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Instruments Applied</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Procedures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/en/software/S0008"> S0008 </a></td>
+                <td><a href="/en/software/S0008"> Government </a></td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td><a href="/en/software/S0012"> S0012 </a></td>
+                <td><a href="/en/software/S0012"> Occupation and Controlled Administrations </a></td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Procedures Carried Out</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Text search (name, technique or description):</label>
+            <input type="text" class="form-control pl-search" placeholder="Enter a keyword...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Filter by peoples:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Date range (by start): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Date range (by start) (min)">
+                <input type="range" class="pl-date-max" aria-label="Date range (by start) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Sort by date:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Newest first" data-oldest="Oldest first">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="imposition of alien governance after the return of the chechens and the ingush from exile the ussr did not let the indigenous inhabitants hold key leading posts in government and industry, reserving them for russian settlers. historians ya. z. akhmadov and e. kh. khasmagomadov write: "the leading posts (first secretary of the obkom of the cpsu [head of the region's occupation administration], minister of the mvd, republican prosecutor, head of the kgb [predecessor of today's fsb], minister of finance, secretary of the grozny gorkom of the cpsu [head of the city] and chairman of the grozny gorispolkom [head of the city administration], head of grozneft, military commissar of the republic and some others) are reserved for russian officials"; for the chechens and the ingush, 70 % of the population, "roughly 30% of posts were reserved"(citation: история чечни в xix-xx веках 2005). according to the letter of 26 communists of 1972, which the historians quote, "in the early 1970s, of the 60 ministries and agencies of the council of ministers of the chiassr [the chechen-ingush republic] only 17 were headed by chechens or ingush. in most rural districts the first secretaries of the raikoms [heads of districts] were russians"(citation: история чечни в xix-xx веках 2005). the historians write: "that is precisely why the cc of the cpsu [the central authority in moscow] keeps sending new first secretaries of the obkom [heads of the region] to chechen-ingushetia" - in 1966-1989 these were apryatkin, vlasov and foteev, sent in from other regions(citation: история чечни в xix-xx веках 2005). when the ingush at the rally of january 1973 demanded that locals be appointed to leading posts, bokov, a leader in the region's occupation administration, replied at a meeting of party functionaries on 21 january: "in their speeches they went so far as to say that a measure should be carried out here to take account of leading cadres from among the chechens and the ingush, that is, to carry out indigenisation"(citation: общегражданский митинг ингушей 1973 года (публикация архивных документов чечено-ингушского обкома кпсс) 2008). historian a. b. kuznetsova writes, citing the witness b. kh. toriev: "chechens and ingush were subjected to harsh discrimination in admission to the cpsu - they were admitted only from among the workers, so that those who held engineering positions were forced to go and work at a factory as labourers in order to be able to join the party"(citation: этнополитические процессы в чечено-ингушской асср в 1957-1990 гг. 2005). historians ya. z. akhmadov and e. kh. khasmagomadov write that only by the mid-1980s did chechens and ingush head 155 of the 194 village soviets and 11 of the 19 city and district soviets, while "the most significant posts at the middle and republican level, as well as the leadership of grozny and of the regional committee of the cpsu, remained with the russian nomenklatura"(citation: история чечни в xix-xx веках 2005). the historians write that on 1 july 1989 the region's occupation administration at its meeting "for the first time in the entire history of the chechen-ingush party organisation rejected the candidate proposed by the cc of the cpsu (n. i. semenov) and elected doku zavgaev first secretary"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1965-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/en/techniques/T0151">
+                    <span class="proc-tech-id">T0151</span>
+                    <span class="proc-tech-name">Imposition of Alien Governance</span>
+                </a>
+                <div class="proc-date">January 1965</div>
+<div class="proc-addr"><a href="/en/procedures/C1182.T0151/" title="Procedure page">C1182.T0151&nbsp;&rarr;</a></div><div><a href="/en/campaigns/C1182">C1182</a> "Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0008">S0008</a> Government</div>            </div>
+            <div class="proc-desc">
+                        <p>After the return of the Chechens and the Ingush from exile the USSR did not let the indigenous inhabitants hold key leading posts in government and industry, reserving them for Russian settlers. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "The leading posts (first secretary of the obkom of the CPSU [head of the region's occupation administration], minister of the MVD, republican prosecutor, head of the KGB [predecessor of today's FSB], minister of finance, secretary of the Grozny gorkom of the CPSU [head of the city] and chairman of the Grozny gorispolkom [head of the city administration], head of Grozneft, military commissar of the republic and some others) are reserved for Russian officials"; for the Chechens and the Ingush, 70 % of the population, "roughly 30% of posts were reserved"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. According to the letter of 26 communists of 1972, which the historians quote, "in the early 1970s, of the 60 ministries and agencies of the Council of Ministers of the ChIASSR [the Chechen-Ingush republic] only 17 were headed by Chechens or Ingush. In most rural districts the first secretaries of the raikoms [heads of districts] were Russians"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The historians write: "That is precisely why the CC of the CPSU [the central authority in Moscow] keeps sending new first secretaries of the obkom [heads of the region] to Chechen-Ingushetia" - in 1966-1989 these were Apryatkin, Vlasov and Foteev, sent in from other regions<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. When the Ingush at the rally of January 1973 demanded that locals be appointed to leading posts, Bokov, a leader in the region's occupation administration, replied at a meeting of party functionaries on 21 January: "In their speeches they went so far as to say that a measure should be carried out here to take account of leading cadres from among the Chechens and the Ingush, that is, to carry out indigenisation"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Яндиева М. Д. Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС). 2008. – Назрань-Москва: Ингушский «Мемориал», 2008; публикация в 4 частях на ghalghay.com, 31.03-03.04.2010." data-reference="Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС) 2008"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/638" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Historian A. B. Kuznetsova writes, citing the witness B. Kh. Toriev: "Chechens and Ingush were subjected to harsh discrimination in admission to the CPSU - they were admitted only from among the workers, so that those who held engineering positions were forced to go and work at a factory as labourers in order to be able to join the party"<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация." data-reference="Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/265" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write that only by the mid-1980s did Chechens and Ingush head 155 of the 194 village soviets and 11 of the 19 city and district soviets, while "the most significant posts at the middle and republican level, as well as the leadership of Grozny and of the regional committee of the CPSU, remained with the Russian nomenklatura"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The historians write that on 1 July 1989 the region's occupation administration at its meeting "for the first time in the entire history of the Chechen-Ingush party organisation rejected the candidate proposed by the CC of the CPSU (N. I. Semenov) and elected Doku Zavgaev first secretary"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="neutralization of the opposition in 1972-1981 the chechens and the ingush twice wrote to moscow about discrimination and protested on the square; each time the coloniser expelled from the only permitted party and put on trial the protesters, not the region's occupation leadership. historians ya. z. akhmadov and e. kh. khasmagomadov write that in march 1972 26 chechen and ingush communists "wrote a collective letter addressed to the cc of the cpsu [the central authority in moscow], in which they directly accused the party leadership of chechen-ingushetia not only of chauvinism but also of corruption. the result of the appeal, however, was not what the authors of the collective letter had counted on: it was not the leaders of the republic who were punished, but they themselves"; s. bokaev, s. pliev, n. umarkhadzhaev, b. kostoev and b. lyanov were expelled from the party(citation: история чечни в xix-xx веках 2005). on 16 january 1973 the ingush gathered on the central square of grozny, in front of the building of the region's occupation administration, and chechens joined them; rally participant salman mamatiev recalls: "on the second day there were almost as many chechens on the square as ingush"(citation: общегражданский митинг ингушей 1973 года (публикация архивных документов чечено-ингушского обкома кпсс) 2008). eyewitness aza bazorkina recalls: "from a makeshift rostrum on lenin square, on 16, 17 and 18 january, day and night, the grievance of dispossessed, deceived people pours out", and on the night of 19 january the militia and the internal troops (predecessors of today's rosgvardiya) cleared the square: "the doubting young people, who did not want to disperse without reliable information, were beaten with rubber truncheons and doused with icy water from fire hoses, herded into buses, driven out of the city and let out there, soaking wet, into a twenty-degree frost in an open field"(citation: так это было: национальные репрессии в ссср 1993). on 13 march 1973 moscow adopted a resolution "on anti-social nationalist manifestations in the city of grozny"; on 27 march the region's occupation administration resolved to accept it "for unswerving guidance and execution" and recorded: "for nationalist actions and active participation in anti-social manifestations the following have been expelled from the party: pliev s. kh., gazdiev a. m., as well as kushtov a. s. - physician at city hospital no. 2, abadiev b. - director of the puppet theatre, uzhakhova - teacher at boarding school no. 15, egiev - former chairman of the construction committee of smu-7 [trade-union committee of a construction directorate], daurbekov - former head of department at the nazran district newspaper"(citation: общегражданский митинг ингушей 1973 года (публикация архивных документов чечено-ингушского обкома кпсс) 2008). historian a. b. kuznetsova gives the tally: "23 people were expelled from the cpsu, 18 from the vlksm [the komsomol, the youth organisation of soviet power], 9 people were removed from leading positions and 14 people were prosecuted"(citation: этнополитические процессы в чечено-ингушской асср в 1957-1990 гг. 2005). on 27 december 1973 kgb chairman andropov (the kgb being the predecessor of today's fsb) reported to moscow: "after the well-known events that took place in the city of grozny in january 1973, in which about 400 ingush from the prigorodny district of the north ossetian assr took an active part, as a result of measures taken by the state security organs new attempts to carry out socially dangerous acts, especially in february 1973 on the anniversary of the eviction of the ingush and also on the eve of the holidays of 1 and 9 may, were prevented"(citation: записка председателя кгб ссср ю. в. андропова в цк кпсс № 3217-а о положении в чечено-ингушской асср после событий января 1973 года 1973). in june 1981 23 communists wrote to brezhnev about the corruption of vlasov, head of the region's occupation administration; historians ya. z. akhmadov and e. kh. khasmagomadov write: "the cc of the cpsu this time too backed the republican leadership, accusing the authors of the letter of nationalism (although among its signatories were people of various nationalities, including russians and ukrainians). two people were expelled from the party"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1965-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/en/techniques/T0021">
+                    <span class="proc-tech-id">T0021</span>
+                    <span class="proc-tech-name">Neutralization of the Opposition</span>
+                </a>
+                <div class="proc-date">January 1965</div>
+<div class="proc-addr"><a href="/en/procedures/C1182.T0021/" title="Procedure page">C1182.T0021&nbsp;&rarr;</a></div><div><a href="/en/campaigns/C1182">C1182</a> "Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0008">S0008</a> Government</div>            </div>
+            <div class="proc-desc">
+                        <p>In 1972-1981 the Chechens and the Ingush twice wrote to Moscow about discrimination and protested on the square; each time the coloniser expelled from the only permitted party and put on trial the protesters, not the region's occupation leadership. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write that in March 1972 26 Chechen and Ingush communists "wrote a collective letter addressed to the CC of the CPSU [the central authority in Moscow], in which they directly accused the party leadership of Chechen-Ingushetia not only of chauvinism but also of corruption. The result of the appeal, however, was not what the authors of the collective letter had counted on: it was not the leaders of the republic who were punished, but they themselves"; S. Bokaev, S. Pliev, N. Umarkhadzhaev, B. Kostoev and B. Lyanov were expelled from the party<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 16 January 1973 the Ingush gathered on the central square of Grozny, in front of the building of the region's occupation administration, and Chechens joined them; rally participant Salman Mamatiev recalls: "on the second day there were almost as many Chechens on the square as Ingush"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Яндиева М. Д. Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС). 2008. – Назрань-Москва: Ингушский «Мемориал», 2008; публикация в 4 частях на ghalghay.com, 31.03-03.04.2010." data-reference="Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС) 2008"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/638" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Eyewitness Aza Bazorkina recalls: "From a makeshift rostrum on Lenin Square, on 16, 17 and 18 January, day and night, the grievance of dispossessed, deceived people pours out", and on the night of 19 January the militia and the internal troops (predecessors of today's Rosgvardiya) cleared the square: "The doubting young people, who did not want to disperse without reliable information, were beaten with rubber truncheons and doused with icy water from fire hoses, herded into buses, driven out of the city and let out there, soaking wet, into a twenty-degree frost in an open field"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Так это было: национальные репрессии в СССР. 1993. – ред.-сост. Алиева С. У.; Т. 2 (1919-1952 годы); М.: Инсан." data-reference="Так это было: национальные репрессии в СССР 1993"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/553" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. On 13 March 1973 Moscow adopted a resolution "On Anti-Social Nationalist Manifestations in the City of Grozny"; on 27 March the region's occupation administration resolved to accept it "for unswerving guidance and execution" and recorded: "For nationalist actions and active participation in anti-social manifestations the following have been expelled from the party: Pliev S. Kh., Gazdiev A. M., as well as Kushtov A. S. - physician at city hospital No. 2, Abadiev B. - director of the puppet theatre, Uzhakhova - teacher at boarding school No. 15, Egiev - former chairman of the construction committee of SMU-7 [trade-union committee of a construction directorate], Daurbekov - former head of department at the Nazran district newspaper"<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Яндиева М. Д. Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС). 2008. – Назрань-Москва: Ингушский «Мемориал», 2008; публикация в 4 частях на ghalghay.com, 31.03-03.04.2010." data-reference="Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС) 2008"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/638" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Historian A. B. Kuznetsova gives the tally: "23 people were expelled from the CPSU, 18 from the VLKSM [the Komsomol, the youth organisation of Soviet power], 9 people were removed from leading positions and 14 people were prosecuted"<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация." data-reference="Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/265" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. On 27 December 1973 KGB chairman Andropov (the KGB being the predecessor of today's FSB) reported to Moscow: "After the well-known events that took place in the city of Grozny in January 1973, in which about 400 Ingush from the Prigorodny district of the North Ossetian ASSR took an active part, as a result of measures taken by the state security organs new attempts to carry out socially dangerous acts, especially in February 1973 on the anniversary of the eviction of the Ingush and also on the eve of the holidays of 1 and 9 May, were prevented"<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Андропов Ю. В., председатель КГБ СССР. Записка председателя КГБ СССР Ю. В. Андропова в ЦК КПСС № 3217-А о положении в Чечено-Ингушской АССР после событий января 1973 года. 1973. – записка от 27.12.1973 № 3217-А, гриф «Секретно», рассекречено; скан опубликован ghalghay.com 06.08.2012." data-reference="Записка председателя КГБ СССР Ю. В. Андропова в ЦК КПСС № 3217-А о положении в Чечено-Ингушской АССР после событий января 1973 года 1973"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/639" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. In June 1981 23 communists wrote to Brezhnev about the corruption of Vlasov, head of the region's occupation administration; historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "The CC of the CPSU this time too backed the republican leadership, accusing the authors of the letter of nationalism (although among its signatories were people of various nationalities, including Russians and Ukrainians). Two people were expelled from the party"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="rewriting of history from 1973 the coloniser justified the deportation and did not let the chechens speak of it or of the military seizure of the region, and from 1979 it imposed a "concept" of "the 200th anniversary of the voluntary entry of chechen-ingushetia into russia" and persecuted the historians who disputed it. at a meeting of the region's occupation administration on 27 march 1973 one of its leaders, bokov, justified the eviction of 1944: "all this, in our view, forced the government to take this extreme measure in order to put an end to the anti-soviet actions of the political bandit groups [the authorities' name for armed opponents], which found shelter among a significant part of the chechen-ingush population", and the minutes of the same meeting named the bearers of "nationalist" ideas one by one: "the writer khalid oshaev, expelled from the party, the former deputy director of a plant kostoev b., the university lecturer and candidate of sciences vagapov ya."(citation: общегражданский митинг ингушей 1973 года (публикация архивных документов чечено-ингушского обкома кпсс) 2008). historian a. b. kuznetsova writes that at the discussion of the two-volume "essays on the history of the chechen-ingush assr" in 1973 the speakers criticised the "belittling" of the role of the russian people and the works of the historian v. i. filkin, "while not a word was said at the discussion about the deportation"(citation: этнополитические процессы в чечено-ингушской асср в 1957-1990 гг. 2005). historians ya. z. akhmadov and e. kh. khasmagomadov write that the region's occupation administration launched a persecution of the chechen intelligentsia "under the guise of a discussion around the 'concept' of the 200th anniversary of the voluntary entry of chechen-ingushetia into russia", whose author was considered to be the archaeologist vinogradov, and he "relied even on the authority of the cc of the cpsu [the central authority in moscow]"(citation: история чечни в xix-xx веках 2005). in february 1979 l. i. lavrov, a historian of the academy of sciences, wrote on instructions from his superiors a review of the "justification memorandum" for the jubilee: the oaths of the 18th century "did not lead to the actual entry of the region into the russian empire, since even after the oaths no officials of the tsarist administration appeared there", and "the planned celebration of the jubilee, in the light of the above, appears historically unjustified"; historian v. p. krikunov, who published the memorandum in 1990, writes: "the first copy of the memorandum got lost and, when the question of whether or not to celebrate the 200th 'jubilee' was being decided, was not taken into account (or rather, it was taken into account, and that, evidently, is why it got lost)"(citation: затерянная записка (записка л. и. лаврова о «200-летии вхождения чечено-ингушетии», февраль 1979) 1990). historian viktor shnirelman writes: "in those years vinogradov became the chief adviser of the obkom of the cpsu [the region's occupation administration] on ideology and social sciences, which in effect made him the first censor of scholarly and publishing activity in the republic"; "such chechen and ingush historians as m. n. muzaev, a. z. vatsuev, ya. z. akhmadov, kh. akiev, ya. s. vagapov, kh. s. akhmadov and others were subjected to persecution"; the 1977 book by the linguist kyuri chokaev, "the language and history of the vainakhs", "was declared in the obkom… a model of 'rabid nationalism', and the entire print run was destroyed on the spot"(citation: быть аланами: интеллектуалы и политика на северном кавказе в xx веке 2006). historians d. b. abdurakhmanov and ya. z. akhmadov also write that for disagreeing with the "concept" "there were officially pilloried [publicly disgraced] … the chechen-ingush state university lecturer f. p. bokov, professors n. p. gritsenko and v. p. krikunov"(citation: битва за чечню. «война историографий», или информационная война 2015). shnirelman writes that vlasov, head of the region's occupation administration, reproduced the concept "in his speech at the iii plenum of the chechen-ingush obkom of the cpsu on 14 july 1979" and "gave instructions to propagate it widely in the local media", and in 1982 the jubilee of the "voluntary entry" was combined with the 60th anniversary of the republic: "on this occasion the republic was awarded the order of the red banner of labour; its leaders received awards too. in particular, vlasov was presented with the order of lenin"(citation: быть аланами: интеллектуалы и политика на северном кавказе в xx веке 2006). on 29 june 1984 the region's occupation administration recorded in its minutes on the work of the institute of history, sociology and philology: "vagapov ya. s., akhmadov ya. z., vatsuev a. z. permit themselves politically harmful judgements, dispute the scholarly validity of the concept of the voluntary entry of the chechens and the ingush into russia"(citation: битва за чечню. «война историографий», или информационная война 2015). historians d. b. abdurakhmanov and ya. z. akhmadov write that only in 1990 did "the same organ of the cpsu revoke its decision concerning the institute and its staff as mistaken"(citation: битва за чечню. «война историографий», или информационная война 2015)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0012"
+             data-date="1965-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/en/techniques/T0004">
+                    <span class="proc-tech-id">T0004</span>
+                    <span class="proc-tech-name">Rewriting of History</span>
+                </a>
+                <div class="proc-date">January 1965</div>
+<div class="proc-addr"><a href="/en/procedures/C1182.T0004/" title="Procedure page">C1182.T0004&nbsp;&rarr;</a></div><div><a href="/en/campaigns/C1182">C1182</a> "Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>From 1973 the coloniser justified the deportation and did not let the Chechens speak of it or of the military seizure of the region, and from 1979 it imposed a "concept" of "the 200th anniversary of the voluntary entry of Chechen-Ingushetia into Russia" and persecuted the historians who disputed it. At a meeting of the region's occupation administration on 27 March 1973 one of its leaders, Bokov, justified the eviction of 1944: "All this, in our view, forced the government to take this extreme measure in order to put an end to the anti-Soviet actions of the political bandit groups [the authorities' name for armed opponents], which found shelter among a significant part of the Chechen-Ingush population", and the minutes of the same meeting named the bearers of "nationalist" ideas one by one: "the writer Khalid Oshaev, expelled from the party, the former deputy director of a plant Kostoev B., the university lecturer and candidate of sciences Vagapov Ya."<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Яндиева М. Д. Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС). 2008. – Назрань-Москва: Ингушский «Мемориал», 2008; публикация в 4 частях на ghalghay.com, 31.03-03.04.2010." data-reference="Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС) 2008"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/638" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Historian A. B. Kuznetsova writes that at the discussion of the two-volume "Essays on the History of the Chechen-Ingush ASSR" in 1973 the speakers criticised the "belittling" of the role of the Russian people and the works of the historian V. I. Filkin, "while not a word was said at the discussion about the deportation"<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация." data-reference="Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/265" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write that the region's occupation administration launched a persecution of the Chechen intelligentsia "under the guise of a discussion around the 'concept' of the 200th anniversary of the voluntary entry of Chechen-Ingushetia into Russia", whose author was considered to be the archaeologist Vinogradov, and he "relied even on the authority of the CC of the CPSU [the central authority in Moscow]"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. In February 1979 L. I. Lavrov, a historian of the Academy of Sciences, wrote on instructions from his superiors a review of the "Justification Memorandum" for the jubilee: the oaths of the 18th century "did not lead to the actual entry of the region into the Russian Empire, since even after the oaths no officials of the tsarist administration appeared there", and "the planned celebration of the jubilee, in the light of the above, appears historically unjustified"; historian V. P. Krikunov, who published the memorandum in 1990, writes: "The first copy of the memorandum got lost and, when the question of whether or not to celebrate the 200th 'jubilee' was being decided, was not taken into account (or rather, it was taken into account, and that, evidently, is why it got lost)"<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Крикунов В. П. Затерянная записка (записка Л. И. Лаврова о «200-летии вхождения Чечено-Ингушетии», февраль 1979). 1990." data-reference="Затерянная записка (записка Л. И. Лаврова о «200-летии вхождения Чечено-Ингушетии», февраль 1979) 1990"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/701" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. Historian Viktor Shnirelman writes: "In those years Vinogradov became the chief adviser of the obkom of the CPSU [the region's occupation administration] on ideology and social sciences, which in effect made him the first censor of scholarly and publishing activity in the republic"; "Such Chechen and Ingush historians as M. N. Muzaev, A. Z. Vatsuev, Ya. Z. Akhmadov, Kh. Akiev, Ya. S. Vagapov, Kh. S. Akhmadov and others were subjected to persecution"; the 1977 book by the linguist Kyuri Chokaev, "The Language and History of the Vainakhs", "was declared in the obkom… a model of 'rabid nationalism', and the entire print run was destroyed on the spot"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Шнирельман В. А. Быть аланами: интеллектуалы и политика на Северном Кавказе в XX веке. 2006. – Москва: Новое литературное обозрение, 2006 (серия «Библиотека журнала „Неприкосновенный запас"»); глава 8 «Сага о „добровольном вхождении"». ISBN 5-86793-406-3." data-reference="Быть аланами: интеллектуалы и политика на Северном Кавказе в XX веке 2006"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/663" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Historians D. B. Abdurakhmanov and Ya. Z. Akhmadov also write that for disagreeing with the "concept" "there were officially pilloried [publicly disgraced] … the Chechen-Ingush State University lecturer F. P. Bokov, professors N. P. Gritsenko and V. P. Krikunov"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Абдурахманов Д. Б., Ахмадов Я. З. Битва за Чечню. «Война историографий», или информационная война. 2015. – Грозный: ИПК «Грозненский рабочий», 2015, 432 с." data-reference="Битва за Чечню. «Война историографий», или информационная война 2015"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/631" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Shnirelman writes that Vlasov, head of the region's occupation administration, reproduced the concept "in his speech at the III plenum of the Chechen-Ingush obkom of the CPSU on 14 July 1979" and "gave instructions to propagate it widely in the local media", and in 1982 the jubilee of the "voluntary entry" was combined with the 60th anniversary of the republic: "On this occasion the republic was awarded the Order of the Red Banner of Labour; its leaders received awards too. In particular, Vlasov was presented with the Order of Lenin"<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Шнирельман В. А. Быть аланами: интеллектуалы и политика на Северном Кавказе в XX веке. 2006. – Москва: Новое литературное обозрение, 2006 (серия «Библиотека журнала „Неприкосновенный запас"»); глава 8 «Сага о „добровольном вхождении"». ISBN 5-86793-406-3." data-reference="Быть аланами: интеллектуалы и политика на Северном Кавказе в XX веке 2006"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/663" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. On 29 June 1984 the region's occupation administration recorded in its minutes on the work of the Institute of History, Sociology and Philology: "Vagapov Ya. S., Akhmadov Ya. Z., Vatsuev A. Z. permit themselves politically harmful judgements, dispute the scholarly validity of the concept of the voluntary entry of the Chechens and the Ingush into Russia"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Абдурахманов Д. Б., Ахмадов Я. З. Битва за Чечню. «Война историографий», или информационная война. 2015. – Грозный: ИПК «Грозненский рабочий», 2015, 432 с." data-reference="Битва за Чечню. «Война историографий», или информационная война 2015"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/631" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Historians D. B. Abdurakhmanov and Ya. Z. Akhmadov write that only in 1990 did "the same organ of the CPSU revoke its decision concerning the institute and its staff as mistaken"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Абдурахманов Д. Б., Ахмадов Я. З. Битва за Чечню. «Война историографий», или информационная война. 2015. – Грозный: ИПК «Грозненский рабочий», 2015, 432 с." data-reference="Битва за Чечню. «Война историографий», или информационная война 2015"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/631" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="seizure of religious institutions after the return of the chechens from exile the coloniser did not allow a single mosque to be opened and, through its officials, decided who could pray and where. muzarov, an official supervising religion, wrote in a report of 25 august 1983: "in chechen-ingushetia in the pre-october period [before 1917] muslim ideology reigned supreme. there were 2,675 mosques, 60 thousand murids [members of religious brotherhoods], 38 sheikhs [religious mentors, heads of brotherhoods], 2,850 mullahs [islamic clergymen] and 140 religious schools. after the restoration of the republic's autonomy in 1957 it so happened that on the territory of the chechen-ingush assr there was not a single mosque"(citation: отчёт заместителя уполномоченного совета по делам религий по чечено-ингушской асср б. а. музарова о выполнении постановления цк кпсс от 5 апреля 1983 г. о мерах по идеологической изоляции реакционной части мусульманского духовенства 1983). the mosques did not vanish by themselves. most of them the coloniser had closed before the war: historians ya. z. akhmadov and e. kh. khasmagomadov write that religious schools "after the closure of most mosques… moved into the homes of mullahs and islamic scholars"(citation: история чечни в xix-xx веках 2005). historian dalkhan khozhaev writes that during the exile "medieval crypts and pre-revolutionary mosques, tombs and shrines… were blown up"(citation: так это было: национальные репрессии в ссср 1993); historians akhmadov and khasmagomadov add that in grozny "the city mosque was destroyed"(citation: история чечни в xix-xx веках 2005). the surviving buildings the coloniser took over as clubs and warehouses. on 21 january 1967 277 believers of the nazran district submitted an application to open a mosque in the village of barsuki; asaulka, an official supervising religion, reported to moscow that the district administration, by its decision of 10 june 1967, had refused "to consider the application on the grounds that, as established by an inspection, 'many signatures under the application were made not by the persons indicated in the application but forged, and the surnames of some persons are fictitious'"(citation: информация уполномоченного совета по делам религий по чечено-ингушской асср а. и. асаулка о религиозном движении 1967). on 11 november 1969 the government of the region, subordinate to moscow, in a resolution "on measures to strengthen control over observance of the legislation on religious cults", recorded that in the districts "ministers of the cult in a number of cases arbitrarily engage in building and opening prayer houses, hold collective rites in public places, organise pilgrimages of believers to so-called 'holy places'", while "effective measures aimed at the gradual cessation of their activity are not being taken"(citation: постановление совета министров чечено-ингушской асср № 592 о мерах по усилению контроля за соблюдением законодательства о религиозных культах 1969). on 18 may 1977 bobov, an official supervising religion, reported to kerimov, the head of that government: "in the republic there are no muslim religious associations or ministers of the cult registered with the authorities, while at the same time, contrary to the law, 263 muslim religious societies and groups operate unofficially"(citation: справка уполномоченного совета по делам религий по чечено-ингушской асср д. п. бобова председателю совета министров чиасср о состоянии религиозного движения 1977). on 19 august 1980 bobov reported to moscow: in the republic "there are 62 buildings of former mosques… 17 used as clubs and schools, 25 as storage premises, 8 as factory workshops, post offices, shops, 2 handed over to the use of believers"(citation: сведения уполномоченного совета по делам религий по чечено-ингушской асср д. п. бобова о мечетях и их использовании 1980). historians ya. z. akhmadov and e. kh. khasmagomadov write that the region's occupation authorities "directly forbade the opening of mosques in chechen and ingush villages, and did not allow the numerous murid [religious] communities to perform religious rites openly either"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1965-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/en/techniques/T0100">
+                    <span class="proc-tech-id">T0100</span>
+                    <span class="proc-tech-name">Seizure of Religious Institutions</span>
+                </a>
+                <div class="proc-date">January 1965</div>
+<div class="proc-addr"><a href="/en/procedures/C1182.T0100/" title="Procedure page">C1182.T0100&nbsp;&rarr;</a></div><div><a href="/en/campaigns/C1182">C1182</a> "Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0008">S0008</a> Government</div>            </div>
+            <div class="proc-desc">
+                        <p>After the return of the Chechens from exile the coloniser did not allow a single mosque to be opened and, through its officials, decided who could pray and where. Muzarov, an official supervising religion, wrote in a report of 25 August 1983: "In Chechen-Ingushetia in the pre-October period [before 1917] Muslim ideology reigned supreme. There were 2,675 mosques, 60 thousand murids [members of religious brotherhoods], 38 sheikhs [religious mentors, heads of brotherhoods], 2,850 mullahs [Islamic clergymen] and 140 religious schools. After the restoration of the republic's autonomy in 1957 it so happened that on the territory of the Chechen-Ingush ASSR there was not a single mosque"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Музаров Б. А., заместитель уполномоченного Совета по делам религий при Совмине СССР по ЧИАССР. Отчёт заместителя уполномоченного Совета по делам религий по Чечено-Ингушской АССР Б. А. Музарова о выполнении постановления ЦК КПСС от 5 апреля 1983 г. О мерах по идеологической изоляции реакционной части мусульманского духовенства. 1983. – отчёт от 25.08.1983; ГАРФ ф. Р-6991 оп. 6 д. 2557 л. 65-66, 68-70, 73-80; публикация islamperspectives.org." data-reference="Отчёт заместителя уполномоченного Совета по делам религий по Чечено-Ингушской АССР Б. А. Музарова о выполнении постановления ЦК КПСС от 5 апреля 1983 г. О мерах по идеологической изоляции реакционной части мусульманского духовенства 1983"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/643" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The mosques did not vanish by themselves. Most of them the coloniser had closed before the war: historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write that religious schools "after the closure of most mosques… moved into the homes of mullahs and Islamic scholars"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Historian Dalkhan Khozhaev writes that during the exile "medieval crypts and pre-revolutionary mosques, tombs and shrines… were blown up"<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Так это было: национальные репрессии в СССР. 1993. – ред.-сост. Алиева С. У.; Т. 2 (1919-1952 годы); М.: Инсан." data-reference="Так это было: национальные репрессии в СССР 1993"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/553" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>; historians Akhmadov and Khasmagomadov add that in Grozny "the city mosque was destroyed"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The surviving buildings the coloniser took over as clubs and warehouses. On 21 January 1967 277 believers of the Nazran district submitted an application to open a mosque in the village of Barsuki; Asaulka, an official supervising religion, reported to Moscow that the district administration, by its decision of 10 June 1967, had refused "to consider the application on the grounds that, as established by an inspection, 'many signatures under the application were made not by the persons indicated in the application but forged, and the surnames of some persons are fictitious'"<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Асаулка А. И., уполномоченный Совета по делам религий при Совмине СССР по ЧИАССР. Информация уполномоченного Совета по делам религий по Чечено-Ингушской АССР А. И. Асаулка о религиозном движении. 1967. – информация от 30.06.1967; ГАРФ ф. Р-6991 оп. 6 д. 93 л. 49-51; публикация islamperspectives.org." data-reference="Информация уполномоченного Совета по делам религий по Чечено-Ингушской АССР А. И. Асаулка о религиозном движении 1967"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/646" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. On 11 November 1969 the government of the region, subordinate to Moscow, in a resolution "On Measures to Strengthen Control over Observance of the Legislation on Religious Cults", recorded that in the districts "ministers of the cult in a number of cases arbitrarily engage in building and opening prayer houses, hold collective rites in public places, organise pilgrimages of believers to so-called 'holy places'", while "effective measures aimed at the gradual cessation of their activity are not being taken"<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Совет Министров ЧИАССР. Постановление Совета Министров Чечено-Ингушской АССР № 592 О мерах по усилению контроля за соблюдением законодательства о религиозных культах. 1969. – постановление от 11.11.1969 № 592, подписи А. Слюсарев, Г. Дегтярев; ГАРФ ф. Р-6991 оп. 6 д. 293 л. 92, 94; публикация islamperspectives.org." data-reference="Постановление Совета Министров Чечено-Ингушской АССР № 592 О мерах по усилению контроля за соблюдением законодательства о религиозных культах 1969"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/640" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. On 18 May 1977 Bobov, an official supervising religion, reported to Kerimov, the head of that government: "in the republic there are no Muslim religious associations or ministers of the cult registered with the authorities, while at the same time, contrary to the law, 263 Muslim religious societies and groups operate unofficially"<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Бобов Д. П., уполномоченный Совета по делам религий при Совмине СССР по ЧИАССР. Справка уполномоченного Совета по делам религий по Чечено-Ингушской АССР Д. П. Бобова председателю Совета Министров ЧИАССР о состоянии религиозного движения. 1977. – справка от 18.05.1977 № 431/21; ГАРФ ф. Р-6991 оп. 6 д. 1162 л. 7-8, 11; публикация islamperspectives.org." data-reference="Справка уполномоченного Совета по делам религий по Чечено-Ингушской АССР Д. П. Бобова председателю Совета Министров ЧИАССР о состоянии религиозного движения 1977"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/644" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. On 19 August 1980 Bobov reported to Moscow: in the republic "there are 62 buildings of former mosques… 17 used as clubs and schools, 25 as storage premises, 8 as factory workshops, post offices, shops, 2 handed over to the use of believers"<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Бобов Д. П., уполномоченный Совета по делам религий при Совмине СССР по ЧИАССР. Сведения уполномоченного Совета по делам религий по Чечено-Ингушской АССР Д. П. Бобова о мечетях и их использовании. 1980. – сведения от 19.08.1980 № 431/38; ГАРФ ф. Р-6991 оп. 6 д. 1820 л. 33, 39; публикация islamperspectives.org." data-reference="Сведения уполномоченного Совета по делам религий по Чечено-Ингушской АССР Д. П. Бобова о мечетях и их использовании 1980"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/645" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write that the region's occupation authorities "directly forbade the opening of mosques in Chechen and Ingush villages, and did not allow the numerous murid [religious] communities to perform religious rites openly either"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="ban on the indigenous people's religious practice in 1958-1989 the coloniser declared chechen shrines closed, put people on trial for printing the quran and kept believers on file. on 10 december 1958 the moscow agency supervising religion sent its officials in the regions a circular headed thus: "on measures to stop pilgrimage to so-called 'holy places'"; its task: "to achieve the cessation of pilgrimage and the closure of so-called 'holy places'"(citation: циркулярное письмо совета по делам религиозных культов при совете министров ссср № 14-83с о мерах по прекращению паломничества к так называемым святым местам 1958). in chechnya this circular fell upon the grave of the mother of sheikh kunta-haji, founder of the largest chechen brotherhood. the same agency's report for 1973 says: the grave "was declared 'closed' by the local authorities about fourteen years ago. however, from 1961 the religious activists began restoring it without permission… in 1970-1971 this so-called 'holy place'… was visited by over 10 thousand people… on the way the pilgrims, often with the participation of adolescents, perform the collective religious rite of 'zikr' [a joint prayer with circular movement and chanting]"(citation: информационный отчёт совета по делам религий при совете министров ссср о состоянии ислама в ссср за 1973 год 1974). historians ya. z. akhmadov and e. kh. khasmagomadov write: "the performance of the 'loud' zikr [prayer aloud] of the qadiri tariqa [brotherhood] (the order of kunta-haji) was suppressed with particular severity"(citation: история чечни в xix-xx веках 2005). on 29 june 1979 the oktyabrsky district court of grozny tried alaudin bogatyrev, salaudin dubaev and anatoly yushkin; the verdict states that bogatyrev "with the aim of engaging in a prohibited trade… was engaged in the production by printing methods, on a significant scale, of literature of religious content in the arabic language": from 1971 to 1978 they had clandestinely printed 2,500 copies of the quran, 600 copies of parts of it and 500 arabic textbooks, and the court ruled "to subject" bogatyrev "to 6 years of deprivation of liberty with confiscation of property, to be served in a strict-regime corrective labour colony", and dubaev and yushkin to four years each(citation: приговор октябрьского районного народного суда г. грозного по делу об изготовлении религиозной литературы на арабском языке 1979). on 5 april 1983 moscow adopted a resolution "on measures for the ideological isolation of the reactionary part of the muslim clergy"; muzarov, the official supervising religion in the region, reported on 25 august 1983: "59 murid [religious] groups and societies have organisationally ceased their activity and the activity of more than 100 ministers of the cult [mullahs] has been neutralised… work was carried out to put all extremist elements and fanatics on file, a map of murid [religious] organisations was drawn up"; "the number of murids [members of brotherhoods] has fallen - from 20 thousand to 9 thousand"(citation: отчёт заместителя уполномоченного совета по делам религий по чечено-ингушской асср б. а. музарова о выполнении постановления цк кпсс от 5 апреля 1983 г. о мерах по идеологической изоляции реакционной части мусульманского духовенства 1983). the chechens did not submit: on 5 may 1989 the agency supervising religion counted 311 brotherhood groups in the republic, "uniting about 8,300 people", of which "the 'kunta-haji' brotherhood - 183 groups"(citation: материалы о мюридизме на северном кавказе, представленные советом по делам религий при совете министров рсфср 1989)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1965-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/en/techniques/T0116/004">
+                    <span class="proc-tech-id">T0116.004</span>
+                    <span class="proc-tech-name">Ban on the Indigenous People's Religious Practice</span>
+                </a>
+                <div class="proc-date">January 1965</div>
+<div class="proc-addr"><a href="/en/procedures/C1182.T0116.004/" title="Procedure page">C1182.T0116.004&nbsp;&rarr;</a></div><div><a href="/en/campaigns/C1182">C1182</a> "Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0008">S0008</a> Government</div>            </div>
+            <div class="proc-desc">
+                        <p>In 1958-1989 the coloniser declared Chechen shrines closed, put people on trial for printing the Quran and kept believers on file. On 10 December 1958 the Moscow agency supervising religion sent its officials in the regions a circular headed thus: "On Measures to Stop Pilgrimage to So-Called 'Holy Places'"; its task: "to achieve the cessation of pilgrimage and the closure of so-called 'holy places'"<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Совет по делам религиозных культов при Совете Министров СССР. Циркулярное письмо Совета по делам религиозных культов при Совете Министров СССР № 14-83с О мерах по прекращению паломничества к так называемым святым местам. 1958. – циркулярное письмо уполномоченным от 10.12.1958 № 14-83с; ГАРФ ф. Р-6991 оп. 3 д. 169 л. 10-12; публикация islamperspectives.org." data-reference="Циркулярное письмо Совета по делам религиозных культов при Совете Министров СССР № 14-83с О мерах по прекращению паломничества к так называемым святым местам 1958"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/649" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. In Chechnya this circular fell upon the grave of the mother of Sheikh Kunta-Haji, founder of the largest Chechen brotherhood. The same agency's report for 1973 says: the grave "was declared 'closed' by the local authorities about fourteen years ago. However, from 1961 the religious activists began restoring it without permission… In 1970-1971 this so-called 'holy place'… was visited by over 10 thousand people… On the way the pilgrims, often with the participation of adolescents, perform the collective religious rite of 'zikr' [a joint prayer with circular movement and chanting]"<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Совет по делам религий при Совете Министров СССР. Информационный отчёт Совета по делам религий при Совете Министров СССР о состоянии ислама в СССР за 1973 год. 1974. – отчёт в ЦК КПСС, апрель 1974 (извлечения); РГАНИ ф. 5 оп. 67 д. 115 л. 11-12, 14-100; публикация islamperspectives.org." data-reference="Информационный отчёт Совета по делам религий при Совете Министров СССР о состоянии ислама в СССР за 1973 год 1974"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/647" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "The performance of the 'loud' zikr [prayer aloud] of the Qadiri tariqa [brotherhood] (the order of Kunta-Haji) was suppressed with particular severity"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. On 29 June 1979 the Oktyabrsky district court of Grozny tried Alaudin Bogatyrev, Salaudin Dubaev and Anatoly Yushkin; the verdict states that Bogatyrev "with the aim of engaging in a prohibited trade… was engaged in the production by printing methods, on a significant scale, of literature of religious content in the Arabic language": from 1971 to 1978 they had clandestinely printed 2,500 copies of the Quran, 600 copies of parts of it and 500 Arabic textbooks, and the court ruled "to subject" Bogatyrev "to 6 years of deprivation of liberty with confiscation of property, to be served in a strict-regime corrective labour colony", and Dubaev and Yushkin to four years each<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Октябрьский районный народный суд г. Грозного. Приговор Октябрьского районного народного суда г. Грозного по делу об изготовлении религиозной литературы на арабском языке. 1979. – приговор от 29.06.1979, судья Э. М. Алиева; ГАРФ ф. Р-6991 оп. 6 д. 1820 л. 13-15, 22-23; публикация islamperspectives.org." data-reference="Приговор Октябрьского районного народного суда г. Грозного по делу об изготовлении религиозной литературы на арабском языке 1979"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/642" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>. On 5 April 1983 Moscow adopted a resolution "On Measures for the Ideological Isolation of the Reactionary Part of the Muslim Clergy"; Muzarov, the official supervising religion in the region, reported on 25 August 1983: "59 murid [religious] groups and societies have organisationally ceased their activity and the activity of more than 100 ministers of the cult [mullahs] has been neutralised… Work was carried out to put all extremist elements and fanatics on file, a map of murid [religious] organisations was drawn up"; "The number of murids [members of brotherhoods] has fallen - from 20 thousand to 9 thousand"<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Музаров Б. А., заместитель уполномоченного Совета по делам религий при Совмине СССР по ЧИАССР. Отчёт заместителя уполномоченного Совета по делам религий по Чечено-Ингушской АССР Б. А. Музарова о выполнении постановления ЦК КПСС от 5 апреля 1983 г. О мерах по идеологической изоляции реакционной части мусульманского духовенства. 1983. – отчёт от 25.08.1983; ГАРФ ф. Р-6991 оп. 6 д. 2557 л. 65-66, 68-70, 73-80; публикация islamperspectives.org." data-reference="Отчёт заместителя уполномоченного Совета по делам религий по Чечено-Ингушской АССР Б. А. Музарова о выполнении постановления ЦК КПСС от 5 апреля 1983 г. О мерах по идеологической изоляции реакционной части мусульманского духовенства 1983"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/643" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. The Chechens did not submit: on 5 May 1989 the agency supervising religion counted 311 brotherhood groups in the republic, "uniting about 8,300 people", of which "the 'Kunta-Haji' brotherhood - 183 groups"<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Совет по делам религий при Совете Министров РСФСР, председатель Л. Ф. Колесников. Материалы о мюридизме на Северном Кавказе, представленные Советом по делам религий при Совете Министров РСФСР. 1989. – 05.05.1989; ГАРФ ф. А-661 оп. 1 д. 12 л. 17-27об; публикация islamperspectives.org." data-reference="Материалы о мюридизме на Северном Кавказе, представленные Советом по делам религий при Совете Министров РСФСР 1989"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/648" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="migratory replacement in 1965-1989 the coloniser brought workers from russia to the factories of grozny and gave them housing, while pushing the chechens out of the republic to seek work and permanent residence in other regions. historians ya. z. akhmadov and e. kh. khasmagomadov write: "in the 30 years since the return of the chechens and the ingush to their homeland, only 16% of the workers of the oil-refining and petrochemical enterprises of chechen-ingushetia were chechens or ingush", in the radio-engineering industry 14 %, in instrument-making 6 %, while the missing workers and engineers "were brought in from russian regions by way of organised recruitment. moreover, some specialists received the keys to their flats right at the railway station"(citation: история чечни в xix-xx веках 2005). the historians write: "every year more than 100 thousand people, organised in construction brigades, left chechen-ingushetia for construction work"(citation: история чечни в xix-xx веках 2005); historians d. b. abdurakhmanov and ya. z. akhmadov write that a family of five or six, on a state-farm worker's wage of 60-80 roubles, was left with "either 'shabashka' - hard 14-16-hour labour on construction sites in rural districts of the country, or departure for permanent residence in kalmykia, the rostov, astrakhan and volgograd regions to work on livestock farms"(citation: битва за чечню. «война историографий», или информационная война 2015). from the second half of the 1980s the region's occupation administration, under agreements with the kalinin, novgorod and omsk regions, sent villagers to settle in the non-black-earth zone(citation: история чечни в xix-xx веках 2005). the census of 1989 counted 956,879 chechens in the ussr, of whom 734,501 lived in chechen-ingushetia: almost every fourth lived outside the republic(citation: всесоюзная перепись населения 1989 года. национальный состав населения по республикам ссср 1989); the historians write: "the main cause of migration was unemployment"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1965-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/en/techniques/T0117/001">
+                    <span class="proc-tech-id">T0117.001</span>
+                    <span class="proc-tech-name">Migratory Replacement</span>
+                </a>
+                <div class="proc-date">January 1965</div>
+<div class="proc-addr"><a href="/en/procedures/C1182.T0117.001/" title="Procedure page">C1182.T0117.001&nbsp;&rarr;</a></div><div><a href="/en/campaigns/C1182">C1182</a> "Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0008">S0008</a> Government</div>            </div>
+            <div class="proc-desc">
+                        <p>In 1965-1989 the coloniser brought workers from Russia to the factories of Grozny and gave them housing, while pushing the Chechens out of the republic to seek work and permanent residence in other regions. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "in the 30 years since the return of the Chechens and the Ingush to their Homeland, only 16% of the workers of the oil-refining and petrochemical enterprises of Chechen-Ingushetia were Chechens or Ingush", in the radio-engineering industry 14 %, in instrument-making 6 %, while the missing workers and engineers "were brought in from Russian regions by way of organised recruitment. Moreover, some specialists received the keys to their flats right at the railway station"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The historians write: "Every year more than 100 thousand people, organised in construction brigades, left Chechen-Ingushetia for construction work"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>; historians D. B. Abdurakhmanov and Ya. Z. Akhmadov write that a family of five or six, on a state-farm worker's wage of 60-80 roubles, was left with "either 'shabashka' - hard 14-16-hour labour on construction sites in rural districts of the country, or departure for permanent residence in Kalmykia, the Rostov, Astrakhan and Volgograd regions to work on livestock farms"<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Абдурахманов Д. Б., Ахмадов Я. З. Битва за Чечню. «Война историографий», или информационная война. 2015. – Грозный: ИПК «Грозненский рабочий», 2015, 432 с." data-reference="Битва за Чечню. «Война историографий», или информационная война 2015"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/631" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. From the second half of the 1980s the region's occupation administration, under agreements with the Kalinin, Novgorod and Omsk regions, sent villagers to settle in the Non-Black-Earth zone<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. The census of 1989 counted 956,879 Chechens in the USSR, of whom 734,501 lived in Chechen-Ingushetia: almost every fourth lived outside the republic<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Госкомстат СССР. Всесоюзная перепись населения 1989 года. Национальный состав населения по республикам СССР. 1989. – таблицы переписи 1989 г. в публикации Демоскоп Weekly (Институт демографии НИУ ВШЭ)." data-reference="Всесоюзная перепись населения 1989 года. Национальный состав населения по республикам СССР 1989"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/636" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>; the historians write: "the main cause of migration was unemployment"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="legal segregation of the population in 1965-1989 the coloniser, by law and by administrative decisions, kept the chechens out of the cities and factories of their own republic. the coloniser had restricted the residence registration of chechens in grozny as early as 1958; historians ya. z. akhmadov and e. kh. khasmagomadov write: "these restrictions in fact ceased to operate only in the 1980s"(citation: история чечни в xix-xx веках 2005). historian a. b. kuznetsova writes that in the early 1970s "the leadership of the chiassr [the chechen-ingush republic] (in agreement with the union centre [moscow]) declared that the labour resources of the republic (read: the unemployed) had to be used locally"(citation: этнополитические процессы в чечено-ингушской асср в 1957-1990 гг. 2005). historians ya. z. akhmadov and e. kh. khasmagomadov write: "already in 1979 up to 28% of all able-bodied inhabitants of the chechen-ingush assr, according to official statistics, derived their main income from work on their personal household plots, that is, were in fact unemployed. ten years later the level of hidden unemployment, by some estimates, had risen to 40%"(citation: история чечни в xix-xx веках 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0012"
+             data-date="1965-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/en/techniques/T0032">
+                    <span class="proc-tech-id">T0032</span>
+                    <span class="proc-tech-name">Legal Segregation of the Population</span>
+                </a>
+                <div class="proc-date">January 1965</div>
+<div class="proc-addr"><a href="/en/procedures/C1182.T0032/" title="Procedure page">C1182.T0032&nbsp;&rarr;</a></div><div><a href="/en/campaigns/C1182">C1182</a> "Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0012">S0012</a> Occupation and Controlled Administrations</div>            </div>
+            <div class="proc-desc">
+                        <p>In 1965-1989 the coloniser, by law and by administrative decisions, kept the Chechens out of the cities and factories of their own republic. The coloniser had restricted the residence registration of Chechens in Grozny as early as 1958; historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "these restrictions in fact ceased to operate only in the 1980s"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Historian A. B. Kuznetsova writes that in the early 1970s "the leadership of the ChIASSR [the Chechen-Ingush republic] (in agreement with the union centre [Moscow]) declared that the labour resources of the republic (read: the unemployed) had to be used locally"<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация." data-reference="Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/265" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. Historians Ya. Z. Akhmadov and E. Kh. Khasmagomadov write: "Already in 1979 up to 28% of all able-bodied inhabitants of the Chechen-Ingush ASSR, according to official statistics, derived their main income from work on their personal household plots, that is, were in fact unemployed. Ten years later the level of hidden unemployment, by some estimates, had risen to 40%"<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="conversion of schools to the metropole's language after the return of the chechens from exile the coloniser switched all the schools of the republic to russian from the first grade, reduced the chechen language to a few lessons a week and in the schools of grozny did not teach it at all. the law of the rsfsr of 16 april 1959 declared that "instruction at school is conducted in the pupils' native language" and left the choice of language to parents, but after the return from exile the coloniser opened no schools with chechen as the language of instruction, so there was nothing to choose from(citation: закон рсфср от 16 апреля 1959 г. об укреплении связи школы с жизнью и о дальнейшем развитии системы народного образования в рсфср 1959). sociolinguist musa ovkhadov writes: "after the restoration of the autonomy of chechen-ingushetia russian became the language of instruction in the schools of the republic from grade 1"; "in the schools of the capital of the republic, the city of grozny, until the end of the 1980s the chechen language was not taught (in 1989 121 thousand chechens lived in grozny out of its population of 400 thousand)"(citation: национально-языковая политика в стране и чеченской республике 2012). educationalist isita muskhanova writes: "teaching in all the schools of chechen-ingushetia was conducted in russian from the first to the last year of study, while the study of the native language and native literature was allotted only a few hours a week"; the republican newspapers of the first half of the 1960s wrote that to return to the national school "would mean taking a step backwards"(citation: становление и развитие системы образования в чеченской республике 2012). philologist zulay khamidova, who spent nine years fighting for chechen lessons in city schools, recalls: "in kindergartens the language of upbringing was russian, and if a child knew only the native language, he was punished and required to speak only russian"; after her efforts the chechen and ingush languages were introduced in city schools "as a subject, 1 hour a week, whereas 5 hours a week were allotted to russian"(citation: борьба за язык (проблемы становления и развития чеченского языка) 1999). by musa ovkhadov's count, the entire school course of chechen language and literature from grade 1 to grade 10 in the 1970s-1980s amounted to 1,497 hours, on average 3.5 hours a week(citation: национально-языковая политика в стране и чеченской республике 2012). the result is visible in the official statistics of the ussr: in the chechen and ingush languages 154 books and pamphlets were published in 1940, 49 in 1970, 37 in 1980 and 39 in 1985(citation: национально-языковая политика в стране и чеченской республике 2012); the republic's television in the 1980s broadcast in chechen for 20-25 minutes a day(citation: чеченский язык в 90-е годы xx века: функции и структура 2007). the chechens did not give up their language: according to the census of 1989, 938,765 of the 956,879 chechens named chechen as their native language(citation: этнополитические процессы в чечено-ингушской асср в 1957-1990 гг. 2005)."
+             data-platforms="Nokhchi (Chechens)"
+             data-groups="G0010"
+             data-tools="S0008"
+             data-date="1965-01-01 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/en/techniques/T0114/003">
+                    <span class="proc-tech-id">T0114.003</span>
+                    <span class="proc-tech-name">Conversion of Schools to the Metropole's Language</span>
+                </a>
+                <div class="proc-date">January 1965</div>
+<div class="proc-addr"><a href="/en/procedures/C1182.T0114.003/" title="Procedure page">C1182.T0114.003&nbsp;&rarr;</a></div><div><a href="/en/campaigns/C1182">C1182</a> "Only Pardoned": Alien Rule and the Suppression of Chechen and Ingush National Life (1965-1989)</div><div><a href="/en/groups/G0010">G0010</a> USSR</div><div><a href="/en/software/S0008">S0008</a> Government</div>            </div>
+            <div class="proc-desc">
+                        <p>After the return of the Chechens from exile the coloniser switched all the schools of the republic to Russian from the first grade, reduced the Chechen language to a few lessons a week and in the schools of Grozny did not teach it at all. The law of the RSFSR of 16 April 1959 declared that "instruction at school is conducted in the pupils' native language" and left the choice of language to parents, but after the return from exile the coloniser opened no schools with Chechen as the language of instruction, so there was nothing to choose from<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Верховный Совет РСФСР. Закон РСФСР от 16 апреля 1959 г. Об укреплении связи школы с жизнью и о дальнейшем развитии системы народного образования в РСФСР. 1959." data-reference="Закон РСФСР от 16 апреля 1959 г. Об укреплении связи школы с жизнью и о дальнейшем развитии системы народного образования в РСФСР 1959"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/700" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Sociolinguist Musa Ovkhadov writes: "After the restoration of the autonomy of Chechen-Ingushetia Russian became the language of instruction in the schools of the republic from grade 1"; "In the schools of the capital of the republic, the city of Grozny, until the end of the 1980s the Chechen language was not taught (in 1989 121 thousand Chechens lived in Grozny out of its population of 400 thousand)"<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Овхадов М. Р. Национально-языковая политика в стране и Чеченской Республике. 2012. – мультипортал «ЧеченИнфо», 10.06.2012." data-reference="Национально-языковая политика в стране и Чеченской Республике 2012"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/632" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. Educationalist Isita Muskhanova writes: "teaching in all the schools of Chechen-Ingushetia was conducted in Russian from the first to the last year of study, while the study of the native language and native literature was allotted only a few hours a week"; the republican newspapers of the first half of the 1960s wrote that to return to the national school "would mean taking a step backwards"<span onclick=scrollToRef('scite-21') id="scite-ref-21-a" class="scite-citeref-number" title="Мусханова И. В. Становление и развитие системы образования в Чеченской Республике. 2012. – Сибирский педагогический журнал, 2012, № 1, с. 119-127." data-reference="Становление и развитие системы образования в Чеченской Республике 2012"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/634" target="_blank" data-hasqtip="20" aria-describedby="qtip-20">[21]</a></sup></span>. Philologist Zulay Khamidova, who spent nine years fighting for Chechen lessons in city schools, recalls: "In kindergartens the language of upbringing was Russian, and if a child knew only the native language, he was punished and required to speak only Russian"; after her efforts the Chechen and Ingush languages were introduced in city schools "as a subject, 1 hour a week, whereas 5 hours a week were allotted to Russian"<span onclick=scrollToRef('scite-22') id="scite-ref-22-a" class="scite-citeref-number" title="Хамидова З. Борьба за язык (Проблемы становления и развития чеченского языка). 1999. – сборник «Чечня и Россия: общества и государства», Москва: Полинформ-Талбури, 1999 (Сахаровский центр)." data-reference="Борьба за язык (Проблемы становления и развития чеченского языка) 1999"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/633" target="_blank" data-hasqtip="21" aria-describedby="qtip-21">[22]</a></sup></span>. By Musa Ovkhadov's count, the entire school course of Chechen language and literature from grade 1 to grade 10 in the 1970s-1980s amounted to 1,497 hours, on average 3.5 hours a week<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Овхадов М. Р. Национально-языковая политика в стране и Чеченской Республике. 2012. – мультипортал «ЧеченИнфо», 10.06.2012." data-reference="Национально-языковая политика в стране и Чеченской Республике 2012"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/632" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. The result is visible in the official statistics of the USSR: in the Chechen and Ingush languages 154 books and pamphlets were published in 1940, 49 in 1970, 37 in 1980 and 39 in 1985<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Овхадов М. Р. Национально-языковая политика в стране и Чеченской Республике. 2012. – мультипортал «ЧеченИнфо», 10.06.2012." data-reference="Национально-языковая политика в стране и Чеченской Республике 2012"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/632" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>; the republic's television in the 1980s broadcast in Chechen for 20-25 minutes a day<span onclick=scrollToRef('scite-23') id="scite-ref-23-a" class="scite-citeref-number" title="Яхъяева А. А. Чеченский язык в 90-е годы XX века: функции и структура. 2007. – автореферат кандидатской диссертации, Грозный: Чеченский государственный университет, 2007." data-reference="Чеченский язык в 90-е годы XX века: функции и структура 2007"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/635" target="_blank" data-hasqtip="22" aria-describedby="qtip-22">[23]</a></sup></span>. The Chechens did not give up their language: according to the census of 1989, 938,765 of the 956,879 Chechens named Chechen as their native language<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация." data-reference="Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/en/265" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">References</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-1" href="https://archive.decolonial.ist/en/125" target="_blank">
+                        Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-2" href="https://archive.decolonial.ist/en/638" target="_blank">
+                        Яндиева М. Д. Общегражданский митинг ингушей 1973 года (публикация архивных документов Чечено-Ингушского обкома КПСС). 2008. – Назрань-Москва: Ингушский «Мемориал», 2008; публикация в 4 частях на ghalghay.com, 31.03-03.04.2010.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-3" href="https://archive.decolonial.ist/en/639" target="_blank">
+                        Андропов Ю. В., председатель КГБ СССР. Записка председателя КГБ СССР Ю. В. Андропова в ЦК КПСС № 3217-А о положении в Чечено-Ингушской АССР после событий января 1973 года. 1973. – записка от 27.12.1973 № 3217-А, гриф «Секретно», рассекречено; скан опубликован ghalghay.com 06.08.2012.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-4" href="https://archive.decolonial.ist/en/631" target="_blank">
+                        Абдурахманов Д. Б., Ахмадов Я. З. Битва за Чечню. «Война историографий», или информационная война. 2015. – Грозный: ИПК «Грозненский рабочий», 2015, 432 с.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-5" href="https://archive.decolonial.ist/en/643" target="_blank">
+                        Музаров Б. А., заместитель уполномоченного Совета по делам религий при Совмине СССР по ЧИАССР. Отчёт заместителя уполномоченного Совета по делам религий по Чечено-Ингушской АССР Б. А. Музарова о выполнении постановления ЦК КПСС от 5 апреля 1983 г. О мерах по идеологической изоляции реакционной части мусульманского духовенства. 1983. – отчёт от 25.08.1983; ГАРФ ф. Р-6991 оп. 6 д. 2557 л. 65-66, 68-70, 73-80; публикация islamperspectives.org.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-6" href="https://archive.decolonial.ist/en/700" target="_blank">
+                        Верховный Совет РСФСР. Закон РСФСР от 16 апреля 1959 г. Об укреплении связи школы с жизнью и о дальнейшем развитии системы народного образования в РСФСР. 1959.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-7" href="https://archive.decolonial.ist/en/553" target="_blank">
+                        Так это было: национальные репрессии в СССР. 1993. – ред.-сост. Алиева С. У.; Т. 2 (1919-1952 годы); М.: Инсан.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-8" href="https://archive.decolonial.ist/en/265" target="_blank">
+                        Кузнецова А. Б. Этнополитические процессы в Чечено-Ингушской АССР в 1957-1990 гг. 2005. – диссертация.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-9" href="https://archive.decolonial.ist/en/701" target="_blank">
+                        Крикунов В. П. Затерянная записка (записка Л. И. Лаврова о «200-летии вхождения Чечено-Ингушетии», февраль 1979). 1990.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-10" href="https://archive.decolonial.ist/en/663" target="_blank">
+                        Шнирельман В. А. Быть аланами: интеллектуалы и политика на Северном Кавказе в XX веке. 2006. – Москва: Новое литературное обозрение, 2006 (серия «Библиотека журнала „Неприкосновенный запас“»); глава 8 «Сага о „добровольном вхождении“». ISBN 5-86793-406-3.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-11" href="https://archive.decolonial.ist/en/646" target="_blank">
+                        Асаулка А. И., уполномоченный Совета по делам религий при Совмине СССР по ЧИАССР. Информация уполномоченного Совета по делам религий по Чечено-Ингушской АССР А. И. Асаулка о религиозном движении. 1967. – информация от 30.06.1967; ГАРФ ф. Р-6991 оп. 6 д. 93 л. 49-51; публикация islamperspectives.org.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-12" href="https://archive.decolonial.ist/en/640" target="_blank">
+                        Совет Министров ЧИАССР. Постановление Совета Министров Чечено-Ингушской АССР № 592 О мерах по усилению контроля за соблюдением законодательства о религиозных культах. 1969. – постановление от 11.11.1969 № 592, подписи А. Слюсарев, Г. Дегтярев; ГАРФ ф. Р-6991 оп. 6 д. 293 л. 92, 94; публикация islamperspectives.org.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="13.0">
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-13" href="https://archive.decolonial.ist/en/644" target="_blank">
+                        Бобов Д. П., уполномоченный Совета по делам религий при Совмине СССР по ЧИАССР. Справка уполномоченного Совета по делам религий по Чечено-Ингушской АССР Д. П. Бобова председателю Совета Министров ЧИАССР о состоянии религиозного движения. 1977. – справка от 18.05.1977 № 431/21; ГАРФ ф. Р-6991 оп. 6 д. 1162 л. 7-8, 11; публикация islamperspectives.org.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-14" href="https://archive.decolonial.ist/en/645" target="_blank">
+                        Бобов Д. П., уполномоченный Совета по делам религий при Совмине СССР по ЧИАССР. Сведения уполномоченного Совета по делам религий по Чечено-Ингушской АССР Д. П. Бобова о мечетях и их использовании. 1980. – сведения от 19.08.1980 № 431/38; ГАРФ ф. Р-6991 оп. 6 д. 1820 л. 33, 39; публикация islamperspectives.org.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-15" href="https://archive.decolonial.ist/en/649" target="_blank">
+                        Совет по делам религиозных культов при Совете Министров СССР. Циркулярное письмо Совета по делам религиозных культов при Совете Министров СССР № 14-83с О мерах по прекращению паломничества к так называемым святым местам. 1958. – циркулярное письмо уполномоченным от 10.12.1958 № 14-83с; ГАРФ ф. Р-6991 оп. 3 д. 169 л. 10-12; публикация islamperspectives.org.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-16" href="https://archive.decolonial.ist/en/647" target="_blank">
+                        Совет по делам религий при Совете Министров СССР. Информационный отчёт Совета по делам религий при Совете Министров СССР о состоянии ислама в СССР за 1973 год. 1974. – отчёт в ЦК КПСС, апрель 1974 (извлечения); РГАНИ ф. 5 оп. 67 д. 115 л. 11-12, 14-100; публикация islamperspectives.org.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-17" href="https://archive.decolonial.ist/en/642" target="_blank">
+                        Октябрьский районный народный суд г. Грозного. Приговор Октябрьского районного народного суда г. Грозного по делу об изготовлении религиозной литературы на арабском языке. 1979. – приговор от 29.06.1979, судья Э. М. Алиева; ГАРФ ф. Р-6991 оп. 6 д. 1820 л. 13-15, 22-23; публикация islamperspectives.org.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-18" href="https://archive.decolonial.ist/en/648" target="_blank">
+                        Совет по делам религий при Совете Министров РСФСР, председатель Л. Ф. Колесников. Материалы о мюридизме на Северном Кавказе, представленные Советом по делам религий при Совете Министров РСФСР. 1989. – 05.05.1989; ГАРФ ф. А-661 оп. 1 д. 12 л. 17-27об; публикация islamperspectives.org.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-19" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-19" href="https://archive.decolonial.ist/en/636" target="_blank">
+                        Госкомстат СССР. Всесоюзная перепись населения 1989 года. Национальный состав населения по республикам СССР. 1989. – таблицы переписи 1989 г. в публикации Демоскоп Weekly (Институт демографии НИУ ВШЭ).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-20" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-20" href="https://archive.decolonial.ist/en/632" target="_blank">
+                        Овхадов М. Р. Национально-языковая политика в стране и Чеченской Республике. 2012. – мультипортал «ЧеченИнфо», 10.06.2012.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-21" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-21" href="https://archive.decolonial.ist/en/634" target="_blank">
+                        Мусханова И. В. Становление и развитие системы образования в Чеченской Республике. 2012. – Сибирский педагогический журнал, 2012, № 1, с. 119-127.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-22" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-22" href="https://archive.decolonial.ist/en/633" target="_blank">
+                        Хамидова З. Борьба за язык (Проблемы становления и развития чеченского языка). 1999. – сборник «Чечня и Россия: общества и государства», Москва: Полинформ-Талбури, 1999 (Сахаровский центр).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-23" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-23" href="https://archive.decolonial.ist/en/635" target="_blank">
+                        Яхъяева А. А. Чеченский язык в 90-е годы XX века: функции и структура. 2007. – автореферат кандидатской диссертации, Грозный: Чеченский государственный университет, 2007.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/en/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; no cookies, no tracking; statistics &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; content is available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license &middot; engine &mdash; a fork of the <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/en/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/en/theme/scripts/popper.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/en/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/en/theme/scripts/site.js"></script>
+    <script src="/en/theme/scripts/settings.js"></script>
+    <script src="/en/theme/scripts/search_bundle.js"></script>
+    <script src="/en/theme/scripts/lang-switch.js"></script>
+    <script src="/en/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/en/theme/scripts/people-filter.js"></script>
+<script src="/en/theme/scripts/procedure-list.js"></script>
+
+<script src="/en/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/en/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/en/theme/scripts/settings.js"></script>
+<script src="/en/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/en/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

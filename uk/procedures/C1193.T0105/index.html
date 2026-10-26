@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            /* Страница 404 у GitHub Pages одна (русская) и отдаётся по ЛЮБОМУ несуществующему
+               адресу: редирект с неё дописывал «/uk» к пути в цикле (/uk/uk/uk/…, мерцание). */
+            if (false) return;
+            if (/^\/(en|uk|ce)(\/|$)/.test(window.location.pathname)) return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/procedures/C1193.T0105/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/procedures/C1193.T0105/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/procedures/C1193.T0105/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/procedures/C1193.T0105/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/procedures/C1193.T0105/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="referrer" content="no-referrer">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Тотальне знищення інфраструктури у кампанії «Перша російсько-чеченська війна (1994–1996)», C1193.T0105 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/procedures/C1193.T0105/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Тотальне знищення інфраструктури у кампанії «Перша російсько-чеченська війна (1994–1996)», C1193.T0105 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в жовтні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb mt-4">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/procedures/">Процедури</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/C1193">Перша російсько-чеченська війна (1994–1996)</a></li>
+  <li class="breadcrumb-item">Тотальне знищення інфраструктури</li>
+</ol>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Тотальне знищення інфраструктури</h1>
+        <p class="procedure-subtitle">
+          у кампанії «<a href="/uk/campaigns/C1193">Перша російсько-чеченська війна (1994–1996)</a>»        </p>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body procedure-body">
+                      <p>Восени 1994 року Росія напала на Чеченську Республіку Ічкерія під іменем маріонеткової опозиції, а 11 грудня 1994 року російська армія відкрито вторглася в республіку. Окупанти руйнували міста і села Ічкерії разом із житлом, лікарнями та школами<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>Російські льотчики та артилеристи руйнували житлові квартали бомбардуваннями й обстрілами (докладніше: «Невибіркові напади»)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. У захоплених селах і містах російські солдати та міліціонери грабували будинки (докладніше: «Мародерство»), а потім підпалювали їх бензином, сіном або з вогнеметів<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А. Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне. 1995. – Составители: Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А.; глава миссии С. Ковалёв; ПЦ «Мемориал», М., 1995 (доклад о событиях в селе Самашки 7-8 апреля 1995 г.)." data-reference="Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/662" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Human Rights Watch/Helsinki. Russia: Partisan War in Chechnya on the Eve of the World War II Commemoration. 1995. – Vol. 7, No. 8, May 1995." data-reference="Russia: Partisan War in Chechnya on the Eve of the World War II Commemoration 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/655" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Після війни 1994-1996 років без житла залишилися 60 тисяч родин Грозного<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Мурадов М. Кавказский ренессанс. 2002. – «Коммерсантъ Деньги», № 4, 06.02.2002, с. 18." data-reference="Кавказский ренессанс 2002"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1166" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p><p>Окупанти руйнували підстанції, зривали лінії електропередачі, підривали газопроводи<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия. 1996. – Материалы опроса свидетелей. Первая сессия. Москва, 21-25 февраля 1996 года. М.: Общественный фонд «Гласность», 1996." data-reference="Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/986" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>.</p><p>У грудні 1994 року російська авіація бомбила Грозний, столицю Ічкерії. 9 січня 1995 року Ірина з Третього мікрорайону на околиці Грозного розповіла Human Rights Watch у підконтрольній Росії Інгушетії: «Наш район постраждав першим… чи то 17, чи то 18 грудня, розбомбили три дев'ятиповерхові будинки інституту „Промавтоматика". Люди всі стали бездомними»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Human Rights Watch/Helsinki. Russia. War in Chechnya. New Report From the Field. 1995. – Vol. 7, No. 2, January 1995." data-reference="Russia. War in Chechnya. New Report From the Field 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1128" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. У ніч на 20 грудня російські льотчики скинули дві бомби на квартал одноповерхових будинків на перетині Московської вулиці та вулиці Ноя Буачідзе і повністю або частково зруйнували 18 будинків<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. Російська авіація розбомбила підстанцію, і Грозний залишився без світла<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия. 1996. – Материалы опроса свидетелей. Первая сессия. Москва, 21-25 февраля 1996 года. М.: Общественный фонд «Гласность», 1996." data-reference="Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/986" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. 31 грудня 1994 року окупанти почали штурм міста. Після 20 лютого 1995 року російський спецназ підпалював і підривав у Грозному будинки, нищив труби та лінії електропередачі<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. Через два з лишком місяці після початку штурму, до 6 березня 1995 року, російські війська захопили Грозний. 1 травня 1995 року російська журналістка Євгенія Альбац, яка в січні була в місті, сказала на слуханнях комісії Конгресу США: «Такого міста більше немає. У Грозному немає жодного будинку, який війна так чи інакше не зруйнувала б»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Commission on Security and Cooperation in Europe (U.S. Helsinki Commission). Hearing on Chechnya (CSCE 104-1-6). 1995. – Hearing before the Commission on Security and Cooperation in Europe, One Hundred Fourth Congress, first session, May 1, 1995; U.S. Government Printing Office, Washington, 1995; Y 4.SE 2:104-1-6; ISBN 0-16-047707-7; электронная копия GPO (govinfo.gov)." data-reference="Hearing on Chechnya (CSCE 104-1-6) 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1038" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>.</p><p>3 лютого 1995 року бійці російського ОМОНу (міліцейського спецназу) і внутрішніх військ МВС Росії (попередників сучасної Росгвардії) обшукували будинки в Петропавлівській, станиці на північний схід від Грозного, і спалили 14 будинків. Усього окупанти зруйнували в станиці 86 будинків<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. У лютому 1995 року російські льотчики розбомбили в Аргуні, місті на схід від Грозного, дві школи, спортивну школу, лікарню та дитячий садок<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Human Rights Watch/Helsinki. Russia: Three Months of War in Chechnya. 1995. – Vol. 7, No. 6, February 1995." data-reference="Russia: Three Months of War in Chechnya 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/654" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. У кінці березня 1995 року російські війська без бою захопили Гудермес, друге за величиною місто Ічкерії, а 29 і 30 березня солдати палили в ньому будинки з вогнеметів, і на вулиці Пархоменка цілими залишилися два будинки<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="Human Rights Watch/Helsinki. Russia: Partisan War in Chechnya on the Eve of the World War II Commemoration. 1995. – Vol. 7, No. 8, May 1995." data-reference="Russia: Partisan War in Chechnya on the Eve of the World War II Commemoration 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/655" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. У квітні 1995 року російські війська місяць обстрілювали Аллерой, село на сході Ічкерії, де жили 4500-5000 людей. Окупанти повністю зруйнували ракетами п'яту частину будинків Аллероя<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>7 квітня 1995 року внутрішні війська МВС Росії та ОМОН штурмували Самашки, село на заході Ічкерії. Чеченці в Самашках розповіли спостерігачам російської правозахисної організації «Меморіал», що солдати й омоновці палили будинки 8 квітня, коли обшукували село. Російські військові ночували в школі на Кооперативній вулиці, а вранці підпалили її, і школа вигоріла всередині<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А. Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне. 1995. – Составители: Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А.; глава миссии С. Ковалёв; ПЦ «Мемориал», М., 1995 (доклад о событиях в селе Самашки 7-8 апреля 1995 г.)." data-reference="Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/662" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 10 квітня чеченка на прізвище Карнукаєва з Робочої вулиці розповіла Спостережній місії російських правозахисних організацій: «Будинки спалені. Мені зараз нікуди йти. Я голодна, холодна залишилася на вулиці з 4 дітьми»<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А. Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне. 1995. – Составители: Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А.; глава миссии С. Ковалёв; ПЦ «Мемориал», М., 1995 (доклад о событиях в селе Самашки 7-8 апреля 1995 г.)." data-reference="Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/662" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Співробітник «Меморіалу» Віктор Лозінський з 18 квітня по 1 травня 1995 року оглядав спалені будинки Самашок. У лютому 1996 року він розповів громадському трибуналу російського фонду «Гласність»: «Село планомірно випалювали. Будинки підпалювали так: розбивали скло прикладом і на підвіконня просто клали ветош [ганчір'я], просочену якоюсь соляркою, і її підпалювали»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия. 1996. – Материалы опроса свидетелей. Первая сессия. Москва, 21-25 февраля 1996 года. М.: Общественный фонд «Гласность», 1996." data-reference="Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/986" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Спостережна місія опублікувала складений адміністрацією Самашок список 198 дворів, де окупанти повністю зруйнували хоча б один будинок, і в 155 із них згоріли майже всі будинки<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А. Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне. 1995. – Составители: Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А.; глава миссии С. Ковалёв; ПЦ «Мемориал», М., 1995 (доклад о событиях в селе Самашки 7-8 апреля 1995 г.)." data-reference="Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/662" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Правозахисники «Меморіалу» пишуть, що російські військові та співробітники МВС спалили більшість будинків у селі навмисно<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p><p>З 30 вересня 1995 року до березня 1996 року російські внутрішні війська та міліція тримали в кільці Серноводськ, село на заході Ічкерії, зривали біля села лінії електропередачі й кілька разів підривали газопровід (докладніше: «Транспортна блокада»)<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. У грудні 1995 року, після того як Збройні сили Ічкерії звільнили Гудермес, російські війська обстрілювали й бомбили місто. За словами біженців і оцінками журналістів, окупанти зруйнували або пошкодили близько 40 відсотків будівель Гудермеса<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Human Rights Watch/Helsinki. Caught in the Crossfire: Civilians in Gudermes and Pervomayskoye. 1996. – Vol. 8, No. 3 (D), March 1996." data-reference="Caught in the Crossfire: Civilians in Gudermes and Pervomayskoye 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/656" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>.</p><p>З 3 по 9 березня 1996 року російські війська штурмували Серноводськ, спалили або зруйнували 30 відсотків будинків села, а російські солдати з ручних вогнеметів підпалювали квартири біженців на північній околиці села<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. 15 березня 1996 року, через 11 місяців після першого штурму, російські війська знову штурмували Самашки і зруйнували до основи Будинок культури та школу, яку чеченці відбудували заново. Журналісти, які приїхали після штурму, побачили в усьому селі лише три вцілілі будинки<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. 3 і 4 квітня 1996 року російські льотчики бомбили Шалажі, село на південному заході Ічкерії, і зруйнували десятки будинків, усю верхню частину села<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении." data-reference="Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года 1997"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/988" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. 6 квітня 1996 року російські війська захопили Жані-Ведено, гірське село з 38 дворів на південному сході Ічкерії, з якого чеченці пішли від обстрілів, і місяць нікого до нього не підпускали. Коли російські військові пішли, у селі залишився один цілий будинок, а на місці більшості будинків спостерігач «Меморіалу» знайшов згарища без слідів снарядів і бомб<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. З 9 по 11 липня 1996 року російська артилерія обстрілювала, а авіація бомбила Гехі, село на південний захід від Грозного. Кореспондент московської газети «Известия» писав, що окупанти знищили понад третину села<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-139). 1996. – 18.07.1996." data-reference="Daily Report: Central Eurasia (FBIS-SOV-96-139) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1364" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. У ніч на 11 липня російські артилеристи обстрілювали Махкети, гірське село на південному сході Ічкерії, з реактивних систем залпового вогню «Град» і «Ураган», які не можуть бити прицільно, і знищили 150 будинків<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span><span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-139). 1996. – 18.07.1996." data-reference="Daily Report: Central Eurasia (FBIS-SOV-96-139) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1364" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. З 6 по 22 серпня 1996 року російські війська обстрілювали Грозний із важкої артилерії та бомбили його, а 21 серпня російські льотчики скинули на квартали п'ятиповерхівок на вулицях Сайханова та Ульянова запалювальні бомби, від яких будинки вигоріли всередині<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. У бюлетені Міжнародного комітету Червоного Хреста від 2 вересня 1996 року сказано, що після серпневих ударів усі 80 тисяч людей у Грозному залишилися без електрики та медичної допомоги: усі лікарні міста були зруйновані або сильно пошкоджені<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Международный комитет Красного Креста (ICRC). Russian Federation/Northen Caucasus: Drinking water scarce in Grozny. 1996. – ICRC News 35, 2 September 1996; публикация на ReliefWeb." data-reference="Russian Federation/Northen Caucasus: Drinking water scarce in Grozny 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1407" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>.</p><p>26 липня 1995 року Комітет ООН з прав людини в зауваженнях щодо Росії висловив жаль, що російські збройні сили руйнували школи, лікарні та інші цивільні будівлі<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Комитет ООН по правам человека. Comments of the Human Rights Committee: Russian Federation (CCPR/C/79/Add.54). 1995. – заключительные замечания по четвёртому периодическому докладу России, CCPR/C/79/Add.54, 26.07.1995." data-reference="Comments of the Human Rights Committee: Russian Federation (CCPR/C/79/Add.54) 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/736" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p><p>У серпні 1996 року Збройні сили Ічкерії звільнили Грозний від окупантів, змусивши Росію сісти за стіл переговорів<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Stasys Knezys, Romanas Sedlickas. The War in Chechnya. 1999. – College Station: Texas A&amp;M University Press, 1999. ISBN 0-89096-856-X." data-reference="The War in Chechnya 1999"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1127" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. 31 серпня 1996 року було підписано мирні угоди в Хасав'юрті (докладніше: «Фіктивні договори»)<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Совместное заявление и Принципы определения основ взаимоотношений между Российской Федерацией и Чеченской Республикой. Хасавюртовские соглашения. 1996. – подписи А. Лебедь, С. Харламов, А. Масхадов, С. Абумуслимов; Хасавюрт, 31.08.1996; публикация: Независимая газета, № 163, 03.09.1996." data-reference="Хасавюртовские соглашения 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/661" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. 31 грудня 1996 року останні російські війська пішли з республіки<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1193.T0105
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Техніка:&nbsp;</span>
+                    <a href="/uk/techniques/T0105">Тотальне знищення інфраструктури</a>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Кампанія:&nbsp;</span>
+                    <a href="/uk/campaigns/C1193">Перша російсько-чеченська війна (1994–1996)</a>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>Вересень 1994
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>Грудень 1996
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-1" href="https://archive.decolonial.ist/uk/27" target="_blank">
+                        Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-2" href="https://archive.decolonial.ist/uk/662" target="_blank">
+                        Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А. Всеми имеющимися средствами… Результаты независимого расследования Наблюдательной миссии правозащитных общественных организаций в зоне вооруженного конфликта в Чечне. 1995. – Составители: Блинушов А., Гурьянов А., Орлов О., Рачинский Я., Соколов А.; глава миссии С. Ковалёв; ПЦ «Мемориал», М., 1995 (доклад о событиях в селе Самашки 7-8 апреля 1995 г.).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-3" href="https://archive.decolonial.ist/uk/655" target="_blank">
+                        Human Rights Watch/Helsinki. Russia: Partisan War in Chechnya on the Eve of the World War II Commemoration. 1995. – Vol. 7, No. 8, May 1995.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-4" href="https://archive.decolonial.ist/uk/988" target="_blank">
+                        Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Материалы опроса свидетелей. Вторая сессия. Москва, 20-24 апреля 1996 года. Дополнительные слушания. Третья сессия. Прага, 24-26 мая 1996 года. 1997. – Общественный фонд «Гласность». М., 1997. ISBN 5-88445-013-3. Редакторы Лилия Исакова, Елена Ознобкина. Материалы опроса свидетелей публикуются в сокращении.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-5" href="https://archive.decolonial.ist/uk/1166" target="_blank">
+                        Мурадов М. Кавказский ренессанс. 2002. – «Коммерсантъ Деньги», № 4, 06.02.2002, с. 18.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-6" href="https://archive.decolonial.ist/uk/986" target="_blank">
+                        Международный неправительственный трибунал по делу о преступлениях против человечности и военных преступлениях в Чеченской Республике. Комитет обвинителей. Война в Чечне: Международный трибунал: Материалы опроса свидетелей: Первая сессия. 1996. – Материалы опроса свидетелей. Первая сессия. Москва, 21-25 февраля 1996 года. М.: Общественный фонд «Гласность», 1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-7" href="https://archive.decolonial.ist/uk/1128" target="_blank">
+                        Human Rights Watch/Helsinki. Russia. War in Chechnya. New Report From the Field. 1995. – Vol. 7, No. 2, January 1995.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-8" href="https://archive.decolonial.ist/uk/1038" target="_blank">
+                        Commission on Security and Cooperation in Europe (U.S. Helsinki Commission). Hearing on Chechnya (CSCE 104-1-6). 1995. – Hearing before the Commission on Security and Cooperation in Europe, One Hundred Fourth Congress, first session, May 1, 1995; U.S. Government Printing Office, Washington, 1995; Y 4.SE 2:104-1-6; ISBN 0-16-047707-7; электронная копия GPO (govinfo.gov).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="9.0">
+                                
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-9" href="https://archive.decolonial.ist/uk/654" target="_blank">
+                        Human Rights Watch/Helsinki. Russia: Three Months of War in Chechnya. 1995. – Vol. 7, No. 6, February 1995.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-10" href="https://archive.decolonial.ist/uk/656" target="_blank">
+                        Human Rights Watch/Helsinki. Caught in the Crossfire: Civilians in Gudermes and Pervomayskoye. 1996. – Vol. 8, No. 3 (D), March 1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-11" href="https://archive.decolonial.ist/uk/1364" target="_blank">
+                        Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-139). 1996. – 18.07.1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-12" href="https://archive.decolonial.ist/uk/1407" target="_blank">
+                        Международный комитет Красного Креста (ICRC). Russian Federation/Northen Caucasus: Drinking water scarce in Grozny. 1996. – ICRC News 35, 2 September 1996; публикация на ReliefWeb.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-13" href="https://archive.decolonial.ist/uk/736" target="_blank">
+                        Комитет ООН по правам человека. Comments of the Human Rights Committee: Russian Federation (CCPR/C/79/Add.54). 1995. – заключительные замечания по четвёртому периодическому докладу России, CCPR/C/79/Add.54, 26.07.1995.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-14" href="https://archive.decolonial.ist/uk/1127" target="_blank">
+                        Stasys Knezys, Romanas Sedlickas. The War in Chechnya. 1999. – College Station: Texas A&M University Press, 1999. ISBN 0-89096-856-X.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-15" href="https://archive.decolonial.ist/uk/661" target="_blank">
+                        Совместное заявление и Принципы определения основ взаимоотношений между Российской Федерацией и Чеченской Республикой. Хасавюртовские соглашения. 1996. – подписи А. Лебедь, С. Харламов, А. Масхадов, С. Абумуслимов; Хасавюрт, 31.08.1996; публикация: Независимая газета, № 163, 03.09.1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

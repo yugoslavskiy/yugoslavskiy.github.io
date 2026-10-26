@@ -1,0 +1,792 @@
+
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("ru" !== "ru") return;
+            /* Страница 404 у GitHub Pages одна (русская) и отдаётся по ЛЮБОМУ несуществующему
+               адресу: редирект с неё дописывал «/uk» к пути в цикле (/uk/uk/uk/…, мерцание). */
+            if (false) return;
+            if (/^\/(en|uk|ce)(\/|$)/.test(window.location.pathname)) return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/campaigns/C1183/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/campaigns/C1183/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/campaigns/C1183/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/campaigns/C1183/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/campaigns/C1183/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="referrer" content="no-referrer">
+        <link rel='shortcut icon' href='/theme/favicon.ico' type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/theme/apple-touch-icon.png'>
+
+        <meta name="description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Непризнание и попытка военного вторжения: ответ Москвы на независимость Чеченской Республики (сентябрь-ноябрь 1991), кампания C1183 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знаний о российском колониализме: тактики, техники и процедуры колонизации народов.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="https://decolonial.ist/campaigns/C1183/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Непризнание и попытка военного вторжения: ответ Москвы на независимость Чеченской Республики (сентябрь-ноябрь 1991), кампания C1183 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap.min.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-tourist.css' />
+        <link rel='stylesheet' href='/theme/style/vendors/bootstrap-select.min.css' />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/theme/style-dclst.css"/>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href='/'><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Язык">
+                        <b>Русский</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/matrices/"  class="nav-link" ><b>Матрицы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/techniques/"  class="nav-link" ><b>Техники</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/procedures/"  class="nav-link" ><b>Процедуры</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/campaigns"  class="nav-link" ><b>Кампании</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонизаторы</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/groups">Акторы</a>
+                <a class="dropdown-item" href="/software">Инструменты</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/faq/"  class="nav-link" ><b>Вопросы и ответы</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/resources/contribute/"  class="nav-link" ><b>Внести вклад</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Поиск <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт находится в разработке. Выпуск ожидается в октябре 2026 года. Хотите помочь проекту - <a href='/resources/contribute/'>внесите вклад</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+<!--stop-indexing-for-search-->
+<div id="sidebars"></div>
+<!--start-indexing-for-search-->
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Главная</a></li>
+  <li class="breadcrumb-item"><a href="/campaigns/">Кампании</a></li>
+  <li class="breadcrumb-item">Непризнание и попытка военного вторжения: ответ Москвы на независимость Чеченской Республики (сентябрь-ноябрь 1991)</li>
+</ol>
+<div class="tab-pane fade show active" id="v-" role="tabpanel" aria-labelledby="v--tab">
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Непризнание и попытка военного вторжения: ответ Москвы на независимость Чеченской Республики (сентябрь-ноябрь 1991)</h1>
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <div class="description-body">
+                      <p>После возвращения из ссылки чеченцами три десятилетия правили присланные из Москвы русские; только 1 июля 1989 года собрание оккупационной администрации региона впервые отвергло кандидата Москвы и выбрало главой региона чеченца Завгаева<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005." data-reference="История Чечни в XIX-XX веках 2005"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/125" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. К осени 1991 года СССР разваливался: союзные республики одна за другой объявляли независимость. 18 августа вице-президент СССР Янаев с главами КГБ (предшественника современной ФСБ), армии и полиции попытались силой удержать союз в руках Москвы: объявили, что формальный глава СССР Горбачёв не может править «по состоянию здоровья», ввели чрезвычайное положение и танки в Москву, но через три дня сдались<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Государственный комитет по чрезвычайному положению в СССР. Заявление ГКЧП. 1991. – заявление от 18.08.1991; подписали Янаев Г., Павлов В., Бакланов О." data-reference="Заявление ГКЧП 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/176" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Поставленный при СССР глава Чечни Завгаев поддержал тех, кто хотел сохранить СССР, и проиграл: чеченцы вышли на непрерывные митинги и 6 сентября заставили его Верховный Совет распустить себя<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="ИНИОН РАН (хрестоматия «Политические отношения и политический процесс в современной России»). Чечня 1990-1991: хроника и документы. 2007. – библиотека фонда «Наследие», кн. 10: «Чечня 1990-1991: хроника и документы» (2007)." data-reference="Чечня 1990-1991: хроника и документы 2007"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/707" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Той же осенью чеченцы избрали своего президента, Джохара Дудаева, и объявили независимость от России, а колонизатор в лице РСФСР за два месяца прошёл путь от посылки делегации «разъяснить политику» до попытки ввести чрезвычайное положение на всей территории Чечено-Ингушетии силами внутренних войск, но был вынужден отступить. 10 сентября 1991 года президент РСФСР Ельцин направил в Грозный делегацию во главе с государственным секретарём Бурбулисом и поручил ей «разъяснить политику Российской Федерации и Президента РСФСР»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Президент РСФСР Б. Ельцин. Распоряжение Президента РСФСР № 38-рп О направлении делегации РСФСР в Чечено-Ингушскую Республику. 1991. – Ведомости СНД и ВС РСФСР, 1991 (по Викитеке)." data-reference="Распоряжение Президента РСФСР № 38-рп О направлении делегации РСФСР в Чечено-Ингушскую Республику 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/704" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>. 14 сентября в Грозный прилетел Хасбулатов, чеченец из московского руководства, тогда исполнявший обязанности главы парламента; 15 сентября он лично вёл последнюю сессию Верховного Совета Чечено-Ингушетии, и депутаты под давлением Хасбулатова и сторонников Джохара Дудаева отправили Завгаева в отставку, распустили себя и выбрали из своего состава Временный Высший Совет из 32 человек во главе с Хусейном Ахмадовым, чтобы тот провёл новые выборы<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Dunlop J. B. Russia Confronts Chechnya: Roots of a Separatist Conflict. 1998. – Cambridge; New York: Cambridge University Press, 1998. ISBN 0-521-63619-1." data-reference="Russia Confronts Chechnya: Roots of a Separatist Conflict 1998"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/710" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Москва попыталась забрать этот совет себе: 25 сентября пять его членов во главе с заместителем председателя совета Чёрным, человеком Хасбулатова, выступили против конгресса Джохара Дудаева; 26 сентября сам Хасбулатов телеграммой пригрозил не признать выборы, а 5 октября тринадцать из тридцати двух членов совета при поддержке местного КГБ попытались сместить Хусейна Ахмадова. Сторонники Джохара Дудаева в ответ перекрыли центральную площадь Грозного, арестовали прокурора республики и заняли здания КГБ и правительства; у людей Москвы в совете, как докладывал командованию генерал Соколов, «практической власти» не осталось<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Dunlop J. B. Russia Confronts Chechnya: Roots of a Separatist Conflict. 1998. – Cambridge; New York: Cambridge University Press, 1998. ISBN 0-521-63619-1." data-reference="Russia Confronts Chechnya: Roots of a Separatist Conflict 1998"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/710" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span><span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="ИНИОН РАН (хрестоматия «Политические отношения и политический процесс в современной России»). Чечня 1990-1991: хроника и документы. 2007. – библиотека фонда «Наследие», кн. 10: «Чечня 1990-1991: хроника и документы» (2007)." data-reference="Чечня 1990-1991: хроника и документы 2007"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/707" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 6 октября в Грозный прилетел вице-президент РСФСР Руцкой с министром внутренних дел и председателем КГБ РСФСР, но ничего не добился<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Dunlop J. B. Russia Confronts Chechnya: Roots of a Separatist Conflict. 1998. – Cambridge; New York: Cambridge University Press, 1998. ISBN 0-521-63619-1." data-reference="Russia Confronts Chechnya: Roots of a Separatist Conflict 1998"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/710" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>, и 8 октября московское руководство за подписью Хасбулатова признало законной в Чечне только группу прокурора Бахмадова - того, кто, по докладу Соколова, «назначен Председателем Верховного Совета РСФСР Хасбулатовым»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="ИНИОН РАН (хрестоматия «Политические отношения и политический процесс в современной России»). Чечня 1990-1991: хроника и документы. 2007. – библиотека фонда «Наследие», кн. 10: «Чечня 1990-1991: хроника и документы» (2007)." data-reference="Чечня 1990-1991: хроника и документы 2007"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/707" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>, - и потребовало: «незаконным вооруженным формированиям [так колонизатор назвал борцов за независимость от России] до 24 часов 10 октября 1991 года сдать оружие»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Президиум Верховного Совета РСФСР. Постановление Президиума ВС РСФСР № 1723-I О политической ситуации в Чечено-Ингушской Республике. 1991. – постановление от 08.10.1991 № 1723-I, подпись Р. И. Хасбулатов." data-reference="Постановление Президиума ВС РСФСР № 1723-I О политической ситуации в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/624" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. 24 октября Москва объявила ещё до голосования, что назначенные на 27 октября выборы «не имеют правовой основы и их результаты не могут быть признаны законными»<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Верховный Совет РСФСР. Постановление ВС РСФСР № 1804-I О проведении выборов в высшие органы государственной власти Чечено-Ингушской Республики. 1991. – постановление от 24.10.1991 № 1804-I, подпись Р. И. Хасбулатов." data-reference="Постановление ВС РСФСР № 1804-I О проведении выборов в высшие органы государственной власти Чечено-Ингушской Республики 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/625" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. 27 октября чеченцы избрали президентом Джохара Дудаева, и 1 ноября он подписал указ: «объявить о государственном суверенитете Чеченской Республики с 1 ноября 1991 года»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Президент Чеченской Республики Д. Дудаев. Указ Президента Чеченской Республики О государственном суверенитете Чеченской Республики. 1991. – указ от 01.11.1991." data-reference="Указ Президента Чеченской Республики О государственном суверенитете Чеченской Республики 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/630" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. 2 ноября Москва признала выборы «незаконными, а принятые ими акты не подлежащими исполнению»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Съезд народных депутатов РСФСР. Постановление СНД РСФСР № 1847-I О признании незаконными выборов, проведенных 27 октября 1991 года в Чечено-Ингушской Республике. 1991. – постановление от 02.11.1991 № 1847-I, подпись Р. И. Хасбулатов." data-reference="Постановление СНД РСФСР № 1847-I О признании незаконными выборов, проведенных 27 октября 1991 года в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/622" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. 7 ноября Ельцин указом № 178 ввёл на всей территории Чечено-Ингушетии чрезвычайное положение: комендантский час, запрет митингов и забастовок, изъятие оружия, отмену выборов, назначенную из Москвы Временную администрацию и «выдворение нарушителей общественного порядка, не являющихся жителями данной местности... за пределы территории Чечено-Ингушской Республики за их счет»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Ельцин Б. Н. Указ Президента РСФСР № 178 О введении чрезвычайного положения в Чечено-Ингушской Республике. 1991. – президент РСФСР; указ от 7 ноября 1991." data-reference="Указ Президента РСФСР № 178 О введении чрезвычайного положения в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/274" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. 8 ноября парламент Чеченской Республики объявил указ незаконным и потребовал вывести войска за 24 часа<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Парламент Чеченской Республики. Постановление Парламента Чеченской Республики № 25 О незаконности Указа Президента РСФСР о введении чрезвычайного положения на территории Чеченской Республики. 1991. – постановление от 08.11.1991 № 25, подпись Х. Ахмадов." data-reference="Постановление Парламента Чеченской Республики № 25 О незаконности Указа Президента РСФСР о введении чрезвычайного положения на территории Чеченской Республики 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/627" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Национальная гвардия Чечни и горожане без оружия заблокировали переброшенные внутренние войска (предшественники современной Росгвардии) на аэродроме Ханкала под Грозным и в здании министерства внутренних дел. Формальный глава СССР Горбачёв отказал РСФСР в союзных войсках, 10 ноября утром внутренние войска ушли из Грозного<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Десять дней которые отменили мир. 2021. – versia.ru." data-reference="Десять дней которые отменили мир 2021"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/276" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>, и 11 ноября депутаты в Москве отказались утвердить указ Ельцина, признав нужным действовать «не путем применения чрезвычайных мер, а политическими средствами»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Верховный Совет РСФСР. Постановление ВС РСФСР № 1855-I. 1991. – постановление от 11.11.1991." data-reference="Постановление ВС РСФСР № 1855-I 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/275" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1183
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Начало:&nbsp;</span>
+                    <span>Сентябрь 1991</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Окончание:&nbsp;</span>
+                    <span>Ноябрь 1991</span>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контрибьюторы</span>: decolonial.ist project
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Версия</span>: 1.0
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Создано:&nbsp;</span>7 сентября 2026
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Изменено:&nbsp;</span>7 сентября 2026
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-2 telegram-discuss">
+    <a href="/go/tg/C1183" data-test-ignore="true">Обсудить в Telegram</a>
+</div>
+
+          </div>
+        </div>
+            <!--stop-indexing-for-search-->
+        <div class="dropdown h3 mt-3 float-right">
+            <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Слои Навигатора</b>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Слой russia-colonialism</h6>
+                    <a class="dropdown-item" href="/campaigns/C1183/C1183-russia-colonialism-layer.json" download target="_blank">скачать</a>
+                    <!-- only show view on navigator link if layer link is defined -->
+                        <a class="dropdown-item" href="https://decolonial.ist/navigator/#layerURL=https%3A%2F%2Fdecolonial.ist%2Fcampaigns%2FC1183%2FC1183-russia-colonialism-layer.json" target="_blank">открыть <img width="10" src="/theme/images/external-site-dark.jpeg"></a>
+            </div>
+        </div>
+    <!--start-indexing-for-search-->
+
+
+
+        <h2 class="pt-3" id="groups">Акторы</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/groups/G0011">G0011</a></td>
+                <td><a href="/groups/G0011">Российская Федерация</a></td>
+                <td>3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="software">Применённые инструменты</h2>
+        <div class="tables-mobile">
+          <table class="table table-bordered table-alternate mt-2 js-sortable">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Процедуры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/software/S0008"> S0008 </a></td>
+                <td><a href="/software/S0008"> Правительство </a></td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td><a href="/software/S0010"> S0010 </a></td>
+                <td><a href="/software/S0010"> Регулярная армия </a></td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="pt-3" id="procedures">Реализованные процедуры</h2>
+        <div class="procedure-list" id="entityProcs" data-sort-default="oldest">
+    <div class="row mb-4 filter-panel">
+        <div class="col-md-12 mb-3">
+            <label>Поиск по тексту (название, техника или описание):</label>
+            <input type="text" class="form-control pl-search" placeholder="Введите ключевое слово...">
+        </div>
+        <div class="col-md-12 mb-3">
+    <label>Фильтр по народам:</label>
+    <div id="entityProcs-platforms" class="d-flex flex-wrap people-filter-box"></div>
+</div>
+        <div class="col-md-12 mb-3">
+            <label>Диапазон дат (по началу): <span class="pl-dmin-out"></span>&nbsp;&mdash;&nbsp;<span class="pl-dmax-out"></span></label>
+            <div class="dr-wrap">
+                <div class="dr-track"></div>
+                <div class="dr-fill"></div>
+                <input type="range" class="pl-date-min" aria-label="Диапазон дат (по началу) (min)">
+                <input type="range" class="pl-date-max" aria-label="Диапазон дат (по началу) (max)">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Сортировка по дате:</label><br>
+            <button type="button" class="btn btn-outline-secondary btn-sm pl-sort"
+                    data-newest="Сначала новые" data-oldest="Сначала старые">
+                <span class="pl-sort-label"></span> <span class="pl-sort-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="proc-list">
+        <div class="procedure-row"
+             data-search="ограничение суверенитета 10 сентября 1991 года президент рсфср ельцин направил в чечено-ингушетию делегацию во главе с государственным секретарём бурбулисом и поручил ей «разъяснить политику российской федерации и президента рсфср на данном этапе»(citation: распоряжение президента рсфср № 38-рп о направлении делегации рсфср в чечено-ингушскую республику 1991); делегация вернулась ни с чем(citation: чечня 1990-1991: хроника и документы 2007). 8 октября московское руководство за подписью хасбулатова постановило «впредь до избрания нового состава верховного совета чечено-ингушской республики считать единственным законным органом государственной власти на территории чечено-ингушской республики временный высший совет республики» и приказало «незаконным вооруженным формированиям [так колонизатор назвал борцов за независимость от россии] до 24 часов 10 октября 1991 года сдать оружие органам внутренних дел»(citation: постановление президиума вс рсфср № 1723-i о политической ситуации в чечено-ингушской республике 1991). чеченцы оружие не сдали: 9 октября руководство общенационального конгресса чеченского народа ответило, что постановление принято «с единственной целью сохранения колониального господства над чеченским народом, над народами кавказа и их природными богатствами», объявило мобилизацию мужчин от 15 до 55 лет и привело национальную гвардию в боевую готовность(citation: постановление президиума исполкома окчн от 09.10.1991 1991). 10 октября москва поручила вице-президенту руцкому и правительству рсфср «обеспечить необходимые условия для восстановления законности и правопорядка в чечено-ингушской республике»(citation: постановление вс рсфср № 1733-i о положении в чечено-ингушской республике 1991). 15 октября председатель кгб рсфср (предшественника современной фсб) иваненко приостановил работу кгб чечено-ингушетии «до 27 октября 1991 года» и своим приказом назначил ему исполняющего обязанности председателя(citation: чечня 1990-1991: хроника и документы 2007). 19 октября ельцин обратился к руководству конгресса с ультиматумом: «требую от лидеров исполкома общенационального конгресса чеченского народа и поддерживающих их группировок прекращения противоправных действий и безоговорочного подчинения закону… будут приняты все предусмотренные законами рсфср меры»(citation: обращение президента рсфср к лидерам исполкома общенационального конгресса чеченского народа 1991). 24 октября москва постановила, что назначенные на 27 октября выборы «не имеют правовой основы и их результаты не могут быть признаны законными», а подготовку других выборов поручила временному высшему совету и депутатам рсфср от республики(citation: постановление вс рсфср № 1804-i о проведении выборов в высшие органы государственной власти чечено-ингушской республики 1991). чеченцы проголосовали всё равно: 27 октября, по данным избирательной комиссии чеченской республики, пришли 72 % избирателей, за джохара дудаева - 90,1 %(citation: чечня 1990-1991: хроника и документы 2007). 1 ноября джохар дудаев подписал указ: «руководствуясь декларацией о государственном суверенитете республики и волеизъявлением граждан чеченской республики, выраженным прямыми и всеобщими выборами, объявить о государственном суверенитете чеченской республики с 1 ноября 1991 года»(citation: указ президента чеченской республики о государственном суверенитете чеченской республики 1991). 2 ноября москва ответила постановлением: «признать проведенные в чечено-ингушской республике 27 октября 1991 года выборы в высший орган государственной власти (верховный совет) и президента республики незаконными, а принятые ими акты не подлежащими исполнению»(citation: постановление снд рсфср № 1847-i о признании незаконными выборов, проведенных 27 октября 1991 года в чечено-ингушской республике 1991). 7 ноября ельцин в указе № 178 назвал причиной чрезвычайного положения обострение, «вызванное незаконными действиями исполкома общенационального конгресса чеченского народа и его лидеров, стремящихся путем организации массовых беспорядков, с применением насилия, отстранить от власти законно действующие государственные органы», а пунктом 6 запретил любые выборы: «выборы органов государственной власти и местного самоуправления в течение всего периода чрезвычайного положения не проводятся»(citation: указ президента рсфср № 178 о введении чрезвычайного положения в чечено-ингушской республике 1991). ни один из этих запретов не сработал: выборы прошли, президент и парламент чечни работали, а 11 ноября депутаты в москве отказались утвердить и сам указ(citation: постановление вс рсфср № 1855-i 1991)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0011"
+             data-tools="S0008"
+             data-date="1991-09-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0031">
+                    <span class="proc-tech-id">T0031</span>
+                    <span class="proc-tech-name">Ограничение суверенитета</span>
+                </a>
+                <div class="proc-date">Сентябрь 1991</div>
+<div class="proc-addr"><a href="/procedures/C1183.T0031/" title="Страница процедуры">C1183.T0031&nbsp;&rarr;</a></div><div><a href="/campaigns/C1183">C1183</a> Непризнание и попытка военного вторжения: ответ Москвы на независимость Чеченской Республики (сентябрь-ноябрь 1991)</div><div><a href="/groups/G0011">G0011</a> Российская Федерация</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>10 сентября 1991 года президент РСФСР Ельцин направил в Чечено-Ингушетию делегацию во главе с государственным секретарём Бурбулисом и поручил ей «разъяснить политику Российской Федерации и Президента РСФСР на данном этапе»<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Президент РСФСР Б. Ельцин. Распоряжение Президента РСФСР № 38-рп О направлении делегации РСФСР в Чечено-Ингушскую Республику. 1991. – Ведомости СНД и ВС РСФСР, 1991 (по Викитеке)." data-reference="Распоряжение Президента РСФСР № 38-рп О направлении делегации РСФСР в Чечено-Ингушскую Республику 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/704" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span>; делегация вернулась ни с чем<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="ИНИОН РАН (хрестоматия «Политические отношения и политический процесс в современной России»). Чечня 1990-1991: хроника и документы. 2007. – библиотека фонда «Наследие», кн. 10: «Чечня 1990-1991: хроника и документы» (2007)." data-reference="Чечня 1990-1991: хроника и документы 2007"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/707" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 8 октября московское руководство за подписью Хасбулатова постановило «впредь до избрания нового состава Верховного Совета Чечено-Ингушской Республики считать единственным законным органом государственной власти на территории Чечено-Ингушской Республики Временный Высший Совет Республики» и приказало «незаконным вооруженным формированиям [так колонизатор назвал борцов за независимость от России] до 24 часов 10 октября 1991 года сдать оружие органам внутренних дел»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Президиум Верховного Совета РСФСР. Постановление Президиума ВС РСФСР № 1723-I О политической ситуации в Чечено-Ингушской Республике. 1991. – постановление от 08.10.1991 № 1723-I, подпись Р. И. Хасбулатов." data-reference="Постановление Президиума ВС РСФСР № 1723-I О политической ситуации в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/624" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Чеченцы оружие не сдали: 9 октября руководство Общенационального конгресса чеченского народа ответило, что постановление принято «с единственной целью сохранения колониального господства над чеченским народом, над народами Кавказа и их природными богатствами», объявило мобилизацию мужчин от 15 до 55 лет и привело национальную гвардию в боевую готовность<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Президиум Исполкома Общенационального конгресса чеченского народа. Постановление Президиума Исполкома ОКЧН от 09.10.1991. 1991. – Викитека; копия в хронике «Чечня 1990-1991» фонда «Наследие» (2007)." data-reference="Постановление Президиума Исполкома ОКЧН от 09.10.1991 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/706" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. 10 октября Москва поручила вице-президенту Руцкому и правительству РСФСР «обеспечить необходимые условия для восстановления законности и правопорядка в Чечено-Ингушской Республике»<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Верховный Совет РСФСР. Постановление ВС РСФСР № 1733-I О положении в Чечено-Ингушской Республике. 1991. – Ведомости СНД и ВС РСФСР, 1991 (по Викитеке)." data-reference="Постановление ВС РСФСР № 1733-I О положении в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/705" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. 15 октября председатель КГБ РСФСР (предшественника современной ФСБ) Иваненко приостановил работу КГБ Чечено-Ингушетии «до 27 октября 1991 года» и своим приказом назначил ему исполняющего обязанности председателя<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="ИНИОН РАН (хрестоматия «Политические отношения и политический процесс в современной России»). Чечня 1990-1991: хроника и документы. 2007. – библиотека фонда «Наследие», кн. 10: «Чечня 1990-1991: хроника и документы» (2007)." data-reference="Чечня 1990-1991: хроника и документы 2007"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/707" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 19 октября Ельцин обратился к руководству конгресса с ультиматумом: «требую от лидеров Исполкома Общенационального конгресса чеченского народа и поддерживающих их группировок прекращения противоправных действий и безоговорочного подчинения закону… будут приняты все предусмотренные законами РСФСР меры»<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Президент РСФСР Б. Ельцин. Обращение Президента РСФСР к лидерам исполкома Общенационального конгресса чеченского народа. 1991. – обращение от 19.10.1991." data-reference="Обращение Президента РСФСР к лидерам исполкома Общенационального конгресса чеченского народа 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/626" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span>. 24 октября Москва постановила, что назначенные на 27 октября выборы «не имеют правовой основы и их результаты не могут быть признаны законными», а подготовку других выборов поручила Временному Высшему Совету и депутатам РСФСР от республики<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Верховный Совет РСФСР. Постановление ВС РСФСР № 1804-I О проведении выборов в высшие органы государственной власти Чечено-Ингушской Республики. 1991. – постановление от 24.10.1991 № 1804-I, подпись Р. И. Хасбулатов." data-reference="Постановление ВС РСФСР № 1804-I О проведении выборов в высшие органы государственной власти Чечено-Ингушской Республики 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/625" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. Чеченцы проголосовали всё равно: 27 октября, по данным избирательной комиссии Чеченской Республики, пришли 72 % избирателей, за Джохара Дудаева - 90,1 %<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="ИНИОН РАН (хрестоматия «Политические отношения и политический процесс в современной России»). Чечня 1990-1991: хроника и документы. 2007. – библиотека фонда «Наследие», кн. 10: «Чечня 1990-1991: хроника и документы» (2007)." data-reference="Чечня 1990-1991: хроника и документы 2007"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/707" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 1 ноября Джохар Дудаев подписал указ: «Руководствуясь Декларацией о государственном суверенитете республики и волеизъявлением граждан Чеченской Республики, выраженным прямыми и всеобщими выборами, объявить о государственном суверенитете Чеченской Республики с 1 ноября 1991 года»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Президент Чеченской Республики Д. Дудаев. Указ Президента Чеченской Республики О государственном суверенитете Чеченской Республики. 1991. – указ от 01.11.1991." data-reference="Указ Президента Чеченской Республики О государственном суверенитете Чеченской Республики 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/630" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span>. 2 ноября Москва ответила постановлением: «Признать проведенные в Чечено-Ингушской Республике 27 октября 1991 года выборы в высший орган государственной власти (Верховный Совет) и Президента республики незаконными, а принятые ими акты не подлежащими исполнению»<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Съезд народных депутатов РСФСР. Постановление СНД РСФСР № 1847-I О признании незаконными выборов, проведенных 27 октября 1991 года в Чечено-Ингушской Республике. 1991. – постановление от 02.11.1991 № 1847-I, подпись Р. И. Хасбулатов." data-reference="Постановление СНД РСФСР № 1847-I О признании незаконными выборов, проведенных 27 октября 1991 года в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/622" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span>. 7 ноября Ельцин в указе № 178 назвал причиной чрезвычайного положения обострение, «вызванное незаконными действиями исполкома Общенационального конгресса чеченского народа и его лидеров, стремящихся путем организации массовых беспорядков, с применением насилия, отстранить от власти законно действующие государственные органы», а пунктом 6 запретил любые выборы: «выборы органов государственной власти и местного самоуправления в течение всего периода чрезвычайного положения не проводятся»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Ельцин Б. Н. Указ Президента РСФСР № 178 О введении чрезвычайного положения в Чечено-Ингушской Республике. 1991. – президент РСФСР; указ от 7 ноября 1991." data-reference="Указ Президента РСФСР № 178 О введении чрезвычайного положения в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/274" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. Ни один из этих запретов не сработал: выборы прошли, президент и парламент Чечни работали, а 11 ноября депутаты в Москве отказались утвердить и сам указ<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Верховный Совет РСФСР. Постановление ВС РСФСР № 1855-I. 1991. – постановление от 11.11.1991." data-reference="Постановление ВС РСФСР № 1855-I 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/275" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="марионеточное правительство 15 сентября 1991 года депутаты верховного совета чечено-ингушетии на последней сессии, которую лично вёл хасбулатов, чеченец из московского руководства, тогда исполнявший обязанности главы парламента, распустили себя и выбрали из своего состава временный высший совет из 32 человек во главе с хусейном ахмадовым, чтобы тот провёл новые выборы(citation: russia confronts chechnya: roots of a separatist conflict 1998). филатов, в 1991 году секретарь руководства парламента в москве, вспоминал: «при энергичном участии хасбулатова разогнан верховный совет республики — остался так называемый малый совет, какое-то искусственное образование, которое должно работать до проведения новых выборов»(citation: совершенно несекретно 1999). хусейн ахмадов встал на сторону конгресса джохара дудаева и 4 октября подписал постановление о кгб (предшественнике современной фсб): «прекратить деятельность кгб чир [чечено-ингушской республики] и всех его структур на территории чеченской республики»(citation: постановление временного совета чеченской республики о прекращении деятельности комитета государственной безопасности чечено-ингушской республики 1991). тогда москва стала строить из этого совета свою власть. 25 сентября пять его членов во главе с заместителем председателя совета чёрным, человеком хасбулатова, выступили против конгресса джохара дудаева; 26 сентября сам хасбулатов телеграммой пригрозил не признать выборы; 5 октября тринадцать из тридцати двух членов совета при поддержке местного кгб попытались сместить хусейна ахмадова(citation: russia confronts chechnya: roots of a separatist conflict 1998). 8 октября московское руководство за подписью хасбулатова, заслушав вернувшегося из грозного вице-президента руцкого, объявило законным в республике только совет «под председательством т. бахмадова б.д.» - прокурора, которого сами и поставили, - и поручило ему «принять все необходимые меры по стабилизации обстановки»(citation: постановление президиума вс рсфср № 1723-i о политической ситуации в чечено-ингушской республике 1991). генерал соколов, начальник оккупационного военного учебного центра в грозном, докладывал командованию: «председатель бахмадов в.д. назначен председателем верховного совета рсфср хасбулатовым р.и.», а сам совет «практической власти не имеет»(citation: чечня 1990-1991: хроника и документы 2007). 9 октября руководство общенационального конгресса чеченского народа, конгресса джохара дудаева, назвало совет бахмадова «незаконным, марионеточным» и потребовало от него «отмежеваться от попытки реанимировать распущенный народом» верховный совет(citation: постановление президиума исполкома окчн от 09.10.1991 1991). после выборов 27 октября совет бахмадова обратился к жителям республики: выборы «являются антиконституционными и не имеют законной силы, ни один указ т.н. президента д.дудаева, ни одно постановление парламента т.н. чеченской республики не имеют юридической силы и не подлежат исполнению»(citation: обращение временного высшего совета чечено-ингушской республики к народам, партиям, движениям, трудовым коллективам 1991). 7 ноября президент рсфср ельцин указом № 178 постановил: «ввести... на территории чечено-ингушской республики в качестве особой формы управления временную администрацию чечено-ингушской республики»; главой он назначил своего представителя в республике арсанова, заместителем - министра внутренних дел республики ибрагимова и поручил им «сформировать в 3-дневный срок временную администрацию чечено-ингушской республики»(citation: указ президента рсфср № 178 о введении чрезвычайного положения в чечено-ингушской республике 1991). 8 ноября парламент чеченской республики под председательством хусейна ахмадова ответил: «руководство россии, идя на поводу у свергнутых тоталитарных сил, исходя из имперских интересов, ввело таковое [чрезвычайное положение] на территории республики, суверенитет которой был объявлен еще в ноябре 1990 г.» - и признал указ «незаконным и не имеющим юридической силы»(citation: постановление парламента чеченской республики № 25 о незаконности указа президента рсфср о введении чрезвычайного положения на территории чеченской республики 1991). ни совет бахмадова, ни временная администрация арсанова в чечне так и не заработали: 11 ноября депутаты в москве отказались утвердить указ ельцина(citation: постановление вс рсфср № 1855-i 1991)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0011"
+             data-tools="S0008"
+             data-date="1991-09-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0037">
+                    <span class="proc-tech-id">T0037</span>
+                    <span class="proc-tech-name">Марионеточное правительство</span>
+                </a>
+                <div class="proc-date">Сентябрь 1991</div>
+<div class="proc-addr"><a href="/procedures/C1183.T0037/" title="Страница процедуры">C1183.T0037&nbsp;&rarr;</a></div><div><a href="/campaigns/C1183">C1183</a> Непризнание и попытка военного вторжения: ответ Москвы на независимость Чеченской Республики (сентябрь-ноябрь 1991)</div><div><a href="/groups/G0011">G0011</a> Российская Федерация</div><div><a href="/software/S0008">S0008</a> Правительство</div>            </div>
+            <div class="proc-desc">
+                        <p>15 сентября 1991 года депутаты Верховного Совета Чечено-Ингушетии на последней сессии, которую лично вёл Хасбулатов, чеченец из московского руководства, тогда исполнявший обязанности главы парламента, распустили себя и выбрали из своего состава Временный Высший Совет из 32 человек во главе с Хусейном Ахмадовым, чтобы тот провёл новые выборы<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Dunlop J. B. Russia Confronts Chechnya: Roots of a Separatist Conflict. 1998. – Cambridge; New York: Cambridge University Press, 1998. ISBN 0-521-63619-1." data-reference="Russia Confronts Chechnya: Roots of a Separatist Conflict 1998"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/710" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. Филатов, в 1991 году секретарь руководства парламента в Москве, вспоминал: «при энергичном участии Хасбулатова разогнан Верховный Совет республики — остался так называемый Малый Совет, какое-то искусственное образование, которое должно работать до проведения новых выборов»<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Филатов С. А. Совершенно несекретно. 1999. – Дружба народов, 1999, № 12." data-reference="Совершенно несекретно 1999"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/709" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>. Хусейн Ахмадов встал на сторону конгресса Джохара Дудаева и 4 октября подписал постановление о КГБ (предшественнике современной ФСБ): «прекратить деятельность КГБ ЧИР [Чечено-Ингушской Республики] и всех его структур на территории Чеченской Республики»<span onclick=scrollToRef('scite-18') id="scite-ref-18-a" class="scite-citeref-number" title="Временный Совет Чеченской Республики (председатель Х. С. Ахмадов). Постановление Временного Совета Чеченской Республики О прекращении деятельности Комитета Государственной безопасности Чечено-Ингушской Республики. 1991. – Викитека; копия в хронике «Чечня 1990-1991» фонда «Наследие» (2007)." data-reference="Постановление Временного Совета Чеченской Республики О прекращении деятельности Комитета Государственной безопасности Чечено-Ингушской Республики 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/708" target="_blank" data-hasqtip="17" aria-describedby="qtip-17">[18]</a></sup></span>. Тогда Москва стала строить из этого совета свою власть. 25 сентября пять его членов во главе с заместителем председателя совета Чёрным, человеком Хасбулатова, выступили против конгресса Джохара Дудаева; 26 сентября сам Хасбулатов телеграммой пригрозил не признать выборы; 5 октября тринадцать из тридцати двух членов совета при поддержке местного КГБ попытались сместить Хусейна Ахмадова<span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Dunlop J. B. Russia Confronts Chechnya: Roots of a Separatist Conflict. 1998. – Cambridge; New York: Cambridge University Press, 1998. ISBN 0-521-63619-1." data-reference="Russia Confronts Chechnya: Roots of a Separatist Conflict 1998"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/710" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>. 8 октября московское руководство за подписью Хасбулатова, заслушав вернувшегося из Грозного вице-президента Руцкого, объявило законным в республике только совет «под председательством т. Бахмадова Б.Д.» - прокурора, которого сами и поставили, - и поручило ему «принять все необходимые меры по стабилизации обстановки»<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Президиум Верховного Совета РСФСР. Постановление Президиума ВС РСФСР № 1723-I О политической ситуации в Чечено-Ингушской Республике. 1991. – постановление от 08.10.1991 № 1723-I, подпись Р. И. Хасбулатов." data-reference="Постановление Президиума ВС РСФСР № 1723-I О политической ситуации в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/624" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. Генерал Соколов, начальник оккупационного военного учебного центра в Грозном, докладывал командованию: «председатель Бахмадов В.Д. назначен Председателем Верховного Совета РСФСР Хасбулатовым Р.И.», а сам совет «практической власти не имеет»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="ИНИОН РАН (хрестоматия «Политические отношения и политический процесс в современной России»). Чечня 1990-1991: хроника и документы. 2007. – библиотека фонда «Наследие», кн. 10: «Чечня 1990-1991: хроника и документы» (2007)." data-reference="Чечня 1990-1991: хроника и документы 2007"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/707" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. 9 октября руководство Общенационального конгресса чеченского народа, конгресса Джохара Дудаева, назвало совет Бахмадова «незаконным, марионеточным» и потребовало от него «отмежеваться от попытки реанимировать распущенный народом» Верховный Совет<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="Президиум Исполкома Общенационального конгресса чеченского народа. Постановление Президиума Исполкома ОКЧН от 09.10.1991. 1991. – Викитека; копия в хронике «Чечня 1990-1991» фонда «Наследие» (2007)." data-reference="Постановление Президиума Исполкома ОКЧН от 09.10.1991 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/706" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. После выборов 27 октября совет Бахмадова обратился к жителям республики: выборы «являются антиконституционными и не имеют законной силы, ни один указ т.н. президента Д.Дудаева, ни одно постановление парламента т.н. Чеченской Республики не имеют юридической силы и не подлежат исполнению»<span onclick=scrollToRef('scite-19') id="scite-ref-19-a" class="scite-citeref-number" title="Временный Высший Совет Чечено-Ингушской Республики. Обращение Временного Высшего Совета Чечено-Ингушской Республики к народам, партиям, движениям, трудовым коллективам. 1991. – обращение, конец октября 1991." data-reference="Обращение Временного Высшего Совета Чечено-Ингушской Республики к народам, партиям, движениям, трудовым коллективам 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/629" target="_blank" data-hasqtip="18" aria-describedby="qtip-18">[19]</a></sup></span>. 7 ноября президент РСФСР Ельцин указом № 178 постановил: «Ввести... на территории Чечено-Ингушской Республики в качестве особой формы управления Временную администрацию Чечено-Ингушской Республики»; главой он назначил своего представителя в республике Арсанова, заместителем - министра внутренних дел республики Ибрагимова и поручил им «сформировать в 3-дневный срок Временную администрацию Чечено-Ингушской Республики»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Ельцин Б. Н. Указ Президента РСФСР № 178 О введении чрезвычайного положения в Чечено-Ингушской Республике. 1991. – президент РСФСР; указ от 7 ноября 1991." data-reference="Указ Президента РСФСР № 178 О введении чрезвычайного положения в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/274" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. 8 ноября парламент Чеченской Республики под председательством Хусейна Ахмадова ответил: «Руководство России, идя на поводу у свергнутых тоталитарных сил, исходя из имперских интересов, ввело таковое [чрезвычайное положение] на территории республики, суверенитет которой был объявлен еще в ноябре 1990 г.» - и признал указ «незаконным и не имеющим юридической силы»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Парламент Чеченской Республики. Постановление Парламента Чеченской Республики № 25 О незаконности Указа Президента РСФСР о введении чрезвычайного положения на территории Чеченской Республики. 1991. – постановление от 08.11.1991 № 25, подпись Х. Ахмадов." data-reference="Постановление Парламента Чеченской Республики № 25 О незаконности Указа Президента РСФСР о введении чрезвычайного положения на территории Чеченской Республики 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/627" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Ни совет Бахмадова, ни Временная администрация Арсанова в Чечне так и не заработали: 11 ноября депутаты в Москве отказались утвердить указ Ельцина<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Верховный Совет РСФСР. Постановление ВС РСФСР № 1855-I. 1991. – постановление от 11.11.1991." data-reference="Постановление ВС РСФСР № 1855-I 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/275" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+        <div class="procedure-row"
+             data-search="военная интервенция 7 ноября 1991 года президент рсфср ельцин подписал указ № 178, пункт 1: «ввести с 5 часов 00 минут 9 ноября 1991 г. до 5 часов 00 минут 9 декабря 1991 г. чрезвычайное положение на всей территории чечено-ингушской республики». тем же указом он ввёл комендантский час, запретил митинги и забастовки, приказал «временное изъятие у граждан, предприятий и организаций огнестрельного и холодного оружия», досмотр транспорта и жилищ и «выдворение нарушителей общественного порядка, не являющихся жителями данной местности, к месту их постоянного проживания или за пределы территории чечено-ингушской республики за их счет», а министру внутренних дел и председателю кгб (предшественника современной фсб) рсфср поручил представить «предложения о привлечении дополнительных сил»(citation: указ президента рсфср № 178 о введении чрезвычайного положения в чечено-ингушской республике 1991). 8 ноября парламент чеченской республики под председательством хусейна ахмадова потребовал от ельцина «в течение 24 часов вывести все вооруженные формирования с территории суверенной чеченской республики» и решил «довести до сведения парламентов и народов мира о вооруженном вмешательстве руководства россии во внутренние дела суверенной чеченской республики»(citation: постановление парламента чеченской республики № 25 о незаконности указа президента рсфср о введении чрезвычайного положения на территории чеченской республики 1991). журналист цыганок в статье «десять дней, которые отменили мир» приводит сводку министерства внутренних дел рсфср на утро 10 ноября: «для обеспечения режима чрезвычайного положения в регион северного кавказа направлены подразделения мвд рсфср общей численностью около 1,2 тыс. чел.»(citation: десять дней которые отменили мир 2021). по хронике событий, 8-9 ноября «на военном аэродроме ханкала близ грозного приземлились два военно-транспортных самолета с отрядами спецназа на борту, но без оружия… аэродром блокируется гвардейцами дж.дудаева, выход из самолетов невозможен, поэтому утром 9 ноября самолеты улетают»(citation: чечня 1990-1991: хроника и документы 2007). национальная гвардия чечни и горожане без оружия окружили здание министерства внутренних дел в грозном; 9 ноября первый заместитель министра внутренних дел рсфср комиссаров докладывал в москву: «мы блокированы в здании мвд чир [чечено-ингушской республики]. окружены толпой примерно 4000 человек, напротив стоят бензовозы»(citation: десять дней которые отменили мир 2021). 9 ноября московское руководство записало, что «руководители исполнительных органов (баранников [министр внутренних дел ссср], бакатин [председатель кгб ссср], комиссаров [первый заместитель министра внутренних дел рсфср]) в сложной критической ситуации не сумели осуществить свои прямые должностные обязанности»(citation: постановление президиума вс рсфср от 09.11.1991 об указе президента рсфср от 7 ноября 1991 г. о введении чрезвычайного положения в чечено-ингушской республике 1991). формальный глава ссср горбачёв отказал рсфср в союзных войсках, и 10 ноября в 10:45 внутренние войска (предшественники современной росгвардии) начали отход из грозного(citation: десять дней которые отменили мир 2021). 11 ноября депутаты в москве постановили «признать невозможным утверждение указа», установили «особый режим въезда в чечено-ингушскую республику и выезда из нее, исключающий ввоз и вывоз оружия» и назначили «парламентское и служебное (по линии мвд рсфср и кгб рсфср) расследование для установления лиц, ответственных за принятие недостаточно подготовленных политических и военно-технических решений по введению чрезвычайного положения»(citation: постановление вс рсфср № 1855-i 1991)."
+             data-platforms="Нохчи (Чеченцы)"
+             data-groups="G0011"
+             data-tools="S0010"
+             data-date="1991-09-10 00:00:00+00:00">
+            <div class="proc-meta">
+                <a class="proc-tech" href="/techniques/T0019">
+                    <span class="proc-tech-id">T0019</span>
+                    <span class="proc-tech-name">Военная интервенция</span>
+                </a>
+                <div class="proc-date">Сентябрь 1991</div>
+<div class="proc-addr"><a href="/procedures/C1183.T0019/" title="Страница процедуры">C1183.T0019&nbsp;&rarr;</a></div><div><a href="/campaigns/C1183">C1183</a> Непризнание и попытка военного вторжения: ответ Москвы на независимость Чеченской Республики (сентябрь-ноябрь 1991)</div><div><a href="/groups/G0011">G0011</a> Российская Федерация</div><div><a href="/software/S0010">S0010</a> Регулярная армия</div>            </div>
+            <div class="proc-desc">
+                        <p>7 ноября 1991 года президент РСФСР Ельцин подписал указ № 178, пункт 1: «Ввести с 5 часов 00 минут 9 ноября 1991 г. до 5 часов 00 минут 9 декабря 1991 г. чрезвычайное положение на всей территории Чечено-Ингушской Республики». Тем же указом он ввёл комендантский час, запретил митинги и забастовки, приказал «временное изъятие у граждан, предприятий и организаций огнестрельного и холодного оружия», досмотр транспорта и жилищ и «выдворение нарушителей общественного порядка, не являющихся жителями данной местности, к месту их постоянного проживания или за пределы территории Чечено-Ингушской Республики за их счет», а министру внутренних дел и председателю КГБ (предшественника современной ФСБ) РСФСР поручил представить «предложения о привлечении дополнительных сил»<span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="Ельцин Б. Н. Указ Президента РСФСР № 178 О введении чрезвычайного положения в Чечено-Ингушской Республике. 1991. – президент РСФСР; указ от 7 ноября 1991." data-reference="Указ Президента РСФСР № 178 О введении чрезвычайного положения в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/274" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. 8 ноября парламент Чеченской Республики под председательством Хусейна Ахмадова потребовал от Ельцина «в течение 24 часов вывести все вооруженные формирования с территории суверенной Чеченской Республики» и решил «довести до сведения парламентов и народов мира о вооруженном вмешательстве руководства России во внутренние дела суверенной Чеченской Республики»<span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="Парламент Чеченской Республики. Постановление Парламента Чеченской Республики № 25 О незаконности Указа Президента РСФСР о введении чрезвычайного положения на территории Чеченской Республики. 1991. – постановление от 08.11.1991 № 25, подпись Х. Ахмадов." data-reference="Постановление Парламента Чеченской Республики № 25 О незаконности Указа Президента РСФСР о введении чрезвычайного положения на территории Чеченской Республики 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/627" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. Журналист Цыганок в статье «Десять дней, которые отменили мир» приводит сводку министерства внутренних дел РСФСР на утро 10 ноября: «Для обеспечения режима чрезвычайного положения в регион Северного Кавказа направлены подразделения МВД РСФСР общей численностью около 1,2 тыс. чел.»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Десять дней которые отменили мир. 2021. – versia.ru." data-reference="Десять дней которые отменили мир 2021"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/276" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. По хронике событий, 8-9 ноября «на военном аэродроме Ханкала близ Грозного приземлились два военно-транспортных самолета с отрядами спецназа на борту, но без оружия… аэродром блокируется гвардейцами Дж.Дудаева, выход из самолетов невозможен, поэтому утром 9 ноября самолеты улетают»<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="ИНИОН РАН (хрестоматия «Политические отношения и политический процесс в современной России»). Чечня 1990-1991: хроника и документы. 2007. – библиотека фонда «Наследие», кн. 10: «Чечня 1990-1991: хроника и документы» (2007)." data-reference="Чечня 1990-1991: хроника и документы 2007"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/707" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Национальная гвардия Чечни и горожане без оружия окружили здание министерства внутренних дел в Грозном; 9 ноября первый заместитель министра внутренних дел РСФСР Комиссаров докладывал в Москву: «Мы блокированы в здании МВД ЧИР [Чечено-Ингушской Республики]. Окружены толпой примерно 4000 человек, напротив стоят бензовозы»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Десять дней которые отменили мир. 2021. – versia.ru." data-reference="Десять дней которые отменили мир 2021"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/276" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. 9 ноября московское руководство записало, что «руководители исполнительных органов (Баранников [министр внутренних дел СССР], Бакатин [председатель КГБ СССР], Комиссаров [первый заместитель министра внутренних дел РСФСР]) в сложной критической ситуации не сумели осуществить свои прямые должностные обязанности»<span onclick=scrollToRef('scite-20') id="scite-ref-20-a" class="scite-citeref-number" title="Президиум Верховного Совета РСФСР. Постановление Президиума ВС РСФСР от 09.11.1991 Об Указе Президента РСФСР от 7 ноября 1991 г. О введении чрезвычайного положения в Чечено-Ингушской Республике. 1991. – постановление от 09.11.1991, подпись Р. И. Хасбулатов." data-reference="Постановление Президиума ВС РСФСР от 09.11.1991 Об Указе Президента РСФСР от 7 ноября 1991 г. О введении чрезвычайного положения в Чечено-Ингушской Республике 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/623" target="_blank" data-hasqtip="19" aria-describedby="qtip-19">[20]</a></sup></span>. Формальный глава СССР Горбачёв отказал РСФСР в союзных войсках, и 10 ноября в 10:45 внутренние войска (предшественники современной Росгвардии) начали отход из Грозного<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Десять дней которые отменили мир. 2021. – versia.ru." data-reference="Десять дней которые отменили мир 2021"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/276" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. 11 ноября депутаты в Москве постановили «признать невозможным утверждение Указа», установили «особый режим въезда в Чечено-Ингушскую Республику и выезда из нее, исключающий ввоз и вывоз оружия» и назначили «парламентское и служебное (по линии МВД РСФСР и КГБ РСФСР) расследование для установления лиц, ответственных за принятие недостаточно подготовленных политических и военно-технических решений по введению чрезвычайного положения»<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="Верховный Совет РСФСР. Постановление ВС РСФСР № 1855-I. 1991. – постановление от 11.11.1991." data-reference="Постановление ВС РСФСР № 1855-I 1991"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/275" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <h2 class="pt-3" id="references">Источники</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-1" href="https://archive.decolonial.ist/125" target="_blank">
+                        Ахмадов Я. З., Хасмагомадов Э. Х. История Чечни в XIX-XX веках. 2005.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-2" href="https://archive.decolonial.ist/176" target="_blank">
+                        Государственный комитет по чрезвычайному положению в СССР. Заявление ГКЧП. 1991. – заявление от 18.08.1991; подписали Янаев Г., Павлов В., Бакланов О.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-3" href="https://archive.decolonial.ist/707" target="_blank">
+                        ИНИОН РАН (хрестоматия «Политические отношения и политический процесс в современной России»). Чечня 1990-1991: хроника и документы. 2007. – библиотека фонда «Наследие», кн. 10: «Чечня 1990-1991: хроника и документы» (2007).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-4" href="https://archive.decolonial.ist/704" target="_blank">
+                        Президент РСФСР Б. Ельцин. Распоряжение Президента РСФСР № 38-рп О направлении делегации РСФСР в Чечено-Ингушскую Республику. 1991. – Ведомости СНД и ВС РСФСР, 1991 (по Викитеке).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-5" href="https://archive.decolonial.ist/710" target="_blank">
+                        Dunlop J. B. Russia Confronts Chechnya: Roots of a Separatist Conflict. 1998. – Cambridge; New York: Cambridge University Press, 1998. ISBN 0-521-63619-1.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-6" href="https://archive.decolonial.ist/624" target="_blank">
+                        Президиум Верховного Совета РСФСР. Постановление Президиума ВС РСФСР № 1723-I О политической ситуации в Чечено-Ингушской Республике. 1991. – постановление от 08.10.1991 № 1723-I, подпись Р. И. Хасбулатов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-7" href="https://archive.decolonial.ist/625" target="_blank">
+                        Верховный Совет РСФСР. Постановление ВС РСФСР № 1804-I О проведении выборов в высшие органы государственной власти Чечено-Ингушской Республики. 1991. – постановление от 24.10.1991 № 1804-I, подпись Р. И. Хасбулатов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-8" href="https://archive.decolonial.ist/630" target="_blank">
+                        Президент Чеченской Республики Д. Дудаев. Указ Президента Чеченской Республики О государственном суверенитете Чеченской Республики. 1991. – указ от 01.11.1991.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-9" href="https://archive.decolonial.ist/622" target="_blank">
+                        Съезд народных депутатов РСФСР. Постановление СНД РСФСР № 1847-I О признании незаконными выборов, проведенных 27 октября 1991 года в Чечено-Ингушской Республике. 1991. – постановление от 02.11.1991 № 1847-I, подпись Р. И. Хасбулатов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-10" href="https://archive.decolonial.ist/274" target="_blank">
+                        Ельцин Б. Н. Указ Президента РСФСР № 178 О введении чрезвычайного положения в Чечено-Ингушской Республике. 1991. – президент РСФСР; указ от 7 ноября 1991.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="11.0">
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-11" href="https://archive.decolonial.ist/627" target="_blank">
+                        Парламент Чеченской Республики. Постановление Парламента Чеченской Республики № 25 О незаконности Указа Президента РСФСР о введении чрезвычайного положения на территории Чеченской Республики. 1991. – постановление от 08.11.1991 № 25, подпись Х. Ахмадов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-12" href="https://archive.decolonial.ist/276" target="_blank">
+                        Десять дней которые отменили мир. 2021. – versia.ru.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-13" href="https://archive.decolonial.ist/275" target="_blank">
+                        Верховный Совет РСФСР. Постановление ВС РСФСР № 1855-I. 1991. – постановление от 11.11.1991.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-14" href="https://archive.decolonial.ist/706" target="_blank">
+                        Президиум Исполкома Общенационального конгресса чеченского народа. Постановление Президиума Исполкома ОКЧН от 09.10.1991. 1991. – Викитека; копия в хронике «Чечня 1990-1991» фонда «Наследие» (2007).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-15" href="https://archive.decolonial.ist/705" target="_blank">
+                        Верховный Совет РСФСР. Постановление ВС РСФСР № 1733-I О положении в Чечено-Ингушской Республике. 1991. – Ведомости СНД и ВС РСФСР, 1991 (по Викитеке).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-16" href="https://archive.decolonial.ist/626" target="_blank">
+                        Президент РСФСР Б. Ельцин. Обращение Президента РСФСР к лидерам исполкома Общенационального конгресса чеченского народа. 1991. – обращение от 19.10.1991.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-17" href="https://archive.decolonial.ist/709" target="_blank">
+                        Филатов С. А. Совершенно несекретно. 1999. – Дружба народов, 1999, № 12.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-18" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-18" href="https://archive.decolonial.ist/708" target="_blank">
+                        Временный Совет Чеченской Республики (председатель Х. С. Ахмадов). Постановление Временного Совета Чеченской Республики О прекращении деятельности Комитета Государственной безопасности Чечено-Ингушской Республики. 1991. – Викитека; копия в хронике «Чечня 1990-1991» фонда «Наследие» (2007).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-19" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-19" href="https://archive.decolonial.ist/629" target="_blank">
+                        Временный Высший Совет Чечено-Ингушской Республики. Обращение Временного Высшего Совета Чечено-Ингушской Республики к народам, партиям, движениям, трудовым коллективам. 1991. – обращение, конец октября 1991.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-20" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-20" href="https://archive.decolonial.ist/623" target="_blank">
+                        Президиум Верховного Совета РСФСР. Постановление Президиума ВС РСФСР от 09.11.1991 Об Указе Президента РСФСР от 7 ноября 1991 г. О введении чрезвычайного положения в Чечено-Ингушской Республике. 1991. – постановление от 09.11.1991, подпись Р. И. Хасбулатов.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показать ещё</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без куки и трекинга, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступен по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a> &middot; движок &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/theme/scripts/popper.min.js"></script>
+    <script src="/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/theme/scripts/site.js"></script>
+    <script src="/theme/scripts/settings.js"></script>
+    <script src="/theme/scripts/search_bundle.js"></script>
+    <script src="/theme/scripts/lang-switch.js"></script>
+    <script src="/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/resizer.js"></script>
+
+<!--SCRIPTS-->
+<script src="/theme/scripts/people-filter.js"></script>
+<script src="/theme/scripts/procedure-list.js"></script>
+
+<script src="/theme/scripts/sortable-table.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { initProcedureList(document.getElementById("entityProcs")); });</script>
+
+<script src="/theme/scripts/bootstrap-tourist.js"></script>
+<script src="/theme/scripts/settings.js"></script>
+<script src="/theme/scripts/tour/tour-relationships.js"></script>
+<script src="/theme/scripts/sidebar-load-all.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>

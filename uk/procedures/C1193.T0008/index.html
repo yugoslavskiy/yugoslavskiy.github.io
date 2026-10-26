@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html lang='uk'>
+
+<head>
+    <script>
+    /* Анти-мигание: явный выбор темы (localStorage dclst-theme) применяется ДО
+       загрузки CSS. Без сохранённого выбора атрибут не ставится — тему решает
+       prefers-color-scheme в самом CSS. Никаких кук, как и у выбора языка. */
+    (function () {
+        try {
+            var t = localStorage.getItem("dclst-theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    })();
+    </script>
+        <!-- GoatCounter: приватная аналитика, без кук и персональных данных -->
+        <script data-goatcounter="https://decolonialist.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+        <script>
+        /* Авторедирект С КОРНЯ (ru) на язык браузера. Явный выбор из переключалки
+           (localStorage dclst-lang) главнее; прямые ссылки на /en/ и /uk/ не трогаем;
+           поисковые боты индексируют корень как есть. */
+        (function () {
+            if ("uk" !== "ru") return;
+            /* Страница 404 у GitHub Pages одна (русская) и отдаётся по ЛЮБОМУ несуществующему
+               адресу: редирект с неё дописывал «/uk» к пути в цикле (/uk/uk/uk/…, мерцание). */
+            if (false) return;
+            if (/^\/(en|uk|ce)(\/|$)/.test(window.location.pathname)) return;
+            if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+            var supported = ["ru", "en", "uk"];
+            var target = null;
+            try { target = localStorage.getItem("dclst-lang"); } catch (e) {}
+            if (!target || supported.indexOf(target) === -1) {
+                target = null;
+                var prefs = navigator.languages || [navigator.language || ""];
+                for (var i = 0; i < prefs.length; i++) {
+                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
+                    if (supported.indexOf(code) !== -1) { target = code; break; }
+                }
+            }
+            if (target && target !== "ru") {
+                window.location.replace("/" + target + window.location.pathname + window.location.search + window.location.hash);
+            }
+        })();
+        </script>
+
+        <link rel="canonical" href="https://decolonial.ist/uk/procedures/C1193.T0008/">
+        <link rel="alternate" hreflang="ru" href="https://decolonial.ist/procedures/C1193.T0008/">
+        <link rel="alternate" hreflang="en" href="https://decolonial.ist/en/procedures/C1193.T0008/">
+        <link rel="alternate" hreflang="uk" href="https://decolonial.ist/uk/procedures/C1193.T0008/">
+        <link rel="alternate" hreflang="x-default" href="https://decolonial.ist/procedures/C1193.T0008/">
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1,shrink-to-fit=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="referrer" content="no-referrer">
+        <link rel='shortcut icon' href="/uk/theme/favicon.ico" type='image/x-icon'>
+        <link rel='apple-touch-icon' sizes='180x180' href="/uk/theme/apple-touch-icon.png">
+
+        <meta name="description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:site_name" content="DECOLONIAL.IST">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Позбавлення суб'єктності у кампанії «Перша російсько-чеченська війна (1994–1996)», C1193.T0008 | DECOLONIAL.IST">
+        <meta property="og:description" content="База знань про російський колоніалізм: тактики, техніки та процедури колонізації народів.">
+        <meta property="og:image" content="https://decolonial.ist/theme/og-image.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="uk_UA">
+        <meta property="og:url" content="https://decolonial.ist/uk/procedures/C1193.T0008/">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>Позбавлення суб'єктності у кампанії «Перша російсько-чеченська війна (1994–1996)», C1193.T0008 | DECOLONIAL.IST</title>
+        <!-- USWDS CSS -->
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap.min.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-tourist.css" />
+        <link rel='stylesheet' href="/uk/theme/style/vendors/bootstrap-select.min.css" />
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/brands.min.css"/>
+        <link rel="stylesheet" href="/uk/theme/style/vendors/fontawesome-6.5.1/css/solid.min.css"/>
+            <link rel="stylesheet" href="/uk/theme/style-user.css"/>
+        <!-- decolonial.ist mark -->
+        <link rel="stylesheet" href="/uk/theme/style-dclst.css"/>
+
+</head>
+
+<body>
+
+    <div class="container-fluid attack-website-wrapper d-flex flex-column h-100">
+        <div class="row sticky-top flex-grow-0 flex-shrink-1">
+            <!-- header elements -->
+            <header class="col px-0">
+                    <nav class='navbar navbar-expand-lg navbar-dark position-static'>
+        <a class='navbar-brand' href="/uk/"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse'
+                aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarCollapse'>
+            <ul class='nav nav-tabs ml-auto'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       aria-label="Мова">
+                        <b>Українська</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="langDropdown">
+                        <a class="dropdown-item active"
+                           href="#" data-lang-switch="uk">Українська</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="en">English</a>
+                        <a class="dropdown-item"
+                           href="#" data-lang-switch="ru">Русский</a>
+                    </div>
+                </li>
+                        <li class="nav-item">
+                            <a href="/uk/matrices/"  class="nav-link" ><b>Матриці</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/tactics/"  class="nav-link" ><b>Тактики</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/techniques/"  class="nav-link" ><b>Техніки</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/procedures/"  class="nav-link" ><b>Процедури</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/campaigns"  class="nav-link" ><b>Кампанії</b></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+    <a class="nav-link dropdown-toggle" href="/uk/groups" id="navbarDropdown" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Колонізатори</b>
+    </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/uk/groups">Актори</a>
+                <a class="dropdown-item" href="/uk/software">Інструменти</a>
+    </div>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/faq/"  class="nav-link" ><b>Питання та відповіді</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/uk/resources/contribute/"  class="nav-link" ><b>Зробити внесок</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="search-button" class="btn search-button">Пошук <div id="search-icon" class="icon-button search-icon"></div></button>
+                        </li>
+            </ul>
+        </div>
+    </nav>
+
+            </header>
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- banner elements -->
+            <div class="col px-0">
+                <!-- don't edit or remove the line below even though it's commented out, it gets parsed and replaced by the versioning feature -->
+                <!-- !versions banner! -->
+                    <div class="container-fluid banner-message">
+                        Сайт перебуває в розробці. Реліз очікується в жовтні 2026 року. Хочете допомогти проєкту – <a href="/uk/resources/contribute/">зробіть внесок</a>.
+                    </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 flex-shrink-0">
+            <!-- main content elements -->
+            <!--start-indexing-for-search-->
+
+ 
+     
+    <div class="sidebar nav sticky-top flex-column pr-0 pt-4 pb-3 pl-3" id="v-tab" role="tablist" aria-orientation="vertical">
+        <div class="resizer" id="resizer"></div>
+    </div>
+
+    
+     
+    <div class="tab-content col-xl-9 pt-4" id="v-tabContent">
+        <div class="tab-pane fade show active" id="v-attckmatrix" role="tabpanel" aria-labelledby="v-attckmatrix-tab">
+
+
+<ol class="breadcrumb mt-4">
+  <li class="breadcrumb-item"><a href="/uk/">Головна</a></li>
+  <li class="breadcrumb-item"><a href="/uk/procedures/">Процедури</a></li>
+  <li class="breadcrumb-item"><a href="/uk/campaigns/C1193">Перша російсько-чеченська війна (1994–1996)</a></li>
+  <li class="breadcrumb-item">Позбавлення суб'єктності</li>
+</ol>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1>Позбавлення суб'єктності</h1>
+        <p class="procedure-subtitle">
+          у кампанії «<a href="/uk/campaigns/C1193">Перша російсько-чеченська війна (1994–1996)</a>»        </p>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="description-body procedure-body">
+                      <p>Восени 1994 року Росія напала на Чеченську Республіку Ічкерія під іменем маріонеткової опозиції, а 11 грудня 1994 року російська армія відкрито вторглася в республіку. Росія не визнавала Ічкерію незалежною державою, а її обраних президента та уряд - стороною війни і переговорів.</p><p>9 грудня 1994 року, за два дні до відкритого вторгнення, голова уряду Росії Черномирдін постановою № 1360 наказав МВС і міністерству оборони роззброїти «незаконні збройні формування» (так Росія називала Збройні сили Ічкерії)<span onclick=scrollToRef('scite-1') id="scite-ref-1-a" class="scite-citeref-number" title="Правительство Российской Федерации. Постановление Правительства Российской Федерации № 1360 Об обеспечении государственной безопасности и территориальной целостности Российской Федерации, законности, прав и свобод граждан, разоружения незаконных вооруженных формирований на территории Чеченской Республики. 1994. – постановление от 09.12.1994 № 1360, подпись В. Черномырдин." data-reference="Постановление Правительства Российской Федерации № 1360 Об обеспечении государственной безопасности и территориальной целостности Российской Федерации, законности, прав и свобод граждан, разоружения незаконных вооруженных формирований на территории Чеченской Республики 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/651" target="_blank" data-hasqtip="0" aria-describedby="qtip-0">[1]</a></sup></span>. 17 грудня президент Росії Єльцин указом № 2200 створив для Ічкерії російську адміністрацію. 20 грудня уряд Росії постановою № 1411 зобов'язав усі підприємства, організації та установи республіки виконувати рішення цієї адміністрації (докладніше: «Встановлення нової системи управління»)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>Президент, міністри та генерали Росії всю війну відмовлялися вести переговори з керівництвом Ічкерії або вимагали спершу здати зброю і розпустити її армію<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>1 лютого 1995 року виконувач обов'язків генерального прокурора Росії Ільюшенко звинуватив Джохара Дудаєва, обраного президента Ічкерії, у державній зраді, закликах до тероризму, порушенні національної та расової рівності й закону про референдуми<span onclick=scrollToRef('scite-3') id="scite-ref-3-a" class="scite-citeref-number" title="OMRI Daily Digest (Open Media Research Institute). OMRI Daily Digest, 2 February 1995. 1995. – ежедневная сводка, выпуск от 2 февраля 1995 г.; републикация в архиве Radio Free Europe / Radio Liberty (rferl.org, страница «Newsline»)." data-reference="OMRI Daily Digest, 2 February 1995 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1369" target="_blank" data-hasqtip="2" aria-describedby="qtip-2">[3]</a></sup></span>. Генеральна прокуратура Росії видала ордер на арешт чеченського президента й оголосила його у всеросійський розшук<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>30 липня 1995 року Росія підписала з Ічкерією угоду про припинення воєнних дій. Російська делегація дописала до її першого рядка, що Ічкерію не визнає законодавство Росії<span onclick=scrollToRef('scite-4') id="scite-ref-4-a" class="scite-citeref-number" title="Сосламбеков Ю. Чечня (Нохчичьо) - взгляд изнутри. 1995. – место и издательство на титуле не указаны; текст доходит до августа 1995 года; 105 с.; электронная копия на сайте ichkeria.net." data-reference="Чечня (Нохчичьо) - взгляд изнутри 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1580" target="_blank" data-hasqtip="3" aria-describedby="qtip-3">[4]</a></sup></span><span onclick=scrollToRef('scite-5') id="scite-ref-5-a" class="scite-citeref-number" title="Agreement on the peaceful regulation of the situation in the Chechen Republic (on a set of military issues). 1995. – Подписано в Грозном 30 июля 1995 г. Английский перевод; скан с. 170-173 сборника документов из базы мирных соглашений ООН (UN Peacemaker)." data-reference="Agreement on the peaceful regulation of the situation in the Chechen Republic (on a set of military issues) 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1131" target="_blank" data-hasqtip="4" aria-describedby="qtip-4">[5]</a></sup></span>.</p><p>12 грудня 1994 року, наступного дня після відкритого вторгнення, російська делегація на переговорах у Владикавказі, столиці Північної Осетії, зажадала від представників Ічкерії визнати республіку частиною Росії<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>17 грудня 1994 року президент Ічкерії Джохар Дудаєв повідомив Єльцина телеграмою, що наказав припинити вогонь по російських військах, і запропонував без попередніх умов почати переговори, які очолить сам<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-94-243). 1994. – 19.12.1994." data-reference="Daily Report: Central Eurasia (FBIS-SOV-94-243) 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1342" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span>. 18 грудня Єльцин телеграмою звелів президентові Ічкерії того ж дня з'явитися в Моздок, місто в підконтрольній Росії Північній Осетії, до штабу окупаційних військ і підписати документ про здачу зброї та припинення вогню<span onclick=scrollToRef('scite-6') id="scite-ref-6-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-94-243). 1994. – 19.12.1994." data-reference="Daily Report: Central Eurasia (FBIS-SOV-94-243) 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1342" target="_blank" data-hasqtip="5" aria-describedby="qtip-5">[6]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Пресслужба президента Росії повідомила російському агентству ІТАР-ТАРС, що на наступні телеграми чеченського президента відповідати не будуть<span onclick=scrollToRef('scite-7') id="scite-ref-7-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-94-244). 1994. – 20.12.1994." data-reference="Daily Report: Central Eurasia (FBIS-SOV-94-244) 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1343" target="_blank" data-hasqtip="6" aria-describedby="qtip-6">[7]</a></sup></span>. 23 грудня Джохар Дудаєв передав через російського уповноваженого з прав людини Сергія Ковальова міністрові закордонних справ Росії Козирєву, що готовий негайно припинити вогонь і вести переговори про все, зокрема про роззброєння армії Ічкерії, але відповіді з Москви не отримав<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 27 грудня Єльцин у телевізійному зверненні до громадян Росії оголосив: «режим у Грозному [так президент Росії називав уряд Ічкерії] незаконний», а про переговори сказав: «Предмет переговорів - припинення вогню і здача зброї»<span onclick=scrollToRef('scite-8') id="scite-ref-8-a" class="scite-citeref-number" title="Центральное телевидение России. Обращение Президента РФ Б. Н. Ельцина к гражданам в связи с ситуацией в Чечне (телеэфир 27 декабря 1994 года). 1994. – эфир 27.12.1994, 22:33; копия STAROETV.SU, канал YouTube, ролик qvSBESYT61k, дата загрузки 11.03.2025." data-reference="Обращение Президента РФ Б. Н. Ельцина к гражданам в связи с ситуацией в Чечне (телеэфир 27 декабря 1994 года) 1994"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/747" target="_blank" data-hasqtip="7" aria-describedby="qtip-7">[8]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. 31 грудня російська армія почала штурм Грозного, столиці Ічкерії (докладніше: «Воєнна інтервенція»)<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>18 січня 1995 року президент Росії Єльцин сказав на російському телебаченні, що з Джохаром Дудаєвим говорити не буде<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. З лютого по червень 1995 року міністр оборони Росії Грачов і командувач окупаційними військами Куліков відповідали на пропозиції Аслана Масхадова, начальника Головного штабу Збройних сил Ічкерії, про перемир'я, що говоритимуть лише про здачу зброї та розпуск армії Ічкерії<span onclick=scrollToRef('scite-9') id="scite-ref-9-a" class="scite-citeref-number" title="Human Rights Watch/Helsinki. Russia: Three Months of War in Chechnya. 1995. – Vol. 7, No. 6, February 1995." data-reference="Russia: Three Months of War in Chechnya 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/654" target="_blank" data-hasqtip="8" aria-describedby="qtip-8">[9]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-10') id="scite-ref-10-a" class="scite-citeref-number" title="OMRI Daily Digest (Open Media Research Institute). OMRI Daily Digest, 19 May 1995. 1995. – ежедневная сводка, выпуск от 19 мая 1995 г.; републикация в архиве Radio Free Europe / Radio Liberty (rferl.org, страница «Newsline»)." data-reference="OMRI Daily Digest, 19 May 1995 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1411" target="_blank" data-hasqtip="9" aria-describedby="qtip-9">[10]</a></sup></span>. 19 травня 1995 року Єльцин відхилив закон, яким 12 квітня російські депутати доручили уряду Росії негайно почати прямі переговори з керівництвом Ічкерії без попередніх умов<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span><span onclick=scrollToRef('scite-11') id="scite-ref-11-a" class="scite-citeref-number" title="OMRI Daily Digest (Open Media Research Institute). OMRI Daily Digest, 22 May 1995. 1995. – ежедневная сводка, выпуск от 22 мая 1995 г.; републикация в архиве Radio Free Europe / Radio Liberty (rferl.org, страница «Newsline»)." data-reference="OMRI Daily Digest, 22 May 1995 1995"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1373" target="_blank" data-hasqtip="10" aria-describedby="qtip-10">[11]</a></sup></span>. 5 липня 1995 року, через два тижні після початку переговорів з Ічкерією в Грозному, голова уряду Росії Черномирдін і російські переговірники оголосили, що не обговорюватимуть її статус<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>10 січня 1996 року голова уряду Росії Черномирдін сказав: «Чечня — це Росія»<span onclick=scrollToRef('scite-12') id="scite-ref-12-a" class="scite-citeref-number" title="Правозащитный центр «Мемориал». У нас там не оказалось подводной лодки: Кизляр - Первомайское, январь 1996. 1996. – Правозащитный центр «Мемориал», раздел «Горячие точки» / Чечня, old.memo.ru; мониторинг эфира российского радио и телевидения и сообщений агентств 9-19 января 1996 года." data-reference="У нас там не оказалось подводной лодки: Кизляр - Первомайское, январь 1996 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1122" target="_blank" data-hasqtip="11" aria-describedby="qtip-11">[12]</a></sup></span>. 11 січня уряд Росії в листі Генеральному секретареві ООН назвав причиною війни владу Ічкерії, оголосивши її незаконною, а саму Ічкерію - частиною Росії<span onclick=scrollToRef('scite-13') id="scite-ref-13-a" class="scite-citeref-number" title="UN Commission on Human Rights, 52nd session. The situation of human rights in the Republic of Chechnya of the Russian Federation. Report of the Secretary-General (E/CN.4/1996/13). 1996. – report of the Secretary-General, 26 March 1996, E/CN.4/1996/13." data-reference="The situation of human rights in the Republic of Chechnya of the Russian Federation. Report of the Secretary-General (E/CN.4/1996/13) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/658" target="_blank" data-hasqtip="12" aria-describedby="qtip-12">[13]</a></sup></span>. 7 квітня міністр Росії у справах національностей Михайлов сказав, що сторонами переговорів мають стати командири Збройних сил Ічкерії. 17 квітня міністр юстиції Росії Ковальов заявив, що з Джохаром Дудаєвим, «суб'єктом кримінального процесу», прямі переговори неможливі, і запропонував йому прийти до російського суду. 21 квітня російські військові вбили президента Ічкерії (докладніше: «Нейтралізація опозиції»). 25 квітня міністр юстиції Ковальов оголосив, що переговори з командирами Збройних сил Ічкерії вестиме маріонетковий уряд у Грозному<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>27 травня 1996 року президент Росії Єльцин приймав у Кремлі на переговорах про припинення вогню делегацію Ічкерії на чолі із Зелімханом Яндарбієвим, виконувачем обов'язків президента Ічкерії. Російські організатори зустрічі відвели представникам Ічкерії місця збоку столу, а Єльцин сів на чолі. Зелімхан Яндарбієв зажадав сісти навпроти президента Росії, як на переговорах двох держав, і на «Сідайте» Єльцина відповів йому за столом переговорів: «Я таким тоном не сяду». Президент Росії пересів на середину столу<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="НТВ. Итоги: переговоры Ельцина и Яндарбиева в Кремле. 1996. – программа «Итоги», эфир не ранее 28.05.1996 (по содержанию - 02.06.1996); сюжет 12 мин, корреспонденты А. Черкасов, С. Ребров, А. Мелихов; перезалив на YouTube-канале «Cortina di ferro» 11.12.2019." data-reference="Итоги: переговоры Ельцина и Яндарбиева в Кремле 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1134" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. Російська делегація не вписала в домовленість про припинення вогню назви сторін, і голова уряду Росії Черномирдін із Зелімханом Яндарбієвим підписалися під нею прізвищами без посад. Міністр Росії у справах національностей Михайлов пояснив це журналістам на пресконференції в російському агентстві «Інтерфакс»: «Якби написати «Ічкерія», то це практично визнавати існування республіки, якої не існує...»<span onclick=scrollToRef('scite-14') id="scite-ref-14-a" class="scite-citeref-number" title="НТВ. Итоги: переговоры Ельцина и Яндарбиева в Кремле. 1996. – программа «Итоги», эфир не ранее 28.05.1996 (по содержанию - 02.06.1996); сюжет 12 мин, корреспонденты А. Черкасов, С. Ребров, А. Мелихов; перезалив на YouTube-канале «Cortina di ferro» 11.12.2019." data-reference="Итоги: переговоры Ельцина и Яндарбиева в Кремле 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1134" target="_blank" data-hasqtip="13" aria-describedby="qtip-13">[14]</a></sup></span>. 28 травня російські організатори зустрічі не дали делегації Ічкерії зустрітися з московськими журналістами, і ввечері делегація полетіла в підконтрольну Росії Інгушетію<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>25 липня 1996 року генерал Пуліковський, виконувач обов'язків командувача окупаційними військами, сказав журналістам, що з командирами Збройних сил Ічкерії обговорить лише місце і час здачі зброї<span onclick=scrollToRef('scite-15') id="scite-ref-15-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-145). 1996. – 26.07.1996." data-reference="Daily Report: Central Eurasia (FBIS-SOV-96-145) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1421" target="_blank" data-hasqtip="14" aria-describedby="qtip-14">[15]</a></sup></span>. 28 липня Пуліковський відповів в ефірі російського телеканалу РТР на пропозицію Аслана Масхадова обговорити припинення війни, що не знає, де шукати керівництво Ічкерії<span onclick=scrollToRef('scite-16') id="scite-ref-16-a" class="scite-citeref-number" title="Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-146). 1996. – 29.07.1996, 65 p." data-reference="Daily Report: Central Eurasia (FBIS-SOV-96-146) 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/1161" target="_blank" data-hasqtip="15" aria-describedby="qtip-15">[16]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>Правозахисники «Меморіалу» пишуть, що президент і уряд Росії називали війну своєю внутрішньою справою<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p><p>31 серпня 1996 року генерал Лебедь, секретар Ради безпеки Росії, і Аслан Масхадов, начальник Головного штабу Збройних сил Ічкерії, підписали в Хасав'юрті, місті в підконтрольному Росії Дагестані, угоди про виведення окупаційних військ (докладніше: «Фіктивні договори»). Росія та Ічкерія відклали рішення про незалежність Ічкерії на п'ять років, до 31 грудня 2001 року<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Совместное заявление и Принципы определения основ взаимоотношений между Российской Федерацией и Чеченской Республикой. Хасавюртовские соглашения. 1996. – подписи А. Лебедь, С. Харламов, А. Масхадов, С. Абумуслимов; Хасавюрт, 31.08.1996; публикация: Независимая газета, № 163, 03.09.1996." data-reference="Хасавюртовские соглашения 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/661" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span><span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>. Слова «Ічкерія» в угодах немає: республіку названо Чеченською Республікою<span onclick=scrollToRef('scite-17') id="scite-ref-17-a" class="scite-citeref-number" title="Совместное заявление и Принципы определения основ взаимоотношений между Российской Федерацией и Чеченской Республикой. Хасавюртовские соглашения. 1996. – подписи А. Лебедь, С. Харламов, А. Масхадов, С. Абумуслимов; Хасавюрт, 31.08.1996; публикация: Независимая газета, № 163, 03.09.1996." data-reference="Хасавюртовские соглашения 1996"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/661" target="_blank" data-hasqtip="16" aria-describedby="qtip-16">[17]</a></sup></span>. У вересні 1999 року російська армія вторглася в Ічкерію вдруге після 1994 року<span onclick=scrollToRef('scite-2') id="scite-ref-2-a" class="scite-citeref-number" title="Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998." data-reference="Россия - Чечня - цепь ошибок и преступлений. 1994—1996 2010"><sup><a rel="nofollow noopener noreferrer" href="https://archive.decolonial.ist/uk/27" target="_blank" data-hasqtip="1" aria-describedby="qtip-1">[2]</a></sup></span>.</p>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <div id="card-id" class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">ID:&nbsp;</span>C1193.T0008
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Техніка:&nbsp;</span>
+                    <a href="/uk/techniques/T0008">Позбавлення суб'єктності</a>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Кампанія:&nbsp;</span>
+                    <a href="/uk/campaigns/C1193">Перша російсько-чеченська війна (1994–1996)</a>
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Початок:&nbsp;</span>Вересень 1994
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Закінчення:&nbsp;</span>Грудень 1996
+                  </div>
+                </div>
+                <div class="row card-data">
+                  <div class="col-md-12">
+                    <span class="h5 card-title">Контриб'ютори</span>: decolonial.ist project
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+                <h2 class="pt-3" id="references">Джерела</h2>
+
+        <div class="row">
+            <div class="col">
+                <ol>
+                            
+        <li>
+            <span  id="scite-1" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-1" href="https://archive.decolonial.ist/uk/651" target="_blank">
+                        Правительство Российской Федерации. Постановление Правительства Российской Федерации № 1360 Об обеспечении государственной безопасности и территориальной целостности Российской Федерации, законности, прав и свобод граждан, разоружения незаконных вооруженных формирований на территории Чеченской Республики. 1994. – постановление от 09.12.1994 № 1360, подпись В. Черномырдин.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-2" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-2" href="https://archive.decolonial.ist/uk/27" target="_blank">
+                        Орлов О. П., Черкасов А. В. Россия - Чечня - цепь ошибок и преступлений. 1994—1996. 2010. – 2-е издание, Москва: Права человека, 2010, 448 с.; 1-е издание Москва: Звенья, 1998.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-3" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-3" href="https://archive.decolonial.ist/uk/1369" target="_blank">
+                        OMRI Daily Digest (Open Media Research Institute). OMRI Daily Digest, 2 February 1995. 1995. – ежедневная сводка, выпуск от 2 февраля 1995 г.; републикация в архиве Radio Free Europe / Radio Liberty (rferl.org, страница «Newsline»).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-4" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-4" href="https://archive.decolonial.ist/uk/1580" target="_blank">
+                        Сосламбеков Ю. Чечня (Нохчичьо) - взгляд изнутри. 1995. – место и издательство на титуле не указаны; текст доходит до августа 1995 года; 105 с.; электронная копия на сайте ichkeria.net.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-5" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-5" href="https://archive.decolonial.ist/uk/1131" target="_blank">
+                        Agreement on the peaceful regulation of the situation in the Chechen Republic (on a set of military issues). 1995. – Подписано в Грозном 30 июля 1995 г. Английский перевод; скан с. 170-173 сборника документов из базы мирных соглашений ООН (UN Peacemaker).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-6" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-6" href="https://archive.decolonial.ist/uk/1342" target="_blank">
+                        Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-94-243). 1994. – 19.12.1994.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-7" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-7" href="https://archive.decolonial.ist/uk/1343" target="_blank">
+                        Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-94-244). 1994. – 20.12.1994.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-8" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-8" href="https://archive.decolonial.ist/uk/747" target="_blank">
+                        Центральное телевидение России. Обращение Президента РФ Б. Н. Ельцина к гражданам в связи с ситуацией в Чечне (телеэфир 27 декабря 1994 года). 1994. – эфир 27.12.1994, 22:33; копия STAROETV.SU, канал YouTube, ролик qvSBESYT61k, дата загрузки 11.03.2025.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                            
+        <li>
+            <span  id="scite-9" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-9" href="https://archive.decolonial.ist/uk/654" target="_blank">
+                        Human Rights Watch/Helsinki. Russia: Three Months of War in Chechnya. 1995. – Vol. 7, No. 6, February 1995.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                </ol>
+            </div>
+            <div class="col">
+                    <ol start="10.0">
+                                
+        <li>
+            <span  id="scite-10" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-10" href="https://archive.decolonial.ist/uk/1411" target="_blank">
+                        OMRI Daily Digest (Open Media Research Institute). OMRI Daily Digest, 19 May 1995. 1995. – ежедневная сводка, выпуск от 19 мая 1995 г.; републикация в архиве Radio Free Europe / Radio Liberty (rferl.org, страница «Newsline»).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-11" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-11" href="https://archive.decolonial.ist/uk/1373" target="_blank">
+                        OMRI Daily Digest (Open Media Research Institute). OMRI Daily Digest, 22 May 1995. 1995. – ежедневная сводка, выпуск от 22 мая 1995 г.; републикация в архиве Radio Free Europe / Radio Liberty (rferl.org, страница «Newsline»).
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-12" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-12" href="https://archive.decolonial.ist/uk/1122" target="_blank">
+                        Правозащитный центр «Мемориал». У нас там не оказалось подводной лодки: Кизляр - Первомайское, январь 1996. 1996. – Правозащитный центр «Мемориал», раздел «Горячие точки» / Чечня, old.memo.ru; мониторинг эфира российского радио и телевидения и сообщений агентств 9-19 января 1996 года.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-13" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-13" href="https://archive.decolonial.ist/uk/658" target="_blank">
+                        UN Commission on Human Rights, 52nd session. The situation of human rights in the Republic of Chechnya of the Russian Federation. Report of the Secretary-General (E/CN.4/1996/13). 1996. – report of the Secretary-General, 26 March 1996, E/CN.4/1996/13.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-14" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-14" href="https://archive.decolonial.ist/uk/1134" target="_blank">
+                        НТВ. Итоги: переговоры Ельцина и Яндарбиева в Кремле. 1996. – программа «Итоги», эфир не ранее 28.05.1996 (по содержанию - 02.06.1996); сюжет 12 мин, корреспонденты А. Черкасов, С. Ребров, А. Мелихов; перезалив на YouTube-канале «Cortina di ferro» 11.12.2019.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-15" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-15" href="https://archive.decolonial.ist/uk/1421" target="_blank">
+                        Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-145). 1996. – 26.07.1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-16" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-16" href="https://archive.decolonial.ist/uk/1161" target="_blank">
+                        Foreign Broadcast Information Service (FBIS). Daily Report: Central Eurasia (FBIS-SOV-96-146). 1996. – 29.07.1996, 65 p.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+                                
+        <li>
+            <span  id="scite-17" class="scite-citation">
+                <span class="scite-citation-text">
+                    <a rel="nofollow noopener noreferrer" class="external text" name="scite-17" href="https://archive.decolonial.ist/uk/661" target="_blank">
+                        Совместное заявление и Принципы определения основ взаимоотношений между Российской Федерацией и Чеченской Республикой. Хасавюртовские соглашения. 1996. – подписи А. Лебедь, С. Харламов, А. Масхадов, С. Абумуслимов; Хасавюрт, 31.08.1996; публикация: Независимая газета, № 163, 03.09.1996.
+                    </a>
+                </span>
+            </span>
+        </li>
+
+
+  
+                    </ol>
+            </div>             
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+    </div>
+
+            <!--stop-indexing-for-search-->
+            <!-- search overlay for entire page -- not displayed inline -->
+            <div class="overlay search" id="search-overlay" style="display: none;">
+    <div class="overlay-inner">
+        <!-- text input for searching -->
+        <div class="search-header">
+            <div class="search-input">
+                <input type="text" id="search-input" placeholder="search">
+            </div>
+            <div class="search-icons">
+                <div class="search-parsing-icon spinner-border" style="display: none" id="search-parsing-icon"></div>
+                <div class="close-search-icon" id="close-search-icon">&times;</div>
+            </div>
+        </div>
+        <!-- results and controls for loading more results -->
+        <div id="search-body" class="search-body">
+            <div class="results" id="search-results">
+                <!-- content will be appended here on search -->
+            </div>
+            <div id="load-more-results" class="load-more-results">
+                <button class="btn btn-default" id="load-more-results-button">показати ще</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="row flex-grow-0 flex-shrink-1">
+            <!-- footer elements -->
+            <footer class="col footer">
+                <div class="container-fluid">
+                    <div class="row row-footer">
+                        <div class="col-2 col-sm-2 col-md-2">
+                            <div class="footer-center-responsive my-auto">
+                                <a href="/uk/" aria-label="decolonial.ist"><span class="dclst-line">decolonial<span class="dclst-copy">.</span><span class="dot" aria-hidden="true"></span>ist</span></a>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 footer-responsive-break"></div>
+                        <div class="footer-link-group">
+                            <div class="row row-footer">
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="mailto:contact@decolonial.ist" class="footer-link">contact@decolonial.ist</a></u>
+                                </div>
+                                <div class="px-3 col-footer">
+                                    <u class="footer-link"><a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-creative-commons"></i>&nbsp;<i class="fa-brands fa-creative-commons-by"></i>&nbsp;CC BY 4.0</a></u>
+                                </div>
+                                <div class="px-3">
+                                    <u class="footer-link"><a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" target="_blank" rel="noopener" class="footer-link">GitHub</a></u>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <small class="px-3">
+                                    &copy;&nbsp;2026 decolonial.ist &middot; без кукі та трекінгу, статистика &mdash; <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a> &middot; контент доступний за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/deed.uk" target="_blank" rel="noopener">CC BY 4.0</a> &middot; рушій &mdash; форк <a href="https://github.com/mitre-attack/attack-website" target="_blank" rel="noopener">MITRE ATT&amp;CK Website</a> (Apache 2.0)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="w-100 p-2 footer-responsive-break"></div>
+                        <div class="col pr-4">
+                            <div class="footer-float-right-responsive-brand">
+                                <div class="row row-footer row-footer-icon">
+                                    <div class="mb-1">
+                                        <a href="https://github.com/yugoslavskiy/yugoslavskiy.github.io" class="btn btn-footer" target="_blank" rel="noopener" aria-label="GitHub">
+                                            <i class="fa-brands fa-github fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!--stopindex-->
+
+</div>
+    <!--SCRIPTS-->
+    <script src="/uk/theme/scripts/jquery-3.5.1.min.js"></script>
+    <script src="/uk/theme/scripts/popper.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap-select.min.js"></script>
+    <script src="/uk/theme/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/uk/theme/scripts/site.js"></script>
+    <script src="/uk/theme/scripts/settings.js"></script>
+    <script src="/uk/theme/scripts/search_bundle.js"></script>
+    <script src="/uk/theme/scripts/lang-switch.js"></script>
+    <script src="/uk/theme/scripts/theme-switch.js"></script>
+
+<!--SCRIPTS-->
+<script src="/uk/theme/scripts/resizer.js"></script>
+    <script>
+    /* копирование диагонального знака: в буфер уходит домен одной строкой */
+    document.addEventListener('copy', function (e) {
+        var s = window.getSelection();
+        if (!s || s.isCollapsed || !s.rangeCount) return;
+        var c = s.getRangeAt(0).commonAncestorContainer;
+        var el = c.nodeType === 1 ? c : c.parentElement;
+        if (el && el.closest && el.closest('.dclst')) {
+            e.clipboardData.setData('text/plain', 'decolonial.ist');
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>
