@@ -44,7 +44,7 @@ if (pageType == "group") {
             onShown: hide_prev_on_site_tour
         },
         {
-            element: ".breadcrumb a[href='/groups/']",
+            element: ".dc-crumbs a[href$='/groups/']",
             placement: "bottom",
             backdrop: false,
             title: T("tour.group.sections.title"),

@@ -27,30 +27,21 @@ let tourSteps = [
         backdrop: false,
         title: T("tour.matrices.intro.title"),
         content: T("tour.matrices.intro.content"),
-        onShow: function() {
-            showMatrix("side");
-        },
         onShown: hide_prev_on_site_tour
     },
     {
-        element: "table.matrix.side td.tactic.name:first", //:first — popover attaches to EVERY matched element
+        element: ".dc-mx-name:first", //:first — popover attaches to EVERY matched element
         placement: "bottom",
         backdrop: false,
         title: T("tour.matrices.tactics.title"),
-        content: T("tour.matrices.tactics.content"),
-        onShow: function() {
-            showMatrix("side");
-        }
+        content: T("tour.matrices.tactics.content")
     },
     {
-        element: "table.matrix.side .technique-cell:first", //:first — popover attaches to EVERY matched element
+        element: ".dc-mx-t:first", //:first — popover attaches to EVERY matched element
         placement: "right",
         backdrop: false,
         title: T("tour.matrices.techniques.title"),
-        content: T("tour.matrices.techniques.content"),
-        onShow: function() {
-            showMatrix("side");
-        }
+        content: T("tour.matrices.techniques.content")
     },
     {
         element: "#matrix-navigator-link",

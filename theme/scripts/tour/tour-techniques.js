@@ -27,8 +27,8 @@ function next_stop(keys) {
 
 //mirrors the examples filter logic: it is shown when the example rows cover 2+ peoples
 let examplePeoples = new Set();
-document.querySelectorAll('#techProcs .procedure-row').forEach(function(r) {
-    (r.dataset.platforms || '').split(',').forEach(function(p) {
+document.querySelectorAll('#techProcs [data-row]').forEach(function(r) {
+    (r.dataset.people || '').split(',').forEach(function(p) {
         if (p.trim()) examplePeoples.add(p.trim());
     });
 });
