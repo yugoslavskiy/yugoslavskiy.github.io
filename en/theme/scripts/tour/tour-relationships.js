@@ -6,14 +6,29 @@ let isSiteTour = window.location.href.includes("?tour=true");
 //tour texts are generated into settings.js (tour_strings) from data/translations.json
 function T(key) { return (typeof tour_strings != 'undefined' && tour_strings[key]) || key; }
 
-//popover template: ✕ in the top-right corner ends the tour (data-role='end'), bottom row keeps only prev/next
-let tourTemplate = "<div class='popover' role='tooltip'><div class='arrow'></div>"
-    + "<button type='button' class='close' data-role='end' aria-label='" + T("tour.btn.end") + "' title='" + T("tour.btn.end") + "' style='position:absolute;top:0.4rem;right:0.6rem;z-index:1;color:#fff;text-shadow:none;opacity:.75;'>&times;</button>"
+//popover template: the cross in the top-right corner ends the tour (data-role='end'), bottom row keeps prev/next;
+//on the last step, where there is no "next", the row shows the closing button instead.
+//Looks (surface, type, buttons, icons) live in style-dc.css, section "подсказки экскурсии"; icons are CSS masks,
+//because the popover sanitizer strips svg from the template.
+let tourTemplate = "<div class='popover dc-tour' role='tooltip'><div class='arrow'></div>"
+    + "<button class='dc-tour-x' data-role='end' aria-label='" + T("tour.btn.end") + "'></button>"
     + "<h3 class='popover-header'></h3><div class='popover-body'></div>"
-    + "<div class='popover-navigation'><div class='btn-group'>"
-    + "<button class='btn btn-sm btn-outline-secondary' data-role='prev'>&laquo; " + T("tour.btn.prev") + "</button>"
-    + "<button class='btn btn-sm btn-outline-secondary' data-role='next'>" + T("tour.btn.next") + " &raquo;</button>"
-    + "</div></div></div>";
+    + "<div class='popover-navigation'>"
+    + "<button class='dc-tour-prev' data-role='prev'>" + T("tour.btn.prev") + "</button>"
+    + "<button class='dc-tour-next' data-role='next'>" + T("tour.btn.next") + "</button>"
+    + "<button class='dc-tour-end' data-role='end'>" + T("tour.btn.end") + "</button>"
+    + "</div></div>";
+
+//step counter of a single-page tour: "2 / 4" next to the title, instead of the library's striped bar
+function tourProgressText(i, percent, count) { return "<span class='dc-tour-n'>" + (i + 1) + " / " + count + "</span>"; }
+
+//on a narrow screen list rows lose their right-hand column (the counter): a text that mentions it
+//may have a second version there, the same key + ".narrow"
+let tourNarrow = window.matchMedia("(max-width: 767px)").matches;
+function TN(key) { return (tourNarrow && typeof tour_strings != 'undefined' && tour_strings[key + ".narrow"]) || T(key); }
+
+//targets sit in the centred column: beside it there is room only on a wide window
+let tourSide = window.matchMedia("(min-width: 1500px)").matches ? "left" : "bottom";
 
 //first defined step of the route that exists on this site
 function next_stop(keys) {
@@ -53,7 +68,7 @@ if (pageType == "group") {
         //шаги идут сверху вниз по странице, чтобы тур не прыгал по краям
         {
             element: "#dropdownMenuButton",
-            placement: "left",
+            placement: tourSide,
             backdrop: false,
             title: T("tour.group.layers.title"),
             content: T("tour.group.layers.content"),
@@ -63,7 +78,7 @@ if (pageType == "group") {
             placement: "top",
             backdrop: false,
             title: T("tour.group.techniques.title"),
-            content: T("tour.group.techniques.content"),
+            content: TN("tour.group.techniques.content"),
         },
         {
             element: "#procedures",
@@ -87,11 +102,11 @@ if (pageType == "group") {
             placement: "top",
             backdrop: false,
             title: T("tour.software.techniques.title"),
-            content: T("tour.software.techniques.content"),
+            content: TN("tour.software.techniques.content"),
         },
         {
             element: "#dropdownMenuButton",
-            placement: "left",
+            placement: tourSide,
             backdrop: false,
             title: T("tour.software.layers.title"),
             content: T("tour.software.layers.content"),
@@ -108,14 +123,14 @@ if (pageType == "group") {
         },
         {
             element: "#card-id",
-            placement: "left",
+            placement: "bottom",
             backdrop: false,
             title: T("tour.campaign.card.title"),
             content: T("tour.campaign.card.content"),
         },
         {
             element: "#dropdownMenuButton",
-            placement: "left",
+            placement: tourSide,
             backdrop: false,
             title: T("tour.campaign.layers.title"),
             content: T("tour.campaign.layers.content"),
@@ -152,8 +167,9 @@ let tour = new Tour({
     container: "#v-tabContent",
     storage: false, //no resuming tour if the page is reloaded.
     framework: 'bootstrap4',   // set Tourist to use BS4 compatibility
-    showProgressBar: !isSiteTour,
+    showProgressBar: false,
     showProgressText: !isSiteTour,
+    getProgressTextHTML: tourProgressText,
     template: tourTemplate
 })
 

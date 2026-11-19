@@ -83,7 +83,7 @@ body.dc { --dc-col: 700px; --dc-rule: var(--c-body-border); --dc-muted: var(--c-
 @media print { .dc-top { position: static; } }
 
 /* плашка «в разработке»: одна строка */
-.dc-banner { flex: 0 0 auto; margin: 0; padding: 6px 16px; background: var(--c-body-alt-2); color: var(--dc-muted); font-size: 13px; line-height: 20px; text-align: center; }
+.dc-banner { flex: 0 0 auto; margin: 0; padding: 6px 16px; background: var(--c-body-alt-2); color: var(--c-body-on); font-size: 13px; line-height: 20px; text-align: center; }
 
 /* ---------- страница-документ ---------- */
 .dc-doc { box-sizing: content-box; max-width: var(--dc-col); margin: 0 auto; padding: 40px 16px 72px; }
@@ -227,8 +227,7 @@ body.dc { --dc-col: 700px; --dc-rule: var(--c-body-border); --dc-muted: var(--c-
 .dc-mx-col { min-width: 0; }
 /* шапка столбца одной высоты у всех тактик: ячейки техник начинаются на одном уровне */
 /* как в матрице ATT&CK: название тактики и число под ним - по центру, названия техник - по левому краю */
-.dc-mx-col > summary { list-style: none; display: flex; flex-direction: column; justify-content: space-between; min-height: 82px; padding: 9px 10px 8px; border: 1px solid var(--dc-cell); background: var(--dc-cell-head); text-align: center; cursor: default; }
-.dc-mx-col > summary::-webkit-details-marker { display: none; }
+.dc-mx-h { display: flex; flex-direction: column; justify-content: space-between; min-height: 82px; padding: 9px 10px 8px; border: 1px solid var(--dc-cell); background: var(--dc-cell-head); text-align: center; }
 .dc .dc-mx-name { display: block; font: 15px/20px "Roboto-Medium", sans-serif; color: var(--c-body-on-emph); hyphens: manual; overflow-wrap: break-word; }
 .dc-mx-count { display: block; margin-top: 4px; font-size: 11px; line-height: 16px; }
 .dc-mx-count .dc-num { color: var(--c-body-on); }
@@ -241,8 +240,14 @@ body.dc { --dc-col: 700px; --dc-rule: var(--c-body-border); --dc-muted: var(--c-
 .dc .dc-mx-sub a { padding: 6px 10px 5px; font-size: 14px; line-height: 19px; }
 .dc .dc-mx-t:hover, .dc .dc-mx-sub a:hover { z-index: 1; border-color: var(--dc-link); background: color-mix(in srgb, var(--dc-link) 12%, transparent); color: var(--c-body-on-emph); text-decoration: none; }
 .dc .dc-mx-t:focus-visible, .dc .dc-mx-sub a:focus-visible { z-index: 2; outline-offset: -2px; border-radius: 0; }
-.dc-mx-chev { display: none; }
-@media (min-width: 768px) and (max-width: 1279px) { .dc .dc-mx-name, .dc .dc-mx-t, .dc .dc-mx-sub a { hyphens: auto; } }
+/* Переносы в узких столбцах. Без скрипта слова переносит браузер: он рвёт любое слово на конце строки.
+   Со скриптом (dc.js ставит класс dc-mx-words) по слогам переносится только слово, которое не помещается
+   в строку целиком: оно обёрнуто в .dc-hy; остальные слова уходят на новую строку целыми */
+@media (max-width: 1279px) { .dc .dc-mx-name, .dc .dc-mx-t, .dc .dc-mx-sub a { hyphens: auto; } }
+.dc .dc-mx-words .dc-mx-name, .dc .dc-mx-words .dc-mx-t, .dc .dc-mx-words .dc-mx-sub a { hyphens: manual; }
+.dc .dc-mx-words .dc-hy { hyphens: auto; }
+/* полоса шапки столбцов работает на экране уже 1024 (ниже, в своём блоке) */
+.dc-mx-hd { display: none; }
 .dc-mx-title { margin: 44px auto 0; padding: 0 16px; max-width: 1560px; font: 18px/24px "Roboto-Medium", sans-serif; font-weight: normal; color: var(--c-body-on-emph); }
 
 /* ---------- главная: матрица под картой ---------- */
@@ -319,24 +324,66 @@ body.dc #attack-jumbotron { flex: 0 0 auto; }
   .dc-next-row { grid-template-columns: minmax(0, 1fr); row-gap: 10px; }
   .dc-nb--next { justify-content: flex-start; text-align: left; flex-direction: row; }
   .dc-nb--next span { order: 2; }
-  /* матрица: тактики столбцом, раскрываются по нажатию */
-  .dc-mx-box { margin-top: 22px; overflow: visible; }
-  .dc-mx { display: block; padding: 0; border-top: 1px solid var(--dc-rule); }
-  .dc-mx-col { border-bottom: 1px solid var(--dc-rule); }
-  .dc-mx-col > summary { display: grid; grid-template-columns: minmax(0, 1fr) auto 12px; align-items: center; column-gap: 12px; min-height: 52px; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; }
-  .dc .dc-mx-name { font-size: 17px; line-height: 24px; }
-  /* на телефоне название тактики раскрывает столбец и ссылкой не выглядит */
-  .dc .dc-mx-name:hover { color: var(--c-body-on-emph); text-decoration: none; }
-  .dc-mx-count { margin: 0; }
-  .dc-mx-chev { display: block; margin: 0; align-self: center; }
-  .dc-mx-col[open] .dc-mx-chev { transform: rotate(180deg); }
-  .dc-mx-col[open] > summary { position: sticky; top: 52px; z-index: 3; background: var(--c-body); box-shadow: 0 1px 0 var(--dc-rule); }
-  .dc-mx-list { padding: 1px 0 14px; }
-  .dc .dc-mx-t { padding: 10px 12px 9px; font-size: 16px; line-height: 22px; }
-  .dc-mx-sub { margin-left: 16px; }
-  .dc .dc-mx-sub a { padding: 10px 12px; font-size: 15px; line-height: 21px; }
   .dc .overlay.search .overlay-inner { padding-top: 8px; }
   .dc .overlay.search .overlay-inner .search-header .search-input input { font-size: 18px; height: 52px; }
+}
+/* ---------- матрица на экране уже 1024 (телефон, планшет): та же таблица - тактики столбцами, техники ячейками ---------- */
+@media (max-width: 1023px) {
+  /* Ширина столбца (--dc-mx-w).
+     Все столбцы помещаются на экране при ширине не меньше 109px - делят экран поровну, видна вся матрица
+     (телефон горизонтально, планшет). Не помещаются (телефон вертикально) - таблица листается вбок, на экране
+     целое число столбцов и ещё половина: обрезанный краем столбец показывает, что дальше есть ещё.
+     Столбцов два с половиной; с 484px - три с половиной, с 620px - четыре с половиной (столбец не уже 128px).
+     109px - ширина, при которой самое длинное слово в названиях тактик («доминирования») ещё стоит без переноса.
+     Условие записано без @media, чтобы работать при любом числе тактик: множитель 9999 делает из разности
+     «да или нет» (ширина поровну меньше 109px - побеждает ширина «два с половиной»).
+     100cqw - ширина блока матрицы без полосы прокрутки окна */
+  .dc-mx-pair { container-type: inline-size; --dc-mx-gap: 8px; --dc-mx-pad: 12px; }
+  .dc-mx, .dc-mx-hd-in {
+    --dc-mx-fit: calc((100cqw - 2 * var(--dc-mx-pad) - (var(--dc-mx-n, 6) - 1) * var(--dc-mx-gap)) / var(--dc-mx-n, 6));
+    --dc-mx-see: 2.5;
+    --dc-mx-part: calc((100cqw - var(--dc-mx-pad) - (var(--dc-mx-see) - 0.5) * var(--dc-mx-gap)) / var(--dc-mx-see));
+    --dc-mx-w: max(var(--dc-mx-fit), min(var(--dc-mx-part), calc((109px - var(--dc-mx-fit)) * 9999)));
+    display: grid; grid-template-columns: repeat(var(--dc-mx-n, 6), var(--dc-mx-w)); column-gap: var(--dc-mx-gap);
+    width: max-content; max-width: none; margin: 0; padding: 1px var(--dc-mx-pad) 2px;
+  }
+  @container (min-width: 484px) { .dc-mx, .dc-mx-hd-in { --dc-mx-see: 3.5; } }
+  @container (min-width: 620px) { .dc-mx, .dc-mx-hd-in { --dc-mx-see: 4.5; } }
+  /* при листании столбец встаёт к левому краю; у краёв таблица не отскакивает (иначе отскакивала бы без шапки) */
+  .dc-mx-box { margin-top: 22px; padding: 0; overflow-y: hidden; scroll-snap-type: x proximity; scroll-padding-left: var(--dc-mx-pad); overscroll-behavior-x: none; }
+  .dc-mx-col { scroll-snap-align: start; }
+  /* нажимается вся ячейка тактики, а не только её название */
+  .dc-mx-h { position: relative; min-height: 62px; padding: 7px 4px 6px; }
+  .dc .dc-mx-name { font-size: 13px; line-height: 17px; }
+  .dc .dc-mx-name::after { content: ""; position: absolute; inset: 0; }
+  .dc-mx-count { margin-top: 2px; }
+  /* scroll-margin: ячейка, на которую перешли с клавиатуры, не прячется под прилипшей полосой шапки */
+  .dc .dc-mx-t, .dc .dc-mx-sub a { display: flex; align-items: center; min-height: 44px; padding: 6px 8px 5px; font-size: 13px; line-height: 17px; scroll-margin-top: 72px; }
+  .dc-mx-sub { margin-left: 10px; }
+  /* Шапка столбцов отдельной полосой: прилипает под шапкой сайта и едет вбок вместе с таблицей.
+     Прилипнуть внутри окна таблицы шапка не может (окно листается вбок и для неё само становится областью прокрутки),
+     поэтому она стоит над окном. Включается ниже: там, где её сдвиг можно привязать к прокрутке таблицы */
+  .dc-mx-hd { position: sticky; top: 52px; z-index: 3; margin-top: 22px; overflow: hidden; background: var(--c-body); container-type: inline-size; }
+  .dc-mx-hd-in { padding-top: 0; padding-bottom: 0; }
+  /* запасной путь: браузер не умеет привязать сдвиг к прокрутке, шапку двигает dc.js и ставит этот класс */
+  .dc-mx-sync > .dc-mx-hd { display: block; }
+  .dc-mx-sync > .dc-mx-hd + .dc-mx-box { margin-top: -1px; }
+  .dc-mx-sync .dc-mx-col > .dc-mx-h { display: none; }
+  .dc-mx-sync .dc-mx-hd-in { will-change: transform; }
+}
+/* Сдвиг полосы шапки привязан к прокрутке окна таблицы самим браузером (scroll-driven animation), поэтому шапка
+   не отстаёт от ячеек. 100cqw - видимая ширина полосы, 100% - вся её ширина: разность равна наибольшей прокрутке
+   таблицы. Начальный кадр записан через transform: кадр translate: none Safari на iOS 27 рисует неверно */
+@keyframes dc-mx-hd { from { transform: translateX(0); } to { transform: translateX(calc(100cqw - 100%)); } }
+@supports (timeline-scope: --a) and (animation-timeline: --a) {
+  @media (max-width: 1023px) {
+    .dc-mx-pair { timeline-scope: --dc-mx-x; }
+    .dc-mx-pair > .dc-mx-box { scroll-timeline: --dc-mx-x x; }
+    .dc-mx-pair > .dc-mx-hd { display: block; }
+    .dc-mx-pair > .dc-mx-hd + .dc-mx-box { margin-top: -1px; }
+    .dc-mx-col > .dc-mx-h { display: none; }
+    .dc-mx-hd-in { animation: dc-mx-hd linear both; animation-timeline: --dc-mx-x; }
+  }
 }
 @media (max-width: 379px) {
   .dc-top .dclst-line { font-size: 11px; }
@@ -356,3 +403,43 @@ body.dc #attack-jumbotron { flex: 0 0 auto; }
 .not-found h1 { font: 700 56px/60px "Chivo Mono", ui-monospace, monospace; letter-spacing: .04em; }
 .dc-page .dc-h2 { margin: 0 0 12px; padding: 0; border: 0; }
 .dc-page .faq-question p:last-child { margin-bottom: 0; }
+
+/* ---------- подсказки экскурсии: поверхность, шрифты и кнопки сайта вместо стандартного вида библиотеки ---------- */
+/* приподнятая поверхность: в светлой теме белая с тенью, в тёмной светлее страницы, иначе подсказка с ней сливается */
+body.dc { --dc-raise: var(--c-body); --dc-raise-line: color-mix(in srgb, var(--c-body-on) 22%, var(--c-body)); --dc-raise-shadow: 0 12px 32px rgba(15, 23, 32, .16), 0 2px 6px rgba(15, 23, 32, .1); }
+:root[data-theme=dark] body.dc { --dc-raise: color-mix(in srgb, var(--c-body-on) 12%, var(--c-body)); --dc-raise-line: color-mix(in srgb, var(--c-body-on) 38%, var(--c-body)); --dc-raise-shadow: 0 14px 36px rgba(0, 0, 0, .55), 0 2px 8px rgba(0, 0, 0, .4); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme=light]) body.dc { --dc-raise: color-mix(in srgb, var(--c-body-on) 12%, var(--c-body)); --dc-raise-line: color-mix(in srgb, var(--c-body-on) 38%, var(--c-body)); --dc-raise-shadow: 0 14px 36px rgba(0, 0, 0, .55), 0 2px 8px rgba(0, 0, 0, .4); } }
+.dc .popover.dc-tour { max-width: min(384px, calc(100vw - 32px)); padding: 0; border: 1px solid var(--dc-raise-line); border-radius: 6px; background: var(--dc-raise); color: var(--c-body-on); box-shadow: var(--dc-raise-shadow); font: 15px/23px "Roboto-Regular", system-ui, sans-serif; text-align: left; }
+/* у края окна подсказка держит поле сайта 16 px: библиотека оставляет 5 px, остальное добирают поля */
+.dc .dc-tour.bs-popover-top, .dc .dc-tour.bs-popover-bottom, .dc .dc-tour.orphan { margin-left: 11px; margin-right: 11px; }
+.dc .dc-tour .popover-header { display: flex; align-items: baseline; gap: 12px; margin: 0; padding: 16px 48px 0 18px; border: 0; border-radius: 0; background: none; color: var(--c-body-on-emph); font: 17px/24px "Roboto-Medium", sans-serif; font-weight: normal; text-wrap: balance; }
+.dc .dc-tour .popover-header::before { display: none; }
+.dc .dc-tour-n { margin-left: auto; font: 700 12px/24px "Chivo Mono", ui-monospace, monospace; letter-spacing: .05em; font-variant-numeric: tabular-nums; color: var(--dc-muted); white-space: nowrap; }
+.dc .dc-tour .popover-body { padding: 8px 18px 0; color: var(--c-body-on); font: inherit; }
+.dc .dc-tour .popover-navigation { display: flex; align-items: center; gap: 16px; padding: 16px 18px 18px; overflow: visible; }
+.dc .dc-tour-x { position: absolute; top: 6px; right: 6px; z-index: 1; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 4px; background: none; color: var(--dc-muted); cursor: pointer; }
+.dc .dc-tour-x::before { content: ""; width: 14px; height: 14px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 3l10 10M13 3L3 13' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 3l10 10M13 3L3 13' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat; }
+.dc .dc-tour-x:hover { color: var(--c-body-on-emph); }
+.dc .dc-tour-prev { height: 36px; padding: 0 2px; border: 0; background: none; color: var(--dc-muted); font: 15px/20px "Roboto-Regular", sans-serif; cursor: pointer; }
+.dc .dc-tour-prev:hover { color: var(--c-body-on-emph); }
+/* «Далее» - контурная кнопка тех же размеров и со стрелкой, как кнопка экскурсии на главной; цвет текста, а не ссылки */
+.dc .dc-tour-next { display: inline-flex; align-items: center; gap: 9px; height: 36px; margin-left: auto; padding: 0 12px 0 14px; border: 1px solid var(--c-body-on-deemph); border-radius: 4px; background: none; color: var(--c-body-on-emph); font: 15px/20px "Roboto-Regular", sans-serif; cursor: pointer; transition: background-color .15s, border-color .15s; }
+.dc .dc-tour-next::after { content: ""; width: 14px; height: 14px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8h10.5M8.5 3.5 13 8l-4.5 4.5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8h10.5M8.5 3.5 13 8l-4.5 4.5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat; transition: transform .25s cubic-bezier(.16, 1, .3, 1); }
+.dc .dc-tour-next:hover { border-color: var(--c-body-on-emph); background: color-mix(in srgb, var(--c-body-on) 8%, transparent); }
+.dc .dc-tour-next:hover::after { transform: translateX(3px); }
+/* шага назад или вперёд нет - кнопки тоже нет; на последнем шаге место «Далее» занимает кнопка, которая закрывает экскурсию */
+.dc .dc-tour [data-role].disabled { display: none; }
+.dc .dc-tour-end { display: none; height: 36px; margin-left: auto; padding: 0 14px; border: 1px solid var(--c-body-on-deemph); border-radius: 4px; background: none; color: var(--c-body-on-emph); font: 15px/20px "Roboto-Regular", sans-serif; cursor: pointer; transition: background-color .15s, border-color .15s; }
+.dc .dc-tour-end:hover { border-color: var(--c-body-on-emph); background: color-mix(in srgb, var(--c-body-on) 8%, transparent); }
+.dc .dc-tour-next.disabled ~ .dc-tour-end { display: inline-flex; align-items: center; }
+/* стрелка подсказки: линия и заливка той же поверхности */
+.dc .dc-tour.bs-popover-top > .arrow::before, .dc .dc-tour.bs-popover-auto[x-placement^=top] > .arrow::before { border-top-color: var(--dc-raise-line); }
+.dc .dc-tour.bs-popover-top > .arrow::after, .dc .dc-tour.bs-popover-auto[x-placement^=top] > .arrow::after { border-top-color: var(--dc-raise); }
+.dc .dc-tour.bs-popover-bottom > .arrow::before, .dc .dc-tour.bs-popover-auto[x-placement^=bottom] > .arrow::before { border-bottom-color: var(--dc-raise-line); }
+.dc .dc-tour.bs-popover-bottom > .arrow::after, .dc .dc-tour.bs-popover-auto[x-placement^=bottom] > .arrow::after { border-bottom-color: var(--dc-raise); }
+.dc .dc-tour.bs-popover-left > .arrow::before, .dc .dc-tour.bs-popover-auto[x-placement^=left] > .arrow::before { border-left-color: var(--dc-raise-line); }
+.dc .dc-tour.bs-popover-left > .arrow::after, .dc .dc-tour.bs-popover-auto[x-placement^=left] > .arrow::after { border-left-color: var(--dc-raise); }
+.dc .dc-tour.bs-popover-right > .arrow::before, .dc .dc-tour.bs-popover-auto[x-placement^=right] > .arrow::before { border-right-color: var(--dc-raise-line); }
+.dc .dc-tour.bs-popover-right > .arrow::after, .dc .dc-tour.bs-popover-auto[x-placement^=right] > .arrow::after { border-right-color: var(--dc-raise); }
+@media (max-width: 1023px) { .dc .dc-tour-prev, .dc .dc-tour-next, .dc .dc-tour-end { height: 44px; } .dc .dc-tour-x { width: 44px; height: 44px; top: 4px; right: 4px; } }
+@media (prefers-reduced-motion: reduce) { .dc .dc-tour-next, .dc .dc-tour-next::after, .dc .dc-tour-end { transition: none; } }

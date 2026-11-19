@@ -102,7 +102,11 @@
             sort.querySelector('.dc-sort-v').textContent = newest ? sort.getAttribute('data-newest') : sort.getAttribute('data-oldest');
             rows.slice().sort(function (a, b) {
                 var da = a.getAttribute('data-date') || '', db = b.getAttribute('data-date') || '';
-                if (da === db) return 0;
+                if (da === db) {
+                    // одна дата начала: раньше стоит то, что раньше кончилось
+                    da = a.getAttribute('data-end') || ''; db = b.getAttribute('data-end') || '';
+                    if (da === db) return 0;
+                }
                 if (!da) return 1;
                 if (!db) return -1;
                 return (da > db ? 1 : -1) * (newest ? -1 : 1);
@@ -112,23 +116,81 @@
     Array.prototype.forEach.call(document.querySelectorAll('.dc-list'), initList);
 
     // ---- матрица
+    // На телефоне шапка столбцов - отдельная полоса над таблицей: прилипает под шапкой сайта, а вбок едет вместе
+    // с таблицей. Её сдвиг привязывает к прокрутке таблицы сам браузер (style-dc.css, scroll-driven animation).
+    // Где браузер этого не умеет, полосу двигает этот скрипт: она может запаздывать на кадр.
+    var mxNative = !!(window.CSS && CSS.supports && CSS.supports('timeline-scope', '--a') && CSS.supports('animation-timeline', '--a'));
     Array.prototype.forEach.call(document.querySelectorAll('.dc-mx-wrap'), function (wrap) {
-        var mx = wrap.querySelector('.dc-mx');
         var tools = wrap.querySelector('.dc-mx-tools');
         if (tools) tools.hidden = false;
-        var narrow = window.matchMedia('(max-width: 767px)');
-        var cols = Array.prototype.slice.call(mx.querySelectorAll('.dc-mx-col'));
-        function fit() { cols.forEach(function (c) { c.open = !narrow.matches; }); }
-        fit();
-        if (narrow.addEventListener) narrow.addEventListener('change', fit);
-        // в широком окне столбцы всегда раскрыты: нажатие по заголовку их не сворачивает;
-        // на телефоне столбец раскрывает вся строка тактики, и её название тоже
-        cols.forEach(function (c) {
-            c.querySelector('summary').addEventListener('click', function (e) {
-                var link = e.target.closest('a');
-                if (!narrow.matches) { if (!link) e.preventDefault(); return; }
-                if (link) { e.preventDefault(); c.open = !c.open; }
-            });
+        if (mxNative) return;
+        Array.prototype.forEach.call(wrap.querySelectorAll('.dc-mx-pair'), function (pair) {
+            var box = pair.querySelector('.dc-mx-box');
+            var row = pair.querySelector('.dc-mx-hd-in');
+            if (!box || !row) return;
+            function sync() { row.style.transform = 'translate3d(' + (-box.scrollLeft) + 'px,0,0)'; }
+            pair.classList.add('dc-mx-sync');
+            box.addEventListener('scroll', sync, { passive: true });
+            window.addEventListener('pageshow', sync);
+            sync();
         });
     });
+
+    // ---- матрица: переносы
+    // Слово переносится по слогам, только если не помещается в строку ячейки целиком: такое слово скрипт
+    // оборачивает в span.dc-hy (у него hyphens: auto). Остальные слова уходят на новую строку целыми.
+    // Ширина столбца зависит от окна, поэтому замер повторяется при смене ширины и после загрузки шрифтов.
+    var mxCells = Array.prototype.slice.call(document.querySelectorAll('.dc-mx-name, .dc-mx-t, .dc-mx-sub a'));
+    if (mxCells.length) {
+        var mxText = mxCells.map(function (el) { return el.textContent; });
+        var mxPen = document.createElement('canvas').getContext('2d');
+        var fitWords = function () {
+            // сначала все замеры, потом вся запись: раскладка пересчитывается один раз
+            var plan = mxCells.map(function (el, i) {
+                if (!el.offsetParent) return null;   // скрытая копия шапки столбца
+                var cs = getComputedStyle(el);
+                var room = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - 1;
+                mxPen.font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+                var any = false;
+                var parts = mxText[i].split(/(\s+)/).map(function (word) {
+                    if (!word.trim()) return { t: word };
+                    // слово с дефисом браузер разрывает после дефиса и сам: мерим его части
+                    var pieces = word.split('-');
+                    var wide = pieces.some(function (p, k) {
+                        return mxPen.measureText(k < pieces.length - 1 ? p + '-' : p).width > room;
+                    });
+                    if (wide) any = true;
+                    return { t: word, hy: wide };
+                });
+                return any ? parts : false;
+            });
+            mxCells.forEach(function (el, i) {
+                var parts = plan[i];
+                if (parts === null) return;
+                if (!parts) { if (el.firstElementChild) el.textContent = mxText[i]; return; }
+                // одна обёртка на весь текст: в ячейке, где текст выровнен по высоте, он остаётся одним блоком
+                var box = document.createElement('span');
+                parts.forEach(function (p) {
+                    if (!p.hy) { box.appendChild(document.createTextNode(p.t)); return; }
+                    var s = document.createElement('span');
+                    s.className = 'dc-hy';
+                    s.textContent = p.t;
+                    box.appendChild(s);
+                });
+                el.textContent = '';
+                el.appendChild(box);
+            });
+        };
+        Array.prototype.forEach.call(document.querySelectorAll('.dc-mx-wrap'), function (wrap) { wrap.classList.add('dc-mx-words'); });
+        fitWords();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWords);
+        // на телефоне resize приходит и от панели адреса, которая прячется при прокрутке: ширина при этом та же
+        var mxWidth = window.innerWidth, mxFrame = 0;
+        window.addEventListener('resize', function () {
+            if (window.innerWidth === mxWidth) return;
+            mxWidth = window.innerWidth;
+            if (mxFrame) return;
+            mxFrame = requestAnimationFrame(function () { mxFrame = 0; fitWords(); });
+        });
+    }
 })();

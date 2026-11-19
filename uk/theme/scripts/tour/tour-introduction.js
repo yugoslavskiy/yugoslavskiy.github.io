@@ -4,14 +4,18 @@ let isSiteTour = window.location.href.includes("?tour=true");
 //tour texts are generated into settings.js (tour_strings) from data/translations.json
 function T(key) { return (typeof tour_strings != 'undefined' && tour_strings[key]) || key; }
 
-//popover template: ✕ in the top-right corner ends the tour (data-role='end'), bottom row keeps only prev/next
-let tourTemplate = "<div class='popover' role='tooltip'><div class='arrow'></div>"
-    + "<button type='button' class='close' data-role='end' aria-label='" + T("tour.btn.end") + "' title='" + T("tour.btn.end") + "' style='position:absolute;top:0.4rem;right:0.6rem;z-index:1;color:#fff;text-shadow:none;opacity:.75;'>&times;</button>"
+//popover template: the cross in the top-right corner ends the tour (data-role='end'), bottom row keeps prev/next;
+//on the last step, where there is no "next", the row shows the closing button instead.
+//Looks (surface, type, buttons, icons) live in style-dc.css, section "подсказки экскурсии"; icons are CSS masks,
+//because the popover sanitizer strips svg from the template.
+let tourTemplate = "<div class='popover dc-tour' role='tooltip'><div class='arrow'></div>"
+    + "<button class='dc-tour-x' data-role='end' aria-label='" + T("tour.btn.end") + "'></button>"
     + "<h3 class='popover-header'></h3><div class='popover-body'></div>"
-    + "<div class='popover-navigation'><div class='btn-group'>"
-    + "<button class='btn btn-sm btn-outline-secondary' data-role='prev'>&laquo; " + T("tour.btn.prev") + "</button>"
-    + "<button class='btn btn-sm btn-outline-secondary' data-role='next'>" + T("tour.btn.next") + " &raquo;</button>"
-    + "</div></div></div>";
+    + "<div class='popover-navigation'>"
+    + "<button class='dc-tour-prev' data-role='prev'>" + T("tour.btn.prev") + "</button>"
+    + "<button class='dc-tour-next' data-role='next'>" + T("tour.btn.next") + "</button>"
+    + "<button class='dc-tour-end' data-role='end'>" + T("tour.btn.end") + "</button>"
+    + "</div></div>";
 
 let tour = new Tour({
     storage: false, //no resuming tour if the page is reloaded.
