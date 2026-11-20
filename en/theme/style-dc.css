@@ -442,4 +442,12 @@ body.dc { --dc-raise: var(--c-body); --dc-raise-line: color-mix(in srgb, var(--c
 .dc .dc-tour.bs-popover-right > .arrow::before, .dc .dc-tour.bs-popover-auto[x-placement^=right] > .arrow::before { border-right-color: var(--dc-raise-line); }
 .dc .dc-tour.bs-popover-right > .arrow::after, .dc .dc-tour.bs-popover-auto[x-placement^=right] > .arrow::after { border-right-color: var(--dc-raise); }
 @media (max-width: 1023px) { .dc .dc-tour-prev, .dc .dc-tour-next, .dc .dc-tour-end { height: 44px; } .dc .dc-tour-x { width: 44px; height: 44px; top: 4px; right: 4px; } }
+/* Низкое окно (телефон в повороте): рядом с целью подсказка не помещается и уезжает за край окна.
+   Здесь она прижата к правому нижнему углу окна; заголовок и кнопки всегда видны, длинный текст листается внутри */
+@media (max-height: 480px) {
+  .dc .popover.dc-tour { position: fixed !important; top: auto !important; left: auto !important; right: 12px !important; bottom: 12px !important; transform: none !important; display: flex; flex-direction: column; width: min(440px, calc(100vw - 24px)); max-width: none; max-height: calc(100vh - 76px); max-height: calc(100dvh - 76px); margin: 0; }
+  .dc .popover.dc-tour > .arrow { display: none; }
+  .dc .popover.dc-tour .popover-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+  .dc .popover.dc-tour .popover-header, .dc .popover.dc-tour .popover-navigation { flex: none; }
+}
 @media (prefers-reduced-motion: reduce) { .dc .dc-tour-next, .dc .dc-tour-next::after, .dc .dc-tour-end { transition: none; } }
