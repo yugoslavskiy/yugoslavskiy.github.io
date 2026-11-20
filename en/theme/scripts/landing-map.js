@@ -1,5 +1,6 @@
 // Карта империи на главной: выбор шага по году, один автопрогон от первого шага до последнего,
 // условные знаки и описание шага. Данные шагов лежат в атрибутах кнопок лет.
+// Страница открывается первым шагом; при отключённой анимации - последним, без прогона.
 // В страницу записана копия шагов на день сборки. При открытии скрипт берёт свежий файл шагов
 // с сайта карты (data-src) и перерисовывает блок, если отпечаток файла (stamp) не тот, что у копии.
 // Файл не пришёл или не прошёл проверку - остаётся копия.
@@ -14,8 +15,19 @@
         var more = root.querySelector('.emp-more'), play = root.querySelector('.emp-play'), strip = root.querySelector('.emp-years');
         var lang = root.getAttribute('data-lang') || 'ru';
         var current = years.length - 1, timer = null;
+        var auto = !calm && 'IntersectionObserver' in window;   // карта сама пройдёт шаги от первого до последнего
+        var picked = false;                     // читатель сам выбрал шаг, открыл описание или экскурсию: автопрогон не нужен
         var fresh = null;                       // свежие шаги, которые ждут конца прогона
         var settled = false, wantRun = false;   // автопрогон ждёт ответа сайта карты, но недолго
+
+        // Неразрывные пробелы в тексте шага: короткое слово не остаётся в конце строки, число не отрывается от слова
+        // за ним, тире не начинает строку, составное слово и диапазон лет не рвутся по дефису. Слова не меняются.
+        var NB_SHORT = /(^|[\s\u00a0(\u00ab\u201e\u201c"])([A-Za-z\u0400-\u04ff]{1,2}) (?=\S)/g;
+        function nb(t) {
+            if (lang === 'ru' || lang === 'uk') t = t.replace(NB_SHORT, '$1$2\u00a0').replace(NB_SHORT, '$1$2\u00a0');   // два прохода: короткие слова подряд
+            return t.replace(/(\d) (?=[A-Za-z\u0400-\u04ff])/g, '$1\u00a0').replace(/ ([-\u2013\u2014]) /g, '\u00a0$1 ')
+                    .replace(/([A-Za-z\u0400-\u04ff\d])-(?=[A-Za-z\u0400-\u04ff\d])/g, '$1-\u2060');
+        }
 
         function show(i) {
             current = i;
@@ -29,9 +41,9 @@
             for (k = 0; k < legend.length; k++) legend[k].hidden = keys.indexOf(legend[k].getAttribute('data-k')) < 0;
             text.textContent = '';
             var date = document.createElement('b');
-            date.textContent = data.date + '. ';
+            date.textContent = nb(data.date) + '. ';
             text.appendChild(date);
-            text.appendChild(document.createTextNode(data.text));
+            text.appendChild(document.createTextNode(nb(data.text)));
             // узкий экран: ряд лет прокручивается, выбранный год - по центру; страницу не двигаем
             if (strip.scrollWidth > strip.clientWidth) strip.scrollLeft = years[i].offsetLeft - strip.offsetLeft - (strip.clientWidth - years[i].offsetWidth) / 2;
             edges();
@@ -135,8 +147,26 @@
             root.setAttribute('data-stamp', m.stamp);
             steps = root.querySelectorAll('.emp-step');
             years = root.querySelectorAll('.emp-y');
+            frame();
             show(keep);
             if (focused) years[keep].focus();
+        }
+
+        // Кадр широкой главной по контурам шагов: середина закрашенного и высота кадра без пустых полос сверху и снизу
+        // (те же величины для записанной копии считает сборка, фильтр landing_map).
+        function frame() {
+            var box = svg.viewBox.baseVal, top = Infinity, bottom = -Infinity;
+            for (var k = 0; k < steps.length; k++) {
+                var b = steps[k].getBBox();
+                if (!b.width && !b.height) continue;
+                top = Math.min(top, b.y);
+                bottom = Math.max(bottom, b.y + b.height);
+            }
+            if (!(bottom > top) || !(box.width > 0) || !(box.height > 0)) return;
+            root.style.setProperty('--emp-mid', (50 * (top + bottom) / box.height).toFixed(2) + '%');
+            root.style.setProperty('--emp-low', (Math.min(box.height, bottom - top + 50) / box.width).toFixed(4));
+            root.style.setProperty('--emp-high', (Math.min(box.height, bottom - top + 102) / box.width).toFixed(4));
+            root.style.setProperty('--emp-ratio', (box.width / box.height).toFixed(3));
         }
 
         function apply() {
@@ -154,16 +184,18 @@
             if (wantRun) { wantRun = false; start(); }
         }
 
-        play.addEventListener('click', function () { if (timer) stop(); else start(); });
+        play.addEventListener('click', function () { picked = true; if (timer) stop(); else start(); });
         strip.addEventListener('click', function (e) {
             var i = Array.prototype.indexOf.call(years, e.target);
             if (i < 0) return;
+            picked = true;
             stop();
             show(i);
         });
         strip.addEventListener('keydown', function (e) {
             var d = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ? -1 : 0;
             if (!d || current + d < 0 || current + d >= years.length) return;
+            picked = true;
             stop();
             show(current + d);
             years[current].focus();
@@ -173,15 +205,15 @@
         window.addEventListener('resize', edges);
         more.addEventListener('click', function () {
             var open = more.getAttribute('aria-expanded') !== 'true';
-            if (open) stop();
+            if (open) { picked = true; stop(); }
             more.setAttribute('aria-expanded', open ? 'true' : 'false');
             text.hidden = !open;
         });
         // экскурсия открывает подсказку поверх карты: прогон на паузу
         var tour = document.getElementById('tour-start');
-        if (tour) tour.addEventListener('click', stop);
+        if (tour) tour.addEventListener('click', function () { picked = true; stop(); });
 
-        show(current);
+        show(auto ? 0 : current);
 
         var src = root.getAttribute('data-src');
         if (src && window.fetch) {
@@ -200,13 +232,13 @@
         }
 
         // один прогон сам, когда карта первый раз хотя бы наполовину на экране
-        if (!calm && 'IntersectionObserver' in window) {
+        if (auto) {
             var seen = new IntersectionObserver(function (entries) {
                 if (entries[0].isIntersecting) {
                     seen.disconnect();
-                    setTimeout(function () { if (settled) start(); else wantRun = true; }, 700);
+                    setTimeout(function () { if (picked) return; if (settled) start(); else wantRun = true; }, 700);
                 }
-            }, { threshold: 0.5 });
+            }, { threshold: 0.4 });
             seen.observe(root.querySelector('.emp-panel'));
         }
     });
