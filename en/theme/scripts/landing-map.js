@@ -1,5 +1,5 @@
 // Карта империи на главной: выбор шага по году, один автопрогон от первого шага до последнего,
-// условные знаки и описание шага. Данные шагов лежат в атрибутах кнопок лет.
+// описание шага. Данные шагов лежат в атрибутах кнопок лет. Условные знаки показаны все и не меняются от шага к шагу.
 // Страница открывается первым шагом; при отключённой анимации - последним, без прогона.
 // В страницу записана копия шагов на день сборки. При открытии скрипт берёт свежий файл шагов
 // с сайта карты (data-src) и перерисовывает блок, если отпечаток файла (stamp) не тот, что у копии.
@@ -35,10 +35,9 @@
                 steps[k].classList.toggle('on', k === i);
                 years[k].setAttribute('aria-pressed', k === i ? 'true' : 'false');
             }
-            var data = years[i].dataset, keys = data.keys.split(' ');
+            var data = years[i].dataset;
             year.textContent = years[i].textContent;
             area.textContent = data.area;
-            for (k = 0; k < legend.length; k++) legend[k].hidden = keys.indexOf(legend[k].getAttribute('data-k')) < 0;
             text.textContent = '';
             var date = document.createElement('b');
             date.textContent = nb(data.date) + '. ';
@@ -116,17 +115,16 @@
             for (k = 0; k < steps.length; k++) svg.removeChild(steps[k]);
             while (strip.firstChild) strip.removeChild(strip.firstChild);
             m.steps.forEach(function (s, i) {
-                var g = document.createElementNS(SVG, 'g'), keys = ['red'];
+                var g = document.createElementNS(SVG, 'g');
                 g.setAttribute('class', i === keep ? 'emp-step on' : 'emp-step');   // без затухания и проявления
-                if (s.pale) { g.appendChild(path('emp-pale', s.pale)); keys.push('pale'); }
+                if (s.pale) g.appendChild(path('emp-pale', s.pale));
                 g.appendChild(path('emp-red', s.red));
-                if (s.dots) { g.appendChild(path('emp-dot0', s.dots)); g.appendChild(path('emp-dot', s.dots)); keys.push('dot'); }
+                if (s.dots) { g.appendChild(path('emp-dot0', s.dots)); g.appendChild(path('emp-dot', s.dots)); }
                 svg.insertBefore(g, bord);
                 var b = document.createElement('button');
                 b.type = 'button';
                 b.className = 'emp-y';
                 b.setAttribute('aria-pressed', 'false');
-                b.setAttribute('data-keys', keys.join(' '));
                 b.setAttribute('data-area', local(s.area));
                 b.setAttribute('data-date', local(s.date));
                 b.setAttribute('data-text', local(s.text));
@@ -134,16 +132,13 @@
                 strip.appendChild(b);
             });
             strip.style.setProperty('--emp-n', m.steps.length);
-            var total = 0;
             for (k = 0; k < legend.length; k++) {
                 var label = local(m.legend[legend[k].getAttribute('data-k')]);
                 if (label) {
                     while (legend[k].lastChild && legend[k].lastChild.nodeType === 3) legend[k].removeChild(legend[k].lastChild);
                     legend[k].appendChild(document.createTextNode(label));
                 }
-                total += legend[k].textContent.length;
             }
-            root.classList.toggle('emp--wrap', total > 78);   // три знака и ссылка «Описание» в одну строку не помещаются
             root.setAttribute('data-stamp', m.stamp);
             steps = root.querySelectorAll('.emp-step');
             years = root.querySelectorAll('.emp-y');
@@ -166,7 +161,6 @@
             root.style.setProperty('--emp-mid', (50 * (top + bottom) / box.height).toFixed(2) + '%');
             root.style.setProperty('--emp-low', (Math.min(box.height, bottom - top + 50) / box.width).toFixed(4));
             root.style.setProperty('--emp-high', (Math.min(box.height, bottom - top + 102) / box.width).toFixed(4));
-            root.style.setProperty('--emp-ratio', (box.width / box.height).toFixed(3));
         }
 
         function apply() {
