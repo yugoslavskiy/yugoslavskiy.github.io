@@ -8,7 +8,7 @@
 
 /* decolonial(.)ist mark - Chivo Mono 700, caps, +0.12em */
 .dclst, .dclst-line {
-  font-family: 'Chivo Mono', monospace;
+  font-family: "Chivo Mono", ui-monospace, "SF Mono", Menlo, monospace;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -20,9 +20,11 @@
   height: 24px;
   line-height: 24px;
   margin: 8px 0;
-  font-size: clamp(13px, 1.5vw, 17px);
+  font-size: 13px;
   color: #f5f5f5;
 }
+@media (min-width: 1024px) { .dclst-line { font-size: 15px; } }
+@media (min-width: 1280px) { .dclst-line { font-size: 17px; } }
 .dclst-line .dot { background: #3b82f6; }
 .dclst {                    /* лендинг: диагональный знак */
   display: inline-block;
@@ -107,8 +109,8 @@
 .emp-step { opacity: 0; transition: opacity .5s cubic-bezier(.16, 1, .3, 1); }
 .emp-step.on { opacity: 1; }
 .emp-readout { position: absolute; left: 3.2cqw; top: 2.8cqw; margin: 0; pointer-events: none; text-shadow: 0 0 2px var(--emp-sea), 0 0 5px var(--emp-sea), 0 0 9px var(--emp-sea), 0 0 16px var(--emp-sea); }
-.emp-year { display: block; font: 700 36px/1 "Chivo Mono", monospace; font-size: clamp(26px, 7.2cqw, 56px); letter-spacing: .06em; color: var(--emp-ink); }
-.emp-area { display: block; margin-top: .5em; font: 15px/1.2 "Roboto-Regular", sans-serif; font-size: clamp(13px, 2.6cqw, 17px); color: var(--emp-ink2); font-variant-numeric: tabular-nums; }
+.emp-year { display: block; font: 700 36px/1 "Chivo Mono", ui-monospace, "SF Mono", Menlo, monospace; font-size: clamp(26px, 7.2cqw, 56px); letter-spacing: .06em; color: var(--emp-ink); }
+.emp-area { display: block; margin-top: .5em; font: 13px/1.2 "Roboto-Regular", system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--emp-ink2); font-variant-numeric: tabular-nums; }
 
 /* ряд лет под картой */
 .emp-tabs { display: flex; align-items: stretch; margin-top: 12px; border-bottom: 1px solid var(--c-body-border); }
@@ -118,9 +120,9 @@
 .emp-ico-stop, .emp-play.run .emp-ico-play { display: none; }
 .emp-play.run .emp-ico-stop { display: inline; }
 .emp-years { flex: 1 1 auto; min-width: 0; display: grid; grid-template-columns: repeat(var(--emp-n, 11), minmax(0, 1fr)); }
-.emp-years .emp-y { position: relative; height: 34px; padding: 0; border: 0; background: none; color: var(--c-body-on-deemph); font: 15px/34px "Roboto-Regular", sans-serif; font-variant-numeric: tabular-nums; cursor: pointer; }
+.emp-years .emp-y { position: relative; height: 34px; padding: 0; border: 0; background: none; color: var(--c-body-on-deemph); font: 15px/34px "Roboto-Regular", system-ui, -apple-system, "Segoe UI", sans-serif; font-variant-numeric: tabular-nums; cursor: pointer; }
 .emp-years .emp-y:hover { color: var(--c-body-on-emph); }
-.emp-years .emp-y[aria-pressed=true] { color: var(--c-body-on-emph); font-family: "Roboto-Medium", sans-serif; }
+.emp-years .emp-y[aria-pressed=true] { color: var(--c-body-on-emph); font-family: "Roboto-Medium", system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 500; }
 .emp-years .emp-y[aria-pressed=true]::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: -1px; height: 2px; background: var(--emp-mark); }
 .emp button:focus:not(:focus-visible) { outline: none; }
 .emp button:focus-visible, .emp a:focus-visible { outline: 2px solid var(--emp-mark); outline-offset: 2px; }
@@ -137,7 +139,7 @@
 .emp-k-dot { background: radial-gradient(circle, var(--emp-dot) 0 2.4px, transparent 2.9px); }
 .emp-links { flex: 0 0 auto; display: flex; gap: 26px; margin: 0; font-size: 15px; line-height: 20px; white-space: nowrap; }
 /* «Полная карта»: на широкой карте - кнопка в углу карты, на узкой - ссылка в строке под годами */
-.emp-full--map { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 4px; font-size: 13px; line-height: 1; color: var(--emp-ink2); background: color-mix(in srgb, var(--emp-sea) 84%, transparent); box-shadow: inset 0 0 0 1px var(--emp-chip); }
+.emp-full--map { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 4px; font-size: 15px; line-height: 1; color: var(--emp-ink2); background: color-mix(in srgb, var(--emp-sea) 84%, transparent); box-shadow: inset 0 0 0 1px var(--emp-chip); }
 .emp-full--map:hover { color: var(--emp-ink); box-shadow: inset 0 0 0 1px var(--emp-ink2); text-decoration: none; }
 .emp-full--row { display: none; }
 .emp-links a, .emp-more { color: var(--dc-link, var(--c-link)); }
@@ -148,7 +150,7 @@
 /* описание шага занимает всю ширину карты */
 .emp-text { margin: 14px 0 8px; font-size: 15px; line-height: 23px; color: var(--c-body-on-deemph); }
 @media (min-width: 768px) { .emp-text { font-size: 17px; line-height: 27px; } }
-.emp-text b { font-family: "Roboto-Medium", sans-serif; font-weight: normal; color: var(--c-body-on-emph); }
+.emp-text b { font-family: "Roboto-Medium", system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 500; color: var(--c-body-on-emph); }
 
 /* узкая карта: ссылки строкой под годами, знаки ниже */
 @container emp (max-width: 679px) {
@@ -157,6 +159,7 @@
   .emp-foot { flex-direction: column-reverse; gap: 10px 0; margin-top: 12px; }
 }
 @container emp (max-width: 560px) { .emp-years .emp-y { font-size: 13px; } }
+@container emp (min-width: 560px) { .emp-area { font-size: 17px; } }
 /* телефон: годы - одна строка с прокруткой, выбранный год по центру, по пять в окне; край затухает только там, где ряд продолжается */
 @container emp (max-width: 479px) {
   .emp-years { display: flex; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth;
@@ -174,7 +177,7 @@
 .home-one .emp, .home-one .home-text { width: 100%; max-width: 700px; }
 .home-lead { margin: 0; font-size: 20px; line-height: 30px; color: var(--c-body-on-emph); text-wrap: pretty; }
 .home-entry { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; margin: 32px 0 0; }
-.home-tour { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px 0 16px; border: 1px solid var(--c-body-on-deemph); border-radius: 4px; color: var(--c-body-on-emph); font: 16px/1 "Roboto-Regular", sans-serif; text-decoration: none; transition: background-color .15s, border-color .15s; }
+.home-tour { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px 0 16px; border: 1px solid var(--c-body-on-deemph); border-radius: 4px; color: var(--c-body-on-emph); font: 17px/1 "Roboto-Regular", system-ui, -apple-system, "Segoe UI", sans-serif; text-decoration: none; transition: background-color .15s, border-color .15s; }
 .home-tour:hover { color: var(--c-body-on-emph); border-color: var(--c-body-on-emph); background: color-mix(in srgb, var(--c-body-on) 8%, transparent); text-decoration: none; }
 .home-go { width: 15px; height: 15px; transition: transform .25s cubic-bezier(.16, 1, .3, 1); }
 .home-tour:hover .home-go { transform: translateX(3px); }
@@ -183,7 +186,6 @@
 @media (max-width: 767px) {
   .home-hero { padding-top: 24px; padding-bottom: 8px; }
   .home-one { row-gap: 16px; }
-  .home-lead { font-size: 19px; line-height: 28px; }
   .home-entry { margin-top: 24px; row-gap: 2px; }
   .home-tour { height: 44px; }
   .home-mail { padding: 10px 0; }
@@ -220,7 +222,6 @@
   .home-one .emp-tabs { margin-top: 8px; }
   .home-one .emp-readout { left: 2.4cqw; top: 2cqw; }
   .home-one .emp-year { font-size: clamp(56px, 4.6cqw, 72px); }
-  .home-one .emp-area { font-size: clamp(17px, 1.3cqw, 20px); }
   /* описание шага - в две колонки, строка 52-76 знаков; отступ под ним больше, чем над ним: оно относится к карте */
   .home-one .emp-text { margin: 20px 0 16px; columns: 2; column-gap: 48px; orphans: 2; widows: 2; }
   .home-entry { margin-top: 28px; }
